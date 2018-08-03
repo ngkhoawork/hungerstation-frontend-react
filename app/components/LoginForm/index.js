@@ -11,13 +11,11 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function LoginForm() {
-  return (
-    <div>
-      <FormattedMessage {...messages.header} />
-    </div>
-  );
-}
+const LoginForm = () => (
+  <div>
+    <FormattedMessage {...messages.header} />
+  </div>
+);
 
 LoginForm.propTypes = {};
 

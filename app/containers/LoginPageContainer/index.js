@@ -4,10 +4,10 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 
 import LoginForm from 'components/LoginForm';
 
@@ -16,8 +16,6 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectLoginPageContainer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-
-const LoginPageContainer = () => <LoginForm />;
 
 const mapStateToProps = createStructuredSelector({
   loginpagecontainer: makeSelectLoginPageContainer(),
@@ -29,16 +27,15 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const withConnect = connect(
+@injectReducer({ key: 'loginpagecontainer', reducer })
+@injectSaga({ key: 'loginpagecontainer', saga })
+@withRouter
+@connect(
   mapStateToProps,
   mapDispatchToProps,
-);
-
-const withReducer = injectReducer({ key: 'loginpagecontainer', reducer });
-const withSaga = injectSaga({ key: 'loginpagecontainer', saga });
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(LoginPageContainer);
+)
+export default class LoginPageContainer extends Component {
+  render() {
+    return <LoginForm {...this.props} />;
+  }
+}
