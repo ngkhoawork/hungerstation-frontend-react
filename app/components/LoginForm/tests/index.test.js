@@ -1,10 +1,12 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-// import LoginForm from '../index';
+import LoginForm from '../index';
+
+const renderLoginForm = () => shallow(<LoginForm />);
 
 describe('<LoginForm />', () => {
   it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+    renderLoginForm();
   });
 });
