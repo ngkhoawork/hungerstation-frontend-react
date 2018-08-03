@@ -13,10 +13,10 @@ export default defineMessages({
   },
   login: {
     id: 'app.components.Header.login',
-    defaultMessage: 'LOG IN',
+    defaultMessage: 'SIGN IN',
   },
   register: {
     id: 'app.components.Header.register',
-    defaultMessage: 'REGISTER',
+    defaultMessage: 'SIGN UP',
   },
 });

@@ -1,25 +1,21 @@
 /**
  *
- * {{ properCase name }}
+ * RegistrationForm
  *
  */
 
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-{{#if wantMessages}}
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-{{/if}}
 
-const {{ properCase name }} = () => (
+const RegistrationForm = () => (
   <div>
-  {{#if wantMessages}}
     <FormattedMessage {...messages.header} />
-  {{/if}}
   </div>
 );
 
-{{ properCase name }}.propTypes = {};
+RegistrationForm.propTypes = {};
 
-export default {{ properCase name }};
+export default RegistrationForm;
