@@ -18,9 +18,12 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import LoginPageContainer from 'containers/LoginPageContainer';
 
+import Header from 'components/Header';
+
 export default function App() {
   return (
     <div>
+      <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPageContainer} />
