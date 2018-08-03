@@ -12,7 +12,7 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -28,6 +28,8 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPageContainer} />
         <Route component={NotFoundPage} />
+
+        <Redirect from="*" to="/" />
       </Switch>
     </div>
   );
