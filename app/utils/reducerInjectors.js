@@ -9,7 +9,8 @@ import createReducer from '../reducers';
 export function injectReducerFactory(store, isValid) {
   return function injectReducer(key, reducer) {
     if (!isValid) checkStore(store);
-
+    console.log(reducer);
+    
     invariant(
       isString(key) && !isEmpty(key) && isFunction(reducer),
       '(app/utils...) injectReducer: Expected `reducer` to be a reducer function',

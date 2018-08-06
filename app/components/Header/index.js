@@ -12,8 +12,13 @@ import messages from './messages';
 
 import StyledHeader from './StyledHeader';
 
+import logo from '../../images/logo.png';
+
 const Header = () => (
   <StyledHeader>
+    <Link to="/">
+      <img alt="logo" src={logo} />
+    </Link>
     <Link to="/register">
       <FormattedMessage {...messages.register} />
     </Link>

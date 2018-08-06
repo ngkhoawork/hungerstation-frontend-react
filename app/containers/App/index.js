@@ -20,17 +20,26 @@ import RegistrationPageContainer from 'containers/RegistrationPageContainer';
 
 import Header from 'components/Header';
 
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
+const client = new ApolloClient({
+  uri: 'https://w5xlvm3vzz.lp.gql.zone/graphql',
+});
+
 export default function App() {
   return (
     <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/login" component={LoginPageContainer} />
-        <Route path="/register" component={RegistrationPageContainer} />
+      <ApolloProvider client={client}>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/login" component={LoginPageContainer} />
+          <Route path="/register" component={RegistrationPageContainer} />
 
-        <Redirect from="*" to="/" />
-      </Switch>
+          <Redirect from="*" to="/" />
+        </Switch>
+      </ApolloProvider>
     </div>
   );
 }
