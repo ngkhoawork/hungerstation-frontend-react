@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form/immutable'; // <--- immutable import
+import { Field, reduxForm, Form } from 'redux-form/immutable'; // <--- immutable import
 
 const validate = values => {
   // IMPORTANT: values is an Immutable.Map here!
@@ -18,7 +18,7 @@ const validate = values => {
   }
   if (!values.get('age')) {
     errors.age = 'Required';
-  } else if (isNaN(Number(values.get('age')))) {
+  } else if (Number.isNaN(Number(values.get('age')))) {
     errors.age = 'Must be a number';
   } else if (Number(values.get('age')) < 18) {
     errors.age = 'Sorry, you must be at least 18 years old';
@@ -62,15 +62,26 @@ const ImmutableForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Field
         name="username"
         type="text"
         component={renderField}
         label="Username"
       />
+      <Field
+        name="phone"
+        type="phone"
+        component={renderField}
+        label="Mobile number"
+      />
       <Field name="email" type="email" component={renderField} label="Email" />
-      <Field name="age" type="number" component={renderField} label="Age" />
+      <Field
+        name="password"
+        type="password"
+        component={renderField}
+        label="Password"
+      />
       <div>
         <button type="submit" disabled={submitting}>
           Submit
@@ -79,7 +90,7 @@ const ImmutableForm = props => {
           Clear Values
         </button>
       </div>
-    </form>
+    </Form>
   );
 };
 
