@@ -1,0 +1,10 @@
+{
+  "app.components.Header.header": "",
+  "app.components.Header.login": "دخول",
+  "app.components.Header.register": "دخولتسجيل",
+  "app.components.HomePage.header": "",
+  "app.components.LoginForm.header": "",
+  "app.components.RegistrationForm.header": "",
+  "app.containers.LocaleToggle.header": "الرئيسية",
+  "app.containers.RegistrationPageContainer.header": ""
+}

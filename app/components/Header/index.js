@@ -13,6 +13,7 @@ import messages from './messages';
 import StyledHeader from './StyledHeader';
 
 import logo from '../../images/logo.png';
+import LocaleToggle from '../../containers/LocaleToggle';
 
 const Header = () => (
   <StyledHeader>
@@ -25,6 +26,7 @@ const Header = () => (
     <Link to="/login">
       <FormattedMessage {...messages.login} />
     </Link>
+    <LocaleToggle />
   </StyledHeader>
 );
 

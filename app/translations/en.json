@@ -1,1 +1,10 @@
-[]
+{
+  "app.components.Header.header": "LOG IN",
+  "app.components.Header.login": "SIGN IN",
+  "app.components.Header.register": "SIGN UP",
+  "app.components.HomePage.header": "This is HomePage component!",
+  "app.components.LoginForm.header": "This is the LoginForm component !",
+  "app.components.RegistrationForm.header": "This is the RegistrationForm component !",
+  "app.containers.LocaleToggle.header": "This is LocaleToggle container !",
+  "app.containers.RegistrationPageContainer.header": "This is RegistrationPageContainer container !"
+}

@@ -13,24 +13,36 @@
 
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { createSelector } from 'reselect';
+import PropTypes from 'prop-types';
 
 import HomePage from 'containers/HomePage/Loadable';
 import LoginPageContainer from 'containers/LoginPageContainer';
 import RegistrationPageContainer from 'containers/RegistrationPageContainer';
 
 import Header from 'components/Header';
+import { connect } from 'react-redux';
+import { makeSelectLocale } from '../LanguageProvider/selectors';
 
-export default function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/login" component={LoginPageContainer} />
-        <Route path="/register" component={RegistrationPageContainer} />
+const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
+  dir: locale === 'ar' ? 'rtl' : 'ltr',
+}));
 
-        <Redirect from="*" to="/" />
-      </Switch>
-    </div>
-  );
-}
+const App = ({ dir }) => (
+  <div dir={dir}>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/login" component={LoginPageContainer} />
+      <Route path="/register" component={RegistrationPageContainer} />
+
+      <Redirect from="*" to="/" />
+    </Switch>
+  </div>
+);
+
+App.propTypes = {
+  dir: PropTypes.string,
+};
+
+export default connect(mapStateToProps)(App);
