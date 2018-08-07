@@ -8,13 +8,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Field, reduxForm } from 'redux-form/immutable';
+import { FormattedMessage } from 'react-intl';
 
 import TextInput from 'components/TextInput';
 
+import messages from './messages';
+
 const LoginForm = ({ handleSubmit, pristine, reset, submitting }) => (
   <form onSubmit={handleSubmit}>
-    <Field name="username" type="text" component={TextInput} label="Username" />
-    <Field name="password" type="text" component={TextInput} label="Password" />
+    <label htmlFor="number">
+      <FormattedMessage {...messages.numberLabel} />
+      <Field
+        name="number"
+        type="text"
+        component={TextInput}
+        label="Tel number"
+      />
+    </label>
+    <label htmlFor="password">
+      <FormattedMessage {...messages.passwordLabel} />
+      <Field
+        name="password"
+        type="text"
+        component={TextInput}
+        label="Password"
+      />
+    </label>
     <div>
       <button type="submit" disabled={submitting}>
         Submit
