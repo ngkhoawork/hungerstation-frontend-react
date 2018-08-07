@@ -4,10 +4,10 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { LOG_USER_IN } from './constants';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const logUserIn = (number, password) => ({
+  type: LOG_USER_IN,
+  number,
+  password,
+});
