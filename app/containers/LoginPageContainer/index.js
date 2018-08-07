@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
+// import { reduxForm } from 'redux-form/immutable';
 
 import LoginForm from 'components/LoginForm';
 
@@ -35,7 +36,11 @@ function mapDispatchToProps(dispatch) {
   mapDispatchToProps,
 )
 export default class LoginPageContainer extends Component {
+  onSubmit = values => {
+    console.log('++ submitting values:', values.toJS());
+  };
+
   render() {
-    return <LoginForm {...this.props} />;
+    return <LoginForm {...this.props} onSubmit={this.onSubmit} />;
   }
 }
