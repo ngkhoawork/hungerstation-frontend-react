@@ -5,9 +5,12 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+
+import RegistrationForm from 'components/RegistrationForm';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -16,8 +19,6 @@ import makeSelectRegistrationPageContainer from './selectors';
 import saga from './saga';
 import messages from './messages';
 import { registerRequest } from '../App/authActions';
-
-import SignUpForm from './form';
 
 const mapStateToProps = createStructuredSelector({
   registrationpagecontainer: makeSelectRegistrationPageContainer(),
@@ -34,11 +35,16 @@ const mapDispatchToProps = {
 @injectReducer({ key: 'form', reducer })
 @injectSaga({ key: 'registrationPageContainer', saga })
 export default class RegistrationPageContainer extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   render() {
+    const { onSubmit } = this.props;
     return (
       <div>
         <FormattedMessage {...messages.header} />
-        <SignUpForm onSubmit={this.props.onSubmit} />
+        <RegistrationForm onSubmit={onSubmit} />
       </div>
     );
   }
