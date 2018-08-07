@@ -5,10 +5,10 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
-// import { reduxForm } from 'redux-form/immutable';
 
 import LoginForm from 'components/LoginForm';
 
@@ -17,16 +17,15 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectLoginPageContainer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { logUserIn } from './actions';
 
 const mapStateToProps = createStructuredSelector({
   loginpagecontainer: makeSelectLoginPageContainer(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
+const mapDispatchToProps = {
+  handleUserLogin: logUserIn,
+};
 
 @injectReducer({ key: 'loginpagecontainer', reducer })
 @injectSaga({ key: 'loginpagecontainer', saga })
@@ -36,8 +35,14 @@ function mapDispatchToProps(dispatch) {
   mapDispatchToProps,
 )
 export default class LoginPageContainer extends Component {
+  static propTypes = {
+    handleUserLogin: PropTypes.func.isRequired,
+  };
+
   onSubmit = values => {
-    console.log('++ submitting values:', values.toJS());
+    const { handleUserLogin } = this.props;
+    console.log('** values', values);
+    handleUserLogin();
   };
 
   render() {

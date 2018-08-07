@@ -1,21 +1,55 @@
 module.exports = {
-  posts: [
-    { id: 1, title: 'Lorem Ipsum', views: 254, user_id: 123 },
-    { id: 2, title: 'Sic Dolor amet', views: 65, user_id: 456 },
-  ],
-  users: [{ id: 123, name: 'John Doe' }, { id: 456, name: 'Jane Doe' }],
-  comments: [
+  courses: [
     {
-      id: 987,
-      post_id: 1,
-      body: 'Consectetur adipiscing elit',
-      date: new Date('2017-07-03'),
+      id: 1,
+      name: 'Functional JavaScript',
+      description: 'Because FUN',
+      level: '200',
+      student_id: 4,
     },
     {
-      id: 995,
-      post_id: 1,
-      body: 'Nam molestie pellentesque dui',
-      date: new Date('2017-08-17'),
+      id: 2,
+      name: 'Intro to HTML',
+      description: 'Start somewhere',
+      level: '100',
+      student_id: 4,
+    },
+    {
+      id: 3,
+      name: 'Intro to Machine Learning',
+      description: 'Learn machines',
+      level: '300',
+      student_id: 5,
+    },
+  ],
+  students: [
+    {
+      id: 4,
+      firstName: 'John',
+      lastName: 'Doe',
+      active: 'true',
+    },
+    {
+      id: 5,
+      firstName: 'Jane',
+      lastName: 'Smith',
+      active: 'false',
+    },
+  ],
+  users: [
+    {
+      id: 7,
+      email: 'sveta@example.com',
+      number: '234234324',
+      name: 'Sveta',
+      password: '123',
+    },
+    {
+      id: 8,
+      email: 'artur@example.com',
+      number: '345345345',
+      name: 'Artur',
+      password: '456',
     },
   ],
 };
