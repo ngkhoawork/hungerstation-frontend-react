@@ -12,7 +12,7 @@
  */
 
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
@@ -23,10 +23,6 @@ import RegistrationPageContainer from 'containers/RegistrationPageContainer';
 import Header from 'components/Header';
 import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
-
-const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
-  dir: locale === 'ar' ? 'rtl' : 'ltr',
-}));
 
 const App = ({ dir }) => (
   <div dir={dir}>
@@ -45,4 +41,8 @@ App.propTypes = {
   dir: PropTypes.string,
 };
 
-export default connect(mapStateToProps)(App);
+const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
+  dir: locale === 'ar' ? 'rtl' : 'ltr',
+}));
+
+export default withRouter(connect(mapStateToProps)(App));
