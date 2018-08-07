@@ -4,4 +4,5 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/LoginPageContainer/DEFAULT_ACTION';
+export const LOG_USER_IN = 'app/LoginPageContainer/LOG_USER_IN';
+export const LOG_USER_IN_SUCCESS = 'app/LoginPageContainer/LOG_USER_IN_SUCCESS';
