@@ -14,11 +14,7 @@ const TextInput = ({
   meta: { touched, error, warning },
 }) => (
   <div>
-    <label htmlFor={input.name}>
-      {label}
-      <input {...input} type={type} placeholder={label} />
-    </label>
-
+    <input {...input} type={type} placeholder={label} />
     {touched &&
       ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
   </div>

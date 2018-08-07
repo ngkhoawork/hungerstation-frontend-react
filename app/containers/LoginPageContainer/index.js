@@ -39,9 +39,8 @@ export default class LoginPageContainer extends Component {
     handleUserLogin: PropTypes.func.isRequired,
   };
 
-  onSubmit = values => {
+  onSubmit = () => {
     const { handleUserLogin } = this.props;
-    console.log('** values', values);
     handleUserLogin();
   };
 
