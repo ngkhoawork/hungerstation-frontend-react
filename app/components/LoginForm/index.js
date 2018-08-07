@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable';
 import { FormattedMessage } from 'react-intl';
 
+import validate from 'utils/form/validation';
 import TextInput from 'components/TextInput';
 
 import messages from './messages';
@@ -54,4 +55,5 @@ LoginForm.propTypes = {
 
 export default reduxForm({
   form: 'loginForm',
+  validate: values => validate(values, 'login'),
 })(LoginForm);
