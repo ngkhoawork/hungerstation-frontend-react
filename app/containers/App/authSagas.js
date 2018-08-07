@@ -62,6 +62,7 @@ export function* authorize({ username, password, isRegistering }) {
 /**
  * Effect to handle logging out
  */
+/* eslint-disable consistent-return */
 export function* logout() {
   // We tell Redux we're in the middle of a request
   yield put({ type: SENDING_REQUEST, sending: true });
@@ -78,6 +79,7 @@ export function* logout() {
     yield put({ type: REQUEST_ERROR, error: error.message });
   }
 }
+/* eslint-enable consistent-return */
 
 /**
  * Log in saga

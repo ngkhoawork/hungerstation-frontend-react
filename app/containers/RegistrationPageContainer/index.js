@@ -14,7 +14,7 @@ import RegistrationForm from 'components/RegistrationForm';
 
 import injectSaga from 'utils/injectSaga';
 import makeSelectRegistrationPageContainer from './selectors';
-import saga from './saga';
+import saga from '../App/authSagas';
 import messages from './messages';
 import { registerRequest } from '../App/authActions';
 

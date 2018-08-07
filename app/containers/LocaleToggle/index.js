@@ -24,7 +24,10 @@ const mapDispatchToProps = {
   changeLocale: changeLocaleAction,
 };
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)
 // @injectReducer({ key: 'localeToggle', reducer })
 /* eslint-disable react/prefer-stateless-function */
 export default class LocaleToggle extends React.PureComponent {
@@ -34,13 +37,22 @@ export default class LocaleToggle extends React.PureComponent {
   };
 
   render() {
+    const { locale } = this.props;
+
     return (
       <div>
         <FormattedMessage {...messages.header} />
-        <select onChange={this.onChangeLocale} defaultValue={this.props.locale}>
-          {appLocales.map(locale => <option value={locale}>{locale}</option>)}
+        <select onChange={this.onChangeLocale} defaultValue={locale}>
+          {appLocales.map(_locale => (
+            <option value={_locale}>{_locale}</option>
+          ))}
         </select>
       </div>
     );
   }
 }
+
+LocaleToggle.propTypes = {
+  changeLocale: PropTypes.func,
+  locale: PropTypes.string,
+};
