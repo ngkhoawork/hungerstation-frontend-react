@@ -46,7 +46,7 @@
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write",
-    "graphql-server": "node_modules/json-graphql-server/bin/json-graphql-server.js db.js"
+    "graphql-server": "NODE_PORT=3001 node_modules/json-graphql-server/bin/json-graphql-server.js db.js"
   },
   "lint-staged": {
     "*.js": [
