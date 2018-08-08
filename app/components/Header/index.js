@@ -25,6 +25,9 @@ const Header = () => (
     <Link to="/login">
       <FormattedMessage {...messages.login} />
     </Link>
+    <Link to="/userprofile">
+      <FormattedMessage {...messages.userprofile} />
+    </Link>
   </StyledHeader>
 );
 

@@ -17,6 +17,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import LoginPageContainer from 'containers/LoginPageContainer';
 import RegistrationPageContainer from 'containers/RegistrationPageContainer';
+import PrivateRoute from 'components/PrivateRoute';
+import UserProfile from 'components/UserProfile';
 
 import Header from 'components/Header';
 
@@ -28,6 +30,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPageContainer} />
         <Route path="/register" component={RegistrationPageContainer} />
+        <PrivateRoute path="/userprofile" component={UserProfile} />
 
         <Redirect from="*" to="/" />
       </Switch>

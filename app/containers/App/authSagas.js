@@ -118,7 +118,7 @@ export function* loginFlow() {
     if (User.id) {
       // ...we send Redux appropiate actions
       yield put({ type: SET_AUTH, newAuthState: true }); // User is logged in (authorized)
-      yield call(forwardTo, '/dashboard'); // Go to dashboard page
+      // yield call(forwardTo, '/dashboard'); // Go to dashboard page
     }
   }
 }

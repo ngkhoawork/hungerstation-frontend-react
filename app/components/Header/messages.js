@@ -19,4 +19,8 @@ export default defineMessages({
     id: 'app.components.Header.register',
     defaultMessage: 'SIGN UP',
   },
+  userprofile: {
+    id: 'app.components.Header.userprofile',
+    defaultMessage: 'MY PROFILE',
+  },
 });
