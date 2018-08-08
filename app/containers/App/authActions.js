@@ -4,7 +4,6 @@
 
 // We import constants to name our actions' type
 import {
-  CHANGE_FORM,
   SET_AUTH,
   SENDING_REQUEST,
   LOGIN_REQUEST,
@@ -20,9 +19,6 @@ import {
  * @param  {string} newFormState.username The new text of the username input field of the form
  * @param  {string} newFormState.password The new text of the password input field of the form
  */
-export function changeForm(newFormState) {
-  return { type: CHANGE_FORM, newFormState };
-}
 
 /**
  * Sets the authentication state of the application
@@ -40,14 +36,8 @@ export function sendingRequest(sending) {
   return { type: SENDING_REQUEST, sending };
 }
 
-/**
- * Tells the app we want to log in a user
- * @param  {object} data          The data we're sending for log in
- * @param  {string} data.username The username of the user to log in
- * @param  {string} data.password The password of the user to log in
- */
-export function loginRequest(data) {
-  return { type: LOGIN_REQUEST, data };
+export function loginRequest(number, password) {
+  return { type: LOGIN_REQUEST, number, password };
 }
 
 /**

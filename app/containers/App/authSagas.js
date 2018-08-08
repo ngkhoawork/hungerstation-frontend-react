@@ -5,7 +5,12 @@
 // Sagas help us gather all our side effects (network requests in this case) in one place
 
 import { hashSync } from 'bcryptjs';
-import { take, call, put, fork, race } from 'redux-saga/effects';
+import { take, call, put, fork } from 'redux-saga/effects';
+import { request as graphRequest } from 'graphql-request';
+
+import { BASE_URL } from 'utils/graphql';
+import { userQuery } from 'utils/graphql/queries';
+
 import auth from './authApi';
 import genSalt from '../../utils/salt';
 import history from '../../createHistory';
@@ -16,7 +21,6 @@ import {
   REGISTER_REQUEST,
   SET_AUTH,
   LOGOUT,
-  CHANGE_FORM,
   REQUEST_ERROR,
 } from './authConstants';
 
@@ -66,14 +70,10 @@ export function* logout() {
   // We tell Redux we're in the middle of a request
   yield put({ type: SENDING_REQUEST, sending: true });
 
-  // Similar to above, we try to log out by calling the `logout` function in the
-  // `auth` module. If we get an error, we send an appropiate action. If we don't,
-  // we return the response.
   try {
     const response = yield call(auth.logout);
     yield put({ type: SENDING_REQUEST, sending: false });
-
-    return response;
+    console.log('logout saga response', response);
   } catch (error) {
     yield put({ type: REQUEST_ERROR, error: error.message });
   }
@@ -88,24 +88,36 @@ export function* loginFlow() {
   while (true) {
     // And we're listening for `LOGIN_REQUEST` actions and destructuring its payload
     const request = yield take(LOGIN_REQUEST);
-    const { username, password } = request.data;
+    const { number, password } = request;
+
+    console.log('** number', number);
+    console.log('** password', password);
 
     // A `LOGOUT` action may happen while the `authorize` effect is going on, which may
     // lead to a race condition. This is unlikely, but just in case, we call `race` which
     // returns the "winner", i.e. the one that finished first
-    const winner = yield race({
-      auth: call(authorize, { username, password, isRegistering: false }),
-      logout: take(LOGOUT),
-    });
+
+    // const winner = yield race({
+    //   auth: call(authorize, { username, password, isRegistering: false }),
+    //   logout: take(LOGOUT),
+    // });
+
+    const userVariables = {
+      id: 7,
+    };
+
+    const { User } = yield call(
+      graphRequest,
+      BASE_URL,
+      userQuery,
+      userVariables,
+    );
 
     // If `authorize` was the winner...
-    if (winner.auth) {
+    // if (winner.auth) {
+    if (User.id) {
       // ...we send Redux appropiate actions
       yield put({ type: SET_AUTH, newAuthState: true }); // User is logged in (authorized)
-      yield put({
-        type: CHANGE_FORM,
-        newFormState: { username: '', password: '' },
-      }); // Clear form
       yield call(forwardTo, '/dashboard'); // Go to dashboard page
     }
   }
@@ -147,10 +159,6 @@ export function* registerFlow() {
     // If we could register a user, we send the appropiate actions
     if (wasSuccessful) {
       yield put({ type: SET_AUTH, newAuthState: true }); // User is logged in (authorized) after being registered
-      yield put({
-        type: CHANGE_FORM,
-        newFormState: { username: '', password: '' },
-      }); // Clear form
       yield call(forwardTo, '/dashboard');
     }
   }

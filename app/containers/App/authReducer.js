@@ -3,7 +3,6 @@
  */
 
 import {
-  CHANGE_FORM,
   SET_AUTH,
   SENDING_REQUEST,
   REQUEST_ERROR,
@@ -25,8 +24,6 @@ const initialState = {
 // Takes care of changing the application state
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_FORM:
-      return { ...state, formState: action.newFormState };
     case SET_AUTH:
       return { ...state, loggedIn: action.newAuthState };
     case SENDING_REQUEST:
