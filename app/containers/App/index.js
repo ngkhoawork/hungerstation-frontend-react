@@ -15,6 +15,7 @@ import React from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import HomePage from 'containers/HomePage/Loadable';
 import LoginPageContainer from 'containers/LoginPageContainer';
@@ -26,6 +27,7 @@ import { makeSelectLocale } from '../LanguageProvider/selectors';
 
 const App = ({ dir }) => (
   <div dir={dir}>
+    <CssBaseline />
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />

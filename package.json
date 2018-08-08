@@ -148,6 +148,7 @@
     "testURL": "http://localhost/"
   },
   "dependencies": {
+    "@material-ui/core": "^1.4.3",
     "babel-polyfill": "6.26.0",
     "bcryptjs": "^2.4.3",
     "btoa": "^1.2.1",

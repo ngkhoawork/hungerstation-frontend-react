@@ -13,6 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
+import FontFaceObserver from 'fontfaceobserver';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
@@ -37,6 +38,10 @@ import { translationMessages } from './i18n';
 // Import CSS reset and Global Styles
 import './global-styles';
 
+const robotoObserver = new FontFaceObserver('Roboto', {});
+robotoObserver.load().then(() => {
+  document.body.classList.add('fontLoaded');
+});
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);

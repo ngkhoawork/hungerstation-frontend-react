@@ -7,10 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createSelector } from 'reselect';
-
-import messages from './messages';
 
 import { appLocales } from '../../i18n';
 import { changeLocale as changeLocaleAction } from '../LanguageProvider/actions';
@@ -41,10 +38,11 @@ export default class LocaleToggle extends React.PureComponent {
 
     return (
       <div>
-        <FormattedMessage {...messages.header} />
         <select onChange={this.onChangeLocale} defaultValue={locale}>
           {appLocales.map(_locale => (
-            <option value={_locale}>{_locale}</option>
+            <option key={_locale} value={_locale}>
+              {_locale}
+            </option>
           ))}
         </select>
       </div>

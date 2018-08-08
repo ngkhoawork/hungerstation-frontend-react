@@ -6,55 +6,96 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form/immutable';
-
-import { FormattedMessage } from 'react-intl';
-
+import { Field, reduxForm, Form } from 'redux-form/immutable';
+import { injectIntl } from 'react-intl';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 import validate from 'utils/form/validation';
 import warn from 'utils/form/warning';
 import TextInput from 'components/TextInput';
 
 import messages from './messages';
 
-const RegistrationForm = ({ handleSubmit, pristine, reset, submitting }) => (
-  <form onSubmit={handleSubmit}>
-    <label htmlFor="number">
-      <FormattedMessage {...messages.usernameLabel} />
+const styles = theme => ({
+  button: {
+    marginTop: 2 * theme.spacing.unit,
+  },
+});
+
+const RegistrationForm = ({
+  handleSubmit,
+  pristine,
+  submitting,
+  intl,
+  classes,
+}) => (
+  <Form onSubmit={handleSubmit} autoComplete="off">
+    <div>
       <Field
+        autoComplete="nope"
         name="username"
         type="text"
         component={TextInput}
-        label="Username"
+        label={intl.formatMessage(messages.usernameLabel)}
+        fullWidth
       />
-    </label>
-    <label htmlFor="email">
-      <FormattedMessage {...messages.emailLabel} />
-      <Field name="email" type="text" component={TextInput} label="Email" />
-    </label>
-    <label htmlFor="age">
-      <FormattedMessage {...messages.ageLabel} />
-      <Field name="age" type="number" component={TextInput} label="Age" />
-    </label>
-    <div>
-      <button type="submit" disabled={submitting}>
-        Submit
-      </button>
-      <button type="button" disabled={pristine || submitting} onClick={reset}>
-        Clear Values
-      </button>
     </div>
-  </form>
+    <div>
+      <Field
+        autoComplete="nope"
+        name="number"
+        type="phone"
+        component={TextInput}
+        label="Mobile number"
+        fullWidth
+      />
+    </div>
+    <div>
+      <Field
+        autoComplete="nope"
+        name="email"
+        type="email"
+        component={TextInput}
+        label={intl.formatMessage(messages.emailLabel)}
+        fullWidth
+      />
+    </div>
+    <div>
+      <Field
+        autoComplete="nope"
+        name="password"
+        type="password"
+        component={TextInput}
+        label={intl.formatMessage(messages.passwordLabel)}
+        fullWidth
+      />
+    </div>
+    <Button
+      className={classes.button}
+      size="large"
+      fullWidth
+      color="primary"
+      variant="contained"
+      type="submit"
+      disabled={pristine || submitting}
+    >
+      Submit
+    </Button>
+  </Form>
 );
 
 RegistrationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  reset: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
 };
 
-export default reduxForm({
-  form: 'signupform', // a unique identifier for this form
-  validate: values => validate(values, 'registration'),
-  warn: values => warn(values, 'registration'),
-})(RegistrationForm);
+export default withStyles(styles)(
+  injectIntl(
+    reduxForm({
+      form: 'signupform', // a unique identifier for this form
+      validate: (values, { intl }) => validate(values, intl, 'registration'),
+      warn: (values, { intl }) => warn(values, intl, 'registration'),
+    })(RegistrationForm),
+  ),
+);

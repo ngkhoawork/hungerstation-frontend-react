@@ -1,10 +1,18 @@
 {
   "app.components.Header.header": "",
-  "app.components.Header.login": "دخول",
-  "app.components.Header.register": "دخولتسجيل",
+  "app.components.Header.login": "",
+  "app.components.Header.register": "",
   "app.components.HomePage.header": "",
-  "app.components.LoginForm.header": "",
-  "app.components.RegistrationForm.header": "",
-  "app.containers.LocaleToggle.header": "الرئيسية",
-  "app.containers.RegistrationPageContainer.header": ""
+  "app.components.LoginForm.numberLabel": "",
+  "app.components.LoginForm.passwordLabel": "",
+  "app.components.RegistrationForm.emailLabel": "",
+  "app.components.RegistrationForm.numberLabel": "",
+  "app.components.RegistrationForm.passwordLabel": "",
+  "app.components.RegistrationForm.usernameLabel": "",
+  "app.containers.LocaleToggle.header": "",
+  "app.containers.RegistrationPageContainer.form.required": "test",
+  "app.containers.RegistrationPageContainer.haveAccount": "",
+  "app.containers.RegistrationPageContainer.header": "",
+  "app.containers.RegistrationPageContainer.logIn": "",
+  "app.containers.RegistrationPageContainer.subheader": ""
 }

@@ -9,14 +9,18 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   usernameLabel: {
     id: 'app.components.RegistrationForm.usernameLabel',
-    defaultMessage: 'Please provide username',
+    defaultMessage: 'Name',
+  },
+  numberLabel: {
+    id: 'app.components.RegistrationForm.numberLabel',
+    defaultMessage: 'Mobile number',
   },
   emailLabel: {
     id: 'app.components.RegistrationForm.emailLabel',
-    defaultMessage: 'Please provide email address',
+    defaultMessage: 'Email',
   },
-  ageLabel: {
-    id: 'app.components.RegistrationForm.ageLabel',
-    defaultMessage: 'Please provide your age',
+  passwordLabel: {
+    id: 'app.components.RegistrationForm.passwordLabel',
+    defaultMessage: 'Password',
   },
 });
