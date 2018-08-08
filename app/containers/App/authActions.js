@@ -1,7 +1,6 @@
 /*
  * Actions describe changes of state in your application
  */
-import { toJS } from 'immutable';
 
 // We import constants to name our actions' type
 import {
