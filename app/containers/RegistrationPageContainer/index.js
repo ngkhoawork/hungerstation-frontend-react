@@ -59,6 +59,8 @@ export default class RegistrationPageContainer extends React.Component {
               <RegistrationForm onSubmit={onSubmit} />
             </Grid>
           </Grid>
+          <br />
+          <br />
           <Typography align="center" variant="caption" gutterBottom>
             <FormattedMessage {...messages.haveAccount} />&nbsp;
             <Link to="/login">

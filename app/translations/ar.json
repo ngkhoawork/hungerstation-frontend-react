@@ -1,18 +1,20 @@
 {
-  "app.components.Header.header": "",
-  "app.components.Header.login": "",
-  "app.components.Header.register": "",
-  "app.components.HomePage.header": "",
-  "app.components.LoginForm.numberLabel": "",
-  "app.components.LoginForm.passwordLabel": "",
-  "app.components.RegistrationForm.emailLabel": "",
-  "app.components.RegistrationForm.numberLabel": "",
-  "app.components.RegistrationForm.passwordLabel": "",
-  "app.components.RegistrationForm.usernameLabel": "",
-  "app.containers.LocaleToggle.header": "",
-  "app.containers.RegistrationPageContainer.form.required": "test",
-  "app.containers.RegistrationPageContainer.haveAccount": "",
-  "app.containers.RegistrationPageContainer.header": "",
-  "app.containers.RegistrationPageContainer.logIn": "",
-  "app.containers.RegistrationPageContainer.subheader": ""
+  "app.components.Header.header": "NI GOL",
+  "app.components.Header.login": "NI NGIS",
+  "app.components.Header.register": "PU NGIS",
+  "app.components.HomePage.header": "This is HomePage component!",
+  "app.components.LoginForm.numberLabel": "Please enter your telephone number",
+  "app.components.LoginForm.passwordLabel": "Please enter your password",
+  "app.components.RegistrationForm.emailLabel": "Email",
+  "app.components.RegistrationForm.numberLabel": "Mobile number",
+  "app.components.RegistrationForm.passwordLabel": "Password",
+  "app.components.RegistrationForm.usernameLabel": "Name",
+  "app.containers.LocaleToggle.header": "This is LocaleToggle container !",
+  "app.containers.RegistrationPageContainer.form.required": "Required",
+  "app.containers.RegistrationPageContainer.haveAccount":
+    "Already have an account?",
+  "app.containers.RegistrationPageContainer.header": "Sign up",
+  "app.containers.RegistrationPageContainer.logIn": "Log in",
+  "app.containers.RegistrationPageContainer.subheader":
+    "Sign up by entering your details below"
 }
