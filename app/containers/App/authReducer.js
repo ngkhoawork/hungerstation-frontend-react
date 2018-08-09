@@ -36,34 +36,30 @@ function reducer(state = initialState, action) {
   }
 }
 
-function onSetAuth(state, action) {
+const onSetAuth = (state, action) => {
   const { newAuthState } = action;
 
   return state.merge({
     loggedIn: newAuthState,
   });
-}
+};
 
-function onSendingRequest(state, action) {
+const onSendingRequest = (state, action) => {
   const { sending } = action;
 
   return state.merge({
     currentlySending: sending,
   });
-}
+};
 
-function onRequestError(state, action) {
+const onRequestError = (state, action) => {
   const { error } = action;
 
   return state.merge({
     error,
   });
-}
+};
 
-function onClearError(state) {
-  return state.merge({
-    error: '',
-  });
-}
+const onClearError = state => state.merge({ error: '' });
 
 export default reducer;
