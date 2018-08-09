@@ -8,12 +8,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { FormattedMessage } from 'react-intl';
+
+import LocaleToggle from 'containers/LocaleToggle';
+
 import messages from './messages';
-
 import StyledHeader from './StyledHeader';
-
 import logo from '../../images/logo.png';
-import LocaleToggle from '../../containers/LocaleToggle';
 
 const Header = () => (
   <StyledHeader>
@@ -25,6 +25,9 @@ const Header = () => (
     </Link>
     <Link to="/login">
       <FormattedMessage {...messages.login} />
+    </Link>
+    <Link to="/userprofile">
+      <FormattedMessage {...messages.userprofile} />
     </Link>
     <LocaleToggle />
   </StyledHeader>

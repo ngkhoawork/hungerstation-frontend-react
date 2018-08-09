@@ -1,12 +1,17 @@
+import { localStorage as LocalStorage } from 'localStorage';
+
 let localStorage;
 
 /* eslint-disable global-require, prefer-destructuring */
 // If we're testing, use a local storage polyfill
 if (global.process && process.env.NODE_ENV === 'test') {
-  localStorage = require('localStorage');
+  localStorage = LocalStorage;
 } else {
   // If not, use the browser one
-  localStorage = global.window.localStorage;
+  const {
+    window: { localStorage: ls },
+  } = global;
+  localStorage = ls;
 }
 /* eslint-enable global-require, prefer-destructuring */
 
@@ -16,7 +21,7 @@ const auth = {
    * @param  {string} username The username of the user
    * @param  {string} password The password of the user
    */
-  login(/* username, password */) {
+  login() {
     if (auth.loggedIn()) return Promise.resolve(true);
 
     // Post a fake request

@@ -20,6 +20,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import HomePage from 'containers/HomePage/Loadable';
 import LoginPageContainer from 'containers/LoginPageContainer';
 import RegistrationPageContainer from 'containers/RegistrationPageContainer';
+import PrivateRouteContainer from 'containers/PrivateRouteContainer';
+import UserProfile from 'components/UserProfile';
 
 import Header from 'components/Header';
 import { connect } from 'react-redux';
@@ -33,6 +35,7 @@ const App = ({ dir }) => (
       <Route exact path="/" component={HomePage} />
       <Route path="/login" component={LoginPageContainer} />
       <Route path="/register" component={RegistrationPageContainer} />
+      <PrivateRouteContainer path="/userprofile" component={UserProfile} />
 
       <Redirect from="*" to="/" />
     </Switch>

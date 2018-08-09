@@ -16,14 +16,11 @@ import Typography from '@material-ui/core/Typography';
 import RegistrationForm from 'components/RegistrationForm';
 
 import injectSaga from 'utils/injectSaga';
-import makeSelectRegistrationPageContainer from './selectors';
-import saga from '../App/authSagas';
 import messages from './messages';
+import saga from '../App/authSagas';
 import { registerRequest } from '../App/authActions';
 
-const mapStateToProps = createStructuredSelector({
-  registrationpagecontainer: makeSelectRegistrationPageContainer(),
-});
+const mapStateToProps = createStructuredSelector({});
 
 const mapDispatchToProps = {
   onSubmit: registerRequest,
