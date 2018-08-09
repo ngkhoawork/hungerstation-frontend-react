@@ -36,8 +36,8 @@ export function sendingRequest(sending) {
   return { type: SENDING_REQUEST, sending };
 }
 
-export function loginRequest(number, password) {
-  return { type: LOGIN_REQUEST, number, password };
+export function loginRequest(number, password, redirectToRoute) {
+  return { type: LOGIN_REQUEST, number, password, redirectToRoute };
 }
 
 /**

@@ -88,6 +88,7 @@ export function* loginFlow() {
   while (true) {
     // And we're listening for `LOGIN_REQUEST` actions and destructuring its payload
     const request = yield take(LOGIN_REQUEST);
+    console.log('** request', request);
     const { number, password } = request;
 
     console.log('** number', number);
@@ -118,7 +119,7 @@ export function* loginFlow() {
     if (User.id) {
       // ...we send Redux appropiate actions
       yield put({ type: SET_AUTH, newAuthState: true }); // User is logged in (authorized)
-      // yield call(forwardTo, '/dashboard'); // Go to dashboard page
+      yield call(forwardTo, request.redirectToRoute); // Go to dashboard page
     }
   }
 }

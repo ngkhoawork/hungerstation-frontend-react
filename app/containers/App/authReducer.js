@@ -1,7 +1,7 @@
 /*
  * The reducer takes care of state changes in our app through actions
  */
-
+import { fromJS } from 'immutable';
 import {
   SET_AUTH,
   SENDING_REQUEST,
@@ -11,7 +11,7 @@ import {
 import auth from './authApi';
 
 // The initial application state
-const initialState = {
+const initialState = fromJS({
   formState: {
     username: '',
     password: '',
@@ -19,22 +19,51 @@ const initialState = {
   error: '',
   currentlySending: false,
   loggedIn: auth.loggedIn(),
-};
+});
 
-// Takes care of changing the application state
 function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_AUTH:
-      return { ...state, loggedIn: action.newAuthState };
+      return onSetAuth(state, action);
     case SENDING_REQUEST:
-      return { ...state, currentlySending: action.sending };
+      return onSendingRequest(state, action);
     case REQUEST_ERROR:
-      return { ...state, error: action.error };
+      return onRequestError(state, action);
     case CLEAR_ERROR:
-      return { ...state, error: '' };
+      return onClearError(state);
     default:
       return state;
   }
+}
+
+function onSetAuth(state, action) {
+  const { newAuthState } = action;
+
+  return state.merge({
+    loggedIn: newAuthState,
+  });
+}
+
+function onSendingRequest(state, action) {
+  const { sending } = action;
+
+  return state.merge({
+    currentlySending: sending,
+  });
+}
+
+function onRequestError(state, action) {
+  const { error } = action;
+
+  return state.merge({
+    error,
+  });
+}
+
+function onClearError(state) {
+  return state.merge({
+    error: '',
+  });
 }
 
 export default reducer;
