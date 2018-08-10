@@ -8,9 +8,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-const TextInput = ({ input, meta: { touched, error, warning }, ...custom }) => (
+const TextInput = ({ input, meta: { touched, error }, ...custom }) => (
   <TextField
-    error={touched && error}
+    error={touched && !!error}
     helperText={touched && error}
     margin="normal"
     {...input}

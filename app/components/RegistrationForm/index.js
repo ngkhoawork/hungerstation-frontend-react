@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm, Form } from 'redux-form/immutable';
-import { injectIntl } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import validate from 'utils/form/validation';
@@ -79,7 +79,7 @@ const RegistrationForm = ({
       type="submit"
       disabled={pristine || submitting}
     >
-      Submit
+      {intl.formatMessage(messages.buttonLabel)}
     </Button>
   </Form>
 );
@@ -88,6 +88,8 @@ RegistrationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
+  intl: intlShape,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(

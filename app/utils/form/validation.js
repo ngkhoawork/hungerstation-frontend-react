@@ -12,8 +12,6 @@ const validate = (values, intl, formName) => {
 };
 
 const RegistrationFormValidation = (values, intl) => {
-  console.log(intl);
-  
   const errors = {};
   if (!values.get('username')) {
     errors.username = intl.formatMessage(messages.formRequired);

@@ -15,4 +15,8 @@ export default defineMessages({
     id: 'app.components.LoginForm.passwordLabel',
     defaultMessage: 'Please enter your password',
   },
+  buttonLabel: {
+    id: 'app.components.LoginForm.buttonLabel',
+    defaultMessage: 'Sign in',
+  },
 });

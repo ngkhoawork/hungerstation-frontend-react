@@ -7,53 +7,67 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Field, reduxForm } from 'redux-form/immutable';
-import { FormattedMessage } from 'react-intl';
+import { Form, Field, reduxForm } from 'redux-form/immutable';
+import { injectIntl, intlShape } from 'react-intl';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
 import validate from 'utils/form/validation';
 import TextInput from 'components/TextInput';
 
 import messages from './messages';
 
-const LoginForm = ({ handleSubmit, pristine, reset, submitting }) => (
-  <form onSubmit={handleSubmit}>
-    <label htmlFor="number">
-      <FormattedMessage {...messages.numberLabel} />
+const styles = theme => ({
+  button: {
+    marginTop: 2 * theme.spacing.unit,
+  },
+});
+
+const LoginForm = ({ handleSubmit, pristine, submitting, intl, classes }) => (
+  <Form onSubmit={handleSubmit}>
+    <div>
       <Field
+        fullWidth
         name="number"
         type="text"
         component={TextInput}
-        label="Tel number"
+        label={intl.formatMessage(messages.numberLabel)}
       />
-    </label>
-    <label htmlFor="password">
-      <FormattedMessage {...messages.passwordLabel} />
-      <Field
-        name="password"
-        type="text"
-        component={TextInput}
-        label="Password"
-      />
-    </label>
-    <div>
-      <button type="submit" disabled={submitting}>
-        Submit
-      </button>
-      <button type="button" disabled={pristine || submitting} onClick={reset}>
-        Clear Values
-      </button>
     </div>
-  </form>
+    <div>
+      <Field
+        fullWidth
+        name="password"
+        type="password"
+        component={TextInput}
+        label={intl.formatMessage(messages.passwordLabel)}
+      />
+    </div>
+    <Button
+      type="submit"
+      disabled={submitting || pristine}
+      fullWidth
+      variant="contained"
+      className={classes.button}
+    >
+      {intl.formatMessage(messages.buttonLabel)}
+    </Button>
+  </Form>
 );
 
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  reset: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
+  intl: intlShape,
+  classes: PropTypes.object.isRequired,
 };
 
-export default reduxForm({
-  form: 'loginForm',
-  validate: values => validate(values, 'login'),
-})(LoginForm);
+export default withStyles(styles)(
+  injectIntl(
+    reduxForm({
+      form: 'loginForm',
+      validate: (values, { intl }) => validate(values, intl, 'login'),
+    })(LoginForm),
+  ),
+);
