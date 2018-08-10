@@ -23,7 +23,7 @@ const styles = theme => ({
   },
 });
 
-const LoginForm = ({ handleSubmit, pristine, submitting, intl, classes }) => (
+const LoginForm = ({ handleSubmit, submitting, intl, classes }) => (
   <Form onSubmit={handleSubmit}>
     <div>
       <Field
@@ -45,9 +45,10 @@ const LoginForm = ({ handleSubmit, pristine, submitting, intl, classes }) => (
     </div>
     <Button
       type="submit"
-      disabled={submitting || pristine}
+      disabled={submitting}
       fullWidth
       variant="contained"
+      color="primary"
       className={classes.button}
     >
       {intl.formatMessage(messages.buttonLabel)}
@@ -57,7 +58,6 @@ const LoginForm = ({ handleSubmit, pristine, submitting, intl, classes }) => (
 
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   intl: intlShape,
   classes: PropTypes.object.isRequired,

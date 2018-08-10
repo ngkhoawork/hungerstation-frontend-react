@@ -22,13 +22,7 @@ const styles = theme => ({
   },
 });
 
-const RegistrationForm = ({
-  handleSubmit,
-  pristine,
-  submitting,
-  intl,
-  classes,
-}) => (
+const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
   <Form onSubmit={handleSubmit} autoComplete="off">
     <div>
       <Field
@@ -77,7 +71,7 @@ const RegistrationForm = ({
       color="primary"
       variant="contained"
       type="submit"
-      disabled={pristine || submitting}
+      disabled={submitting}
     >
       {intl.formatMessage(messages.buttonLabel)}
     </Button>
@@ -86,7 +80,6 @@ const RegistrationForm = ({
 
 RegistrationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   intl: intlShape,
   classes: PropTypes.object.isRequired,

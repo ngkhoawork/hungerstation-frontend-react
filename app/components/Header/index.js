@@ -13,12 +13,12 @@ import LocaleToggle from 'containers/LocaleToggle';
 
 import messages from './messages';
 import StyledHeader from './StyledHeader';
-import logo from '../../images/logo.png';
+import logo from '../../images/hungerstation.svg';
 
 const Header = () => (
   <StyledHeader>
     <Link to="/">
-      <img alt="logo" src={logo} />
+      <img alt="logo" src={logo} height="60px" />
     </Link>
     <Link to="/register">
       <FormattedMessage {...messages.register} />
