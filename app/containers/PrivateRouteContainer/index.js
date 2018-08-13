@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import PrivateRoute from 'components/PrivateRoute';
-import { selectIsLoggedIn } from '../App/selectors';
+import { makeSelectIsLoggedIn } from '../App/selectors';
 
 const mapStateToProps = createStructuredSelector({
-  isLoggedIn: selectIsLoggedIn,
+  isLoggedIn: makeSelectIsLoggedIn,
 });
 
 @connect(mapStateToProps)

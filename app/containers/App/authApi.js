@@ -1,66 +1,28 @@
-import { localStorage as LocalStorage } from 'localStorage';
-
-let localStorage;
-
-/* eslint-disable global-require, prefer-destructuring */
-// If we're testing, use a local storage polyfill
-if (global.process && process.env.NODE_ENV === 'test') {
-  localStorage = LocalStorage;
-} else {
-  // If not, use the browser one
-  const {
-    window: { localStorage: ls },
-  } = global;
-  localStorage = ls;
-}
-/* eslint-enable global-require, prefer-destructuring */
+import { loginQuery } from 'utils/graphql/queries';
+import { client, protectedClient } from 'utils/graphql';
+import {
+  registerUserMutation,
+  refreshTokenMutation,
+} from 'utils/graphql/mutations';
 
 const auth = {
-  /**
-   * Logs a user in, returning a promise with `true` when done
-   * @param  {string} username The username of the user
-   * @param  {string} password The password of the user
-   */
-  login() {
-    if (auth.loggedIn()) return Promise.resolve(true);
-
-    // Post a fake request
-    // return request.post('/login', { username, password }).then(response => {
-    //   // Save token to local storage
-    //   localStorage.token = response.token;
-    //   return Promise.resolve(true);
-    // });
-    localStorage.token = 'loggedIn';
-    return Promise.resolve(true);
+  register(...credentials) {
+    return client.request(registerUserMutation, credentials);
+    // return Promise.resolve(true);
   },
-  /**
-   * Logs the current user out
-   */
+  login(...credentials) {
+    return client.request(loginQuery, credentials);
+  },
   logout() {
-    // return request.post('/logout');
-    localStorage.removeItem('token');
+    // TODO: To create graphql query here
     return Promise.resolve(true);
   },
-  /**
-   * Checks if a user is logged in
-   */
-  loggedIn() {
-    return !!localStorage.token;
+  refresh(refreshTokentoken) {
+    return client.request(refreshTokenMutation, { refreshTokentoken });
   },
-  /**
-   * Registers a user and then logs them in
-   * @param  {string} username The username of the user
-   * @param  {string} password The password of the user
-   */
-  register(username, password) {
-    return (
-      // request
-      //   .post('/register', { username, password })
-      // Log user in after registering
-      Promise.resolve(true).then(() => auth.login(username, password))
-    );
+  makeRequestToProtected(token, query, payload) {
+    protectedClient(token).request(query, payload);
   },
-  onChange() {},
 };
 
 export default auth;

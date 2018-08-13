@@ -5,3 +5,10 @@ export const userQuery = `query ($id: ID!,){
     email
   }
 }`;
+
+export const loginQuery = `query ($number:String!,$password:String!){
+  User(number:$number, password:$password){
+    accessToken
+    refreshToken
+  }
+}`;

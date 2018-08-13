@@ -14,13 +14,6 @@ import {
 } from './authConstants';
 
 /**
- * Sets the form state
- * @param  {object} newFormState          The new state of the form
- * @param  {string} newFormState.username The new text of the username input field of the form
- * @param  {string} newFormState.password The new text of the password input field of the form
- */
-
-/**
  * Sets the authentication state of the application
  * @param  {boolean} newAuthState True means a user is logged in, false means no user is logged in
  */
@@ -47,9 +40,19 @@ export const loginRequest = (number, password, redirectToRoute) => ({
 
 export const logout = () => ({ type: LOGOUT });
 
-export const registerRequest = data => ({
+export const registerRequest = (
+  username,
+  number,
+  email,
+  password,
+  redirectToRoute,
+) => ({
   type: REGISTER_REQUEST,
-  data: data.toJS(),
+  username,
+  number,
+  email,
+  password,
+  redirectToRoute,
 });
 
 export const requestError = error => ({

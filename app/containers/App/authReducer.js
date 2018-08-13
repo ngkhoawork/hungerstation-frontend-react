@@ -8,7 +8,6 @@ import {
   REQUEST_ERROR,
   CLEAR_ERROR,
 } from './authConstants';
-import auth from './authApi';
 
 // The initial application state
 const initialState = fromJS({
@@ -18,7 +17,11 @@ const initialState = fromJS({
   },
   error: '',
   currentlySending: false,
-  loggedIn: auth.loggedIn(),
+  loggedIn: false,
+  tokens: {
+    accessToken: null,
+    refreshToken: null,
+  },
 });
 
 function reducer(state = initialState, action) {
