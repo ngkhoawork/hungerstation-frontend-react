@@ -6,6 +6,10 @@ const validate = (values, intl, formName) => {
       return LoginFormValidation(values, intl);
     case 'registration':
       return RegistrationFormValidation(values, intl);
+    case 'forgotPassword':
+      return ForgotPasswordForm(values, intl);
+    case 'resetPassword':
+      return ResetPasswordForm(values, intl);
     default:
       return {};
   }
@@ -59,6 +63,30 @@ const LoginFormValidation = values => {
   }
   if (!values.get('password')) {
     errors.password = 'Required';
+  }
+  return errors;
+};
+
+const ForgotPasswordForm = values => {
+  const errors = {};
+  if (!values.get('email')) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.com$/i.test(values.get('email'))) {
+    errors.email = 'Invalid email address';
+  }
+  return errors;
+};
+
+const ResetPasswordForm = values => {
+  const errors = {};
+  if (!values.get('password')) {
+    errors.password = 'Required';
+  }
+  if (!values.get('repeatPassword')) {
+    errors.repeatPassword = 'Required';
+  }
+  if (errors.password !== errors.repeatPassword) {
+    errors.repeatPassword = "Passwords doesn't match";
   }
   return errors;
 };

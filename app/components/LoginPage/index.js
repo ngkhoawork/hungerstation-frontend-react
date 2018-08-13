@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 import LoginForm from 'components/LoginForm';
 import TextLink from 'components/TextLink';
+import BackHome from 'components/BackHome';
 
 import messages from './messages';
 
@@ -39,7 +40,7 @@ const LoginPage = ({ onSubmit }) => (
       <br />
       <br />
       <Typography align="center" variant="caption" gutterBottom>
-        <TextLink to="/forgot-password" color="grey">
+        <TextLink to="/reset-password" color="grey">
           <FormattedMessage {...messages.forgotPassword} />&nbsp;
         </TextLink>
       </Typography>
@@ -49,6 +50,8 @@ const LoginPage = ({ onSubmit }) => (
           <FormattedMessage {...messages.signUp} />
         </TextLink>
       </Typography>
+      <br />
+      <BackHome />
     </Grid>
   </Grid>
 );
