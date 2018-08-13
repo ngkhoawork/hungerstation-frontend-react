@@ -36,9 +36,9 @@ export default class LoginPageContainer extends Component {
     location: PropTypes.shape({
       state: PropTypes.shape({
         from: PropTypes.shape({
-          pathname: PropTypes.string.isRequired,
+          pathname: PropTypes.string,
         }),
-      }).isRequired,
+      }),
     }).isRequired,
   };
 

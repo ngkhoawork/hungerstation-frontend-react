@@ -1,20 +1,18 @@
 import { loginQuery } from 'utils/graphql/queries';
 import { client, protectedClient } from 'utils/graphql';
 import {
-  registerUserMutation,
+  createUserMutation,
   refreshTokenMutation,
 } from 'utils/graphql/mutations';
 
 const auth = {
   register(...credentials) {
-    return client.request(registerUserMutation, credentials);
-    // return Promise.resolve(true);
+    return client.request(createUserMutation, credentials);
   },
   login(...credentials) {
     return client.request(loginQuery, credentials);
   },
   logout() {
-    // TODO: To create graphql query here
     return Promise.resolve(true);
   },
   refresh(refreshTokentoken) {

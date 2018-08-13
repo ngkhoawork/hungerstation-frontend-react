@@ -21,7 +21,7 @@ import {
 } from './authConstants';
 
 import {
-  loginRequest,
+  authenticateUser,
   setAuthState,
   logout as logoutAction,
 } from './authActions';
@@ -65,9 +65,7 @@ export function* registerFlow() {
     const request = yield take(REGISTER_REQUEST);
     const { username, number, email, password, redirectToRoute } = request;
 
-    // We call the `authorize` task with the data, telling it that we are registering a user
-    // This returns `true` if the registering was successful, `false` if not
-    const wasSuccessful = yield call(authorize, {
+    const response = yield call(authorize, {
       username,
       number,
       email,
@@ -75,8 +73,13 @@ export function* registerFlow() {
       isRegistering: true,
     });
 
-    if (wasSuccessful) {
-      yield put(loginRequest(number, password, redirectToRoute));
+    if (response.user_id) {
+      yield saveTokens({
+        refreshToken: response.refresh_token,
+        accessToken: response.token,
+      });
+      yield put(authenticateUser(response));
+      yield call(forwardTo, redirectToRoute);
     }
   }
 }
@@ -87,20 +90,17 @@ export function* loginFlow() {
     const request = yield take(LOGIN_REQUEST);
     const { number, password, redirectToRoute } = request;
 
-    // A `LOGOUT` action may happen while the `authorize` effect is going on, which may
-    // lead to a race condition. This is unlikely, but just in case, we call `race` which
-    // returns the "winner", i.e. the one that finished first
-
     const winner = yield race({
       auth: call(authorize, { number, password, isRegistering: false }),
       logout: take(LOGOUT),
     });
 
-    // If `authorize` was the winner...
-    // if (winner.auth) {
     if (winner.auth) {
-      yield put(setAuthState(true));
-      yield saveTokens(winner.auth);
+      yield saveTokens({
+        refreshToken: winner.auth.refresh_token,
+        accessToken: winner.auth.token,
+      });
+      yield put(authenticateUser(winner.auth));
       yield call(forwardTo, redirectToRoute);
     } else {
       yield put(logoutAction());
@@ -141,7 +141,10 @@ export function* refreshTokens() {
   try {
     const { refreshToken } = yield select(makeSelectTokens());
     const tokens = yield call(auth.refresh, refreshToken);
-    yield call(setStorageItem, 'tokens', tokens);
+    yield saveTokens({
+      refreshToken: tokens.refresh_token,
+      accessToken: tokens.token,
+    });
     return null;
   } catch (err) {
     yield call(logout);

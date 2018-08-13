@@ -5,3 +5,4 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const LOGOUT = 'LOGOUT';
 export const REQUEST_ERROR = 'REQUEST_ERROR';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
+export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
