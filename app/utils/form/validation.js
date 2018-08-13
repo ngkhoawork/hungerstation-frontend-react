@@ -1,4 +1,4 @@
-import messages from '../../containers/RegistrationPageContainer/messages';
+import messages from './messages';
 
 const validate = (values, intl, formName) => {
   switch (formName) {

@@ -3,16 +3,18 @@
   "app.components.Header.login": "SIGN IN",
   "app.components.Header.register": "SIGN UP",
   "app.components.HomePage.header": "This is HomePage component!",
-  "app.components.LoginForm.numberLabel": "Please enter your telephone number",
-  "app.components.LoginForm.passwordLabel": "Please enter your password",
+  "app.components.LoginForm.numberLabel": "Mobile number",
+  "app.components.LoginForm.passwordLabel": "Password",
   "app.components.RegistrationForm.emailLabel": "Email",
   "app.components.RegistrationForm.numberLabel": "Mobile number",
   "app.components.RegistrationForm.passwordLabel": "Password",
   "app.components.RegistrationForm.usernameLabel": "Name",
   "app.containers.LocaleToggle.header": "This is LocaleToggle container !",
   "app.containers.RegistrationPageContainer.form.required": "Required",
-  "app.containers.RegistrationPageContainer.haveAccount": "Already have an account?",
+  "app.containers.RegistrationPageContainer.haveAccount":
+    "Already have an account?",
   "app.containers.RegistrationPageContainer.header": "Sign up",
   "app.containers.RegistrationPageContainer.logIn": "Log in",
-  "app.containers.RegistrationPageContainer.subheader": "Sign up by entering your details below"
+  "app.containers.RegistrationPageContainer.subheader":
+    "Sign up by entering your details below"
 }

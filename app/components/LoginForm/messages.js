@@ -9,14 +9,14 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   numberLabel: {
     id: 'app.components.LoginForm.numberLabel',
-    defaultMessage: 'Please enter your telephone number',
+    defaultMessage: 'Mobile Number',
   },
   passwordLabel: {
     id: 'app.components.LoginForm.passwordLabel',
-    defaultMessage: 'Please enter your password',
+    defaultMessage: 'Password',
   },
   buttonLabel: {
     id: 'app.components.LoginForm.buttonLabel',
-    defaultMessage: 'Sign in',
+    defaultMessage: 'Login',
   },
 });

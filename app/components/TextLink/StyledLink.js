@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const StyledLink = styled(Link)`
   font-weight: 600;
-  color: black;
+  color: ${({ color }) => color};
   text-decoration: none;
 `;
 
