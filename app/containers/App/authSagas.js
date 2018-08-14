@@ -5,14 +5,14 @@
 // Sagas help us gather all our side effects (network requests in this case) in one place
 
 import { hashSync } from 'bcryptjs';
-import { take, call, put, fork, race, select } from 'redux-saga/effects';
+import { take, call, put, fork, race, select, delay } from 'redux-saga/effects';
 
 import genSalt from 'utils/salt';
 import history from 'createHistory';
 
 import { clearStorageItem, setStorageItem } from 'utils/localStorage';
 
-import { isAccessExpired } from 'utils/tokens';
+import { isAccessExpired, parseJwt } from 'utils/tokens';
 import {
   LOGIN_REQUEST,
   REGISTER_REQUEST,
@@ -77,6 +77,7 @@ export function* registerFlow() {
       yield saveTokens({
         refreshToken: response.refresh_token,
         accessToken: response.token,
+        accessTokenExpiresAt: parseJwt(response.token),
       });
       yield put(authenticateUser(response));
       yield call(forwardTo, redirectToRoute);
@@ -99,6 +100,7 @@ export function* loginFlow() {
       yield saveTokens({
         refreshToken: winner.auth.refresh_token,
         accessToken: winner.auth.token,
+        accessTokenExpiresAt: parseJwt(winner.auth.token),
       });
       yield put(authenticateUser(winner.auth));
       yield call(forwardTo, redirectToRoute);
@@ -144,12 +146,33 @@ export function* refreshTokens() {
     yield saveTokens({
       refreshToken: tokens.refresh_token,
       accessToken: tokens.token,
+      accessTokenExpiresAt: parseJwt(tokens.token),
     });
     return null;
   } catch (err) {
     yield call(logout);
     return err;
   }
+}
+
+export function* fetchListener(action) {
+  const shouldRefresh = yield call(needRefresh);
+
+  if (!shouldRefresh) yield call(makeAuthenticatedRequest, action);
+  if (shouldRefresh) {
+    const error = yield call(refreshTokens);
+    if (!error) {
+      yield delay(50);
+      yield call(makeAuthenticatedRequest, action);
+    }
+  }
+}
+
+function* needRefresh() {
+  const { accessTokenExpiresAt } = yield select(makeSelectTokens());
+
+  const accessExpiration = new Date(accessTokenExpiresAt).getTime;
+  return Date.now() >= accessExpiration;
 }
 
 export function* makeAuthenticatedRequest(action) {
