@@ -12,3 +12,17 @@ export const loginQuery = `query ($number:String!,$password:String!){
     refreshToken
   }
 }`;
+
+export const listCitiesQuery = `query ($country_id: String!) {
+  listCities(countryId: $country_id) {
+    id
+    name
+  }
+}`;
+
+export const listDistricts = `query ($city_id: String) {
+  listDistrcits(cityId: $city_id) {
+    id
+    name
+  }
+}`;

@@ -7,6 +7,7 @@ const TextItem = styled.p`
   margin: 0;
   margin-right: 10px;
   cursor: pointer;
+  letter-spacing: 0.5px;
 `;
 
 export default TextItem;

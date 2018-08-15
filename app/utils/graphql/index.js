@@ -1,12 +1,12 @@
-import { GraphQLCient } from 'graphql-request';
+import { GraphQLClient } from 'graphql-request';
 
 export const BASE_URL = 'http://localhost:3001';
 
 export const protectedClient = token =>
-  new GraphQLCient(BASE_URL, {
+  new GraphQLClient(BASE_URL, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
-export const client = () => new GraphQLCient(BASE_URL);
+export const client = new GraphQLClient(BASE_URL);

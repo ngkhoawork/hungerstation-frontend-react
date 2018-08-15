@@ -1,5 +1,5 @@
 import { client, protectedClient } from 'utils/graphql';
-import { userQuery, loginQuery } from 'utils/graphql/queries';
+import { userQuery, loginQuery, listCitiesQuery } from 'utils/graphql/queries';
 import {
   // createUserMutation,
   refreshTokenMutation,
@@ -31,6 +31,9 @@ const HungerStationAPI = {
   },
   getUser(token, userId) {
     protectedClient(token).request(userQuery, { userId });
+  },
+  getCities(countryId) {
+    client.request(listCitiesQuery, { countryId });
   },
 };
 

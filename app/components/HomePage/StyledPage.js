@@ -6,6 +6,7 @@ const StyledPage = styled.div`
   justify-content: center;
   align-self: center;
   flex-direction: column;
+  font-family: 'HungerStation-Regular', sans-serif;
 `;
 
 export default StyledPage;

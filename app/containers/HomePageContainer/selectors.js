@@ -8,16 +8,32 @@ import { initialState } from './reducer';
 const selectHomePageContainerDomain = state =>
   state.get('homePageContainer', initialState);
 
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by HomePageContainer
- */
-
 const makeSelectHomePageContainer = () =>
   createSelector(selectHomePageContainerDomain, substate => substate.toJS());
+
+export const makeSelectCities = createSelector(
+  selectHomePageContainerDomain,
+  homePageState => {
+    const output = homePageState && homePageState.get('cities');
+
+    if (output) {
+      return output.JS();
+    }
+    return null;
+  },
+);
+
+export const makeSelectDistricts = createSelector(
+  selectHomePageContainerDomain,
+  homePageState => {
+    const output = homePageState && homePageState.get('districts');
+
+    if (output) {
+      return output.JS();
+    }
+    return null;
+  },
+);
 
 export default makeSelectHomePageContainer;
 export { selectHomePageContainerDomain };

@@ -18,7 +18,7 @@ import logo from '../../images/hungerstation.svg';
 const Header = () => (
   <StyledHeader>
     <Link to="/">
-      <img alt="logo" src={logo} height="60px" />
+      <img alt="logo" src={logo} height="45px" />
     </Link>
     <Link to="/register">
       <FormattedMessage {...messages.register} />
