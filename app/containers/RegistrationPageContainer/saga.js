@@ -1,9 +1,3 @@
-// This file contains the sagas used for async actions in our app. It's divided into
-// "effects" that the sagas call (`authorize` and `logout`) and the actual sagas themselves,
-// which listen for actions.
-
-// Sagas help us gather all our side effects (network requests in this case) in one place
-
 import { take, call, put, fork } from 'redux-saga/effects';
 
 import { setStorageItem } from 'utils/localStorage';

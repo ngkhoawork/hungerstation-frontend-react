@@ -9,65 +9,24 @@ import {
   call,
   put,
   fork,
-  race,
   select,
   delay,
   spawn,
 } from 'redux-saga/effects';
 
 import registrationSagas from 'containers/RegistrationPageContainer/saga';
+import loginSagas from 'containers/LoginPageContainer/saga';
 import { forwardTo } from 'utils/route';
 
-import {
-  clearStorageItem,
-  setStorageItem,
-  getStorageItem,
-} from 'utils/localStorage';
+import { clearStorageItem, getStorageItem } from 'utils/localStorage';
 
 import { isAccessExpired, parseJwt } from 'utils/tokens';
 import HungerStationAPI from 'api/HungerStationAPI';
-import { authorize, saveTokens } from 'utils/reusedSagas';
+import { saveTokens } from 'utils/reusedSagas';
 
-import {
-  LOGIN_REQUEST,
-  LOGOUT,
-  REQUEST_ERROR,
-  AUTHENTICATE_USER,
-} from './authConstants';
-
-import {
-  logUserIn,
-  setAuthState,
-  logout as logoutAction,
-  updateTokens,
-} from './authActions';
-
+import { LOGOUT, REQUEST_ERROR, AUTHENTICATE_USER } from './authConstants';
+import { setAuthState, updateTokens } from './authActions';
 import { makeSelectTokens } from './selectors';
-
-export function* loginFlow() {
-  while (true) {
-    const request = yield take(LOGIN_REQUEST);
-    const { number, password, redirectToRoute } = request;
-
-    const { authResponse, logoutResponse } = yield race({
-      authResponse: call(authorize, { number, password, isRegistering: false }),
-      logout: take(LOGOUT),
-    });
-
-    if (authResponse) {
-      yield saveTokens({
-        refreshToken: authResponse.refresh_token,
-        accessToken: authResponse.token,
-        accessTokenExpiresAt: parseJwt(authResponse.token).iat,
-      });
-      yield call(setStorageItem, 'userId', authResponse.user_id);
-      yield put(logUserIn(authResponse));
-      yield call(forwardTo, redirectToRoute);
-    } else {
-      yield put(logoutAction(logoutResponse));
-    }
-  }
-}
 
 export function* logoutFlow() {
   while (true) {
@@ -130,8 +89,8 @@ export function* refreshTokens() {
   }
 }
 
-export function* makeAuthenticatedRequest(action) {
-  const tokens = yield call(makeSelectTokens());
+export function* makeAuthenticatedRequest(action = {}) {
+  const tokens = yield select(makeSelectTokens);
   const { type, onSuccess, ...payload } = action;
 
   try {
@@ -188,7 +147,6 @@ export function* authenticationFlow() {
 }
 
 function* authSagas() {
-  yield fork(loginFlow);
   yield fork(logoutFlow);
   yield fork(fetchListener);
   yield fork(authenticationFlow);
@@ -197,4 +155,5 @@ function* authSagas() {
 export default function* root() {
   yield spawn(authSagas);
   yield spawn(registrationSagas);
+  yield spawn(loginSagas);
 }
