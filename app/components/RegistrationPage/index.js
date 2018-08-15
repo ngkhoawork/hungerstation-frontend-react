@@ -24,7 +24,7 @@ const RegistrationPage = ({ onSubmit }) => (
     alignItems="center"
     alignContent="center"
   >
-    <Grid item xs={10} sm={6} align>
+    <Grid item xs={10} sm={6} align="true">
       <Typography align="center" variant="display1" gutterBottom>
         <FormattedMessage {...messages.header} />
       </Typography>

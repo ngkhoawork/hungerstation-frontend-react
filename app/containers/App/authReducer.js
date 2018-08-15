@@ -8,6 +8,7 @@ import {
   REQUEST_ERROR,
   CLEAR_ERROR,
   AUTHENTICATE_USER,
+  UPDATE_TOKENS,
 } from './authConstants';
 
 // The initial application state
@@ -22,6 +23,7 @@ const initialState = fromJS({
   tokens: {
     accessToken: null,
     refreshToken: null,
+    accessTokenExpiresAt: null,
   },
   userId: null,
 });
@@ -38,6 +40,8 @@ function reducer(state = initialState, action) {
       return onClearError(state);
     case AUTHENTICATE_USER:
       return onAuthenticateUser(state, action);
+    case UPDATE_TOKENS:
+      return onUpdateTokens(state, action);
     default:
       return state;
   }
@@ -68,12 +72,13 @@ const onRequestError = (state, action) => {
 };
 
 const onAuthenticateUser = (state, action) => {
-  const { refreshToken, accessToken, userId } = action;
+  const { refreshToken, accessToken, accessTokenExpiresAt, userId } = action;
 
   return state.merge({
     tokens: {
       refreshToken,
       accessToken,
+      accessTokenExpiresAt,
     },
     userId,
     isLoggedIn: true,
@@ -81,5 +86,12 @@ const onAuthenticateUser = (state, action) => {
 };
 
 const onClearError = state => state.merge({ error: '' });
+
+const onUpdateTokens = (state, action) => {
+  const { tokens } = action;
+  return state.merge({
+    tokens,
+  });
+};
 
 export default reducer;

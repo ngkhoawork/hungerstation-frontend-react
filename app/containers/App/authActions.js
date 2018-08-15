@@ -11,6 +11,8 @@ import {
   LOGOUT,
   REQUEST_ERROR,
   CLEAR_ERROR,
+  LOG_USER_IN,
+  UPDATE_TOKENS,
   AUTHENTICATE_USER,
 } from './authConstants';
 
@@ -65,9 +67,24 @@ export const clearError = () => ({
   type: CLEAR_ERROR,
 });
 
-export const authenticateUser = (refreshToken, accessToken, userId) => ({
-  type: AUTHENTICATE_USER,
+export const logUserIn = (
   refreshToken,
   accessToken,
+  accessTokenExpiresAt,
   userId,
+) => ({
+  type: LOG_USER_IN,
+  refreshToken,
+  accessToken,
+  accessTokenExpiresAt,
+  userId,
+});
+
+export const updateTokens = tokens => ({
+  type: UPDATE_TOKENS,
+  tokens,
+});
+
+export const authenticateUser = () => ({
+  type: AUTHENTICATE_USER,
 });

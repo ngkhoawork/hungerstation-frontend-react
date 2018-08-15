@@ -26,10 +26,34 @@ const mapDispatchToProps = {
 )
 @injectSaga({ key: 'auth', saga })
 export default class RegistrationPageContainer extends React.Component {
-  render() {
-    const { onSubmit } = this.props;
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      state: PropTypes.shape({
+        from: PropTypes.shape({
+          pathname: PropTypes.string,
+        }),
+      }),
+    }).isRequired,
+  };
 
-    return <RegistrationPage onSubmit={onSubmit} />;
+  handleSubmit = values => {
+    const {
+      onSubmit,
+      location: { state },
+    } = this.props;
+
+    let from;
+    if (state) {
+      from = state.from.pathname;
+    } else {
+      from = '/';
+    }
+    onSubmit(...values, from);
+  };
+
+  render() {
+    return <RegistrationPage onSubmit={this.handleSubmit} />;
   }
 }
 
