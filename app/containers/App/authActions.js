@@ -7,7 +7,6 @@ import {
   SET_AUTH,
   SENDING_REQUEST,
   LOGIN_REQUEST,
-  REGISTER_REQUEST,
   LOGOUT,
   REQUEST_ERROR,
   CLEAR_ERROR,
@@ -42,21 +41,6 @@ export const loginRequest = (number, password, redirectToRoute) => ({
 });
 
 export const logout = () => ({ type: LOGOUT });
-
-export const registerRequest = (
-  username,
-  number,
-  email,
-  password,
-  redirectToRoute,
-) => ({
-  type: REGISTER_REQUEST,
-  username,
-  number,
-  email,
-  password,
-  redirectToRoute,
-});
 
 export const requestError = error => ({
   type: REQUEST_ERROR,

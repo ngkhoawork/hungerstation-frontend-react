@@ -10,9 +10,10 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import injectSaga from 'utils/injectSaga';
-import saga from 'containers/App/authSagas';
-import { registerRequest } from 'containers/App/authActions';
 import RegistrationPage from 'components/RegistrationPage';
+
+import { registerRequest } from './actions';
+import saga from './saga';
 
 const mapStateToProps = createStructuredSelector({});
 

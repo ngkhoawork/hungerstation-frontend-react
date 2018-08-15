@@ -4,9 +4,19 @@
 
 // Sagas help us gather all our side effects (network requests in this case) in one place
 
-import { take, call, put, fork, race, select, delay } from 'redux-saga/effects';
+import {
+  take,
+  call,
+  put,
+  fork,
+  race,
+  select,
+  delay,
+  spawn,
+} from 'redux-saga/effects';
 
-import history from 'createHistory';
+import registrationSagas from 'containers/RegistrationPageContainer/saga';
+import { forwardTo } from 'utils/route';
 
 import {
   clearStorageItem,
@@ -16,10 +26,10 @@ import {
 
 import { isAccessExpired, parseJwt } from 'utils/tokens';
 import HungerStationAPI from 'api/HungerStationAPI';
+import { authorize, saveTokens } from 'utils/reusedSagas';
 
 import {
   LOGIN_REQUEST,
-  REGISTER_REQUEST,
   LOGOUT,
   REQUEST_ERROR,
   AUTHENTICATE_USER,
@@ -31,58 +41,8 @@ import {
   logout as logoutAction,
   updateTokens,
 } from './authActions';
-import auth from './authApi';
 
 import { makeSelectTokens } from './selectors';
-
-function* authorize({ username, number, email, password, isRegistering }) {
-  yield put(setAuthState(true));
-
-  // We then try to register or log in the user, depending on the request
-  try {
-    let response;
-    if (isRegistering) {
-      response = yield call(auth.register, username, number, email, password);
-    } else {
-      response = yield call(auth.login, username, password);
-    }
-    return response;
-  } catch (error) {
-    // If we get an error we send Redux the appropiate action and return
-    yield put({ type: REQUEST_ERROR, error: error.message });
-    return false;
-  } finally {
-    // When done, we tell Redux we're not in the middle of a request any more
-    yield put(setAuthState(false));
-  }
-}
-
-export function* registerFlow() {
-  while (true) {
-    const request = yield take(REGISTER_REQUEST);
-    const { username, number, email, password, redirectToRoute } = request;
-
-    const response = yield call(authorize, {
-      username,
-      number,
-      email,
-      password,
-      isRegistering: true,
-    });
-
-    if (response.user_id) {
-      yield saveTokens({
-        refreshToken: response.refresh_token,
-        accessToken: response.token,
-        accessTokenExpiresAt: parseJwt(response.token).iat,
-      });
-      yield call(setStorageItem, 'userId', response.user_id);
-      yield put(logUserIn(response));
-      yield call(forwardTo, redirectToRoute);
-    }
-  }
-}
-/* eslint-enable consistent-return */
 
 export function* loginFlow() {
   while (true) {
@@ -125,18 +85,13 @@ export function* logout() {
   yield put(setAuthState(true));
 
   try {
-    const response = yield call(auth.logout);
+    const response = yield call(HungerStationAPI.logout);
     yield put(setAuthState(false));
     return response;
   } catch (error) {
     yield put({ type: REQUEST_ERROR, error: error.message });
     return error;
   }
-}
-
-export function* saveTokens(tokens) {
-  yield call(setStorageItem, 'tokens', JSON.stringify(tokens));
-  yield put(updateTokens(tokens));
 }
 
 export function* fetchListener(action) {
@@ -162,7 +117,7 @@ function* needRefresh() {
 export function* refreshTokens() {
   try {
     const { refreshToken } = yield select(makeSelectTokens);
-    const tokens = yield call(auth.refresh, refreshToken);
+    const tokens = yield call(HungerStationAPI.refresh, refreshToken);
     yield saveTokens({
       refreshToken: tokens.refresh_token,
       accessToken: tokens.token,
@@ -186,7 +141,7 @@ export function* makeAuthenticatedRequest(action) {
       description
     }`;
     const response = yield call(
-      auth.makeRequestToProtected,
+      HungerStationAPI.makeRequestToProtected,
       tokens.accessToken,
       query,
       payload,
@@ -212,43 +167,34 @@ export function* authenticationFlow() {
 
     const tokens = yield call(getStorageItem, 'tokens');
     const userId = yield call(getStorageItem, 'userId');
-    yield put(updateTokens(JSON.parse(tokens)));
 
-    const shouldRefresh = yield call(needRefresh);
-    if (!shouldRefresh) {
-      yield call(HungerStationAPI.getUser, tokens.accessToken, userId);
-    } else {
-      const error = yield call(refreshTokens);
-      if (!error) {
-        yield delay(50);
+    if (tokens && Object.keys(tokens)) {
+      yield put(updateTokens(JSON.parse(tokens)));
+
+      const shouldRefresh = yield call(needRefresh);
+      if (!shouldRefresh) {
         yield call(HungerStationAPI.getUser, tokens.accessToken, userId);
+      } else {
+        const error = yield call(refreshTokens);
+        if (!error) {
+          yield delay(50);
+          yield call(HungerStationAPI.getUser, tokens.accessToken, userId);
+        }
       }
+    } else {
+      yield call(logoutFlow);
     }
   }
 }
 
-export default function* root() {
+function* authSagas() {
   yield fork(loginFlow);
   yield fork(logoutFlow);
-  yield fork(registerFlow);
   yield fork(fetchListener);
   yield fork(authenticationFlow);
 }
 
-// function* authSagas() {
-//   yield fork(loginFlow);
-//   yield fork(logoutFlow);
-//   yield fork(registerFlow);
-//   yield fork(fetchListener);
-//   yield fork(authenticationFlow);
-// }
-
-// export default function* root() {
-//   yield spawn(authSagas);
-//   yield spawn(usersSaga);
-// }
-
-// Little helper function to abstract going to different pages
-function forwardTo(location) {
-  history.push(location);
+export default function* root() {
+  yield spawn(authSagas);
+  yield spawn(registrationSagas);
 }
