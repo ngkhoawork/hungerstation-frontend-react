@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import injectSaga from 'utils/injectSaga';
 
-import HomePage from 'containers/HomePage/Loadable';
+import HomePageContainer from 'containers/HomePageContainer';
 import LoginPageContainer from 'containers/LoginPageContainer';
 import RegistrationPageContainer from 'containers/RegistrationPageContainer';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
@@ -31,6 +31,7 @@ import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import saga from './authSagas';
 import { authenticateUser } from './authActions';
+import StyledApp from './StyledApp';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   dir: locale === 'ar' ? 'rtl' : 'ltr',
@@ -60,11 +61,11 @@ export default class App extends Component {
   render() {
     const { dir } = this.props;
     return (
-      <div dir={dir}>
+      <StyledApp dir={dir}>
         <CssBaseline />
         <Header />
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={HomePageContainer} />
           <Route path="/login" component={LoginPageContainer} />
           <Route path="/register" component={RegistrationPageContainer} />
           <Route path="/reset-password" component={ResetPasswordPage} />
@@ -73,7 +74,7 @@ export default class App extends Component {
 
           <Redirect from="*" to="/" />
         </Switch>
-      </div>
+      </StyledApp>
     );
   }
 }
