@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledIcon = styled.img`
-  width: 25px;
-  height: 25px;
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
 `;
 
 export default StyledIcon;
