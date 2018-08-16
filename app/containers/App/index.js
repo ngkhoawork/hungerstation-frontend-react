@@ -25,6 +25,7 @@ import PrivateRouteContainer from 'containers/PrivateRouteContainer';
 import UserProfile from 'components/UserProfile';
 import ResetPasswordPage from 'components/ResetPasswordPage';
 import ForgotPasswordPage from 'components/ForgotPasswordPage';
+import AddRestaurantBanner from 'components/AddRestaurantBanner';
 
 import Header from 'components/Header';
 import { connect } from 'react-redux';
@@ -63,6 +64,7 @@ export default class App extends Component {
     return (
       <StyledApp dir={dir}>
         <CssBaseline />
+        <AddRestaurantBanner />
         <Header />
         <Switch>
           <Route exact path="/" component={HomePageContainer} />

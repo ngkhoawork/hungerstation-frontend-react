@@ -11,7 +11,7 @@ const SearchBar = () => (
     <DropdownInput iconName="location-pin" placeholder="Enter city" />
     <DropdownInput placeholder="Enter District" />
     <LocateYourself />
-    <Button label="Search" />
+    <Button label="Search" border="right" />
   </StyledBar>
 );
 

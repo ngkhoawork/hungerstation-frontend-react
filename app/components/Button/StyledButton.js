@@ -6,9 +6,7 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   background-color: ${candlelight};
-  padding: 0 50px;
-  border-bottom-right-radius: inherit;
-  border-top-right-radius: inherit;
+  padding: 7px 35px;
   cursor: pointer;
 `;
 
