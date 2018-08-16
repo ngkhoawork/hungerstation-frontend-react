@@ -6,24 +6,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, Form } from 'redux-form/immutable';
+import { Field, reduxForm } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import validate from 'utils/form/validation';
 import warn from 'utils/form/warning';
 import TextInput from 'components/TextInput';
+import styles from 'utils/styles';
+import StyledForm from 'components/LoginForm/StyledForm';
 
 import messages from './messages';
 
-const styles = theme => ({
-  button: {
-    marginTop: 2 * theme.spacing.unit,
-  },
-});
-
 const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
-  <Form onSubmit={handleSubmit} autoComplete="off">
+  <StyledForm onSubmit={handleSubmit} autoComplete="off">
     <div>
       <Field
         autoComplete="nope"
@@ -75,7 +71,7 @@ const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
     >
       {intl.formatMessage(messages.buttonLabel)}
     </Button>
-  </Form>
+  </StyledForm>
 );
 
 RegistrationForm.propTypes = {

@@ -8,8 +8,8 @@ const TextItem = styled.p`
   margin-right: 10px;
   cursor: pointer;
   letter-spacing: 0.5px;
-  font-family: HungerStation-
-      ${({ fontFamily }) => (fontFamily === 'regular' ? 'Regular' : 'Light')},
+  font-family: 'HungerStation-${({ fontFamily }) =>
+    fontFamily === 'regular' ? 'Regular' : 'Light'}',
     sans-serif;
 `;
 
