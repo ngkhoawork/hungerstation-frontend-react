@@ -9,9 +9,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { appLocales } from '../../i18n';
-import { changeLocale as changeLocaleAction } from '../LanguageProvider/actions';
+import OptionsChoice from 'components/OptionsChoice';
+
+import { appLocales } from 'i18n';
+import { changeLocaleAction } from 'containers/LanguageProvider/actions';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
+
+console.log('changeLocaleAction', changeLocaleAction);
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   locale,
@@ -25,32 +29,26 @@ const mapDispatchToProps = {
   mapStateToProps,
   mapDispatchToProps,
 )
-// @injectReducer({ key: 'localeToggle', reducer })
 /* eslint-disable react/prefer-stateless-function */
 export default class LocaleToggle extends React.PureComponent {
-  onChangeLocale = ({ target: { value } }) => {
-    const { changeLocale } = this.props;
-    changeLocale(value);
+  static propTypes = {
+    changeLocale: PropTypes.func.isRequired,
+    locale: PropTypes.string.isRequired,
   };
 
-  render() {
-    const { locale } = this.props;
+  getOptions = () =>
+    appLocales.map(locale => ({ id: locale, name: locale.toUpperCase() }));
 
+  render() {
+    const { locale, changeLocale } = this.props;
     return (
-      <div>
-        <select onChange={this.onChangeLocale} defaultValue={locale}>
-          {appLocales.map(_locale => (
-            <option key={_locale} value={_locale}>
-              {_locale}
-            </option>
-          ))}
-        </select>
-      </div>
+      <OptionsChoice
+        options={this.getOptions()}
+        selectedOption={locale}
+        onOptionSelect={changeLocale}
+      />
     );
   }
 }
 
-LocaleToggle.propTypes = {
-  changeLocale: PropTypes.func,
-  locale: PropTypes.string,
-};
+LocaleToggle.propTypes = {};

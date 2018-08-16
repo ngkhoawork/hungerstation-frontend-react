@@ -4,7 +4,7 @@ import { candlelight } from 'utils/colors';
 const ActiveBorder = styled.span`
   border: 2px solid ${candlelight};
   border-radius: 10px;
-  width: 40px;
+  width: 50%;
   height: 0;
 `;
 

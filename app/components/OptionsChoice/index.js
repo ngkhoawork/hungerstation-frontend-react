@@ -27,7 +27,7 @@ OptionsChoice.propTypes = {
     }),
   ),
   selectedOption: PropTypes.string.isRequired,
-  onOptionSelect: PropTypes.string.isRequired,
+  onOptionSelect: PropTypes.func.isRequired,
 };
 
 export default OptionsChoice;
