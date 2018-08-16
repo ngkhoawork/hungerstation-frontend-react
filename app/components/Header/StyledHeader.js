@@ -8,6 +8,7 @@ const StyledHeader = styled.div`
   flex: 1;
   width: 100%;
   height: 100px;
+  font-family: 'HungerStation-Regular', sans-serif;
 `;
 
 export default StyledHeader;

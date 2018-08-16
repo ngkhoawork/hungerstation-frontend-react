@@ -5,6 +5,7 @@ const ItemContainer = styled.span`
   flex-direction: column;
   align-items: flex-start;
   margin-right: 10px;
+  margin-top: 7px;
 `;
 
 export default ItemContainer;
