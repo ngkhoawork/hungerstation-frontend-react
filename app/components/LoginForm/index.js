@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Form, Field, reduxForm } from 'redux-form/immutable';
+import { Field, reduxForm } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -15,7 +15,9 @@ import styles from 'utils/styles';
 
 import validate from 'utils/form/validation';
 import TextInput from 'components/TextInput';
+import TextItem from 'components/TextItem';
 
+import StyledForm from './StyledForm';
 import messages from './messages';
 
 @withStyles(styles)
@@ -35,7 +37,7 @@ export default class LoginForm extends Component {
   render() {
     const { handleSubmit, submitting, intl, classes } = this.props;
     return (
-      <Form onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <div>
           <Field
             fullWidth
@@ -62,9 +64,11 @@ export default class LoginForm extends Component {
           color="primary"
           className={classes.button}
         >
-          {intl.formatMessage(messages.buttonLabel)}
+          <TextItem fontFamily="regular" size={20}>
+            {intl.formatMessage(messages.buttonLabel)}
+          </TextItem>
         </Button>
-      </Form>
+      </StyledForm>
     );
   }
 }

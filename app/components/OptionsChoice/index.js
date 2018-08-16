@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyledContainer from 'components/HomePage/StyledContainer';
-import TextItem from 'components/HomePage/TextItem';
+import TextItem from 'components/TextItem';
 import ItemContainer from './ItemContainer';
 import ActiveBorder from './ActiveBorder';
 

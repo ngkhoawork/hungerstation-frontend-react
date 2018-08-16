@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TextItem from '../TextItem';
+import TextItem from 'components/TextItem';
 import StyledContainer from '../StyledContainer';
 
 const QuickFilters = () => (

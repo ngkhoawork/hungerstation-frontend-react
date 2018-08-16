@@ -15,8 +15,6 @@ import { appLocales } from 'i18n';
 import { changeLocaleAction } from 'containers/LanguageProvider/actions';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 
-console.log('changeLocaleAction', changeLocaleAction);
-
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   locale,
 }));

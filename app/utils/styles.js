@@ -1,6 +1,8 @@
-const styles = theme => ({
+const styles = () => ({
   button: {
-    marginTop: 2 * theme.spacing.unit,
+    marginTop: '25px',
+    marginBottom: '25px',
+    borderRadius: '8px',
   },
 });
 
