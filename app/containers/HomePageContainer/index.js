@@ -12,24 +12,31 @@ import { createStructuredSelector } from 'reselect';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import HomePage from 'components/HomePage';
-import { makeSelectCities, makeSelectDistricts } from './selectors';
+import {
+  makeSelectCities,
+  makeSelectDistricts,
+  makeSelectSearchType,
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import {
   getCitiesAction,
   selectCityAction,
   selectDistrictAction,
+  selectSearchTypeAction,
 } from './actions';
 
 const mapStateToProps = createStructuredSelector({
   cities: makeSelectCities,
   districts: makeSelectDistricts,
+  selectedSearchType: makeSelectSearchType,
 });
 
 const mapDispatchToProps = {
   getCities: getCitiesAction,
   selectCity: selectCityAction,
   selectDistrict: selectDistrictAction,
+  selectSearchType: selectSearchTypeAction,
 };
 
 @connect(
@@ -56,6 +63,8 @@ export default class HomePageContainer extends React.Component {
         name: PropTypes.string.isRequired,
       }).isRequired,
     ),
+    selectedSearchType: PropTypes.string.isRequired,
+    selectSearchType: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -69,13 +78,22 @@ export default class HomePageContainer extends React.Component {
   }
 
   render() {
-    const { cities, districts, selectCity, selectDistrict } = this.props;
+    const {
+      cities,
+      districts,
+      selectCity,
+      selectDistrict,
+      selectedSearchType,
+      selectSearchType,
+    } = this.props;
     return (
       <HomePage
         cities={cities}
         districts={districts}
         selectCity={selectCity}
         selectDistrict={selectDistrict}
+        selectedSearchType={selectedSearchType}
+        selectSearchType={selectSearchType}
       />
     );
   }
