@@ -13,13 +13,13 @@ const rotate = keyframes`
 const StyledSpinner = styled.div`
   display: none;
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 
   &:after {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     position: relative;
     border-radius: 100%;
     border-top: 2px solid ${candlelight};

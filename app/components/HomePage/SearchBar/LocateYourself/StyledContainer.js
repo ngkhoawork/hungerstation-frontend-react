@@ -4,7 +4,7 @@ const StyledContainer = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
+  min-width: 50px;
   height: 100%;
   cursor: pointer;
 `;
