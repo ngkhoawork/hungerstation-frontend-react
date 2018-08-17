@@ -47,5 +47,13 @@ export const makeSelectSearchType = createSelector(
   },
 );
 
+export const makeSelectIsSettlementLoaded = createSelector(
+  selectHomePageContainerDomain,
+  homePageState => {
+    const output = homePageState && homePageState.get('isSettlementLoaded');
+    return output;
+  },
+);
+
 export default makeSelectHomePageContainer;
 export { selectHomePageContainerDomain };

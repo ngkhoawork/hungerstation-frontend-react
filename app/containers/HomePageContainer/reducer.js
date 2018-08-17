@@ -12,6 +12,7 @@ import {
   SELECT_DISTRICT,
   SELECT_SEARCH_TYPE,
   SET_SETTLEMENT_DETAILS,
+  TOGGLE_SETTLEMENT_LOADED,
 } from './constants';
 
 export const initialState = fromJS({
@@ -20,6 +21,7 @@ export const initialState = fromJS({
   selectedCity: null,
   selectedDistrict: null,
   selectedSearchType: 'delivery',
+  isSettlementLoaded: true,
 });
 
 function homePageContainerReducer(state = initialState, action) {
@@ -36,6 +38,8 @@ function homePageContainerReducer(state = initialState, action) {
       return onSelectSearchType(state, action);
     case SET_SETTLEMENT_DETAILS:
       return onSetSettlementDetails(state, action);
+    case TOGGLE_SETTLEMENT_LOADED:
+      return onToggleSettlementLoaded(state, action);
     default:
       return state;
   }
@@ -81,6 +85,13 @@ const onSetSettlementDetails = (state, action) => {
   return state.merge({
     selectedCity: city,
     selectedDistrict: district,
+  });
+};
+
+const onToggleSettlementLoaded = (state, action) => {
+  const { isLoaded } = action;
+  return state.merge({
+    isSettlementLoaded: isLoaded,
   });
 };
 

@@ -13,6 +13,7 @@ import {
   SELECT_SEARCH_TYPE,
   GET_CURRENT_LOCATION,
   SET_SETTLEMENT_DETAILS,
+  TOGGLE_SETTLEMENT_LOADED,
 } from './constants';
 
 export const getCitiesAction = () => ({
@@ -52,4 +53,9 @@ export const setSettlementDetailsAction = (city, district) => ({
   type: SET_SETTLEMENT_DETAILS,
   city,
   district,
+});
+
+export const toggleSettlementLoadedAction = isLoaded => ({
+  type: TOGGLE_SETTLEMENT_LOADED,
+  isLoaded,
 });

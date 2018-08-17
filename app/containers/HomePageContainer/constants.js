@@ -14,3 +14,5 @@ export const GET_CURRENT_LOCATION =
   'app/HomePageContainer/GET_CURRENT_LOCATION';
 export const SET_SETTLEMENT_DETAILS =
   'app/HomePageContainer/SET_SETTLEMENT_DETAILS';
+export const TOGGLE_SETTLEMENT_LOADED =
+  'app/HomePageContainer/TOGGLE_SETTLEMENT_LOADED';

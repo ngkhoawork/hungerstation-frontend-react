@@ -21,6 +21,7 @@ const HomePage = ({
   selectSearchType,
   selectedSearchType,
   getCurrentLocation,
+  isSettlementLoaded,
 }) => {
   const options = [
     { id: 'delivery', name: 'Delivery' },
@@ -35,7 +36,10 @@ const HomePage = ({
         onOptionSelect={selectSearchType}
         selectedOption={selectedSearchType}
       />
-      <SearchBar getCurrentLocation={getCurrentLocation} />
+      <SearchBar
+        getCurrentLocation={getCurrentLocation}
+        isSettlementLoaded={isSettlementLoaded}
+      />
       <QuickFilters />
     </StyledPage>
   );
@@ -45,6 +49,7 @@ HomePage.propTypes = {
   selectSearchType: PropTypes.func.isRequired,
   selectedSearchType: PropTypes.string.isRequired,
   getCurrentLocation: PropTypes.func.isRequired,
+  isSettlementLoaded: PropTypes.bool.isRequired,
 };
 
 export default HomePage;

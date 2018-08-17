@@ -25,11 +25,9 @@ export function* authorize({
     }
     return response;
   } catch (error) {
-    // If we get an error we send Redux the appropiate action and return
     yield put({ type: 'REQUEST_ERROR', error: error.message });
     return false;
   } finally {
-    // When done, we tell Redux we're not in the middle of a request any more
     yield put(setAuthState(false));
   }
 }

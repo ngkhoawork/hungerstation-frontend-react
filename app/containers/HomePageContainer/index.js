@@ -16,6 +16,7 @@ import {
   makeSelectCities,
   makeSelectDistricts,
   makeSelectSearchType,
+  makeSelectIsSettlementLoaded,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -31,6 +32,7 @@ const mapStateToProps = createStructuredSelector({
   cities: makeSelectCities,
   districts: makeSelectDistricts,
   selectedSearchType: makeSelectSearchType,
+  isSettlementLoaded: makeSelectIsSettlementLoaded,
 });
 
 const mapDispatchToProps = {
@@ -68,6 +70,7 @@ export default class HomePageContainer extends React.Component {
     selectedSearchType: PropTypes.string.isRequired,
     selectSearchType: PropTypes.func.isRequired,
     getCurrentLocation: PropTypes.func.isRequired,
+    isSettlementLoaded: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -89,6 +92,7 @@ export default class HomePageContainer extends React.Component {
       selectedSearchType,
       selectSearchType,
       getCurrentLocation,
+      isSettlementLoaded,
     } = this.props;
     return (
       <HomePage
@@ -99,6 +103,7 @@ export default class HomePageContainer extends React.Component {
         selectedSearchType={selectedSearchType}
         selectSearchType={selectSearchType}
         getCurrentLocation={getCurrentLocation}
+        isSettlementLoaded={isSettlementLoaded}
       />
     );
   }

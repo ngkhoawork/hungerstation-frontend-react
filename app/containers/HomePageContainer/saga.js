@@ -8,6 +8,7 @@ import {
   setCitiesAction,
   setDistrictsAction,
   setSettlementDetailsAction,
+  toggleSettlementLoadedAction,
 } from './actions';
 
 function* getCitiesFlow() {
@@ -29,6 +30,7 @@ function* selectCityFlow() {
 function* getCurrentLocationFlow() {
   while (true) {
     yield take(GET_CURRENT_LOCATION);
+    yield put(toggleSettlementLoadedAction(false));
     const { coords } = yield call(getUserPosition);
     const { results } = yield call(getSettlementDetails, coords);
     const { long_name: city } = getUnit(
@@ -41,6 +43,7 @@ function* getCurrentLocationFlow() {
     );
 
     yield put(setSettlementDetailsAction(city, district));
+    yield put(toggleSettlementLoadedAction(true));
   }
 }
 
