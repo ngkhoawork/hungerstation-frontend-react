@@ -91,7 +91,7 @@ export function* refreshTokens() {
 
 export function* makeAuthenticatedRequest(action = {}) {
   const tokens = yield select(makeSelectTokens);
-  const { type, onSuccess, ...payload } = action;
+  const { type, onSuccess, onError, ...payload } = action;
 
   try {
     const query = `query {
@@ -115,7 +115,7 @@ export function* makeAuthenticatedRequest(action = {}) {
     } else {
       yield err.statusCode >= 500
         ? put({ type: 'SET_ERROR', err })
-        : put(action.callbackFailureAction());
+        : put(onError(err));
     }
   }
 }

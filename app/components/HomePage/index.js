@@ -17,7 +17,11 @@ import SearchBar from './SearchBar';
 import QuickFilters from './QuickFilters';
 // import messages from './messages';
 
-const HomePage = ({ selectSearchType, selectedSearchType }) => {
+const HomePage = ({
+  selectSearchType,
+  selectedSearchType,
+  getCurrentLocation,
+}) => {
   const options = [
     { id: 'delivery', name: 'Delivery' },
     { id: 'pickup', name: 'Pick up' },
@@ -31,7 +35,7 @@ const HomePage = ({ selectSearchType, selectedSearchType }) => {
         onOptionSelect={selectSearchType}
         selectedOption={selectedSearchType}
       />
-      <SearchBar />
+      <SearchBar getCurrentLocation={getCurrentLocation} />
       <QuickFilters />
     </StyledPage>
   );
@@ -40,6 +44,7 @@ const HomePage = ({ selectSearchType, selectedSearchType }) => {
 HomePage.propTypes = {
   selectSearchType: PropTypes.func.isRequired,
   selectedSearchType: PropTypes.string.isRequired,
+  getCurrentLocation: PropTypes.func.isRequired,
 };
 
 export default HomePage;

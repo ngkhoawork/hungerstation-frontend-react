@@ -24,6 +24,7 @@ import {
   selectCityAction,
   selectDistrictAction,
   selectSearchTypeAction,
+  getCurrentLocationAction,
 } from './actions';
 
 const mapStateToProps = createStructuredSelector({
@@ -37,6 +38,7 @@ const mapDispatchToProps = {
   selectCity: selectCityAction,
   selectDistrict: selectDistrictAction,
   selectSearchType: selectSearchTypeAction,
+  getCurrentLocation: getCurrentLocationAction,
 };
 
 @connect(
@@ -65,6 +67,7 @@ export default class HomePageContainer extends React.Component {
     ),
     selectedSearchType: PropTypes.string.isRequired,
     selectSearchType: PropTypes.func.isRequired,
+    getCurrentLocation: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -85,6 +88,7 @@ export default class HomePageContainer extends React.Component {
       selectDistrict,
       selectedSearchType,
       selectSearchType,
+      getCurrentLocation,
     } = this.props;
     return (
       <HomePage
@@ -94,6 +98,7 @@ export default class HomePageContainer extends React.Component {
         selectDistrict={selectDistrict}
         selectedSearchType={selectedSearchType}
         selectSearchType={selectSearchType}
+        getCurrentLocation={getCurrentLocation}
       />
     );
   }

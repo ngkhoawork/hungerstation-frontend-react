@@ -11,6 +11,7 @@ import {
   SELECT_CITY,
   SELECT_DISTRICT,
   SELECT_SEARCH_TYPE,
+  SET_SETTLEMENT_DETAILS,
 } from './constants';
 
 export const initialState = fromJS({
@@ -33,6 +34,8 @@ function homePageContainerReducer(state = initialState, action) {
       return onSelectDistrict(state, action);
     case SELECT_SEARCH_TYPE:
       return onSelectSearchType(state, action);
+    case SET_SETTLEMENT_DETAILS:
+      return onSetSettlementDetails(state, action);
     default:
       return state;
   }
@@ -70,6 +73,14 @@ const onSelectSearchType = (state, action) => {
   const { selectedType } = action;
   return state.merge({
     selectedSearchType: selectedType,
+  });
+};
+
+const onSetSettlementDetails = (state, action) => {
+  const { city, district } = action;
+  return state.merge({
+    selectedCity: city,
+    selectedDistrict: district,
   });
 };
 

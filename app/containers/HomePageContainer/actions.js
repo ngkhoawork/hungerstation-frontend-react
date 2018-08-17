@@ -11,6 +11,8 @@ import {
   SELECT_CITY,
   SELECT_DISTRICT,
   SELECT_SEARCH_TYPE,
+  GET_CURRENT_LOCATION,
+  SET_SETTLEMENT_DETAILS,
 } from './constants';
 
 export const getCitiesAction = () => ({
@@ -40,4 +42,14 @@ export const selectDistrictAction = selectedDistrict => ({
 export const selectSearchTypeAction = selectedType => ({
   type: SELECT_SEARCH_TYPE,
   selectedType,
+});
+
+export const getCurrentLocationAction = () => ({
+  type: GET_CURRENT_LOCATION,
+});
+
+export const setSettlementDetailsAction = (city, district) => ({
+  type: SET_SETTLEMENT_DETAILS,
+  city,
+  district,
 });
