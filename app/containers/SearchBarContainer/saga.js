@@ -1,5 +1,4 @@
 import { take, call, fork, put } from 'redux-saga/effects';
-
 import { getUserPosition, getSettlementDetails, getUnit } from 'utils/location';
 
 import HungerStationAPI from 'api/HungerStationAPI';

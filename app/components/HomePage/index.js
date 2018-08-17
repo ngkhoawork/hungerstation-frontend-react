@@ -7,15 +7,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import { FormattedMessage } from 'react-intl';
+import SearchBarContainer from 'containers/SearchBarContainer';
 
 import OptionsChoice from 'components/OptionsChoice';
 import StyledPage from './StyledPage';
 import Subheader from './Subheader';
 import Header from './Header';
-import SearchBar from './SearchBar';
 import QuickFilters from './QuickFilters';
-// import messages from './messages';
 
 const HomePage = ({ selectSearchType, selectedSearchType }) => {
   const options = [
@@ -31,7 +29,7 @@ const HomePage = ({ selectSearchType, selectedSearchType }) => {
         onOptionSelect={selectSearchType}
         selectedOption={selectedSearchType}
       />
-      <SearchBar />
+      <SearchBarContainer />
       <QuickFilters />
     </StyledPage>
   );

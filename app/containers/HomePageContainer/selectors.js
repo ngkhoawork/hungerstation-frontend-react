@@ -8,33 +8,6 @@ import { initialState } from './reducer';
 const selectHomePageContainerDomain = state =>
   state.get('homePageContainer', initialState);
 
-const makeSelectHomePageContainer = () =>
-  createSelector(selectHomePageContainerDomain, substate => substate.toJS());
-
-export const makeSelectCities = createSelector(
-  selectHomePageContainerDomain,
-  homePageState => {
-    const output = homePageState && homePageState.get('cities');
-
-    if (output) {
-      return output.JS();
-    }
-    return null;
-  },
-);
-
-export const makeSelectDistricts = createSelector(
-  selectHomePageContainerDomain,
-  homePageState => {
-    const output = homePageState && homePageState.get('districts');
-
-    if (output) {
-      return output.JS();
-    }
-    return null;
-  },
-);
-
 export const makeSelectSearchType = createSelector(
   selectHomePageContainerDomain,
   homePageState => {
@@ -47,13 +20,4 @@ export const makeSelectSearchType = createSelector(
   },
 );
 
-export const makeSelectIsSettlementLoaded = createSelector(
-  selectHomePageContainerDomain,
-  homePageState => {
-    const output = homePageState && homePageState.get('isSettlementLoaded');
-    return output;
-  },
-);
-
-export default makeSelectHomePageContainer;
 export { selectHomePageContainerDomain };
