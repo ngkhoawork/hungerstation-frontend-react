@@ -11,9 +11,9 @@ import { createStructuredSelector } from 'reselect';
 
 import LoginPage from 'components/LoginPage';
 
-import injectSaga from 'utils/injectSaga';
-import saga from '../App/authSagas';
-import { loginRequest } from '../App/authActions';
+// import injectSaga from 'utils/injectSaga';
+// import saga from '../App/authSagas';
+import { loginRequest } from './actions';
 
 const mapStateToProps = createStructuredSelector({});
 
@@ -21,7 +21,7 @@ const mapDispatchToProps = {
   onSubmit: loginRequest,
 };
 
-@injectSaga({ key: 'loginpagecontainer', saga })
+// @injectSaga({ key: 'loginpagecontainer', saga })
 @connect(
   mapStateToProps,
   mapDispatchToProps,

@@ -6,7 +6,6 @@
 import {
   SET_AUTH,
   SENDING_REQUEST,
-  LOGIN_REQUEST,
   LOGOUT,
   REQUEST_ERROR,
   CLEAR_ERROR,
@@ -31,13 +30,6 @@ export const setAuthState = newAuthState => ({
 export const sendingRequest = sending => ({
   type: SENDING_REQUEST,
   sending,
-});
-
-export const loginRequest = (number, password, redirectToRoute) => ({
-  type: LOGIN_REQUEST,
-  number,
-  password,
-  redirectToRoute,
 });
 
 export const logout = () => ({ type: LOGOUT });
