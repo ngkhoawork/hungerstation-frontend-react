@@ -22,7 +22,7 @@ import logo from '../../images/hungerstation.svg';
 const Header = () => (
   <StyledHeader>
     <Link to="/">
-      <img alt="logo" src={logo} height="45px" />
+      <img alt="logo" src={logo} height="34px" />
     </Link>
     <RightSection>
       <LocaleToggle />
@@ -35,13 +35,5 @@ const Header = () => (
     </RightSection>
   </StyledHeader>
 );
-
-// <Link to="/register">
-//   <FormattedMessage {...messages.register} />
-// </Link>
-//
-// <Link to="/userprofile">
-//   <FormattedMessage {...messages.userprofile} />
-// </Link>
 
 export default Header;

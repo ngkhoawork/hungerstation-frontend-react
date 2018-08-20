@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 const StyledBar = styled.span`
   display: flex;
-  line-height: 40px;
+  align-items: center;
+  justify-content: space-between;
   border: 1px solid lightgrey;
-  border-radius: 10px;
-  height: 50px;
-  flex-direction: row;
-  margin: 15px 0 10px 0;
+  border-radius: 8px;
+  margin: 15px 0;
+  height: 56px;
+  width: 808px;
 `;
 
 export default StyledBar;

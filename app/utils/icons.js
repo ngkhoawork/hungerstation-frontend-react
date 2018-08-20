@@ -1,8 +1,7 @@
-import Back from 'icons/back.png';
-import ArrowDown from 'icons/arrow-down.png';
-import LocationPin from 'icons/location-pin.png';
-import LocateYourself from 'icons/locate-yourself.png';
-import Basket from 'icons/basket.png';
+import Back from 'icons/close.svg';
+import ArrowDown from 'icons/twitter.svg';
+import LocateYourself from 'icons/locate-yourself.svg';
+import Basket from 'icons/facebook.svg';
 
 const getIcon = name => {
   switch (name) {
@@ -11,7 +10,7 @@ const getIcon = name => {
     case 'arrow-down':
       return ArrowDown;
     case 'location-pin':
-      return LocationPin;
+      return ArrowDown;
     case 'locate-yourself':
       return LocateYourself;
     case 'basket':

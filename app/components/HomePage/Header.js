@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Header = styled.p`
-  font-size: 45px;
+  font-size: 50px;
   color: black;
   margin: 0;
   margin-top: -10px;

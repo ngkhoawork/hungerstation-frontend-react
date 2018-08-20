@@ -4,9 +4,12 @@ const StyledDropdown = styled.span`
   display: flex;
   height: 100%;
   align-items: center;
-  padding: 5px 10px;
+  justify-content: flex-start;
+  width: 35%;
   cursor: pointer;
-  border-right: 1px solid lightgrey;
+  &:first-of-type {
+    margin-left: 20px;
+  }
 `;
 
 export default StyledDropdown;

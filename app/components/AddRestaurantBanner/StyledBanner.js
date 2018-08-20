@@ -6,6 +6,7 @@ const StyledBanner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 112px;
   height: 57px;
   background-color: ${fuscousGray};
 `;

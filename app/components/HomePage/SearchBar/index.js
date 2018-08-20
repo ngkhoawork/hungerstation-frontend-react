@@ -8,10 +8,12 @@ import LocateYourself from './LocateYourself';
 
 const SearchBar = () => (
   <StyledBar>
-    <DropdownInput iconName="location-pin" placeholder="Enter city" />
+    <DropdownInput placeholder="Enter city" />
     <DropdownInput placeholder="Enter District" />
-    <LocateYourself />
-    <Button label="Search" border="right" />
+    <div style={{ display: 'flex', marginRight: '10px' }}>
+      <LocateYourself />
+      <Button label="Search" border="right" width={144} />
+    </div>
   </StyledBar>
 );
 
