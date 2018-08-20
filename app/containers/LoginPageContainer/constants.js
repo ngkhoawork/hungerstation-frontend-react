@@ -1,7 +1,1 @@
-/*
- *
- * LoginPageContainer constants
- *
- */
-
-export const DEFAULT_ACTION = 'app/LoginPageContainer/DEFAULT_ACTION';
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';

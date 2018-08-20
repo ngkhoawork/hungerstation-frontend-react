@@ -1,13 +1,16 @@
-/*
- *
- * RegistrationPageContainer actions
- *
- */
+import { REGISTER_REQUEST } from './constants';
 
-import { DEFAULT_ACTION } from './constants';
-
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const registerRequest = (
+  username,
+  number,
+  email,
+  password,
+  redirectToRoute,
+) => ({
+  type: REGISTER_REQUEST,
+  username,
+  number,
+  email,
+  password,
+  redirectToRoute,
+});

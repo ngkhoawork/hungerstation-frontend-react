@@ -7,8 +7,24 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.components.RegistrationForm.header',
-    defaultMessage: 'This is the RegistrationForm component !',
+  usernameLabel: {
+    id: 'app.components.RegistrationForm.usernameLabel',
+    defaultMessage: 'Name',
+  },
+  numberLabel: {
+    id: 'app.components.RegistrationForm.numberLabel',
+    defaultMessage: 'Mobile number',
+  },
+  emailLabel: {
+    id: 'app.components.RegistrationForm.emailLabel',
+    defaultMessage: 'Email',
+  },
+  passwordLabel: {
+    id: 'app.components.RegistrationForm.passwordLabel',
+    defaultMessage: 'Password',
+  },
+  buttonLabel: {
+    id: 'app.components.RegistrationForm.buttonLabel',
+    defaultMessage: 'Submit',
   },
 });

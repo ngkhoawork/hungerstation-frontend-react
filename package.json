@@ -36,7 +36,7 @@
     "generate": "plop --plopfile internals/generators/index.js",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint './app/**/*.js'",
-    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
     "lint:eslint:fix": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
     "lint:js": "npm run lint:eslint -- . ",
     "lint:staged": "lint-staged",
@@ -45,7 +45,8 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prettify": "prettier --write"
+    "prettify": "prettier --write",
+    "graphql-server": "NODE_PORT=3001 node_modules/json-graphql-server/bin/json-graphql-server.js db.js"
   },
   "lint-staged": {
     "*.js": [
@@ -147,18 +148,24 @@
     "testURL": "http://localhost/"
   },
   "dependencies": {
+    "@material-ui/core": "^1.4.3",
     "babel-polyfill": "6.26.0",
+    "btoa": "^1.2.1",
     "chalk": "^2.4.1",
     "compression": "1.7.2",
     "cross-env": "5.2.0",
-    "express": "4.16.3",
+    "express": "^4.16.3",
     "fontfaceobserver": "2.0.13",
+    "graphql": "^0.13.2",
+    "graphql-request": "^1.8.0",
     "history": "4.7.2",
     "hoist-non-react-statics": "2.5.5",
     "immutable": "3.8.2",
     "intl": "1.2.5",
     "invariant": "2.2.4",
     "ip": "1.1.5",
+    "json-graphql-server": "^2.1.1",
+    "localStorage": "^1.0.3",
     "lodash": "4.17.10",
     "minimist": "1.2.0",
     "prop-types": "15.6.1",
@@ -171,6 +178,7 @@
     "react-router-dom": "4.3.1",
     "react-router-redux": "5.0.0-alpha.9",
     "redux": "4.0.0",
+    "redux-form": "^7.4.2",
     "redux-immutable": "4.0.0",
     "redux-saga": "0.16.0",
     "reselect": "3.0.1",

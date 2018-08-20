@@ -5,37 +5,55 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
 
-import LoginForm from 'components/LoginForm';
+import LoginPage from 'components/LoginPage';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
-import makeSelectLoginPageContainer from './selectors';
-import reducer from './reducer';
-import saga from './saga';
+// import injectSaga from 'utils/injectSaga';
+// import saga from '../App/authSagas';
+import { loginRequest } from './actions';
 
-const mapStateToProps = createStructuredSelector({
-  loginpagecontainer: makeSelectLoginPageContainer(),
-});
+const mapStateToProps = createStructuredSelector({});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
+const mapDispatchToProps = {
+  onSubmit: loginRequest,
+};
 
-@injectReducer({ key: 'loginpagecontainer', reducer })
-@injectSaga({ key: 'loginpagecontainer', saga })
-@withRouter
+// @injectSaga({ key: 'loginpagecontainer', saga })
 @connect(
   mapStateToProps,
   mapDispatchToProps,
 )
 export default class LoginPageContainer extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      state: PropTypes.shape({
+        from: PropTypes.shape({
+          pathname: PropTypes.string,
+        }),
+      }),
+    }).isRequired,
+  };
+
+  handleSubmit = values => {
+    const {
+      onSubmit,
+      location: { state },
+    } = this.props;
+
+    let from;
+    if (state) {
+      from = state.from.pathname;
+    } else {
+      from = '/';
+    }
+    onSubmit(...values, from);
+  };
+
   render() {
-    return <LoginForm {...this.props} />;
+    return <LoginPage onSubmit={this.handleSubmit} />;
   }
 }

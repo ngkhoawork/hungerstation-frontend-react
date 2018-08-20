@@ -1,13 +1,8 @@
-/*
- *
- * LoginPageContainer actions
- *
- */
+import { LOGIN_REQUEST } from './constants';
 
-import { DEFAULT_ACTION } from './constants';
-
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const loginRequest = (number, password, redirectToRoute) => ({
+  type: LOGIN_REQUEST,
+  number,
+  password,
+  redirectToRoute,
+});

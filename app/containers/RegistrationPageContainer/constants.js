@@ -1,7 +1,1 @@
-/*
- *
- * RegistrationPageContainer constants
- *
- */
-
-export const DEFAULT_ACTION = 'app/RegistrationPageContainer/DEFAULT_ACTION';
+export const REGISTER_REQUEST = 'REGISTER_REQUEST';

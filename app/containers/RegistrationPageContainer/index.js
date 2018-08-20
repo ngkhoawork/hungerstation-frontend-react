@@ -5,35 +5,59 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
-import makeSelectRegistrationPageContainer from './selectors';
-import reducer from './reducer';
+import RegistrationPage from 'components/RegistrationPage';
+
+import { registerRequest } from './actions';
 import saga from './saga';
-import messages from './messages';
 
-const mapStateToProps = createStructuredSelector({
-  registrationpagecontainer: makeSelectRegistrationPageContainer(),
-});
+const mapStateToProps = createStructuredSelector({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  onSubmit: registerRequest,
+};
 
 @connect(
   mapStateToProps,
   mapDispatchToProps,
 )
-@injectReducer({ key: 'registrationPageContainer', reducer })
-@injectSaga({ key: 'registrationPageContainer', saga })
+@injectSaga({ key: 'auth', saga })
 export default class RegistrationPageContainer extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      state: PropTypes.shape({
+        from: PropTypes.shape({
+          pathname: PropTypes.string,
+        }),
+      }),
+    }).isRequired,
+  };
+
+  handleSubmit = values => {
+    const {
+      onSubmit,
+      location: { state },
+    } = this.props;
+
+    let from;
+    if (state) {
+      from = state.from.pathname;
+    } else {
+      from = '/';
+    }
+    onSubmit(...values, from);
+  };
+
   render() {
-    return (
-      <div>
-        <FormattedMessage {...messages.header} />
-      </div>
-    );
+    return <RegistrationPage onSubmit={this.handleSubmit} />;
   }
 }
+
+RegistrationPageContainer.propTypes = {
+  onSubmit: PropTypes.func,
+};

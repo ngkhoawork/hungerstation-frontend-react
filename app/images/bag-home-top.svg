@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="23px" viewBox="0 0 18 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/bag-home-top</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,0.002 C0,1.104 0.894,2.001 1.999,2.001 C3.104,2.001 4,1.104 4,0.002 L0,0.002 Z" id="path-1"></path>
+        <path d="M-8,0.002 C-8,1.104 -7.106,2.001 -6.001,2.001 C-4.896,2.001 -4,1.104 -4,0.002 L-8,0.002 Z" id="path-3"></path>
+    </defs>
+    <g id="Login" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Verify-Your-Account" transform="translate(-341.000000, -97.000000)">
+            <g id="Top" transform="translate(0.000000, 1.000000)">
+                <g transform="translate(176.000000, 95.000000)" id="order-icon">
+                    <g transform="translate(164.000000, 0.000000)">
+                        <g id="bag-delivery">
+                            <g id="icon/bag-tap-bar-active">
+                                <g id="Group-14" transform="translate(1.000000, 1.000000)">
+                                    <g id="Group-7" transform="translate(0.000000, 0.735300)">
+                                        <g id="Group">
+                                            <path d="M1.942,5.6031 L16.093,5.6031 C16.788,5.6031 17.328,6.2101 17.245,6.9011 L15.711,19.7641 C15.67,20.5951 15.002,21.2491 14.19,21.2501 L3.847,21.2501 C3.034,21.2511 2.364,20.5971 2.323,19.7641 L0.79,6.9011 C0.708,6.2101 1.247,5.6031 1.942,5.6031 Z" id="Stroke-1" stroke="#434340" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M5.106,5.6031 L5.106,3.1581 C5.106,1.4221 6.857,0.0151 9.018,0.0151 C11.178,0.0151 12.929,1.4221 12.929,3.1581 L12.929,5.6031" id="Stroke-3" stroke="#434340" stroke-width="1.4"></path>
+                                            <path d="M4,9 L14,9" id="Stroke-5" stroke="#434340" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <g id="Group-3" transform="translate(11.000000, 5.264700)">
+                                                <mask id="mask-2" fill="white">
+                                                    <use xlink:href="#path-1"></use>
+                                                </mask>
+                                                <use id="Clip-2" fill="#434340" xlink:href="#path-1"></use>
+                                                <mask id="mask-4" fill="white">
+                                                    <use xlink:href="#path-3"></use>
+                                                </mask>
+                                                <use id="Clip-2-Copy" fill="#434340" xlink:href="#path-3"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                    <g id="Group-10" transform="translate(4.000000, 5.735300)"></g>
+                                    <g id="Group-13" transform="translate(12.000000, 5.735300)"></g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

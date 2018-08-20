@@ -13,7 +13,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
+import FontFaceObserver from 'fontfaceobserver';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+
 import 'sanitize.css/sanitize.css';
 
 // Import root app
@@ -21,6 +23,8 @@ import App from 'containers/App';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
+
+import history from './createHistory';
 
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -35,22 +39,29 @@ import { translationMessages } from './i18n';
 
 // Import CSS reset and Global Styles
 import './global-styles';
+import theme from './theme';
+
+const hungerStationObserver = new FontFaceObserver('HungerStation-Regular', {});
+hungerStationObserver.load().then(() => {
+  document.body.classList.add('fontLoaded');
+});
 
 // Create redux store with history
 const initialState = {};
-const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {
   ReactDOM.render(
-    <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </LanguageProvider>
-    </Provider>,
+    <MuiThemeProvider theme={theme}>
+      <Provider store={store}>
+        <LanguageProvider messages={messages}>
+          <ConnectedRouter history={history}>
+            <App />
+          </ConnectedRouter>
+        </LanguageProvider>
+      </Provider>
+    </MuiThemeProvider>,
     MOUNT_NODE,
   );
 };
@@ -70,7 +81,12 @@ if (!window.Intl) {
   new Promise(resolve => {
     resolve(import('intl'));
   })
-    .then(() => Promise.all([import('intl/locale-data/jsonp/en.js')]))
+    .then(() =>
+      Promise.all([
+        import('intl/locale-data/jsonp/en.js'),
+        import('intl/locale-data/jsonp/ar-SA.js'),
+      ]),
+    )
     .then(() => render(translationMessages))
     .catch(err => {
       throw err;
