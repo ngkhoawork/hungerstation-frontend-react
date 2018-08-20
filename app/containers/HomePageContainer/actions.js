@@ -10,7 +10,6 @@ import {
   SET_DISTRICTS,
   SELECT_CITY,
   SELECT_DISTRICT,
-  SELECT_SEARCH_TYPE,
 } from './constants';
 
 export const getCitiesAction = () => ({
@@ -35,9 +34,4 @@ export const selectCityAction = selectedCity => ({
 export const selectDistrictAction = selectedDistrict => ({
   type: SELECT_DISTRICT,
   selectedDistrict,
-});
-
-export const selectSearchTypeAction = selectedType => ({
-  type: SELECT_SEARCH_TYPE,
-  selectedType,
 });

@@ -35,17 +35,5 @@ export const makeSelectDistricts = createSelector(
   },
 );
 
-export const makeSelectSearchType = createSelector(
-  selectHomePageContainerDomain,
-  homePageState => {
-    const output = homePageState && homePageState.get('selectedSearchType');
-
-    if (output) {
-      return output;
-    }
-    return null;
-  },
-);
-
 export default makeSelectHomePageContainer;
 export { selectHomePageContainerDomain };
