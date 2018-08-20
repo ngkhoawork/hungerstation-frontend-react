@@ -2,6 +2,7 @@ import { put, call } from 'redux-saga/effects';
 import HungerStationAPI from 'api/HungerStationAPI';
 import { setAuthState, updateTokens } from 'containers/App/authActions';
 import { setStorageItem } from 'utils/localStorage';
+import { stopSubmit } from 'redux-form';
 
 export function* authorize({
   username,
@@ -25,8 +26,13 @@ export function* authorize({
     }
     return response;
   } catch (error) {
-    // If we get an error we send Redux the appropiate action and return
-    yield put({ type: 'REQUEST_ERROR', error: error.message });
+    // FIXME
+    yield put(
+      stopSubmit(isRegistering ? 'signupform' : 'loginForm', {
+        _error: 'There was an error.',
+      }),
+    );
+
     return false;
   } finally {
     // When done, we tell Redux we're not in the middle of a request any more

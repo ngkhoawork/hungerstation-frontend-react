@@ -12,11 +12,12 @@ import { LOGIN_REQUEST } from './constants';
 export function* loginFlow() {
   while (true) {
     const request = yield take(LOGIN_REQUEST);
+
     const { number, password, redirectToRoute } = request;
 
     const { authResponse, logoutResponse } = yield race({
       authResponse: call(authorize, { number, password, isRegistering: false }),
-      logout: take(LOGOUT),
+      logoutResponse: take(LOGOUT),
     });
 
     if (authResponse) {
@@ -28,7 +29,9 @@ export function* loginFlow() {
       yield call(setStorageItem, 'userId', authResponse.user_id);
       yield put(logUserIn(authResponse));
       yield call(forwardTo, redirectToRoute);
-    } else {
+    }
+
+    if (logoutResponse) {
       yield put(logout(logoutResponse));
     }
   }

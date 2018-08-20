@@ -16,12 +16,6 @@ const TextInput = ({ input, meta: { touched, error }, ...custom }) => (
     {...input}
     {...custom}
   />
-  /* <div>
-    <input {...input} type={type} placeholder={label} />
-    {touched &&
-      ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-    </div>
-  */
 );
 
 TextInput.propTypes = {
