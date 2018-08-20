@@ -1,2 +1,2 @@
-export const candlelight = '#FFD31E';
-export const elPaso = '#1C1907';
+export const fuscousGray = '#434340';
+export const gold = '#FFD700';

@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { candlelight } from 'utils/colors';
+import { gold } from 'utils/colors';
 
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${candlelight};
-  padding: 7px 35px;
-  cursor: pointer;
+  height: 40px;
+  width: ${({ width }) => width}px;
+  border-radius: 8px;
+  background-color: ${gold};
 `;
 
 export default StyledButton;
