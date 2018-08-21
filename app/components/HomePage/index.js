@@ -14,6 +14,7 @@ import SearchBar from './SearchBar';
 import WhyHS from './WhyHS';
 import HowItWorks from './HowItWorks';
 import StyledSection from './StyledSection';
+import BusinessSection from './BusinessSection';
 
 const HomePage = () => (
   <StyledPage>
@@ -25,6 +26,7 @@ const HomePage = () => (
       <WhyHS />
     </StyledSection>
     <HowItWorks />
+    <BusinessSection />
   </StyledPage>
 );
 

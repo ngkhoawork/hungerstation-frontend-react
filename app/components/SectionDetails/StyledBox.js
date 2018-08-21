@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledBox = styled.div`
-  width: 544px;
+  max-width: 600px;
   background-color: white;
   border-radius: 8px;
   margin-top: 50px;
