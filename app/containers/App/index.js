@@ -28,6 +28,7 @@ import ForgotPasswordPage from 'components/ForgotPasswordPage';
 import AddRestaurantBanner from 'components/AddRestaurantBanner';
 
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import saga from './authSagas';
@@ -76,6 +77,7 @@ export default class App extends Component {
 
           <Redirect from="*" to="/" />
         </Switch>
+        <Footer />
       </StyledApp>
     );
   }
