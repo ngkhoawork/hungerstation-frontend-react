@@ -21,7 +21,6 @@ const mapDispatchToProps = {
   onSubmit: loginRequest,
 };
 
-// @injectSaga({ key: 'loginpagecontainer', saga })
 @connect(
   mapStateToProps,
   mapDispatchToProps,
@@ -50,7 +49,8 @@ export default class LoginPageContainer extends Component {
     } else {
       from = '/';
     }
-    onSubmit(...values, from);
+
+    onSubmit(values.toJS(), from);
   };
 
   render() {

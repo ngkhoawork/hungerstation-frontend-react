@@ -20,11 +20,24 @@ import TextItem from 'components/TextItem';
 import StyledForm from './StyledForm';
 import messages from './messages';
 
+const printError = error => {
+  if (!error) return null;
+
+  return (
+    <div>
+      {typeof error === 'string' ? (
+        <div>{error}</div>
+      ) : (
+        error.map(err => <div>{err.message}</div>)
+      )}
+    </div>
+  );
+};
 @withStyles(styles)
 @injectIntl
 @reduxForm({
-  form: 'loginForm',
-  validate: (values, { intl }) => validate(values, intl, 'login'),
+  form: 'signinForm',
+  validate: (values, { intl }) => validate(values, intl, 'signin'),
 })
 export default class LoginForm extends Component {
   static propTypes = {
@@ -32,18 +45,33 @@ export default class LoginForm extends Component {
     submitting: PropTypes.bool.isRequired,
     intl: intlShape,
     classes: PropTypes.object.isRequired,
-    error: PropTypes.string,
+    error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   };
+
+  // printError = error => {
+  //   if (!error) return null;
+
+  //   return (
+  //     <div>
+  //       {typeof error === 'string' ? (
+  //         <div>{error}</div>
+  //       ) : (
+  //         error.map(err => <div>{err.message}</div>)
+  //       )}
+  //     </div>
+  //   );
+  // };
 
   render() {
     const { handleSubmit, submitting, intl, classes, error } = this.props;
+
     return (
       <StyledForm onSubmit={handleSubmit}>
-        {error && <div>{error}</div>}
+        {printError(error)}
         <div>
           <Field
             fullWidth
-            name="number"
+            name="mobile"
             type="text"
             component={TextInput}
             label={intl.formatMessage(messages.numberLabel)}

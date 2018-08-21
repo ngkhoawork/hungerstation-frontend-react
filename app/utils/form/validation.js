@@ -1,10 +1,11 @@
 import messages from './messages';
+// import * as yup from 'yup';
 
 const validate = (values, intl, formName) => {
   switch (formName) {
-    case 'login':
+    case 'signin':
       return LoginFormValidation(values, intl);
-    case 'registration':
+    case 'signup':
       return RegistrationFormValidation(values, intl);
     case 'forgotPassword':
       return ForgotPasswordForm(values, intl);
@@ -17,13 +18,10 @@ const validate = (values, intl, formName) => {
 
 const RegistrationFormValidation = (values, intl) => {
   const errors = {};
-  if (!values.get('username')) {
-    errors.username = intl.formatMessage(messages.formRequired);
-  } else if (
-    values.get('username').length < 2 ||
-    values.get('username').length > 20
-  ) {
-    errors.username =
+  if (!values.get('name')) {
+    errors.name = intl.formatMessage(messages.formRequired);
+  } else if (values.get('name').length < 2 || values.get('name').length > 20) {
+    errors.name =
       'The name needs to be at least 2 characters and the maximum 20 characters';
   }
 
@@ -33,12 +31,12 @@ const RegistrationFormValidation = (values, intl) => {
     errors.email = 'Invalid email address';
   }
 
-  if (!values.get('number')) {
-    errors.number = 'Required';
-  } else if (!/^[0-9]/i.test(values.get('number'))) {
-    errors.number = 'Invalid phone number';
-  } else if (values.get('number').length > 9) {
-    errors.number = 'The mobile number needs to be at most 9 characters';
+  if (!values.get('mobile')) {
+    errors.mobile = 'Required';
+  } else if (!/^\+966[0-9]/i.test(values.get('mobile'))) {
+    errors.mobile = 'Invalid phone number';
+  } else if (values.get('mobile').length > 13) {
+    errors.mobile = 'The mobile number needs to be at most 9 characters';
   }
 
   if (!values.get('password')) {
@@ -48,7 +46,7 @@ const RegistrationFormValidation = (values, intl) => {
     values.get('password').length > 20
   ) {
     errors.password =
-      'The password needs to be at least 2 characters and the maximum 20 characters';
+      'The password needs to be at least 8 characters and the maximum 20 characters';
   }
 
   return errors;
@@ -56,10 +54,10 @@ const RegistrationFormValidation = (values, intl) => {
 
 const LoginFormValidation = values => {
   const errors = {};
-  if (!values.get('number')) {
-    errors.number = 'Required';
-  } else if (values.get('number').length > 15) {
-    errors.number = 'Must be 15 characters or less';
+  if (!values.get('mobile')) {
+    errors.mobile = 'Required';
+  } else if (values.get('mobile').length > 15) {
+    errors.mobile = 'Must be 15 characters or less';
   }
   if (!values.get('password')) {
     errors.password = 'Required';
