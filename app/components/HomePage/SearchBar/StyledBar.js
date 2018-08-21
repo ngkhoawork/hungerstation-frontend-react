@@ -8,7 +8,6 @@ const StyledBar = styled.span`
   border-radius: 8px;
   margin: 15px 0;
   height: 56px;
-  width: 808px;
 `;
 
 export default StyledBar;
