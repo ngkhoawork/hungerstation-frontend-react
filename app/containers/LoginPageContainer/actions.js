@@ -1,8 +1,8 @@
 import { LOGIN_REQUEST } from './constants';
 
-export const loginRequest = (number, password, redirectToRoute) => ({
+export const loginRequest = ({ mobile, password }, redirectToRoute) => ({
   type: LOGIN_REQUEST,
-  number,
+  mobile,
   password,
   redirectToRoute,
 });

@@ -2,7 +2,7 @@
 
 const express = require('express');
 const logger = require('./logger');
-
+const request = require('request');
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
@@ -12,10 +12,19 @@ const ngrok =
     ? require('ngrok')
     : false;
 const { resolve } = require('path');
-const app = express();
 
+const app = express();
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
+
+if (isDev) {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+  const remote = 'https://development.hs-preview.com/api/v3/graphql';
+  app.use('/proxy', (req, res) => {
+    const url = remote + req.url;
+    req.pipe(request(url)).pipe(res);
+  });
+}
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {

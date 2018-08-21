@@ -18,12 +18,33 @@ import StyledForm from 'components/LoginForm/StyledForm';
 
 import messages from './messages';
 
-const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
+const printError = error => {
+  if (!error) return null;
+
+  return (
+    <div>
+      {typeof error === 'string' ? (
+        <div>{error}</div>
+      ) : (
+        error.map(err => <div>{err.message}</div>)
+      )}
+    </div>
+  );
+};
+
+const RegistrationForm = ({
+  handleSubmit,
+  submitting,
+  intl,
+  classes,
+  error,
+}) => (
   <StyledForm onSubmit={handleSubmit} autoComplete="off">
+    {printError(error)}
     <div>
       <Field
         autoComplete="nope"
-        name="username"
+        name="name"
         type="text"
         component={TextInput}
         label={intl.formatMessage(messages.usernameLabel)}
@@ -33,7 +54,7 @@ const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
     <div>
       <Field
         autoComplete="nope"
-        name="number"
+        name="mobile"
         type="phone"
         component={TextInput}
         label="Mobile number"
@@ -79,14 +100,15 @@ RegistrationForm.propTypes = {
   submitting: PropTypes.bool.isRequired,
   intl: intlShape,
   classes: PropTypes.object.isRequired,
+  error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 };
 
 export default withStyles(styles)(
   injectIntl(
     reduxForm({
-      form: 'signupform', // a unique identifier for this form
-      validate: (values, { intl }) => validate(values, intl, 'registration'),
-      warn: (values, { intl }) => warn(values, intl, 'registration'),
+      form: 'signupForm', // a unique identifier for this form
+      validate: (values, { intl }) => validate(values, intl, 'signup'),
+      warn: (values, { intl }) => warn(values, intl, 'signup'),
     })(RegistrationForm),
   ),
 );

@@ -9,11 +9,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import injectSaga from 'utils/injectSaga';
 import RegistrationPage from 'components/RegistrationPage';
 
 import { registerRequest } from './actions';
-import saga from './saga';
 
 const mapStateToProps = createStructuredSelector({});
 
@@ -25,7 +23,6 @@ const mapDispatchToProps = {
   mapStateToProps,
   mapDispatchToProps,
 )
-@injectSaga({ key: 'auth', saga })
 export default class RegistrationPageContainer extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
@@ -50,7 +47,8 @@ export default class RegistrationPageContainer extends React.Component {
     } else {
       from = '/';
     }
-    onSubmit(...values, from);
+
+    onSubmit(values.toJS(), from);
   };
 
   render() {
