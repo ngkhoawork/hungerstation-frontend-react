@@ -13,6 +13,7 @@ import StyledPage from './StyledPage';
 import Subheader from './Subheader';
 import Header from './Header';
 import SearchBar from './SearchBar';
+import WhyHS from './WhyHS';
 // import messages from './messages';
 
 const HomePage = () => (
@@ -21,6 +22,7 @@ const HomePage = () => (
     <Header>The Top Restaurants in Saudi Arabia</Header>
     <SearchTypeContainer />
     <SearchBar />
+    <WhyHS />
   </StyledPage>
 );
 
