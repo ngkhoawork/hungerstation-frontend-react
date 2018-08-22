@@ -34,7 +34,7 @@ const themeObj = {
         fontFamily: `'HungerStation-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif`,
         height: 48,
         padding: '0 30px',
-        boxShadow: '0 15px 20px -6px rgba(109, 22, 22, 0.1)',
+        // boxShadow: '0 15px 20px -6px rgba(109, 22, 22, 0.1)',
         '&:hover': {
           backgroundColor: lighten('#FFD700', 0.2),
           // Reset on touch devices, it doesn't add specificity
@@ -44,6 +44,23 @@ const themeObj = {
           // '&$disabled': {
           //   backgroundColor: theme.palette.action.disabledBackground,
           // },
+        },
+      },
+    },
+    MuiFormLabel: {
+      root: {
+        '&$focused': {
+          color: () => this.palette.text.primary,
+        },
+      },
+    },
+    MuiInput: {
+      root: {
+        fontFamily: 'HungerStation-Regular, sans-serif',
+      },
+      underline: {
+        '&:after': {
+          borderBottom: `2px solid #434340`,
         },
       },
     },

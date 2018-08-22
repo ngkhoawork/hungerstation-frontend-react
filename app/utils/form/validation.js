@@ -62,6 +62,7 @@ const LoginFormValidation = values => {
   if (!values.get('password')) {
     errors.password = 'Required';
   }
+
   return errors;
 };
 

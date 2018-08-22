@@ -6,19 +6,21 @@ import { LOGOUT } from 'containers/App/authConstants';
 import { parseJwt } from 'utils/tokens';
 import { logUserIn, logout } from 'containers/App/authActions';
 import { forwardTo } from 'utils/route';
-import { startSubmit, stopSubmit } from 'redux-form';
+import { startSubmit, stopSubmit, destroy } from 'redux-form';
+import { extractError } from 'utils/helpers';
 import { LOGIN_REQUEST } from './constants';
 
 export function* loginFlow() {
   while (true) {
-    const request = yield take(LOGIN_REQUEST);
-
-    yield put(startSubmit('signinForm'));
-
-    const { mobile, password, redirectToRoute } = request;
+    const { mobile, password, redirectToRoute } = yield take(LOGIN_REQUEST);
 
     try {
-      const { authResponse, logoutResponse } = yield race({
+      yield put(startSubmit('signinForm'));
+
+      const {
+        authResponse: { authenticateUser },
+        logoutResponse,
+      } = yield race({
         authResponse: call(authorize, {
           mobile,
           password,
@@ -27,14 +29,15 @@ export function* loginFlow() {
         logoutResponse: take(LOGOUT),
       });
 
-      if (authResponse) {
+      if (authenticateUser) {
         yield saveTokens({
-          refreshToken: authResponse.refresh_token,
-          accessToken: authResponse.token,
-          accessTokenExpiresAt: parseJwt(authResponse.token).iat,
+          refreshToken: authenticateUser.refresh_token,
+          accessToken: authenticateUser.token,
+          accessTokenExpiresAt: parseJwt(authenticateUser.token).iat,
         });
-        yield call(setStorageItem, 'userId', authResponse.user_id);
-        yield put(logUserIn(authResponse));
+        yield call(setStorageItem, 'userId', authenticateUser.user_id);
+        yield put(logUserIn(authenticateUser));
+        yield put(destroy('sigupForm'));
         yield call(forwardTo, redirectToRoute);
       }
 
@@ -42,19 +45,9 @@ export function* loginFlow() {
         yield put(logout(logoutResponse));
       }
     } catch (error) {
-      let err;
-
-      if (error.status === 500) {
-        err = error.message;
-      } else if (error.response) {
-        err = error.response.errors;
-      } else {
-        err = 'Something went terribly wrong';
-      }
-
       yield put(
         stopSubmit('signinForm', {
-          _error: err,
+          _error: extractError(error),
         }),
       );
     }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="32px" viewBox="0 0 33 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M17.1808519,23.6706587 L14.3932363,23.6706587 L14.3932363,16.3343726 L13,16.3343726 L13,13.8065543 L14.3932363,13.8065543 L14.3932363,12.288779 C14.3932363,10.2269136 15.1791644,9 17.414344,9 L19.2745645,9 L19.2745645,11.5287751 L18.1119624,11.5287751 C17.2420114,11.5287751 17.1842814,11.8818276 17.1842814,12.5413694 L17.1805661,13.8065543 L19.2874251,13.8065543 L19.0407866,16.3343726 L17.1805661,16.3343726 L17.1805661,23.6706587 L17.1808519,23.6706587 L17.1808519,23.6706587 Z" id="path-1"></path>
+    </defs>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1210.000000, -2485.000000)" id="footer">
+            <g transform="translate(8.000000, 2485.000000)">
+                <g id="menu_social_media" transform="translate(112.000000, 0.000000)">
+                    <g id="social_media_icons" transform="translate(1040.000000, 0.000000)">
+                        <g id="fb" transform="translate(50.555556, 0.000000)">
+                            <g id="icon/facebook">
+                                <circle id="Oval-Copy" fill="#4A90E2" fill-rule="nonzero" cx="16" cy="16" r="16"></circle>
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <use id="Clip-4" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -16,27 +16,27 @@ injectGlobal`
   @font-face {
     font-family: 'HungerStation-Regular';
     src: url(${HSRwoff2});
-    src: 
+    src:
       url(${HSRotf}) format('opentype'),
       url(${HSRwoff}) format('woff');
     font-weight: normal;
     font-style: normal;
   }
-  
+
   @font-face {
     font-family: 'HungerStation-Light';
     src: url(${HSLwoff2});
-    src: 
+    src:
       url(${HSLotf}) format('opentype'),
       url(${HSLwoff}) format('woff');
     font-weight: normal;
     font-style: normal;
   }
-  
+
   @font-face {
     font-family: 'HungerStation-Bold';
     src: url(${HSBwoff2});
-    src: 
+    src:
       url(${HSBotf}) format('opentype'),
       url(${HSBwoff}) format('woff');
     font-weight: normal;
@@ -60,5 +60,6 @@ injectGlobal`
     background-color: #F7F7F7;
     min-height: 100%;
     min-width: 100%;
+    color: #434340;
   }
 `;

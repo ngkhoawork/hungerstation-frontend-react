@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="14px" viewBox="0 0 10 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/+</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Login" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Log-In" transform="translate(-694.000000, -508.000000)" stroke="#434340" stroke-width="1.4">
+            <g id="Content" transform="translate(536.000000, 193.000000)">
+                <g id="Group">
+                    <g id="btn_login_active" transform="translate(0.000000, 295.000000)">
+                        <g id="Title">
+                            <g id="Group-10" transform="translate(151.000000, 15.000000)">
+                                <g id="Group-4">
+                                    <g id="Group" transform="translate(12.086641, 11.595448) rotate(-315.000000) translate(-12.086641, -11.595448) translate(4.086641, 3.595448)">
+                                        <g id="icon/lock" transform="translate(8.075787, 8.292893) rotate(-45.000000) translate(-8.075787, -8.292893) translate(3.575787, 2.292893)">
+                                            <path d="M2.625,3.825 L2.625,2.25 C2.625,1.21425 3.46425,0.375 4.5,0.375 C5.11275,0.375 5.65725,0.669 5.99925,1.1235" id="Shape"></path>
+                                            <circle id="Oval" cx="4.5" cy="7.5" r="1.125"></circle>
+                                            <circle id="Oval" cx="4.5" cy="7.5" r="4.125"></circle>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -31,33 +31,33 @@ import Header from 'components/Header';
 import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import saga from './authSagas';
-import { authenticateUser } from './authActions';
+// import { authenticateUser } from './authActions';
 import StyledApp from './StyledApp';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   dir: locale === 'ar' ? 'rtl' : 'ltr',
 }));
 
-const mapDispatchToProps = {
-  authenticateUser,
-};
+// const mapDispatchToProps = {
+//   authenticateUser,
+// };
 
 @withRouter
 @connect(
   mapStateToProps,
-  mapDispatchToProps,
+  // mapDispatchToProps,
 )
 @injectSaga({ key: 'auth', saga })
 export default class App extends Component {
   static propTypes = {
     dir: PropTypes.string,
-    authenticateUser: PropTypes.func.isRequired,
+    // authenticateUser: PropTypes.func.isRequired,
   };
 
-  componentWillMount() {
-    const { authenticateUser: authenticate } = this.props;
-    authenticate();
-  }
+  // componentWillMount() {
+  //   const { authenticateUser: authenticate } = this.props;
+  //   authenticate();
+  // }
 
   render() {
     const { dir } = this.props;
