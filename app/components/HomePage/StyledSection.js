@@ -1,9 +1,8 @@
 import styled from 'styled-components';
+import { flexBox } from 'utils/styles';
 
 const StyledSection = styled.div`
-  display: flex;
-  width: 808px;
-  flex-direction: column;
+  ${flexBox({ direction: 'column' }, `width: 808px;`)};
 `;
 
 export default StyledSection;

@@ -23,8 +23,8 @@ const HomePage = () => (
     <StyledSection>
       <SearchTypeContainer />
       <SearchBar />
-      <WhyHS />
     </StyledSection>
+    <WhyHS />
     <HowItWorks />
     <BusinessSection />
   </StyledPage>

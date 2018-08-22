@@ -3,11 +3,11 @@ import React from 'react';
 import SectionDetails from 'components/SectionDetails';
 import BananaSandwich from 'images/banana-sandwich.jpg';
 import Button from 'components/Button';
-import StyledContainer from './StyledContainer';
+import StyledSection from '../BusinessSection/StyledSection';
 import Image from './Image';
 
 const WhyHS = () => (
-  <StyledContainer>
+  <StyledSection>
     <Image src={BananaSandwich} alt="Holding Burger" />
     <SectionDetails
       header="Why use HungerStation?"
@@ -15,7 +15,7 @@ const WhyHS = () => (
     >
       <Button primary type="button" width={133} label="Check" />
     </SectionDetails>
-  </StyledContainer>
+  </StyledSection>
 );
 
 export default WhyHS;

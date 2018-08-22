@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { flexBox } from 'utils/styles';
 
 const StyledContainer = styled.span`
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  cursor: pointer;
+  ${flexBox(
+    { align: 'center' },
+    `padding: 0 20px;
+  cursor: pointer;`,
+  )};
 `;
 
 export default StyledContainer;
