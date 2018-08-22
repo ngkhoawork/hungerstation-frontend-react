@@ -3,11 +3,9 @@ import { flexBox } from 'utils/styles';
 
 const StyledSection = styled.div`
   ${flexBox(
-    { justify: 'flex-end' },
+    { justify: 'space-between' },
     `
-    margin-left: 300px;
     margin-top: 150px;
-    width: 60%;
   `,
   )};
 `;

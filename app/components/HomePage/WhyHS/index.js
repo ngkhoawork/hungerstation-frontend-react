@@ -1,15 +1,18 @@
 import React from 'react';
 
 import SectionDetails from 'components/SectionDetails';
-import BananaSandwich from 'images/banana-sandwich.jpg';
 import Button from 'components/Button';
+import getImage from 'utils/images';
 import StyledSection from '../BusinessSection/StyledSection';
-import Image from './Image';
+import Image from '../Image';
 
 const WhyHS = () => (
   <StyledSection>
-    <Image src={BananaSandwich} alt="Holding Burger" />
+    <div style={{ position: 'absolute', left: 90 }}>
+      <Image src={getImage('burger')} alt="Burger" />
+    </div>
     <SectionDetails
+      left
       header="Why use HungerStation?"
       description="No need for looking for restaurants numbers anymore! With HungerStation.com you can select orders from your favorite restaurant and pay cash on delivery!"
     >

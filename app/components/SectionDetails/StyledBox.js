@@ -5,8 +5,13 @@ const StyledBox = styled.div`
   background-color: white;
   border-radius: 8px;
   margin-top: 50px;
-  padding: 57px 36px 10px 103px;
+  padding: 57px 36px 50px 103px;
   position: relative;
+  ${({ left }) =>
+    left &&
+    `
+    margin-left: 500px;
+  `};
 `;
 
 export default StyledBox;
