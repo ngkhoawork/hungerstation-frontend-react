@@ -6,6 +6,7 @@ import { logUserIn } from 'containers/App/authActions';
 import { authorize, saveTokens } from 'utils/reusedSagas';
 import { forwardTo } from 'utils/route';
 import { startSubmit, stopSubmit, destroy } from 'redux-form/lib/immutable';
+import { extractError } from 'utils/helpers';
 import { REGISTER_REQUEST } from './constants';
 
 export function* registerFlow() {
@@ -34,25 +35,16 @@ export function* registerFlow() {
         yield put(logUserIn(response));
         yield call(setStorageItem, 'userId', response.user_id);
 
-        yield put(destroy('signinForm'));
+        yield put(destroy('sigupForm'));
 
         // TODO
         // yield call(successMsg);
         yield call(forwardTo, redirectToRoute);
       }
     } catch (error) {
-      let err;
-      if (error.status === 500) {
-        err = error.message;
-      } else if (error.response) {
-        err = error.response.errors;
-      } else {
-        err = 'Something went terribly wrong';
-      }
-
       yield put(
         stopSubmit('signupForm', {
-          _error: err,
+          _error: extractError(error),
         }),
       );
     }

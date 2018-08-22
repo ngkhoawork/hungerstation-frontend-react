@@ -17,7 +17,7 @@ import { clearStorageItem, getStorageItem } from 'utils/localStorage';
 import { isAccessExpired, parseJwt } from 'utils/tokens';
 import HungerStationAPI from 'api/HungerStationAPI';
 import { saveTokens } from 'utils/reusedSagas';
-import monitorSaga from './monitorSaga';
+// import monitorSaga from './monitorSaga';
 
 import { LOGOUT, REQUEST_ERROR, AUTHENTICATE_USER } from './authConstants';
 import { setAuthState, updateTokens } from './authActions';
@@ -135,6 +135,7 @@ export function* authenticationFlow() {
       yield put(updateTokens(JSON.parse(tokens)));
 
       const shouldRefresh = yield call(needRefresh);
+
       if (!shouldRefresh) {
         yield call(HungerStationAPI.getUser, tokens.accessToken, userId);
       } else {
@@ -158,5 +159,5 @@ export default function* root() {
   yield spawn(authSagas);
   yield spawn(registrationSagas);
   yield spawn(loginSagas);
-  yield spawn(monitorSaga);
+  // yield spawn(monitorSaga);
 }

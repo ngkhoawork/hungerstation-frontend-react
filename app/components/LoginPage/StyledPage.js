@@ -4,8 +4,11 @@ const StyledPage = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
   font-family: 'HungerStation-Regular', sans-serif;
+  padding: 57px;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 8px;
 `;
 
 export default StyledPage;

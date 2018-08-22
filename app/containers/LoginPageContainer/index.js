@@ -7,22 +7,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
 import LoginPage from 'components/LoginPage';
 
-// import injectSaga from 'utils/injectSaga';
-// import saga from '../App/authSagas';
 import { loginRequest } from './actions';
-
-const mapStateToProps = createStructuredSelector({});
 
 const mapDispatchToProps = {
   onSubmit: loginRequest,
 };
 
 @connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )
 export default class LoginPageContainer extends Component {

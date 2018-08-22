@@ -6,31 +6,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form/immutable';
-import { injectIntl, intlShape } from 'react-intl';
+import { Field } from 'redux-form/immutable';
+import { intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import validate from 'utils/form/validation';
-import warn from 'utils/form/warning';
+
 import TextInput from 'components/TextInput';
-import styles from 'utils/styles';
+
+import { printErrors } from 'utils/form/helpers';
 import StyledForm from 'components/LoginForm/StyledForm';
 
 import messages from './messages';
-
-const printError = error => {
-  if (!error) return null;
-
-  return (
-    <div>
-      {typeof error === 'string' ? (
-        <div>{error}</div>
-      ) : (
-        error.map(err => <div>{err.message}</div>)
-      )}
-    </div>
-  );
-};
 
 const RegistrationForm = ({
   handleSubmit,
@@ -40,7 +25,7 @@ const RegistrationForm = ({
   error,
 }) => (
   <StyledForm onSubmit={handleSubmit} autoComplete="off">
-    {printError(error)}
+    {printErrors(error)}
     <div>
       <Field
         autoComplete="nope"
@@ -90,7 +75,9 @@ const RegistrationForm = ({
       type="submit"
       disabled={submitting}
     >
-      {intl.formatMessage(messages.buttonLabel)}
+      <span className={classes.buttonText}>
+        {intl.formatMessage(messages.buttonLabel)}
+      </span>
     </Button>
   </StyledForm>
 );
@@ -103,12 +90,4 @@ RegistrationForm.propTypes = {
   error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 };
 
-export default withStyles(styles)(
-  injectIntl(
-    reduxForm({
-      form: 'signupForm', // a unique identifier for this form
-      validate: (values, { intl }) => validate(values, intl, 'signup'),
-      warn: (values, { intl }) => warn(values, intl, 'signup'),
-    })(RegistrationForm),
-  ),
-);
+export default RegistrationForm;
