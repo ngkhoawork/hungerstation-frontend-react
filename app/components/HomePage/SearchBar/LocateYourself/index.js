@@ -5,7 +5,7 @@ import StyledContainer from './StyledContainer';
 
 const LocateYourself = () => (
   <StyledContainer>
-    <Icon name="locate-yourself" size={20} />
+    <Icon name="location" />
   </StyledContainer>
 );
 

@@ -30,7 +30,7 @@ const Header = () => (
         <FormattedMessage {...messages.login} />
       </TextLink>
       <Circle>
-        <Icon name="basket" size={17} />
+        <Icon name="basket" />
       </Circle>
     </RightSection>
   </StyledHeader>

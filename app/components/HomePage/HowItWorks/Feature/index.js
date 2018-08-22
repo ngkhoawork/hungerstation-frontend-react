@@ -7,9 +7,9 @@ import RightSide from './RightSide';
 import Header from './Header';
 import Text from './Text';
 
-const Feature = ({ label, message }) => (
+const Feature = ({ id, label, message }) => (
   <StyledFeature>
-    <Icon name="location-pin" size={15} circled />
+    <Icon name={`${id}-big`} size={45} />
     <RightSide>
       <Header>{label}</Header>
       <Text>{message}</Text>
@@ -18,6 +18,7 @@ const Feature = ({ label, message }) => (
 );
 
 Feature.propTypes = {
+  id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
 };

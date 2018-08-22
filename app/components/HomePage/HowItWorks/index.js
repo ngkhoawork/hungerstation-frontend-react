@@ -7,20 +7,17 @@ const HowItWorks = () => {
     {
       id: 'location',
       label: 'Select location',
-      message:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+      message: 'Lorem Ipsum is simply dummy text of the printing and...',
     },
     {
-      id: 'restaurant',
+      id: 'chef',
       label: 'Choose restaurant',
-      message:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+      message: 'Lorem Ipsum is simply dummy text of the printing and...',
     },
     {
-      id: 'pay',
+      id: 'payment',
       label: 'Pay and wait',
-      message:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+      message: 'Lorem Ipsum is simply dummy text of the printing and...',
     },
   ];
   return (
