@@ -1,12 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Icon from 'components/Icon';
+import Spinner from 'components/Spinner';
 import StyledContainer from './StyledContainer';
 
-const LocateYourself = () => (
-  <StyledContainer>
-    <Icon name="locate-yourself" size={20} />
+const LocateYourself = ({ getCurrentLocation, isSettlementLoaded }) => (
+  <StyledContainer onClick={getCurrentLocation}>
+    {isSettlementLoaded && <Icon name="locate-yourself" size={20} />}
+    {!isSettlementLoaded && <Spinner isActive={!isSettlementLoaded} />}
   </StyledContainer>
 );
+
+LocateYourself.propTypes = {
+  getCurrentLocation: PropTypes.func.isRequired,
+  isSettlementLoaded: PropTypes.bool.isRequired,
+};
 
 export default LocateYourself;
