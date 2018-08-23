@@ -3,7 +3,7 @@ import { flexBox, mediaMedium } from 'utils/styles';
 import StyledSearchType from '../StyledContainer';
 
 const StyledContainer = styled.div`
-  ${flexBox({ align: 'center', justify: 'space-between' }, `width: 100%;`)};
+  ${flexBox({ align: 'center', justify: 'space-between' }, `flex: 0.27`)};
   ${StyledSearchType} && {
     ${mediaMedium`
       display: none;

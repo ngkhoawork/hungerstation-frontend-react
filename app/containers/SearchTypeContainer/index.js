@@ -31,26 +31,19 @@ const mapDispatchToProps = {
 /* eslint-disable react/prefer-stateless-function */
 export default class SearchTypeContainer extends React.Component {
   static propTypes = {
-    selectedSearchType: PropTypes.string.isRequired,
     selectSearchType: PropTypes.func.isRequired,
   };
 
-  state = {
-    options: [
-      { id: 'delivery', name: 'Delivery' },
-      { id: 'pickup', name: 'Pick up' },
-    ],
+  handleSelect = value => {
+    const { selectSearchType } = this.props;
+    if (!value) {
+      selectSearchType('delivery');
+    } else {
+      selectSearchType('pickup');
+    }
   };
 
   render() {
-    const { selectSearchType, selectedSearchType } = this.props;
-    const { options } = this.state;
-    return (
-      <SearchTypes
-        selectSearchType={selectSearchType}
-        selectedSearchType={selectedSearchType}
-        options={options}
-      />
-    );
+    return <SearchTypes selectSearchType={this.handleSelect} />;
   }
 }

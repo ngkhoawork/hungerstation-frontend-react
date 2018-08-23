@@ -6,7 +6,6 @@ const StyledFeature = styled.span`
     {},
     `
     flex: 0.3;
-    margin: 0 70px;
   `,
   )};
   ${mediaMedium`

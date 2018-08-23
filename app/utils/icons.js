@@ -9,6 +9,7 @@ import Facebook from 'icons/facebook.svg';
 import Twitter from 'icons/twitter.svg';
 import Google from 'icons/google.svg';
 import Instagram from 'icons/instagram.svg';
+import Toggle from 'icons/toggle.svg';
 
 const getIcon = name => {
   switch (name) {
@@ -34,6 +35,8 @@ const getIcon = name => {
       return Google;
     case 'twitter':
       return Twitter;
+    case 'toggle':
+      return Toggle;
     default:
       return null;
   }

@@ -1,30 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OptionsChoice from 'components/OptionsChoice';
 import QuickFilters from './QuickFilters';
 import StyledContainer from './StyledContainer';
+import Types from './Types';
 
-const SearchTypes = ({ options, selectSearchType, selectedSearchType }) => (
+const SearchTypes = ({ selectSearchType }) => (
   <StyledContainer>
-    <OptionsChoice
-      options={options}
-      onOptionSelect={selectSearchType}
-      selectedOption={selectedSearchType}
-    />
+    <Types onSelect={selectSearchType} />
     <QuickFilters />
   </StyledContainer>
 );
 
 SearchTypes.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
   selectSearchType: PropTypes.func.isRequired,
-  selectedSearchType: PropTypes.string.isRequired,
 };
 
 export default SearchTypes;

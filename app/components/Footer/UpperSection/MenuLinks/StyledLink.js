@@ -8,7 +8,7 @@ const StyledLink = styled(Link)`
   color: ${fuscousGray};
   text-decoration: none;
   ${mediaMedium`
-    flex: 0 1 28%;
+    flex: 0 1 30%;
     margin-bottom: 5px;
   `};
 `;
