@@ -30,19 +30,23 @@ function* getCurrentLocationFlow() {
   while (true) {
     yield take(GET_CURRENT_LOCATION);
     yield put(toggleSettlementLoadedAction(false));
-    const { coords } = yield call(getUserPosition);
-    const { results } = yield call(getSettlementDetails, coords);
-    const { long_name: city } = getUnit(
-      results[0].address_components,
-      'locality',
-    );
-    const { long_name: district } = getUnit(
-      results[0].address_components,
-      'sublocality',
-    );
+    try {
+      const { coords } = yield call(getUserPosition);
+      const { results } = yield call(getSettlementDetails, coords);
+      const { long_name: city } = getUnit(
+        results[0].address_components,
+        'locality',
+      );
+      const { long_name: district } = getUnit(
+        results[0].address_components,
+        'sublocality',
+      );
 
-    yield put(setSettlementDetailsAction(city, district));
-    yield put(toggleSettlementLoadedAction(true));
+      yield put(setSettlementDetailsAction(city, district));
+      yield put(toggleSettlementLoadedAction(true));
+    } catch (error) {
+      yield put(toggleSettlementLoadedAction(true));
+    }
   }
 }
 

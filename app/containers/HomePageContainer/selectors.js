@@ -10,14 +10,7 @@ const selectHomePageContainerDomain = state =>
 
 export const makeSelectSearchType = createSelector(
   selectHomePageContainerDomain,
-  homePageState => {
-    const output = homePageState && homePageState.get('selectedSearchType');
-
-    if (output) {
-      return output;
-    }
-    return null;
-  },
+  homePageState => homePageState.get('selectedSearchType'),
 );
 
 export { selectHomePageContainerDomain };

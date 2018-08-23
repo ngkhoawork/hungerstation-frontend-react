@@ -10,34 +10,27 @@ const selectSearchBarContainerDomain = state =>
 
 export const makeSelectCities = createSelector(
   selectSearchBarContainerDomain,
-  homePageState => {
-    const output = homePageState && homePageState.get('cities');
-
-    if (output) {
-      return output.JS();
-    }
-    return null;
-  },
+  searchBarState => searchBarState && searchBarState.get('cities'),
 );
 
 export const makeSelectDistricts = createSelector(
   selectSearchBarContainerDomain,
-  homePageState => {
-    const output = homePageState && homePageState.get('districts');
-
-    if (output) {
-      return output.JS();
-    }
-    return null;
-  },
+  searchBarState => searchBarState.get('districts'),
 );
 
 export const makeSelectIsSettlementLoaded = createSelector(
   selectSearchBarContainerDomain,
-  homePageState => {
-    const output = homePageState && homePageState.get('isSettlementLoaded');
-    return output;
-  },
+  searchBarState => searchBarState && searchBarState.get('isSettlementLoaded'),
+);
+
+export const makeSelectDistrict = createSelector(
+  selectSearchBarContainerDomain,
+  searchBarState => searchBarState.get('selectedDistrict'),
+);
+
+export const makeSelectCity = createSelector(
+  selectSearchBarContainerDomain,
+  searchBarState => searchBarState.get('selectedCity'),
 );
 
 export { selectSearchBarContainerDomain };

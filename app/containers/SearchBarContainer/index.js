@@ -16,6 +16,8 @@ import {
   makeSelectCities,
   makeSelectDistricts,
   makeSelectIsSettlementLoaded,
+  makeSelectCity,
+  makeSelectDistrict,
 } from './selectors';
 import {
   getCitiesAction,
@@ -30,6 +32,8 @@ const mapStateToProps = createStructuredSelector({
   cities: makeSelectCities,
   districts: makeSelectDistricts,
   isSettlementLoaded: makeSelectIsSettlementLoaded,
+  selectedCity: makeSelectCity,
+  selectedDistrict: makeSelectDistrict,
 });
 
 const mapDispatchToProps = {
@@ -51,6 +55,8 @@ export default class SearchBarContainer extends React.Component {
     getCities: PropTypes.func.isRequired,
     selectCity: PropTypes.func.isRequired,
     selectDistrict: PropTypes.func.isRequired,
+    selectedCity: PropTypes.string,
+    selectedDistrict: PropTypes.string,
     cities: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -85,6 +91,8 @@ export default class SearchBarContainer extends React.Component {
       selectDistrict,
       getCurrentLocation,
       isSettlementLoaded,
+      selectedCity,
+      selectedDistrict,
     } = this.props;
     return (
       <SearchBar
@@ -94,6 +102,8 @@ export default class SearchBarContainer extends React.Component {
         selectDistrict={selectDistrict}
         getCurrentLocation={getCurrentLocation}
         isSettlementLoaded={isSettlementLoaded}
+        selectedCity={selectedCity}
+        selectedDistrict={selectedDistrict}
       />
     );
   }
