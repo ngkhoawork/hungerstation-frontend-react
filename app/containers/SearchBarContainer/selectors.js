@@ -10,7 +10,7 @@ const selectSearchBarContainerDomain = state =>
 
 export const makeSelectCities = createSelector(
   selectSearchBarContainerDomain,
-  searchBarState => searchBarState && searchBarState.get('cities'),
+  searchBarState => searchBarState.get('cities'),
 );
 
 export const makeSelectDistricts = createSelector(
@@ -20,7 +20,7 @@ export const makeSelectDistricts = createSelector(
 
 export const makeSelectIsSettlementLoaded = createSelector(
   selectSearchBarContainerDomain,
-  searchBarState => searchBarState && searchBarState.get('isSettlementLoaded'),
+  searchBarState => searchBarState.get('isSettlementLoaded'),
 );
 
 export const makeSelectDistrict = createSelector(
