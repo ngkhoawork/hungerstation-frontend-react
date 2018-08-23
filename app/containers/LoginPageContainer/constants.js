@@ -1,1 +1,1 @@
-export const LOGIN_REQUEST = 'LoginPageContainer/LOGIN_REQUEST';
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';

@@ -4,15 +4,9 @@
 
 // Sagas help us gather all our side effects (network requests in this case) in one place
 
-import {
-  take,
-  call,
-  put,
-  fork,
-  select,
-  delay,
-  spawn,
-} from 'redux-saga/effects';
+import { take, call, put, fork, select, spawn } from 'redux-saga/effects';
+
+import { delay } from 'redux-saga';
 
 import registrationSagas from 'containers/RegistrationPageContainer/saga';
 import loginSagas from 'containers/LoginPageContainer/saga';
@@ -35,6 +29,7 @@ export function* logoutFlow() {
 
     yield call(logout);
     yield call(clearStorageItem, 'tokens');
+    yield call(clearStorageItem, 'userId');
     yield call(forwardTo, '/');
   }
 }
@@ -140,8 +135,6 @@ export function* authenticationFlow() {
           yield call(HungerStationAPI.getUser, tokens.accessToken, userId);
         }
       }
-    } else {
-      yield call(logoutFlow);
     }
   }
 }

@@ -32,12 +32,14 @@ export default class LoginForm extends Component {
     submitting: PropTypes.bool.isRequired,
     intl: intlShape,
     classes: PropTypes.object.isRequired,
+    error: PropTypes.string,
   };
 
   render() {
-    const { handleSubmit, submitting, intl, classes } = this.props;
+    const { handleSubmit, submitting, intl, classes, error } = this.props;
     return (
       <StyledForm onSubmit={handleSubmit}>
+        {error && <div>{error}</div>}
         <div>
           <Field
             fullWidth

@@ -7,7 +7,7 @@ import ActionText from './ActionText';
 const AddRestaurantBanner = () => (
   <StyledBanner>
     <ActionText>Would you like to Join Us?</ActionText>
-    <Button label="Add restaurant" type="button" />
+    <Button label="Add restaurant" type="button" width={129} />
   </StyledBanner>
 );
 
