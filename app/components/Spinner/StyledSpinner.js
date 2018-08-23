@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { candlelight } from 'utils/colors';
+import { gold } from 'utils/colors';
 
 const rotate = keyframes`
   from {
@@ -22,9 +22,9 @@ const StyledSpinner = styled.div`
     height: 25px;
     position: relative;
     border-radius: 100%;
-    border-top: 2px solid ${candlelight};
+    border-top: 2px solid ${gold};
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-    border-left: 2px solid ${candlelight};
+    border-left: 2px solid ${gold};
     border-right: 2px solid rgba(0, 0, 0, 0.1);
     content: '';
     animation: ${rotate} 0.5s ease infinite;
