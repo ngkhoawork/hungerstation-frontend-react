@@ -6,7 +6,6 @@ const StyledSection = styled.div`
   ${flexBox({ direction: 'column' }, `width: 808px;`)};
   ${media.lessThan('850px')`
     width: 90%;
-    padding: 0 20px;
   `};
 `;
 

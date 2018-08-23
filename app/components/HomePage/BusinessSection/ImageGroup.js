@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaMedium } from 'utils/styles';
 
 const ImageGroup = styled.div`
   ${flexBox({
@@ -7,6 +7,9 @@ const ImageGroup = styled.div`
     direction: 'column',
     justify: 'space-around',
   })};
+  ${mediaMedium`
+    display: none;
+  `};
 `;
 
 export default ImageGroup;

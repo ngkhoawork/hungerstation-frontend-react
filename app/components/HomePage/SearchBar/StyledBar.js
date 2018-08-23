@@ -18,7 +18,7 @@ const StyledBar = styled.span`
     align-items: center;
     height: auto;
     border: 0;
-    width: 80%;
+    width: 100%;
     align-self: center;
   `};
 `;

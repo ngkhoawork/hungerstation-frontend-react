@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaMedium } from 'utils/styles';
 
 const StyledSection = styled.div`
   ${flexBox(
@@ -8,6 +8,11 @@ const StyledSection = styled.div`
     margin-top: 150px;
   `,
   )};
+  ${mediaMedium`
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  `};
 `;
 
 export default StyledSection;

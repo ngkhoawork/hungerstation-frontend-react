@@ -5,12 +5,13 @@ import Button from 'components/Button';
 import getImage from 'utils/images';
 import StyledSection from '../BusinessSection/StyledSection';
 import Image from '../Image';
+import ImageWrapper from './ImageWrapper';
 
 const WhyHS = () => (
   <StyledSection>
-    <div style={{ position: 'absolute', left: 90 }}>
+    <ImageWrapper>
       <Image src={getImage('burger')} alt="Burger" />
-    </div>
+    </ImageWrapper>
     <SectionDetails
       left
       header="Why use HungerStation?"

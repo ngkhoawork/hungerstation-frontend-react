@@ -21,10 +21,14 @@ export const flexBox = ({ align, justify, direction }, ...args) => {
   `;
 };
 
-export const mediaMedium = (...args) => css`
-  ${media.lessThan('850px')`
+const getMedia = dimension => size => (...args) => css`
+  ${media[dimension](`${size}px`)`
     ${css(...args)};
   `};
 `;
+
+const mediaLess = getMedia('lessThan');
+export const mediaSmall = mediaLess(560);
+export const mediaMedium = mediaLess(850);
 
 export default styles;

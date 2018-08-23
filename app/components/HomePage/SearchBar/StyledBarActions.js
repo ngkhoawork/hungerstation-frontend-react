@@ -1,18 +1,17 @@
 import styled from 'styled-components';
 import { flexBox, mediaMedium } from 'utils/styles';
 
-const StyledFeature = styled.span`
+const StyledBarActions = styled.div`
   ${flexBox(
     {},
     `
-    flex: 0.3;
-    margin: 0 70px;
+    margin-right: 10px;
   `,
   )};
   ${mediaMedium`
-    flex: 1;
-    margin: 0 35px 0 20px;
+    width: 100%;
+    margin-right: 0;
   `};
 `;
 
-export default StyledFeature;
+export default StyledBarActions;

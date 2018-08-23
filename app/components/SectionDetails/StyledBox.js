@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mediaMedium } from 'utils/styles';
 
 const StyledBox = styled.div`
   max-width: 600px;
@@ -11,6 +12,11 @@ const StyledBox = styled.div`
     left &&
     `
     margin-left: 500px;
+  `};
+  ${mediaMedium`
+    margin-left: 0;
+    padding: 0;
+    width: 80%;
   `};
 `;
 

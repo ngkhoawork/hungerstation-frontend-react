@@ -8,6 +8,7 @@ const Subheader = styled.p`
   margin-top: 50px;
   ${media.lessThan('850px')`
     font-size: 25px;
+    margin: 0;
   `};
 `;
 
