@@ -18,7 +18,7 @@ import BusinessSection from './BusinessSection';
 
 const HomePage = () => (
   <StyledPage>
-    <Subheader>Food Deliver From</Subheader>
+    <Subheader>Food Delivery From</Subheader>
     <Header>The Top Restaurants in Saudi Arabia</Header>
     <StyledSection>
       <SearchTypeContainer />

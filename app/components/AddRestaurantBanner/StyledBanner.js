@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { fuscousGray } from 'utils/colors';
 
 const StyledBanner = styled.div`
@@ -9,6 +10,9 @@ const StyledBanner = styled.div`
   padding: 0 112px;
   height: 57px;
   background-color: ${fuscousGray};
+  ${media.lessThan('850px')`
+    display: none;
+  `};
 `;
 
 export default StyledBanner;

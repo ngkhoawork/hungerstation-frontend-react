@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { flexBox } from 'utils/styles';
 
 const StyledBar = styled.span`
@@ -11,6 +12,15 @@ const StyledBar = styled.span`
     height: 56px;
   `,
   )};
+  ${media.lessThan('850px')`
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    border: 0;
+    width: 80%;
+    align-self: center;
+  `};
 `;
 
 export default StyledBar;

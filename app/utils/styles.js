@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import media from 'styled-media-query';
 
 const styles = () => ({
   button: {
@@ -19,5 +20,11 @@ export const flexBox = ({ align, justify, direction }, ...args) => {
     ${css(...flexProps, ...args)};
   `;
 };
+
+export const mediaMedium = (...args) => css`
+  ${media.lessThan('850px')`
+    ${css(...args)};
+  `};
+`;
 
 export default styles;

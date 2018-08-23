@@ -1,14 +1,22 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
+import { flexBox } from 'utils/styles';
 
 const StyledHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 32px 112px;
+  ${flexBox(
+    { align: 'center', justify: 'space-between' },
+    `padding: 32px 112px;
   flex: 1;
   width: 100%;
   height: 100px;
-  font-family: 'HungerStation-Regular', sans-serif;
+  font-family: 'HungerStation-Regular', sans-serif;`,
+  )};
+  ${media.lessThan('950px')`
+    padding: 32px 80px
+  `};
+  ${media.lessThan('950px')`
+    padding: 32px 10px;
+  `};
 `;
 
 export default StyledHeader;

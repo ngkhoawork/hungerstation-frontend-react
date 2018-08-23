@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { flexBox } from 'utils/styles';
 
 const StyledDropdown = styled.span`
@@ -13,6 +14,17 @@ const StyledDropdown = styled.span`
   }
   `,
   )};
+  ${media.lessThan('850px')`
+    height: 56px;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    padding: 0 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    &:first-of-type {
+      margin-left: 0;
+    }
+  `};
 `;
 
 export default StyledDropdown;
