@@ -8,9 +8,9 @@ const Header = styled.p`
   color: ${fuscousGray};
   margin: 0;
   margin-bottom: 15px;
+  line-height: 50px;
   ${mediaMedium`
     font-size: 35px;
-    line-height: 40px;
   `};
 `;
 

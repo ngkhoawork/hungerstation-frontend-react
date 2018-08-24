@@ -2,7 +2,7 @@ import React from 'react';
 import StyledFeatures from './StyledFeatures';
 import Feature from './Feature';
 
-const HowItWorks = () => {
+const HowItWorksSection = () => {
   const features = [
     {
       id: 'location',
@@ -27,4 +27,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks;
+export default HowItWorksSection;

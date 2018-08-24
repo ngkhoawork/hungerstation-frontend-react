@@ -7,9 +7,9 @@ import StyledContainer from './StyledContainer';
 
 const Types = ({ onSelect }) => (
   <StyledContainer>
-    <Paragrpaph>Delivery</Paragrpaph>
+    <Paragrpaph color="white">Delivery</Paragrpaph>
     <Switch onSelect={onSelect} />
-    <Paragrpaph>Pick up</Paragrpaph>
+    <Paragrpaph color="white">Pick up</Paragrpaph>
   </StyledContainer>
 );
 

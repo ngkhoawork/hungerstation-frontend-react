@@ -11,8 +11,9 @@ import StyledPage from './StyledPage';
 import Subheader from './Subheader';
 import Header from './Header';
 import SearchBar from './SearchBar';
-import WhyHS from './WhyHS';
-import HowItWorks from './HowItWorks';
+import WhyHSSection from './WhyHSSection';
+import HowItWorksSection from './HowItWorksSection';
+import MobileAppSection from './MobileAppSection';
 import StyledSection from './StyledSection';
 import BusinessSection from './BusinessSection';
 
@@ -24,8 +25,9 @@ const HomePage = () => (
       <SearchTypeContainer />
       <SearchBar />
     </StyledSection>
-    <WhyHS />
-    <HowItWorks />
+    <WhyHSSection />
+    <HowItWorksSection />
+    <MobileAppSection />
     <BusinessSection />
   </StyledPage>
 );

@@ -3,7 +3,7 @@ import { mediaMedium } from 'utils/styles';
 
 const Header = styled.p`
   font-size: 50px;
-  color: black;
+  color: white;
   margin: 0;
   margin-top: -10px;
   margin-bottom: 40px;

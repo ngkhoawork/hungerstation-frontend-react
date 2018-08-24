@@ -1,23 +1,36 @@
 import styled from 'styled-components';
-import { mediaMedium } from 'utils/styles';
+import { flexBox } from 'utils/styles';
+
+// const StyledBox = styled.div`
+//   max-width: 600px;
+//   background-color: white;
+//   border-radius: 8px;
+//   margin-top: 50px;
+//   padding: 57px 36px 50px 103px;
+//   position: relative;
+//   ${({ left }) =>
+//     left &&
+//     `
+//     margin-left: 500px;
+//   `};
+//   ${mediaMedium`
+//     margin-left: 0;
+//     padding: 0;
+//     width: 80%;
+//   `};
+// `;
 
 const StyledBox = styled.div`
-  max-width: 600px;
-  background-color: white;
-  border-radius: 8px;
-  margin-top: 50px;
-  padding: 57px 36px 50px 103px;
-  position: relative;
-  ${({ left }) =>
-    left &&
+  ${flexBox(
+    { align: 'flex-start', justify: 'flex-start', direction: 'column' },
     `
-    margin-left: 500px;
-  `};
-  ${mediaMedium`
-    margin-left: 0;
-    padding: 0;
-    width: 80%;
-  `};
+    flex: 0.5;
+    padding: 57px 36px 50px 103px;
+    z-index: 100;
+    background: white;
+    border-radius: 8px;
+  `,
+  )};
 `;
 
 export default StyledBox;

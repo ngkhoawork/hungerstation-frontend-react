@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { flexBox, mediaMedium } from 'utils/styles';
+import Background from 'images/background.png';
 
 const StyledApp = styled.div`
   ${flexBox({
@@ -9,6 +10,7 @@ const StyledApp = styled.div`
   })};
   background-color: white;
   font-family: 'HungerStation-Regular', sans-serif;
+  background-image: url(${Background});
   ${mediaMedium`
     padding: 0 10px;
   `};

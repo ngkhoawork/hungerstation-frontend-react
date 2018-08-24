@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { gold } from 'utils/colors';
+import { gold, alto } from 'utils/colors';
 import Toggle from 'icons/toggle.svg';
 import Checkbox from './Checkbox';
 
@@ -14,7 +14,7 @@ const Slider = styled.span`
   transition: 0.4s;
 
   cursor: pointer;
-  background-color: #ccc;
+  border: 1px solid ${alto};
   border-radius: 34px;
 
   ${Checkbox}:focus + & {
@@ -24,8 +24,8 @@ const Slider = styled.span`
   &:before {
     position: absolute;
     content: '';
-    left: 3px;
-    bottom: 3px;
+    left: 2px;
+    bottom: 2px;
     transition: 0.4s;
     height: 16px;
     width: 16px;
@@ -34,7 +34,7 @@ const Slider = styled.span`
     border-radius: 50%;
 
     ${Checkbox}:checked + & {
-      transform: translateX(17px);
+      transform: translateX(18px);
     }
   }
 `;

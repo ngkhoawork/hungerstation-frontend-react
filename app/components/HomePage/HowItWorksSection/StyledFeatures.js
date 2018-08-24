@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { flexBox, mediaMedium } from 'utils/styles';
 
 const StyledFeatures = styled.div`
-  ${flexBox({ justify: 'center' }, `margin-top: 70px;`)};
+  ${flexBox({ justify: 'space-between' }, `margin-top: 100px;`)};
   ${mediaMedium`
     flex-direction: column;
   `};

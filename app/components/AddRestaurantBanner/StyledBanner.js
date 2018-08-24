@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { fuscousGray } from 'utils/colors';
+import { gold } from 'utils/colors';
 
 const StyledBanner = styled.div`
   width: 100%;
@@ -9,7 +9,7 @@ const StyledBanner = styled.div`
   justify-content: center;
   padding: 0 112px;
   height: 57px;
-  background-color: ${fuscousGray};
+  background-color: ${gold};
   ${media.lessThan('850px')`
     display: none;
   `};

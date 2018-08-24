@@ -3,7 +3,7 @@ import media from 'styled-media-query';
 
 const Subheader = styled.p`
   font-size: 35px;
-  color: black;
+  color: white;
   margin: 0;
   margin-top: 50px;
   ${media.lessThan('850px')`

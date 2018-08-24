@@ -3,7 +3,7 @@ import { mediaMedium } from 'utils/styles';
 
 const StyledContainer = styled.div`
   display: flex;
-  flex: 0.7;
+  flex: 0.9;
   justify-content: space-between;
   ${mediaMedium`
     flex-wrap: wrap;
