@@ -6,20 +6,21 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form/immutable';
+import { Field } from 'formik';
 import { intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
 
 import TextInput from 'components/TextInput';
 
 import { printErrors } from 'utils/form/helpers';
-import StyledForm from 'components/LoginForm/StyledForm';
+import StyledForm from 'components/StyledForm';
 
 import messages from './messages';
 
 const RegistrationForm = ({
   handleSubmit,
   submitting,
+  pristine,
   intl,
   classes,
   error,
@@ -73,7 +74,7 @@ const RegistrationForm = ({
       color="primary"
       variant="contained"
       type="submit"
-      disabled={submitting}
+      disabled={submitting || pristine}
     >
       <span className={classes.buttonText}>
         {intl.formatMessage(messages.buttonLabel)}
@@ -85,6 +86,7 @@ const RegistrationForm = ({
 RegistrationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
+  pristine: PropTypes.bool.isRequired,
   intl: intlShape,
   classes: PropTypes.object.isRequired,
   error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { Form } from 'redux-form/immutable';
 
-const StyledForm = styled(Form)`
+const StyledForm = styled.form`
   width: 70%;
 `;
 

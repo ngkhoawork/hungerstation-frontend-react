@@ -1,93 +1,81 @@
-import messages from './messages';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 
-const validate = (values, intl, formName) => {
+import intlService from 'utils/intlService';
+import messages from './messages';
+
+export const validationSchemas = formName => () => {
+  let schema;
+  const validationMessages = {
+    required: intlService.formatMessage(messages.formRequired),
+    password: intlService.formatMessage(messages.password),
+    passwordMatch: intlService.formatMessage(messages.passwordMatch),
+    name: intlService.formatMessage(messages.nameLength),
+    mobileRegex: intlService.formatMessage(messages.mobileRegex),
+    email: intlService.formatMessage(messages.email),
+    mobileLength: intlService.formatMessage(messages.mobileLength),
+  };
   switch (formName) {
-    case 'signin':
-      return LoginFormValidation(values, intl);
-    case 'signup':
-      return RegistrationFormValidation(values, intl);
-    case 'forgotPassword':
-      return ForgotPasswordForm(values, intl);
-    case 'resetPassword':
-      return ResetPasswordForm(values, intl);
+    case 'signinForm':
+      schema = signinSchema;
+      break;
+    case 'signupForm':
+      schema = signupSchema;
+      break;
+    case 'resetPasswordRequestForm':
+      schema = resetPasswordRequestSchema;
+      break;
+    case 'resetPasswordForm':
+      schema = resetPasswordSchema;
+      break;
     default:
       return {};
   }
+
+  return schema(validationMessages);
 };
 
-const RegistrationFormValidation = (values, intl) => {
-  const errors = {};
-  if (!values.get('name')) {
-    errors.name = intl.formatMessage(messages.formRequired);
-  } else if (values.get('name').length < 2 || values.get('name').length > 20) {
-    errors.name =
-      'The name needs to be at least 2 characters and the maximum 20 characters';
-  }
+const signinSchema = ({ required }) =>
+  yup.object().shape({
+    mobile: yup.string().required(required),
+    password: yup.string().required(required),
+  });
 
-  if (!values.get('email')) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.com$/i.test(values.get('email'))) {
-    errors.email = 'Invalid email address';
-  }
+const resetPasswordRequestSchema = ({ required, email }) =>
+  yup.object({
+    email: yup
+      .string()
+      .email(email)
+      .required(required),
+  });
 
-  if (!values.get('mobile')) {
-    errors.mobile = 'Required';
-  } else if (!/^\+966[0-9]/i.test(values.get('mobile'))) {
-    errors.mobile = 'Invalid phone number';
-  } else if (values.get('mobile').length > 13) {
-    errors.mobile = 'The mobile number needs to be at most 9 characters';
-  }
+const resetPasswordSchema = ({ passwordMatch, required }) =>
+  yup.object({
+    password: yup.string().required(required),
+    repeatPassword: yup
+      .string()
+      .oneOf([yup.ref('password')], passwordMatch)
+      .required(required),
+  });
 
-  if (!values.get('password')) {
-    errors.password = 'Required';
-  } else if (
-    values.get('password').length < 8 ||
-    values.get('password').length > 20
-  ) {
-    errors.password =
-      'The password needs to be at least 8 characters and the maximum 20 characters';
-  }
-
-  return errors;
-};
-
-const LoginFormValidation = values => {
-  const errors = {};
-  if (!values.get('mobile')) {
-    errors.mobile = 'Required';
-  } else if (values.get('mobile').length > 15) {
-    errors.mobile = 'Must be 15 characters or less';
-  }
-  if (!values.get('password')) {
-    errors.password = 'Required';
-  }
-
-  return errors;
-};
-
-const ForgotPasswordForm = values => {
-  const errors = {};
-  if (!values.get('email')) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.com$/i.test(values.get('email'))) {
-    errors.email = 'Invalid email address';
-  }
-  return errors;
-};
-
-const ResetPasswordForm = values => {
-  const errors = {};
-  if (!values.get('password')) {
-    errors.password = 'Required';
-  }
-  if (!values.get('repeatPassword')) {
-    errors.repeatPassword = 'Required';
-  }
-  if (errors.password !== errors.repeatPassword) {
-    errors.repeatPassword = "Passwords doesn't match";
-  }
-  return errors;
-};
-
-export default validate;
+const signupSchema = validationMessages =>
+  yup.object({
+    name: yup
+      .string()
+      .min(2, validationMessages.name)
+      .max(20, validationMessages.name)
+      .required(validationMessages.required),
+    email: yup
+      .string()
+      .email(validationMessages.email)
+      .required(validationMessages.required),
+    mobile: yup
+      .string()
+      .required(validationMessages.required)
+      .matches(/^\+966[0-9]/i, validationMessages.mobileRegex)
+      .max(13, validationMessages.mobileLength),
+    password: yup
+      .string()
+      .required(validationMessages.required)
+      .min(8, validationMessages.password)
+      .max(20, validationMessages.password),
+  });

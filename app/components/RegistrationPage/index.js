@@ -5,18 +5,19 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { FormattedMessage } from 'react-intl';
+
 import RegistrationFormContainer from 'containers/RegistrationFormContainer';
+
 import TextLink from 'components/TextLink';
 import TextItem from 'components/TextItem';
-import StyledPage from 'components/LoginPage/StyledPage';
-import Group from 'components/LoginPage/Group';
+import StyledPage from 'components/StyledFormPage';
+import Group from 'components/Group';
 
 import messages from './messages';
 
-const RegistrationPage = ({ onSubmit }) => (
+const RegistrationPage = () => (
   <StyledPage>
     <TextItem size={40} weight={300} fontFamily="regular">
       <FormattedMessage {...messages.header} />
@@ -24,7 +25,7 @@ const RegistrationPage = ({ onSubmit }) => (
     <TextItem size={15}>
       <FormattedMessage {...messages.subheader} />
     </TextItem>
-    <RegistrationFormContainer onSubmit={onSubmit} />
+    <RegistrationFormContainer />
     <Group>
       <TextItem>
         <FormattedMessage {...messages.haveAccount} />&nbsp;
@@ -35,9 +36,5 @@ const RegistrationPage = ({ onSubmit }) => (
     </Group>
   </StyledPage>
 );
-
-RegistrationPage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
 
 export default RegistrationPage;

@@ -1,20 +1,48 @@
 {
+  "app.components.ForgotPasswordForm.buttonLabel": "Send request",
+  "app.components.ForgotPasswordForm.email": "Email",
+  "app.components.ForgotPasswordPage.header": "Forgot Password?",
+  "app.components.ForgotPasswordPage.subheader":
+    "No worries! Enter email and we will send you a reset",
   "app.components.Header.header": "LOG IN",
   "app.components.Header.login": "Log in",
   "app.components.Header.register": "SIGN UP",
+  "app.components.Header.userprofile": "MY PROFILE",
   "app.components.HomePage.header": "This is HomePage component!",
+  "app.components.LoginForm.buttonLabel": "Login",
   "app.components.LoginForm.numberLabel": "Mobile number",
   "app.components.LoginForm.passwordLabel": "Password",
+  "app.components.RegistrationForm.buttonLabel": "Submit",
   "app.components.RegistrationForm.emailLabel": "Email",
   "app.components.RegistrationForm.numberLabel": "Mobile number",
   "app.components.RegistrationForm.passwordLabel": "Password",
   "app.components.RegistrationForm.usernameLabel": "Name",
+  "app.components.ResetPasswordForm.buttonLabel": "Reset password",
+  "app.components.ResetPasswordForm.password": "New password",
+  "app.components.ResetPasswordForm.repeatPassword": "Confirm password",
+  "app.components.ResetPasswordPage.header": "Reset Password",
+  "app.components.ResetPasswordPage.subheader":
+    "Enter your details to reset your password",
+  "app.containers.BackHome.backHome": "Back home",
   "app.containers.LocaleToggle.header": "This is LocaleToggle container !",
-  "app.containers.RegistrationPageContainer.form.required": "Required",
-  "app.containers.RegistrationPageContainer.haveAccount":
-    "Already have an account?",
-  "app.containers.RegistrationPageContainer.header": "Sign up",
-  "app.containers.RegistrationPageContainer.logIn": "Log in",
-  "app.containers.RegistrationPageContainer.subheader":
-    "Sign up by entering your details below"
+  "app.containers.LoginPage.forgotPassword": "Forgot your password?",
+  "app.containers.LoginPage.header": "Log in",
+  "app.containers.LoginPage.noAccount": "Don't have an account?",
+  "app.containers.LoginPage.signUp": "Sign up",
+  "app.containers.LoginPage.subheader": "Log in by entering your details below",
+  "app.containers.RegistrationPage.form.required": "Required",
+  "app.containers.RegistrationPage.haveAccount": "Already have an account?",
+  "app.containers.RegistrationPage.header": "Sign up",
+  "app.containers.RegistrationPage.logIn": "Log in",
+  "app.containers.RegistrationPage.subheader":
+    "Sign up by entering your details below",
+  "form.email": "Invalid email address",
+  "form.mobile.length": "The mobile number needs to be at most 9 characters",
+  "form.mobile.regex": "Invalid phone number",
+  "form.name.length":
+    "The name needs to be at least 2 characters and the maximum 20 characters",
+  "form.password":
+    "The password needs to be at least 8 characters and the maximum 20 characters",
+  "form.passwordMatch": "Passwords don't match",
+  "validation": "Required"
 }

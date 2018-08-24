@@ -2,11 +2,13 @@ import { take, call, put, fork } from 'redux-saga/effects';
 
 import { setStorageItem } from 'utils/localStorage';
 import { parseJwt } from 'utils/tokens';
-import { logUserIn } from 'containers/App/authActions';
 import { authorize, saveTokens } from 'utils/reusedSagas';
 import { forwardTo } from 'utils/route';
-import { startSubmit, stopSubmit, destroy } from 'redux-form/lib/immutable';
+
+import { logUserIn } from 'containers/App/authActions';
+import { startSubmit, stopSubmit } from 'containers/Form/actions';
 import { extractError } from 'utils/helpers';
+
 import { REGISTER_REQUEST } from './constants';
 
 export function* registerFlow() {
@@ -16,7 +18,7 @@ export function* registerFlow() {
     );
 
     try {
-      yield put(startSubmit('signupForm'));
+      yield put(startSubmit());
 
       const { createUser: response } = yield call(authorize, {
         name,
@@ -35,18 +37,14 @@ export function* registerFlow() {
         yield put(logUserIn(response));
         yield call(setStorageItem, 'userId', response.user_id);
 
-        yield put(destroy('sigupForm'));
+        yield put(stopSubmit());
 
         // TODO
         // yield call(successMsg);
         yield call(forwardTo, redirectToRoute);
       }
     } catch (error) {
-      yield put(
-        stopSubmit('signupForm', {
-          _error: extractError(error),
-        }),
-      );
+      yield put(stopSubmit(extractError(error)));
     }
   }
 }

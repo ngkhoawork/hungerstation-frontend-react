@@ -30,7 +30,7 @@ export const printErrors = errors => {
       ) : (
         errors.map(err => (
           <StyledError>
-            <span>{err.message}</span>
+            <span>{err.get('message')}</span>
           </StyledError>
         ))
       )}

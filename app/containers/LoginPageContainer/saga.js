@@ -2,12 +2,14 @@ import { take, race, call, put, fork } from 'redux-saga/effects';
 
 import { setStorageItem } from 'utils/localStorage';
 import { authorize, saveTokens } from 'utils/reusedSagas';
-import { LOGOUT } from 'containers/App/authConstants';
 import { parseJwt } from 'utils/tokens';
-import { logUserIn, logout } from 'containers/App/authActions';
-import { forwardTo } from 'utils/route';
-import { startSubmit, stopSubmit, destroy } from 'redux-form';
 import { extractError } from 'utils/helpers';
+import { forwardTo } from 'utils/route';
+
+import { logUserIn, logout } from 'containers/App/authActions';
+import { startSubmit, stopSubmit } from 'containers/Form/actions';
+
+import { LOGOUT } from 'containers/App/authConstants';
 import { LOGIN_REQUEST } from './constants';
 
 export function* loginFlow() {
@@ -15,8 +17,7 @@ export function* loginFlow() {
     const { mobile, password, redirectToRoute } = yield take(LOGIN_REQUEST);
 
     try {
-      yield put(startSubmit('signinForm'));
-
+      yield put(startSubmit());
       const {
         authResponse: { authenticateUser },
         logoutResponse,
@@ -36,8 +37,8 @@ export function* loginFlow() {
           accessTokenExpiresAt: parseJwt(authenticateUser.token).iat,
         });
         yield call(setStorageItem, 'userId', authenticateUser.user_id);
+        yield put(stopSubmit());
         yield put(logUserIn(authenticateUser));
-        yield put(destroy('sigupForm'));
         yield call(forwardTo, redirectToRoute);
       }
 
@@ -45,11 +46,7 @@ export function* loginFlow() {
         yield put(logout(logoutResponse));
       }
     } catch (error) {
-      yield put(
-        stopSubmit('signinForm', {
-          _error: extractError(error),
-        }),
-      );
+      yield put(stopSubmit(extractError(error)));
     }
   }
 }

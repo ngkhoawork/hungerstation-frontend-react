@@ -5,26 +5,55 @@
  */
 
 import React, { PureComponent } from 'react';
-import { reduxForm } from 'redux-form/immutable';
-import validate from 'utils/form/validation';
-import LoginForm from 'components/LoginForm';
-import styles from 'utils/styles';
-import { withStyles } from '@material-ui/core/styles';
-import { injectIntl } from 'react-intl';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Formik } from 'formik';
 
-@withStyles(styles)
-@injectIntl
-@reduxForm({
-  form: 'signinForm',
-  validate: (values, { intl }) => validate(values, intl, 'signin'),
-  keepDirtyOnReinitialize: true,
-  enableReinitialize: true,
-  touchOnBlur: false,
-  updateUnregisteredFields: true,
-  immutableProps: ['mobile', 'password'],
-})
+import { validationSchemas } from 'utils/form/validation';
+
+import LoginForm from 'components/LoginForm';
+
+import { loginRequest } from 'containers/LoginPageContainer/actions';
+import { FormContainer } from 'containers/Form';
+
+const mapDispatchToProps = {
+  onSubmit: loginRequest,
+};
+
+@connect(
+  null,
+  mapDispatchToProps,
+)
+@FormContainer
 export default class LoginFormContainer extends PureComponent {
+  static propTypes = {
+    clearFormAction: PropTypes.func.isRequired,
+  };
+
   render() {
-    return <LoginForm {...this.props} />;
+    const {
+      error,
+      submitting,
+      intl,
+      classes,
+      onSubmit,
+      submitHandler,
+    } = this.props;
+    return (
+      <Formik
+        onSubmit={submitHandler(onSubmit)}
+        initialValues={{ mobile: '', password: '' }}
+        validationSchema={validationSchemas('signinForm')}
+        render={props => (
+          <LoginForm
+            {...props}
+            error={error}
+            submitting={submitting}
+            intl={intl}
+            classes={classes}
+          />
+        )}
+      />
+    );
   }
 }

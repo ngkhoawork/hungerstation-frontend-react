@@ -7,24 +7,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Field } from 'redux-form/immutable';
+import { Field } from 'formik';
 import { intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import TextInput from 'components/TextInput';
 import Icon from 'components/Icon';
 import { printErrors } from 'utils/form/helpers';
-import StyledForm from './StyledForm';
+import StyledForm from 'components/StyledForm';
 import messages from './messages';
 
-const LoginForm = ({
-  handleSubmit,
-  submitting,
-  intl,
-  classes,
-  error,
-  pristine,
-}) => (
+const LoginForm = ({ handleSubmit, submitting, intl, classes, error }) => (
   <StyledForm onSubmit={handleSubmit}>
     {printErrors(error)}
     <div>
@@ -45,9 +40,20 @@ const LoginForm = ({
         label={intl.formatMessage(messages.passwordLabel)}
       />
     </div>
+    <div>
+      <Field
+        name="rememberMe"
+        render={({ field }) => (
+          <FormControlLabel
+            control={<Checkbox {...field} />}
+            label="Remember me"
+          />
+        )}
+      />
+    </div>
     <Button
       type="submit"
-      disabled={submitting || pristine}
+      disabled={submitting}
       fullWidth
       variant="contained"
       color="primary"
@@ -66,7 +72,6 @@ const LoginForm = ({
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
-  pristine: PropTypes.bool.isRequired,
   intl: intlShape,
   classes: PropTypes.object.isRequired,
   error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
