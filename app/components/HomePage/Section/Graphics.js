@@ -5,7 +5,8 @@ const Graphics = styled.div`
   ${flexBox(
     { align: 'center', justify: 'flex-start', direction: 'column' },
     `
-    flex: 0.5;
+    flex: 0.4;
+    position: relative;
   `,
   )};
 `;
