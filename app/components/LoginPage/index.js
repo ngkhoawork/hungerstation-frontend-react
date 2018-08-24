@@ -10,7 +10,6 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
 import LoginFormContainer from 'containers/LoginFormContainer';
-
 import TextLink from 'components/TextLink';
 import TextItem from 'components/TextItem';
 import Icon from 'components/Icon';
