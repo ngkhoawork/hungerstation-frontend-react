@@ -7,12 +7,6 @@ import ImageWrapper from './ImageWrapper';
 
 import Section from '../Section';
 
-// const WhyHS = () => (
-//   <StyledSection>
-
-//   </StyledSection>
-// );
-
 const WhyHSSection = () => (
   <Section
     direction="reversed"

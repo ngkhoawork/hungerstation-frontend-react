@@ -27,8 +27,9 @@ const getMedia = dimension => size => (...args) => css`
   `};
 `;
 
-const mediaLess = getMedia('lessThan');
+export const mediaLess = getMedia('lessThan');
 export const mediaSmall = mediaLess(560);
 export const mediaMedium = mediaLess(850);
+export const mediaLarge = mediaLess(1130);
 
 export default styles;

@@ -24,6 +24,7 @@ const StyledDropdown = styled.span`
     &:first-of-type {
       margin-left: 0;
     }
+    background-color: white;
   `};
 `;
 

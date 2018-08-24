@@ -20,6 +20,7 @@ const StyledBar = styled.span`
     border: 0;
     width: 100%;
     align-self: center;
+    background-color: transparent;
   `};
 `;
 
