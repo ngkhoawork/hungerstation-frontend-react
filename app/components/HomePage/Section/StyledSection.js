@@ -25,9 +25,12 @@ const StyledSection = styled.div`
   ${mediaMedium`
     &:nth-of-type(2) {
       margin-top: 150px;
+      flex-direction: ${({ direction }) =>
+        direction === 'reversed' ? 'columm-reverse' : 'column'};
     }
   `};
   ${mediaLess(560)`
+    flex-direction: column-reverse;
     &:nth-of-type(2) {
       margin-top: 150px;
     }

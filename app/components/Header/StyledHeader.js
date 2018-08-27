@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import media from 'styled-media-query';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaSmall, mediaLess } from 'utils/styles';
 
 const StyledHeader = styled.div`
   ${flexBox(
@@ -14,11 +13,11 @@ const StyledHeader = styled.div`
   max-width: 1446px;
   `,
   )};
-  ${media.lessThan('950px')`
+  ${mediaLess('950px')`
     padding: 32px 80px
   `};
-  ${media.lessThan('950px')`
-    padding: 32px 10px;
+  ${mediaSmall`
+    padding: 10px;
   `};
 `;
 

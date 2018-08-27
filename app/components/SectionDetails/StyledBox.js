@@ -18,6 +18,7 @@ const StyledBox = styled.div`
   `};
   ${mediaLess(825)`
     width: 90%;
+    padding: 36px 36px 50px 52px;
   `};
 `;
 

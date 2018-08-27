@@ -15,7 +15,13 @@ const WhyHSSection = () => (
   >
     <Button primary type="button" width={133} label="Check" />
     <ImageWrapper>
-      <Image src={getImage('burger')} alt="Burger" />
+      <Image
+        src={getImage('burger')}
+        srcSet={`${getImage('burger-medium')} 560w, ${getImage(
+          'burger',
+        )} 1280w`}
+        alt="Burger"
+      />
     </ImageWrapper>
   </Section>
 );

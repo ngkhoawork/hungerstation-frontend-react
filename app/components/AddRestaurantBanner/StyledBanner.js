@@ -1,16 +1,21 @@
 import styled from 'styled-components';
-import media from 'styled-media-query';
 import { gold } from 'utils/colors';
+import { flexBox, mediaMedium } from 'utils/styles';
 
 const StyledBanner = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 112px;
-  height: 57px;
-  background-color: ${gold};
-  ${media.lessThan('850px')`
+  ${flexBox(
+    { align: 'center', justify: 'center' },
+    `
+    width: 100%;
+    padding: 0 112px;
+    height: 57px;
+    background-color: ${gold};
+    max-width: 1446px;
+    position: relative;
+
+  `,
+  )};
+  ${mediaMedium`
     display: none;
   `};
 `;

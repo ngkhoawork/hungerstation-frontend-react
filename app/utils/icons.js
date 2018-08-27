@@ -10,6 +10,7 @@ import Twitter from 'icons/twitter.svg';
 import Google from 'icons/google.svg';
 import Instagram from 'icons/instagram.svg';
 import Toggle from 'icons/toggle.svg';
+import Close from 'icons/close.svg';
 
 const getIcon = name => {
   switch (name) {
@@ -37,6 +38,8 @@ const getIcon = name => {
       return Twitter;
     case 'toggle':
       return Toggle;
+    case 'close':
+      return Close;
     default:
       return null;
   }

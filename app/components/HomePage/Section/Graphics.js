@@ -13,9 +13,10 @@ const Graphics = styled.div`
   ${mediaLarge`
     width: 400px;
   `};
-  ${mediaLess(825)`
-    width: 10%;
-  `};
 `;
+
+// ${mediaLess(825)`
+//   width: 10%;
+// `};
 
 export default Graphics;
