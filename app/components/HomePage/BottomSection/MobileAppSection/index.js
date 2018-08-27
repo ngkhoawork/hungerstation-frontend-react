@@ -1,25 +1,27 @@
 import React from 'react';
 
+import SectionDetails from 'components/SectionDetails';
+import Icon from 'components/Icon';
+
 import Button from 'components/Button';
 import Section from '../Section';
 import ButtonWrapper from './ButtonWrapper';
 import ButtonGroup from './ButtonGroup';
+import DetailsWrapper from './DetailsWrapper';
 
 const MobileAppSection = () => (
   <Section
-    header="Mobile App fro iOS and Android"
-    description="Download Hunger Station for your mobile device for the easier order here should be some text"
-    background
-  >
-    <ButtonGroup>
-      <ButtonWrapper>
-        <Button primary backgroundImage="applestore" />
-      </ButtonWrapper>
-      <ButtonWrapper>
-        <Button primary backgroundImage="googleplay" />
-      </ButtonWrapper>
-    </ButtonGroup>
-  </Section>
+    hasBackground
+    leftSection={
+      <DetailsWrapper>
+        <Icon name="phone-big" />
+        <SectionDetails
+          header="Mobile App for iOS and Android"
+          description="Download Hunger Station for your mobile device for the easier order here should be some text"
+        />
+      </DetailsWrapper>
+    }
+  />
 );
 
 export default MobileAppSection;

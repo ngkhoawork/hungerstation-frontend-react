@@ -1,40 +1,44 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium, mediaLess } from 'utils/styles';
+import { flexBox, mediaSmall } from 'utils/styles';
 import PhoneVisual from 'images/phone-visual.png';
-import { hintOfRed } from 'utils/colors';
+import PhoneVisualSmall from 'images/phone-visual-small.png';
+import { wildSant } from 'utils/colors';
 
 const StyledSection = styled.div`
-  flex-direction: ${({ direction }) =>
-    direction === 'reversed' ? 'row-reverse' : 'row'};
-  ${flexBox({
-    align: 'flex-start',
-    justify: 'space-between',
-  })};
-  width: 100%;
-  background-image: url(${({ background }) =>
-    background ? PhoneVisual : null});
-  background-color: ${({ background }) =>
-    background ? hintOfRed : 'transparent'};
-  background-position: right bottom;
-  background-size: 100%;
-  margin-top: 80px;
-  padding: ${({ background }) => (background ? '9% 0' : '0')};
-  &:nth-of-type(1) {
-    margin-top: 140px;
-  }
-  ${mediaMedium`
-    &:nth-of-type(2) {
-      margin-top: 150px;
-      flex-direction: ${({ direction }) =>
-        direction === 'reversed' ? 'columm-reverse' : 'column'};
+  ${flexBox(
+    { align: 'flex-start', justify: 'center' },
+    `
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 50px;
+    padding: 0 0 40px;
+    position: relative;
+    margin-top: 50px;
+    &:first-of-type {
+      margin-top: 130px;
     }
+  `,
+  )};
+  ${mediaSmall`
+    flex-direction: column;
+    align-items: center;
+    ${({ hasBackground }) =>
+      hasBackground &&
+      `
+      background-image: url(${PhoneVisualSmall});
+      padding-bottom: 400px;
+      background-size: 80%;
+    `}
   `};
-  ${mediaLess(560)`
-    flex-direction: column-reverse;
-    &:nth-of-type(2) {
-      margin-top: 150px;
-    }
+  ${({ hasBackground }) =>
+    hasBackground &&
+    `
+    background-image: url(${PhoneVisual});
+    background-size: 90%;
+    background-position: right bottom;
+    background-color: ${wildSant}
   `};
 `;
+// border: 1px solid brown;
 
 export default StyledSection;

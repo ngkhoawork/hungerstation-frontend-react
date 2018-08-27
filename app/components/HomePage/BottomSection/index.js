@@ -1,18 +1,18 @@
 import React from 'react';
 
-import StyledSection from '../StyledSection';
+import StyledBottomSection from './StyledBottomSection';
 import WhyHSSection from './WhyHSSection';
 import HowItWorksSection from './HowItWorksSection';
 import MobileAppSection from './MobileAppSection';
 import BusinessSection from './BusinessSection';
 
 const BottomSection = () => (
-  <StyledSection>
+  <StyledBottomSection>
     <WhyHSSection />
     <HowItWorksSection />
     <MobileAppSection />
     <BusinessSection />
-  </StyledSection>
+  </StyledBottomSection>
 );
 
 export default BottomSection;

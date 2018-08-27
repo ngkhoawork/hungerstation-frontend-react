@@ -1,38 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SectionDetails from 'components/SectionDetails';
 import StyledSection from './StyledSection';
-import Graphics from './Graphics';
+import SpaceColumn from './SpaceColumn';
+import LeftSection from './LeftSection';
+import RightSection from './RightSection';
 
-const Section = ({ direction, header, description, background, children }) => (
-  <StyledSection direction={direction} background={background}>
-    <SectionDetails header={header} description={description}>
-      {React.Children.map(children, (child, i) => {
-        if (i === 0) return child;
-        return null;
-      })}
-    </SectionDetails>
-    <Graphics>
-      {React.Children.map(children, (child, i) => {
-        if (i < 1) return null;
-        return child;
-      })}
-    </Graphics>
+const Section = ({ leftSection, rightSection, hasBackground }) => (
+  <StyledSection hasBackground={hasBackground}>
+    <SpaceColumn />
+    <LeftSection>{leftSection}</LeftSection>
+    <RightSection>{rightSection}</RightSection>
   </StyledSection>
 );
 
 Section.propTypes = {
-  direction: PropTypes.string,
-  header: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  children: PropTypes.element,
-  background: PropTypes.bool,
-};
-
-Section.defaultProps = {
-  direction: 'row',
-  background: false,
+  leftSection: PropTypes.func.isRequired,
+  rightSection: PropTypes.func.isRequired,
+  hasBackground: PropTypes.bool.isRequired,
 };
 
 export default Section;

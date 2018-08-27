@@ -2,6 +2,7 @@ import Location from 'icons/location.svg';
 import LocationBig from 'icons/location-big.svg';
 import ChefBig from 'icons/chef-big.svg';
 import PaymentBig from 'icons/payment-big.svg';
+import PhoneBig from 'icons/phone-big.svg';
 import Pin from 'icons/pin.svg';
 import District from 'icons/district.svg';
 import Basket from 'icons/basket.svg';
@@ -22,6 +23,8 @@ const getIcon = name => {
       return ChefBig;
     case 'payment-big':
       return PaymentBig;
+    case 'phone-big':
+      return PhoneBig;
     case 'pin':
       return Pin;
     case 'district':

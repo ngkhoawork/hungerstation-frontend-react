@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import { mediaSmall } from 'utils/styles';
 
 const RightSection = styled.div`
-  flex: 0 1 50%;
-  border: 2px solid blue;
+  width: 700px;
+  z-index: 100;
+  ${mediaSmall`
+    width: 80%;
+  `};
 `;
+// border: 2px solid blue;
 
 export default RightSection;
