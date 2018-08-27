@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaLarge, mediaLess } from 'utils/styles';
+import { flexBox, mediaLarge } from 'utils/styles';
 
 const Graphics = styled.div`
   ${flexBox(
@@ -14,9 +14,5 @@ const Graphics = styled.div`
     width: 400px;
   `};
 `;
-
-// ${mediaLess(825)`
-//   width: 10%;
-// `};
 
 export default Graphics;

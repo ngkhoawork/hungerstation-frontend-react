@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import injectReducer from 'utils/injectReducer';
-import SearchTypes from 'components/HomePage/SearchTypes';
+import SearchTypes from 'components/HomePage/UpperSection/SearchTypes';
 import { makeSelectSearchType } from './selectors';
 import reducer from './reducer';
 import { selectSearchTypeAction } from './actions';

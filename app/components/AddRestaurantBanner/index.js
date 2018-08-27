@@ -7,18 +7,16 @@ import Icon from 'components/Icon';
 import StyledBanner from './StyledBanner';
 import ActionText from './ActionText';
 import IconWrapper from './IconWrapper';
+import ButtonWrapper from './ButtonWrapper';
 
 const AddRestaurantBanner = ({ isVisible, toggleVisibility }) => {
   if (isVisible)
     return (
       <StyledBanner>
         <ActionText>Would you like to Join Us?</ActionText>
-        <Button
-          label="Add restaurant"
-          type="button"
-          width={129}
-          primary={false}
-        />
+        <ButtonWrapper>
+          <Button label="Add restaurant" type="button" primary={false} />
+        </ButtonWrapper>
         {isVisible && (
           <IconWrapper onClick={toggleVisibility}>
             <Icon name="close" size={10} />

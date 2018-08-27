@@ -6,6 +6,7 @@ import StyledBar from './StyledBar';
 import DropdownInput from './DropdownInput';
 import LocateYourself from './LocateYourself';
 import StyledBarActions from './StyledBarActions';
+import ButtonWrapper from './ButtonWrapper';
 
 const SearchBar = () => (
   <StyledBar>
@@ -13,7 +14,9 @@ const SearchBar = () => (
     <DropdownInput placeholder="Enter District" iconName="district" />
     <StyledBarActions>
       <LocateYourself />
-      <Button label="Search" border="right" />
+      <ButtonWrapper>
+        <Button label="Search" border="right" />
+      </ButtonWrapper>
     </StyledBarActions>
   </StyledBar>
 );
