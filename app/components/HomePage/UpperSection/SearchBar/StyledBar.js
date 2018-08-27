@@ -10,6 +10,7 @@ const StyledBar = styled.span`
     margin: 15px 0;
     height: 56px;
     background-color: white;
+    width: 808px;
   `,
   )};
   ${media.lessThan('850px')`

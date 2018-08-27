@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { gold } from 'utils/colors';
+import getImage from 'utils/images';
 
 const StyledButton = styled.button`
   display: flex;
@@ -9,6 +10,7 @@ const StyledButton = styled.button`
   width: 100%;
   border-radius: 8px;
   background-color: ${({ primary }) => (primary ? gold : 'white')};
+  background-image: url(${({ backgroundImage }) => getImage(backgroundImage)});
   box-shadow: 0 10px 20px 0 rgba(198, 58, 58, 0.15);
 `;
 

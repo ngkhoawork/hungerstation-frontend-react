@@ -4,23 +4,23 @@ import { fuscousGray } from 'utils/colors';
 
 import StyledParagraph from './StyledParagraph';
 
-const Paragrpaph = ({ children, light, size, color }) => (
+const Paragraph = ({ children, light, size, color }) => (
   <StyledParagraph light={light} size={size} color={color}>
     {children}
   </StyledParagraph>
 );
 
-Paragrpaph.propTypes = {
+Paragraph.propTypes = {
   children: PropTypes.string.isRequired,
   light: PropTypes.bool,
   size: PropTypes.string,
   color: PropTypes.string,
 };
 
-Paragrpaph.defaultProps = {
+Paragraph.defaultProps = {
   light: false,
   color: fuscousGray,
   size: 'small',
 };
 
-export default Paragrpaph;
+export default Paragraph;

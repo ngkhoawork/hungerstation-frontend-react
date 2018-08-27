@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { gold } from 'utils/colors';
 
 const Circle = styled.span`
   display: flex;
@@ -8,7 +7,7 @@ const Circle = styled.span`
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  background-color: ${gold};
+  background-color: white;
 `;
 
 export default Circle;

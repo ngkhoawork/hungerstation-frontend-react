@@ -19,8 +19,8 @@ const StyledSection = styled.div`
   background-size: 100%;
   margin-top: 80px;
   padding: ${({ background }) => (background ? '9% 0' : '0')};
-  &:nth-of-type(2) {
-    margin-top: 240px;
+  &:nth-of-type(1) {
+    margin-top: 140px;
   }
   ${mediaMedium`
     &:nth-of-type(2) {

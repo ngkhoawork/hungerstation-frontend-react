@@ -7,7 +7,7 @@ const ActionText = styled.p`
   font-weight: 500;
   letter-spacing: 0.22px;
   margin: 0;
-  margin-right: 20px;
+  margin: 0 20px;
 `;
 
 export default ActionText;

@@ -3,7 +3,7 @@ import media from 'styled-media-query';
 import { flexBox } from 'utils/styles';
 
 const StyledSection = styled.div`
-  ${flexBox({ direction: 'column' }, `width: 808px;`)};
+  ${flexBox({ direction: 'column' })};
   ${media.lessThan('850px')`
     width: 90%;
   `};

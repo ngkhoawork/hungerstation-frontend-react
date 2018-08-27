@@ -10,7 +10,6 @@ const StyledBox = styled.div`
     z-index: 100;
     background: white;
     border-radius: 8px;
-    border: 2px solid blue;
   `,
   )};
   ${mediaLarge`

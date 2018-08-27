@@ -7,7 +7,6 @@ const Graphics = styled.div`
     `
     width: 550px;
     position: relative;
-    border: 2px solid red;
   `,
   )};
   ${mediaLarge`

@@ -8,7 +8,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import LocaleToggle from 'containers/LocaleToggle';
+import TextLink from 'components/TextLink';
 import Icon from 'components/Icon';
+import Paragraph from 'components/Paragraph';
 
 import RightSection from './RightSection';
 import Circle from './Circle';
@@ -22,6 +24,11 @@ const Header = () => (
     </Link>
     <RightSection>
       <LocaleToggle />
+      <TextLink to="/login">
+        <Paragraph size="small" color="white">
+          Login
+        </Paragraph>
+      </TextLink>
       <Circle>
         <Icon name="basket" />
       </Circle>

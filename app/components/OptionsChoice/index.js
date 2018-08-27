@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyledContainer from 'components/HomePage/StyledContainer';
-import TextItem from 'components/TextItem';
+import Paragrpaph from 'components/Paragraph';
 import ItemContainer from './ItemContainer';
 import ActiveBorder from './ActiveBorder';
 
@@ -10,9 +10,9 @@ const OptionsChoice = ({ options, selectedOption, onOptionSelect }) => (
   <StyledContainer>
     {options.map(option => (
       <ItemContainer key={option.id} onClick={() => onOptionSelect(option.id)}>
-        <TextItem size={15} weight={500}>
+        <Paragrpaph size="small" color="white">
           {option.name}
-        </TextItem>
+        </Paragrpaph>
         {option.id === selectedOption && <ActiveBorder />}
       </ItemContainer>
     ))}
