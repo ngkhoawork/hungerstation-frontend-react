@@ -19,8 +19,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import injectSaga from 'utils/injectSaga';
 
 import HomePageContainer from 'containers/HomePageContainer';
-import LoginPageContainer from 'containers/LoginPageContainer';
-import RegistrationPageContainer from 'containers/RegistrationPageContainer';
+import LoginPage from 'components/LoginPage';
+import RegistrationPage from 'components/RegistrationPage';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
 import UserProfile from 'components/UserProfile';
 import ResetPasswordPage from 'components/ResetPasswordPage';
@@ -68,8 +68,8 @@ export default class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePageContainer} />
-          <Route path="/login" component={LoginPageContainer} />
-          <Route path="/register" component={RegistrationPageContainer} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />

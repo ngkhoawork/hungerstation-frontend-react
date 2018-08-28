@@ -4,8 +4,6 @@ const styles = () => ({
     marginBottom: '35px',
     borderRadius: '8px',
     height: '56px',
-    // boxShadow: '0 15px 20px -6px rgba(109, 22, 22, 0.1)',
-    boxShadow: 'none',
     fontSize: '16px',
     fontWeight: 300,
   },

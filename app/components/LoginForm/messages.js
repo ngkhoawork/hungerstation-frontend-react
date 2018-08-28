@@ -17,6 +17,6 @@ export default defineMessages({
   },
   buttonLabel: {
     id: 'app.components.LoginForm.buttonLabel',
-    defaultMessage: 'Login',
+    defaultMessage: 'Log in',
   },
 });

@@ -25,6 +25,7 @@ export default class ResetPasswordFormContainer extends PureComponent {
         onSubmit={submitHandler(submit)}
         initialValues={{ password: '', repeatPassword: '' }}
         validationSchema={validationSchemas('resetPasswordForm')}
+        validateOnBlur={false}
         render={props => <ResetPasswordForm {...props} {...this.props} />}
       />
     );

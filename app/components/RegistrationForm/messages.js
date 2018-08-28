@@ -25,6 +25,6 @@ export default defineMessages({
   },
   buttonLabel: {
     id: 'app.components.RegistrationForm.buttonLabel',
-    defaultMessage: 'Submit',
+    defaultMessage: 'Sign up',
   },
 });

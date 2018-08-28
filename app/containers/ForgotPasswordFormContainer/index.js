@@ -25,6 +25,7 @@ export default class ForgotPasswordFormContainer extends PureComponent {
         onSubmit={submitHandler(submit)}
         initialValues={{ email: '' }}
         validationSchema={validationSchemas('resetPasswordRequestForm')}
+        validateOnBlur={false}
         render={props => <ForgotPasswordForm {...props} {...this.props} />}
       />
     );

@@ -9,10 +9,10 @@
   "app.components.Header.register": "SIGN UP",
   "app.components.Header.userprofile": "MY PROFILE",
   "app.components.HomePage.header": "This is HomePage component!",
-  "app.components.LoginForm.buttonLabel": "Login",
+  "app.components.LoginForm.buttonLabel": "Log in",
   "app.components.LoginForm.numberLabel": "Mobile number",
   "app.components.LoginForm.passwordLabel": "Password",
-  "app.components.RegistrationForm.buttonLabel": "Submit",
+  "app.components.RegistrationForm.buttonLabel": "Sign up",
   "app.components.RegistrationForm.emailLabel": "Email",
   "app.components.RegistrationForm.numberLabel": "Mobile number",
   "app.components.RegistrationForm.passwordLabel": "Password",
@@ -37,7 +37,7 @@
   "app.containers.RegistrationPage.subheader":
     "Sign up by entering your details below",
   "form.email": "Invalid email address",
-  "form.mobile.length": "The mobile number needs to be at most 9 characters",
+  "form.mobile.length": "The mobile number needs to have 9 characters",
   "form.mobile.regex": "Invalid phone number",
   "form.name.length":
     "The name needs to be at least 2 characters and the maximum 20 characters",

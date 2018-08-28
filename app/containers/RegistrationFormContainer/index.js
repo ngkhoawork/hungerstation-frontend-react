@@ -45,6 +45,7 @@ export default class RegistrationFormContainer extends PureComponent {
           password: '',
         }}
         validationSchema={validationSchemas('signupForm')}
+        validateOnBlur={false}
         render={props => (
           <RegistrationForm
             {...props}

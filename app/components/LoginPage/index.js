@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 import LoginFormContainer from 'containers/LoginFormContainer';
 import TextLink from 'components/TextLink';
+import ButtonLink from 'components/ButtonLink';
 import TextItem from 'components/TextItem';
 import Icon from 'components/Icon';
 import StyledPage from 'components/StyledFormPage';
@@ -22,9 +23,6 @@ const CenteredContent = styled.div`
   width: 30%;
   display: flex;
   justify-content: space-evenly;
-  // > * {
-  //   margin: 0 8px;
-  // }
 `;
 
 const LoginPage = () => (
@@ -36,9 +34,9 @@ const LoginPage = () => (
       <FormattedMessage {...messages.subheader} />
     </TextItem>
     <CenteredContent>
-      <Icon name="google" />
-      <Icon name="facebook" />
-      <Icon name="twitter" />
+      <Icon name="google" size={32} />
+      <Icon name="facebook" size={32} />
+      <Icon name="twitter" size={32} />
     </CenteredContent>
     <LoginFormContainer />
     <TextLink to="/forgot-password" color="grey">
@@ -48,9 +46,9 @@ const LoginPage = () => (
       <TextItem color="grey" size={15}>
         <FormattedMessage {...messages.noAccount} />&nbsp;
       </TextItem>
-      <TextLink to="/register">
+      <ButtonLink to="/register">
         <FormattedMessage {...messages.signUp} />
-      </TextLink>
+      </ButtonLink>
     </Group>
   </StyledPage>
 );

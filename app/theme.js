@@ -1,10 +1,11 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
+import { fuscousGray, gold, redish } from 'utils/colors';
 
 const themeObj = {
   palette: {
     text: {
-      primary: '#434340',
+      primary: fuscousGray,
     },
   },
   typography: {
@@ -14,43 +15,39 @@ const themeObj = {
     },
     caption: {
       fontFamily: `'HungerStation-Light', 'Helvetica Neue', Helvetica, Arial, sans-serif`,
-      color: () => this.palette.text.primary,
+      color: fuscousGray,
     },
     display1: {
       fontFamily: `'HungerStation-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif`,
-      color: () => this.palette.text.primary,
+      color: fuscousGray,
     },
   },
   overrides: {
     // Name of the component ⚛️ / style sheet
     MuiButton: {
       // Name of the rule
+      contained: {
+        '&$disabled': {
+          color: fuscousGray,
+        },
+      },
       containedPrimary: {
-        // Some CSS
-        backgroundColor: '#FFD700',
-        borderRadius: 3,
-        border: 0,
-        color: '#434340',
+        backgroundColor: gold,
+        color: fuscousGray,
         fontFamily: `'HungerStation-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif`,
-        height: 48,
-        padding: '0 30px',
-        // boxShadow: '0 15px 20px -6px rgba(109, 22, 22, 0.1)',
+        boxShadow: '0 15px 20px -6px rgba(109, 22, 22, 0.1)',
         '&:hover': {
-          backgroundColor: lighten('#FFD700', 0.2),
-          // Reset on touch devices, it doesn't add specificity
-          // '@media (hover: none)': {
-          //   backgroundColor: theme.palette.grey[300],
-          // },
-          // '&$disabled': {
-          //   backgroundColor: theme.palette.action.disabledBackground,
-          // },
+          backgroundColor: lighten(gold, 0.2),
         },
       },
     },
     MuiFormLabel: {
       root: {
         '&$focused': {
-          color: () => this.palette.text.primary,
+          color: fuscousGray,
+        },
+        '&$error': {
+          color: redish,
         },
       },
     },
@@ -60,7 +57,11 @@ const themeObj = {
       },
       underline: {
         '&:after': {
-          borderBottom: `2px solid #434340`,
+          borderBottom: `1px solid ${fuscousGray}`,
+        },
+        '&$error:after': {
+          borderBottomColor: redish,
+          transform: 'scaleX(1)', // error is always underlined in red
         },
       },
     },

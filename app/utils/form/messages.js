@@ -25,7 +25,7 @@ export default defineMessages({
   },
   mobileLength: {
     id: 'form.mobile.length',
-    defaultMessage: 'The mobile number needs to be at most 9 characters',
+    defaultMessage: 'The mobile number needs to have 9 characters',
   },
   mobileRegex: {
     id: 'form.mobile.regex',

@@ -73,7 +73,8 @@ const signupSchema = validationMessages =>
       .string()
       .required(validationMessages.required)
       .matches(/^\+966[0-9]/i, validationMessages.mobileRegex)
-      .max(13, validationMessages.mobileLength),
+      .max(13, validationMessages.mobileLength)
+      .min(13, validationMessages.mobileLength),
     password: yup
       .string()
       .required(validationMessages.required)

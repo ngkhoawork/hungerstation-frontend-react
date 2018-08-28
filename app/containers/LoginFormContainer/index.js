@@ -44,6 +44,7 @@ export default class LoginFormContainer extends PureComponent {
         onSubmit={submitHandler(onSubmit)}
         initialValues={{ mobile: '', password: '' }}
         validationSchema={validationSchemas('signinForm')}
+        validateOnBlur={false}
         render={props => (
           <LoginForm
             {...props}

@@ -8,18 +8,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Field } from 'formik';
-import { intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { List } from 'immutable';
 
 import TextInput from 'components/TextInput';
 import Icon from 'components/Icon';
+
+import intl from 'utils/intlService';
 import { printErrors } from 'utils/form/helpers';
 import StyledForm from 'components/StyledForm';
 import messages from './messages';
 
-const LoginForm = ({ handleSubmit, submitting, intl, classes, error }) => (
+const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
   <StyledForm onSubmit={handleSubmit}>
     {printErrors(error)}
     <div>
@@ -40,7 +40,7 @@ const LoginForm = ({ handleSubmit, submitting, intl, classes, error }) => (
         label={intl.formatMessage(messages.passwordLabel)}
       />
     </div>
-    <div>
+    {/* <div>
       <Field
         name="rememberMe"
         render={({ field }) => (
@@ -50,7 +50,7 @@ const LoginForm = ({ handleSubmit, submitting, intl, classes, error }) => (
           />
         )}
       />
-    </div>
+    </div> */}
     <Button
       type="submit"
       disabled={submitting}
@@ -60,7 +60,7 @@ const LoginForm = ({ handleSubmit, submitting, intl, classes, error }) => (
       className={classes.button}
     >
       <span className={classes.buttonIcon}>
-        <Icon name="plus" size={20} />
+        <Icon name="plus" size={16} />
       </span>
       <span className={classes.buttonText}>
         {intl.formatMessage(messages.buttonLabel)}
@@ -72,9 +72,9 @@ const LoginForm = ({ handleSubmit, submitting, intl, classes, error }) => (
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
-  intl: intlShape,
   classes: PropTypes.object.isRequired,
-  error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  // error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  error: PropTypes.instanceOf(List),
 };
 
 export default LoginForm;

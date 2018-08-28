@@ -49,7 +49,9 @@ const ForgotPasswordForm = ({ handleSubmit, submitting, intl, classes }) => (
       color="primary"
       className={classes.button}
     >
-      {intl.formatMessage(messages.buttonLabel)}
+      <span className={classes.buttonText}>
+        {intl.formatMessage(messages.buttonLabel)}
+      </span>
     </Button>
   </StyledForm>
 );

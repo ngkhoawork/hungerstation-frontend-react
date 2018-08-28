@@ -10,8 +10,8 @@ import TextField from '@material-ui/core/TextField';
 
 const TextInput = ({ field, form: { touched, errors }, ...custom }) => (
   <TextField
-    error={touched && !!errors[field.name]}
-    helperText={touched && errors[field.name]}
+    error={!!touched[field.name] && !!errors[field.name]}
+    helperText={!!touched[field.name] && errors[field.name]}
     margin="normal"
     {...field}
     {...custom}

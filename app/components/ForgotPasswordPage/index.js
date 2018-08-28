@@ -31,9 +31,9 @@ const ForgotPasswordPage = () => (
       <FormattedMessage {...messages.subheader} />
     </TextItem>
     <CenteredContent>
-      <Icon name="google" />
-      <Icon name="facebook" />
-      <Icon name="twitter" />
+      <Icon name="google" size={32} />
+      <Icon name="facebook" size={32} />
+      <Icon name="twitter" size={32} />
     </CenteredContent>
 
     <ForgotPasswordFormContainer />

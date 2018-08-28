@@ -28,8 +28,9 @@ export const printErrors = errors => {
           <span>{errors}</span>
         </StyledError>
       ) : (
-        errors.map(err => (
-          <StyledError>
+        errors.map((err, i) => (
+          /* eslint-disable-next-line react/no-array-index-key */
+          <StyledError key={`form-error${i}`}>
             <span>{err.get('message')}</span>
           </StyledError>
         ))
