@@ -16,6 +16,8 @@ const StyledSection = styled.div`
     margin-top: 50px;
     &:first-of-type {
       margin-top: 130px;
+      margin-bottom: 0;
+      padding: 0;
     }
   `,
   )};
@@ -39,6 +41,5 @@ const StyledSection = styled.div`
     background-color: ${wildSant}
   `};
 `;
-// border: 1px solid brown;
 
 export default StyledSection;

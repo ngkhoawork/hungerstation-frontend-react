@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaSmall, mediaLess } from 'utils/styles';
+import { flexBox, mediaSmall, mediaMedium, mediaLess } from 'utils/styles';
 
 const StyledHeader = styled.div`
   ${flexBox(
@@ -15,6 +15,9 @@ const StyledHeader = styled.div`
   )};
   ${mediaLess('950px')`
     padding: 32px 80px
+  `};
+  ${mediaMedium`
+    padding: 10px 20px;
   `};
   ${mediaSmall`
     padding: 10px;

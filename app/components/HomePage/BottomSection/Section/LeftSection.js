@@ -6,12 +6,11 @@ const LeftSection = styled.div`
   background: white;
   z-index: 50;
   &:nth-of-type(2) {
+    border-radius: 0 0 8px 8px;
     ${mediaSmall`
       width: 80%;
     `};
   }
 `;
-
-// border: 2px solid green;
 
 export default LeftSection;

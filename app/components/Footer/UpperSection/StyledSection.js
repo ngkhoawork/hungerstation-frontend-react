@@ -11,10 +11,11 @@ const StyledSection = styled.div`
   ${mediaMedium`
     flex-direction: column;
     align-items: center;
-    padding: 100px 20px 30px;
+    padding: 0 20px 30px;
   `};
   ${mediaSmall`
     align-items: flex-start;
+    margin: 0 20px;
   `};
 `;
 

@@ -26,7 +26,7 @@ const Header = () => (
       <LocaleToggle />
       <TextLink to="/login">
         <Paragraph size="small" color="white">
-          Login
+          Log in
         </Paragraph>
       </TextLink>
       <Circle>

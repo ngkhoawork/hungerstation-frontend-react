@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Paragrpaph from 'components/Paragrpaph';
+import Paragrpaph from 'components/Paragraph';
 import Switch from '../Switch';
 import StyledContainer from './StyledContainer';
 

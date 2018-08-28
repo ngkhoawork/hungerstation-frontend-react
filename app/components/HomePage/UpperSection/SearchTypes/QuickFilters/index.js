@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Paragrpaph from 'components/Paragrpaph';
+import Paragrpaph from 'components/Paragraph';
 import StyledContainer from './StyledContainer';
 
 const QuickFilters = () => (

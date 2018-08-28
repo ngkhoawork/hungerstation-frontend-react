@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaLarge, mediaLess } from 'utils/styles';
+import { flexBox } from 'utils/styles';
 
 const StyledBox = styled.div`
   ${flexBox(

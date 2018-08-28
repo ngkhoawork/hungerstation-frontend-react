@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import media from 'styled-media-query';
+import { mediaSmall } from 'utils/styles';
 
 const StyledSection = styled.div`
   display: flex;
   width: 100%;
   padding: 30px 113px 70px;
-  ${media.lessThan('850px')`
-    display: none;
+  ${mediaSmall`
+    padding: 20px 40px;
   `};
 `;
 
