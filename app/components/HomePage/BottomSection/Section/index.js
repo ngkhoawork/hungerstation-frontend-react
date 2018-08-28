@@ -15,9 +15,15 @@ const Section = ({ leftSection, rightSection, hasBackground }) => (
 );
 
 Section.propTypes = {
-  leftSection: PropTypes.func.isRequired,
-  rightSection: PropTypes.func.isRequired,
-  hasBackground: PropTypes.bool.isRequired,
+  leftSection: PropTypes.object,
+  rightSection: PropTypes.object,
+  hasBackground: PropTypes.bool,
+};
+
+Section.defaultProps = {
+  leftSection: null,
+  rightSection: null,
+  hasBackground: false,
 };
 
 export default Section;

@@ -16,11 +16,12 @@ const Button = ({ primary, label, backgroundImage }) => (
 
 Button.propTypes = {
   primary: PropTypes.bool,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   backgroundImage: PropTypes.string,
 };
 
 Button.defaultProps = {
+  label: null,
   primary: true,
   backgroundImage: null,
 };
