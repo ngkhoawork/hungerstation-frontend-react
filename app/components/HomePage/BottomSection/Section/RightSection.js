@@ -8,6 +8,5 @@ const RightSection = styled.div`
     width: 80%;
   `};
 `;
-// border: 2px solid blue;
 
 export default RightSection;
