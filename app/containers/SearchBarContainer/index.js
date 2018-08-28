@@ -11,7 +11,7 @@ import { createStructuredSelector } from 'reselect';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import SearchBar from 'components/HomePage/SearchBar';
+import SearchBar from 'components/HomePage/UpperSection/SearchBar';
 import {
   makeSelectCities,
   makeSelectDistricts,
