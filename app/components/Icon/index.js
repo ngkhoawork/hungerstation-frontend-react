@@ -2,18 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import getIcon from 'utils/icons';
+import { wildSant } from 'utils/colors';
+import Circle from 'components/Circle';
 import StyledIcon from './StyledIcon';
-import Circle from './Circle';
 import IconWrapper from './IconWrapper';
-
-// const Icon = ({ name, size, circled }) => (
-//   <StyledIcon size={size} src={getIcon(name)} alt={name} circled={circled} />
-// );
 
 const Icon = ({ name, circled }) => (
   <IconWrapper>
     <StyledIcon src={getIcon(name)} alt={name} />
-    {circled && <Circle />}
+    {circled && <Circle color={wildSant} />}
   </IconWrapper>
 );
 

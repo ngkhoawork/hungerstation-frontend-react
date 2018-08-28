@@ -26,6 +26,7 @@ import UserProfile from 'components/UserProfile';
 import ResetPasswordPage from 'components/ResetPasswordPage';
 import ForgotPasswordPage from 'components/ForgotPasswordPage';
 import AddRestaurantBanner from 'components/AddRestaurantBanner';
+import RestaurantList from 'components/RestaurantList';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -76,6 +77,7 @@ export default class App extends Component {
           <Route path="/register" component={RegistrationPageContainer} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
+          <Route path="/restaurant-list" component={RestaurantList} />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
 
           <Redirect from="*" to="/" />
