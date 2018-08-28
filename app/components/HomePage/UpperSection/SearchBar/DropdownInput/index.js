@@ -5,16 +5,17 @@ import Icon from 'components/Icon';
 import StyledDropdown from './StyledDropdown';
 import Placeholder from './Placeholder';
 
-const DropdownInput = ({ placeholder, iconName }) => (
+const DropdownInput = ({ iconName, placeholder, value }) => (
   <StyledDropdown>
-    <Icon name={iconName} />
-    <Placeholder>{placeholder}</Placeholder>
+    {iconName && <Icon name={iconName} />}
+    {value || <Placeholder>{placeholder}</Placeholder>}
   </StyledDropdown>
 );
 
 DropdownInput.propTypes = {
-  placeholder: PropTypes.string.isRequired,
   iconName: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default DropdownInput;

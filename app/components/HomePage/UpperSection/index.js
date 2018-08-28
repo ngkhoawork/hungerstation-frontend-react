@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import SearchTypeContainer from 'containers/SearchTypeContainer';
+import SearchBarContainer from 'containers/SearchBarContainer';
 import AppHeader from 'components/Header';
 
 import StyledUpperSection from './StyledUpperSection';
 import Subheader from './Subheader';
 import Header from './Header';
-import SearchBar from './SearchBar';
 import FiltersWrapper from './FiltersWrapper';
 
 import StyledSection from '../StyledSection';
@@ -21,7 +21,7 @@ const UpperSection = ({ location }) => (
     <Header>The Top Restaurants in Saudi Arabia</Header>
     <StyledSection>
       <SearchTypeContainer />
-      <SearchBar />
+      <SearchBarContainer />
     </StyledSection>
     <FiltersWrapper>
       <QuickFilters />
