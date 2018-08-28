@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { flexBox } from 'utils/styles';
 
 const StyledContainer = styled.span`
-  display: flex;
+  ${flexBox({})};
 `;
 
 export default StyledContainer;

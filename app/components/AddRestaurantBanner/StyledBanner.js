@@ -1,13 +1,23 @@
 import styled from 'styled-components';
-import { fuscousGray } from 'utils/colors';
+import { gold } from 'utils/colors';
+import { flexBox, mediaMedium } from 'utils/styles';
 
 const StyledBanner = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 57px;
-  background-color: ${fuscousGray};
+  ${flexBox(
+    { align: 'center', justify: 'center' },
+    `
+    width: 100%;
+    padding: 0 112px;
+    height: 57px;
+    background-color: ${gold};
+    max-width: 1446px;
+    position: relative;
+
+  `,
+  )};
+  ${mediaMedium`
+    display: none;
+  `};
 `;
 
 export default StyledBanner;

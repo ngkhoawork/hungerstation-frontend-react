@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 import StyledButton from './StyledButton';
 import Text from './Text';
 
-const Button = ({ primary, label, type, onClick, width }) => (
-  <StyledButton primary={primary} type={type} onClick={onClick} width={width}>
+const Button = ({ primary, label, backgroundImage }) => (
+  <StyledButton
+    primary={primary}
+    type="button"
+    backgroundImage={backgroundImage}
+  >
     <Text>{label}</Text>
   </StyledButton>
 );
@@ -13,15 +17,12 @@ const Button = ({ primary, label, type, onClick, width }) => (
 Button.propTypes = {
   primary: PropTypes.bool,
   label: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  onClick: PropTypes.func,
-  width: PropTypes.number.isRequired,
+  backgroundImage: PropTypes.string,
 };
 
 Button.defaultProps = {
   primary: true,
-  type: 'button',
-  onClick: () => ({}),
+  backgroundImage: null,
 };
 
 export default Button;

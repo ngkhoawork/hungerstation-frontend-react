@@ -28,6 +28,7 @@ import ForgotPasswordPage from 'components/ForgotPasswordPage';
 import AddRestaurantBanner from 'components/AddRestaurantBanner';
 
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import saga from './authSagas';
@@ -52,6 +53,9 @@ export default class App extends Component {
   static propTypes = {
     dir: PropTypes.string,
     // authenticateUser: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+    }),
   };
 
   // componentWillMount() {
@@ -60,12 +64,12 @@ export default class App extends Component {
   // }
 
   render() {
-    const { dir } = this.props;
+    const { dir, location } = this.props;
     return (
       <StyledApp dir={dir}>
         <CssBaseline />
         <AddRestaurantBanner />
-        <Header />
+        {location.pathname !== '/' && <Header />}
         <Switch>
           <Route exact path="/" component={HomePageContainer} />
           <Route path="/login" component={LoginPage} />
@@ -76,6 +80,7 @@ export default class App extends Component {
 
           <Redirect from="*" to="/" />
         </Switch>
+        <Footer />
       </StyledApp>
     );
   }

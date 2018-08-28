@@ -39,7 +39,10 @@ export default class LocaleToggle extends React.PureComponent {
   };
 
   getOptions = () =>
-    appLocales.map(locale => ({ id: locale, name: locale.toUpperCase() }));
+    appLocales.map(locale => ({
+      id: locale,
+      name: locale === 'en' ? 'eng' : 'عربي',
+    }));
 
   render() {
     const { locale, changeLocale } = this.props;
