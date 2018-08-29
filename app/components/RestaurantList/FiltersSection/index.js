@@ -6,8 +6,9 @@ import Header from './Header';
 import Category from './Category';
 import Tags from './Tags';
 import Cuisines from './Cuisines';
+import DeliveryTypes from './DeliveryTypes';
 
-const FiltersSection = ({ tags, cuisines }) => (
+const FiltersSection = ({ tags, cuisines, deliveryTypes }) => (
   <StyledFiltersSection>
     <Header />
     <Category title="Tags">
@@ -15,6 +16,9 @@ const FiltersSection = ({ tags, cuisines }) => (
     </Category>
     <Category title="Cuisines">
       <Cuisines cuisines={cuisines} />
+    </Category>
+    <Category title="Delivery Types">
+      <DeliveryTypes types={deliveryTypes} />
     </Category>
   </StyledFiltersSection>
 );
@@ -28,6 +32,13 @@ FiltersSection.propTypes = {
     }),
   ).isRequired,
   cuisines: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      isSelected: PropTypes.bool.isRequired,
+    }),
+  ).isRequired,
+  deliveryTypes: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,

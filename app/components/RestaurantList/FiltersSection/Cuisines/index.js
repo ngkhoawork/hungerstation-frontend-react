@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
-import StyledCuisinesContainer from './StyledCuisinesContainer';
-import StyledCuisineItem from './StyledCuisineItem';
-import StyledDetails from './StyledDetails';
+import StyledContainer from '../StyledContainer';
+import StyledItem from '../StyledItem';
+import StyledDetails from '../StyledDetails';
 
 const Cuisines = ({ cuisines }) => (
-  <StyledCuisinesContainer>
+  <StyledContainer>
     {cuisines.map(cuisine => (
-      <StyledCuisineItem>
+      <StyledItem key={cuisine.id}>
         <StyledDetails>
           <Icon name={cuisine.id} />
           <Paragraph color="lightgrey">{cuisine.label}</Paragraph>
         </StyledDetails>
         {cuisine.isSelected && <Icon name="tick" />}
-      </StyledCuisineItem>
+      </StyledItem>
     ))}
-  </StyledCuisinesContainer>
+  </StyledContainer>
 );
 
 Cuisines.propTypes = {

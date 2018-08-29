@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/styles';
 
-const StyledCuisineItem = styled.div`
+const StyledContainer = styled.div`
   ${flexBox(
-    { align: 'center', justify: 'space-between' },
+    { align: 'flex-start', direction: 'column' },
     `
     width: 100%;
   `,
   )};
 `;
 
-export default StyledCuisineItem;
+export default StyledContainer;
