@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { gold } from 'utils/colors';
 
 const ActiveBorder = styled.span`
-  border: 2px solid ${gold};
+  border: 1px solid ${gold};
   border-radius: 10px;
-  width: 50%;
+  width: 70%;
   height: 0;
 `;
 

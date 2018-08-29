@@ -7,41 +7,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { FormattedMessage } from 'react-intl';
-
 import LocaleToggle from 'containers/LocaleToggle';
-import Icon from 'components/Icon';
 import TextLink from 'components/TextLink';
+import Icon from 'components/Icon';
+import Paragraph from 'components/Paragraph';
 
 import RightSection from './RightSection';
 import Circle from './Circle';
-import messages from './messages';
 import StyledHeader from './StyledHeader';
 import logo from '../../images/hungerstation.svg';
 
 const Header = () => (
   <StyledHeader>
     <Link to="/">
-      <img alt="logo" src={logo} height="45px" />
+      <img alt="logo" src={logo} height="34px" />
     </Link>
     <RightSection>
       <LocaleToggle />
       <TextLink to="/login">
-        <FormattedMessage {...messages.login} />
+        <Paragraph size="small" color="white">
+          Log in
+        </Paragraph>
       </TextLink>
       <Circle>
-        <Icon name="basket" size={17} />
+        <Icon name="basket" />
       </Circle>
     </RightSection>
   </StyledHeader>
 );
-
-// <Link to="/register">
-//   <FormattedMessage {...messages.register} />
-// </Link>
-//
-// <Link to="/userprofile">
-//   <FormattedMessage {...messages.userprofile} />
-// </Link>
 
 export default Header;
