@@ -1,6 +1,18 @@
 import { GraphQLClient } from 'graphql-request';
 
-export const BASE_URL = 'http://localhost:3001';
+let BASE_URL;
+
+switch (process.env.API_ENV) {
+  case 'production':
+    BASE_URL = 'https://development.hs-preview.com/api/v3/graphql';
+    break;
+  case 'staging':
+    BASE_URL = 'https://hs-staging.com/api/v3/graphql';
+    break;
+  default:
+    BASE_URL = 'http://localhost:3001';
+    break;
+}
 
 export const protectedClient = token =>
   new GraphQLClient(BASE_URL, {
