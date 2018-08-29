@@ -10,6 +10,9 @@ const StyledItem = styled.div`
   `,
   )};
   border-bottom: ${({ hasBorder }) => (hasBorder ? '1px solid white' : 'none')};
+  &:last-of-type {
+    border: 0;
+  }
 `;
 
 export default StyledItem;

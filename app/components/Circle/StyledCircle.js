@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const StyledCircle = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
+  border-radius: ${({ size }) => size / 2}px;
   background-color: ${({ color }) => color};
   position: absolute;
   top: 50%;

@@ -18,7 +18,7 @@ const FiltersSection = ({ tags, cuisines, deliveryTypes }) => (
     <Category title="Cuisines">
       <Cuisines cuisines={cuisines} />
     </Category>
-    <Category title="Orders">
+    <Category title="Order">
       <Orders />
     </Category>
     <Category title="Delivery Types">

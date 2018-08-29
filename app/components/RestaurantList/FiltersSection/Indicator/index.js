@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Paragraph from 'components/Paragraph';
-import Circle from 'components/Circle';
 import StyledIndicator from './StyledIndicator';
 
 const Indicator = ({ value }) => (
-  <StyledIndicator>
+  <StyledIndicator size={16}>
     <Paragraph color="white">{value}</Paragraph>
-    <Circle color="#35c635" />
   </StyledIndicator>
 );
 
