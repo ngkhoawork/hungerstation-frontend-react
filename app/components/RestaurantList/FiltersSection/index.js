@@ -7,6 +7,7 @@ import Category from './Category';
 import Tags from './Tags';
 import Cuisines from './Cuisines';
 import DeliveryTypes from './DeliveryTypes';
+import Orders from './Orders';
 
 const FiltersSection = ({ tags, cuisines, deliveryTypes }) => (
   <StyledFiltersSection>
@@ -16,6 +17,9 @@ const FiltersSection = ({ tags, cuisines, deliveryTypes }) => (
     </Category>
     <Category title="Cuisines">
       <Cuisines cuisines={cuisines} />
+    </Category>
+    <Category title="Orders">
+      <Orders />
     </Category>
     <Category title="Delivery Types">
       <DeliveryTypes types={deliveryTypes} />

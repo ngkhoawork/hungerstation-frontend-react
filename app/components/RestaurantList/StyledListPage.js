@@ -6,6 +6,7 @@ const StyledListPage = styled.div`
     { align: 'center' },
     `
     width: 100%;
+    padding: 20px 112px;
   `,
   )};
 `;
