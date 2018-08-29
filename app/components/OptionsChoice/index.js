@@ -1,18 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { fuscousGray } from 'utils/colors';
 import StyledContainer from 'components/HomePage/StyledContainer';
-import Paragrpaph from 'components/Paragraph';
+import Paragraph from 'components/Paragraph';
 import ItemContainer from './ItemContainer';
 import ActiveBorder from './ActiveBorder';
 
-const OptionsChoice = ({ options, selectedOption, onOptionSelect }) => (
+const OptionsChoice = ({
+  options,
+  selectedOption,
+  onOptionSelect,
+  variant = 'dark',
+}) => (
   <StyledContainer>
     {options.map(option => (
       <ItemContainer key={option.id} onClick={() => onOptionSelect(option.id)}>
-        <Paragrpaph size="small" color="white">
+        <Paragraph
+          size="small"
+          color={variant === 'dark' ? fuscousGray : '#ffffff'}
+        >
           {option.name}
-        </Paragrpaph>
+        </Paragraph>
         {option.id === selectedOption && <ActiveBorder />}
       </ItemContainer>
     ))}
@@ -28,6 +37,7 @@ OptionsChoice.propTypes = {
   ),
   selectedOption: PropTypes.string.isRequired,
   onOptionSelect: PropTypes.func.isRequired,
+  variant: PropTypes.string,
 };
 
 export default OptionsChoice;

@@ -36,6 +36,7 @@ export default class LocaleToggle extends React.PureComponent {
   static propTypes = {
     changeLocale: PropTypes.func.isRequired,
     locale: PropTypes.string.isRequired,
+    variant: PropTypes.string,
   };
 
   getOptions = () =>
@@ -45,9 +46,10 @@ export default class LocaleToggle extends React.PureComponent {
     }));
 
   render() {
-    const { locale, changeLocale } = this.props;
+    const { locale, changeLocale, variant } = this.props;
     return (
       <OptionsChoice
+        variant={variant}
         options={this.getOptions()}
         selectedOption={locale}
         onOptionSelect={changeLocale}
@@ -55,5 +57,3 @@ export default class LocaleToggle extends React.PureComponent {
     );
   }
 }
-
-LocaleToggle.propTypes = {};

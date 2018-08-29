@@ -7,7 +7,7 @@ const StyledApp = styled.div`
     direction: 'column',
     justify: 'flex-start',
   })};
-  background-color: white;
+  background-color: ${props => (props.dark ? '#f7f7f7' : '#ffffff')};
   font-family: 'HungerStation-Regular', sans-serif;
 `;
 

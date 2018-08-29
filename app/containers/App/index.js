@@ -66,12 +66,21 @@ export default class App extends Component {
   render() {
     const { dir, location } = this.props;
     return (
-      <StyledApp dir={dir}>
+      <StyledApp dir={dir} dark={location.pathname !== '/'}>
         <CssBaseline />
         <AddRestaurantBanner />
-        {location.pathname !== '/' && <Header />}
+        {location.pathname !== '/' && <Header dark />}
         <Switch>
-          <Route exact path="/" component={HomePageContainer} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <div>
+                <HomePageContainer {...props} />
+                <Footer />
+              </div>
+            )}
+          />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
@@ -80,7 +89,6 @@ export default class App extends Component {
 
           <Redirect from="*" to="/" />
         </Switch>
-        <Footer />
       </StyledApp>
     );
   }

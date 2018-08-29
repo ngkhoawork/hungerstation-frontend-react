@@ -12,6 +12,7 @@ import Google from 'icons/google.svg';
 import Instagram from 'icons/instagram.svg';
 import Toggle from 'icons/toggle.svg';
 import Close from 'icons/close.svg';
+import Plus from 'icons/+.svg';
 
 const getIcon = name => {
   switch (name) {
@@ -43,6 +44,8 @@ const getIcon = name => {
       return Toggle;
     case 'close':
       return Close;
+    case 'plus':
+      return Plus;
     default:
       return null;
   }
