@@ -13,6 +13,8 @@ import Instagram from 'icons/instagram.svg';
 import Toggle from 'icons/toggle.svg';
 import Close from 'icons/close.svg';
 import Plus from 'icons/+.svg';
+import CheckboxUnchecked from 'icons/checkbox-unchecked.svg';
+import CheckboxChecked from 'icons/checkbox-checked.svg';
 
 const getIcon = name => {
   switch (name) {
@@ -46,6 +48,10 @@ const getIcon = name => {
       return Close;
     case 'plus':
       return Plus;
+    case 'checkbox-checked':
+      return CheckboxChecked;
+    case 'checkbox-unchecked':
+      return CheckboxUnchecked;
     default:
       return null;
   }

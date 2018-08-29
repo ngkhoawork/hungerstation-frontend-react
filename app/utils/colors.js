@@ -7,3 +7,5 @@ export const bermuda = '#7CD8AE';
 export const hintOfRed = '#f8f6f6';
 export const paleSlate = '#cdcbcd';
 export const wildSant = '#f4f4f4';
+export const grey = '#9f9f9f';
+export const darkerGrey = '#979797';

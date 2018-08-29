@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
-import { fuscousGray, gold, redish } from 'utils/colors';
+import { fuscousGray, grey, gold, redish, darkerGrey } from 'utils/colors';
 
 const themeObj = {
   palette: {
@@ -43,8 +43,9 @@ const themeObj = {
     },
     MuiFormLabel: {
       root: {
+        color: grey,
         '&$focused': {
-          color: fuscousGray,
+          color: grey,
         },
         '&$error': {
           color: redish,
@@ -57,7 +58,7 @@ const themeObj = {
       },
       underline: {
         '&:after': {
-          borderBottom: `1px solid ${fuscousGray}`,
+          borderBottom: `1px solid ${darkerGrey}`,
         },
         '&$error:after': {
           borderBottomColor: redish,

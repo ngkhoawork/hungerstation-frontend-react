@@ -11,6 +11,7 @@ import { Field } from 'formik';
 import Button from '@material-ui/core/Button';
 import { List } from 'immutable';
 
+import TextItem from 'components/TextItem';
 import TextInput from 'components/TextInput';
 import Icon from 'components/Icon';
 
@@ -18,6 +19,27 @@ import intl from 'utils/intlService';
 import { printErrors } from 'utils/form/helpers';
 import StyledForm from 'components/StyledForm';
 import messages from './messages';
+
+const Checkbox = ({ field, label }) => (
+  <label htmlFor="checkbox">
+    <input {...field} id="checkbox" type="checkbox" hidden />
+    <TextItem size={14} fontFamily="regular">
+      <Icon
+        name={field.value ? 'checkbox-checked' : 'checkbox-unchecked'}
+        size={18}
+      />
+      <span
+        style={{
+          marginLeft: '3px',
+          verticalAlign: 'text-top',
+          lineHeight: '16px',
+        }}
+      >
+        {label}
+      </span>
+    </TextItem>
+  </label>
+);
 
 const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
   <StyledForm onSubmit={handleSubmit}>
@@ -40,17 +62,13 @@ const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
         label={intl.formatMessage(messages.passwordLabel)}
       />
     </div>
-    {/* <div>
+    <div style={{ marginTop: '0.5em', marginLeft: '-2px' }}>
       <Field
         name="rememberMe"
-        render={({ field }) => (
-          <FormControlLabel
-            control={<Checkbox {...field} />}
-            label="Remember me"
-          />
-        )}
+        component={Checkbox}
+        label={intl.formatMessage(messages.rememberMeLabel)}
       />
-    </div> */}
+    </div>
     <Button
       type="submit"
       disabled={submitting}
@@ -73,7 +91,6 @@ LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired,
-  // error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   error: PropTypes.instanceOf(List),
 };
 

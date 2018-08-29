@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_remeber-me-inactive</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0.0001 11.9887 0.0001 11.9887 11.9769 0 11.9769"></polygon>
+    </defs>
+    <g id="btn_remeber-me-inactive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_remeber-me" transform="translate(1.000000, 1.000000)">
+            <g id="tick-box">
+                <g id="." transform="translate(0.500000, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M2.3337,1.6669 L4.5667,1.6669 L4.5677,1.6669 L9.6547,1.6669 C10.0227,1.6669 10.3217,1.9659 10.3217,2.3339 L10.3217,4.4979 C10.3207,4.5179 10.3107,4.5359 10.3107,4.5569 L10.3107,9.6439 C10.3107,10.0109 10.0117,10.3099 9.6447,10.3099 L2.3457,10.3099 C1.9777,10.3099 1.6787,10.0109 1.6787,9.6439 L1.6787,4.3339 C1.6787,4.3129 1.6677,4.2969 1.6667,4.2769 L1.6667,2.3339 C1.6667,1.9659 1.9657,1.6669 2.3337,1.6669 M9.6547,-0.0001 L4.5677,-0.0001 C4.5667,-0.0001 4.5667,-0.0001 4.5657,-0.0001 L2.3337,-0.0001 C1.0467,-0.0001 -0.0003,1.0469 -0.0003,2.3339 L-0.0003,9.6439 C-0.0003,10.9299 1.0467,11.9769 2.3337,11.9769 L2.3427,11.9769 L2.3457,11.9769 L9.6547,11.9769 C10.9417,11.9769 11.9887,10.9299 11.9887,9.6439 L11.9887,2.3339 C11.9887,1.0469 10.9417,-0.0001 9.6547,-0.0001" id="Fill-1" fill="#434441" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
