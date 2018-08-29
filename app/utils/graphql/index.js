@@ -3,7 +3,7 @@ import { GraphQLClient } from 'graphql-request';
 let BASE_URL;
 
 switch (process.env.API_ENV) {
-  case 'production':
+  case 'development':
     BASE_URL = 'https://development.hs-preview.com/api/v3/graphql';
     break;
   case 'staging':
