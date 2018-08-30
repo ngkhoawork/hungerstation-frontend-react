@@ -5,11 +5,11 @@ import RestaurantsSection from './RestaurantsSection';
 
 import StyledListPage from './StyledListPage';
 
-const RestaurantList = () => (
+const RestaurantsPage = () => (
   <StyledListPage>
     <FiltersContainer />
     <RestaurantsSection />
   </StyledListPage>
 );
 
-export default RestaurantList;
+export default RestaurantsPage;

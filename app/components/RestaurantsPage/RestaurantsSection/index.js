@@ -1,9 +1,9 @@
 import React from 'react';
 
 import OffersListContainer from 'containers/OffersListContainer';
+import RestaurantsListContainer from 'containers/RestaurantsListContainer';
 import StyledRestaurantsSection from './StyledRestaurantsSection';
 import Section from './Section';
-import RestaurantsList from './RestaurantsList';
 
 const RestaurantsSection = () => (
   <StyledRestaurantsSection>
@@ -11,7 +11,7 @@ const RestaurantsSection = () => (
       <OffersListContainer />
     </Section>
     <Section title="We found restaurants at">
-      <RestaurantsList />
+      <RestaurantsListContainer />
     </Section>
   </StyledRestaurantsSection>
 );

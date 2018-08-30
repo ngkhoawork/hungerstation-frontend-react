@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/styles';
 
-const StyledSection = styled.div`
+const StyledBottomPart = styled.div`
   ${flexBox(
     { align: 'flex-start', direction: 'column' },
     `
-    position: relative;
-    margin-bottom: 70px;
+    width: 100%;
+    flex: 0.2;
   `,
   )};
 `;
 
-export default StyledSection;
+export default StyledBottomPart;

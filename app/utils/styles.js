@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 
 const styles = () => ({
@@ -33,5 +33,15 @@ export const mediaGreater = getMedia('greaterThan');
 export const mediaSmall = mediaLess(560);
 export const mediaMedium = mediaLess(850);
 export const mediaLarge = mediaLess(1130);
+
+const getNestedInterpolation = (...args) => css`
+  ${css(...args)};
+`;
+
+export const getStyledTag = tag => (...args) => styled[tag]`
+  ${getNestedInterpolation(args)};
+`;
+
+export const getStyledDiv = getStyledTag('div');
 
 export default styles;
