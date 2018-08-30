@@ -1,24 +1,31 @@
 import { GraphQLClient } from 'graphql-request';
 
-let BASE_URL;
+const API_URL_BASE = 'http://localhost:3001';
+const API_URL_DEVELOPMENT = 'https://development.hs-preview.com/api/v3/graphql';
+const API_URL_STAGING = 'https://hs-staging.com/api/v3/graphql';
+const API_URL_PRODUCTION = API_URL_BASE;
+
+let API_URL = API_URL_BASE;
 
 switch (process.env.API_ENV) {
+  case 'production':
+    API_URL = API_URL_PRODUCTION;
+    break;
   case 'development':
-    BASE_URL = 'https://development.hs-preview.com/api/v3/graphql';
+    API_URL = API_URL_DEVELOPMENT;
     break;
   case 'staging':
-    BASE_URL = 'https://hs-staging.com/api/v3/graphql';
+    API_URL = API_URL_STAGING;
     break;
   default:
-    BASE_URL = 'http://localhost:3001';
     break;
 }
 
 export const protectedClient = token =>
-  new GraphQLClient(BASE_URL, {
+  new GraphQLClient(API_URL, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
-export const client = new GraphQLClient(BASE_URL);
+export const client = new GraphQLClient(API_URL);
