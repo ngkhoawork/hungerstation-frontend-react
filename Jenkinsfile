@@ -28,7 +28,7 @@ pipeline {
           utils.setup() // Stop previous builds
 
           canDeploy = env.IMAGE_TAG.asBoolean() || BRANCH_NAME in deployableBranches
-          canBuildImage = !env.IMAGE_TAG.asBoolean()
+          canBuildImage = !env.IMAGE_TAG.asBoolean() && BRANCH_NAME in deployableBranches
         }
       }
     }
@@ -43,8 +43,15 @@ pipeline {
           utils.addRevisionToImage()
 
           COMMIT = utils.getCommit()
+
+          if (BRANCH_NAME in deployableBranches) {
+            apiEnv = BRANCH_NAME
+          } else {
+            apiEnv = "development"
+          }
+
           utils.dockerRegistry {
-            app = docker.build("$imageName:$COMMIT", ".")
+            app = docker.build("$imageName:$COMMIT", "--build-arg API_ENV=$apiEnv .")
           }
           utils.pushImage(app, ["$COMMIT", "$BRANCH_NAME", "$BRANCH_NAME-$BUILD_NUMBER"])
         }
