@@ -1,4 +1,4 @@
-/* eslint consistent-return:0 */
+/* eslint consistent-return:0 import/order:0 */
 
 const express = require('express');
 const logger = require('./logger');
@@ -6,7 +6,19 @@ const logger = require('./logger');
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
+
 const isDev = process.env.NODE_ENV !== 'production';
+const apiEnvs = ['production', 'staging', 'development'];
+
+if (
+  !isDev &&
+  (!process.env.API_ENV || !apiEnvs.includes(process.env.API_ENV))
+) {
+  return logger.error(
+    'API_ENV environment not set! Must be one of: development, staging or production.',
+  );
+}
+
 const ngrok =
   (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
     ? require('ngrok')

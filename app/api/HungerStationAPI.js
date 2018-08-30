@@ -1,0 +1,40 @@
+import { client, protectedClient } from 'utils/graphql';
+import { userQuery, loginQuery, listCitiesQuery } from 'utils/graphql/queries';
+import {
+  // createUserMutation,
+  refreshTokenMutation,
+} from 'utils/graphql/mutations';
+
+const HungerStationAPI = {
+  register(...credentials) {
+    console.log('credentials', credentials);
+    // return client.request(createUserMutation, credentials);
+    return Promise.resolve({
+      token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlN2ZXRhIEJ1YmVuIiwiaWF0IjoxNTM0MjMwODk5fQ.BvEvWdB9ozasUxEv9l9o186qOwRYfDr56oGOcoPr1Lg',
+      refresh_token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlN2ZXRhIEJ1YmVuIiwiaWF0IjoxNTM0MjMwODk5fQ.BvEvWdB9ozasUxEv9l9o186qOwRYfDr56oGOcoPr1Lg',
+      user_id: 5,
+    });
+  },
+  login(...credentials) {
+    return client.request(loginQuery, credentials);
+  },
+  logout() {
+    return Promise.resolve(true);
+  },
+  refresh(refreshTokentoken) {
+    return client.request(refreshTokenMutation, { refreshTokentoken });
+  },
+  makeRequestToProtected(token, query, payload) {
+    protectedClient(token).request(query, payload);
+  },
+  getUser(token, userId) {
+    protectedClient(token).request(userQuery, { userId });
+  },
+  getCities(countryId) {
+    client.request(listCitiesQuery, { countryId });
+  },
+};
+
+export default HungerStationAPI;
