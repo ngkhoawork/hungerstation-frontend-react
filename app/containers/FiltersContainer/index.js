@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import FiltersSection from 'components/RestaurantList/FiltersSection';
+import FiltersSection from 'components/RestaurantsPage/FiltersSection';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';

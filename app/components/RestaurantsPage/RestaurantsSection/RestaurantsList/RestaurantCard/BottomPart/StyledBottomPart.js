@@ -6,7 +6,7 @@ const StyledBottomPart = styled.div`
     { align: 'flex-start', direction: 'column' },
     `
     width: 100%;
-    flex: 0.2;
+    flex: 0.38;
   `,
   )};
 `;

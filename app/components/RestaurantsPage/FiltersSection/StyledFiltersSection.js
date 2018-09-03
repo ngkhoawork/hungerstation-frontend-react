@@ -6,7 +6,7 @@ const StyledFiltersSection = styled.div`
   ${flexBox(
     { align: 'flex-start', justify: 'center', direction: 'column' },
     `
-    flex: 0.25;
+    flex: 0.2;
     padding: 10px 20px;
     border-radius: 8px;
     background-color: ${wildSant};
