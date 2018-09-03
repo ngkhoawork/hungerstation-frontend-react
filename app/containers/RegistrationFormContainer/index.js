@@ -18,6 +18,7 @@ import RegistrationForm from 'components/RegistrationForm';
 const mapDispatchToProps = {
   onSubmit: registerRequest,
 };
+const schema = validationSchemas('signupForm');
 
 @connect(
   null,
@@ -40,11 +41,13 @@ export default class RegistrationFormContainer extends PureComponent {
         onSubmit={submitHandler(onSubmit)}
         initialValues={{
           name: '',
+          phone: '',
           mobile: '',
           email: '',
           password: '',
+          repeatPassword: '',
         }}
-        validationSchema={validationSchemas('signupForm')}
+        validationSchema={schema}
         validateOnBlur={false}
         render={props => (
           <RegistrationForm

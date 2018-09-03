@@ -10,6 +10,7 @@ export const validationSchemas = formName => () => {
     required: intlService.formatMessage(messages.formRequired),
     password: intlService.formatMessage(messages.password),
     passwordMatch: intlService.formatMessage(messages.passwordMatch),
+    passwordUnmatch: intlService.formatMessage(messages.passwordUnmatch),
     name: intlService.formatMessage(messages.nameLength),
     mobileRegex: intlService.formatMessage(messages.mobileRegex),
     email: intlService.formatMessage(messages.email),
@@ -69,15 +70,29 @@ const signupSchema = validationMessages =>
       .string()
       .email(validationMessages.email)
       .required(validationMessages.required),
-    mobile: yup
+    mobile: yup.string().required(validationMessages.required),
+    phone: yup
       .string()
       .required(validationMessages.required)
-      .matches(/^\+966[0-9]/i, validationMessages.mobileRegex)
-      .max(13, validationMessages.mobileLength)
-      .min(13, validationMessages.mobileLength),
+      .matches(/^\d+$/, validationMessages.mobileRegex)
+      .max(9, validationMessages.mobileLength)
+      .min(9, validationMessages.mobileLength),
     password: yup
       .string()
       .required(validationMessages.required)
       .min(8, validationMessages.password)
-      .max(20, validationMessages.password),
+      .max(20, validationMessages.password)
+      .when(['phone', 'mobile'], {
+        is: value => !!value,
+        then: yup
+          .string()
+          .notOneOf(
+            [yup.ref('mobile'), yup.ref('phone')],
+            validationMessages.passwordUnmatch,
+          ),
+      }),
+    repeatPassword: yup
+      .string()
+      .oneOf([yup.ref('password')], validationMessages.passwordMatch)
+      .required(validationMessages.required),
   });

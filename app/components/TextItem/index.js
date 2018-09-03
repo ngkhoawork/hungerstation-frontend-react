@@ -5,12 +5,13 @@ const TextItem = styled.span`
   font-weight: ${({ weight }) => weight || 100};
   text-transform: ${({ transform }) => transform};
   margin: ${({ margin }) => margin || 0};
-  // margin-right: 10px;
   cursor: pointer;
-  // letter-spacing: 0.5px;
-  font-family: 'HungerStation-${({ fontFamily }) =>
-    fontFamily === 'regular' ? 'Regular' : 'Light'}',
-    sans-serif;
+  font-family: ${props =>
+    `${
+      props.fontFamily === 'regular'
+        ? 'HungerStation-Light'
+        : 'HungerStation-Regular'
+    }, sans-serif`};
 `;
 
 export default TextItem;

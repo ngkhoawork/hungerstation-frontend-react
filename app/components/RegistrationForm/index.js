@@ -10,22 +10,22 @@ import { Field } from 'formik';
 import { intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
 
-import TextInput from 'components/TextInput';
-
 import { printErrors } from 'utils/form/helpers';
+
+import TextInput from 'components/TextInput';
 import StyledForm from 'components/StyledForm';
+import MobileNumber from 'components/PhoneNumberInput';
 
 import messages from './messages';
 
 const RegistrationForm = ({
   handleSubmit,
   submitting,
-  pristine,
   intl,
   classes,
   error,
 }) => (
-  <StyledForm onSubmit={handleSubmit} autoComplete="off">
+  <StyledForm onSubmit={handleSubmit} autoComplete="off" noValidate>
     {printErrors(error)}
     <div>
       <Field
@@ -40,15 +40,16 @@ const RegistrationForm = ({
     <div>
       <Field
         autoComplete="nope"
-        name="mobile"
-        type="phone"
-        component={TextInput}
+        name="phone"
+        component={MobileNumber}
         label="Mobile number"
-        fullWidth
       />
     </div>
     <div>
       <Field
+        InputProps={{
+          noValidate: true,
+        }}
         autoComplete="nope"
         name="email"
         type="email"
@@ -67,6 +68,16 @@ const RegistrationForm = ({
         fullWidth
       />
     </div>
+    <div>
+      <Field
+        autoComplete="nope"
+        name="repeatPassword"
+        type="password"
+        component={TextInput}
+        label={intl.formatMessage(messages.repeatPassword)}
+        fullWidth
+      />
+    </div>
     <Button
       className={classes.button}
       size="large"
@@ -74,7 +85,7 @@ const RegistrationForm = ({
       color="primary"
       variant="contained"
       type="submit"
-      disabled={submitting || pristine}
+      disabled={submitting}
     >
       <span className={classes.buttonText}>
         {intl.formatMessage(messages.buttonLabel)}
@@ -86,7 +97,6 @@ const RegistrationForm = ({
 RegistrationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
-  pristine: PropTypes.bool.isRequired,
   intl: intlShape,
   classes: PropTypes.object.isRequired,
   error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),

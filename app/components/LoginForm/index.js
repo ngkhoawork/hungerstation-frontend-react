@@ -26,7 +26,7 @@ const Checkbox = ({ field, label }) => (
     <TextItem size={14} fontFamily="regular">
       <Icon
         name={field.value ? 'checkbox-checked' : 'checkbox-unchecked'}
-        size={18}
+        size={16}
       />
       <span
         style={{
@@ -62,7 +62,7 @@ const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
         label={intl.formatMessage(messages.passwordLabel)}
       />
     </div>
-    <div style={{ marginTop: '0.5em', marginLeft: '-2px' }}>
+    <div style={{ marginTop: '0.5em' }}>
       <Field
         name="rememberMe"
         component={Checkbox}

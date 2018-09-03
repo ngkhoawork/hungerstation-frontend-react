@@ -19,13 +19,17 @@ export default defineMessages({
     id: 'form.passwordMatch',
     defaultMessage: `Passwords don't match`,
   },
+  passwordUnmatch: {
+    id: 'form.passwordUnmatch',
+    defaultMessage: `Password must not match your mobile number.`,
+  },
   email: {
     id: 'form.email',
     defaultMessage: 'Invalid email address',
   },
   mobileLength: {
     id: 'form.mobile.length',
-    defaultMessage: 'The mobile number needs to have 9 characters',
+    defaultMessage: 'The mobile number needs to have 9 digits',
   },
   mobileRegex: {
     id: 'form.mobile.regex',

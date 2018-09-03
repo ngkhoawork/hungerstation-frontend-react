@@ -14,7 +14,7 @@ export const protectedClient = token =>
   });
 
 export const client = new GraphQLClient(BASE_URL, {
-  headers: { 'Content-Type': 'application/json' },
-  credentials: 'include',
-  mode: 'cors',
+  // headers: { 'Content-Type': 'application/json' },
+  // credentials: 'include',
+  // mode: 'cors',
 });

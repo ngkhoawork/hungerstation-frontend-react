@@ -15,6 +15,8 @@ import Close from 'icons/close.svg';
 import Plus from 'icons/+.svg';
 import CheckboxUnchecked from 'icons/checkbox-unchecked.svg';
 import CheckboxChecked from 'icons/checkbox-checked.svg';
+import SaudiFlag from 'icons/saudi-flag.svg';
+import BahrainFlag from 'icons/bahrain-flag.svg';
 
 const getIcon = name => {
   switch (name) {
@@ -52,6 +54,10 @@ const getIcon = name => {
       return CheckboxChecked;
     case 'checkbox-unchecked':
       return CheckboxUnchecked;
+    case 'saudi-flag':
+      return SaudiFlag;
+    case 'bahrain-flag':
+      return BahrainFlag;
     default:
       return null;
   }

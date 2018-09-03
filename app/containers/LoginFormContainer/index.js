@@ -20,6 +20,8 @@ const mapDispatchToProps = {
   onSubmit: loginRequest,
 };
 
+const schema = validationSchemas('signinForm');
+
 @connect(
   null,
   mapDispatchToProps,
@@ -43,7 +45,7 @@ export default class LoginFormContainer extends PureComponent {
       <Formik
         onSubmit={submitHandler(onSubmit)}
         initialValues={{ mobile: '', password: '' }}
-        validationSchema={validationSchemas('signinForm')}
+        validationSchema={schema}
         validateOnBlur={false}
         render={props => (
           <LoginForm

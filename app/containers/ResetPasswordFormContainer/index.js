@@ -10,6 +10,8 @@ import { validationSchemas } from 'utils/form/validation';
 import ResetPasswordForm from 'components/ResetPasswordForm';
 import { FormContainer } from 'containers/Form';
 
+const schema = validationSchemas('resetPasswordForm');
+
 @FormContainer
 export default class ResetPasswordFormContainer extends PureComponent {
   render() {
@@ -24,7 +26,7 @@ export default class ResetPasswordFormContainer extends PureComponent {
       <Formik
         onSubmit={submitHandler(submit)}
         initialValues={{ password: '', repeatPassword: '' }}
-        validationSchema={validationSchemas('resetPasswordForm')}
+        validationSchema={schema}
         validateOnBlur={false}
         render={props => <ResetPasswordForm {...props} {...this.props} />}
       />

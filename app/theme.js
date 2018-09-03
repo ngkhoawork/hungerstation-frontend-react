@@ -24,6 +24,13 @@ const themeObj = {
   },
   overrides: {
     // Name of the component ⚛️ / style sheet
+    MuiSelect: {
+      select: {
+        '&:focus': {
+          background: 'none',
+        },
+      },
+    },
     MuiButton: {
       // Name of the rule
       contained: {

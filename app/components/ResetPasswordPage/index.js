@@ -17,9 +17,12 @@ import StyledPage from 'components/StyledFormPage';
 import messages from './messages';
 
 const CenteredContent = styled.div`
-  width: 30%;
   display: flex;
   justify-content: space-evenly;
+
+  > * {
+    margin: 0 10px;
+  }
 `;
 
 const ForgotPasswordPage = () => (
