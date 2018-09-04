@@ -10,9 +10,9 @@ const StyledRestaurantsSection = styled.div`
     },
     `
     flex: 0.75;
-    border: 2px solid blue;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 0;
     overflow: hidden;
+    position: relative;
   `,
   )};
 `;

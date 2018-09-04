@@ -1,17 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Paragraph from 'components/Paragraph';
 import StyledOfferDetails from './StyledOfferDetails';
 
-const OfferDetails = () => (
+const OfferDetails = ({ title, description }) => (
   <StyledOfferDetails>
     <Paragraph size="big" color="white">
-      Minimal price for Double Whooper
+      {title}
     </Paragraph>
     <Paragraph light color="white">
-      Promotion available till 28.05.2018
+      {description}
     </Paragraph>
   </StyledOfferDetails>
 );
+
+OfferDetails.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
 export default OfferDetails;

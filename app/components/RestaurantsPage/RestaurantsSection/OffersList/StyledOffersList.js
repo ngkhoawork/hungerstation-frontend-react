@@ -5,7 +5,11 @@ const StyledOffersList = styled.div`
   ${flexBox(
     { align: 'flex-start' },
     `
-    overflow: scroll
+    width: 100%;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   `,
   )};
 `;
