@@ -7,6 +7,13 @@ const StyledBottomPart = styled.div`
     `
     width: 100%;
     flex: 0.38;
+    div > p {
+      margin-top: 4px;
+      margin-right: 10px;
+    }
+    div > img {
+      margin-right: 5px;
+    }
   `,
   )};
 `;

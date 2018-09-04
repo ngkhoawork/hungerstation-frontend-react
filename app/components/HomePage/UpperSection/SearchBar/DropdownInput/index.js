@@ -7,7 +7,7 @@ import Placeholder from './Placeholder';
 
 const DropdownInput = ({ iconName, placeholder, value }) => (
   <StyledDropdown>
-    {iconName && <Icon name={iconName} circled />}
+    {iconName && <Icon name={iconName} />}
     {value || <Placeholder>{placeholder}</Placeholder>}
   </StyledDropdown>
 );

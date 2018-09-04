@@ -13,7 +13,7 @@ const RestaurantCard = ({
   minOrder,
 }) => (
   <StyledRestaurantCard>
-    <UpperPart brandSrc={BurgerKing} />
+    <UpperPart brandSrc={BurgerKing} rating={4.9} />
     <BottomPart
       name={name}
       deliveryTimeMax={deliveryTimeMax}

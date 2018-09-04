@@ -6,7 +6,7 @@ import Slider from '../Slider';
 
 const OrderItem = ({ label, range, value }) => (
   <StyledOrderItem>
-    <Slider label={`${label} ${value}`} range={range} value={value} />
+    <Slider label={`${label}`} range={range} value={value} />
   </StyledOrderItem>
 );
 

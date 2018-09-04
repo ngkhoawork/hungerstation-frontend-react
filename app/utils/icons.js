@@ -16,6 +16,10 @@ import Tick from 'icons/tick.svg';
 import Delete from 'icons/delete.svg';
 import ArrowRight from 'icons/arrow-right.svg';
 import Check from 'icons/check.svg';
+import Time from 'icons/time.svg';
+import Delivery from 'icons/delivery.svg';
+import Bag from 'icons/bag.svg';
+import Star from 'icons/star.svg';
 
 import AllCuisine from 'icons/all-cuisine.svg';
 import AmericanCuisine from 'icons/american-cuisine.svg';
@@ -83,7 +87,7 @@ const getIcon = name => {
       return BakeryCuisine;
     case 'beverages':
       return BeveragesCuisine;
-    case 'delivery':
+    case 'deliveryfood':
       return DeliveryCuisine;
     case 'desserts':
       return DessertsCuisine;
@@ -107,6 +111,14 @@ const getIcon = name => {
       return TurkishCuisine;
     case 'check':
       return Check;
+    case 'time':
+      return Time;
+    case 'delivery':
+      return Delivery;
+    case 'bag':
+      return Bag;
+    case 'star':
+      return Star;
     default:
       return null;
   }

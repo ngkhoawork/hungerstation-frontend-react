@@ -6,10 +6,11 @@ const StyledRestaurantCard = styled.div`
   ${flexBox(
     { align: 'center', justify: 'space-between', direction: 'column' },
     `
-    flex: 1 0 31%;
+    flex: 1 0 30%;
+    max-width: 260px;
     height: 150px;
     border-radius: 8px;
-    margin: 0 2% 15px 0;
+    margin-bottom: 25px;
     padding: 15px 15px 5px;
     background-image: url(${Figs});
     background-position: top;

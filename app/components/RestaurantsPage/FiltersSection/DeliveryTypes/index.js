@@ -11,8 +11,10 @@ const DeliveryTypes = ({ types }) => (
   <StyledContainer>
     {types.map(type => (
       <StyledItem key={type.id} hasBorder>
-        <Paragraph color={silverChalice}>{type.label}</Paragraph>
-        {type.isSelected && <Icon name="tick" />}
+        <Paragraph color={type.isSelected ? 'black' : silverChalice}>
+          {type.label}
+        </Paragraph>
+        {type.isSelected && <Icon name="check" />}
       </StyledItem>
     ))}
   </StyledContainer>

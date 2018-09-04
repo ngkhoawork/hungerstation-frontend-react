@@ -3,7 +3,7 @@ import { flexBox } from 'utils/styles';
 
 const StyledRestaurantList = styled.div`
   ${flexBox(
-    { align: 'flex-start', justify: 'flex-start' },
+    { align: 'flex-start', justify: 'space-between' },
     `
     flex-wrap: wrap;
     width: 100%;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/styles';
+import { wildSant } from 'utils/colors';
 
 const StyledItem = styled.div`
   ${flexBox(
@@ -9,7 +10,8 @@ const StyledItem = styled.div`
     padding: 15px 0;
   `,
   )};
-  border-bottom: ${({ hasBorder }) => (hasBorder ? '1px solid white' : 'none')};
+  border-bottom: ${({ hasBorder }) =>
+    hasBorder ? `1px solid ${wildSant}` : 'none'};
   &:last-of-type {
     border: 0;
   }

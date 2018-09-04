@@ -30,7 +30,7 @@ export const initialState = fromJS({
     { id: 'desserts', label: 'Desserts', isSelected: false },
     { id: 'turkish', label: 'Turkish Food', isSelected: false },
     { id: 'foodbeverage', label: 'Food & Beverage', isSelected: false },
-    { id: 'delivery', label: '20 min delivery or free', isSelected: false },
+    { id: 'deliveryfood', label: '20 min delivery or free', isSelected: false },
   ],
   deliveryTypes: [
     { id: 'all', label: 'All Delivery Types', isSelected: false },
@@ -40,7 +40,7 @@ export const initialState = fromJS({
       label: 'Delivery by Restaurant',
       isSelected: false,
     },
-    { id: 'mexicanFood', label: 'Thisrd-Party Delivery', isSelected: false },
+    { id: 'mexicanFood', label: 'Third-Party Delivery', isSelected: false },
   ],
 });
 

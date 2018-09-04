@@ -8,3 +8,4 @@ export const paleSlate = '#cdcbcd';
 export const wildSant = '#f4f4f4';
 export const jade = '#00C269';
 export const silverChalice = '#9F9F9F';
+export const boulder = '#7C7C7C';

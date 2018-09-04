@@ -14,7 +14,9 @@ const Cuisines = ({ cuisines }) => (
       <StyledItem key={cuisine.id}>
         <StyledDetails>
           <Icon name={cuisine.id} />
-          <Paragraph color={silverChalice}>{cuisine.label}</Paragraph>
+          <Paragraph color={cuisine.isSelected ? 'black' : silverChalice}>
+            {cuisine.label}
+          </Paragraph>
         </StyledDetails>
         {cuisine.isSelected && <Icon name="check" />}
       </StyledItem>
