@@ -20,20 +20,28 @@ const StyledError = styled.div`
 export const printErrors = errors => {
   if (!errors) return null;
 
-  return (
-    <div>
-      {typeof error === 'string' ? (
-        <StyledError>
-          <span>{errors}</span>
-        </StyledError>
-      ) : (
-        errors.map((err, i) => (
-          /* eslint-disable-next-line react/no-array-index-key */
-          <StyledError key={`form-error${i}`}>
-            <span>{err.get('message')}</span>
-          </StyledError>
-        ))
-      )}
-    </div>
-  );
+  if (typeof errors === 'string') {
+    return (
+      <StyledError>
+        <span>{errors}</span>
+      </StyledError>
+    );
+  }
+
+  if (errors.get('error_details')) {
+    return (
+      <StyledError>
+        {errors
+          .get('error_details')
+          .entrySeq()
+          .map(([key, value]) => <p key={key}>{value}</p>)}
+      </StyledError>
+    );
+  }
+
+  if (errors.get('message')) {
+    return <StyledError>{errors.get('message')}</StyledError>;
+  }
+
+  return <StyledError>Error ocurred</StyledError>;
 };
