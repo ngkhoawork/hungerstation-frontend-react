@@ -39,8 +39,6 @@ export function* registerFlow() {
 
         yield put(stopSubmit());
 
-        // TODO
-        // yield call(successMsg);
         yield call(forwardTo, redirectToRoute);
       }
     } catch (error) {

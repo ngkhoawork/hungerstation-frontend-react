@@ -1,6 +1,12 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
-import { fuscousGray, grey, gold, redish, darkerGrey } from 'utils/colors';
+import {
+  fuscousGray,
+  silverChalice,
+  gold,
+  persimmon,
+  dustyGray,
+} from 'utils/colors';
 
 const themeObj = {
   palette: {
@@ -54,12 +60,12 @@ const themeObj = {
     },
     MuiFormLabel: {
       root: {
-        color: grey,
+        color: silverChalice,
         '&$focused': {
-          color: grey,
+          color: silverChalice,
         },
         '&$error': {
-          color: redish,
+          color: persimmon,
         },
       },
     },
@@ -69,10 +75,10 @@ const themeObj = {
       },
       underline: {
         '&:after': {
-          borderBottom: `1px solid ${darkerGrey}`,
+          borderBottom: `1px solid ${dustyGray}`,
         },
         '&$error:after': {
-          borderBottomColor: redish,
+          borderBottomColor: persimmon,
           transform: 'scaleX(1)', // error is always underlined in red
         },
       },

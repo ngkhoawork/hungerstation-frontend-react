@@ -15,6 +15,7 @@ import TextItem from 'components/TextItem';
 import SocialAuth from 'components/SocialAuth';
 import StyledPage from 'components/StyledFormPage';
 import StyledParagraph from 'components/Paragraph';
+import { silverChalice } from 'utils/colors';
 
 import messages from './messages';
 
@@ -29,11 +30,11 @@ const LoginPage = () => (
     <SocialAuth />
     <LoginFormContainer />
     <StyledParagraph margin="14px 0" size={16}>
-      <TextLink to="/forgot-password" color="grey">
+      <TextLink to="/forgot-password" color={silverChalice}>
         <FormattedMessage {...messages.forgotPassword} />
       </TextLink>
     </StyledParagraph>
-    <TextItem color="grey" size={15}>
+    <TextItem color={silverChalice} size={15}>
       <FormattedMessage {...messages.noAccount} />
       <ButtonLink to="/register">
         <FormattedMessage {...messages.signUp} />
