@@ -7,15 +7,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
-import { intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
+
+import intl from 'utils/intlService';
 
 import TextInput from 'components/TextInput';
 import StyledForm from 'components/StyledForm';
 
 import messages from './messages';
 
-const ForgotPasswordForm = ({ handleSubmit, submitting, intl, classes }) => (
+const ForgotPasswordForm = ({ handleSubmit, submitting, classes }) => (
   <StyledForm onSubmit={handleSubmit}>
     <div>
       <Field
@@ -44,7 +45,6 @@ const ForgotPasswordForm = ({ handleSubmit, submitting, intl, classes }) => (
 ForgotPasswordForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
-  intl: intlShape,
   classes: PropTypes.object.isRequired,
 };
 

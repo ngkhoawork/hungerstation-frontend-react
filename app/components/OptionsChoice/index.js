@@ -11,15 +11,12 @@ const OptionsChoice = ({
   options,
   selectedOption,
   onOptionSelect,
-  variant = 'dark',
+  variant,
 }) => (
   <StyledContainer>
     {options.map(option => (
       <ItemContainer key={option.id} onClick={() => onOptionSelect(option.id)}>
-        <Paragraph
-          size="small"
-          color={variant === 'dark' ? fuscousGray : '#ffffff'}
-        >
+        <Paragraph color={variant === 'dark' ? fuscousGray : 'white'}>
           {option.name}
         </Paragraph>
         {option.id === selectedOption && <ActiveBorder />}
@@ -38,6 +35,10 @@ OptionsChoice.propTypes = {
   selectedOption: PropTypes.string.isRequired,
   onOptionSelect: PropTypes.func.isRequired,
   variant: PropTypes.string,
+};
+
+OptionsChoice.defaultProps = {
+  variant: 'dark',
 };
 
 export default OptionsChoice;

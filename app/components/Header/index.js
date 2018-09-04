@@ -20,7 +20,7 @@ import Circle from './Circle';
 import StyledHeader from './StyledHeader';
 import logo from '../../images/hungerstation.svg';
 
-const Header = ({ variant = 'dark' }) => (
+const Header = ({ variant }) => (
   <StyledHeader>
     <Link to="/">
       <img alt="logo" src={logo} height="34px" />
@@ -28,10 +28,7 @@ const Header = ({ variant = 'dark' }) => (
     <RightSection>
       <LocaleToggle variant={variant} />
       <TextLink to="/login">
-        <Paragraph
-          size="small"
-          color={variant === 'dark' ? fuscousGray : 'white'}
-        >
+        <Paragraph color={variant === 'dark' ? fuscousGray : 'white'}>
           Log in
         </Paragraph>
       </TextLink>
@@ -44,6 +41,10 @@ const Header = ({ variant = 'dark' }) => (
 
 Header.propTypes = {
   variant: PropTypes.string,
+};
+
+Header.defaultProps = {
+  variant: 'dark',
 };
 
 export default Header;

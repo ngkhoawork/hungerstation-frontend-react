@@ -3,7 +3,6 @@ import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { injectIntl } from 'react-intl';
 
 import styles from 'utils/styles';
 
@@ -25,7 +24,6 @@ const mapDispatchToProps = {
 export const FormContainer = WrappedComponent => {
   @withRouter
   @withStyles(styles)
-  @injectIntl
   @connect(
     mapStateToProps,
     mapDispatchToProps,

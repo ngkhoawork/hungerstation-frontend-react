@@ -45,6 +45,10 @@ const themeObj = {
         boxShadow: '0 15px 20px -6px rgba(109, 22, 22, 0.1)',
         '&:hover': {
           backgroundColor: lighten(gold, 0.2),
+          // Reset on touch devices, it doesn't add specificity
+          '@media (hover: none)': {
+            backgroundColor: gold,
+          },
         },
       },
     },

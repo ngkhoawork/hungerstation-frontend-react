@@ -7,24 +7,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
-import { intlShape } from 'react-intl';
 import Button from '@material-ui/core/Button';
 
 import { printErrors } from 'utils/form/helpers';
-
+import intl from 'utils/intlService';
 import TextInput from 'components/TextInput';
 import StyledForm from 'components/StyledForm';
 import MobileNumber from 'components/PhoneNumberInput';
 
 import messages from './messages';
 
-const RegistrationForm = ({
-  handleSubmit,
-  submitting,
-  intl,
-  classes,
-  error,
-}) => (
+const RegistrationForm = ({ handleSubmit, submitting, classes, error }) => (
   <StyledForm onSubmit={handleSubmit} autoComplete="off" noValidate>
     {printErrors(error)}
     <div>
@@ -97,7 +90,6 @@ const RegistrationForm = ({
 RegistrationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
-  intl: intlShape,
   classes: PropTypes.object.isRequired,
   error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 };

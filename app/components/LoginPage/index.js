@@ -7,26 +7,16 @@
 import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import styled from 'styled-components';
 
 import LoginFormContainer from 'containers/LoginFormContainer';
 import TextLink from 'components/TextLink';
 import ButtonLink from 'components/ButtonLink';
 import TextItem from 'components/TextItem';
-import Icon from 'components/Icon';
+import SocialAuth from 'components/SocialAuth';
 import StyledPage from 'components/StyledFormPage';
-import Group from 'components/Group';
+import StyledParagraph from 'components/Paragraph';
 
 import messages from './messages';
-
-const CenteredContent = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-
-  > * {
-    margin: 0 10px;
-  }
-`;
 
 const LoginPage = () => (
   <StyledPage>
@@ -36,23 +26,19 @@ const LoginPage = () => (
     <TextItem size={15} margin="0.2em 0 1em">
       <FormattedMessage {...messages.subheader} />
     </TextItem>
-    <CenteredContent>
-      <Icon name="google" size={32} />
-      <Icon name="facebook" size={32} />
-      <Icon name="twitter" size={32} />
-    </CenteredContent>
+    <SocialAuth />
     <LoginFormContainer />
-    <TextLink to="/forgot-password" color="grey">
-      <FormattedMessage {...messages.forgotPassword} />&nbsp;
-    </TextLink>
-    <Group>
-      <TextItem color="grey" size={15}>
-        <FormattedMessage {...messages.noAccount} />&nbsp;
-      </TextItem>
+    <StyledParagraph margin="14px 0" size={16}>
+      <TextLink to="/forgot-password" color="grey">
+        <FormattedMessage {...messages.forgotPassword} />
+      </TextLink>
+    </StyledParagraph>
+    <TextItem color="grey" size={15}>
+      <FormattedMessage {...messages.noAccount} />
       <ButtonLink to="/register">
         <FormattedMessage {...messages.signUp} />
       </ButtonLink>
-    </Group>
+    </TextItem>
   </StyledPage>
 );
 

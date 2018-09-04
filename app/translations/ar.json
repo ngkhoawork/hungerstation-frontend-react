@@ -15,7 +15,7 @@
   "app.components.RegistrationForm.emailLabel": "Email",
   "app.components.RegistrationForm.numberLabel": "Mobile number",
   "app.components.RegistrationForm.passwordLabel": "Password",
-  "app.components.RegistrationForm.usernameLabel": "Name",
+  "app.components.RegistrationForm.usernameLabel": "Name in Arabic",
   "app.components.ResetPasswordForm.buttonLabel": "",
   "app.components.ResetPasswordForm.password": "",
   "app.components.ResetPasswordForm.repeatPassword": "",

@@ -5,15 +5,41 @@
  */
 
 import React from 'react';
+import styled from 'styled-components';
 
 import FormHelperText from '@material-ui/core/FormHelperText';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 
+import { flexBox } from 'utils/styles';
+
 import Icon from 'components/Icon';
 
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  ${flexBox(
+    { align: 'flex-start' },
+    `
+      margin-top: 16px;
+      margin-bottom: 8px;
+
+      > div.prefix {
+        margin-right: 16px;
+      }
+
+      [dir="rtl"] & > div.prefix {
+        margin-left: 16px;
+      }
+
+      > div.input {
+        flex-grow: 1;
+
+      }
+    `,
+  )};
+`;
 
 const countriesArr = [
   [
@@ -69,62 +95,48 @@ class PhoneNumberInput extends React.PureComponent {
     const { prefix, phone } = this.state;
 
     return (
-      <div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            width: '100%',
-            marginTop: '16px',
-          }}
-        >
-          <div
-            style={{
-              marginRight: '1em',
-              marginTop: '16px',
-              marginBottom: '8px',
+      <Wrapper>
+        <div className="prefix">
+          <TextField
+            label=" "
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <div style={{ marginTop: '-4px' }}>
+                    <Icon name={countriesMap.get(prefix).icon} size={18} />
+                  </div>
+                </InputAdornment>
+              ),
             }}
+            id="select-currency-native"
+            select
+            SelectProps={{
+              native: true,
+            }}
+            value={prefix}
+            onChange={this.handleChange('prefix')}
           >
-            <TextField
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <div style={{ marginTop: '-4px' }}>
-                      <Icon name={countriesMap.get(prefix).icon} size={18} />
-                    </div>
-                  </InputAdornment>
-                ),
-              }}
-              id="select-currency-native"
-              select
-              SelectProps={{
-                native: true,
-              }}
-              value={prefix}
-              onChange={this.handleChange('prefix')}
-            >
-              {countriesArr.map(option => (
-                <option key={option[0]} value={option[0]}>
-                  {option[1].label}
-                </option>
-              ))}
-            </TextField>
-          </div>
-          <div style={{ flex: 1 }}>
-            <TextField
-              error={!!errors.phone}
-              fullWidth
-              name="phone"
-              {...rest}
-              value={phone}
-              onChange={this.handleChange('phone')}
-            />
-            {!!errors.phone && (
-              <FormHelperText error>{errors.phone}</FormHelperText>
-            )}
-          </div>
+            {countriesArr.map(option => (
+              <option key={option[0]} value={option[0]}>
+                {option[1].label}
+              </option>
+            ))}
+          </TextField>
         </div>
-      </div>
+        <div className="input">
+          <TextField
+            error={!!errors.phone}
+            fullWidth
+            name="phone"
+            {...rest}
+            value={phone}
+            onChange={this.handleChange('phone')}
+          />
+          {!!errors.phone && (
+            <FormHelperText error>{errors.phone}</FormHelperText>
+          )}
+        </div>
+      </Wrapper>
     );
   }
 }

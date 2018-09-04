@@ -6,11 +6,13 @@ export default styled(Link)`
   text-decoration: none;
   background: rgba(216, 216, 216, 0.37);
   border-radius: 10px;
-  padding: 0.4em 0.7em 0.4em 0.7em;
+  padding: 6px 7px 4px;
   vertical-align: middle;
   line-height: 1em;
   font-size: 14px;
+  font-family: 'HungerStation-Regular', sans-serif;
   color: ${fuscousGray};
+  margin: 0px 3px;
 
   :hover {
     background: rgba(216, 216, 216, 0.67);
