@@ -13,14 +13,14 @@ const Paragraph = ({ children, light, size, color }) => (
 Paragraph.propTypes = {
   children: PropTypes.string.isRequired,
   light: PropTypes.bool,
-  size: PropTypes.string,
+  size: PropTypes.number,
   color: PropTypes.string,
 };
 
 Paragraph.defaultProps = {
   light: false,
   color: fuscousGray,
-  size: 'small',
+  size: 14,
 };
 
 export default Paragraph;

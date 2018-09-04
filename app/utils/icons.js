@@ -13,6 +13,27 @@ import Instagram from 'icons/instagram.svg';
 import Toggle from 'icons/toggle.svg';
 import Close from 'icons/close.svg';
 import Tick from 'icons/tick.svg';
+import Delete from 'icons/delete.svg';
+import ArrowRight from 'icons/arrow-right.svg';
+import Check from 'icons/check.svg';
+
+import AllCuisine from 'icons/all-cuisine.svg';
+import AmericanCuisine from 'icons/american-cuisine.svg';
+import ArabianCuisine from 'icons/arabian-cuisine.svg';
+import AsianCuisine from 'icons/asian-cuisine.svg';
+import BakeryCuisine from 'icons/bakery-cuisine.svg';
+import BeveragesCuisine from 'icons/beverages-cuisine.svg';
+import DeliveryCuisine from 'icons/delivery-cuisine.svg';
+import DessertsCuisine from 'icons/desserts-cuisine.svg';
+import FastCuisine from 'icons/fast-cuisine.svg';
+import FoodBeverageCuisine from 'icons/foodbeverage-cuisine.svg';
+import GrillsCuisine from 'icons/grills-cuisine.svg';
+import IndianCuisine from 'icons/indian-cuisine.svg';
+import ItalianCuisine from 'icons/italian-cuisine.svg';
+import MexicanCuisine from 'icons/mexican-cuisine.svg';
+import SandwichesCuisine from 'icons/sandwiches-cuisine.svg';
+import SeaCuisine from 'icons/sea-cuisine.svg';
+import TurkishCuisine from 'icons/turkish-cuisine.svg';
 
 const getIcon = name => {
   switch (name) {
@@ -46,6 +67,46 @@ const getIcon = name => {
       return Close;
     case 'tick':
       return Tick;
+    case 'delete':
+      return Delete;
+    case 'arrow-right':
+      return ArrowRight;
+    case 'all':
+      return AllCuisine;
+    case 'american':
+      return AmericanCuisine;
+    case 'arabian':
+      return ArabianCuisine;
+    case 'asian':
+      return AsianCuisine;
+    case 'bakery':
+      return BakeryCuisine;
+    case 'beverages':
+      return BeveragesCuisine;
+    case 'delivery':
+      return DeliveryCuisine;
+    case 'desserts':
+      return DessertsCuisine;
+    case 'fast':
+      return FastCuisine;
+    case 'foodbeverage':
+      return FoodBeverageCuisine;
+    case 'grills':
+      return GrillsCuisine;
+    case 'indian':
+      return IndianCuisine;
+    case 'italian':
+      return ItalianCuisine;
+    case 'mexican':
+      return MexicanCuisine;
+    case 'sandwiches':
+      return SandwichesCuisine;
+    case 'sea':
+      return SeaCuisine;
+    case 'turkish':
+      return TurkishCuisine;
+    case 'check':
+      return Check;
     default:
       return null;
   }

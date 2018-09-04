@@ -7,6 +7,7 @@ const StyledOffersList = styled.div`
     `
     width: 100%;
     overflow-x: auto;
+    margin-top: 20px;
     &::-webkit-scrollbar {
       display: none;
     }

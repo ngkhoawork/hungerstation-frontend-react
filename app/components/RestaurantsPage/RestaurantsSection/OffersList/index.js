@@ -24,7 +24,7 @@ class OffersList extends Component {
       <StyledOffersList innerRef={this.sliderContainer}>
         {offers.map(offer => <OfferItem key={offer.id} {...offer} />)}
         <StyledNextButton onClick={this.scrollLeft}>
-          <Icon name="toggle" />
+          <Icon name="arrow-right" size={12} />
         </StyledNextButton>
         <Pagination pages={offers.length} selectedPage={1} />
       </StyledOffersList>

@@ -8,10 +8,10 @@ import StyledHeader from './StyledHeader';
 
 const Header = () => (
   <StyledHeader>
-    <Paragraph size="big">Filters</Paragraph>
+    <Paragraph size={22}>Filters</Paragraph>
     <StyledAction>
-      <Paragraph>Clear All</Paragraph>
-      <Icon name="tick" />
+      <Paragraph size={12}>Clear All</Paragraph>
+      <Icon name="delete" />
     </StyledAction>
   </StyledHeader>
 );

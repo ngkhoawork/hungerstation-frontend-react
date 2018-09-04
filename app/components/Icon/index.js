@@ -7,9 +7,9 @@ import Circle from 'components/Circle';
 import StyledIcon from './StyledIcon';
 import IconWrapper from './IconWrapper';
 
-const Icon = ({ name, circled }) => (
+const Icon = ({ name, circled, size }) => (
   <IconWrapper>
-    <StyledIcon src={getIcon(name)} alt={name} />
+    <StyledIcon src={getIcon(name)} alt={name} size={size} />
     {circled && <Circle color={wildSant} />}
   </IconWrapper>
 );
@@ -17,10 +17,12 @@ const Icon = ({ name, circled }) => (
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
   circled: PropTypes.bool,
+  size: PropTypes.number,
 };
 
 Icon.defaultProps = {
   circled: false,
+  size: 12,
 };
 
 export default Icon;

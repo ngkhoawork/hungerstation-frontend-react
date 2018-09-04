@@ -6,7 +6,7 @@ import StyledOfferDetails from './StyledOfferDetails';
 
 const OfferDetails = ({ title, description }) => (
   <StyledOfferDetails>
-    <Paragraph size="big" color="white">
+    <Paragraph size={20} color="white">
       {title}
     </Paragraph>
     <Paragraph light color="white">

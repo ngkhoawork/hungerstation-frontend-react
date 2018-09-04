@@ -9,7 +9,7 @@ import Indicator from '../Indicator';
 const Category = ({ title, children }) => (
   <StyledCategory>
     <StyledTitle>
-      <Paragraph size="big">{title}</Paragraph>
+      <Paragraph size={17}>{title}</Paragraph>
       <Indicator value={1} />
     </StyledTitle>
     {children}

@@ -10,9 +10,7 @@ const OptionsChoice = ({ options, selectedOption, onOptionSelect }) => (
   <StyledContainer>
     {options.map(option => (
       <ItemContainer key={option.id} onClick={() => onOptionSelect(option.id)}>
-        <Paragrpaph size="small" color="white">
-          {option.name}
-        </Paragrpaph>
+        <Paragrpaph color="white">{option.name}</Paragrpaph>
         {option.id === selectedOption && <ActiveBorder />}
       </ItemContainer>
     ))}

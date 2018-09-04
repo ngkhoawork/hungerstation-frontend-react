@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { silverChalice } from 'utils/colors';
 
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
@@ -10,7 +11,7 @@ const DeliveryTypes = ({ types }) => (
   <StyledContainer>
     {types.map(type => (
       <StyledItem key={type.id} hasBorder>
-        <Paragraph color="lightgrey">{type.label}</Paragraph>
+        <Paragraph color={silverChalice}>{type.label}</Paragraph>
         {type.isSelected && <Icon name="tick" />}
       </StyledItem>
     ))}

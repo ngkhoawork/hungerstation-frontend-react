@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { silverChalice } from 'utils/colors';
 
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
@@ -13,9 +14,9 @@ const Cuisines = ({ cuisines }) => (
       <StyledItem key={cuisine.id}>
         <StyledDetails>
           <Icon name={cuisine.id} />
-          <Paragraph color="lightgrey">{cuisine.label}</Paragraph>
+          <Paragraph color={silverChalice}>{cuisine.label}</Paragraph>
         </StyledDetails>
-        {cuisine.isSelected && <Icon name="tick" />}
+        {cuisine.isSelected && <Icon name="check" />}
       </StyledItem>
     ))}
   </StyledContainer>

@@ -5,7 +5,7 @@ const StyledAction = styled.div`
   ${flexBox(
     { align: 'flex-end', justify: 'space-between' },
     `
-    width: 70px;
+    width: 60px;
   `,
   )};
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/styles';
+import { wildSant } from 'utils/colors';
 
 const StyledHeader = styled.div`
   ${flexBox(
@@ -7,7 +8,8 @@ const StyledHeader = styled.div`
     `
     width: 100%;
     padding-bottom: 20px;
-    border-bottom: 1px solid white;
+    margin-top: 5px;
+    border-bottom: 1px solid ${wildSant};
   `,
   )};
 `;

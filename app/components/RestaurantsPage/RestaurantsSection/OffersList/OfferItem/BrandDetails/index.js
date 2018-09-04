@@ -9,7 +9,9 @@ import StyledBrandDetails from './StyledBrandDetails';
 const BrandDetails = ({ brand }) => (
   <StyledBrandDetails>
     <BrandLogo src={BurgerKing} />
-    <Paragraph color="white">{brand}</Paragraph>
+    <Paragraph color="white" size={11}>
+      {brand}
+    </Paragraph>
   </StyledBrandDetails>
 );
 

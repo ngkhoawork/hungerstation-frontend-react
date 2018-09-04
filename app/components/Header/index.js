@@ -25,9 +25,7 @@ const Header = () => (
     <RightSection>
       <LocaleToggle />
       <TextLink to="/login">
-        <Paragraph size="small" color="white">
-          Log in
-        </Paragraph>
+        <Paragraph color="white">Log in</Paragraph>
       </TextLink>
       <Circle>
         <Icon name="basket" />

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/tacos</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Restaurant" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="Restaurants-Page-B" transform="translate(-126.000000, -646.000000)">
+            <g id="Left-hand-menu" transform="translate(119.000000, 230.000000)">
+                <g id="cuisines" transform="translate(1.000000, 220.000000)">
+                    <g id="Group-13">
+                        <g id="icon/tacos" transform="translate(7.000000, 197.000000)">
+                            <path d="M9.783125,5.16772371 C10.4169051,4.44267347 10.4924608,3.36179531 9.96616454,2.54921135 C9.4398683,1.73662739 8.44767573,1.40224854 7.5625,1.73915228 C7.18929201,0.69375578 6.22942791,7.93016446e-17 5.15625,0 C4.08307209,-7.93016446e-17 3.12320799,0.69375578 2.75,1.73915228 C2.52983799,1.65449842 2.29724507,1.6100339 2.0625,1.60772371 C1.25064174,1.60526283 0.513599612,2.09996774 0.182023718,2.86990508 C-0.149552176,3.63984242 -0.01340979,4.54045953 0.529375,5.16772371" id="Shape" stroke="#434340" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M10.2953125,9.99700942 C10.302875,9.87843799 10.3125,9.76058085 10.3125,9.63986656 C10.3125,6.68119829 8.00396821,4.28272379 5.15625,4.28272379 C2.30853179,4.28272379 4.24343084e-08,6.68119829 0,9.63986656 C0,9.76058085 0.009625,9.87843799 0.0171875,9.99700942 L10.2953125,9.99700942 Z" id="Shape" stroke="#434340" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <ellipse id="Oval" fill="#434340" fill-rule="nonzero" cx="3.78125" cy="6.78272371" rx="1" ry="1"></ellipse>
+                            <ellipse id="Oval" fill="#434340" fill-rule="nonzero" cx="6.53125" cy="8.21129513" rx="1" ry="1"></ellipse>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

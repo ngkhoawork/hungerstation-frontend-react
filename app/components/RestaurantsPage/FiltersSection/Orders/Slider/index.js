@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { silverChalice } from 'utils/colors';
 
 import Paragraph from 'components/Paragraph';
 import StyledInput from './StyledInput';
@@ -7,7 +8,7 @@ import StyledSliderContainer from './StyledSliderContainer';
 
 const Slider = ({ label, range }) => (
   <StyledSliderContainer>
-    <Paragraph>{label}</Paragraph>
+    <Paragraph color={silverChalice}>{label}</Paragraph>
     <StyledInput min={range.min} max={range.max} />
   </StyledSliderContainer>
 );

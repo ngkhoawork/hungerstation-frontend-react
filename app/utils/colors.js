@@ -7,3 +7,4 @@ export const hintOfRed = '#f8f6f6';
 export const paleSlate = '#cdcbcd';
 export const wildSant = '#f4f4f4';
 export const jade = '#00C269';
+export const silverChalice = '#9F9F9F';

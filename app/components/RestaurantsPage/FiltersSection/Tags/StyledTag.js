@@ -16,7 +16,7 @@ const StyledTag = styled.span`
     `
     background-color: ${gold};
     border-radius: 8px;
-    padding: 5px 8px 3px;
+    padding: 5px 8px 1px;
   `};
 `;
 

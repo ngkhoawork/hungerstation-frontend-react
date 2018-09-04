@@ -9,7 +9,7 @@ import Row from '../Row';
 const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
   <StyledBottomPart>
     <Row>
-      <Paragraph size="big">{name}</Paragraph>
+      <Paragraph size={20}>{name}</Paragraph>
     </Row>
     <Row>
       <Icon name="tick" />

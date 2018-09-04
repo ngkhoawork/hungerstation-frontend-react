@@ -6,7 +6,7 @@ import StyledSection from './StyledSection';
 
 const Section = ({ title, children }) => (
   <StyledSection>
-    <Paragraph size="big">{title}</Paragraph>
+    <Paragraph size={30}>{title}</Paragraph>
     {children}
   </StyledSection>
 );
