@@ -20,6 +20,7 @@ import Time from 'icons/time.svg';
 import Delivery from 'icons/delivery.svg';
 import Bag from 'icons/bag.svg';
 import Star from 'icons/star.svg';
+import ArrowDropdown from 'icons/arrow-dropdown.svg';
 
 import AllCuisine from 'icons/all-cuisine.svg';
 import AmericanCuisine from 'icons/american-cuisine.svg';
@@ -119,6 +120,8 @@ const getIcon = name => {
       return Bag;
     case 'star':
       return Star;
+    case 'arrowdown':
+      return ArrowDropdown;
     default:
       return null;
   }
