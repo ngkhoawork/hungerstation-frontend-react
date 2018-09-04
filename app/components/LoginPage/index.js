@@ -29,7 +29,7 @@ const LoginPage = () => (
     </TextItem>
     <SocialAuth />
     <LoginFormContainer />
-    <StyledParagraph margin="14px 0" size={16}>
+    <StyledParagraph margin="14px 0" size="medium">
       <TextLink to="/forgot-password" color={silverChalice}>
         <FormattedMessage {...messages.forgotPassword} />
       </TextLink>

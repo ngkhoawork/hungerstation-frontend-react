@@ -1,15 +1,15 @@
-import styled from 'styled-components';
+import React from 'react';
 
-const StyledParagraph = styled.p`
-  font-family: ${({ light }) =>
-    `HungerStation-${light ? 'Light' : 'Regular'}, sans-serif`};
-  font-size: ${({ size }) => size}px;
-  color: ${({ color }) => color};
-  margin: ${({ margin }) => margin || 0};
-`;
+import StyledParagraph from './StyledParagraph';
 
-StyledParagraph.defaultProps = {
-  size: 14,
+const Paragraph = ({ children, size, ...rest }) => (
+  <StyledParagraph size={size} {...rest}>
+    {children}
+  </StyledParagraph>
+);
+
+Paragraph.defaultProps = {
+  size: 'small',
 };
 
-export default StyledParagraph;
+export default Paragraph;

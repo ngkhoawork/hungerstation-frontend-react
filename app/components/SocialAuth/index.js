@@ -1,19 +1,7 @@
 import React from 'react';
 
-import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import CenteredContent from 'components/CenteredContent';
 import Icon from 'components/Icon';
-
-const CenteredContent = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'space-evenly' },
-    `
-      > * {
-        margin: 0 10px;
-      }
-    `,
-  )};
-`;
 
 const SocialAuth = () => (
   <CenteredContent>
