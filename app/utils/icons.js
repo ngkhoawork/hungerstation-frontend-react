@@ -23,6 +23,7 @@ import Star from 'icons/star.svg';
 import ArrowDropdown from 'icons/arrow-dropdown.svg';
 import MagnifyingGlass from 'icons/magnifying-glass.svg';
 import Refresh from 'icons/refresh.svg';
+import Edit from 'icons/edit.svg';
 
 import AllCuisine from 'icons/all-cuisine.svg';
 import AmericanCuisine from 'icons/american-cuisine.svg';
@@ -128,6 +129,8 @@ const getIcon = name => {
       return MagnifyingGlass;
     case 'refresh':
       return Refresh;
+    case 'edit':
+      return Edit;
     default:
       return null;
   }

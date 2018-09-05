@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Paragraph from 'components/Paragraph';
 import StyledSection from './StyledSection';
 
-const Section = ({ title, children }) => (
+const Section = ({ children, header }) => (
   <StyledSection>
-    <Paragraph size={30}>{title}</Paragraph>
+    {header}
     {children}
   </StyledSection>
 );
 
 Section.propTypes = {
-  title: PropTypes.string.isRequired,
   children: PropTypes.func.isRequired,
+  header: PropTypes.func.isRequired,
 };
 
 export default Section;

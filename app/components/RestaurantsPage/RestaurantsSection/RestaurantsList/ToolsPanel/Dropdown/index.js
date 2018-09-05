@@ -78,7 +78,7 @@ class Dropdown extends Component {
           <Paragraph light size={16}>
             {(selectedOption && selectedOption.label) || placeholder}
           </Paragraph>
-          {rightIcon && <Icon name={rightIcon} />}
+          {rightIcon && <Icon name={rightIcon} size={10} />}
         </StyledDropdown>
         {isDropdownVisible && (
           <Options onSelectOption={this.handleSelectOption} options={options} />

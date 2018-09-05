@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Paragraph from 'components/Paragraph';
 import StyledCategory from './StyledCategory';
 import StyledTitle from './StyledTitle';
-import Indicator from '../Indicator';
+import Indicator from '../../Indicator';
 
 const Category = ({ title, children }) => (
   <StyledCategory>

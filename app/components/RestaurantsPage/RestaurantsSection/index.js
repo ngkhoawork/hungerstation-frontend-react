@@ -2,15 +2,17 @@ import React from 'react';
 
 import OffersListContainer from 'containers/OffersListContainer';
 import RestaurantsListContainer from 'containers/RestaurantsListContainer';
+import Paragraph from 'components/Paragraph';
 import StyledRestaurantsSection from './StyledRestaurantsSection';
 import Section from './Section';
+import RestaurantsHeader from './RestaurantsHeader';
 
 const RestaurantsSection = () => (
   <StyledRestaurantsSection>
-    <Section title="Top offers">
+    <Section header={<Paragraph size={30}>Top offers</Paragraph>}>
       <OffersListContainer />
     </Section>
-    <Section title="We found restaurants at">
+    <Section header={<RestaurantsHeader />}>
       <RestaurantsListContainer />
     </Section>
   </StyledRestaurantsSection>
