@@ -24,6 +24,7 @@ import ArrowDropdown from 'icons/arrow-dropdown.svg';
 import MagnifyingGlass from 'icons/magnifying-glass.svg';
 import Refresh from 'icons/refresh.svg';
 import Edit from 'icons/edit.svg';
+import ArrowCircled from 'icons/arrow-circled.svg';
 
 import AllCuisine from 'icons/all-cuisine.svg';
 import AmericanCuisine from 'icons/american-cuisine.svg';
@@ -131,6 +132,8 @@ const getIcon = name => {
       return Refresh;
     case 'edit':
       return Edit;
+    case 'arrow-circled':
+      return ArrowCircled;
     default:
       return null;
   }
