@@ -1,13 +1,13 @@
-import { logUserIn } from '../actions';
-import { LOG_USER_IN } from '../constants';
+import { loginRequest } from '../actions';
+import { LOGIN_REQUEST } from '../constants';
 
 describe('LoginPageContainer actions', () => {
   describe('Default Action', () => {
     it('has a type of DEFAULT_ACTION', () => {
       const expected = {
-        type: LOG_USER_IN,
+        type: LOGIN_REQUEST,
       };
-      expect(logUserIn()).toEqual(expected);
+      expect(loginRequest()).toEqual(expected);
     });
   });
 });

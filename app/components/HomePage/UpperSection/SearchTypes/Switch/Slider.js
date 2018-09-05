@@ -31,6 +31,7 @@ const Slider = styled.span`
     width: 16px;
     background-color: ${gold};
     background-image: url(${Toggle});
+    background-position: center;
     border-radius: 50%;
 
     ${Checkbox}:checked + & {

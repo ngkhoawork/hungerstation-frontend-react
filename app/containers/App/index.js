@@ -11,7 +11,7 @@
  * the linting exception.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
@@ -19,8 +19,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import injectSaga from 'utils/injectSaga';
 
 import HomePageContainer from 'containers/HomePageContainer';
-import LoginPageContainer from 'containers/LoginPageContainer';
-import RegistrationPageContainer from 'containers/RegistrationPageContainer';
+import LoginPage from 'components/LoginPage';
+import RegistrationPage from 'components/RegistrationPage';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
 import UserProfile from 'components/UserProfile';
 import ResetPasswordPage from 'components/ResetPasswordPage';
@@ -33,48 +33,57 @@ import Footer from 'components/Footer';
 import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import saga from './authSagas';
-import { authenticateUser } from './authActions';
+// import { authenticateUser } from './authActions';
 import StyledApp from './StyledApp';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   dir: locale === 'ar' ? 'rtl' : 'ltr',
 }));
 
-const mapDispatchToProps = {
-  authenticateUser,
-};
+// const mapDispatchToProps = {
+//   authenticateUser,
+// };
 
 @withRouter
 @connect(
   mapStateToProps,
-  mapDispatchToProps,
+  // mapDispatchToProps,
 )
 @injectSaga({ key: 'auth', saga })
 export default class App extends Component {
   static propTypes = {
     dir: PropTypes.string,
-    authenticateUser: PropTypes.func.isRequired,
+    // authenticateUser: PropTypes.func.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
     }),
   };
 
-  componentWillMount() {
-    const { authenticateUser: authenticate } = this.props;
-    authenticate();
-  }
+  // componentWillMount() {
+  //   const { authenticateUser: authenticate } = this.props;
+  //   authenticate();
+  // }
 
   render() {
     const { dir, location } = this.props;
     return (
-      <StyledApp dir={dir}>
+      <StyledApp dir={dir} dark={location.pathname !== '/'}>
         <CssBaseline />
         <AddRestaurantBanner />
-        {location.pathname !== '/' && <Header />}
+        {location.pathname !== '/' && <Header dark />}
         <Switch>
-          <Route exact path="/" component={HomePageContainer} />
-          <Route path="/login" component={LoginPageContainer} />
-          <Route path="/register" component={RegistrationPageContainer} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Fragment>
+                <HomePageContainer {...props} />
+                <Footer />
+              </Fragment>
+            )}
+          />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
           <Route path="/restaurants" component={RestaurantsPage} />
@@ -82,7 +91,6 @@ export default class App extends Component {
 
           <Redirect from="*" to="/" />
         </Switch>
-        <Footer />
       </StyledApp>
     );
   }

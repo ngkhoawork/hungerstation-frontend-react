@@ -5,7 +5,7 @@ const StyledParagraph = styled.p`
     light ? 'Light' : 'Regular'}', sans-serif;
   font-size: ${({ size }) => size}px;
   color: ${({ color }) => color};
-  margin: 0;
+  margin: ${({ margin }) => margin || 0};
 `;
 
 export default StyledParagraph;

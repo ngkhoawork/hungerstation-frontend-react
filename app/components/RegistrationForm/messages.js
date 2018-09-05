@@ -23,8 +23,12 @@ export default defineMessages({
     id: 'app.components.RegistrationForm.passwordLabel',
     defaultMessage: 'Password',
   },
+  repeatPassword: {
+    id: 'app.components.RegistrationForm.repeatPassword',
+    defaultMessage: 'Confirm password',
+  },
   buttonLabel: {
     id: 'app.components.RegistrationForm.buttonLabel',
-    defaultMessage: 'Submit',
+    defaultMessage: 'Sign up',
   },
 });

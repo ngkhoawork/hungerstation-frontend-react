@@ -1,13 +1,13 @@
-export const authenticateUserMutation = `mutation AuthenticateUser($number:String!,$password){
-  authenticateUser(number:$number,password:$password){
+export const authenticateUserMutation = `mutation AuthenticateUser($mobile:String!,$password:String!){
+  authenticateUser(mobile:$mobile, password:$password){
     refresh_token
     token
     user_id
   }
 }`;
 
-export const createUserMutation = `mutation CreateUser($username:String!,$number:String!,$email:String!,$password:String!){
-  createUser(username:$username,number:$number,email:$email,password:$password){
+export const createUserMutation = `mutation CreateUser($name:String!,$mobile:String!,$email:String!,$password:String!){
+  createUser(name:$name,mobile:$mobile,email:$email,password:$password, country_id: 1){
     refresh_token
     token
     user_id

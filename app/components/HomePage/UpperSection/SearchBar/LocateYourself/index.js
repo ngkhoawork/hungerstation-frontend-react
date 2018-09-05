@@ -7,7 +7,7 @@ import StyledContainer from './StyledContainer';
 
 const LocateYourself = ({ getCurrentLocation, isSettlementLoaded }) => (
   <StyledContainer onClick={getCurrentLocation}>
-    {isSettlementLoaded && <Icon name="locate-yourself" size={20} />}
+    {isSettlementLoaded && <Icon name="location" size={20} />}
     {!isSettlementLoaded && <Spinner isActive={!isSettlementLoaded} />}
   </StyledContainer>
 );
