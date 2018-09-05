@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="11px" viewBox="0 0 11 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/reorder</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="button/load-more" transform="translate(-99.000000, -14.000000)" stroke="#434340">
+            <g id="Group" transform="translate(100.000000, 11.000000)">
+                <g id="icon/reorder" transform="translate(0.000000, 4.000000)">
+                    <g id="refresh-69">
+                        <path d="M0.3,4.375 C0.3,2.11983333 2.1804,0.291666667 4.5,0.291666667 C6.0816,0.291666667 7.3968,1.24891667 8.1,2.625" id="Shape" stroke-width="1.4"></path>
+                        <polyline id="Shape" stroke-width="1.4" points="8.1 0.291666667 8.1 2.625 5.7 2.625"></polyline>
+                        <path d="M8.7,4.95833333 C8.7,7.2135 6.8196,9.04166667 4.5,9.04166667 C2.9184,9.04166667 1.6032,8.08441667 0.9,6.70833333" id="Shape" stroke-width="1.4"></path>
+                        <polyline id="Shape" stroke-width="1.4" points="0.9 9.04166667 0.9 6.70833333 3.3 6.70833333"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

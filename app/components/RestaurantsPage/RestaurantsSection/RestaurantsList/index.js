@@ -5,6 +5,7 @@ import StyledRestaurantList from './StyledRestaurantList';
 import RestaurantCard from './RestaurantCard';
 import ToolsPanel from './ToolsPanel';
 import StyledList from './StyledList';
+import LoadMore from './LoadMore';
 
 const RestaurantsList = ({ restaurants }) => (
   <StyledRestaurantList>
@@ -14,6 +15,7 @@ const RestaurantsList = ({ restaurants }) => (
         <RestaurantCard key={restaurant.id} {...restaurant} />
       ))}
     </StyledList>
+    <LoadMore />
   </StyledRestaurantList>
 );
 
