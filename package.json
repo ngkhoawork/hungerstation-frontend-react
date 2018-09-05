@@ -156,6 +156,7 @@
     "cross-env": "5.2.0",
     "express": "^4.16.3",
     "fontfaceobserver": "2.0.13",
+    "formik": "^1.0.3",
     "graphql": "^0.13.2",
     "graphql-request": "^1.8.0",
     "history": "4.7.2",
@@ -179,7 +180,6 @@
     "react-router-redux": "5.0.0-alpha.9",
     "recompose": "^0.28.2",
     "redux": "4.0.0",
-    "redux-form": "^7.4.2",
     "redux-immutable": "4.0.0",
     "redux-saga": "0.16.0",
     "reselect": "3.0.1",
@@ -188,7 +188,8 @@
     "styled-components": "3.3.2",
     "styled-media-query": "^2.0.2",
     "warning": "4.0.1",
-    "whatwg-fetch": "2.0.4"
+    "whatwg-fetch": "2.0.4",
+    "yup": "^0.26.2"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "2.1.3",

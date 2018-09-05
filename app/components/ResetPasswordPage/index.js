@@ -1,42 +1,31 @@
 /**
  *
- * ResetPasswordPage
+ * ForgotPasswordPage
  *
  */
 
 import React from 'react';
-
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 
-import ResetPasswordForm from 'components/ResetPasswordForm';
+import ResetPasswordFormContainer from 'containers/ResetPasswordFormContainer';
+
+import TextItem from 'components/TextItem';
+import StyledPage from 'components/StyledFormPage';
+import SocialAuth from 'components/SocialAuth';
 
 import messages from './messages';
 
-const ResetPasswordPage = () => (
-  <Grid
-    container
-    spacing={24}
-    direction="row"
-    justify="center"
-    alignItems="center"
-    alignContent="center"
-  >
-    <Grid item xs={10} sm={6} align>
-      <Typography align="center" variant="display1" gutterBottom>
-        <FormattedMessage {...messages.header} />
-      </Typography>
-      <Typography align="center" variant="caption" gutterBottom>
-        <FormattedMessage {...messages.subheader} />
-      </Typography>
-      <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={6}>
-          <ResetPasswordForm />
-        </Grid>
-      </Grid>
-    </Grid>
-  </Grid>
+const ForgotPasswordPage = () => (
+  <StyledPage>
+    <TextItem size={40} weight={300} fontFamily="regular">
+      <FormattedMessage {...messages.header} />
+    </TextItem>
+    <TextItem size={15} margin="0.2em 0 1em">
+      <FormattedMessage {...messages.subheader} />
+    </TextItem>
+    <SocialAuth />
+    <ResetPasswordFormContainer />
+  </StyledPage>
 );
 
-export default ResetPasswordPage;
+export default ForgotPasswordPage;

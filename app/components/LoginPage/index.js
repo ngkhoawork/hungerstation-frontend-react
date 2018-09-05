@@ -5,42 +5,42 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { FormattedMessage } from 'react-intl';
-import LoginForm from 'components/LoginForm';
-import TextLink from 'components/TextLink';
-import TextItem from 'components/TextItem';
 
-import StyledPage from './StyledPage';
-import Group from './Group';
+import LoginFormContainer from 'containers/LoginFormContainer';
+import TextLink from 'components/TextLink';
+import ButtonLink from 'components/ButtonLink';
+import TextItem from 'components/TextItem';
+import SocialAuth from 'components/SocialAuth';
+import StyledPage from 'components/StyledFormPage';
+import StyledParagraph from 'components/Paragraph';
+import { silverChalice } from 'utils/colors';
+
 import messages from './messages';
 
-const LoginPage = ({ onSubmit }) => (
+const LoginPage = () => (
   <StyledPage>
-    <TextItem size={40} weight={600} fontFamily="regular">
+    <TextItem size={40} weight={300} fontFamily="regular">
       <FormattedMessage {...messages.header} />
     </TextItem>
-    <TextItem size={15}>
+    <TextItem size={15} margin="0.2em 0 1em">
       <FormattedMessage {...messages.subheader} />
     </TextItem>
-    <LoginForm onSubmit={onSubmit} />
-    <TextLink to="/reset-password" color="grey">
-      <FormattedMessage {...messages.forgotPassword} />&nbsp;
-    </TextLink>
-    <Group>
-      <TextItem color="grey" size={15}>
-        <FormattedMessage {...messages.noAccount} />&nbsp;
-      </TextItem>
-      <TextLink to="/register">
-        <FormattedMessage {...messages.signUp} />
+    <SocialAuth />
+    <LoginFormContainer />
+    <StyledParagraph margin="14px 0" size="medium">
+      <TextLink to="/forgot-password" color={silverChalice}>
+        <FormattedMessage {...messages.forgotPassword} />
       </TextLink>
-    </Group>
+    </StyledParagraph>
+    <TextItem color={silverChalice} size={15}>
+      <FormattedMessage {...messages.noAccount} />
+      <ButtonLink to="/register">
+        <FormattedMessage {...messages.signUp} />
+      </ButtonLink>
+    </TextItem>
   </StyledPage>
 );
-
-LoginPage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
 
 export default LoginPage;

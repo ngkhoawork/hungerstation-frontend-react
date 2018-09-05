@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
+const sizesMap = {
+  small: '14px',
+  medium: '16px',
+  large: '20px',
+};
+
 const StyledParagraph = styled.p`
-  font-family: 'HungerStation-${({ light }) =>
-    light ? 'Light' : 'Regular'}', sans-serif;
-  font-size: ${({ size }) => (size === 'small' ? 14 : 20)}px;
+  font-family: ${({ light }) =>
+    `HungerStation-${light ? 'Light' : 'Regular'}, sans-serif`};
+  font-size: ${({ size }) => sizesMap[size] || sizesMap.small};
   color: ${({ color }) => color};
-  margin: 0;
+  margin: ${({ margin }) => margin || 0};
 `;
 
 export default StyledParagraph;

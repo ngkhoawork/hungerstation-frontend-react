@@ -15,8 +15,12 @@ export default defineMessages({
     id: 'app.components.LoginForm.passwordLabel',
     defaultMessage: 'Password',
   },
+  rememberMeLabel: {
+    id: 'app.components.LoginForm.rememberMeLabel',
+    defaultMessage: 'Remember me',
+  },
   buttonLabel: {
     id: 'app.components.LoginForm.buttonLabel',
-    defaultMessage: 'Login',
+    defaultMessage: 'Log in',
   },
 });

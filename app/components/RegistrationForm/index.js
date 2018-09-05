@@ -6,24 +6,24 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form/immutable';
-import { injectIntl, intlShape } from 'react-intl';
+import { Field } from 'formik';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import validate from 'utils/form/validation';
-import warn from 'utils/form/warning';
+
+import { printErrors } from 'utils/form/helpers';
+import intl from 'utils/intlService';
 import TextInput from 'components/TextInput';
-import styles from 'utils/styles';
-import StyledForm from 'components/LoginForm/StyledForm';
+import StyledForm from 'components/StyledForm';
+import MobileNumber from 'components/PhoneNumberInput';
 
 import messages from './messages';
 
-const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
-  <StyledForm onSubmit={handleSubmit} autoComplete="off">
+const RegistrationForm = ({ handleSubmit, submitting, classes, error }) => (
+  <StyledForm onSubmit={handleSubmit} autoComplete="off" noValidate>
+    {printErrors(error)}
     <div>
       <Field
         autoComplete="nope"
-        name="username"
+        name="name"
         type="text"
         component={TextInput}
         label={intl.formatMessage(messages.usernameLabel)}
@@ -33,15 +33,16 @@ const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
     <div>
       <Field
         autoComplete="nope"
-        name="number"
-        type="phone"
-        component={TextInput}
+        name="phone"
+        component={MobileNumber}
         label="Mobile number"
-        fullWidth
       />
     </div>
     <div>
       <Field
+        InputProps={{
+          noValidate: true,
+        }}
         autoComplete="nope"
         name="email"
         type="email"
@@ -60,6 +61,16 @@ const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
         fullWidth
       />
     </div>
+    <div>
+      <Field
+        autoComplete="nope"
+        name="repeatPassword"
+        type="password"
+        component={TextInput}
+        label={intl.formatMessage(messages.repeatPassword)}
+        fullWidth
+      />
+    </div>
     <Button
       className={classes.button}
       size="large"
@@ -69,7 +80,9 @@ const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
       type="submit"
       disabled={submitting}
     >
-      {intl.formatMessage(messages.buttonLabel)}
+      <span className={classes.buttonText}>
+        {intl.formatMessage(messages.buttonLabel)}
+      </span>
     </Button>
   </StyledForm>
 );
@@ -77,16 +90,8 @@ const RegistrationForm = ({ handleSubmit, submitting, intl, classes }) => (
 RegistrationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
-  intl: intlShape,
   classes: PropTypes.object.isRequired,
+  error: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 };
 
-export default withStyles(styles)(
-  injectIntl(
-    reduxForm({
-      form: 'signupform', // a unique identifier for this form
-      validate: (values, { intl }) => validate(values, intl, 'registration'),
-      warn: (values, { intl }) => warn(values, intl, 'registration'),
-    })(RegistrationForm),
-  ),
-);
+export default RegistrationForm;

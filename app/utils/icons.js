@@ -12,6 +12,11 @@ import Google from 'icons/google.svg';
 import Instagram from 'icons/instagram.svg';
 import Toggle from 'icons/toggle.svg';
 import Close from 'icons/close.svg';
+import Plus from 'icons/+.svg';
+import CheckboxUnchecked from 'icons/checkbox-unchecked.svg';
+import CheckboxChecked from 'icons/checkbox-checked.svg';
+import SaudiFlag from 'icons/saudi-flag.svg';
+import BahrainFlag from 'icons/bahrain-flag.svg';
 
 const getIcon = name => {
   switch (name) {
@@ -43,6 +48,16 @@ const getIcon = name => {
       return Toggle;
     case 'close':
       return Close;
+    case 'plus':
+      return Plus;
+    case 'checkbox-checked':
+      return CheckboxChecked;
+    case 'checkbox-unchecked':
+      return CheckboxUnchecked;
+    case 'saudi-flag':
+      return SaudiFlag;
+    case 'bahrain-flag':
+      return BahrainFlag;
     default:
       return null;
   }

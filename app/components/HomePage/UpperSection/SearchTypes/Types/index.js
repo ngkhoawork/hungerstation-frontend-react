@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Paragrpaph from 'components/Paragraph';
+import Paragraph from 'components/Paragraph';
 import Switch from '../Switch';
 import StyledContainer from './StyledContainer';
 
 const Types = ({ onSelect }) => (
   <StyledContainer>
-    <Paragrpaph color="white">Delivery</Paragrpaph>
+    <Paragraph color="white">Delivery</Paragraph>
     <Switch onSelect={onSelect} />
-    <Paragrpaph color="white">Pick up</Paragrpaph>
+    <Paragraph color="white">Pick up</Paragraph>
   </StyledContainer>
 );
 

@@ -1,13 +1,13 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { registerRequest } from '../actions';
+import { REGISTER_REQUEST } from '../constants';
 
 describe('RegistrationPageContainer actions', () => {
   describe('Default Action', () => {
     it('has a type of DEFAULT_ACTION', () => {
       const expected = {
-        type: DEFAULT_ACTION,
+        type: REGISTER_REQUEST,
       };
-      expect(defaultAction()).toEqual(expected);
+      expect(registerRequest()).toEqual(expected);
     });
   });
 });
