@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 import Desert from 'images/desert.png';
 import { SLIDE_TO_LEFT, SLIDE_MARGIN } from '../constants';
 
@@ -16,6 +16,9 @@ const StyledOfferItem = styled.div`
   background-position: center;
   padding: 15px;
   cursor: pointer;
+  ${mediaLess(600)`
+    min-width: 260px;
+  `};
 `;
 
 export default StyledOfferItem;

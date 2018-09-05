@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 import { wildSant } from 'utils/colors';
 
 const StyledToolPanel = styled.div`
@@ -12,6 +12,9 @@ const StyledToolPanel = styled.div`
     border-top: 1px solid ${wildSant};
   `,
   )};
+  ${mediaLess(600)`
+    margin-bottom: 10px;
+  `};
 `;
 
 export default StyledToolPanel;

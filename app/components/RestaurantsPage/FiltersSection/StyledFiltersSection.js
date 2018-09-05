@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 
 const StyledFiltersSection = styled.div`
   ${flexBox(
@@ -10,6 +10,9 @@ const StyledFiltersSection = styled.div`
     border-radius: 8px;
   `,
   )};
+  ${mediaLess(1000)`
+    display: none;
+  `};
 `;
 
 export default StyledFiltersSection;

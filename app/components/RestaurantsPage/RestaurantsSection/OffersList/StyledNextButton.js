@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gold } from 'utils/colors';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 
 const StyledNextButton = styled.div`
   ${flexBox({ align: 'center', justify: 'center' })} position: absolute;
@@ -12,6 +12,9 @@ const StyledNextButton = styled.div`
   height: 30px;
   border-radius: 15px;
   box-shadow: 0 10px 20px 0 rgba(126, 125, 125, 0.15);
+  ${mediaLess(600)`
+    display: none;
+  `};
 `;
 
 export default StyledNextButton;

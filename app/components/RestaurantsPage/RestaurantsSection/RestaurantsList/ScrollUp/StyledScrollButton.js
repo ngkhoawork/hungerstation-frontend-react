@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 import { gold } from 'utils/colors';
 
 const StyledScrollButton = styled.div`
@@ -13,6 +13,11 @@ const StyledScrollButton = styled.div`
   bottom: 0;
   right: -20px;
   transform: rotate(270deg);
+  ${mediaLess(600)`
+    align-self: flex-start;
+    right: 20px;
+    bottom: 25px;
+  `};
 `;
 
 export default StyledScrollButton;
