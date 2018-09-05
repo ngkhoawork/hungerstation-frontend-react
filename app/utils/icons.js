@@ -21,6 +21,7 @@ import Delivery from 'icons/delivery.svg';
 import Bag from 'icons/bag.svg';
 import Star from 'icons/star.svg';
 import ArrowDropdown from 'icons/arrow-dropdown.svg';
+import MagnifyingGlass from 'icons/magnifying-glass.svg';
 
 import AllCuisine from 'icons/all-cuisine.svg';
 import AmericanCuisine from 'icons/american-cuisine.svg';
@@ -122,6 +123,8 @@ const getIcon = name => {
       return Star;
     case 'arrowdown':
       return ArrowDropdown;
+    case 'magnifying-glass':
+      return MagnifyingGlass;
     default:
       return null;
   }

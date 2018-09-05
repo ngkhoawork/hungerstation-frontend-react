@@ -4,15 +4,16 @@ import { restaurantsPropTypes } from 'props/restaurants';
 import StyledRestaurantList from './StyledRestaurantList';
 import RestaurantCard from './RestaurantCard';
 import ToolsPanel from './ToolsPanel';
+import StyledList from './StyledList';
 
 const RestaurantsList = ({ restaurants }) => (
   <StyledRestaurantList>
     <ToolsPanel />
-    <div>
+    <StyledList>
       {restaurants.map(restaurant => (
         <RestaurantCard key={restaurant.id} {...restaurant} />
       ))}
-    </div>
+    </StyledList>
   </StyledRestaurantList>
 );
 
