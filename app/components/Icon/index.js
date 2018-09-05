@@ -22,7 +22,7 @@ Icon.propTypes = {
 
 Icon.defaultProps = {
   circled: false,
-  size: 12,
+  // size: 12,
 };
 
 export default Icon;

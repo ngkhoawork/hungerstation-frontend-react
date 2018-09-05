@@ -27,7 +27,7 @@ const Cuisines = ({ cuisines, isExpanded, toggleExpandibility }) => {
       ))}
       <StyledAction onClick={toggleExpandibility} isExpanded={isExpanded}>
         <Paragraph>{isExpanded ? 'Less' : 'More'}</Paragraph>
-        <Icon name="arrow-circled" />
+        <Icon name="arrow-circled" size={13} />
       </StyledAction>
     </StyledContainer>
   );

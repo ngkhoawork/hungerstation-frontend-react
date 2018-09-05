@@ -11,8 +11,8 @@ const Section = ({ children, header }) => (
 );
 
 Section.propTypes = {
-  children: PropTypes.func.isRequired,
-  header: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  header: PropTypes.node.isRequired,
 };
 
 export default Section;

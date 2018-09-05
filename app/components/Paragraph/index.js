@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { fuscousGray } from 'utils/colors';
 
 import StyledParagraph from './StyledParagraph';
 
 const Paragraph = ({ children, ...rest }) => (
-  <StyledParagraph {...rest}>
-    {children}
-  </StyledParagraph>
+  <StyledParagraph {...rest}>{children}</StyledParagraph>
 );
 
 Paragraph.propTypes = {
@@ -13,7 +13,7 @@ Paragraph.propTypes = {
   light: PropTypes.bool,
   size: PropTypes.number,
   color: PropTypes.string,
-  margin: PropTypes.string
+  margin: PropTypes.string,
 };
 
 Paragraph.defaultProps = {

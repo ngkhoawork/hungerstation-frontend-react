@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { alto } from 'utils/colors';
 
 const StyledIcon = styled.img`
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
+  ${({ size }) => `
+    width: ${size}px;
+    height: ${size}px;
+  `};
   z-index: 10;
   ${({ circled, size }) =>
     circled &&

@@ -18,7 +18,7 @@ const Category = ({ title, children }) => (
 
 Category.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Category;

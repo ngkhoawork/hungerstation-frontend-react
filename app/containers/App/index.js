@@ -11,7 +11,7 @@
  * the linting exception.
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
@@ -75,12 +75,7 @@ export default class App extends Component {
           <Route
             exact
             path="/"
-            render={props => (
-              <Fragment>
-                <HomePageContainer {...props} />
-                <Footer />
-              </Fragment>
-            )}
+            render={props => <HomePageContainer {...props} />}
           />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
@@ -91,6 +86,7 @@ export default class App extends Component {
 
           <Redirect from="*" to="/" />
         </Switch>
+        <Footer />
       </StyledApp>
     );
   }
