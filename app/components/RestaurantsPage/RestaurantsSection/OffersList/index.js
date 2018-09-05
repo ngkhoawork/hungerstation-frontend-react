@@ -8,7 +8,18 @@ import StyledNextButton from './StyledNextButton';
 import Pagination from './Pagination';
 import { SLIDE_TO_LEFT, SLIDE_MARGIN } from './constants';
 
-class OffersList extends Component {
+export default class OffersList extends Component {
+  static propTypes = {
+    offers: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        brand: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.sliderContainer = React.createRef();
@@ -31,16 +42,3 @@ class OffersList extends Component {
     );
   }
 }
-
-OffersList.propTypes = {
-  offers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      brand: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
-
-export default OffersList;

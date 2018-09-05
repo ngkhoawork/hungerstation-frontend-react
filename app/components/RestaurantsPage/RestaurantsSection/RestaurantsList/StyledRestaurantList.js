@@ -9,6 +9,7 @@ const StyledRestaurantList = styled.div`
     width: 100%;
   `,
   )};
+  position: relative;
 `;
 
 export default StyledRestaurantList;

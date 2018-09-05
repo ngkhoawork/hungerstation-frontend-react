@@ -7,7 +7,7 @@ import ButtonWrapper from './ButtonWrapper';
 
 const LoadMore = () => (
   <ButtonWrapper>
-    <Button label="Load more" primary={false} color={wildSant}>
+    <Button label="Load More" primary={false} color={wildSant}>
       <Icon name="refresh" />
     </Button>
   </ButtonWrapper>
