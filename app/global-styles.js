@@ -62,4 +62,34 @@ injectGlobal`
     min-width: 100%;
     color: #434340;
   }
+
+  .Modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background-color: white;
+    max-width: 100%;
+    height: 900px;
+    max-height: 100%;
+    z-index: 101;
+    border-radius: 5px;
+    opacity: 1;
+    outline: 9999px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    overflow-y: scroll;
+  }
+
+  .Overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;

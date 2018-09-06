@@ -28,6 +28,10 @@ import ForgotPasswordPage from 'components/ForgotPasswordPage';
 import AddRestaurantBanner from 'components/AddRestaurantBanner';
 import RestaurantsPage from 'components/RestaurantsPage';
 
+import ModalContainer from 'containers/ModalContainer';
+import FiltersContainer from 'containers/FiltersContainer';
+import MobileFiltersSection from 'components/RestaurantsPage/MobileFiltersSection';
+
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { connect } from 'react-redux';
@@ -69,6 +73,13 @@ export default class App extends Component {
     return (
       <StyledApp dir={dir} dark={location.pathname !== '/'}>
         <CssBaseline />
+
+        <ModalContainer>
+          <FiltersContainer>
+            {props => <MobileFiltersSection {...props} />}
+          </FiltersContainer>
+        </ModalContainer>
+
         <AddRestaurantBanner />
         {location.pathname !== '/' && <Header dark />}
         <Switch>

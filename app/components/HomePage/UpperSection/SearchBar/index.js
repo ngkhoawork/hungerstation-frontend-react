@@ -8,7 +8,12 @@ import LocateYourself from './LocateYourself';
 import StyledBarActions from './StyledBarActions';
 import ButtonWrapper from './ButtonWrapper';
 
-const SearchBar = ({ selectedCity, selectedDistrict, ...rest }) => (
+const SearchBar = ({
+  selectedCity,
+  selectedDistrict,
+  handleRedirect,
+  ...rest
+}) => (
   <StyledBar>
     <DropdownInput
       value={selectedCity}
@@ -22,7 +27,7 @@ const SearchBar = ({ selectedCity, selectedDistrict, ...rest }) => (
     />
     <StyledBarActions>
       <LocateYourself {...rest} />
-      <ButtonWrapper>
+      <ButtonWrapper onClick={() => handleRedirect('/restaurants')}>
         <Button label="Search" border="right" />
       </ButtonWrapper>
     </StyledBarActions>
