@@ -19,14 +19,14 @@ const StyledSection = styled.div`
       margin-bottom: 0;
       padding: 0;
     }
-  `,
+    `,
   )};
   ${mediaSmall`
-    flex-direction: column;
-    align-items: center;
-    ${({ hasBackground }) =>
-      hasBackground &&
-      `
+  flex-direction: column;
+  align-items: center;
+  ${({ hasBackground }) =>
+    hasBackground &&
+    `
       background-image: url(${PhoneVisualSmall});
       padding-bottom: 400px;
       background-size: 80%;

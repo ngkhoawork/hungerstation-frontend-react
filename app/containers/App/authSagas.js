@@ -17,6 +17,7 @@ import { clearStorageItem, getStorageItem } from 'utils/localStorage';
 import { isAccessExpired, parseJwt } from 'utils/tokens';
 import HungerStationAPI from 'api/HungerStationAPI';
 import { saveTokens } from 'utils/reusedSagas';
+// import monitorSaga from './monitorSaga';
 
 import { LOGOUT, REQUEST_ERROR, AUTHENTICATE_USER } from './authConstants';
 import { setAuthState, updateTokens } from './authActions';
@@ -48,18 +49,26 @@ export function* logout() {
   }
 }
 
-export function* fetchListener(action) {
-  const shouldRefresh = yield call(needRefresh);
+// export function* fetchListener(action) {
+//   while (true) {
+//     const { payload } = yield take('@@router/LOCATION_CHANGE');
 
-  if (!shouldRefresh) yield call(makeAuthenticatedRequest, action);
-  if (shouldRefresh) {
-    const error = yield call(refreshTokens);
-    if (!error) {
-      yield delay(50);
-      yield call(makeAuthenticatedRequest, action);
-    }
-  }
-}
+//     if (payload.pathname === '/login') {
+//       console.log(payload);
+//       // should listen on every api call
+//       const shouldRefresh = yield call(needRefresh);
+
+//       if (!shouldRefresh) yield call(makeAuthenticatedRequest, action);
+//       if (shouldRefresh) {
+//         const error = yield call(refreshTokens);
+//         if (!error) {
+//           yield delay(50);
+//           yield call(makeAuthenticatedRequest, action);
+//         }
+//       }
+//     }
+//   }
+// }
 
 function* needRefresh() {
   const { accessTokenExpiresAt } = yield select(makeSelectTokens);
@@ -126,6 +135,7 @@ export function* authenticationFlow() {
       yield put(updateTokens(JSON.parse(tokens)));
 
       const shouldRefresh = yield call(needRefresh);
+
       if (!shouldRefresh) {
         yield call(HungerStationAPI.getUser, tokens.accessToken, userId);
       } else {
@@ -141,7 +151,7 @@ export function* authenticationFlow() {
 
 function* authSagas() {
   yield fork(logoutFlow);
-  yield fork(fetchListener);
+  // yield fork(fetchListener);
   yield fork(authenticationFlow);
 }
 
@@ -149,4 +159,5 @@ export default function* root() {
   yield spawn(authSagas);
   yield spawn(registrationSagas);
   yield spawn(loginSagas);
+  // yield spawn(monitorSaga);
 }

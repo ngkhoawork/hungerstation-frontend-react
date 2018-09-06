@@ -5,39 +5,35 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { FormattedMessage } from 'react-intl';
-import RegistrationForm from 'components/RegistrationForm';
-import TextLink from 'components/TextLink';
+
+import RegistrationFormContainer from 'containers/RegistrationFormContainer';
+
+import SocialAuth from 'components/SocialAuth';
+import ButtonLink from 'components/ButtonLink';
 import TextItem from 'components/TextItem';
-import StyledPage from 'components/LoginPage/StyledPage';
-import Group from 'components/LoginPage/Group';
+import StyledPage from 'components/StyledFormPage';
 
 import messages from './messages';
 
-const RegistrationPage = ({ onSubmit }) => (
+const RegistrationPage = () => (
   <StyledPage>
-    <TextItem size={40} weight={600} fontFamily="regular">
+    <TextItem size={40} weight={300} fontFamily="regular">
       <FormattedMessage {...messages.header} />
     </TextItem>
-    <TextItem size={15}>
+    <TextItem size={15} margin="0.2em 0 1em">
       <FormattedMessage {...messages.subheader} />
     </TextItem>
-    <RegistrationForm onSubmit={onSubmit} />
-    <Group>
-      <TextItem>
-        <FormattedMessage {...messages.haveAccount} />&nbsp;
-      </TextItem>
-      <TextLink to="/login">
+    <SocialAuth />
+    <RegistrationFormContainer />
+    <TextItem>
+      <FormattedMessage {...messages.haveAccount} />&nbsp;
+      <ButtonLink to="/login">
         <FormattedMessage {...messages.logIn} />
-      </TextLink>
-    </Group>
+      </ButtonLink>
+    </TextItem>
   </StyledPage>
 );
-
-RegistrationPage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
 
 export default RegistrationPage;

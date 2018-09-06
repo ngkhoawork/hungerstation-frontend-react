@@ -22,9 +22,7 @@ const DeliveryRegionsMobile = () => {
   ];
   return (
     <StyledMobileSection>
-      <Paragraph size="small">
-        Check where you can find us. Our regions:
-      </Paragraph>
+      <Paragraph>Check where you can find us. Our regions:</Paragraph>
       <StyledRegions>
         {regions.map(region => (
           <PragraphWrapper>

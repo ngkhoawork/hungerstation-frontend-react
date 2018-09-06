@@ -14,14 +14,18 @@ import OptionsChoice from 'components/OptionsChoice';
 import { appLocales } from 'i18n';
 import { changeLocaleAction } from 'containers/LanguageProvider/actions';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
+import intlService from '../../utils/intlService';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   locale,
 }));
 
-const mapDispatchToProps = {
-  changeLocale: changeLocaleAction,
-};
+const mapDispatchToProps = dispatch => ({
+  changeLocale: locale => {
+    intlService.setLocale(locale);
+    dispatch(changeLocaleAction(locale));
+  },
+});
 
 @connect(
   mapStateToProps,
@@ -32,6 +36,7 @@ export default class LocaleToggle extends React.PureComponent {
   static propTypes = {
     changeLocale: PropTypes.func.isRequired,
     locale: PropTypes.string.isRequired,
+    variant: PropTypes.string,
   };
 
   getOptions = () =>
@@ -41,9 +46,10 @@ export default class LocaleToggle extends React.PureComponent {
     }));
 
   render() {
-    const { locale, changeLocale } = this.props;
+    const { locale, changeLocale, variant } = this.props;
     return (
       <OptionsChoice
+        variant={variant}
         options={this.getOptions()}
         selectedOption={locale}
         onOptionSelect={changeLocale}
@@ -51,5 +57,3 @@ export default class LocaleToggle extends React.PureComponent {
     );
   }
 }
-
-LocaleToggle.propTypes = {};

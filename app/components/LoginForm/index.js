@@ -4,73 +4,74 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Field, reduxForm } from 'redux-form/immutable';
-import { injectIntl, intlShape } from 'react-intl';
+import { Field } from 'formik';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import styles from 'utils/styles';
+import { List } from 'immutable';
+import intl from 'utils/intlService';
+import { printErrors } from 'utils/form/helpers';
 
-import validate from 'utils/form/validation';
 import TextInput from 'components/TextInput';
-import TextItem from 'components/TextItem';
+import Icon from 'components/Icon';
+import StyledForm from 'components/StyledForm';
+import Checkbox from 'components/Checkbox';
+import Paragraph from 'components/Paragraph';
 
-import StyledForm from './StyledForm';
 import messages from './messages';
 
-@withStyles(styles)
-@injectIntl
-@reduxForm({
-  form: 'loginForm',
-  validate: (values, { intl }) => validate(values, intl, 'login'),
-})
-export default class LoginForm extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    submitting: PropTypes.bool.isRequired,
-    intl: intlShape,
-    classes: PropTypes.object.isRequired,
-    error: PropTypes.string,
-  };
+const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
+  <StyledForm onSubmit={handleSubmit}>
+    {printErrors(error)}
+    <div>
+      <Field
+        fullWidth
+        name="mobile"
+        type="text"
+        component={TextInput}
+        label={intl.formatMessage(messages.numberLabel)}
+      />
+    </div>
+    <div>
+      <Field
+        fullWidth
+        name="password"
+        type="password"
+        component={TextInput}
+        label={intl.formatMessage(messages.passwordLabel)}
+      />
+    </div>
+    <Paragraph margin="16px 0 0">
+      <Field
+        name="rememberMe"
+        component={Checkbox}
+        label={intl.formatMessage(messages.rememberMeLabel)}
+      />
+    </Paragraph>
+    <Button
+      type="submit"
+      disabled={submitting}
+      fullWidth
+      variant="contained"
+      color="primary"
+      className={classes.button}
+    >
+      <span className={classes.buttonIcon}>
+        <Icon name="plus" size={16} />
+      </span>
+      <span className={classes.buttonText}>
+        {intl.formatMessage(messages.buttonLabel)}
+      </span>
+    </Button>
+  </StyledForm>
+);
 
-  render() {
-    const { handleSubmit, submitting, intl, classes, error } = this.props;
-    return (
-      <StyledForm onSubmit={handleSubmit}>
-        {error && <div>{error}</div>}
-        <div>
-          <Field
-            fullWidth
-            name="number"
-            type="text"
-            component={TextInput}
-            label={intl.formatMessage(messages.numberLabel)}
-          />
-        </div>
-        <div>
-          <Field
-            fullWidth
-            name="password"
-            type="password"
-            component={TextInput}
-            label={intl.formatMessage(messages.passwordLabel)}
-          />
-        </div>
-        <Button
-          type="submit"
-          disabled={submitting}
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          <TextItem fontFamily="regular" size={20}>
-            {intl.formatMessage(messages.buttonLabel)}
-          </TextItem>
-        </Button>
-      </StyledForm>
-    );
-  }
-}
+LoginForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  classes: PropTypes.object.isRequired,
+  error: PropTypes.instanceOf(List),
+};
+
+export default LoginForm;

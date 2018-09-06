@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Paragrpaph from 'components/Paragraph';
+import Paragraph from 'components/Paragraph';
 import StyledContainer from './StyledContainer';
 
 const QuickFilters = () => (
   <StyledContainer>
-    <Paragrpaph color="white">All restaurants</Paragrpaph>
-    <Paragrpaph color="white">Top Offers</Paragrpaph>
+    <Paragraph color="white">All restaurants</Paragraph>
+    <Paragraph color="white">Top Offers</Paragraph>
   </StyledContainer>
 );
 

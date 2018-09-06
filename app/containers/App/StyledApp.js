@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/styles';
+import { alabaster } from 'utils/colors';
 
 const StyledApp = styled.div`
   ${flexBox({
@@ -7,7 +8,7 @@ const StyledApp = styled.div`
     direction: 'column',
     justify: 'flex-start',
   })};
-  background-color: white;
+  background-color: ${({ dark }) => (dark ? alabaster : 'white')};
   font-family: 'HungerStation-Regular', sans-serif;
 `;
 
