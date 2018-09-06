@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 
 const StyledPagination = styled.div`
   ${flexBox(
@@ -11,6 +11,9 @@ const StyledPagination = styled.div`
     right: 0;
   `,
   )};
+  ${mediaLess(600)`
+    right: 20px;
+  `};
 `;
 
 export default StyledPagination;

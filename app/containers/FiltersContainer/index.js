@@ -8,8 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-
-import FiltersSection from 'components/RestaurantsPage/FiltersSection';
+import { filtersCategoryPropTypes } from 'props/filters';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -38,37 +37,18 @@ const mapDispatchToProps = {};
 /* eslint-disable react/prefer-stateless-function */
 export default class FiltersContainer extends React.Component {
   static propTypes = {
-    tags: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        isSelected: PropTypes.bool.isRequired,
-      }),
-    ).isRequired,
-    cuisines: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        isSelected: PropTypes.bool.isRequired,
-      }),
-    ).isRequired,
-    deliveryTypes: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        isSelected: PropTypes.bool.isRequired,
-      }),
-    ).isRequired,
+    tags: filtersCategoryPropTypes,
+    cuisines: filtersCategoryPropTypes,
+    deliveryTypes: filtersCategoryPropTypes,
+    children: PropTypes.node.isRequired,
   };
 
   render() {
-    const { tags, cuisines, deliveryTypes } = this.props;
+    const { children, tags, cuisines, deliveryTypes } = this.props;
     return (
-      <FiltersSection
-        tags={tags}
-        cuisines={cuisines}
-        deliveryTypes={deliveryTypes}
-      />
+      <React.Fragment>
+        {children({ tags, cuisines, deliveryTypes })}
+      </React.Fragment>
     );
   }
 }
