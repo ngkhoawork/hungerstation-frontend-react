@@ -30,7 +30,7 @@ import RestaurantsPage from 'components/RestaurantsPage';
 
 import ModalContainer from 'containers/ModalContainer';
 import FiltersContainer from 'containers/FiltersContainer';
-import MobileFiltersSection from 'components/RestaurantsPage/MobileFiltersSection';
+import FiltersSection from 'components/RestaurantsPage/FiltersSection';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -76,7 +76,7 @@ export default class App extends Component {
 
         <ModalContainer>
           <FiltersContainer>
-            {props => <MobileFiltersSection {...props} />}
+            {props => <FiltersSection {...props} />}
           </FiltersContainer>
         </ModalContainer>
 

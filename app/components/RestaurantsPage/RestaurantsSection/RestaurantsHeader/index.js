@@ -11,11 +11,15 @@ import StyledTitle from './StyledTitle';
 const RestaurantsHeader = () => (
   <StyledHeader>
     <StyledTitle>
-      <Paragraph size={30}>We found</Paragraph>
+      <Paragraph size={30} margin="0 5px 0 0">
+        We found
+      </Paragraph>
       <CircledItem width={28} color={jade}>
         <Paragraph color="white">19</Paragraph>
       </CircledItem>
-      <Paragraph size={30}>Restaurants at</Paragraph>
+      <Paragraph size={30} margin="0 0 0 5px">
+        Restaurants at
+      </Paragraph>
     </StyledTitle>
     <LocationInput />
     <Filter />

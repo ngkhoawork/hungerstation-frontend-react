@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { silverChalice } from 'utils/colors';
+import { filtersCategoryPropTypes } from 'props/filters';
 
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
@@ -9,7 +9,7 @@ import StyledItem from '../StyledItem';
 
 const DeliveryTypes = ({ types }) => (
   <StyledContainer>
-    {types.map(type => (
+    {types.options.map(type => (
       <StyledItem key={type.id} hasBorder>
         <Paragraph color={type.isSelected ? 'black' : silverChalice}>
           {type.label}
@@ -21,13 +21,7 @@ const DeliveryTypes = ({ types }) => (
 );
 
 DeliveryTypes.propTypes = {
-  types: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-      isSelected: PropTypes.bool.isRequired,
-    }),
-  ).isRequired,
+  types: filtersCategoryPropTypes,
 };
 
 export default DeliveryTypes;

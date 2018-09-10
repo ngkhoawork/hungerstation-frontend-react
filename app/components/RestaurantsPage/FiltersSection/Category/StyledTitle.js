@@ -5,6 +5,7 @@ const StyledTitle = styled.div`
   ${flexBox(
     { align: 'center', justify: 'space-between' },
     `
+    width: 100%;
     margin-bottom: 17px;
   `,
   )};

@@ -12,7 +12,11 @@ import { filtersCategoryPropTypes } from 'props/filters';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { showModal as showModalAction } from '../ModalContainer/actions';
+import {
+  showModal as showModalAction,
+  hideModal as hideModalAction,
+} from '../ModalContainer/actions';
+import { toggleSection as toggleSectionAction } from './actions';
 
 import {
   makeSelectTags,
@@ -32,6 +36,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = {
   openModal: showModalAction,
+  closeModal: hideModalAction,
+  toggleSection: toggleSectionAction,
 };
 
 @connect(
@@ -48,7 +54,9 @@ export default class FiltersContainer extends React.Component {
     deliveryTypes: filtersCategoryPropTypes,
     children: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired,
+    closeModal: PropTypes.func.isRequired,
     isModalOpened: PropTypes.bool.isRequired,
+    toggleSection: PropTypes.func.isRequired,
   };
 
   render() {
@@ -58,11 +66,21 @@ export default class FiltersContainer extends React.Component {
       cuisines,
       deliveryTypes,
       openModal,
+      closeModal,
       isModalOpened,
+      toggleSection,
     } = this.props;
     return (
       <React.Fragment>
-        {children({ tags, cuisines, deliveryTypes, openModal, isModalOpened })}
+        {children({
+          tags,
+          cuisines,
+          deliveryTypes,
+          openModal,
+          closeModal,
+          isModalOpened,
+          toggleSection,
+        })}
       </React.Fragment>
     );
   }

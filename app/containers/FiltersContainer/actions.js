@@ -4,10 +4,9 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { TOGGLE_SECTION } from './constants';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const toggleSection = sectionName => ({
+  type: TOGGLE_SECTION,
+  sectionName,
+});

@@ -56,4 +56,10 @@ export const getStyledTag = tag => (...args) => styled[tag]`
 
 export const getStyledDiv = getStyledTag('div');
 
+export const getDisplayProp = isModalOpened =>
+  !isModalOpened &&
+  `
+    display: none;
+  `;
+
 export default styles;

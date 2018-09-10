@@ -6,6 +6,7 @@ export const filterCategoryPropTypes = PropTypes.shape({
   isSelected: PropTypes.bool.isRequired,
 });
 
-export const filtersCategoryPropTypes = PropTypes.arrayOf(
-  filterCategoryPropTypes,
-);
+export const filtersCategoryPropTypes = PropTypes.shape({
+  isExpanded: PropTypes.bool.isRequired,
+  options: PropTypes.arrayOf(filterCategoryPropTypes),
+});
