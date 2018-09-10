@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { silverChalice } from 'utils/colors';
+import { wildSant, silverChalice } from 'utils/colors';
 import { compose, withState, withHandlers } from 'recompose';
 
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
+import CircledItem from 'components/CircledItem';
 import StyledContainer from '../StyledContainer';
 import StyledItem from '../StyledItem';
 import StyledDetails from '../StyledDetails';
@@ -17,7 +18,9 @@ const Cuisines = ({ cuisines, isExpanded, toggleExpandibility }) => {
       {cuisineList.map(cuisine => (
         <StyledItem key={cuisine.id}>
           <StyledDetails>
-            <Icon name={cuisine.id} />
+            <CircledItem color={wildSant} width={28}>
+              <Icon name={cuisine.id} size={12} />
+            </CircledItem>
             <Paragraph color={cuisine.isSelected ? 'black' : silverChalice}>
               {cuisine.label}
             </Paragraph>

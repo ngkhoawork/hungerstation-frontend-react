@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { restaurantsPropTypes } from 'props/restaurants';
+import { gold } from 'utils/colors';
 
+import CircledItem from 'components/CircledItem';
+import Icon from 'components/Icon';
 import StyledRestaurantList from './StyledRestaurantList';
 import RestaurantCard from './RestaurantCard';
 import ToolsPanel from './ToolsPanel';
 import StyledList from './StyledList';
 import LoadMore from './LoadMore';
-import ScrollUp from './ScrollUp';
+import ButtonWrapper from './ButtonWrapper';
 
 export default class RestaurantsList extends Component {
   static propTypes = {
@@ -32,7 +35,11 @@ export default class RestaurantsList extends Component {
             <RestaurantCard key={restaurant.id} {...restaurant} />
           ))}
         </StyledList>
-        <ScrollUp onClick={this.handleScrollUp} />
+        <ButtonWrapper onClick={this.handleScrollUp}>
+          <CircledItem width={28} color={gold}>
+            <Icon name="arrow-right" size={12} />
+          </CircledItem>
+        </ButtonWrapper>
         <LoadMore />
       </StyledRestaurantList>
     );

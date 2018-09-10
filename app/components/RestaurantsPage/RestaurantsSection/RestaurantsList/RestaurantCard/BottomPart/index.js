@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { silverChalice, jade } from 'utils/colors';
 
 import Icon from 'components/Icon';
-import Circle from 'components/Circle';
+// import Circle from 'components/Circle';
+import CircledItem from 'components/CircledItem';
 import Paragraph from 'components/Paragraph';
 import StyledBottomPart from './StyledBottomPart';
 import Row from '../Row';
@@ -11,7 +12,7 @@ import Row from '../Row';
 const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
   <StyledBottomPart>
     <Row>
-      <Circle color={jade} size={7} />
+      <CircledItem color={jade} width={7} />
       <Paragraph size={17}>{name}</Paragraph>
     </Row>
     <Row>
@@ -30,6 +31,7 @@ const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
     </Row>
   </StyledBottomPart>
 );
+// <Circle color={jade} size={7} />
 
 BottomPart.propTypes = {
   name: PropTypes.string.isRequired,

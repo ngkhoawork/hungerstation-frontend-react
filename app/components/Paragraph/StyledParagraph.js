@@ -6,6 +6,7 @@ const StyledParagraph = styled.p`
   font-size: ${({ size }) => size}px;
   color: ${({ color }) => color};
   margin: ${({ margin }) => margin || 0};
+  margin-top: 3px;
 `;
 
 export default StyledParagraph;

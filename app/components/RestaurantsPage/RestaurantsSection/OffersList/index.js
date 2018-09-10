@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { gold } from 'utils/colors';
 
 import Icon from 'components/Icon';
+import CircledItem from 'components/CircledItem';
 import StyledOffersList from './StyledOffersList';
 import OfferItem from './OfferItem';
-import StyledNextButton from './StyledNextButton';
+import ButtonWrapper from './ButtonWrapper';
 import Pagination from './Pagination';
 import { SLIDE_TO_LEFT, SLIDE_MARGIN } from './constants';
 
@@ -34,9 +36,11 @@ export default class OffersList extends Component {
     return (
       <StyledOffersList innerRef={this.sliderContainer}>
         {offers.map(offer => <OfferItem key={offer.id} {...offer} />)}
-        <StyledNextButton onClick={this.scrollLeft}>
-          <Icon name="arrow-right" size={12} />
-        </StyledNextButton>
+        <ButtonWrapper onClick={this.scrollLeft}>
+          <CircledItem width={28} color={gold}>
+            <Icon name="arrow-right" size={12} />
+          </CircledItem>
+        </ButtonWrapper>
         <Pagination pages={offers.length} selectedPage={1} />
       </StyledOffersList>
     );

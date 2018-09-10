@@ -1,14 +1,9 @@
 import styled from 'styled-components';
 import { flexBox, mediaLess } from 'utils/styles';
-import { gold } from 'utils/colors';
 
-const StyledScrollButton = styled.div`
+const ButtonWrapper = styled.div`
   ${flexBox({ align: 'center', justify: 'center' })};
   cursor: pointer;
-  background-color: ${gold};
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
   position: absolute;
   bottom: 0;
   right: -20px;
@@ -20,4 +15,4 @@ const StyledScrollButton = styled.div`
   `};
 `;
 
-export default StyledScrollButton;
+export default ButtonWrapper;
