@@ -14,7 +14,8 @@ import Cuisines from './Cuisines';
 import DeliveryTypes from './DeliveryTypes';
 import Orders from './Orders';
 import ButtonWrapper from './ButtonWrapper';
-import ActionWrapper from './ActionWrapper';
+import ActionsWrapper from './ActionsWrapper';
+import ContentWrapper from './ContentWrapper';
 
 const FiltersSection = ({
   tags,
@@ -26,46 +27,48 @@ const FiltersSection = ({
 }) => (
   <React.Fragment>
     <Header isModalOpened={isModalOpened} closeModal={closeModal} />
-    <Category
-      title="Tags"
-      isSectionExpanded={tags.isExpanded}
-      toggleSection={() => toggleSection('tags')}
-    >
-      <Tags tags={tags} />
-    </Category>
-    <Category
-      title="Cuisines"
-      isSectionExpanded={cuisines.isExpanded}
-      toggleSection={() => toggleSection('cuisines')}
-    >
-      <Cuisines cuisines={cuisines} />
-    </Category>
-    <Category
-      title="Order"
-      isSectionExpanded={deliveryTypes.isExpanded}
-      toggleSection={() => toggleSection('deliveryTypes')}
-    >
-      <Orders />
-    </Category>
-    <Category
-      title="Delivery Types"
-      isSectionExpanded={deliveryTypes.isExpanded}
-      toggleSection={() => toggleSection('deliveryTypes')}
-    >
-      <DeliveryTypes types={deliveryTypes} />
-    </Category>
-    <ActionWrapper>
+    <ContentWrapper>
+      <Category
+        title="Tags"
+        isSectionExpanded={tags.isExpanded}
+        toggleSection={() => toggleSection('tags')}
+      >
+        <Tags tags={tags} />
+      </Category>
+      <Category
+        title="Cuisines"
+        isSectionExpanded={cuisines.isExpanded}
+        toggleSection={() => toggleSection('cuisines')}
+      >
+        <Cuisines cuisines={cuisines} />
+      </Category>
+      <Category
+        title="Order"
+        isSectionExpanded={deliveryTypes.isExpanded}
+        toggleSection={() => toggleSection('deliveryTypes')}
+      >
+        <Orders />
+      </Category>
+      <Category
+        title="Delivery Types"
+        isSectionExpanded={deliveryTypes.isExpanded}
+        toggleSection={() => toggleSection('deliveryTypes')}
+      >
+        <DeliveryTypes types={deliveryTypes} />
+      </Category>
+    </ContentWrapper>
+    <ActionsWrapper>
       <Group>
-        <Icon name="close" size={8} />
+        <Icon name="delete" size={12} />
         <Paragraph margin="0 0 0 5px">Clear</Paragraph>
       </Group>
-    </ActionWrapper>
 
-    <ButtonWrapper isModalOpened={isModalOpened}>
-      <Button primary label="Apply">
-        <Icon name="check" />
-      </Button>
-    </ButtonWrapper>
+      <ButtonWrapper isModalOpened={isModalOpened}>
+        <Button primary label="Apply">
+          <Icon name="check" />
+        </Button>
+      </ButtonWrapper>
+    </ActionsWrapper>
   </React.Fragment>
 );
 

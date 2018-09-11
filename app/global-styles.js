@@ -68,17 +68,17 @@ injectGlobal`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
     background-color: white;
+    width: 600px;
     max-width: 100%;
     height: 900px;
     max-height: 100%;
     z-index: 101;
-    border-radius: 5px;
-    opacity: 1;
     outline: 9999px solid rgba(0, 0, 0, 0.5);
     padding: 20px;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .Overlay {
@@ -87,9 +87,9 @@ injectGlobal`
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  .ReactModal__Body--open {
+    overflow-y: hidden;
   }
 `;
