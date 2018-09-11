@@ -8,21 +8,29 @@ import {
   setDistrictsAction,
   setSettlementDetailsAction,
   toggleSettlementLoadedAction,
+  selectDistrictAction,
 } from './actions';
 
 function* getCitiesFlow() {
   while (true) {
     yield take(REQUEST_CITIES);
-    const response = yield call(HungerStationAPI.getCities);
-    yield put(setCitiesAction(response));
+    const { listCities } = yield call(HungerStationAPI.getCities, 1);
+
+    const districtsMap = {};
+    const cities = listCities.map(({ id, districts, name }) => {
+      districtsMap[id] = districts;
+      return { name, id };
+    });
+
+    yield put(setCitiesAction(cities));
+    yield put(setDistrictsAction(districtsMap));
   }
 }
 
 function* selectCityFlow() {
   while (true) {
-    const { selectedCity } = yield take(SELECT_CITY);
-    const response = yield call(HungerStationAPI.getDistricts, selectedCity);
-    yield put(setDistrictsAction(response));
+    yield take(SELECT_CITY);
+    yield put(selectDistrictAction(null));
   }
 }
 

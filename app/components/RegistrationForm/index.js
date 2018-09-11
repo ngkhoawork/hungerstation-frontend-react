@@ -20,7 +20,7 @@ import messages from './messages';
 const RegistrationForm = ({ handleSubmit, submitting, classes, error }) => (
   <StyledForm onSubmit={handleSubmit} autoComplete="off" noValidate>
     {printErrors(error)}
-    <div>
+    <div className={classes.fieldWrapper}>
       <Field
         autoComplete="nope"
         name="name"
@@ -30,7 +30,7 @@ const RegistrationForm = ({ handleSubmit, submitting, classes, error }) => (
         fullWidth
       />
     </div>
-    <div>
+    <div className={classes.fieldWrapper}>
       <Field
         autoComplete="nope"
         name="phone"
@@ -38,7 +38,7 @@ const RegistrationForm = ({ handleSubmit, submitting, classes, error }) => (
         label="Mobile number"
       />
     </div>
-    <div>
+    <div className={classes.fieldWrapper}>
       <Field
         InputProps={{
           noValidate: true,
@@ -51,7 +51,7 @@ const RegistrationForm = ({ handleSubmit, submitting, classes, error }) => (
         fullWidth
       />
     </div>
-    <div>
+    <div className={classes.fieldWrapper}>
       <Field
         autoComplete="nope"
         name="password"
@@ -61,7 +61,7 @@ const RegistrationForm = ({ handleSubmit, submitting, classes, error }) => (
         fullWidth
       />
     </div>
-    <div>
+    <div className={classes.fieldWrapper}>
       <Field
         autoComplete="nope"
         name="repeatPassword"

@@ -24,7 +24,7 @@ import messages from './messages';
 const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
   <StyledForm onSubmit={handleSubmit}>
     {printErrors(error)}
-    <div>
+    <div className={classes.fieldWrapper}>
       <Field
         fullWidth
         name="mobile"
@@ -33,7 +33,7 @@ const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
         label={intl.formatMessage(messages.numberLabel)}
       />
     </div>
-    <div>
+    <div className={classes.fieldWrapper}>
       <Field
         fullWidth
         name="password"

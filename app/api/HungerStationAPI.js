@@ -27,7 +27,7 @@ const HungerStationAPI = {
     protectedClient(token).request(userQuery, { userId });
   },
   getCities(countryId) {
-    client.request(listCitiesQuery, { countryId });
+    return client.request(listCitiesQuery, { country_id: countryId });
   },
 };
 

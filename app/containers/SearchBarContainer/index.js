@@ -55,8 +55,8 @@ export default class SearchBarContainer extends React.Component {
     getCities: PropTypes.func.isRequired,
     selectCity: PropTypes.func.isRequired,
     selectDistrict: PropTypes.func.isRequired,
-    selectedCity: PropTypes.string,
-    selectedDistrict: PropTypes.string,
+    selectedCity: PropTypes.object,
+    selectedDistrict: PropTypes.object,
     cities: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,

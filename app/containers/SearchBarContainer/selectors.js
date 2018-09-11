@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { List } from 'immutable';
 import { initialState } from './reducer';
 
 /**
@@ -13,9 +14,20 @@ export const makeSelectCities = createSelector(
   searchBarState => searchBarState.get('cities'),
 );
 
+export const makeSelectCity = createSelector(
+  selectSearchBarContainerDomain,
+  searchBarState => searchBarState.get('selectedCity'),
+);
+
 export const makeSelectDistricts = createSelector(
   selectSearchBarContainerDomain,
-  searchBarState => searchBarState.get('districts'),
+  makeSelectCity,
+  (searchBarState, city) => {
+    if (city) {
+      return searchBarState.getIn(['districts', city.get('id')], []);
+    }
+    return List();
+  },
 );
 
 export const makeSelectIsSettlementLoaded = createSelector(
@@ -26,11 +38,6 @@ export const makeSelectIsSettlementLoaded = createSelector(
 export const makeSelectDistrict = createSelector(
   selectSearchBarContainerDomain,
   searchBarState => searchBarState.get('selectedDistrict'),
-);
-
-export const makeSelectCity = createSelector(
-  selectSearchBarContainerDomain,
-  searchBarState => searchBarState.get('selectedCity'),
 );
 
 export { selectSearchBarContainerDomain };

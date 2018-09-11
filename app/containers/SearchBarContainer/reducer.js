@@ -15,8 +15,8 @@ import {
 } from './constants';
 
 export const initialState = fromJS({
-  cities: null,
-  districts: null,
+  cities: [],
+  districts: [],
   selectedCity: null,
   selectedDistrict: null,
   isSettlementLoaded: true,

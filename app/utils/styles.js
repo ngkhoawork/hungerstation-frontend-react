@@ -19,6 +19,9 @@ const styles = () => ({
   buttonIcon: {
     marginRight: '4px',
   },
+  fieldWrapper: {
+    marginBottom: '8px',
+  },
 });
 
 export const flexBox = ({ align, justify, direction }, ...args) => {

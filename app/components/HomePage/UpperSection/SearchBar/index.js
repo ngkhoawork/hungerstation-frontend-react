@@ -8,17 +8,28 @@ import LocateYourself from './LocateYourself';
 import StyledBarActions from './StyledBarActions';
 import ButtonWrapper from './ButtonWrapper';
 
-const SearchBar = ({ selectedCity, selectedDistrict, ...rest }) => (
+const SearchBar = ({
+  selectedCity,
+  cities,
+  districts,
+  selectCity,
+  selectDistrict,
+  selectedDistrict,
+  ...rest
+}) => (
   <StyledBar>
     <DropdownInput
-      value={selectedCity}
       placeholder="Enter city"
       iconName="pin"
+      suggestions={cities && cities.toJS()}
+      onChange={selectCity}
     />
     <DropdownInput
-      value={selectedDistrict}
       placeholder="Enter District"
       iconName="district"
+      suggestions={districts && districts.toJS()}
+      onChange={selectDistrict}
+      selectedItem={selectedDistrict && selectedDistrict.toJS()}
     />
     <StyledBarActions>
       <LocateYourself {...rest} />

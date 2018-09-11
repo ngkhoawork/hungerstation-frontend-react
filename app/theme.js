@@ -58,6 +58,11 @@ const themeObj = {
         },
       },
     },
+    // MuiFormControl: {
+    //   root: {
+    //     marginBottom: '8px',
+    //   },
+    // },
     MuiFormLabel: {
       root: {
         color: silverChalice,
@@ -72,6 +77,7 @@ const themeObj = {
     MuiInput: {
       root: {
         fontFamily: 'HungerStation-Regular, sans-serif',
+        marginBottom: '20px',
       },
       underline: {
         '&:after': {
@@ -81,6 +87,12 @@ const themeObj = {
           borderBottomColor: persimmon,
           transform: 'scaleX(1)', // error is always underlined in red
         },
+      },
+    },
+    MuiFormHelperText: {
+      root: {
+        marginTop: '-1em',
+        marginBottom: 0,
       },
     },
   },
