@@ -12,7 +12,7 @@ const StyledPagination = styled.div`
   `,
   )};
   ${mediaLess(600)`
-    right: 20px;
+    display: none;
   `};
 `;
 

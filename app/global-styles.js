@@ -121,4 +121,10 @@ injectGlobal`
   .slick-prev:before, .slick-next:before {
     display: none;
   }
+
+  @media only screen and (max-width: 600px) {
+    .slick-dots {
+      right: 20px;
+    }
+  }
 `;
