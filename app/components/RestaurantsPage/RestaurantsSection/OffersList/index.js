@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { gold } from 'utils/colors';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import slickSettings from 'utils/slickSettings';
 
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';
@@ -8,7 +12,6 @@ import StyledOffersList from './StyledOffersList';
 import OfferItem from './OfferItem';
 import ButtonWrapper from './ButtonWrapper';
 import Pagination from './Pagination';
-import { SLIDE_TO_LEFT, SLIDE_MARGIN } from './constants';
 
 export default class OffersList extends Component {
   static propTypes = {
@@ -22,26 +25,33 @@ export default class OffersList extends Component {
     ).isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.sliderContainer = React.createRef();
-  }
+  state = {
+    currentSlide: 0,
+  };
 
-  scrollLeft = () => {
-    this.sliderContainer.current.scrollLeft += SLIDE_TO_LEFT + SLIDE_MARGIN;
+  handleAfterChange = currentSlide => {
+    this.setState({ currentSlide });
   };
 
   render() {
     const { offers } = this.props;
+    const { currentSlide } = this.state;
     return (
-      <StyledOffersList innerRef={this.sliderContainer}>
-        {offers.map(offer => <OfferItem key={offer.id} {...offer} />)}
-        <ButtonWrapper onClick={this.scrollLeft}>
-          <CircledItem width={28} color={gold}>
-            <Icon name="arrow-right" size={12} />
-          </CircledItem>
-        </ButtonWrapper>
-        <Pagination pages={offers.length} selectedPage={1} />
+      <StyledOffersList>
+        <Slider
+          afterChange={this.handleAfterChange}
+          {...slickSettings}
+          nextArrow={
+            <ButtonWrapper>
+              <CircledItem width={28} color={gold}>
+                <Icon name="arrow-right" size={12} />
+              </CircledItem>
+            </ButtonWrapper>
+          }
+        >
+          {offers.map(offer => <OfferItem key={offer.id} {...offer} />)}
+        </Slider>
+        <Pagination selectedPage={currentSlide + 1} pages={offers.length} />
       </StyledOffersList>
     );
   }

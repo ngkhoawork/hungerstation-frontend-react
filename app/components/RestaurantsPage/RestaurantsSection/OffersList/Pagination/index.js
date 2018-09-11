@@ -4,16 +4,11 @@ import { alto } from 'utils/colors';
 
 import Paragraph from 'components/Paragraph';
 import StyledPagination from './StyledPagination';
-import StyledPageNumbers from './StyledPageNumbers';
-import PagesDots from './PagesDots';
 
 const Pagination = ({ pages, selectedPage }) => (
   <StyledPagination>
-    <StyledPageNumbers>
-      <Paragraph>{selectedPage}&nbsp;</Paragraph>
-      <Paragraph color={alto}>- of {pages}</Paragraph>
-    </StyledPageNumbers>
-    <PagesDots pages={pages} selectedPage={selectedPage} />
+    <Paragraph>{selectedPage}&nbsp;</Paragraph>
+    <Paragraph color={alto}>- of {pages}</Paragraph>
   </StyledPagination>
 );
 

@@ -1,4 +1,5 @@
 import { injectGlobal } from 'styled-components';
+import { jade } from 'utils/colors';
 import HSRwoff from './vendor/fonts/HungerStation-Regular.woff';
 import HSRwoff2 from './vendor/fonts/HungerStation-Regular.woff2';
 import HSRotf from './vendor/fonts/HungerStation-Regular.otf';
@@ -91,5 +92,33 @@ injectGlobal`
 
   .ReactModal__Body--open {
     overflow-y: hidden;
+  }
+
+  .slick-dots {
+    top: -60px;
+    right: 0;
+    width: auto !important;
+    z-index: 0;
+  }
+
+  .slick-dots button:before {
+    font-size: 9px !important;
+    opacity: 0.1 !important;
+  }
+
+  .slick-dots li {
+    margin: 0 !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .slick-active button:before {
+    color: ${jade} !important;
+    font-size: 9px !important;
+    opacity: 1 !important;
+  }
+
+  .slick-prev:before, .slick-next:before {
+    display: none;
   }
 `;
