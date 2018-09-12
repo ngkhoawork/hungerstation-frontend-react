@@ -5,60 +5,18 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import FormHelperText from '@material-ui/core/FormHelperText';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
-
-import { flexBox } from 'utils/styles';
+import countryCodes from 'utils/countryCodes';
 
 import Icon from 'components/Icon';
 
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import StyledWrapper from './StyledWrapper';
 
-const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'flex-start' },
-    `
-      margin-top: 16px;
-      margin-bottom: 8px;
-
-      > div.prefix {
-        margin-right: 16px;
-      }
-
-      [dir="rtl"] & > div.prefix {
-        margin-left: 16px;
-      }
-
-      > div.input {
-        flex-grow: 1;
-
-      }
-    `,
-  )};
-`;
-
-const countriesArr = [
-  [
-    'sa',
-    {
-      label: '+966',
-      icon: 'saudi-flag',
-    },
-  ],
-  [
-    'ba',
-    {
-      label: '+973',
-      icon: 'bahrain-flag',
-    },
-  ],
-];
-
-const countriesMap = new Map(countriesArr);
+const countriesMap = new Map(countryCodes);
 
 /* eslint-disable react/prefer-stateless-function */
 class PhoneNumberInput extends React.PureComponent {
@@ -95,7 +53,7 @@ class PhoneNumberInput extends React.PureComponent {
     const { prefix, phone } = this.state;
 
     return (
-      <Wrapper>
+      <StyledWrapper>
         <div className="prefix">
           <TextField
             label=" "
@@ -116,7 +74,7 @@ class PhoneNumberInput extends React.PureComponent {
             value={prefix}
             onChange={this.handleChange('prefix')}
           >
-            {countriesArr.map(option => (
+            {countryCodes.map(option => (
               <option key={option[0]} value={option[0]}>
                 {option[1].label}
               </option>
@@ -136,11 +94,16 @@ class PhoneNumberInput extends React.PureComponent {
             <FormHelperText error>{errors.phone}</FormHelperText>
           )}
         </div>
-      </Wrapper>
+      </StyledWrapper>
     );
   }
 }
 
-PhoneNumberInput.propTypes = {};
+PhoneNumberInput.propTypes = {
+  field: PropTypes.object.isRequired,
+  errors: PropTypes.shape({
+    phone: PropTypes.string,
+  }),
+};
 
 export default PhoneNumberInput;

@@ -1,10 +1,20 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-// import PhoneNumberInput from '../index';
+import PhoneNumberInput from '../index';
+
+const props = {
+  field: 'Field',
+  form: {
+    errors: {
+      phone: 'Phone error',
+    },
+  },
+};
+const renderPhoneNumberInput = () => shallow(<PhoneNumberInput {...props} />);
 
 describe('<PhoneNumberInput />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('It should render without crashing', () => {
+    renderPhoneNumberInput();
   });
 });
