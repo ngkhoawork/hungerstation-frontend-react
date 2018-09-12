@@ -79,7 +79,7 @@ injectGlobal`
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .Overlay {

@@ -43,13 +43,13 @@ import MexicanCuisine from 'icons/mexican-cuisine.svg';
 import SandwichesCuisine from 'icons/sandwiches-cuisine.svg';
 import SeaCuisine from 'icons/sea-cuisine.svg';
 import TurkishCuisine from 'icons/turkish-cuisine.svg';
+import Checkmark from 'icons/checkmark.svg';
 
 import Plus from 'icons/+.svg';
 import CheckboxUnchecked from 'icons/checkbox-unchecked.svg';
 import CheckboxChecked from 'icons/checkbox-checked.svg';
 import SaudiFlag from 'icons/saudi-flag.svg';
 import BahrainFlag from 'icons/bahrain-flag.svg';
-
 
 const getIcon = name => {
   switch (name) {
@@ -151,6 +151,8 @@ const getIcon = name => {
       return SaudiFlag;
     case 'bahrain-flag':
       return BahrainFlag;
+    case 'checkmark':
+      return Checkmark;
     default:
       return null;
   }

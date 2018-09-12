@@ -65,7 +65,7 @@ const FiltersSection = ({
 
       <ButtonWrapper isModalOpened={isModalOpened}>
         <Button primary label="Apply">
-          <Icon name="check" />
+          <Icon name="checkmark" />
         </Button>
       </ButtonWrapper>
     </ActionsWrapper>
