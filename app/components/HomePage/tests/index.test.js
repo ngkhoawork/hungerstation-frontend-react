@@ -1,10 +1,34 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-// import HomePage from '../index';
+import HomePage from '../index';
+import StyledPage from '../StyledPage';
+
+const renderHomePage = () => shallow(<HomePage />);
 
 describe('<HomePage />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('It should render without crashing', () => {
+    renderHomePage();
+  });
+
+  describe('HomePage children components', () => {
+    let wrapper;
+    Enzyme.configure({ adapter: new Adapter() });
+    beforeEach(() => {
+      wrapper = shallow(<HomePage />);
+    });
+
+    it('it should render StyledPage component', () => {
+      expect(wrapper.find(StyledPage)).toHaveLength(1);
+    });
+
+    it('it should render BottomSection component', () => {
+      expect(wrapper.find('BottomSection')).toHaveLength(1);
+    });
+
+    it('it should render UpperSection component', () => {
+      expect(wrapper.find('withRouter(UpperSection)')).toHaveLength(1);
+    });
   });
 });

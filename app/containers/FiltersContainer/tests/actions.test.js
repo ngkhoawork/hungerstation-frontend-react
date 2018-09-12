@@ -1,13 +1,15 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { toggleSection } from '../actions';
+import { TOGGLE_SECTION } from '../constants';
 
 describe('FiltersContainer actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
+  describe('Toggle Section Action', () => {
+    it('has a type of TOGGLE_SECTION', () => {
+      const sectionName = 'tags';
       const expected = {
-        type: DEFAULT_ACTION,
+        type: TOGGLE_SECTION,
+        sectionName,
       };
-      expect(defaultAction()).toEqual(expected);
+      expect(toggleSection(sectionName)).toEqual(expected);
     });
   });
 });

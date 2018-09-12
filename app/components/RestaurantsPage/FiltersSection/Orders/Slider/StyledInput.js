@@ -4,19 +4,14 @@ import { jade } from 'utils/colors';
 const StyledInput = styled.input.attrs({
   type: 'range',
 })`
-  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 2px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: 0.1s;
   transition: opacity 0.1s;
-  &:hover {
-    opacity: 1;
-  }
   &::-webkit-slider-thumb {
-    -webkit-appearance: none;
     appearance: none;
     width: 16px;
     height: 16px;
@@ -41,6 +36,9 @@ const StyledInput = styled.input.attrs({
   }
   &::-webkit-progress-value {
     background-color: blue;
+  }
+  &:hover {
+    opacity: 1;
   }
 `;
 
