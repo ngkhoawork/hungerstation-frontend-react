@@ -1,4 +1,4 @@
-import { take, call, fork, put } from 'redux-saga/effects';
+import { take, call, fork, put, select } from 'redux-saga/effects';
 import { getUserPosition, getSettlementDetails, getUnit } from 'utils/location';
 
 import HungerStationAPI from 'api/HungerStationAPI';
@@ -10,20 +10,25 @@ import {
   toggleSettlementLoadedAction,
   selectDistrictAction,
 } from './actions';
+import { makeSelectCities } from './selectors';
 
 function* getCitiesFlow() {
   while (true) {
     yield take(REQUEST_CITIES);
-    const { listCities } = yield call(HungerStationAPI.getCities, 1);
+    const cachedCities = yield select(makeSelectCities);
 
-    const districtsMap = {};
-    const cities = listCities.map(({ id, districts, name }) => {
-      districtsMap[id] = districts;
-      return { name, id };
-    });
+    if (!cachedCities.size) {
+      const { listCities } = yield call(HungerStationAPI.getCities, 1);
+      const districtsMap = {};
 
-    yield put(setCitiesAction(cities));
-    yield put(setDistrictsAction(districtsMap));
+      const cities = listCities.map(({ id, districts, name }) => {
+        districtsMap[id] = districts;
+        return { name, id };
+      });
+
+      yield put(setCitiesAction(cities));
+      yield put(setDistrictsAction(districtsMap));
+    }
   }
 }
 

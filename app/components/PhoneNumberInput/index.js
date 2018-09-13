@@ -91,8 +91,6 @@ class PhoneNumberInput extends React.PureComponent {
     } = this.props;
     const { prefix, phone } = this.state;
 
-    console.log(errors);
-
     return (
       <Wrapper>
         <div className="prefix">

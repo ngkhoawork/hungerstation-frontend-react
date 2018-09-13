@@ -23,6 +23,7 @@ const SearchBar = ({
       iconName="pin"
       suggestions={cities && cities.toJS()}
       onChange={selectCity}
+      selectedItem={selectedCity && selectedCity.toJS()}
     />
     <DropdownInput
       placeholder="Enter District"
@@ -30,6 +31,7 @@ const SearchBar = ({
       suggestions={districts && districts.toJS()}
       onChange={selectDistrict}
       selectedItem={selectedDistrict && selectedDistrict.toJS()}
+      disabled={!selectedCity}
     />
     <StyledBarActions>
       <LocateYourself {...rest} />

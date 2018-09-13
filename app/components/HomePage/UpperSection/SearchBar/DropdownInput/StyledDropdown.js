@@ -6,13 +6,9 @@ const StyledDropdown = styled.span`
   ${flexBox(
     { align: 'center', justify: 'flex-start' },
     `
-      font-family: 'HungerStation-Light', sans-serif;
       height: 100%;
-      width: 35%;
+      width: 100%;
       cursor: pointer;
-      &:first-of-type {
-        margin-left: 20px;
-      }
     `,
   )};
   ${media.lessThan('850px')`

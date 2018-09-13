@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Icon from 'components/Icon';
 import StyledDropdown from './StyledDropdown';
 import Autocomplete from './Autocomplete';
 
@@ -14,12 +13,12 @@ const DropdownInput = ({
   ...rest
 }) => (
   <StyledDropdown>
-    {iconName && <Icon name={iconName} />}
     <Autocomplete
       placeholder={placeholder}
       suggestions={suggestions}
       onChange={onChange}
       value={value}
+      icon={iconName}
       {...rest}
     />
   </StyledDropdown>

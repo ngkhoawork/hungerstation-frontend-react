@@ -25,7 +25,8 @@ export const getSuggestions = (suggestions, value) => {
   if (inputLength !== 0) {
     return suggestions.filter(suggestion => {
       const keep =
-        count < 8 && suggestion.name.toLowerCase().includes(inputValue);
+        count < 8 &&
+        suggestion.name.slice(0, inputLength).toLowerCase() === inputValue;
 
       if (keep) {
         count += 1;
@@ -43,11 +44,8 @@ export const renderSuggestion = ({
   index,
   itemProps,
   highlightedIndex,
-  selectedItem,
 }) => {
   const isHighlighted = highlightedIndex === index;
-  const isSelected =
-    ((selectedItem && selectedItem.name) || '').indexOf(suggestion.name) > -1;
 
   return (
     <MenuItem
@@ -55,11 +53,6 @@ export const renderSuggestion = ({
       key={suggestion.name}
       selected={isHighlighted}
       component="div"
-      style={{
-        fontFamily: isSelected
-          ? 'HungerStation-Regular'
-          : 'HungerStation-Light',
-      }}
     >
       {suggestion.name}
     </MenuItem>
@@ -76,8 +69,12 @@ export const renderInput = inputProps => {
         classes: {
           root: classes.inputRoot,
           input: classes.input,
+          focused: classes.focusedInput,
         },
         ...InputProps,
+      }}
+      classes={{
+        root: classes.formControlRoot,
       }}
       {...other}
     />
