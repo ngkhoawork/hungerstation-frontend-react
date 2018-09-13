@@ -8,8 +8,7 @@ import { take, call, put, fork, select, spawn } from 'redux-saga/effects';
 
 import { delay } from 'redux-saga';
 
-import registrationSagas from 'containers/RegistrationPageContainer/saga';
-import loginSagas from 'containers/LoginPageContainer/saga';
+import userSagas from 'modules/user/sagas';
 import { forwardTo } from 'utils/route';
 
 import { clearStorageItem, getStorageItem } from 'utils/localStorage';
@@ -157,7 +156,6 @@ function* authSagas() {
 
 export default function* root() {
   yield spawn(authSagas);
-  yield spawn(registrationSagas);
-  yield spawn(loginSagas);
+  yield spawn(userSagas);
   // yield spawn(monitorSaga);
 }

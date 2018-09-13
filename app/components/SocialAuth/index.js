@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CenteredContent from 'components/CenteredContent';
+import { CenteredContent } from 'utils/styledComponents';
 import Icon from 'components/Icon';
 
 const SocialAuth = () => (

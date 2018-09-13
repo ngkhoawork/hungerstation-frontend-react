@@ -8,8 +8,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { compose } from 'recompose';
 
-import OffersList from 'components/RestaurantsPage/RestaurantsSection/OffersList';
+import OffersList from 'pages/RestaurantsPage/RestaurantsSection/OffersList';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -21,29 +22,23 @@ const mapStateToProps = createStructuredSelector({
   offers: makeSelectOffers,
 });
 
-const mapDispatchToProps = {};
+const enhanced = compose(
+  injectReducer({ key: 'offersListContainer', reducer }),
+  injectSaga({ key: 'offersListContainer', saga }),
+  connect(mapStateToProps),
+);
 
-@connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)
-@injectReducer({ key: 'offersListContainer', reducer })
-@injectSaga({ key: 'offersListContainer', saga })
-/* eslint-disable react/prefer-stateless-function */
-export default class OffersListContainer extends React.Component {
-  static propTypes = {
-    offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        brand: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-  };
+const OffersListContainer = ({ offers }) => <OffersList offers={offers} />;
 
-  render() {
-    const { offers } = this.props;
-    return <OffersList offers={offers} />;
-  }
-}
+OffersListContainer.propTypes = {
+  offers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      brand: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
+
+export default enhanced(OffersListContainer);

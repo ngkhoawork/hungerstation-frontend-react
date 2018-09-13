@@ -11,21 +11,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { IntlProvider } from 'react-intl';
+import { compose, pure } from 'recompose';
 
 import { makeSelectLocale } from './selectors';
 
-export class LanguageProvider extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
-  render() {
-    const { locale, messages, children } = this.props;
+const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
+  locale,
+}));
 
-    return (
-      <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
-        {React.Children.only(children)}
-      </IntlProvider>
-    );
-  }
-}
+const LanguageProvider = ({ locale, messages, children }) => (
+  <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
+    {React.Children.only(children)}
+  </IntlProvider>
+);
 
 LanguageProvider.propTypes = {
   locale: PropTypes.string,
@@ -33,17 +31,9 @@ LanguageProvider.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
-  locale,
-}));
+const enhanced = compose(
+  connect(mapStateToProps),
+  pure,
+);
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(LanguageProvider);
+export default enhanced(LanguageProvider);

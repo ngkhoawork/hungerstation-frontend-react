@@ -1,12 +1,12 @@
 import { takeEvery, race, take, put } from 'redux-saga/effects';
+import { LOGIN_REQUEST, REGISTER_REQUEST } from 'modules/user/constants';
+
 import {
   userTokenRefreshRequest,
   userTokenRefreshSuccess,
   userTokenRefreshFailure,
   userLogoutRequest,
 } from './tokenActions';
-import { LOGIN_REQUEST } from '../LoginPageContainer/constants';
-import { REGISTER_REQUEST } from '../RegistrationPageContainer/constants';
 
 const ignoreActionTypes = ['TOKEN_REFRESH', LOGIN_REQUEST, REGISTER_REQUEST];
 
