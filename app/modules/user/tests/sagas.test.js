@@ -12,19 +12,22 @@ import { forwardTo } from 'utils/route';
 
 import { LOGOUT } from 'containers/App/authConstants';
 
-import { loginFlow } from '../sagas';
+import { loginFlow, registerFlow } from '../sagas';
 import { saveTokens } from '../../common/sagas';
-import { LOGIN_REQUEST } from '../constants';
+import { LOGIN_REQUEST, REGISTER_REQUEST } from '../constants';
 
-const gen = loginFlow();
-
-describe('defaultSaga Saga', () => {
-  const payload = {
+describe('User Sagas', () => {
+  const userCredentials = {
     mobile: '123456789',
     password: '123456789',
-    redirectToRoute: '/restaurants',
   };
-  const authenticateUser = {
+
+  const userDetails = {
+    name: 'Tom',
+    email: 'tom@example.com',
+  };
+
+  const userResponse = {
     refresh_token:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
     token:
@@ -32,59 +35,149 @@ describe('defaultSaga Saga', () => {
     user_id: '1234',
   };
 
-  it('Expect to take LOGIN_REQUEST action', () => {
-    expect(gen.next().value).toEqual(take(LOGIN_REQUEST));
-  });
+  const authorize = response =>
+    new Promise(resolve => {
+      resolve({ response });
+    });
+  describe('Login Flow', () => {
+    const gen = loginFlow();
+    const payload = {
+      ...userCredentials,
+      redirectToRoute: '/restaurants',
+    };
 
-  it('Expect to receive payload from LOGIN_REQUEST action', () => {
-    expect(gen.next(payload).value).toEqual(put(startSubmit()));
-  });
+    it('Expect to take LOGIN_REQUEST action', () => {
+      expect(gen.next().value).toEqual(take(LOGIN_REQUEST));
+    });
 
-  it('Expect to race for one of the result', () => {
-    const authorize = () =>
-      new Promise(res => {
-        res({ authenticateUser });
-      });
-    expect(gen.next().value).toEqual(
-      race({
-        authResponse: call(authorize, {
-          mobile: payload.mobile,
-          password: payload.password,
-          isRegistering: false,
+    it('Expect to start sumission action', () => {
+      expect(gen.next(payload).value).toEqual(put(startSubmit()));
+    });
+
+    it('Expect to race for one of the result', () => {
+      expect(gen.next().value).toEqual(
+        race({
+          authResponse: call(authorize, {
+            mobile: payload.mobile,
+            password: payload.password,
+            isRegistering: false,
+          }),
+          logoutResponse: take(LOGOUT),
         }),
-        logoutResponse: take(LOGOUT),
-      }),
-    );
+      );
+    });
+
+    it('Expect to save user tokens', () => {
+      expect(
+        gen.next({
+          authResponse: { authenticateUser: userResponse },
+          logoutResponse: null,
+        }).value,
+      ).toEqual(
+        saveTokens({
+          refreshToken: userResponse.refresh_token,
+          accessToken: userResponse.token,
+          accessTokenExpiresAt: parseJwt(userResponse.token).iat,
+        }),
+      );
+    });
+
+    it('Expect to save user information into the storage', () => {
+      expect(gen.next().value).toEqual(
+        call(setStorageItem, 'userId', userResponse.user_id),
+      );
+    });
+
+    it('Expect to terminate submission', () => {
+      expect(gen.next().value).toEqual(put(stopSubmit()));
+    });
+
+    it('Expect to update store with user values', () => {
+      expect(gen.next().value).toEqual(put(logUserIn(userResponse)));
+    });
+
+    it('Expect to redirect user to restaurant page', () => {
+      expect(gen.next().value).toEqual(
+        call(forwardTo, payload.redirectToRoute),
+      );
+    });
   });
 
-  it('Expect to save user tokens', () => {
-    expect(
-      gen.next({ authResponse: { authenticateUser }, logoutResponse: null })
-        .value,
-    ).toEqual(
-      saveTokens({
-        refreshToken: authenticateUser.refresh_token,
-        accessToken: authenticateUser.token,
-        accessTokenExpiresAt: parseJwt(authenticateUser.token).iat,
-      }),
-    );
+  describe('Register Flow', () => {
+    const gen = registerFlow();
+    const payload = {
+      ...userCredentials,
+      ...userDetails,
+      redirectToRoute: '/',
+    };
+    it('Expect to take REGISTER_REQUEST action', () => {
+      expect(gen.next().value).toEqual(take(REGISTER_REQUEST));
+    });
+
+    it('Expect to start sumission action', () => {
+      expect(gen.next(payload).value).toEqual(put(startSubmit()));
+    });
+
+    it('Expect to start authorization flow', () => {
+      expect(gen.next().value).toEqual(
+        call(authorize, {
+          ...userCredentials,
+          ...userDetails,
+          isRegistering: true,
+        }),
+      );
+    });
+
+    it('Expect to save user tokens', () => {
+      expect(gen.next({ createUser: userResponse }).value).toEqual(
+        saveTokens({
+          refreshToken: userResponse.refresh_token,
+          accessToken: userResponse.token,
+          accessTokenExpiresAt: parseJwt(userResponse.token).iat,
+        }),
+      );
+    });
+
+    it('Expect to update store with user values', () => {
+      expect(gen.next().value).toEqual(put(logUserIn(userResponse)));
+    });
+
+    it('Expect to save user information into the storage', () => {
+      expect(gen.next().value).toEqual(
+        call(setStorageItem, 'userId', userResponse.user_id),
+      );
+    });
+
+    it('Expect to terminate submission', () => {
+      expect(gen.next().value).toEqual(put(stopSubmit()));
+    });
+
+    it('Expect to redirect user to restaurant page', () => {
+      expect(gen.next().value).toEqual(
+        call(forwardTo, payload.redirectToRoute),
+      );
+    });
   });
 
-  it('Expect to save user information into the storage', () => {
-    expect(gen.next().value).toEqual(
-      call(setStorageItem, 'userId', authenticateUser.user_id),
-    );
-  });
+  describe('authorize', () => {
+    const gen = authorize({
+      ...userCredentials,
+      ...userDetails,
+      isRegistering: true,
+    });
 
-  it('Expect to terminate submission', () => {
-    expect(gen.next().value).toEqual(put(stopSubmit()));
-  });
-
-  it('Expect to update store with user values', () => {
-    expect(gen.next().value).toEqual(put(logUserIn(authenticateUser)));
-  });
-
-  it('Expect to redirect user to restaurant page', () => {
-    expect(gen.next().value).toEqual(call(forwardTo, payload.redirectToRoute));
+    it('Expect to call API', () => {
+      const HungerStationAPI = {
+        register: new Promise(res => {
+          res('success');
+        }),
+      };
+      expect(gen.next().value).toEqual(
+        call(HungerStationAPI.register, {
+          ...userCredentials,
+          ...userDetails,
+        }),
+      );
+    });
   });
 });
