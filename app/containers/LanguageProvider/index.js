@@ -19,7 +19,7 @@ const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   locale,
 }));
 
-const LanguageProvider = ({ locale, messages, children }) => (
+export const LanguageProvider = ({ locale, messages, children }) => (
   <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
     {React.Children.only(children)}
   </IntlProvider>
