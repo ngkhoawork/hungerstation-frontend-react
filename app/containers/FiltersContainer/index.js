@@ -50,7 +50,7 @@ const enhanced = compose(
   ),
 );
 
-const FiltersContainer = ({
+export const FiltersContainer = ({
   children,
   tags,
   cuisines,

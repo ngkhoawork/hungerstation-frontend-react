@@ -12,7 +12,7 @@ import { forwardTo } from 'utils/route';
 
 import { LOGOUT } from 'containers/App/authConstants';
 
-import { loginFlow, registerFlow } from '../sagas';
+import { loginFlow, registerFlow, authorize as authorizeFlow } from '../sagas';
 import { saveTokens } from '../../common/sagas';
 import { LOGIN_REQUEST, REGISTER_REQUEST } from '../constants';
 
@@ -160,7 +160,7 @@ describe('User Sagas', () => {
   });
 
   describe('authorize', () => {
-    const gen = authorize({
+    const gen = authorizeFlow({
       ...userCredentials,
       ...userDetails,
       isRegistering: true,
@@ -168,9 +168,10 @@ describe('User Sagas', () => {
 
     it('Expect to call API', () => {
       const HungerStationAPI = {
-        register: new Promise(res => {
-          res('success');
-        }),
+        register: () =>
+          new Promise(res => {
+            res('success');
+          }),
       };
       expect(gen.next().value).toEqual(
         call(HungerStationAPI.register, {
