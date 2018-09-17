@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { flexBox } from 'utils/styles';
+import { searchBarHeight } from '../StyledBar';
 
 const StyledDropdown = styled.span`
   ${flexBox(
@@ -12,7 +13,7 @@ const StyledDropdown = styled.span`
     `,
   )};
   ${media.lessThan('850px')`
-    height: 56px;
+    height: ${searchBarHeight};
     border: 1px solid lightgrey;
     border-radius: 8px;
     padding: 0 20px;

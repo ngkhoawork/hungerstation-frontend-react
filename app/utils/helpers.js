@@ -60,21 +60,13 @@ export const renderSuggestion = ({
 };
 
 export const renderInput = inputProps => {
-  const { InputProps, classes, ref, ...other } = inputProps;
+  const { InputProps, ref, ...other } = inputProps;
 
   return (
     <TextField
       InputProps={{
         inputRef: ref,
-        classes: {
-          root: classes.inputRoot,
-          input: classes.input,
-          focused: classes.focusedInput,
-        },
         ...InputProps,
-      }}
-      classes={{
-        root: classes.formControlRoot,
       }}
       {...other}
     />

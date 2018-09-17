@@ -24,7 +24,7 @@ export const makeSelectDistricts = createSelector(
   makeSelectCity,
   (searchBarState, city) => {
     if (city) {
-      return searchBarState.getIn(['districts', city.get('id')], []);
+      return searchBarState.getIn(['districts', city.get('id')], List());
     }
     return List();
   },

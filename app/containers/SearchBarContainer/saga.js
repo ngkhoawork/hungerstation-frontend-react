@@ -55,7 +55,18 @@ function* getCurrentLocationFlow() {
         'sublocality',
       );
 
-      yield put(setSettlementDetailsAction(city, district));
+      yield put(
+        setSettlementDetailsAction(
+          {
+            id: null,
+            name: city,
+          },
+          {
+            id: null,
+            name: district,
+          },
+        ),
+      );
       yield put(toggleSettlementLoadedAction(true));
     } catch (error) {
       yield put(toggleSettlementLoadedAction(true));

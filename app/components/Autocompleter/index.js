@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
-import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from 'components/Icon';
@@ -12,49 +11,6 @@ import {
   renderSuggestion,
   renderInput,
 } from 'utils/helpers';
-
-const styles = () => ({
-  root: {
-    flexGrow: 1,
-    marginLeft: '16px',
-  },
-  formControlRoot: {
-    '@media (min-width: 850px)': {
-      marginLeft: '16px',
-    },
-  },
-  input: {
-    padding: '3px 0 0 0',
-  },
-  container: {
-    flexGrow: 1,
-    position: 'relative',
-  },
-  paper: {
-    position: 'absolute',
-    zIndex: 101,
-    left: 0,
-    right: 0,
-    paddingTop: '46px',
-    marginTop: '-40px',
-    borderRadius: '8px',
-    '@media (max-width: 850px)': {
-      left: '-20px',
-      right: '-20px',
-    },
-  },
-  focusedInput: {
-    zIndex: 200,
-  },
-  inputRoot: {
-    fontFamily: `'HungerStation-Light', sans-serif`,
-    flexWrap: 'wrap',
-    margin: '0 8px',
-  },
-  menuItemRoot: {
-    fontFamily: `'HungerStation-Regular', sans-serif`,
-  },
-});
 
 const Autocomplete = props => {
   const {
@@ -90,9 +46,16 @@ const Autocomplete = props => {
           <div className={[classes.container]}>
             {renderInput({
               fullWidth: true,
-              classes,
+              classes: {
+                root: classes.formControlRoot,
+              },
               defaultValue: defaultInputValue,
               InputProps: getInputProps({
+                classes: {
+                  root: classes.inputRoot,
+                  input: classes.input,
+                  focused: classes.focusedInput,
+                },
                 disabled,
                 placeholder,
                 disableUnderline: true,
@@ -119,7 +82,10 @@ const Autocomplete = props => {
                       index,
                       itemProps: getItemProps({
                         item: suggestion,
-                        classes: { root: classes.menuItemRoot },
+                        classes: {
+                          root: classes.menuItem,
+                          selected: classes.menuItemSelected,
+                        },
                       }),
                       highlightedIndex,
                       selectedItem,
@@ -139,4 +105,4 @@ Autocomplete.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Autocomplete);
+export default Autocomplete;
