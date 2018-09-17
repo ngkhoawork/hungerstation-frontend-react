@@ -21,16 +21,16 @@ const SearchBar = ({
     <DropdownInput
       placeholder="Enter city"
       iconName="pin"
-      suggestions={cities && cities.toJS()}
+      suggestions={cities}
       onChange={selectCity}
-      selectedItem={selectedCity && selectedCity.toJS()}
+      selectedItem={selectedCity}
     />
     <DropdownInput
       placeholder="Enter District"
       iconName="district"
-      suggestions={districts && districts.toJS()}
+      suggestions={districts}
       onChange={selectDistrict}
-      selectedItem={selectedDistrict && selectedDistrict.toJS()}
+      selectedItem={selectedDistrict}
       disabled={!selectedCity}
     />
     <StyledBarActions>

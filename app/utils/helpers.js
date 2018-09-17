@@ -26,7 +26,10 @@ export const getSuggestions = (suggestions, value) => {
     return suggestions.filter(suggestion => {
       const keep =
         count < 8 &&
-        suggestion.name.slice(0, inputLength).toLowerCase() === inputValue;
+        suggestion
+          .get('name')
+          .slice(0, inputLength)
+          .toLowerCase() === inputValue;
 
       if (keep) {
         count += 1;
@@ -50,11 +53,11 @@ export const renderSuggestion = ({
   return (
     <MenuItem
       {...itemProps}
-      key={suggestion.name}
+      key={suggestion.get('name')}
       selected={isHighlighted}
       component="div"
     >
-      {suggestion.name}
+      {suggestion.get('name')}
     </MenuItem>
   );
 };
@@ -73,4 +76,4 @@ export const renderInput = inputProps => {
   );
 };
 
-export const itemToString = item => (item ? item.name : '');
+export const itemToString = item => (item ? item.get('name') : '');

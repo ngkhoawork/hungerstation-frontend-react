@@ -74,7 +74,7 @@ const Autocomplete = props => {
               }),
             })}
             <div {...getMenuProps()}>
-              {isOpen && renderedSuggestions.length ? (
+              {isOpen && renderedSuggestions.size ? (
                 <Paper className={classes.paper}>
                   {renderedSuggestions.map((suggestion, index) =>
                     renderSuggestion({
