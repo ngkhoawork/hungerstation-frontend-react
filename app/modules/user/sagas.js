@@ -21,7 +21,7 @@ export function* loginFlow() {
     try {
       yield put(startSubmit());
       const {
-        authResponse: { authenticateUser },
+        authResponse: { authenticateUser: authenticatedUser },
         logoutResponse,
       } = yield race({
         authResponse: call(authorize, {
@@ -32,15 +32,15 @@ export function* loginFlow() {
         logoutResponse: take(LOGOUT),
       });
 
-      if (authenticateUser) {
+      if (authenticatedUser) {
         yield saveTokens({
-          refreshToken: authenticateUser.refresh_token,
-          accessToken: authenticateUser.token,
-          accessTokenExpiresAt: parseJwt(authenticateUser.token).iat,
+          refreshToken: authenticatedUser.refresh_token,
+          accessToken: authenticatedUser.token,
+          accessTokenExpiresAt: parseJwt(authenticatedUser.token).iat,
         });
-        yield call(setStorageItem, 'userId', authenticateUser.user_id);
+        yield call(setStorageItem, 'userId', authenticatedUser.user_id);
         yield put(stopSubmit());
-        yield put(logUserIn(authenticateUser));
+        yield put(logUserIn(authenticatedUser));
         yield call(forwardTo, redirectToRoute);
       }
 

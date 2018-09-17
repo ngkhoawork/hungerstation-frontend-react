@@ -32,7 +32,7 @@ const enhnaced = compose(
   pure,
 );
 
-const LoginFormContainer = ({
+export const LoginFormContainer = ({
   error,
   submitting,
   intl,

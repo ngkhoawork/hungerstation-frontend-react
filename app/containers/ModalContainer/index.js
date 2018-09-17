@@ -24,7 +24,7 @@ const enhanced = compose(
   injectReducer({ key: 'modalContainer', reducer }),
 );
 
-const ModalContainer = ({ children, isOpen }) => (
+export const ModalContainer = ({ children, isOpen }) => (
   <ReactModal
     isOpen={isOpen}
     shouldCloseOnOverlayClick

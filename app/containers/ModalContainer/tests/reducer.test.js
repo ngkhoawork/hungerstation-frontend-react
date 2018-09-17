@@ -1,8 +1,12 @@
-import { fromJS } from 'immutable';
-import modalContainerReducer from '../reducer';
+import modalContainerReducer, { initialState } from '../reducer';
 
 describe('modalContainerReducer', () => {
+  let state;
+  beforeEach(() => {
+    state = initialState;
+  });
   it('returns the initial state', () => {
-    expect(modalContainerReducer(undefined, {})).toEqual(fromJS({}));
+    const expectedResult = state;
+    expect(modalContainerReducer(undefined, {})).toEqual(expectedResult);
   });
 });

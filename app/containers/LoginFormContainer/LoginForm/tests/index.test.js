@@ -3,10 +3,15 @@ import { shallow } from 'enzyme';
 
 import LoginForm from '../index';
 
-const renderLoginForm = () => shallow(<LoginForm />);
+const props = {
+  handleSubmit: () => {},
+  submitting: false,
+  classes: { button: 'hey' },
+};
+const renderLoginForm = () => shallow(<LoginForm {...props} />);
 
 describe('<LoginForm />', () => {
-  it('Expect to have unit tests specified', () => {
+  it('Expect to initialize component without crash', () => {
     renderLoginForm();
   });
 });

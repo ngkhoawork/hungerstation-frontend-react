@@ -31,7 +31,7 @@ const enhanced = compose(
   pure,
 );
 
-const RegistrationFormContainer = ({
+export const RegistrationFormContainer = ({
   error,
   submitting,
   intl,

@@ -28,7 +28,9 @@ const enhanced = compose(
   connect(mapStateToProps),
 );
 
-const OffersListContainer = ({ offers }) => <OffersList offers={offers} />;
+export const OffersListContainer = ({ offers }) => (
+  <OffersList offers={offers} />
+);
 
 OffersListContainer.propTypes = {
   offers: PropTypes.arrayOf(

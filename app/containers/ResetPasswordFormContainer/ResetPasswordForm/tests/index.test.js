@@ -1,10 +1,32 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-// import ResetPasswordForm from '../index';
+import { StyledForm } from 'utils/styledComponents';
+import ResetPasswordForm from '../index';
+
+const props = {
+  handleSubmit: jest.fn(),
+  submitting: false,
+  classes: {
+    button: 'btn',
+  },
+};
+const renderForgotPasswordForm = () =>
+  shallow(<ResetPasswordForm {...props} />);
 
 describe('<ResetPasswordForm />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('It should render without crashing', () => {
+    renderForgotPasswordForm();
+  });
+
+  describe('ResetPasswordForm children components', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = shallow(<ResetPasswordForm {...props} />);
+    });
+
+    it('it should render StyledForm component', () => {
+      expect(wrapper.find(StyledForm)).toHaveLength(1);
+    });
   });
 });

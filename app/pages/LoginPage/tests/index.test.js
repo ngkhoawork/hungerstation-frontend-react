@@ -1,10 +1,24 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-// import LoginPage from '../index';
+import { StyledPage } from 'utils/styledComponents';
+import LoginPage from '../index';
+
+const renderLoginPage = () => shallow(<LoginPage />);
 
 describe('<LoginPage />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('It should render without crashing', () => {
+    renderLoginPage();
+  });
+
+  describe('HomePage children components', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = shallow(<LoginPage />);
+    });
+
+    it('it should render StyledPage component', () => {
+      expect(wrapper.find(StyledPage)).toHaveLength(1);
+    });
   });
 });

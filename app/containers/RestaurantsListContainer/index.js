@@ -28,7 +28,7 @@ const enhanced = compose(
   injectSaga({ key: 'restaurantsListContainer', saga }),
 );
 
-const RestaurantsListContainer = ({ restaurants }) => (
+export const RestaurantsListContainer = ({ restaurants }) => (
   <RestaurantsList restaurants={restaurants} />
 );
 

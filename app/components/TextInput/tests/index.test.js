@@ -1,10 +1,21 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-// import TextInput from '../index';
+import TextInput from '../index';
+
+const props = {
+  field: 'test',
+  form: {
+    touched: true,
+    errors: {
+      name: 'Invalid',
+    },
+  },
+};
+const renderTextInput = () => shallow(<TextInput {...props} />);
 
 describe('<TextInput />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('it should render without crashing', () => {
+    renderTextInput();
   });
 });

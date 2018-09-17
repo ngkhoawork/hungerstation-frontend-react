@@ -35,10 +35,11 @@ describe('User Sagas', () => {
     user_id: '1234',
   };
 
-  const authorize = response =>
-    new Promise(resolve => {
-      resolve({ response });
-    });
+  // const authorize = response =>;
+  // new Promise(resolve => {
+  //   resolve({ response });
+  // });
+  const authorize = jest.fn();
   describe('Login Flow', () => {
     const gen = loginFlow();
     const payload = {
