@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import LocaleToggle from 'containers/LocaleToggle';
-import TextLink from 'components/TextLink';
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
+import { StyledLink } from 'utils/styledComponents';
 
 import { fuscousGray } from 'utils/colors';
 
@@ -27,11 +27,11 @@ const Header = ({ variant }) => (
     </Link>
     <RightSection>
       <LocaleToggle variant={variant} />
-      <TextLink to="/login">
+      <StyledLink to="/login">
         <Paragraph color={variant === 'dark' ? fuscousGray : 'white'}>
           Log in
         </Paragraph>
-      </TextLink>
+      </StyledLink>
       <CircledItem color="white" width={28}>
         <Icon name="basket" />
       </CircledItem>

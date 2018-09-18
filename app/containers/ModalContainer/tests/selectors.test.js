@@ -1,8 +1,15 @@
-// import { fromJS } from 'immutable';
-// import { selectModalContainerDomain } from '../selectors';
+import { fromJS } from 'immutable';
+
+import { initialState } from '../reducer';
+import { makeSelectIsOpen } from '../selectors';
 
 describe('selectModalContainerDomain', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  const state = fromJS({
+    modalContainer: initialState,
+  });
+  it('Expect to have correct values in object', () => {
+    expect(makeSelectIsOpen(state)).toBe(
+      state.get('modalContainer').get('isOpen'),
+    );
   });
 });

@@ -18,22 +18,23 @@ import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import injectSaga from 'utils/injectSaga';
 
-import HomePageContainer from 'containers/HomePageContainer';
-import LoginPage from 'components/LoginPage';
-import RegistrationPage from 'components/RegistrationPage';
-import PrivateRouteContainer from 'containers/PrivateRouteContainer';
-import UserProfile from 'components/UserProfile';
-import ResetPasswordPage from 'components/ResetPasswordPage';
-import ForgotPasswordPage from 'components/ForgotPasswordPage';
-import AddRestaurantBanner from 'components/AddRestaurantBanner';
-import RestaurantsPage from 'components/RestaurantsPage';
+import HomePage from 'pages/HomePage/Loadable';
+import LoginPage from 'pages/LoginPage/Loadable';
+import RegistrationPage from 'pages/RegistrationPage/Loadable';
+import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
+import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
+import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
 
+import UserProfile from 'components/UserProfile';
+import AddRestaurantBanner from 'components/AddRestaurantBanner';
+
+import PrivateRouteContainer from 'containers/PrivateRouteContainer';
 import ModalContainer from 'containers/ModalContainer';
 import FiltersContainer from 'containers/FiltersContainer';
-import FiltersSection from 'components/RestaurantsPage/FiltersSection';
+import FiltersSection from 'pages/RestaurantsPage/FiltersSection';
 
 import Header from 'components/Header';
-import Footer from 'components/Footer';
+import Footer from 'components/Footer/Loadable';
 import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import saga from './authSagas';
@@ -86,18 +87,20 @@ export default class App extends Component {
           <Route
             exact
             path="/"
-            render={props => <HomePageContainer {...props} />}
+            render={props => [<HomePage {...props} />, <Footer />]}
           />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
-          <Route path="/restaurants" component={RestaurantsPage} />
+          <Route
+            path="/restaurants"
+            render={props => [<RestaurantsPage {...props} />, <Footer />]}
+          />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
 
           <Redirect from="*" to="/" />
         </Switch>
-        <Footer />
       </StyledApp>
     );
   }

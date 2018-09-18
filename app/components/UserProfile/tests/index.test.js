@@ -1,10 +1,12 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-// import UserProfile from '../index';
+import UserProfile from '../index';
+
+const renderUserProfile = () => shallow(<UserProfile />);
 
 describe('<UserProfile />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('it should render without crashing', () => {
+    renderUserProfile();
   });
 });

@@ -7,8 +7,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { compose } from 'recompose';
 
-import RestaurantsList from 'components/RestaurantsPage/RestaurantsSection/RestaurantsList';
+import RestaurantsList from 'pages/RestaurantsPage/RestaurantsSection/RestaurantsList';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -21,22 +22,18 @@ const mapStateToProps = createStructuredSelector({
   restaurants: makeSelectRestaurants,
 });
 
-const mapDispatchToProps = {};
+const enhanced = compose(
+  connect(mapStateToProps),
+  injectReducer({ key: 'restaurantsListContainer', reducer }),
+  injectSaga({ key: 'restaurantsListContainer', saga }),
+);
 
-@connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)
-@injectReducer({ key: 'restaurantsListContainer', reducer })
-@injectSaga({ key: 'restaurantsListContainer', saga })
-/* eslint-disable react/prefer-stateless-function */
-export default class RestaurantsListContainer extends React.Component {
-  static propTypes = {
-    restaurants: restaurantsPropTypes,
-  };
+export const RestaurantsListContainer = ({ restaurants }) => (
+  <RestaurantsList restaurants={restaurants} />
+);
 
-  render() {
-    const { restaurants } = this.props;
-    return <RestaurantsList restaurants={restaurants} />;
-  }
-}
+RestaurantsListContainer.propTypes = {
+  restaurants: restaurantsPropTypes,
+};
+
+export default enhanced(RestaurantsListContainer);

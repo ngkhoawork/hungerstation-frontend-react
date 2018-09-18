@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import injectReducer from 'utils/injectReducer';
-import SearchTypes from 'components/HomePage/UpperSection/SearchTypes';
+import SearchTypes from 'pages/HomePage/UpperSection/SearchTypes';
 import { makeSelectSearchType } from './selectors';
 import reducer from './reducer';
 import { selectSearchTypeAction } from './actions';
@@ -29,7 +29,7 @@ const mapDispatchToProps = {
 )
 @injectReducer({ key: 'searchTypeContainer', reducer })
 /* eslint-disable react/prefer-stateless-function */
-export default class SearchTypeContainer extends React.Component {
+export default class SearchTypeContainer extends React.PureComponent {
   static propTypes = {
     selectSearchType: PropTypes.func.isRequired,
   };

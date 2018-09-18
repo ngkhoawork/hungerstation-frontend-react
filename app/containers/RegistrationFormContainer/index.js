@@ -4,61 +4,63 @@
  *
  */
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
+import { compose, pure } from 'recompose';
 
 import { validationSchemas } from 'utils/form/validation';
 
-import { registerRequest } from 'containers/RegistrationPageContainer/actions';
+import { registerRequest } from 'modules/user/actions';
 import { FormContainer } from 'containers/Form';
 
-import RegistrationForm from 'components/RegistrationForm';
+import RegistrationForm from './RegistrationForm/index';
+
+const schema = validationSchemas('signupForm');
 
 const mapDispatchToProps = {
   onSubmit: registerRequest,
 };
-const schema = validationSchemas('signupForm');
 
-@connect(
-  null,
-  mapDispatchToProps,
-)
-@FormContainer
-export default class RegistrationFormContainer extends PureComponent {
-  render() {
-    const {
-      error,
-      submitting,
-      intl,
-      classes,
-      submitHandler,
-      onSubmit,
-    } = this.props;
+const enhanced = compose(
+  connect(
+    null,
+    mapDispatchToProps,
+  ),
+  FormContainer,
+  pure,
+);
 
-    return (
-      <Formik
-        onSubmit={submitHandler(onSubmit)}
-        initialValues={{
-          name: '',
-          phone: '',
-          mobile: '',
-          email: '',
-          password: '',
-          repeatPassword: '',
-        }}
-        validationSchema={schema}
-        validateOnBlur={false}
-        render={props => (
-          <RegistrationForm
-            {...props}
-            error={error}
-            submitting={submitting}
-            intl={intl}
-            classes={classes}
-          />
-        )}
+export const RegistrationFormContainer = ({
+  error,
+  submitting,
+  intl,
+  classes,
+  submitHandler,
+  onSubmit,
+}) => (
+  <Formik
+    onSubmit={submitHandler(onSubmit)}
+    initialValues={{
+      name: '',
+      phone: '',
+      mobile: '',
+      email: '',
+      password: '',
+      repeatPassword: '',
+    }}
+    validationSchema={schema}
+    validateOnBlur={false}
+    render={props => (
+      <RegistrationForm
+        {...props}
+        error={error}
+        submitting={submitting}
+        intl={intl}
+        classes={classes}
       />
-    );
-  }
-}
+    )}
+  />
+);
+
+export default enhanced(RegistrationFormContainer);

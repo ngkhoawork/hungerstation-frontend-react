@@ -12,7 +12,7 @@ import { withRouter } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import SearchBar from 'components/HomePage/UpperSection/SearchBar';
+import SearchBar from 'pages/HomePage/UpperSection/SearchBar';
 import {
   makeSelectCities,
   makeSelectDistricts,
@@ -52,13 +52,13 @@ const mapDispatchToProps = {
 @injectReducer({ key: 'searchBarContainer', reducer })
 @injectSaga({ key: 'searchBarContainer', saga })
 /* eslint-disable react/prefer-stateless-function */
-export default class SearchBarContainer extends React.Component {
+export default class SearchBarContainer extends React.PureComponent {
   static propTypes = {
     getCities: PropTypes.func.isRequired,
     selectCity: PropTypes.func.isRequired,
     selectDistrict: PropTypes.func.isRequired,
-    selectedCity: PropTypes.string,
-    selectedDistrict: PropTypes.string,
+    selectedCity: PropTypes.object,
+    selectedDistrict: PropTypes.object,
     cities: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,

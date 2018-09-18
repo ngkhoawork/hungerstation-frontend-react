@@ -7,8 +7,9 @@
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
 import { validationSchemas } from 'utils/form/validation';
-import ResetPasswordForm from 'components/ResetPasswordForm';
 import { FormContainer } from 'containers/Form';
+
+import ResetPasswordForm from './ResetPasswordForm/index';
 
 const schema = validationSchemas('resetPasswordForm');
 

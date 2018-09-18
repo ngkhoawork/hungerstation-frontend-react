@@ -21,13 +21,13 @@ const HungerStationAPI = {
     return client.request(refreshTokenMutation, { refreshTokentoken });
   },
   makeRequestToProtected(token, query, payload) {
-    protectedClient(token).request(query, payload);
+    return protectedClient(token).request(query, payload);
   },
   getUser(token, userId) {
-    protectedClient(token).request(userQuery, { userId });
+    return protectedClient(token).request(userQuery, { userId });
   },
   getCities(countryId) {
-    client.request(listCitiesQuery, { countryId });
+    return client.request(listCitiesQuery, { country_id: countryId });
   },
 };
 
