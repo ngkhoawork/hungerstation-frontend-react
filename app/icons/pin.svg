@@ -1,1 +1,17 @@
-<svg width="11" height="14" xmlns="http://www.w3.org/2000/svg"><g stroke-width="1.4" stroke="#434340" fill="none" fill-rule="evenodd"><path d="M9.775 5.275c0 2.83425-2.95125 5.997-4.074 7.09725-.2385.23325-.6135.23325-.852 0C3.72625 11.272.775 8.10925.775 5.275c0-2.48475 2.01525-4.5 4.5-4.5s4.5 2.01525 4.5 4.5z"/><path d="M5.275 6.775c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5-1.5.672-1.5 1.5.672 1.5 1.5 1.5z"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="15px" viewBox="0 0 12 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/pin</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ui/location-edit" transform="translate(-16.000000, -13.000000)" stroke="#434340">
+            <g id="icon/pin" transform="translate(17.000000, 14.000000)">
+                <g id="Group-5" transform="translate(-0.833333, -0.812500)">
+                    <path d="M10.5833333,5.44375 C10.5833333,8.5141875 7.30416667,11.9405 6.05666667,13.1324375 C5.79166667,13.385125 5.375,13.385125 5.11,13.1324375 C3.8625,11.9405 0.583333333,8.5141875 0.583333333,5.44375 C0.583333333,2.7519375 2.8225,0.56875 5.58333333,0.56875 C8.34416667,0.56875 10.5833333,2.7519375 10.5833333,5.44375 Z" id="Stroke-1" stroke-width="1.4"></path>
+                    <path d="M5.58333333,7.06875 C6.50333333,7.06875 7.25,6.34075 7.25,5.44375 C7.25,4.54675 6.50333333,3.81875 5.58333333,3.81875 C4.66333333,3.81875 3.91666667,4.54675 3.91666667,5.44375 C3.91666667,6.34075 4.66333333,7.06875 5.58333333,7.06875 Z" id="Stroke-3" stroke-width="1.4"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

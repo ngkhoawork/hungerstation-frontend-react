@@ -41,8 +41,15 @@ const getMedia = dimension => size => (...args) => css`
 
 export const mediaLess = getMedia('lessThan');
 export const mediaGreater = getMedia('greaterThan');
+
 export const mediaSmall = mediaLess(560);
 export const mediaMedium = mediaLess(850);
 export const mediaLarge = mediaLess(1130);
+
+export const getDisplayProp = isModalOpened =>
+  !isModalOpened &&
+  `
+    display: none;
+  `;
 
 export default styles;

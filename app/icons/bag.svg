@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="12px" viewBox="0 0 10 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/bag-old-DELETE</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Thumbnail/Blank" transform="translate(-155.000000, -149.000000)">
+            <g id="meta-data">
+                <g transform="translate(14.950619, 150.166667)">
+                    <g id="icon/bag-new-grey" transform="translate(140.778958, 0.000000)">
+                        <g id="Group-14">
+                            <g id="Group-7" transform="translate(0.000000, 0.334227)">
+                                <g id="Group">
+                                    <path d="M0.913882353,2.54686364 L7.57317647,2.54686364 C7.90023529,2.54686364 8.15435294,2.82277273 8.11529412,3.13686364 L7.39341176,8.98368182 C7.37411765,9.36140909 7.05976471,9.65868182 6.67764706,9.65913636 L1.81035294,9.65913636 C1.42776471,9.65959091 1.11247059,9.36231818 1.09317647,8.98368182 L0.371764706,3.13686364 C0.333176471,2.82277273 0.586823529,2.54686364 0.913882353,2.54686364 Z" id="Stroke-1" stroke="#B4B3AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M2.40282353,2.54686364 L2.40282353,1.4355 C2.40282353,0.646409091 3.22682353,0.00686363636 4.24376471,0.00686363636 C5.26023529,0.00686363636 6.08423529,0.646409091 6.08423529,1.4355 L6.08423529,2.54686364" id="Stroke-3" stroke="#B4B3AD" stroke-width="1.5"></path>
+                                    <path d="M1.88235294,4.09090909 L6.58823529,4.09090909" id="Stroke-5" stroke="#B4B3AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M1.88235294,2.73409091 C1.88235294,2.985 2.09317647,3.18863636 2.35294118,3.18863636 C2.61270588,3.18863636 2.82352941,2.985 2.82352941,2.73409091 C2.82352941,2.48272727 2.61270588,2.27909091 2.35294118,2.27909091 C2.09317647,2.27909091 1.88235294,2.48272727 1.88235294,2.73409091 Z" id="Clip-9" fill="#B4B3AD"></path>
+                                    <path d="M5.64752941,2.73409091 C5.64752941,2.985 5.85788235,3.18863636 6.11764706,3.18863636 C6.37741176,3.18863636 6.58823529,2.985 6.58823529,2.73409091 C6.58823529,2.48272727 6.37741176,2.27909091 6.11764706,2.27909091 C5.85788235,2.27909091 5.64752941,2.48272727 5.64752941,2.73409091 Z" id="Clip-12" fill="#B4B3AD"></path>
+                                </g>
+                            </g>
+                            <g id="Group-10" transform="translate(1.882353, 2.606955)"></g>
+                            <g id="Group-13" transform="translate(5.647059, 2.606955)"></g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

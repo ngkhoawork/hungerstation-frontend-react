@@ -11,7 +11,7 @@
  * the linting exception.
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
@@ -26,6 +26,11 @@ import UserProfile from 'components/UserProfile';
 import ResetPasswordPage from 'components/ResetPasswordPage';
 import ForgotPasswordPage from 'components/ForgotPasswordPage';
 import AddRestaurantBanner from 'components/AddRestaurantBanner';
+import RestaurantsPage from 'components/RestaurantsPage';
+
+import ModalContainer from 'containers/ModalContainer';
+import FiltersContainer from 'containers/FiltersContainer';
+import FiltersSection from 'components/RestaurantsPage/FiltersSection';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -68,27 +73,31 @@ export default class App extends Component {
     return (
       <StyledApp dir={dir} dark={location.pathname !== '/'}>
         <CssBaseline />
+
+        <ModalContainer>
+          <FiltersContainer>
+            {props => <FiltersSection {...props} />}
+          </FiltersContainer>
+        </ModalContainer>
+
         <AddRestaurantBanner />
         {location.pathname !== '/' && <Header dark />}
         <Switch>
           <Route
             exact
             path="/"
-            render={props => (
-              <Fragment>
-                <HomePageContainer {...props} />
-                <Footer />
-              </Fragment>
-            )}
+            render={props => <HomePageContainer {...props} />}
           />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
+          <Route path="/restaurants" component={RestaurantsPage} />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
 
           <Redirect from="*" to="/" />
         </Switch>
+        <Footer />
       </StyledApp>
     );
   }

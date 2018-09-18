@@ -1,4 +1,5 @@
 import { injectGlobal } from 'styled-components';
+import { jade } from 'utils/colors';
 import HSRwoff from './vendor/fonts/HungerStation-Regular.woff';
 import HSRwoff2 from './vendor/fonts/HungerStation-Regular.woff2';
 import HSRotf from './vendor/fonts/HungerStation-Regular.otf';
@@ -61,5 +62,69 @@ injectGlobal`
     min-height: 100%;
     min-width: 100%;
     color: #434340;
+  }
+
+  .Modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 600px;
+    max-width: 100%;
+    height: 900px;
+    max-height: 100%;
+    z-index: 101;
+    outline: 9999px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .Overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ReactModal__Body--open {
+    overflow-y: hidden;
+  }
+
+  .slick-dots {
+    top: -60px;
+    right: 0;
+    width: auto !important;
+    z-index: 0;
+  }
+
+  .slick-dots button:before {
+    font-size: 9px !important;
+    opacity: 0.1 !important;
+  }
+
+  .slick-dots li {
+    margin: 0 !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .slick-active button:before {
+    color: ${jade} !important;
+    font-size: 9px !important;
+    opacity: 1 !important;
+  }
+
+  .slick-prev:before, .slick-next:before {
+    display: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .slick-dots {
+      right: 20px;
+    }
   }
 `;
