@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 
 const StyledRestaurantsSection = styled.div`
   ${flexBox(
@@ -15,6 +15,12 @@ const StyledRestaurantsSection = styled.div`
     position: relative;
   `,
   )};
+  ${mediaLess(1000)`
+    flex: 1;
+  `};
+  ${mediaLess(600)`
+    padding: 0;
+  `};
 `;
 
 export default StyledRestaurantsSection;

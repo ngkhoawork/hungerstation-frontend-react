@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { silverChalice, jade } from 'utils/colors';
 
 import Icon from 'components/Icon';
-import Circle from 'components/Circle';
+import CircledItem from 'components/CircledItem';
 import Paragraph from 'components/Paragraph';
 import StyledBottomPart from './StyledBottomPart';
 import Row from '../Row';
@@ -11,8 +11,10 @@ import Row from '../Row';
 const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
   <StyledBottomPart>
     <Row>
-      <Circle color={jade} size={7} />
-      <Paragraph size={17}>{name}</Paragraph>
+      <CircledItem color={jade} width={7} />
+      <Paragraph size={17} margin="0 0 0 5px">
+        {name}
+      </Paragraph>
     </Row>
     <Row>
       <Icon name="time" />

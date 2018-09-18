@@ -12,11 +12,11 @@ import LocaleToggle from 'containers/LocaleToggle';
 import TextLink from 'components/TextLink';
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
+import CircledItem from 'components/CircledItem';
 
 import { fuscousGray } from 'utils/colors';
 
 import RightSection from './RightSection';
-import Circle from './Circle';
 import StyledHeader from './StyledHeader';
 import logo from '../../images/hungerstation.svg';
 
@@ -32,9 +32,9 @@ const Header = ({ variant }) => (
           Log in
         </Paragraph>
       </TextLink>
-      <Circle>
+      <CircledItem color="white" width={28}>
         <Icon name="basket" />
-      </Circle>
+      </CircledItem>
     </RightSection>
   </StyledHeader>
 );

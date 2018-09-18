@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import { offersPropTypes } from 'props/offers';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -32,14 +32,7 @@ const mapDispatchToProps = {};
 /* eslint-disable react/prefer-stateless-function */
 export default class OffersListContainer extends React.Component {
   static propTypes = {
-    offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        brand: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
+    offers: offersPropTypes,
   };
 
   render() {

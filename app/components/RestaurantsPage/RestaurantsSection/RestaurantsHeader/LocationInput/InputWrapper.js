@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 import { wildSant } from 'utils/colors';
 
 const InputWrapper = styled.div`
@@ -17,6 +17,12 @@ const InputWrapper = styled.div`
   img {
     margin-bottom: 3px;
   }
+  ${mediaLess(860)`
+    margin-left: 20px;
+  `};
+  ${mediaLess(600)`
+    margin-left: 0;
+  `};
 `;
 
 export default InputWrapper;

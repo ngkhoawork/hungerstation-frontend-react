@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 import Figs from 'images/figs.png';
+import FigsMobile from 'images/figs-mobile.png';
 
 const StyledRestaurantCard = styled.div`
   ${flexBox(
@@ -18,6 +19,28 @@ const StyledRestaurantCard = styled.div`
     cursor: pointer;
   `,
   )};
+  ${mediaLess(1250)`
+    flex: 1 0 40%;
+    max-width: 340px;
+  `};
+  ${mediaLess(1000)`
+    flex: 1 0 30%;
+    max-width: 260px;
+  `};
+  ${mediaLess(860)`
+    flex: 1 0 40%;
+    max-width: 45%;
+  `};
+  ${mediaLess(600)`
+    flex: 1 0 100%;
+    min-width: 70%;
+    align-self: center;
+    height: 170px;
+    background-image: url(${FigsMobile});
+  `};
+  ${mediaLess(500)`
+    min-width: 100%;
+  `};
 `;
 
 export default StyledRestaurantCard;

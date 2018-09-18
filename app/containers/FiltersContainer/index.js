@@ -8,16 +8,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-
-import FiltersSection from 'components/RestaurantsPage/FiltersSection';
+import { filtersCategoryPropTypes } from 'props/filters';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import {
+  showModal as showModalAction,
+  hideModal as hideModalAction,
+} from '../ModalContainer/actions';
+import { toggleSection as toggleSectionAction } from './actions';
+
 import {
   makeSelectTags,
   makeSelectCuisines,
   makeSelectDeliveryTypes,
 } from './selectors';
+import { makeSelectIsOpen } from '../ModalContainer/selectors';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -25,9 +31,14 @@ const mapStateToProps = createStructuredSelector({
   tags: makeSelectTags,
   cuisines: makeSelectCuisines,
   deliveryTypes: makeSelectDeliveryTypes,
+  isModalOpened: makeSelectIsOpen,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  openModal: showModalAction,
+  closeModal: hideModalAction,
+  toggleSection: toggleSectionAction,
+};
 
 @connect(
   mapStateToProps,
@@ -38,37 +49,39 @@ const mapDispatchToProps = {};
 /* eslint-disable react/prefer-stateless-function */
 export default class FiltersContainer extends React.Component {
   static propTypes = {
-    tags: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        isSelected: PropTypes.bool.isRequired,
-      }),
-    ).isRequired,
-    cuisines: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        isSelected: PropTypes.bool.isRequired,
-      }),
-    ).isRequired,
-    deliveryTypes: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        isSelected: PropTypes.bool.isRequired,
-      }),
-    ).isRequired,
+    tags: filtersCategoryPropTypes,
+    cuisines: filtersCategoryPropTypes,
+    deliveryTypes: filtersCategoryPropTypes,
+    children: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    isModalOpened: PropTypes.bool.isRequired,
+    toggleSection: PropTypes.func.isRequired,
   };
 
   render() {
-    const { tags, cuisines, deliveryTypes } = this.props;
+    const {
+      children,
+      tags,
+      cuisines,
+      deliveryTypes,
+      openModal,
+      closeModal,
+      isModalOpened,
+      toggleSection,
+    } = this.props;
     return (
-      <FiltersSection
-        tags={tags}
-        cuisines={cuisines}
-        deliveryTypes={deliveryTypes}
-      />
+      <React.Fragment>
+        {children({
+          tags,
+          cuisines,
+          deliveryTypes,
+          openModal,
+          closeModal,
+          isModalOpened,
+          toggleSection,
+        })}
+      </React.Fragment>
     );
   }
 }

@@ -14,7 +14,7 @@ export const makeSelectTags = createSelector(
     const output = filtersState && filtersState.get('tags');
 
     if (output) {
-      return output.toJS();
+      return output;
     }
     return null;
   },
@@ -26,7 +26,7 @@ export const makeSelectCuisines = createSelector(
     const output = filtersState && filtersState.get('cuisines');
 
     if (output) {
-      return output.toJS();
+      return output;
     }
     return null;
   },
@@ -38,7 +38,7 @@ export const makeSelectDeliveryTypes = createSelector(
     const output = filtersState && filtersState.get('deliveryTypes');
 
     if (output) {
-      return output.toJS();
+      return output;
     }
     return null;
   },

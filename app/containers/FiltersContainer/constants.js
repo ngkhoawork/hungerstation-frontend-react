@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/FiltersContainer/DEFAULT_ACTION';
+export const TOGGLE_SECTION = 'app/FiltersContainer/TOGGLE_SECTION';

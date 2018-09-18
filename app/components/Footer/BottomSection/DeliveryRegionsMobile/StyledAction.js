@@ -6,6 +6,7 @@ const StyledAction = styled.div`
     { align: 'flex-end', justify: 'space-between' },
     `
     width: 60px;
+    margin-bottom: 5px;
   `,
   )};
 `;

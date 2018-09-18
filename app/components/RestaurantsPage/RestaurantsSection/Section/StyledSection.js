@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 
 const StyledSection = styled.div`
   ${flexBox(
@@ -10,6 +10,10 @@ const StyledSection = styled.div`
     width: 100%;
   `,
   )};
+  ${mediaLess(600)`
+    padding-left: 20px;
+    margin-bottom: 30px;
+  `};
 `;
 
 export default StyledSection;

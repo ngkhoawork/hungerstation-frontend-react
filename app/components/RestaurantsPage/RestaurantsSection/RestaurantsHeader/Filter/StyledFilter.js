@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 
 const StyledFilter = styled.div`
   ${flexBox(
@@ -8,6 +8,9 @@ const StyledFilter = styled.div`
     line-height: 15px;
   `,
   )};
+  ${mediaLess(860)`
+    display: none;
+  `};
 `;
 
 export default StyledFilter;

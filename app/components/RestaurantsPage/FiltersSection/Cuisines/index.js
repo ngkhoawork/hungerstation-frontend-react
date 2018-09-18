@@ -1,31 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { silverChalice } from 'utils/colors';
+import { wildSant, silverChalice } from 'utils/colors';
 import { compose, withState, withHandlers } from 'recompose';
+import { filtersCategoryPropTypes } from 'props/filters';
 
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
+import CircledItem from 'components/CircledItem';
+import Group from 'components/Group';
 import StyledContainer from '../StyledContainer';
 import StyledItem from '../StyledItem';
-import StyledDetails from '../StyledDetails';
 import StyledAction from './StyledAction';
 
-const Cuisines = ({ cuisines, isExpanded, toggleExpandibility }) => {
-  const cuisineList = isExpanded ? cuisines : cuisines.slice(0, 4);
+const Cuisines = ({
+  cuisines,
+  isExpanded,
+  toggleCuisineOptionsExpandibility,
+}) => {
+  const cuisineList = isExpanded
+    ? cuisines.get('options')
+    : cuisines.get('options').slice(0, 4);
   return (
     <StyledContainer>
       {cuisineList.map(cuisine => (
-        <StyledItem key={cuisine.id}>
-          <StyledDetails>
-            <Icon name={cuisine.id} />
-            <Paragraph color={cuisine.isSelected ? 'black' : silverChalice}>
-              {cuisine.label}
+        <StyledItem key={cuisine.get('id')}>
+          <Group>
+            <CircledItem color={wildSant} width={28}>
+              <Icon
+                name={`${cuisine.get('id').toLowerCase()}-cuisine`}
+                size={12}
+              />
+            </CircledItem>
+            <Paragraph
+              color={cuisine.get('isSelected') ? 'black' : silverChalice}
+              margin="0 0 -3px 10px"
+            >
+              {cuisine.get('label')}
             </Paragraph>
-          </StyledDetails>
-          {cuisine.isSelected && <Icon name="check" />}
+          </Group>
+          {cuisine.get('isSelected') && <Icon name="check" />}
         </StyledItem>
       ))}
-      <StyledAction onClick={toggleExpandibility} isExpanded={isExpanded}>
+      <StyledAction
+        onClick={toggleCuisineOptionsExpandibility}
+        isExpanded={isExpanded}
+      >
         <Paragraph>{isExpanded ? 'Less' : 'More'}</Paragraph>
         <Icon name="arrow-circled" size={13} />
       </StyledAction>
@@ -34,21 +53,16 @@ const Cuisines = ({ cuisines, isExpanded, toggleExpandibility }) => {
 };
 
 Cuisines.propTypes = {
-  cuisines: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-      isSelected: PropTypes.bool.isRequired,
-    }),
-  ).isRequired,
+  cuisines: filtersCategoryPropTypes,
   isExpanded: PropTypes.bool.isRequired,
-  toggleExpandibility: PropTypes.func.isRequired,
+  toggleCuisineOptionsExpandibility: PropTypes.func.isRequired,
 };
 
 const enhanced = compose(
   withState('isExpanded', 'setExpandibility', false),
   withHandlers({
-    toggleExpandibility: props => () => {
+    toggleCuisineOptionsExpandibility: props => e => {
+      e.stopPropagation();
       props.setExpandibility(!props.isExpanded);
     },
   }),

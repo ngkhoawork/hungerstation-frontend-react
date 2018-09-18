@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 
 const StyledListPage = styled.div`
   ${flexBox(
@@ -9,6 +9,12 @@ const StyledListPage = styled.div`
     padding: 20px 56px;
   `,
   )};
+  ${mediaLess(1250)`
+    padding: 20px 20px 20px 30px;
+  `};
+  ${mediaLess(600)`
+    padding: 0;
+  `};
 `;
 
 export default StyledListPage;

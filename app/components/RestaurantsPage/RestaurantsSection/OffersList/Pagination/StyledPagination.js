@@ -1,16 +1,19 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/styles';
 
 const StyledPagination = styled.div`
   ${flexBox(
-    { align: 'center', justify: 'space-between' },
+    { align: 'center' },
     `
     width: 100px;
     position: absolute;
-    top: 10px;
-    right: 0;
+    top: 11px;
+    right: 30px;
   `,
   )};
+  ${mediaLess(600)`
+    display: none;
+  `};
 `;
 
 export default StyledPagination;
