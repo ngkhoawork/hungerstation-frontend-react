@@ -1,8 +1,4 @@
-import { withStyles } from '@material-ui/core/styles';
-
-import Autocompleter from 'components/Autocompleter';
-
-export const styles = () => ({
+export default () => ({
   root: {
     flexGrow: 1,
     marginLeft: '16px',
@@ -58,5 +54,3 @@ export const styles = () => ({
     backgroundColor: 'rgba(186, 186, 186, 0.20) !important',
   },
 });
-
-export default withStyles(styles)(Autocompleter);

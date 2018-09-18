@@ -1,7 +1,4 @@
 // TODO add intl support
-import React from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
 import deburr from 'lodash/deburr';
 
 export const extractError = error => {
@@ -40,40 +37,6 @@ export const getSuggestions = (suggestions, value) => {
   }
 
   return [];
-};
-
-export const renderSuggestion = ({
-  suggestion,
-  index,
-  itemProps,
-  highlightedIndex,
-}) => {
-  const isHighlighted = highlightedIndex === index;
-
-  return (
-    <MenuItem
-      {...itemProps}
-      key={suggestion.get('name')}
-      selected={isHighlighted}
-      component="div"
-    >
-      {suggestion.get('name')}
-    </MenuItem>
-  );
-};
-
-export const renderInput = inputProps => {
-  const { InputProps, ref, ...other } = inputProps;
-
-  return (
-    <TextField
-      InputProps={{
-        inputRef: ref,
-        ...InputProps,
-      }}
-      {...other}
-    />
-  );
 };
 
 export const itemToString = item => (item ? item.get('name') : '');

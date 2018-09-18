@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Autocompleter from 'components/Autocompleter';
 
-import StyledAutocomplete from './StyledAutocomplete';
+import styles from './styles';
 import StyledDropdown from './StyledDropdown';
+
+const HomePageAutocomplete = withStyles(styles)(Autocompleter);
 
 const DropdownInput = ({
   iconName,
@@ -13,7 +17,7 @@ const DropdownInput = ({
   ...rest
 }) => (
   <StyledDropdown>
-    <StyledAutocomplete
+    <HomePageAutocomplete
       placeholder={placeholder}
       suggestions={suggestions}
       onChange={onChange}

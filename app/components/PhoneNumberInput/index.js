@@ -5,38 +5,12 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 
-import { flexBox } from 'utils/styles';
-
 import Icon from 'components/Icon';
-
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'flex-start' },
-    `
-
-      > div.prefix {
-        margin-right: 16px;
-      }
-
-      [dir="rtl"] & > div.prefix {
-        margin-left: 16px;
-      }
-
-      > div.input {
-        flex-grow: 1;
-
-      }
-    `,
-  )};
-`;
+import Wrapper from './StyledWrapper';
 
 const countriesArr = [
   [

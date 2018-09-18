@@ -170,7 +170,6 @@
     "json-graphql-server": "^2.1.1",
     "localStorage": "^1.0.3",
     "lodash": "4.17.10",
-    "match-sorter": "^2.3.0",
     "minimist": "1.2.0",
     "prop-types": "15.6.1",
     "react": "16.4.1",

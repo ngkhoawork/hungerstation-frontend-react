@@ -29,7 +29,6 @@ const themeObj = {
     },
   },
   overrides: {
-    // Name of the component ⚛️ / style sheet
     MuiSelect: {
       select: {
         '&:focus': {
@@ -38,7 +37,6 @@ const themeObj = {
       },
     },
     MuiButton: {
-      // Name of the rule
       contained: {
         '&$disabled': {
           color: fuscousGray,
@@ -58,11 +56,6 @@ const themeObj = {
         },
       },
     },
-    // MuiFormControl: {
-    //   root: {
-    //     marginBottom: '8px',
-    //   },
-    // },
     MuiFormLabel: {
       root: {
         color: silverChalice,

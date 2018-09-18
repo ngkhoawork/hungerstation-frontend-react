@@ -6,13 +6,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';
 import { wildSant } from 'utils/colors';
+import { itemToString, getSuggestions } from 'utils/helpers';
 
-import {
-  itemToString,
-  getSuggestions,
-  renderSuggestion,
-  renderInput,
-} from 'utils/helpers';
+import Input from './Input';
+import Suggestion from './Suggestion';
 
 const Autocomplete = props => {
   const {
@@ -46,13 +43,13 @@ const Autocomplete = props => {
 
         return (
           <div className={[classes.container]}>
-            {renderInput({
-              fullWidth: true,
-              classes: {
+            <Input
+              fullWidth
+              classes={{
                 root: classes.formControlRoot,
-              },
-              defaultValue: defaultInputValue,
-              InputProps: getInputProps({
+              }}
+              defaultValue={defaultInputValue}
+              InputProps={getInputProps({
                 classes: {
                   root: classes.inputRoot,
                   input: classes.input,
@@ -73,26 +70,26 @@ const Autocomplete = props => {
                     </CircledItem>
                   </InputAdornment>
                 ),
-              }),
-            })}
+              })}
+            />
             <div {...getMenuProps()}>
               {isOpen && renderedSuggestions.size ? (
                 <Paper className={classes.paper}>
-                  {renderedSuggestions.map((suggestion, index) =>
-                    renderSuggestion({
-                      suggestion,
-                      index,
-                      itemProps: getItemProps({
+                  {renderedSuggestions.map((suggestion, index) => (
+                    <Suggestion
+                      suggestion={suggestion}
+                      index={index}
+                      itemProps={getItemProps({
                         item: suggestion,
                         classes: {
                           root: classes.menuItem,
                           selected: classes.menuItemSelected,
                         },
-                      }),
-                      highlightedIndex,
-                      selectedItem,
-                    }),
-                  )}
+                      })}
+                      highlightedIndex={highlightedIndex}
+                      selectedItem={selectedItem}
+                    />
+                  ))}
                 </Paper>
               ) : null}
             </div>
