@@ -12,11 +12,44 @@ import Google from 'icons/google.svg';
 import Instagram from 'icons/instagram.svg';
 import Toggle from 'icons/toggle.svg';
 import Close from 'icons/close.svg';
+import Tick from 'icons/tick.svg';
+import Delete from 'icons/delete.svg';
+import ArrowRight from 'icons/arrow-right.svg';
+import Check from 'icons/check.svg';
+import Time from 'icons/time.svg';
+import Delivery from 'icons/delivery.svg';
+import Bag from 'icons/bag.svg';
+import Star from 'icons/star.svg';
+import ArrowDropdown from 'icons/arrow-dropdown.svg';
+import MagnifyingGlass from 'icons/magnifying-glass.svg';
+import Refresh from 'icons/refresh.svg';
+import Edit from 'icons/edit.svg';
+import ArrowCircled from 'icons/arrow-circled.svg';
+
+import AllCuisine from 'icons/all-cuisine.svg';
+import AmericanCuisine from 'icons/american-cuisine.svg';
+import ArabianCuisine from 'icons/arabian-cuisine.svg';
+import AsianCuisine from 'icons/asian-cuisine.svg';
+import BakeryCuisine from 'icons/bakery-cuisine.svg';
+import BeveragesCuisine from 'icons/beverages-cuisine.svg';
+import DeliveryCuisine from 'icons/delivery-cuisine.svg';
+import DessertsCuisine from 'icons/desserts-cuisine.svg';
+import FastCuisine from 'icons/fast-cuisine.svg';
+import FoodBeverageCuisine from 'icons/foodbeverage-cuisine.svg';
+import GrillsCuisine from 'icons/grills-cuisine.svg';
+import IndianCuisine from 'icons/indian-cuisine.svg';
+import ItalianCuisine from 'icons/italian-cuisine.svg';
+import MexicanCuisine from 'icons/mexican-cuisine.svg';
+import SandwichesCuisine from 'icons/sandwiches-cuisine.svg';
+import SeaCuisine from 'icons/sea-cuisine.svg';
+import TurkishCuisine from 'icons/turkish-cuisine.svg';
+
 import Plus from 'icons/+.svg';
 import CheckboxUnchecked from 'icons/checkbox-unchecked.svg';
 import CheckboxChecked from 'icons/checkbox-checked.svg';
 import SaudiFlag from 'icons/saudi-flag.svg';
 import BahrainFlag from 'icons/bahrain-flag.svg';
+
 
 const getIcon = name => {
   switch (name) {
@@ -48,6 +81,66 @@ const getIcon = name => {
       return Toggle;
     case 'close':
       return Close;
+    case 'tick':
+      return Tick;
+    case 'delete':
+      return Delete;
+    case 'arrow-right':
+      return ArrowRight;
+    case 'all':
+      return AllCuisine;
+    case 'american':
+      return AmericanCuisine;
+    case 'arabian':
+      return ArabianCuisine;
+    case 'asian':
+      return AsianCuisine;
+    case 'bakery':
+      return BakeryCuisine;
+    case 'beverages':
+      return BeveragesCuisine;
+    case 'deliveryfood':
+      return DeliveryCuisine;
+    case 'desserts':
+      return DessertsCuisine;
+    case 'fast':
+      return FastCuisine;
+    case 'foodbeverage':
+      return FoodBeverageCuisine;
+    case 'grills':
+      return GrillsCuisine;
+    case 'indian':
+      return IndianCuisine;
+    case 'italian':
+      return ItalianCuisine;
+    case 'mexican':
+      return MexicanCuisine;
+    case 'sandwiches':
+      return SandwichesCuisine;
+    case 'sea':
+      return SeaCuisine;
+    case 'turkish':
+      return TurkishCuisine;
+    case 'check':
+      return Check;
+    case 'time':
+      return Time;
+    case 'delivery':
+      return Delivery;
+    case 'bag':
+      return Bag;
+    case 'star':
+      return Star;
+    case 'arrowdown':
+      return ArrowDropdown;
+    case 'magnifying-glass':
+      return MagnifyingGlass;
+    case 'refresh':
+      return Refresh;
+    case 'edit':
+      return Edit;
+    case 'arrow-circled':
+      return ArrowCircled;
     case 'plus':
       return Plus;
     case 'checkbox-checked':

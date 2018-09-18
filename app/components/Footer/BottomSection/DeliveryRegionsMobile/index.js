@@ -6,6 +6,7 @@ import { alto } from 'utils/colors';
 import StyledMobileSection from './StyledMobileSection';
 import StyledRegions from './StyledRegions';
 import PragraphWrapper from './PragraphWrapper';
+import StyledAction from './StyledAction';
 
 const DeliveryRegionsMobile = () => {
   const regions = [
@@ -25,18 +26,15 @@ const DeliveryRegionsMobile = () => {
       <Paragraph>Check where you can find us. Our regions:</Paragraph>
       <StyledRegions>
         {regions.map(region => (
-          <PragraphWrapper>
-            <Paragraph color={alto} key={region.id}>
-              {region.label}
-            </Paragraph>
+          <PragraphWrapper key={region.id}>
+            <Paragraph color={alto}>{region.label}</Paragraph>
           </PragraphWrapper>
         ))}
       </StyledRegions>
-      <Paragraph>
-        See more<span>
-          <Icon name="close" />
-        </span>
-      </Paragraph>
+      <StyledAction>
+        <Paragraph>See more</Paragraph>
+        <Icon name="tick" />
+      </StyledAction>
     </StyledMobileSection>
   );
 };
