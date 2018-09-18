@@ -11,7 +11,7 @@ import StyledTitle from './StyledTitle';
 import IconWrapper from './IconWrapper';
 
 const Category = ({ title, children, isSectionExpanded, toggleSection }) => (
-  <StyledCategory onClick={toggleSection}>
+  <StyledCategory>
     <StyledTitle>
       <Group>
         <Paragraph size={17} margin="0 5px 0 0">
@@ -23,7 +23,10 @@ const Category = ({ title, children, isSectionExpanded, toggleSection }) => (
           </Paragraph>
         </CircledItem>
       </Group>
-      <IconWrapper isSectionExpanded={isSectionExpanded}>
+      <IconWrapper
+        isSectionExpanded={isSectionExpanded}
+        onClick={toggleSection}
+      >
         <Icon name="arrow-circled" size={12} />
       </IconWrapper>
     </StyledTitle>

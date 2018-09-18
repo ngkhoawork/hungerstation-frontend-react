@@ -13,7 +13,7 @@ import Tags from '../FiltersSection/Tags';
 const BriefFiltersSection = ({ isModalOpened, tags, openModal }) => (
   <React.Fragment>
     <Header isModalOpened={isModalOpened} />
-    <Category title="Tags" isSectionExpanded={tags.isExpanded}>
+    <Category title="Tags" isSectionExpanded={tags.get('isExpanded')}>
       <Tags tags={tags} />
     </Category>
     <Group onClick={openModal}>

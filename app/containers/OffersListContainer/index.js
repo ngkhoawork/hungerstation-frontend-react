@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import { offersPropTypes } from 'props/offers';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'recompose';
@@ -33,14 +33,7 @@ export const OffersListContainer = ({ offers }) => (
 );
 
 OffersListContainer.propTypes = {
-  offers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      brand: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  offers: offersPropTypes,
 };
 
 export default enhanced(OffersListContainer);

@@ -14,7 +14,7 @@ export const makeSelectOffers = createSelector(
     const output = offersState && offersState.get('offers');
 
     if (output) {
-      return output.toJS();
+      return output;
     }
     return null;
   },
