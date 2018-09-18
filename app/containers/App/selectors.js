@@ -4,26 +4,16 @@ const selectRoute = state => state.get('route');
 const selectAuth = state => state.get('auth');
 
 const makeSelectLocation = () =>
-  createSelector(selectRoute, routeState => routeState.get('location').toJS());
+  createSelector(selectRoute, routeState => routeState.get('location'));
 
-export const makeSelectIsLoggedIn = createSelector(selectAuth, authState => {
-  const output = authState && authState.get('loggedIn');
+export const makeSelectIsLoggedIn = createSelector(
+  selectAuth,
+  authState => authState && authState.get('loggedIn', null),
+);
 
-  if (output) {
-    return output;
-  }
-
-  return null;
-});
-
-export const makeSelectTokens = createSelector(selectAuth, authState => {
-  const output = authState && authState.get('tokens');
-
-  if (output) {
-    return output.toJS();
-  }
-
-  return null;
-});
+export const makeSelectTokens = createSelector(
+  selectAuth,
+  authState => authState && authState.get('tokens', null),
+);
 
 export { makeSelectLocation };

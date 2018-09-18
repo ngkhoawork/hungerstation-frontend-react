@@ -10,20 +10,29 @@ import ButtonWrapper from './ButtonWrapper';
 
 const SearchBar = ({
   selectedCity,
+  cities,
+  districts,
+  selectCity,
+  selectDistrict,
   selectedDistrict,
   handleRedirect,
   ...rest
 }) => (
   <StyledBar>
     <DropdownInput
-      value={selectedCity}
       placeholder="Enter city"
       iconName="pin"
+      suggestions={cities}
+      onChange={selectCity}
+      selectedItem={selectedCity}
     />
     <DropdownInput
-      value={selectedDistrict}
       placeholder="Enter District"
       iconName="district"
+      suggestions={districts}
+      onChange={selectDistrict}
+      selectedItem={selectedDistrict}
+      disabled={!selectedCity}
     />
     <StyledBarActions>
       <LocateYourself {...rest} />

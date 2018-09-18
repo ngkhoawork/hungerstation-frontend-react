@@ -5,41 +5,12 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
 
-import FormHelperText from '@material-ui/core/FormHelperText';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 
-import { flexBox } from 'utils/styles';
-
 import Icon from 'components/Icon';
-
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'flex-start' },
-    `
-      margin-top: 16px;
-      margin-bottom: 8px;
-
-      > div.prefix {
-        margin-right: 16px;
-      }
-
-      [dir="rtl"] & > div.prefix {
-        margin-left: 16px;
-      }
-
-      > div.input {
-        flex-grow: 1;
-
-      }
-    `,
-  )};
-`;
+import Wrapper from './StyledWrapper';
 
 const countriesArr = [
   [
@@ -89,7 +60,7 @@ class PhoneNumberInput extends React.PureComponent {
   render() {
     const {
       field,
-      form: { errors },
+      form: { errors, touched },
       ...rest
     } = this.props;
     const { prefix, phone } = this.state;
@@ -125,16 +96,14 @@ class PhoneNumberInput extends React.PureComponent {
         </div>
         <div className="input">
           <TextField
-            error={!!errors.phone}
+            error={!!touched.phone && !!errors.phone}
             fullWidth
             name="phone"
             {...rest}
             value={phone}
             onChange={this.handleChange('phone')}
+            helperText={!!touched.phone && !!errors.phone && errors.phone}
           />
-          {!!errors.phone && (
-            <FormHelperText error>{errors.phone}</FormHelperText>
-          )}
         </div>
       </Wrapper>
     );

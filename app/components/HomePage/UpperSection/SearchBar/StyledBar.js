@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { flexBox } from 'utils/styles';
 
+export const searchBarHeight = '56px';
+
 const StyledBar = styled.span`
   ${flexBox(
     { align: 'center', justify: 'space-between' },
     `
     border-radius: 8px;
     margin: 15px 0;
-    height: 56px;
+    height: ${searchBarHeight};
     background-color: white;
     width: 808px;
   `,

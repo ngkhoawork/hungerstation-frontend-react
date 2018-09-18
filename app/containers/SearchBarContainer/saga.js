@@ -1,4 +1,4 @@
-import { take, call, fork, put } from 'redux-saga/effects';
+import { take, call, fork, put, select } from 'redux-saga/effects';
 import { getUserPosition, getSettlementDetails, getUnit } from 'utils/location';
 
 import HungerStationAPI from 'api/HungerStationAPI';
@@ -8,21 +8,34 @@ import {
   setDistrictsAction,
   setSettlementDetailsAction,
   toggleSettlementLoadedAction,
+  selectDistrictAction,
 } from './actions';
+import { makeSelectCities } from './selectors';
 
 function* getCitiesFlow() {
   while (true) {
     yield take(REQUEST_CITIES);
-    const response = yield call(HungerStationAPI.getCities);
-    yield put(setCitiesAction(response));
+    const cachedCities = yield select(makeSelectCities);
+
+    if (!cachedCities.size) {
+      const { listCities } = yield call(HungerStationAPI.getCities, 1);
+      const districtsMap = {};
+
+      const cities = listCities.map(({ id, districts, name }) => {
+        districtsMap[id] = districts;
+        return { name, id };
+      });
+
+      yield put(setCitiesAction(cities));
+      yield put(setDistrictsAction(districtsMap));
+    }
   }
 }
 
 function* selectCityFlow() {
   while (true) {
-    const { selectedCity } = yield take(SELECT_CITY);
-    const response = yield call(HungerStationAPI.getDistricts, selectedCity);
-    yield put(setDistrictsAction(response));
+    yield take(SELECT_CITY);
+    yield put(selectDistrictAction(null));
   }
 }
 
@@ -42,7 +55,18 @@ function* getCurrentLocationFlow() {
         'sublocality',
       );
 
-      yield put(setSettlementDetailsAction(city, district));
+      yield put(
+        setSettlementDetailsAction(
+          {
+            id: null,
+            name: city,
+          },
+          {
+            id: null,
+            name: district,
+          },
+        ),
+      );
       yield put(toggleSettlementLoadedAction(true));
     } catch (error) {
       yield put(toggleSettlementLoadedAction(true));

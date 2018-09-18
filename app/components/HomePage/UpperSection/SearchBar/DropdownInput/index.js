@@ -1,20 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { wildSant } from 'utils/colors';
+import { withStyles } from '@material-ui/core/styles';
+import Autocompleter from 'components/Autocompleter';
 
-import Icon from 'components/Icon';
-import CircledItem from 'components/CircledItem';
+import styles from './styles';
 import StyledDropdown from './StyledDropdown';
-import Placeholder from './Placeholder';
 
-const DropdownInput = ({ iconName, placeholder, value }) => (
+const HomePageAutocomplete = withStyles(styles)(Autocompleter);
+
+const DropdownInput = ({
+  iconName,
+  placeholder,
+  value,
+  suggestions,
+  onChange,
+  ...rest
+}) => (
   <StyledDropdown>
-    {iconName && (
-      <CircledItem color={wildSant} width={28}>
-        <Icon name={iconName} />
-      </CircledItem>
-    )}
-    {value || <Placeholder>{placeholder}</Placeholder>}
+    <HomePageAutocomplete
+      placeholder={placeholder}
+      suggestions={suggestions}
+      onChange={onChange}
+      value={value}
+      icon={iconName}
+      {...rest}
+    />
   </StyledDropdown>
 );
 
@@ -22,6 +32,8 @@ DropdownInput.propTypes = {
   iconName: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string,
+  suggestions: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default DropdownInput;
