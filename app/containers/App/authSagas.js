@@ -104,7 +104,7 @@ export function* makeAuthenticatedRequest(action = {}) {
     }`;
     const response = yield call(
       HungerStationAPI.makeRequestToProtected,
-      tokens.accessToken,
+      tokens.get('accessToken'),
       query,
       payload,
     );

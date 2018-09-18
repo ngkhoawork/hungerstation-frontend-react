@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FormHelperText from '@material-ui/core/FormHelperText';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import countryCodes from 'utils/countryCodes';
@@ -47,7 +46,7 @@ class PhoneNumberInput extends React.PureComponent {
   render() {
     const {
       field,
-      form: { errors },
+      form: { errors, touched },
       ...rest
     } = this.props;
     const { prefix, phone } = this.state;
@@ -83,16 +82,14 @@ class PhoneNumberInput extends React.PureComponent {
         </div>
         <div className="input">
           <TextField
-            error={!!errors.phone}
+            error={!!touched.phone && !!errors.phone}
             fullWidth
             name="phone"
             {...rest}
             value={phone}
             onChange={this.handleChange('phone')}
+            helperText={!!touched.phone && !!errors.phone && errors.phone}
           />
-          {!!errors.phone && (
-            <FormHelperText error>{errors.phone}</FormHelperText>
-          )}
         </div>
       </StyledWrapper>
     );

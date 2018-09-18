@@ -13,10 +13,14 @@ export const loginQuery = `query ($number:String!,$password:String!){
   }
 }`;
 
-export const listCitiesQuery = `query ($country_id: String!) {
-  listCities(countryId: $country_id) {
+export const listCitiesQuery = `query ($country_id: Int!) {
+  listCities(country_id: $country_id) {
     id
     name
+    districts {
+      id
+      name
+    }
   }
 }`;
 

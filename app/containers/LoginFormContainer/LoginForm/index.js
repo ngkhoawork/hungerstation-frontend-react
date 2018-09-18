@@ -7,15 +7,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Field } from 'formik';
 import Button from '@material-ui/core/Button';
 import { List } from 'immutable';
 import intl from 'utils/intlService';
 import { printErrors } from 'utils/form/helpers';
+import { StyledForm, StyledFieldWrapper } from 'utils/styledComponents';
 
 import TextInput from 'components/TextInput';
 import Icon from 'components/Icon';
-import { StyledForm } from 'utils/styledComponents';
 import Checkbox from 'components/Checkbox';
 import Paragraph from 'components/Paragraph';
 
@@ -24,26 +23,22 @@ import messages from './messages';
 const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
   <StyledForm onSubmit={handleSubmit}>
     {printErrors(error)}
-    <div>
-      <Field
-        fullWidth
-        name="mobile"
-        type="text"
-        component={TextInput}
-        label={intl.formatMessage(messages.numberLabel)}
-      />
-    </div>
-    <div>
-      <Field
-        fullWidth
-        name="password"
-        type="password"
-        component={TextInput}
-        label={intl.formatMessage(messages.passwordLabel)}
-      />
-    </div>
+    <StyledFieldWrapper
+      fullWidth
+      name="mobile"
+      type="text"
+      component={TextInput}
+      label={intl.formatMessage(messages.numberLabel)}
+    />
+    <StyledFieldWrapper
+      fullWidth
+      name="password"
+      type="password"
+      component={TextInput}
+      label={intl.formatMessage(messages.passwordLabel)}
+    />
     <Paragraph margin="16px 0 0">
-      <Field
+      <StyledFieldWrapper
         name="rememberMe"
         component={Checkbox}
         label={intl.formatMessage(messages.rememberMeLabel)}
@@ -58,7 +53,7 @@ const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
       className={classes.button}
     >
       <span className={classes.buttonIcon}>
-        <Icon name="plus" size={16} />
+        <Icon name="+" size={16} />
       </span>
       <span className={classes.buttonText}>
         {intl.formatMessage(messages.buttonLabel)}

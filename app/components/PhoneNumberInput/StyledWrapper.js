@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/styles';
 
-const StyledWrapper = styled.div`
+export default styled.div`
   ${flexBox(
     { align: 'flex-start' },
     `
-      margin-top: 16px;
-      margin-bottom: 8px;
 
       > div.prefix {
         margin-right: 16px;
@@ -23,5 +21,3 @@ const StyledWrapper = styled.div`
     `,
   )};
 `;
-
-export default StyledWrapper;

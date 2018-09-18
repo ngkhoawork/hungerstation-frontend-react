@@ -29,7 +29,6 @@ const themeObj = {
     },
   },
   overrides: {
-    // Name of the component ⚛️ / style sheet
     MuiSelect: {
       select: {
         '&:focus': {
@@ -38,7 +37,6 @@ const themeObj = {
       },
     },
     MuiButton: {
-      // Name of the rule
       contained: {
         '&$disabled': {
           color: fuscousGray,
@@ -72,6 +70,7 @@ const themeObj = {
     MuiInput: {
       root: {
         fontFamily: 'HungerStation-Regular, sans-serif',
+        marginBottom: '20px',
       },
       underline: {
         '&:after': {
@@ -81,6 +80,12 @@ const themeObj = {
           borderBottomColor: persimmon,
           transform: 'scaleX(1)', // error is always underlined in red
         },
+      },
+    },
+    MuiFormHelperText: {
+      root: {
+        marginTop: '-1em',
+        marginBottom: 0,
       },
     },
   },

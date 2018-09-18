@@ -17,6 +17,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+      legacyDecorators: true,
     },
   },
   rules: {
@@ -71,5 +72,5 @@ module.exports = {
         config: './internals/webpack/webpack.prod.babel.js',
       },
     },
-  },
+  }
 };

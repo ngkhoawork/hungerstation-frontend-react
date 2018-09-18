@@ -34,7 +34,7 @@ if (isDev) {
   const remote = 'https://development.hs-preview.com/api/v3/graphql';
   app.use('/proxy', (req, res) => {
     const url = remote + req.url;
-    req.pipe(request(url)).pipe(res);
+    req.pipe(request(url).on('error', err => logger.error(err))).pipe(res);
   });
 }
 

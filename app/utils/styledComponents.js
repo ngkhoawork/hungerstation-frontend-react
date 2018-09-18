@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { flexBox, mediaSmall } from 'utils/styles';
 import { Link } from 'react-router-dom';
+import { Field } from 'formik';
 
 export const CenteredContent = styled.div`
   ${flexBox(
@@ -20,6 +21,8 @@ export const StyledForm = styled.form`
   `};
 `;
 
+export const StyledFieldWrapper = styled(Field)``;
+
 export const StyledPage = styled.div`
   ${flexBox({
     align: 'center',
@@ -32,6 +35,7 @@ export const StyledPage = styled.div`
   background-color: #fff;
   border-radius: 8px;
   width: 50%;
+  margin-bottom: 56px;
 
   ${mediaSmall`
     padding: 0 10px;

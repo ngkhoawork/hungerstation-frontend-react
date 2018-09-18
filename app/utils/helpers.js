@@ -1,4 +1,6 @@
 // TODO add intl support
+import deburr from 'lodash/deburr';
+
 export const extractError = error => {
   let err;
   if (error.status === 500) {
@@ -11,3 +13,30 @@ export const extractError = error => {
 
   return err;
 };
+
+export const getSuggestions = (suggestions, value) => {
+  const inputValue = deburr(value.trim()).toLowerCase();
+  const inputLength = inputValue.length;
+  let count = 0;
+
+  if (inputLength !== 0) {
+    return suggestions.filter(suggestion => {
+      const keep =
+        count < 8 &&
+        suggestion
+          .get('name')
+          .slice(0, inputLength)
+          .toLowerCase() === inputValue;
+
+      if (keep) {
+        count += 1;
+      }
+
+      return keep;
+    });
+  }
+
+  return [];
+};
+
+export const itemToString = item => (item ? item.get('name') : '');

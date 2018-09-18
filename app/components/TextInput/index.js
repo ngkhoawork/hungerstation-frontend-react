@@ -12,7 +12,6 @@ const TextInput = ({ field, form: { touched, errors }, ...custom }) => (
   <TextField
     error={!!touched[field.name] && !!errors[field.name]}
     helperText={!!touched[field.name] && errors[field.name]}
-    margin="normal"
     {...field}
     {...custom}
   />

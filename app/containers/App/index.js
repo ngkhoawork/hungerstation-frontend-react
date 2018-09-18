@@ -34,7 +34,7 @@ import FiltersContainer from 'containers/FiltersContainer';
 import FiltersSection from 'pages/RestaurantsPage/FiltersSection';
 
 import Header from 'components/Header';
-import Footer from 'components/Footer';
+import Footer from 'components/Footer/Loadable';
 import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import saga from './authSagas';
@@ -84,17 +84,23 @@ export default class App extends Component {
         <AddRestaurantBanner />
         {location.pathname !== '/' && <Header dark />}
         <Switch>
-          <Route exact path="/" render={props => <HomePage {...props} />} />
+          <Route
+            exact
+            path="/"
+            render={props => [<HomePage {...props} />, <Footer />]}
+          />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
-          <Route path="/restaurants" component={RestaurantsPage} />
+          <Route
+            path="/restaurants"
+            render={props => [<RestaurantsPage {...props} />, <Footer />]}
+          />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
 
           <Redirect from="*" to="/" />
         </Switch>
-        <Footer />
       </StyledApp>
     );
   }

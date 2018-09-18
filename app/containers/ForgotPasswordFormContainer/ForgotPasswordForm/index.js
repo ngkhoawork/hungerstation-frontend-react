@@ -18,15 +18,13 @@ import messages from './messages';
 
 const ForgotPasswordForm = ({ handleSubmit, submitting, classes }) => (
   <StyledForm onSubmit={handleSubmit}>
-    <div>
-      <Field
-        fullWidth
-        name="email"
-        type="text"
-        component={TextInput}
-        label={intl.formatMessage(messages.email)}
-      />
-    </div>
+    <Field
+      fullWidth
+      name="email"
+      type="text"
+      component={TextInput}
+      label={intl.formatMessage(messages.email)}
+    />
     <Button
       type="submit"
       disabled={submitting}
