@@ -8,10 +8,10 @@ import StyledTag from './StyledTag';
 
 const Tags = ({ tags }) => (
   <StyledTagsContainer>
-    {tags.options.map(tag => (
-      <StyledTag key={tag.id} isSelected={tag.isSelected}>
-        <Paragraph color={tag.isSelected ? 'black' : silverChalice}>
-          {tag.label}
+    {tags.get('options').map(tag => (
+      <StyledTag key={tag.get('id')} isSelected={tag.get('isSelected')}>
+        <Paragraph color={tag.get('isSelected') ? 'black' : silverChalice}>
+          {tag.get('label')}
         </Paragraph>
       </StyledTag>
     ))}

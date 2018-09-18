@@ -18,24 +18,27 @@ const Cuisines = ({
   toggleCuisineOptionsExpandibility,
 }) => {
   const cuisineList = isExpanded
-    ? cuisines.options
-    : cuisines.options.slice(0, 4);
+    ? cuisines.get('options')
+    : cuisines.get('options').slice(0, 4);
   return (
     <StyledContainer>
       {cuisineList.map(cuisine => (
-        <StyledItem key={cuisine.id}>
+        <StyledItem key={cuisine.get('id')}>
           <Group>
             <CircledItem color={wildSant} width={28}>
-              <Icon name={cuisine.id} size={12} />
+              <Icon
+                name={`${cuisine.get('id').toLowerCase()}-cuisine`}
+                size={12}
+              />
             </CircledItem>
             <Paragraph
-              color={cuisine.isSelected ? 'black' : silverChalice}
+              color={cuisine.get('isSelected') ? 'black' : silverChalice}
               margin="0 0 -3px 10px"
             >
-              {cuisine.label}
+              {cuisine.get('label')}
             </Paragraph>
           </Group>
-          {cuisine.isSelected && <Icon name="check" />}
+          {cuisine.get('isSelected') && <Icon name="check" />}
         </StyledItem>
       ))}
       <StyledAction

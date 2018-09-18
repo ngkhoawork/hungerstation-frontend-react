@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { offersPropTypes } from 'props/offers';
 import { gold } from 'utils/colors';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
@@ -15,14 +15,7 @@ import Pagination from './Pagination';
 
 export default class OffersList extends Component {
   static propTypes = {
-    offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        brand: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
+    offers: offersPropTypes,
   };
 
   state = {
@@ -49,9 +42,11 @@ export default class OffersList extends Component {
             </ButtonWrapper>
           }
         >
-          {offers.map(offer => <OfferItem key={offer.id} {...offer} />)}
+          {offers.map(offer => (
+            <OfferItem key={offer.get('id')} offer={offer} />
+          ))}
         </Slider>
-        <Pagination selectedPage={currentSlide + 1} pages={offers.length} />
+        <Pagination selectedPage={currentSlide + 1} pages={offers.size} />
       </StyledOffersList>
     );
   }

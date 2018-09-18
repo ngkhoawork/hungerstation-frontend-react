@@ -30,28 +30,28 @@ const FiltersSection = ({
     <ContentWrapper>
       <Category
         title="Tags"
-        isSectionExpanded={tags.isExpanded}
+        isSectionExpanded={tags.get('isExpanded')}
         toggleSection={() => toggleSection('tags')}
       >
         <Tags tags={tags} />
       </Category>
       <Category
         title="Cuisines"
-        isSectionExpanded={cuisines.isExpanded}
+        isSectionExpanded={cuisines.get('isExpanded')}
         toggleSection={() => toggleSection('cuisines')}
       >
         <Cuisines cuisines={cuisines} />
       </Category>
       <Category
         title="Order"
-        isSectionExpanded={deliveryTypes.isExpanded}
+        isSectionExpanded={deliveryTypes.get('isExpanded')}
         toggleSection={() => toggleSection('deliveryTypes')}
       >
         <Orders />
       </Category>
       <Category
         title="Delivery Types"
-        isSectionExpanded={deliveryTypes.isExpanded}
+        isSectionExpanded={deliveryTypes.get('isExpanded')}
         toggleSection={() => toggleSection('deliveryTypes')}
       >
         <DeliveryTypes types={deliveryTypes} />

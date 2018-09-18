@@ -9,12 +9,12 @@ import StyledItem from '../StyledItem';
 
 const DeliveryTypes = ({ types }) => (
   <StyledContainer>
-    {types.options.map(type => (
-      <StyledItem key={type.id} hasBorder>
-        <Paragraph color={type.isSelected ? 'black' : silverChalice}>
-          {type.label}
+    {types.get('options').map(type => (
+      <StyledItem key={type.get('id')} hasBorder>
+        <Paragraph color={type.get('isSelected') ? 'black' : silverChalice}>
+          {type.get('label')}
         </Paragraph>
-        {type.isSelected && <Icon name="check" />}
+        {type.get('isSelected') && <Icon name="check" />}
       </StyledItem>
     ))}
   </StyledContainer>

@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
-export const filterCategoryPropTypes = PropTypes.shape({
+export const filterCategoryPropTypes = ImmutablePropTypes.contains({
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   isSelected: PropTypes.bool.isRequired,
 });
 
-export const filtersCategoryPropTypes = PropTypes.shape({
+export const filtersCategoryPropTypes = ImmutablePropTypes.contains({
   isExpanded: PropTypes.bool.isRequired,
-  options: PropTypes.arrayOf(filterCategoryPropTypes),
+  options: ImmutablePropTypes.listOf(filterCategoryPropTypes),
 });

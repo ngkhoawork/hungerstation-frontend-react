@@ -1,21 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { offerPropTypes } from 'props/offers';
 
 import StyledOfferItem from './StyledOfferItem';
 import BrandDetails from './BrandDetails';
 import OfferDetails from './OfferDetails';
 
-const OfferItem = ({ brand, title, description }) => (
+const OfferItem = ({ offer }) => (
   <StyledOfferItem>
-    <BrandDetails brand={brand} />
-    <OfferDetails title={title} description={description} />
+    <BrandDetails brand={offer.get('brand')} />
+    <OfferDetails
+      title={offer.get('title')}
+      description={offer.get('description')}
+    />
   </StyledOfferItem>
 );
 
 OfferItem.propTypes = {
-  brand: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  offer: offerPropTypes,
 };
 
 export default OfferItem;
