@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="7px" viewBox="0 0 10 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/checkmark</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="apply_filters" transform="translate(-153.000000, -56.000000)" stroke="#434340" stroke-width="1.4">
+            <g id="Bottom">
+                <g id="Group-2" transform="translate(154.000000, 50.000000)">
+                    <g id="icon/checkmark" transform="translate(0.000000, 7.000000)">
+                        <polyline transform="translate(4.160147, 2.451515) rotate(-270.000000) translate(-4.160147, -2.451515) " points="1.70863173 -1.70863173 6.6116619 3.93728181 3.93728181 6.6116619"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

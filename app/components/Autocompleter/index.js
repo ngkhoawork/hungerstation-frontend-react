@@ -4,6 +4,8 @@ import Downshift from 'downshift';
 import Paper from '@material-ui/core/Paper';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from 'components/Icon';
+import CircledItem from 'components/CircledItem';
+import { wildSant } from 'utils/colors';
 
 import {
   itemToString,
@@ -66,9 +68,9 @@ const Autocomplete = props => {
                 },
                 startAdornment: (
                   <InputAdornment position="start">
-                    <div>
+                    <CircledItem color={wildSant} width={28}>
                       <Icon name={icon} />
-                    </div>
+                    </CircledItem>
                   </InputAdornment>
                 ),
               }),

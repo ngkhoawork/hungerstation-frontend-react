@@ -15,6 +15,7 @@ const SearchBar = ({
   selectCity,
   selectDistrict,
   selectedDistrict,
+  handleRedirect,
   ...rest
 }) => (
   <StyledBar>
@@ -35,7 +36,7 @@ const SearchBar = ({
     />
     <StyledBarActions>
       <LocateYourself {...rest} />
-      <ButtonWrapper>
+      <ButtonWrapper onClick={() => handleRedirect('/restaurants')}>
         <Button label="Search" border="right" />
       </ButtonWrapper>
     </StyledBarActions>

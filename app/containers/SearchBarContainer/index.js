@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -43,6 +44,7 @@ const mapDispatchToProps = {
   getCurrentLocation: getCurrentLocationAction,
 };
 
+@withRouter
 @connect(
   mapStateToProps,
   mapDispatchToProps,
@@ -71,6 +73,7 @@ export default class SearchBarContainer extends React.Component {
     ),
     getCurrentLocation: PropTypes.func.isRequired,
     isSettlementLoaded: PropTypes.bool.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -82,6 +85,11 @@ export default class SearchBarContainer extends React.Component {
     const { getCities } = this.props;
     getCities();
   }
+
+  handleRedirect = path => {
+    const { history } = this.props;
+    history.push(path);
+  };
 
   render() {
     const {
@@ -104,6 +112,7 @@ export default class SearchBarContainer extends React.Component {
         isSettlementLoaded={isSettlementLoaded}
         selectedCity={selectedCity}
         selectedDistrict={selectedDistrict}
+        handleRedirect={this.handleRedirect}
       />
     );
   }

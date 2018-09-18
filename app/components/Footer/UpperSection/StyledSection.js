@@ -10,12 +10,12 @@ const StyledSection = styled.div`
   )};
   ${mediaMedium`
     flex-direction: column;
-    align-items: center;
-    padding: 0 20px 30px;
+    align-items: flex-start;
+    padding: 30px 113px 10px;
   `};
   ${mediaSmall`
     align-items: flex-start;
-    margin: 0 20px;
+    padding: 20px 40px;
   `};
 `;
 

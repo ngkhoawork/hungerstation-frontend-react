@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="7px" viewBox="0 0 11 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon/new" transform="translate(-4.000000, -6.000000)" stroke="#00C269" stroke-width="1.4">
+            <polyline id="Shape" transform="translate(9.342883, 9.451515) rotate(-270.000000) translate(-9.342883, -9.451515) " points="6.89136827 5.29136827 11.7943984 10.9372818 9.12001835 13.6116619"></polyline>
+        </g>
+    </g>
+</svg>
