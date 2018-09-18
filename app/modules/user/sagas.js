@@ -1,7 +1,7 @@
 import { take, race, call, put, fork } from 'redux-saga/effects';
 
 import { setStorageItem } from 'utils/localStorage';
-import { saveTokens } from 'utils/reusedSagas';
+import { saveTokens } from 'modules/common/sagas';
 import { parseJwt } from 'utils/tokens';
 import { extractError } from 'utils/helpers';
 import { forwardTo } from 'utils/route';

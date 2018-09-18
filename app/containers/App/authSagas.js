@@ -15,7 +15,7 @@ import { clearStorageItem, getStorageItem } from 'utils/localStorage';
 
 import { isAccessExpired, parseJwt } from 'utils/tokens';
 import HungerStationAPI from 'api/HungerStationAPI';
-import { saveTokens } from 'utils/reusedSagas';
+import { saveTokens } from 'modules/common/sagas';
 // import monitorSaga from './monitorSaga';
 
 import { LOGOUT, REQUEST_ERROR, AUTHENTICATE_USER } from './authConstants';
