@@ -18,12 +18,7 @@ const mapStateToProps = createStructuredSelector({
   isOpen: makeSelectIsOpen,
 });
 
-const mapDispatchToProps = {};
-
-@connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)
+@connect(mapStateToProps)
 @injectReducer({ key: 'modalContainer', reducer })
 /* eslint-disable react/prefer-stateless-function */
 export default class ModalContainer extends React.Component {
