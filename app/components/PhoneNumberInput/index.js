@@ -5,31 +5,17 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
+import countryCodes from 'utils/countryCodes';
 
 import Icon from 'components/Icon';
-import Wrapper from './StyledWrapper';
 
-const countriesArr = [
-  [
-    'sa',
-    {
-      label: '+966',
-      icon: 'saudi-flag',
-    },
-  ],
-  [
-    'ba',
-    {
-      label: '+973',
-      icon: 'bahrain-flag',
-    },
-  ],
-];
+import StyledWrapper from './StyledWrapper';
 
-const countriesMap = new Map(countriesArr);
+const countriesMap = new Map(countryCodes);
 
 /* eslint-disable react/prefer-stateless-function */
 class PhoneNumberInput extends React.PureComponent {
@@ -66,7 +52,7 @@ class PhoneNumberInput extends React.PureComponent {
     const { prefix, phone } = this.state;
 
     return (
-      <Wrapper>
+      <StyledWrapper>
         <div className="prefix">
           <TextField
             label=" "
@@ -87,7 +73,7 @@ class PhoneNumberInput extends React.PureComponent {
             value={prefix}
             onChange={this.handleChange('prefix')}
           >
-            {countriesArr.map(option => (
+            {countryCodes.map(option => (
               <option key={option[0]} value={option[0]}>
                 {option[1].label}
               </option>
@@ -105,11 +91,16 @@ class PhoneNumberInput extends React.PureComponent {
             helperText={!!touched.phone && !!errors.phone && errors.phone}
           />
         </div>
-      </Wrapper>
+      </StyledWrapper>
     );
   }
 }
 
-PhoneNumberInput.propTypes = {};
+PhoneNumberInput.propTypes = {
+  field: PropTypes.object.isRequired,
+  errors: PropTypes.shape({
+    phone: PropTypes.string,
+  }),
+};
 
 export default PhoneNumberInput;

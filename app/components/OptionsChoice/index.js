@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { fuscousGray } from 'utils/colors';
-import StyledContainer from 'components/HomePage/StyledContainer';
+// import StyledContainer from 'components/HomePage/StyledContainer';
 import Paragraph from 'components/Paragraph';
+import Group from 'components/Group';
 import ItemContainer from './ItemContainer';
 import ActiveBorder from './ActiveBorder';
 
@@ -13,7 +14,7 @@ const OptionsChoice = ({
   onOptionSelect,
   variant,
 }) => (
-  <StyledContainer>
+  <Group>
     {options.map(option => (
       <ItemContainer key={option.id} onClick={() => onOptionSelect(option.id)}>
         <Paragraph color={variant === 'dark' ? fuscousGray : 'white'}>
@@ -22,7 +23,7 @@ const OptionsChoice = ({
         {option.id === selectedOption && <ActiveBorder />}
       </ItemContainer>
     ))}
-  </StyledContainer>
+  </Group>
 );
 
 OptionsChoice.propTypes = {

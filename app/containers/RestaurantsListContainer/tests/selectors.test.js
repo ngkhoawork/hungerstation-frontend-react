@@ -1,8 +1,27 @@
-// import { fromJS } from 'immutable';
-// import { selectRestaurantsListContainerDomain } from '../selectors';
+import { fromJS } from 'immutable';
+import {
+  selectRestaurantsListContainerDomain,
+  makeSelectRestaurants,
+} from '../selectors';
+import { initialState } from '../reducer';
 
 describe('selectRestaurantsListContainerDomain', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  const state = fromJS({
+    filtersContainer: initialState,
+  });
+
+  it('Expect to have restaurants', () => {
+    expect(selectRestaurantsListContainerDomain(state).toJS()).toHaveProperty(
+      'restaurants',
+    );
+  });
+
+  it('Expect to have correct values in restaurants object', () => {
+    expect(makeSelectRestaurants(state)).toMatchObject(
+      state
+        .get('filtersContainer')
+        .get('restaurants')
+        .toJS(),
+    );
   });
 });
