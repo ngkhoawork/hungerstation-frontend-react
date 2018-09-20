@@ -15,6 +15,9 @@ import getInjectors from './sagaInjectors';
  *   - constants.ONCE_TILL_UNMOUNT—behaves like 'RESTART_ON_REMOUNT' but never runs it again.
  *
  */
+
+let injectedSagas = [];
+
 export default ({ key, saga, mode }) => WrappedComponent => {
   class InjectSaga extends React.Component {
     static WrappedComponent = WrappedComponent;
@@ -28,15 +31,19 @@ export default ({ key, saga, mode }) => WrappedComponent => {
       'Component'})`;
 
     componentWillMount() {
-      const { injectSaga } = this.injectors;
-
-      injectSaga(key, { saga, mode }, this.props);
+      if (injectedSagas.indexOf(key) === -1) {
+        injectedSagas.push(key);
+        const { injectSaga } = this.injectors;
+        injectSaga(key, { saga, mode }, this.props);
+      }
     }
 
     componentWillUnmount() {
       const { ejectSaga } = this.injectors;
-
-      ejectSaga(key);
+      if (injectedSagas.indexOf(key) !== -1) {
+        injectedSagas = injectedSagas.filter(e => e !== key);
+        ejectSaga(key);
+      }
     }
 
     injectors = getInjectors(this.context.store); // eslint-disable-line react/destructuring-assignment
