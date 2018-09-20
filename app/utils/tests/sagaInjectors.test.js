@@ -5,12 +5,16 @@
 import { memoryHistory } from 'react-router-dom';
 import { put } from 'redux-saga/effects';
 
-import configureStore from '../../configureStore';
+import {
+  DAEMON,
+  ONCE_TILL_UNMOUNT,
+  RESTART_ON_REMOUNT,
+} from 'utils/injectors/constants';
 import getInjectors, {
   injectSagaFactory,
   ejectSagaFactory,
-} from '../sagaInjectors';
-import { DAEMON, ONCE_TILL_UNMOUNT, RESTART_ON_REMOUNT } from '../constants';
+} from 'utils/injectors/sagaInjectors';
+import configureStore from '../../configureStore';
 
 function* testSaga() {
   yield put({ type: 'TEST', payload: 'yup' });

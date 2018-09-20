@@ -16,7 +16,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import injectSaga from 'utils/injectSaga';
+import injectSaga from 'utils/injectors/injectSaga';
 
 import HomePage from 'pages/HomePage/Loadable';
 import LoginPage from 'pages/LoginPage/Loadable';

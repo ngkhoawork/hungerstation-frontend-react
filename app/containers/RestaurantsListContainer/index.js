@@ -11,8 +11,8 @@ import { compose } from 'recompose';
 
 import RestaurantsList from 'pages/RestaurantsPage/RestaurantsSection/RestaurantsList';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectors/injectSaga';
+import injectReducer from 'utils/injectors/injectReducer';
 import { restaurantsPropTypes } from 'props/restaurants';
 import { makeSelectRestaurants } from './selectors';
 import reducer from './reducer';

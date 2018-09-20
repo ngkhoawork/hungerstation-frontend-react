@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import injectReducer from 'utils/injectReducer';
+import injectReducer from 'utils/injectors/injectReducer';
 import SearchTypes from 'pages/HomePage/UpperSection/SearchTypes';
 import { makeSelectSearchType } from './selectors';
 import reducer from './reducer';

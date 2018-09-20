@@ -12,8 +12,8 @@ import { compose } from 'recompose';
 
 import OffersList from 'pages/RestaurantsPage/RestaurantsSection/OffersList';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectors/injectSaga';
+import injectReducer from 'utils/injectors/injectReducer';
 import { makeSelectOffers } from './selectors';
 import reducer from './reducer';
 import saga from './saga';

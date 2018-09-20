@@ -10,8 +10,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectors/injectSaga';
+import injectReducer from 'utils/injectors/injectReducer';
 import SearchBar from 'pages/HomePage/UpperSection/SearchBar';
 import {
   makeSelectCities,

@@ -11,8 +11,8 @@ import { createStructuredSelector } from 'reselect';
 import { filtersCategoryPropTypes } from 'props/filters';
 import { compose } from 'recompose';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectors/injectSaga';
+import injectReducer from 'utils/injectors/injectReducer';
 import {
   showModal as showModalAction,
   hideModal as hideModalAction,

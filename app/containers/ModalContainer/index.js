@@ -11,7 +11,7 @@ import { createStructuredSelector } from 'reselect';
 import ReactModal from 'react-modal';
 import { compose } from 'recompose';
 
-import injectReducer from 'utils/injectReducer';
+import injectReducer from 'utils/injectors/injectReducer';
 import { makeSelectIsOpen } from './selectors';
 import reducer from './reducer';
 
