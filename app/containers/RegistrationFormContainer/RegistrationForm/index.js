@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 import { printErrors } from 'utils/form/helpers';
 import intl from 'utils/intlService';
-import { StyledForm, StyledFieldWrapper } from 'utils/styledComponents';
+import { StyledForm, StyledFieldWrapper } from 'utils/css/styledComponents';
 
 import TextInput from 'components/TextInput';
 import MobileNumber from 'components/PhoneNumberInput';

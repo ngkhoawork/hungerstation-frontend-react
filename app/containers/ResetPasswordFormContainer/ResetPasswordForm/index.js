@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 import intl from 'utils/intlService';
-import { StyledForm, StyledFieldWrapper } from 'utils/styledComponents';
+import { StyledForm, StyledFieldWrapper } from 'utils/css/styledComponents';
 
 import TextInput from 'components/TextInput';
 

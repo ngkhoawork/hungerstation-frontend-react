@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium, mediaSmall } from 'utils/styles';
+import { flexBox, mediaMedium, mediaSmall } from 'utils/css/styles';
 
 const StyledSection = styled.div`
   ${flexBox(

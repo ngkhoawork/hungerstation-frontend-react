@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import getIcon from 'utils/icons';
+import getIcon from 'utils/css/icons';
 import StyledIcon from './StyledIcon';
 import IconWrapper from './IconWrapper';
 

@@ -10,7 +10,7 @@ import { FormattedMessage } from 'react-intl';
 import ResetPasswordFormContainer from 'containers/ResetPasswordFormContainer';
 
 import TextItem from 'components/TextItem';
-import { StyledPage } from 'utils/styledComponents';
+import { StyledPage } from 'utils/css/styledComponents';
 import SocialAuth from 'components/SocialAuth';
 
 import messages from './messages';

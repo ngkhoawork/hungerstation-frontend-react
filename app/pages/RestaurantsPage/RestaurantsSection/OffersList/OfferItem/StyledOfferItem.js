@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/css/styles';
 import Desert from 'images/desert.png';
 
 const StyledOfferItem = styled.div`

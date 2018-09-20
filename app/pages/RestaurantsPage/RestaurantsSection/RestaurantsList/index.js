@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { restaurantsPropTypes } from 'props/restaurants';
-import { gold } from 'utils/colors';
+import { gold } from 'utils/css/colors';
 
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';

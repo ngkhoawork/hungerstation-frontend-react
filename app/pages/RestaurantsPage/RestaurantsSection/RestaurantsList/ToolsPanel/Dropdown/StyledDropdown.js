@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
-import { wildSant } from 'utils/colors';
+import { flexBox } from 'utils/css/styles';
+import { wildSant } from 'utils/css/colors';
 
 const StyledDropdown = styled.div`
   ${flexBox(

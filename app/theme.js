@@ -6,7 +6,7 @@ import {
   gold,
   persimmon,
   dustyGray,
-} from 'utils/colors';
+} from 'utils/css/colors';
 
 const themeObj = {
   palette: {

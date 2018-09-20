@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaGreater } from 'utils/styles';
+import { mediaGreater } from 'utils/css/styles';
 
 const MobileFiltersWrapper = styled.div`
   width: 100%;

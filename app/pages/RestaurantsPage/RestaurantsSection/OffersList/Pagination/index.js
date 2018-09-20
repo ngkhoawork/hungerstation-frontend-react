@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { alto } from 'utils/colors';
+import { alto } from 'utils/css/colors';
 
 import Paragraph from 'components/Paragraph';
 import StyledPagination from './StyledPagination';

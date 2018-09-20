@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaMedium } from 'utils/styles';
+import { mediaMedium } from 'utils/css/styles';
 
 const ButtonWrapper = styled.div`
   width: 144px;

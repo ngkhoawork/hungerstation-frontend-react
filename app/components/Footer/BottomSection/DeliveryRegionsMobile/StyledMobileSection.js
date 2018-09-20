@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaGreater } from 'utils/styles';
+import { flexBox, mediaGreater } from 'utils/css/styles';
 
 import StyledSection from '../StyledSection';
 

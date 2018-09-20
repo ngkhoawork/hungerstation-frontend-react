@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ironsideGray } from 'utils/colors';
+import { ironsideGray } from 'utils/css/colors';
 
 const DetailsText = styled.p`
   color: ${ironsideGray};

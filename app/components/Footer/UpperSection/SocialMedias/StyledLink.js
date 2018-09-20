@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { mediaMedium } from 'utils/styles';
+import { mediaMedium } from 'utils/css/styles';
 
 const StyledLink = styled(Link)`
   margin-left: 20px;

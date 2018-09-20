@@ -1,5 +1,5 @@
 import React from 'react';
-import { boulder } from 'utils/colors';
+import { boulder } from 'utils/css/colors';
 
 import Paragraph from 'components/Paragraph';
 import StyledFilter from './StyledFilter';

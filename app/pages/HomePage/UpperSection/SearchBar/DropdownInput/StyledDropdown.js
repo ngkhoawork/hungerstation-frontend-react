@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { flexBox } from 'utils/styles';
+import { flexBox } from 'utils/css/styles';
 import { searchBarHeight } from '../StyledBar';
 
 const StyledDropdown = styled.span`

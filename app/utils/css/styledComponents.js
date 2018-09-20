@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaSmall } from 'utils/styles';
+import { flexBox, mediaSmall } from 'utils/css/styles';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
 

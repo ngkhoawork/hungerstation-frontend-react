@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { gold, alto } from 'utils/colors';
+import { gold, alto } from 'utils/css/colors';
 import Toggle from 'icons/toggle.svg';
 import Checkbox from './Checkbox';
 

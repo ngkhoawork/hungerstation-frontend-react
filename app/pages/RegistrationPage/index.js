@@ -13,7 +13,7 @@ import RegistrationFormContainer from 'containers/RegistrationFormContainer';
 import SocialAuth from 'components/SocialAuth';
 import ButtonLink from 'components/ButtonLink';
 import TextItem from 'components/TextItem';
-import { StyledPage } from 'utils/styledComponents';
+import { StyledPage } from 'utils/css/styledComponents';
 
 import messages from './messages';
 

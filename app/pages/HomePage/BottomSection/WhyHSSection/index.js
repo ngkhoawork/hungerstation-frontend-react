@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from 'components/Button';
-import getImage from 'utils/images';
+import getImage from 'utils/css/images';
 import Image from '../Image';
 import ImageWrapper from './ImageWrapper';
 import DetailsWrapper from './DetailsWrapper';

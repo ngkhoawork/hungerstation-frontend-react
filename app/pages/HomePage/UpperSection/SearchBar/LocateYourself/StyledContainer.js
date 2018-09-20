@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium } from 'utils/styles';
+import { flexBox, mediaMedium } from 'utils/css/styles';
 import StyledBarActions from '../StyledBarActions';
 
 const StyledContainer = styled.span`

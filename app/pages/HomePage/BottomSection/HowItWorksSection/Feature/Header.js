@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fuscousGray } from 'utils/colors';
+import { fuscousGray } from 'utils/css/colors';
 
 const Header = styled.p`
   font-size: 24px;

@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { flexBox, mediaGreater, mediaLess, getDisplayProp } from 'utils/styles';
+import {
+  flexBox,
+  mediaGreater,
+  mediaLess,
+  getDisplayProp,
+} from 'utils/css/styles';
 
 const ButtonWrapper = styled.div`
   ${flexBox(

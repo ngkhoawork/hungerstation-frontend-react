@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
-import styles from 'utils/styles';
+import styles from 'utils/css/styles';
 
 import { clearForm } from 'containers/Form/actions';
 import {

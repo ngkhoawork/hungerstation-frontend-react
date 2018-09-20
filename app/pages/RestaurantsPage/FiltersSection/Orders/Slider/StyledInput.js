@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { jade } from 'utils/colors';
+import { jade } from 'utils/css/colors';
 
 const StyledInput = styled.input.attrs({
   type: 'range',

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gold } from 'utils/colors';
+import { gold } from 'utils/css/colors';
 
 const StyledOption = styled.div`
   line-height: 40px;

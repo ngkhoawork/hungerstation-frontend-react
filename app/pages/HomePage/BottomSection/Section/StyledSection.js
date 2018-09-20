@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { flexBox, mediaSmall } from 'utils/styles';
+import { flexBox, mediaSmall } from 'utils/css/styles';
 import PhoneVisual from 'images/phone-visual.png';
 import PhoneVisualSmall from 'images/phone-visual-small.png';
-import { wildSant } from 'utils/colors';
+import { wildSant } from 'utils/css/colors';
 
 const StyledSection = styled.div`
   ${flexBox(

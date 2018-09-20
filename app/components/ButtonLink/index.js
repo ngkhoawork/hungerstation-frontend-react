@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { fuscousGray } from 'utils/colors';
+import { fuscousGray } from 'utils/css/colors';
 
 export default styled(Link)`
   text-decoration: none;

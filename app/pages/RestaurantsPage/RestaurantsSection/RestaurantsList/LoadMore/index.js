@@ -1,5 +1,5 @@
 import React from 'react';
-import { wildSant } from 'utils/colors';
+import { wildSant } from 'utils/css/colors';
 
 import Icon from 'components/Icon';
 import Button from 'components/Button';

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
-import { gold } from 'utils/colors';
+import { flexBox } from 'utils/css/styles';
+import { gold } from 'utils/css/colors';
 
 const StyledTag = styled.span`
   ${flexBox(

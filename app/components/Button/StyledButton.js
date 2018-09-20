@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { gold } from 'utils/colors';
-import getImage from 'utils/images';
-import { flexBox } from 'utils/styles';
+import { gold } from 'utils/css/colors';
+import getImage from 'utils/css/images';
+import { flexBox } from 'utils/css/styles';
 
 const StyledButton = styled.button`
   ${flexBox({ align: 'center', justify: 'center' })} height: 100%;

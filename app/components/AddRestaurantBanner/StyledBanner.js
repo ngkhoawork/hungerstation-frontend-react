@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { gold } from 'utils/colors';
-import { flexBox, mediaMedium } from 'utils/styles';
+import { gold } from 'utils/css/colors';
+import { flexBox, mediaMedium } from 'utils/css/styles';
 
 const StyledBanner = styled.div`
   ${flexBox(

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { jade } from 'utils/colors';
+import { jade } from 'utils/css/colors';
 
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';

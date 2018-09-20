@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { silverChalice, boulder } from 'utils/colors';
+import { silverChalice, boulder } from 'utils/css/colors';
 
 import Paragraph from 'components/Paragraph';
 import StyledInput from './StyledInput';

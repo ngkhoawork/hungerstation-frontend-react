@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import intl from 'utils/intlService';
 
 import TextInput from 'components/TextInput';
-import { StyledForm } from 'utils/styledComponents';
+import { StyledForm } from 'utils/css/styledComponents';
 
 import messages from './messages';
 

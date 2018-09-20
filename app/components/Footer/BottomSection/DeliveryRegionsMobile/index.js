@@ -2,7 +2,7 @@ import React from 'react';
 
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
-import { alto } from 'utils/colors';
+import { alto } from 'utils/css/colors';
 import StyledMobileSection from './StyledMobileSection';
 import StyledRegions from './StyledRegions';
 import PragraphWrapper from './PragraphWrapper';
