@@ -8,13 +8,14 @@ import { take, call, put, fork, select, spawn } from 'redux-saga/effects';
 
 import { delay } from 'redux-saga';
 
+import usersApi from 'modules/user/api';
 import userSagas from 'modules/user/sagas';
+
 import { forwardTo } from 'utils/route';
-
-import { clearStorageItem, getStorageItem } from 'utils/localStorage';
-
 import { isAccessExpired, parseJwt } from 'utils/tokens';
-import HungerStationAPI from 'api/HungerStationAPI';
+import { clearStorageItem, getStorageItem } from 'utils/localStorage';
+import { protectedRequest } from 'utils/api';
+
 import { saveTokens } from 'modules/common/sagas';
 // import monitorSaga from './monitorSaga';
 
@@ -39,7 +40,7 @@ export function* logout() {
   yield put(setAuthState(true));
 
   try {
-    const response = yield call(HungerStationAPI.logout);
+    const response = yield call(usersApi.logout);
     yield put(setAuthState(false));
     return response;
   } catch (error) {
@@ -79,7 +80,7 @@ function* needRefresh() {
 export function* refreshTokens() {
   try {
     const { refreshToken } = yield select(makeSelectTokens);
-    const tokens = yield call(HungerStationAPI.refresh, refreshToken);
+    const tokens = yield call(usersApi.refreshToken, refreshToken);
     yield saveTokens({
       refreshToken: tokens.refresh_token,
       accessToken: tokens.token,
@@ -103,7 +104,7 @@ export function* makeAuthenticatedRequest(action = {}) {
       description
     }`;
     const response = yield call(
-      HungerStationAPI.makeRequestToProtected,
+      protectedRequest,
       tokens.get('accessToken'),
       query,
       payload,
@@ -136,12 +137,12 @@ export function* authenticationFlow() {
       const shouldRefresh = yield call(needRefresh);
 
       if (!shouldRefresh) {
-        yield call(HungerStationAPI.getUser, tokens.accessToken, userId);
+        yield call(usersApi.getUser, tokens.accessToken, userId);
       } else {
         const error = yield call(refreshTokens);
         if (!error) {
           yield delay(50);
-          yield call(HungerStationAPI.getUser, tokens.accessToken, userId);
+          yield call(usersApi.getUser, tokens.accessToken, userId);
         }
       }
     }

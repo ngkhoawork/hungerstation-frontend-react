@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { shallowWithStore } from 'enzyme-redux';
 import { createMockStore } from 'redux-test-utils';
 
-import { REGISTER_REQUEST } from 'modules/user/constants';
+import { REGISTER_REQUEST } from 'modules/user/actions';
 import { RegistrationFormContainer } from '../index';
 
 describe('<RegistrationFormContainer />', () => {

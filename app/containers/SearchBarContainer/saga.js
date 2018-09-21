@@ -1,7 +1,7 @@
 import { take, call, fork, put, select } from 'redux-saga/effects';
 import { getUserPosition, getSettlementDetails, getUnit } from 'utils/location';
+import locationApi from 'modules/location/api';
 
-import HungerStationAPI from 'api/HungerStationAPI';
 import { REQUEST_CITIES, SELECT_CITY, GET_CURRENT_LOCATION } from './constants';
 import {
   setCitiesAction,
@@ -18,7 +18,7 @@ function* getCitiesFlow() {
     const cachedCities = yield select(makeSelectCities);
 
     if (!cachedCities.size) {
-      const { listCities } = yield call(HungerStationAPI.getCities, 1);
+      const { listCities } = yield call(locationApi.getCities, 1);
       const districtsMap = {};
 
       const cities = listCities.map(({ id, districts, name }) => {

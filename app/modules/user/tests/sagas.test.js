@@ -12,9 +12,13 @@ import { forwardTo } from 'utils/route';
 
 import { LOGOUT } from 'containers/App/authConstants';
 
-import { loginFlow, registerFlow, authorize as authorizeFlow } from '../sagas';
+import {
+  loginFlow,
+  registerFlow,
+  authorizeSaga as authorizeFlow,
+} from '../sagas';
 import { saveTokens } from '../../common/sagas';
-import { LOGIN_REQUEST, REGISTER_REQUEST } from '../constants';
+import { LOGIN_REQUEST, REGISTER_REQUEST } from '../actions';
 
 describe('User Sagas', () => {
   const userCredentials = {

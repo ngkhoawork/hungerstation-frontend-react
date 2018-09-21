@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { shallowWithStore } from 'enzyme-redux';
 import { createMockStore } from 'redux-test-utils';
 
-import { LOGIN_REQUEST } from 'modules/user/constants';
+import { LOGIN_REQUEST } from 'modules/user/actions';
 import { LoginFormContainer } from '../index';
 
 describe('<LoginFormContainer />', () => {

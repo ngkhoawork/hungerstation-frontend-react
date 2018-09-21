@@ -1,5 +1,5 @@
 import { takeEvery, race, take, put } from 'redux-saga/effects';
-import { LOGIN_REQUEST, REGISTER_REQUEST } from 'modules/user/constants';
+import { LOGIN_REQUEST, REGISTER_REQUEST } from 'modules/user/actions';
 
 import {
   userTokenRefreshRequest,
