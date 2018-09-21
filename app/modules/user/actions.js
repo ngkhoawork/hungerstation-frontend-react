@@ -1,24 +1,8 @@
-import { LOGIN_REQUEST, REGISTER_REQUEST } from './constants';
+import createAction from 'utils/actions/createAction';
 
-export const loginRequest = (
-  { mobile, password, ...rest },
-  redirectToRoute,
-) => ({
-  type: LOGIN_REQUEST,
-  mobile,
-  password,
-  ...rest,
-  redirectToRoute,
-});
+const LOGIN_REQUEST = 'users/LOGIN_REQUEST';
+const REGISTER_REQUEST = 'users/REGISTER_REQUEST';
 
-export const registerRequest = (
-  { name, mobile, email, password },
-  redirectToRoute,
-) => ({
-  type: REGISTER_REQUEST,
-  name,
-  mobile,
-  email,
-  password,
-  redirectToRoute,
-});
+// TODO add typing (Flow or typeScript)
+export const loginAction = createAction(LOGIN_REQUEST);
+export const registerAction = createAction(REGISTER_REQUEST);

@@ -12,21 +12,17 @@ import { compose, pure } from 'recompose';
 
 import { validationSchemas } from 'utils/form/validation';
 
-import { loginRequest } from 'modules/user/actions';
+import { loginAction } from 'modules/user/actions';
 import { FormContainer } from 'containers/Form';
 
 import LoginForm from './LoginForm/index';
 
 const schema = validationSchemas('signinForm');
 
-const mapDispatchToProps = {
-  onSubmit: loginRequest,
-};
-
 const enhnaced = compose(
   connect(
     null,
-    mapDispatchToProps,
+    { loginAction },
   ),
   FormContainer,
   pure,
@@ -37,11 +33,11 @@ export const LoginFormContainer = ({
   submitting,
   intl,
   classes,
-  onSubmit,
+  loginAction, // eslint-disable-line no-shadow
   submitHandler,
 }) => (
   <Formik
-    onSubmit={submitHandler(onSubmit)}
+    onSubmit={submitHandler(loginAction)}
     initialValues={{ mobile: '', password: '' }}
     validationSchema={schema}
     validateOnBlur={false}

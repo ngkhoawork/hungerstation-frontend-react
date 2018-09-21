@@ -11,21 +11,17 @@ import { compose, pure } from 'recompose';
 
 import { validationSchemas } from 'utils/form/validation';
 
-import { registerRequest } from 'modules/user/actions';
+import { registerAction } from 'modules/user/actions';
 import { FormContainer } from 'containers/Form';
 
 import RegistrationForm from './RegistrationForm/index';
 
 const schema = validationSchemas('signupForm');
 
-const mapDispatchToProps = {
-  onSubmit: registerRequest,
-};
-
 const enhanced = compose(
   connect(
     null,
-    mapDispatchToProps,
+    { registerAction },
   ),
   FormContainer,
   pure,
@@ -37,10 +33,10 @@ export const RegistrationFormContainer = ({
   intl,
   classes,
   submitHandler,
-  onSubmit,
+  registerAction, // eslint-disable-line no-shadow
 }) => (
   <Formik
-    onSubmit={submitHandler(onSubmit)}
+    onSubmit={submitHandler(registerAction)}
     initialValues={{
       name: '',
       phone: '',
