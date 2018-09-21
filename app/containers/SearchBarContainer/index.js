@@ -1,9 +1,3 @@
-/**
- *
- * SearchBarContainer
- *
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -12,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import injectSaga from 'utils/injectors/injectSaga';
 import injectReducer from 'utils/injectors/injectReducer';
-import SearchBar from 'pages/HomePage/UpperSection/SearchBar';
+import SearchBar from './SearchBar';
 import {
   makeSelectCities,
   makeSelectDistricts,

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { flexBox } from 'utils/css/styles';
-import { searchBarHeight } from '../StyledBar';
+import { searchBarHeight } from '../StyledComponents';
 
 const StyledDropdown = styled.span`
   ${flexBox(

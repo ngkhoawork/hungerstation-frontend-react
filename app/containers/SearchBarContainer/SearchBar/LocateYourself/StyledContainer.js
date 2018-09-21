@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flexBox, mediaMedium } from 'utils/css/styles';
-import StyledBarActions from '../StyledBarActions';
+import { BarActions } from '../StyledComponents';
 
 const StyledContainer = styled.span`
   ${flexBox(
@@ -8,7 +8,7 @@ const StyledContainer = styled.span`
     `padding: 0 20px;
   cursor: pointer;`,
   )};
-  ${StyledBarActions} && {
+  ${BarActions} && {
     ${mediaMedium`
       display: none;
     `};

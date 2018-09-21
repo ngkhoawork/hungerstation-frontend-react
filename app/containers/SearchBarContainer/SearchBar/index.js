@@ -2,11 +2,9 @@ import React from 'react';
 
 import Button from 'components/Button';
 
-import StyledBar from './StyledBar';
 import DropdownInput from './DropdownInput';
 import LocateYourself from './LocateYourself';
-import StyledBarActions from './StyledBarActions';
-import ButtonWrapper from './ButtonWrapper';
+import * as Styled from './StyledComponents';
 
 const SearchBar = ({
   selectedCity,
@@ -18,7 +16,7 @@ const SearchBar = ({
   handleRedirect,
   ...rest
 }) => (
-  <StyledBar>
+  <Styled.Bar>
     <DropdownInput
       placeholder="Enter city"
       iconName="pin"
@@ -34,13 +32,13 @@ const SearchBar = ({
       selectedItem={selectedDistrict}
       disabled={!selectedCity}
     />
-    <StyledBarActions>
+    <Styled.BarActions>
       <LocateYourself {...rest} />
-      <ButtonWrapper onClick={() => handleRedirect('/restaurants')}>
+      <Styled.ButtonWrapper onClick={() => handleRedirect('/restaurants')}>
         <Button label="Search" border="right" />
-      </ButtonWrapper>
-    </StyledBarActions>
-  </StyledBar>
+      </Styled.ButtonWrapper>
+    </Styled.BarActions>
+  </Styled.Bar>
 );
 
 export default SearchBar;

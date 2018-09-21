@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { flexBox } from 'utils/css/styles';
+import { flexBox, mediaMedium } from 'utils/css/styles';
 
 export const searchBarHeight = '56px';
 
-const StyledBar = styled.span`
+const ButtonWrapper = styled.div`
+  width: 144px;
+  height: 40px;
+  ${mediaMedium`
+    width: 100%;
+    height: 56px;
+  `};
+`;
+
+const Bar = styled.span`
   ${flexBox(
     { align: 'center', justify: 'space-between' },
     `
@@ -27,4 +36,17 @@ const StyledBar = styled.span`
   `};
 `;
 
-export default StyledBar;
+const BarActions = styled.div`
+  ${flexBox(
+    {},
+    `
+    margin-right: 10px;
+  `,
+  )};
+  ${mediaMedium`
+    width: 100%;
+    margin-right: 0;
+  `};
+`;
+
+export { Bar, ButtonWrapper, BarActions };
