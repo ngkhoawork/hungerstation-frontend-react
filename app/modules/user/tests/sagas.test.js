@@ -18,7 +18,7 @@ import {
   authorizeSaga as authorizeFlow,
 } from '../sagas';
 import { saveTokens } from '../../common/sagas';
-import { LOGIN_REQUEST, REGISTER_REQUEST } from '../actions';
+import { loginAction, registerAction } from '../actions';
 
 describe('User Sagas', () => {
   const userCredentials = {
@@ -52,7 +52,7 @@ describe('User Sagas', () => {
     };
 
     it('Expect to take LOGIN_REQUEST action', () => {
-      expect(gen.next().value).toEqual(take(LOGIN_REQUEST));
+      expect(gen.next().value).toEqual(take(loginAction.type));
     });
 
     it('Expect to start sumission action', () => {
@@ -116,7 +116,7 @@ describe('User Sagas', () => {
       redirectToRoute: '/',
     };
     it('Expect to take REGISTER_REQUEST action', () => {
-      expect(gen.next().value).toEqual(take(REGISTER_REQUEST));
+      expect(gen.next().value).toEqual(take(registerAction.type));
     });
 
     it('Expect to start sumission action', () => {

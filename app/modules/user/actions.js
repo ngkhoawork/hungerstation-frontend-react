@@ -1,8 +1,15 @@
 import createAction from 'utils/actions/createAction';
-
-export const LOGIN_REQUEST = 'users/LOGIN_REQUEST';
-export const REGISTER_REQUEST = 'users/REGISTER_REQUEST';
-
-// TODO add typing (Flow or typeScript)
-export const loginAction = createAction(LOGIN_REQUEST);
-export const registerAction = createAction(REGISTER_REQUEST);
+// TODO add typing (Flow or typeScript), and delete payloadDescriptor function
+export const loginAction = createAction(
+  'users/LOGIN',
+  ({ mobile, password }) => ({ mobile, password }),
+);
+export const registerAction = createAction(
+  'users/REGISTER',
+  ({ name, mobile, email, password }) => ({
+    name,
+    mobile,
+    email,
+    password,
+  }),
+);

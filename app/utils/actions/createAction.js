@@ -1,7 +1,7 @@
-export default function createAction(type) {
+export default function createAction(type, payloadCreator) {
   const action = (payload, meta) => ({
     type,
-    payload,
+    payload: payloadCreator(payload),
     meta,
   });
 

@@ -1,5 +1,5 @@
 import { takeEvery, race, take, put } from 'redux-saga/effects';
-import { LOGIN_REQUEST, REGISTER_REQUEST } from 'modules/user/actions';
+import { loginAction, registerAction } from 'modules/user/actions';
 
 import {
   userTokenRefreshRequest,
@@ -8,7 +8,11 @@ import {
   userLogoutRequest,
 } from './tokenActions';
 
-const ignoreActionTypes = ['TOKEN_REFRESH', LOGIN_REQUEST, REGISTER_REQUEST];
+const ignoreActionTypes = [
+  'TOKEN_REFRESH',
+  loginAction.type,
+  registerAction.type,
+];
 
 function monitorableAction(action) {
   return (
