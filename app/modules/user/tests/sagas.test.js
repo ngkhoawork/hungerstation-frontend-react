@@ -4,7 +4,7 @@
 
 /* eslint-disable redux-saga/yield-effects */
 import { take, put, race, call } from 'redux-saga/effects';
-import { startSubmit, stopSubmit } from 'containers/Form/actions';
+import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 import { logUserIn } from 'containers/App/authActions';
 import { parseJwt } from 'utils/tokens';
 import { setStorageItem } from 'utils/localStorage';

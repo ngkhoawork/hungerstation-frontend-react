@@ -7,7 +7,7 @@ import { extractError } from 'utils/helpers';
 import { forwardTo } from 'utils/route';
 
 import { logUserIn, logout, setAuthState } from 'containers/App/authActions';
-import { startSubmit, stopSubmit } from 'containers/Form/actions';
+import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 
 import { LOGOUT } from 'containers/App/authConstants';
 import { loginAction, registerAction } from './actions';

@@ -10,9 +10,8 @@ import { Formik } from 'formik';
 import { compose, pure } from 'recompose';
 
 import { validationSchemas } from 'utils/form/validation';
-
+import withFormState from 'hocs/withFormState';
 import { registerAction } from 'modules/user/actions';
-import { FormContainer } from 'containers/Form';
 
 import RegistrationForm from './RegistrationForm/index';
 
@@ -23,7 +22,7 @@ const enhanced = compose(
     null,
     { registerAction },
   ),
-  FormContainer,
+  withFormState,
   pure,
 );
 

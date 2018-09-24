@@ -6,11 +6,11 @@ import { withStyles } from '@material-ui/core/styles';
 
 import styles from 'utils/css/styles';
 
-import { clearForm } from 'containers/Form/actions';
+import { clearForm } from 'hocs/withFormState/actions';
 import {
   makeSelectSubmitting,
   makeSelectErrors,
-} from 'containers/Form/selectors';
+} from 'hocs/withFormState/selectors';
 
 const mapStateToProps = createStructuredSelector({
   submitting: makeSelectSubmitting(),
@@ -21,7 +21,7 @@ const mapDispatchToProps = {
   clearFormAction: clearForm,
 };
 
-export const FormContainer = WrappedComponent => {
+const FormContainer = WrappedComponent => {
   @withRouter
   @withStyles(styles)
   @connect(
@@ -58,3 +58,5 @@ export const FormContainer = WrappedComponent => {
 
   return Form;
 };
+
+export default FormContainer;

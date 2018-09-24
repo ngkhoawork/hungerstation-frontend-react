@@ -13,7 +13,7 @@ import { compose, pure } from 'recompose';
 import { validationSchemas } from 'utils/form/validation';
 
 import { loginAction } from 'modules/user/actions';
-import { FormContainer } from 'containers/Form';
+import withFormState from 'hocs/withFormState';
 
 import LoginForm from './LoginForm/index';
 
@@ -24,7 +24,7 @@ const enhnaced = compose(
     null,
     { loginAction },
   ),
-  FormContainer,
+  withFormState,
   pure,
 );
 
