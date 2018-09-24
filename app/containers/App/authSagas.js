@@ -4,12 +4,11 @@
 
 // Sagas help us gather all our side effects (network requests in this case) in one place
 
-import { take, call, put, fork, select, spawn } from 'redux-saga/effects';
+import { take, call, put, fork, select } from 'redux-saga/effects';
 
 import { delay } from 'redux-saga';
 
 import usersApi from 'modules/user/api';
-import userSagas from 'modules/user/sagas';
 
 import { forwardTo } from 'utils/route';
 import { isAccessExpired, parseJwt } from 'utils/tokens';
@@ -149,14 +148,8 @@ export function* authenticationFlow() {
   }
 }
 
-function* authSagas() {
+export default function* authSagas() {
   yield fork(logoutFlow);
   // yield fork(fetchListener);
   yield fork(authenticationFlow);
-}
-
-export default function* root() {
-  yield spawn(authSagas);
-  yield spawn(userSagas);
-  // yield spawn(monitorSaga);
 }

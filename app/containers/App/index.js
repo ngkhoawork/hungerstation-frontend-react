@@ -16,7 +16,6 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import injectSaga from 'utils/injectors/injectSaga';
 
 import HomePage from 'pages/HomePage/Loadable';
 import LoginPage from 'pages/LoginPage/Loadable';
@@ -37,7 +36,6 @@ import Header from 'components/Header';
 import Footer from 'components/Footer/Loadable';
 import { connect } from 'react-redux';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
-import saga from './authSagas';
 // import { authenticateUser } from './authActions';
 import StyledApp from './StyledApp';
 
@@ -54,7 +52,6 @@ const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   mapStateToProps,
   // mapDispatchToProps,
 )
-@injectSaga({ key: 'auth', saga })
 export default class App extends Component {
   static propTypes = {
     dir: PropTypes.string,
