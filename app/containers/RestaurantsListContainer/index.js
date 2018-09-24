@@ -13,7 +13,7 @@ import RestaurantsList from 'pages/RestaurantsPage/RestaurantsSection/Restaurant
 
 import injectSaga from 'utils/injectors/injectSaga';
 import injectReducer from 'utils/injectors/injectReducer';
-import { restaurantsPropTypes } from 'props/restaurants';
+import { restaurantsPropTypes } from 'propTypes/restaurants';
 import { makeSelectRestaurants } from './selectors';
 import reducer from './reducer';
 import saga from './saga';

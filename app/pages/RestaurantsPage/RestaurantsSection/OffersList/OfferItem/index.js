@@ -1,5 +1,5 @@
 import React from 'react';
-import { offerPropTypes } from 'props/offers';
+import { offerPropTypes } from 'propTypes/offers';
 
 import StyledOfferItem from './StyledOfferItem';
 import BrandDetails from './BrandDetails';

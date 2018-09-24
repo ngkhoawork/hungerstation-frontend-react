@@ -1,6 +1,6 @@
 import React from 'react';
 import { silverChalice } from 'utils/css/colors';
-import { filtersCategoryPropTypes } from 'props/filters';
+import { filtersCategoryPropTypes } from 'propTypes/filters';
 
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';

@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { filtersCategoryPropTypes } from 'props/filters';
+import { filtersCategoryPropTypes } from 'propTypes/filters';
 import { compose } from 'recompose';
 
 import injectSaga from 'utils/injectors/injectSaga';

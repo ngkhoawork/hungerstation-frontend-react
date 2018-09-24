@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filtersCategoryPropTypes } from 'props/filters';
+import { filtersCategoryPropTypes } from 'propTypes/filters';
 
 import Button from 'components/Button';
 import Icon from 'components/Icon';

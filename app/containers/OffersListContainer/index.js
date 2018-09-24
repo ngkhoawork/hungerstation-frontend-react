@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { offersPropTypes } from 'props/offers';
+import { offersPropTypes } from 'propTypes/offers';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'recompose';

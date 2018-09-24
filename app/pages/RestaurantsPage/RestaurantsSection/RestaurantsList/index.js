@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { restaurantsPropTypes } from 'props/restaurants';
+import { restaurantsPropTypes } from 'propTypes/restaurants';
 import { gold } from 'utils/css/colors';
 
 import CircledItem from 'components/CircledItem';
