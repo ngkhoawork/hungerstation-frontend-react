@@ -1,5 +1,5 @@
 import { spawn } from 'redux-saga/effects';
-import authSagas from 'containers/App/authSagas';
+import authSagas from './auth/sagas';
 import userSagas from './user/sagas';
 
 export default function* root() {

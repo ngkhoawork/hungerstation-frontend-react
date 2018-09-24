@@ -18,8 +18,8 @@ import { protectedRequest } from 'utils/api';
 import { saveTokens } from 'modules/common/sagas';
 // import monitorSaga from './monitorSaga';
 
-import { LOGOUT, REQUEST_ERROR, AUTHENTICATE_USER } from './authConstants';
-import { setAuthState, updateTokens } from './authActions';
+import { LOGOUT, REQUEST_ERROR, AUTHENTICATE_USER } from './constants';
+import { setAuthState, updateTokens } from './actions';
 import { makeSelectTokens } from './selectors';
 
 export function* logoutFlow() {

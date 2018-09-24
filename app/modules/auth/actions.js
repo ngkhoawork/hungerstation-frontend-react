@@ -12,7 +12,7 @@ import {
   LOG_USER_IN,
   UPDATE_TOKENS,
   AUTHENTICATE_USER,
-} from './authConstants';
+} from './constants';
 
 /**
  * Sets the authentication state of the application

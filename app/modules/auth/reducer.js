@@ -9,7 +9,7 @@ import {
   CLEAR_ERROR,
   AUTHENTICATE_USER,
   UPDATE_TOKENS,
-} from './authConstants';
+} from './constants';
 
 // The initial application state
 const initialState = fromJS({

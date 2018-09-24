@@ -1,16 +1,12 @@
-/**
- * Test sagas
- */
-
 /* eslint-disable redux-saga/yield-effects */
 import { take, put, race, call } from 'redux-saga/effects';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
-import { logUserIn } from 'containers/App/authActions';
 import { parseJwt } from 'utils/tokens';
 import { setStorageItem } from 'utils/localStorage';
 import { forwardTo } from 'utils/route';
 
-import { LOGOUT } from 'containers/App/authConstants';
+import { logUserIn } from 'modules/auth/actions';
+import { LOGOUT } from 'modules/auth/constants';
 
 import {
   loginFlow,

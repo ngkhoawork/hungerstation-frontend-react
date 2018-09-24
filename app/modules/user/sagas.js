@@ -1,15 +1,15 @@
 import { takeEvery, race, call, put, take } from 'redux-saga/effects';
 
-import { setStorageItem } from 'utils/localStorage';
 import { saveTokens } from 'modules/common/sagas';
+import { logUserIn, logout, setAuthState } from 'modules/auth/actions';
+import { LOGOUT } from 'modules/auth/constants';
+
+import { setStorageItem } from 'utils/localStorage';
 import { parseJwt } from 'utils/tokens';
 import { extractError } from 'utils/helpers';
 import { forwardTo } from 'utils/route';
-
-import { logUserIn, logout, setAuthState } from 'containers/App/authActions';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 
-import { LOGOUT } from 'containers/App/authConstants';
 import { loginAction, registerAction } from './actions';
 import usersApi from './api';
 
