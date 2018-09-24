@@ -39,12 +39,12 @@ const mapDispatchToProps = {
 };
 
 @withRouter
+@injectReducer({ key: 'searchBarContainer', reducer })
+@injectSaga({ key: 'searchBarContainer', saga })
 @connect(
   mapStateToProps,
   mapDispatchToProps,
 )
-@injectReducer({ key: 'searchBarContainer', reducer })
-@injectSaga({ key: 'searchBarContainer', saga })
 /* eslint-disable react/prefer-stateless-function */
 export default class SearchBarContainer extends React.PureComponent {
   static propTypes = {
@@ -75,7 +75,7 @@ export default class SearchBarContainer extends React.PureComponent {
     districts: null,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { getCities } = this.props;
     getCities();
   }
