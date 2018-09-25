@@ -4,31 +4,27 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
-import injectSaga from 'utils/injectors/injectSaga';
-import injectReducer from 'utils/injectors/injectReducer';
-import SearchBar from './SearchBar';
 import {
-  makeSelectCities,
-  makeSelectDistricts,
-  makeSelectIsSettlementLoaded,
-  makeSelectCity,
-  makeSelectDistrict,
-} from './selectors';
+  selectCities,
+  selectDistricts,
+  selectIsSettlementLoaded,
+  selectCity,
+  selectDistrict,
+} from 'modules/location/selectors';
 import {
   getCitiesAction,
   selectCityAction,
   selectDistrictAction,
   getCurrentLocationAction,
-} from './actions';
-import reducer from './reducer';
-import saga from './saga';
+} from 'modules/location/actions';
+import SearchBar from './SearchBar';
 
 const mapStateToProps = createStructuredSelector({
-  cities: makeSelectCities,
-  districts: makeSelectDistricts,
-  isSettlementLoaded: makeSelectIsSettlementLoaded,
-  selectedCity: makeSelectCity,
-  selectedDistrict: makeSelectDistrict,
+  cities: selectCities,
+  districts: selectDistricts,
+  isSettlementLoaded: selectIsSettlementLoaded,
+  selectedCity: selectCity,
+  selectedDistrict: selectDistrict,
 });
 
 const mapDispatchToProps = {
@@ -39,8 +35,6 @@ const mapDispatchToProps = {
 };
 
 @withRouter
-@injectReducer({ key: 'searchBarContainer', reducer })
-@injectSaga({ key: 'searchBarContainer', saga })
 @connect(
   mapStateToProps,
   mapDispatchToProps,
@@ -89,8 +83,8 @@ export default class SearchBarContainer extends React.PureComponent {
     const {
       cities,
       districts,
-      selectCity,
-      selectDistrict,
+      selectCity, // eslint-disable-line no-shadow
+      selectDistrict, // eslint-disable-line no-shadow
       getCurrentLocation,
       isSettlementLoaded,
       selectedCity,

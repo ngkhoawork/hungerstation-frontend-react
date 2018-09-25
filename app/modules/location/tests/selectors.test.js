@@ -1,75 +1,69 @@
 import { fromJS } from 'immutable';
 import {
-  selectSearchBarContainerDomain,
-  makeSelectCities,
-  makeSelectDistricts,
-  makeSelectIsSettlementLoaded,
-  makeSelectDistrict,
-  makeSelectCity,
+  selectLocationDomain,
+  selectCities,
+  selectDistricts,
+  selectIsSettlementLoaded,
+  selectDistrict,
+  selectCity,
 } from '../selectors';
 import { initialState } from '../reducer';
 
-describe('selectSearchBarContainerDomain', () => {
+describe('selectLocationDomain', () => {
   const state = fromJS({
     searchBarContainer: initialState,
   });
 
   it('Expect to have cities', () => {
-    expect(selectSearchBarContainerDomain(state).toJS()).toHaveProperty(
-      'cities',
-    );
+    expect(selectLocationDomain(state).toJS()).toHaveProperty('cities');
   });
 
   it('Expect to have correct values in cities object', () => {
-    expect(makeSelectCities(state)).toEqual(
+    expect(selectCities(state)).toEqual(
       state.get('searchBarContainer').get('cities'),
     );
   });
 
   it('Expect to have districts', () => {
-    expect(selectSearchBarContainerDomain(state).toJS()).toHaveProperty(
-      'districts',
-    );
+    expect(selectLocationDomain(state).toJS()).toHaveProperty('districts');
   });
 
   it('Expect to have correct values in districts object', () => {
-    expect(makeSelectDistricts(state)).toEqual(
+    expect(selectDistricts(state)).toEqual(
       state.get('searchBarContainer').get('districts'),
     );
   });
 
   it('Expect to have isSettlementLoaded', () => {
-    expect(selectSearchBarContainerDomain(state).toJS()).toHaveProperty(
+    expect(selectLocationDomain(state).toJS()).toHaveProperty(
       'isSettlementLoaded',
     );
   });
 
   it('Expect to have correct values in isSettlementLoaded object', () => {
-    expect(makeSelectIsSettlementLoaded(state)).toEqual(
+    expect(selectIsSettlementLoaded(state)).toEqual(
       state.get('searchBarContainer').get('isSettlementLoaded'),
     );
   });
 
   it('Expect to have selectedDistrict', () => {
-    expect(selectSearchBarContainerDomain(state).toJS()).toHaveProperty(
+    expect(selectLocationDomain(state).toJS()).toHaveProperty(
       'selectedDistrict',
     );
   });
 
   it('Expect to have correct values in selectedDistrict object', () => {
-    expect(makeSelectDistrict(state)).toEqual(
+    expect(selectDistrict(state)).toEqual(
       state.get('searchBarContainer').get('selectedDistrict'),
     );
   });
 
   it('Expect to have selectedCity', () => {
-    expect(selectSearchBarContainerDomain(state).toJS()).toHaveProperty(
-      'selectedCity',
-    );
+    expect(selectLocationDomain(state).toJS()).toHaveProperty('selectedCity');
   });
 
   it('Expect to have correct values in selectedCity object', () => {
-    expect(makeSelectCity(state)).toEqual(
+    expect(selectCity(state)).toEqual(
       state.get('searchBarContainer').get('selectedCity'),
     );
   });

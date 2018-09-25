@@ -1,18 +1,12 @@
-/*
- *
- * SearchBarContainer reducer
- *
- */
-
 import { fromJS } from 'immutable';
 import {
-  SET_CITIES,
-  SET_DISTRICTS,
-  SELECT_CITY,
-  SELECT_DISTRICT,
-  SET_SETTLEMENT_DETAILS,
-  TOGGLE_SETTLEMENT_LOADED,
-} from './constants';
+  setCitiesAction,
+  setDistrictsAction,
+  selectCityAction,
+  selectDistrictAction,
+  setSettlementDetailsAction,
+  toggleSettlementLoadedAction,
+} from './actions';
 
 export const initialState = fromJS({
   cities: [],
@@ -24,17 +18,17 @@ export const initialState = fromJS({
 
 function searchBarContainerReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_CITIES:
+    case setCitiesAction.type:
       return onSetCities(state, action);
-    case SET_DISTRICTS:
+    case setDistrictsAction.type:
       return onSetDistricts(state, action);
-    case SELECT_CITY:
+    case selectCityAction.type:
       return onSelectCity(state, action);
-    case SELECT_DISTRICT:
+    case selectDistrictAction.type:
       return onSelectDistrict(state, action);
-    case SET_SETTLEMENT_DETAILS:
+    case setSettlementDetailsAction.type:
       return onSetSettlementDetails(state, action);
-    case TOGGLE_SETTLEMENT_LOADED:
+    case toggleSettlementLoadedAction.type:
       return onToggleSettlementLoaded(state, action);
     default:
       return state;
@@ -42,35 +36,35 @@ function searchBarContainerReducer(state = initialState, action) {
 }
 
 const onSetCities = (state, action) => {
-  const { cities } = action;
+  const { cities } = action.payload;
   return state.merge({
     cities,
   });
 };
 
 const onSetDistricts = (state, action) => {
-  const { districts } = action;
+  const { districts } = action.payload;
   return state.merge({
     districts,
   });
 };
 
 const onSelectCity = (state, action) => {
-  const { selectedCity } = action;
+  const { selectedCity } = action.payload;
   return state.merge({
     selectedCity,
   });
 };
 
 const onSelectDistrict = (state, action) => {
-  const { selectedDistrict } = action;
+  const { selectedDistrict } = action.payload;
   return state.merge({
     selectedDistrict,
   });
 };
 
 const onSetSettlementDetails = (state, action) => {
-  const { city, district } = action;
+  const { city, district } = action.payload;
   return state.merge({
     selectedCity: city,
     selectedDistrict: district,
@@ -78,7 +72,7 @@ const onSetSettlementDetails = (state, action) => {
 };
 
 const onToggleSettlementLoaded = (state, action) => {
-  const { isLoaded } = action;
+  const { isLoaded } = action.payload;
   return state.merge({
     isSettlementLoaded: isLoaded,
   });

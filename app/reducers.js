@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import formReducer from 'hocs/withFormState/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import authReducer from 'modules/auth/reducer';
+import locationReducer from 'modules/location/reducer';
 
 /*
  * routeReducer
@@ -46,6 +47,7 @@ export default function createReducer(injectedReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     auth: authReducer,
+    location: locationReducer,
     form: formReducer,
     ...injectedReducers,
   });
