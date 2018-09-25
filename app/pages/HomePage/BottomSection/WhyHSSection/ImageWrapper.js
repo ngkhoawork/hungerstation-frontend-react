@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaSmall } from 'utils/styles';
+import { mediaSmall } from 'utils/css/styles';
 
 const ImageWrapper = styled.div`
   position: absolute;

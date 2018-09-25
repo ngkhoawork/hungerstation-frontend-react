@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import { List } from 'immutable';
 import intl from 'utils/intlService';
 import { printErrors } from 'utils/form/helpers';
-import { StyledForm, StyledFieldWrapper } from 'utils/styledComponents';
+import { StyledForm, StyledFieldWrapper } from 'utils/css/styledComponents';
 
 import TextInput from 'components/TextInput';
 import Icon from 'components/Icon';

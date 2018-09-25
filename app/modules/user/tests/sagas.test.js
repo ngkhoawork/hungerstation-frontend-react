@@ -1,20 +1,20 @@
-/**
- * Test sagas
- */
-
 /* eslint-disable redux-saga/yield-effects */
 import { take, put, race, call } from 'redux-saga/effects';
-import { startSubmit, stopSubmit } from 'containers/Form/actions';
-import { logUserIn } from 'containers/App/authActions';
+import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 import { parseJwt } from 'utils/tokens';
 import { setStorageItem } from 'utils/localStorage';
 import { forwardTo } from 'utils/route';
 
-import { LOGOUT } from 'containers/App/authConstants';
+import { logUserIn } from 'modules/auth/actions';
+import { LOGOUT } from 'modules/auth/constants';
 
-import { loginFlow, registerFlow, authorize as authorizeFlow } from '../sagas';
+import {
+  loginFlow,
+  registerFlow,
+  authorizeSaga as authorizeFlow,
+} from '../sagas';
 import { saveTokens } from '../../common/sagas';
-import { LOGIN_REQUEST, REGISTER_REQUEST } from '../constants';
+import { loginAction, registerAction } from '../actions';
 
 describe('User Sagas', () => {
   const userCredentials = {
@@ -48,7 +48,7 @@ describe('User Sagas', () => {
     };
 
     it('Expect to take LOGIN_REQUEST action', () => {
-      expect(gen.next().value).toEqual(take(LOGIN_REQUEST));
+      expect(gen.next().value).toEqual(take(loginAction.type));
     });
 
     it('Expect to start sumission action', () => {
@@ -112,7 +112,7 @@ describe('User Sagas', () => {
       redirectToRoute: '/',
     };
     it('Expect to take REGISTER_REQUEST action', () => {
-      expect(gen.next().value).toEqual(take(REGISTER_REQUEST));
+      expect(gen.next().value).toEqual(take(registerAction.type));
     });
 
     it('Expect to start sumission action', () => {

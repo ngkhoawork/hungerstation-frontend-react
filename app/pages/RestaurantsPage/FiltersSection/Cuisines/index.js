@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { wildSant, silverChalice } from 'utils/colors';
+import { wildSant, silverChalice } from 'utils/css/colors';
 import { compose, withState, withHandlers } from 'recompose';
-import { filtersCategoryPropTypes } from 'props/filters';
+import { filtersCategoryPropTypes } from 'propTypes/filters';
 
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';

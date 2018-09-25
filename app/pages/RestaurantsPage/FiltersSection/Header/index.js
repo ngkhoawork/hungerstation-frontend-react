@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { gold } from 'utils/colors';
+import { gold } from 'utils/css/colors';
 
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';

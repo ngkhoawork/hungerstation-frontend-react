@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium, mediaSmall } from 'utils/styles';
-import { paleSlate } from 'utils/colors';
+import { flexBox, mediaMedium, mediaSmall } from 'utils/css/styles';
+import { paleSlate } from 'utils/css/colors';
 
 import BackgroundCropped from 'images/background-cropped.png';
 import BackgroundMobile from 'images/background-small.png';

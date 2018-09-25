@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { StyledPage } from 'utils/styledComponents';
+import { StyledPage } from 'utils/css/styledComponents';
 import ForgotPasswordPage from '../index';
 
 const renderForgotPasswordPage = () => shallow(<ForgotPasswordPage />);

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaGreater, mediaMedium } from 'utils/styles';
+import { mediaGreater, mediaMedium } from 'utils/css/styles';
 
 const FiltersWrapper = styled.div`
   width: 200px;

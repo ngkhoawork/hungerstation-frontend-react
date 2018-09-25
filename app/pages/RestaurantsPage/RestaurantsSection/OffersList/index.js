@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { offersPropTypes } from 'props/offers';
-import { gold } from 'utils/colors';
+import { offersPropTypes } from 'propTypes/offers';
+import { gold } from 'utils/css/colors';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';

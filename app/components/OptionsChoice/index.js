@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { fuscousGray } from 'utils/colors';
+import { fuscousGray } from 'utils/css/colors';
 // import StyledContainer from 'components/HomePage/StyledContainer';
 import Paragraph from 'components/Paragraph';
 import Group from 'components/Group';

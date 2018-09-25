@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaLess } from 'utils/styles';
+import { mediaLess } from 'utils/css/styles';
 
 const IconWrapper = styled.div`
   position: absolute;

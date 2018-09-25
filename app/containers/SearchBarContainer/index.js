@@ -1,40 +1,30 @@
-/**
- *
- * SearchBarContainer
- *
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
-import SearchBar from 'pages/HomePage/UpperSection/SearchBar';
 import {
-  makeSelectCities,
-  makeSelectDistricts,
-  makeSelectIsSettlementLoaded,
-  makeSelectCity,
-  makeSelectDistrict,
-} from './selectors';
+  selectCities,
+  selectDistricts,
+  selectIsSettlementLoaded,
+  selectCity,
+  selectDistrict,
+} from 'modules/location/selectors';
 import {
   getCitiesAction,
   selectCityAction,
   selectDistrictAction,
   getCurrentLocationAction,
-} from './actions';
-import reducer from './reducer';
-import saga from './saga';
+} from 'modules/location/actions';
+import SearchBar from './SearchBar';
 
 const mapStateToProps = createStructuredSelector({
-  cities: makeSelectCities,
-  districts: makeSelectDistricts,
-  isSettlementLoaded: makeSelectIsSettlementLoaded,
-  selectedCity: makeSelectCity,
-  selectedDistrict: makeSelectDistrict,
+  cities: selectCities,
+  districts: selectDistricts,
+  isSettlementLoaded: selectIsSettlementLoaded,
+  selectedCity: selectCity,
+  selectedDistrict: selectDistrict,
 });
 
 const mapDispatchToProps = {
@@ -49,8 +39,6 @@ const mapDispatchToProps = {
   mapStateToProps,
   mapDispatchToProps,
 )
-@injectReducer({ key: 'searchBarContainer', reducer })
-@injectSaga({ key: 'searchBarContainer', saga })
 /* eslint-disable react/prefer-stateless-function */
 export default class SearchBarContainer extends React.PureComponent {
   static propTypes = {
@@ -81,7 +69,7 @@ export default class SearchBarContainer extends React.PureComponent {
     districts: null,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { getCities } = this.props;
     getCities();
   }
@@ -95,8 +83,8 @@ export default class SearchBarContainer extends React.PureComponent {
     const {
       cities,
       districts,
-      selectCity,
-      selectDistrict,
+      selectCity, // eslint-disable-line no-shadow
+      selectDistrict, // eslint-disable-line no-shadow
       getCurrentLocation,
       isSettlementLoaded,
       selectedCity,

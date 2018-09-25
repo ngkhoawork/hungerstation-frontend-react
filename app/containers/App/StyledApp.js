@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/styles';
-import { alabaster } from 'utils/colors';
+import { flexBox } from 'utils/css/styles';
+import { alabaster } from 'utils/css/colors';
 
 const StyledApp = styled.div`
   ${flexBox({

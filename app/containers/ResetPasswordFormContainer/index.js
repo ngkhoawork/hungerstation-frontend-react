@@ -7,13 +7,13 @@
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
 import { validationSchemas } from 'utils/form/validation';
-import { FormContainer } from 'containers/Form';
+import withFormState from 'hocs/withFormState';
 
 import ResetPasswordForm from './ResetPasswordForm/index';
 
 const schema = validationSchemas('resetPasswordForm');
 
-@FormContainer
+@withFormState
 export default class ResetPasswordFormContainer extends PureComponent {
   render() {
     const { submitHandler } = this.props;

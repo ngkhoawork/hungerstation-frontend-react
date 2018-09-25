@@ -1,6 +1,11 @@
 import styled from 'styled-components';
-import { mediaLess, mediaGreater, getDisplayProp, flexBox } from 'utils/styles';
-import { alto } from 'utils/colors';
+import {
+  mediaLess,
+  mediaGreater,
+  getDisplayProp,
+  flexBox,
+} from 'utils/css/styles';
+import { alto } from 'utils/css/colors';
 
 const ActionsWrapper = styled.div`
   ${flexBox({

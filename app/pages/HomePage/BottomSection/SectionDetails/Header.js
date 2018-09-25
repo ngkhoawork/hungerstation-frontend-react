@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { fuscousGray } from 'utils/colors';
-import { mediaMedium } from 'utils/styles';
+import { fuscousGray } from 'utils/css/colors';
+import { mediaMedium } from 'utils/css/styles';
 
 const Header = styled.p`
   font-size: 40px;

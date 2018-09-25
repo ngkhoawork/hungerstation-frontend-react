@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { wildSant } from 'utils/colors';
+import { wildSant } from 'utils/css/colors';
 
 const Circle = styled.div`
   width: 20px;

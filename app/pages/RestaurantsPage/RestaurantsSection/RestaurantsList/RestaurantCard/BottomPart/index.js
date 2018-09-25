@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { silverChalice, jade } from 'utils/colors';
+import { silverChalice, jade } from 'utils/css/colors';
 
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';

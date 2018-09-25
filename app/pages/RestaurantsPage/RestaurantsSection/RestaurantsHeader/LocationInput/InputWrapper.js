@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/styles';
-import { wildSant } from 'utils/colors';
+import { flexBox, mediaLess } from 'utils/css/styles';
+import { wildSant } from 'utils/css/colors';
 
 const InputWrapper = styled.div`
   ${flexBox(

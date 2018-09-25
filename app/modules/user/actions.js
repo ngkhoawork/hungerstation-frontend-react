@@ -1,24 +1,15 @@
-import { LOGIN_REQUEST, REGISTER_REQUEST } from './constants';
-
-export const loginRequest = (
-  { mobile, password, ...rest },
-  redirectToRoute,
-) => ({
-  type: LOGIN_REQUEST,
-  mobile,
-  password,
-  ...rest,
-  redirectToRoute,
-});
-
-export const registerRequest = (
-  { name, mobile, email, password },
-  redirectToRoute,
-) => ({
-  type: REGISTER_REQUEST,
-  name,
-  mobile,
-  email,
-  password,
-  redirectToRoute,
-});
+import createAction from 'utils/actions/createAction';
+// TODO add typing (Flow or typeScript), and delete payloadDescriptor function
+export const loginAction = createAction(
+  'users/LOGIN',
+  ({ mobile, password }) => ({ mobile, password }),
+);
+export const registerAction = createAction(
+  'users/REGISTER',
+  ({ name, mobile, email, password }) => ({
+    name,
+    mobile,
+    email,
+    password,
+  }),
+);

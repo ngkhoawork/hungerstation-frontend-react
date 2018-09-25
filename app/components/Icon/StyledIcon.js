@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { alto } from 'utils/colors';
+import { alto } from 'utils/css/colors';
 
 const StyledIcon = styled.img`
   ${({ size }) => `

@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { shallowWithStore } from 'enzyme-redux';
 import { createMockStore } from 'redux-test-utils';
 
-import SearchBarContainer from '../index';
 import {
-  SELECT_CITY,
-  SELECT_DISTRICT,
-  GET_CURRENT_LOCATION,
-} from '../constants';
+  selectCityAction,
+  selectDistrictAction,
+  getCurrentLocationAction,
+} from 'modules/location/actions';
+import SearchBarContainer from '../index';
 
 describe('<SearchBarContainer />', () => {
   it('should connect to a store state', () => {
@@ -36,9 +36,9 @@ describe('<SearchBarContainer />', () => {
   describe('it should dispatch actions:', () => {
     const actions = [
       { type: 'GET_CITIES' },
-      { type: SELECT_CITY },
-      { type: SELECT_DISTRICT },
-      { type: GET_CURRENT_LOCATION },
+      { type: selectCityAction.type },
+      { type: selectDistrictAction.type },
+      { type: getCurrentLocationAction.type },
     ];
 
     const mapDispatchToProps = dispatch => ({

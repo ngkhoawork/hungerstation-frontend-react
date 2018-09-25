@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { StyledForm } from 'utils/styledComponents';
+import { StyledForm } from 'utils/css/styledComponents';
 import ResetPasswordForm from '../index';
 
 const props = {

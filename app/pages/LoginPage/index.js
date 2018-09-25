@@ -14,8 +14,8 @@ import TextItem from 'components/TextItem';
 import SocialAuth from 'components/SocialAuth';
 import StyledParagraph from 'components/Paragraph';
 
-import { StyledPage, StyledLink } from 'utils/styledComponents';
-import { silverChalice } from 'utils/colors';
+import { StyledPage, StyledLink } from 'utils/css/styledComponents';
+import { silverChalice } from 'utils/css/colors';
 
 import messages from './messages';
 

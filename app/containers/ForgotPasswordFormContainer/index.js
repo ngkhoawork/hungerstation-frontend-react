@@ -1,19 +1,13 @@
-/**
- *
- * ForgotPasswordFormContainer
- *
- */
-
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
+import withFormState from 'hocs/withFormState';
 import { validationSchemas } from 'utils/form/validation';
-import { FormContainer } from 'containers/Form';
 
 import ForgotPasswordForm from './ForgotPasswordForm/index';
 
 const schema = validationSchemas('resetPasswordRequestForm');
 
-@FormContainer
+@withFormState
 export default class ForgotPasswordFormContainer extends PureComponent {
   render() {
     const { submitHandler } = this.props;

@@ -1,5 +1,5 @@
 import { injectGlobal } from 'styled-components';
-import { jade } from 'utils/colors';
+import { jade } from 'utils/css/colors';
 import HSRwoff from './vendor/fonts/HungerStation-Regular.woff';
 import HSRwoff2 from './vendor/fonts/HungerStation-Regular.woff2';
 import HSRotf from './vendor/fonts/HungerStation-Regular.otf';

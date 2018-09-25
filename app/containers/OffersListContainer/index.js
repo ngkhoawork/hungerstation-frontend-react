@@ -5,15 +5,15 @@
  */
 
 import React from 'react';
-import { offersPropTypes } from 'props/offers';
+import { offersPropTypes } from 'propTypes/offers';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'recompose';
 
 import OffersList from 'pages/RestaurantsPage/RestaurantsSection/OffersList';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectors/injectSaga';
+import injectReducer from 'utils/injectors/injectReducer';
 import { makeSelectOffers } from './selectors';
 import reducer from './reducer';
 import saga from './saga';

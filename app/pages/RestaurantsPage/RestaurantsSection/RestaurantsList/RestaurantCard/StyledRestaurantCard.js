@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/styles';
+import { flexBox, mediaLess } from 'utils/css/styles';
 import Figs from 'images/figs.png';
 import FigsMobile from 'images/figs-mobile.png';
 

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { shallowWithStore } from 'enzyme-redux';
 import { createMockStore } from 'redux-test-utils';
 
-import { REGISTER_REQUEST } from 'modules/user/constants';
+import { registerAction } from 'modules/user/actions';
 import { RegistrationFormContainer } from '../index';
 
 describe('<RegistrationFormContainer />', () => {
   it('should dispatch action onSubmit', () => {
     const action = {
-      type: REGISTER_REQUEST,
+      type: registerAction.type,
     };
 
     const mapDispatchToProps = dispatch => ({

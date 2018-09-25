@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaGreater } from 'utils/styles';
+import { mediaGreater } from 'utils/css/styles';
 
 const IconWrapper = styled.div`
   cursor: pointer;

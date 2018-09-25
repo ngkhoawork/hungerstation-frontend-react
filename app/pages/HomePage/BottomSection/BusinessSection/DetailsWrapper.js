@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaMedium, mediaSmall } from 'utils/styles';
+import { mediaMedium, mediaSmall } from 'utils/css/styles';
 
 const DetailsWrapper = styled.div`
   display: block;

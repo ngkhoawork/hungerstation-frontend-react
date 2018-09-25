@@ -12,9 +12,9 @@ import LocaleToggle from 'containers/LocaleToggle';
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
-import { StyledLink } from 'utils/styledComponents';
+import { StyledLink } from 'utils/css/styledComponents';
 
-import { fuscousGray } from 'utils/colors';
+import { fuscousGray } from 'utils/css/colors';
 
 import RightSection from './RightSection';
 import StyledHeader from './StyledHeader';

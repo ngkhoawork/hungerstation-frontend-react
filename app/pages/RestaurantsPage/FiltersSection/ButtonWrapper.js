@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaLess, mediaGreater, getDisplayProp } from 'utils/styles';
+import { mediaLess, mediaGreater, getDisplayProp } from 'utils/css/styles';
 
 const ButtonWrapper = styled.div`
   height: 45px;
