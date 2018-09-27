@@ -46,7 +46,7 @@ export const initialState = fromJS({
     isExpanded: true,
     options: [
       { id: 'all', label: 'All Delivery Types', isSelected: false },
-      { id: 'pickup', label: 'Pickup', isSelected: true },
+      { id: 'pickup', label: 'Pickup', isSelected: false },
       {
         id: 'deliverybyrestaurant',
         label: 'Delivery by Restaurant',

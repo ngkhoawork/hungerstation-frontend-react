@@ -1,7 +1,7 @@
 import { GraphQLClient } from 'graphql-request';
 
 const API_URL_BASE = 'http://localhost:3000/proxy';
-const API_URL_DEVELOPMENT = 'https://development.hs-preview.com/api/v3/graphql';
+const API_URL_DEVELOPMENT = 'https://hs-staging.com/api/v3/graphql';
 const API_URL_STAGING = 'https://hs-staging.com/api/v3/graphql';
 const API_URL_PRODUCTION = API_URL_BASE;
 

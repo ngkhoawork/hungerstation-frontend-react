@@ -6,6 +6,7 @@ const ImageWrapper = styled.div`
   left: 10%;
   top: -30px;
   z-index: 0;
+  max-width: 40%;
   ${mediaSmall`
     top: -80px;
   `};
