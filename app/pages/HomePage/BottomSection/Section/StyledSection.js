@@ -28,8 +28,9 @@ const StyledSection = styled.div`
     hasBackground &&
     `
       background-image: url(${PhoneVisualSmall});
-      padding-bottom: 400px;
-      background-size: 80%;
+      padding-bottom: 320px;
+      background-position-y: calc(100% + 55px);
+      overflow: visible;
     `}
   `};
   ${({ hasBackground }) =>

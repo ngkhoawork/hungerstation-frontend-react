@@ -3,12 +3,11 @@ import { fuscousGray } from 'utils/css/colors';
 import { mediaMedium } from 'utils/css/styles';
 
 const Header = styled.p`
-  font-size: 40px;
+  font-size: 36px;
   letter-spacing: 0.56px;
   color: ${fuscousGray};
   margin: 0;
-  margin-bottom: 15px;
-  line-height: 50px;
+  line-height: 1.2em;
   ${mediaMedium`
     font-size: 35px;
   `};

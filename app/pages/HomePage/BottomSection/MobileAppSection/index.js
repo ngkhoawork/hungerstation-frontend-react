@@ -16,7 +16,11 @@ const MobileAppSection = () => (
       <DetailsWrapper>
         <Icon name="phone-big" />
         <SectionDetails
-          header="Mobile App for iOS and Android"
+          header={
+            <div>
+              <div>Mobile App</div> for iOS & Android
+            </div>
+          }
           description="Download Hunger Station for your mobile device for the easier order here should be some text"
         />
         <ButtonGroup>
