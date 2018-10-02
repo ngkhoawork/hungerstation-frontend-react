@@ -13,13 +13,13 @@ const rotate = keyframes`
 const StyledSpinner = styled.div`
   display: none;
   position: relative;
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
 
   &:after {
     display: block;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     position: relative;
     border-radius: 100%;
     border-top: 2px solid ${gold};
