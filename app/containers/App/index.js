@@ -69,7 +69,10 @@ export default class App extends Component {
   render() {
     const { dir, location } = this.props;
     return (
-      <StyledApp dir={dir} dark={location.pathname !== '/'}>
+      <StyledApp
+        dir={dir}
+        dark={/login|register|forgot-password/.test(location.pathname)}
+      >
         <CssBaseline />
 
         <ModalContainer>
