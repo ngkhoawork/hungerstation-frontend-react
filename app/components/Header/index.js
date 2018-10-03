@@ -1,9 +1,3 @@
-/**
- *
- * Header
- *
- */
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -17,22 +11,20 @@ import { StyledLink } from 'utils/css/styledComponents';
 import { fuscousGray } from 'utils/css/colors';
 
 import RightSection from './RightSection';
-import StyledHeader from './StyledHeader';
+import StyledHeader, { StyledBrandLogo } from './StyledHeader';
 import logo from '../../images/hungerstation.svg';
 
 const Header = ({ variant }) => (
-  <StyledHeader>
+  <StyledHeader gold={variant === 'gold'}>
     <Link to="/">
-      <img alt="logo" src={logo} height="34px" />
+      <StyledBrandLogo alt="logo" src={logo} height="34px" />
     </Link>
     <RightSection>
       <LocaleToggle variant={variant} />
       <StyledLink to="/login">
-        <Paragraph color={variant === 'dark' ? fuscousGray : 'white'}>
-          Log in
-        </Paragraph>
+        <Paragraph color={variant ? fuscousGray : 'white'}>Log in</Paragraph>
       </StyledLink>
-      <CircledItem color="white" width={28}>
+      <CircledItem color="gold" width={28} withShadow>
         <Icon name="basket" />
       </CircledItem>
     </RightSection>
@@ -41,10 +33,6 @@ const Header = ({ variant }) => (
 
 Header.propTypes = {
   variant: PropTypes.string,
-};
-
-Header.defaultProps = {
-  variant: 'dark',
 };
 
 export default Header;
