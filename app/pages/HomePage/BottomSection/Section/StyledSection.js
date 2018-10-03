@@ -22,6 +22,11 @@ const StyledSection = styled.div`
     `,
   )};
   ${mediaSmall`
+    &:first-of-type {
+      margin-top: 80px;
+    }
+  `};
+  ${mediaSmall`
   flex-direction: column;
   align-items: center;
   ${({ hasBackground }) =>
