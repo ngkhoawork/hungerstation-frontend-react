@@ -12,12 +12,12 @@ import { fuscousGray } from 'utils/css/colors';
 
 import RightSection from './RightSection';
 import StyledHeader, { StyledBrandLogo } from './StyledHeader';
-import logo from '../../images/hungerstation.svg';
+import logo from '../../images/hungerstation-logo-shadow.svg';
 
 const Header = ({ variant }) => (
   <StyledHeader gold={variant === 'gold'}>
     <Link to="/">
-      <StyledBrandLogo alt="logo" src={logo} height="34px" />
+      <StyledBrandLogo alt="logo" src={logo} height={53} />
     </Link>
     <RightSection>
       <LocaleToggle variant={variant} />
