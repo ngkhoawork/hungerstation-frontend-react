@@ -1,6 +1,8 @@
 import React from 'react';
 
 import FiltersContainer from 'containers/FiltersContainer';
+import { withHeaderAndFooter } from 'hocs/withInsertLayout';
+
 import RestaurantsSection from './RestaurantsSection';
 import FiltersSection from './FiltersSection';
 import FiltersWrapper from './FiltersWrapper';
@@ -18,4 +20,4 @@ const RestaurantsPage = () => (
   </StyledListPage>
 );
 
-export default RestaurantsPage;
+export default withHeaderAndFooter(RestaurantsPage);

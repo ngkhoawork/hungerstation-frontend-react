@@ -1,13 +1,8 @@
-/**
- *
- * ForgotPasswordPage
- *
- */
-
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import ResetPasswordFormContainer from 'containers/ResetPasswordFormContainer';
+import { withDarkHeaderOnly } from 'hocs/withInsertLayout';
 
 import TextItem from 'components/TextItem';
 import { StyledPage } from 'utils/css/styledComponents';
@@ -28,4 +23,4 @@ const ForgotPasswordPage = () => (
   </StyledPage>
 );
 
-export default ForgotPasswordPage;
+export default withDarkHeaderOnly(ForgotPasswordPage);
