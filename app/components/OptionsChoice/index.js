@@ -17,7 +17,7 @@ const OptionsChoice = ({
   <Group>
     {options.map(option => (
       <ItemContainer key={option.id} onClick={() => onOptionSelect(option.id)}>
-        <Paragraph color={variant === 'dark' ? fuscousGray : 'white'}>
+        <Paragraph color={variant === 'dark' ? fuscousGray : 'white'} size={16}>
           {option.name}
         </Paragraph>
         {option.id === selectedOption && <ActiveBorder />}
