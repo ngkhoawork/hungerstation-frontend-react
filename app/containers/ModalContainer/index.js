@@ -16,7 +16,7 @@ import { makeSelectIsOpen } from './selectors';
 import reducer from './reducer';
 
 const mapStateToProps = createStructuredSelector({
-  isOpen: makeSelectIsOpen,
+  isOpen: makeSelectIsOpen(),
 });
 
 const enhanced = compose(

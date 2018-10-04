@@ -74,9 +74,15 @@ export default class SearchBarContainer extends React.PureComponent {
     getCities();
   }
 
-  handleRedirect = path => {
-    const { history } = this.props;
-    history.push(path);
+  handleRedirect = () => {
+    const { history, selectedCity, selectedDistrict } = this.props;
+    const city = selectedCity && selectedCity.get('name', null);
+    const district = selectedDistrict && selectedDistrict.get('name', null);
+    let path = '/restaurants';
+    if (city && district) {
+      path = `/restaurants/${city}/${district}`.toLowerCase().replace(' ', '-');
+      history.push(path);
+    }
   };
 
   render() {
@@ -100,7 +106,7 @@ export default class SearchBarContainer extends React.PureComponent {
         isSettlementLoaded={isSettlementLoaded}
         selectedCity={selectedCity}
         selectedDistrict={selectedDistrict}
-        handleRedirect={this.handleRedirect}
+        handleSubmit={this.handleRedirect}
       />
     );
   }

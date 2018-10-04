@@ -31,7 +31,7 @@ const app = express();
 
 if (isDev) {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-  const remote = 'https://development.hs-preview.com/api/v3/graphql';
+  const remote = 'https://hs-staging.com/api/v3/graphql';
   app.use('/proxy', (req, res) => {
     const url = remote + req.url;
     req.pipe(request(url).on('error', err => logger.error(err))).pipe(res);

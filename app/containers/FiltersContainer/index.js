@@ -29,10 +29,10 @@ import reducer from './reducer';
 import saga from './saga';
 
 const mapStateToProps = createStructuredSelector({
-  tags: makeSelectTags,
-  cuisines: makeSelectCuisines,
-  deliveryTypes: makeSelectDeliveryTypes,
-  isModalOpened: makeSelectIsOpen,
+  tags: makeSelectTags(),
+  cuisines: makeSelectCuisines(),
+  deliveryTypes: makeSelectDeliveryTypes(),
+  isModalOpened: makeSelectIsOpen(),
 });
 
 const mapDispatchToProps = {
