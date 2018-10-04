@@ -17,7 +17,7 @@ const WhyHSSection = () => (
         <Image
           src={getImage('burger')}
           alt="Burger"
-          srcSet={`${getImage('burger-small')} 850w`}
+          srcSet={`${getImage('burger')} 850w`}
         />
       </ImageWrapper>
     }

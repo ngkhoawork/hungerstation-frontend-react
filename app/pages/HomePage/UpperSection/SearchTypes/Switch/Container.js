@@ -5,7 +5,7 @@ const Container = styled.label`
   display: inline-block;
   width: 41px;
   height: 22px;
-  margin: 0 20px;
+  margin: 0 24px;
 `;
 
 export default Container;
