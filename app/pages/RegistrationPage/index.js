@@ -1,14 +1,8 @@
-/**
- *
- * RegistrationPage
- *
- */
-
 import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
-
 import RegistrationFormContainer from 'containers/RegistrationFormContainer';
+import { withDarkHeaderOnly } from 'hocs/withInsertLayout';
 
 import SocialAuth from 'components/SocialAuth';
 import ButtonLink from 'components/ButtonLink';
@@ -36,4 +30,4 @@ const RegistrationPage = () => (
   </StyledPage>
 );
 
-export default RegistrationPage;
+export default withDarkHeaderOnly(RegistrationPage);

@@ -9,10 +9,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import OptionsChoice from 'components/OptionsChoice';
-
 import { appLocales } from 'i18n';
 import { changeLocaleAction } from 'containers/LanguageProvider/actions';
+import OptionsChoice from './OptionsChoice';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import intlService from '../../utils/intlService';
 

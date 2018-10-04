@@ -9,6 +9,8 @@ const Circle = styled.div`
   left: 0;
   background-color: ${({ color }) => color};
   z-index: 0;
+  ${({ withShadow }) =>
+    withShadow && 'box-shadow: 0 5px 20px 0 rgba(198,58,58,0.15)'};
 `;
 
 export default Circle;
