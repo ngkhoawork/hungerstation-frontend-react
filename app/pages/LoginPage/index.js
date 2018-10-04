@@ -1,11 +1,4 @@
-/**
- *
- * LoginPage
- *
- */
-
 import React from 'react';
-
 import { FormattedMessage } from 'react-intl';
 
 import LoginFormContainer from 'containers/LoginFormContainer';
@@ -13,6 +6,7 @@ import ButtonLink from 'components/ButtonLink';
 import TextItem from 'components/TextItem';
 import SocialAuth from 'components/SocialAuth';
 import StyledParagraph from 'components/Paragraph';
+import { withDarkHeaderOnly } from 'hocs/withInsertLayout';
 
 import { StyledPage, StyledLink } from 'utils/css/styledComponents';
 import { silverChalice } from 'utils/css/colors';
@@ -43,4 +37,4 @@ const LoginPage = () => (
   </StyledPage>
 );
 
-export default LoginPage;
+export default withDarkHeaderOnly(LoginPage);

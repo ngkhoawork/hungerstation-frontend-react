@@ -10,12 +10,14 @@ const StyledButton = styled.button`
   background-color: ${({ primary, color }) => (primary ? gold : color)};
   background-image: url(${({ backgroundImage }) => getImage(backgroundImage)});
   background-position: center;
-  box-shadow: 0 10px 20px 0 rgba(126, 125, 125, 0.15);
+  box-shadow: ${({ lift }) =>
+    lift ? '0 10px 20px 0 rgba(126, 125, 125, 0.15)' : 'none'};
+  cursor: pointer;
+
   img {
     margin-bottom: 3px;
     margin-right: 5px;
   }
-  cursor: pointer;
 `;
 
 export default StyledButton;

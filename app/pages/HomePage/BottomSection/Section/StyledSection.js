@@ -22,14 +22,20 @@ const StyledSection = styled.div`
     `,
   )};
   ${mediaSmall`
+    &:first-of-type {
+      margin-top: 80px;
+    }
+  `};
+  ${mediaSmall`
   flex-direction: column;
   align-items: center;
   ${({ hasBackground }) =>
     hasBackground &&
     `
       background-image: url(${PhoneVisualSmall});
-      padding-bottom: 400px;
-      background-size: 80%;
+      padding-bottom: 320px;
+      background-position-y: calc(100% + 55px);
+      overflow: visible;
     `}
   `};
   ${({ hasBackground }) =>

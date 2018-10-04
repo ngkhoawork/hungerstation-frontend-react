@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from 'components/Icon';
-import StyledFeature from './StyledFeature';
+import StyledFeature, { StyledFeatureIcon } from './StyledFeature';
 import RightSide from './RightSide';
 import Header from './Header';
 import Text from './Text';
 
 const Feature = ({ id, label, message }) => (
   <StyledFeature>
-    <Icon name={`${id}-big`} size={45} />
+    <StyledFeatureIcon>
+      <Icon name={`${id}-big`} size={45} />
+    </StyledFeatureIcon>
     <RightSide>
       <Header>{label}</Header>
       <Text>{message}</Text>

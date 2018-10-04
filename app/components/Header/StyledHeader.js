@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import { gold } from 'utils/css/colors';
 import { flexBox, mediaSmall, mediaMedium, mediaLess } from 'utils/css/styles';
 
 const StyledHeader = styled.div`
+  ${props => props.gold && `background-color: ${gold};`};
+
   ${flexBox(
     { align: 'center', justify: 'space-between' },
     `padding: 32px 112px;
@@ -24,4 +27,7 @@ const StyledHeader = styled.div`
   `};
 `;
 
+export const StyledBrandLogo = styled.img`
+  filter: drop-shadow(0 0 3px #e4e8e6);
+`;
 export default StyledHeader;

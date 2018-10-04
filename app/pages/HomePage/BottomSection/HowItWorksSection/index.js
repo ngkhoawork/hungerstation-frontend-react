@@ -7,17 +7,17 @@ const HowItWorksSection = () => {
     {
       id: 'location',
       label: 'Select location',
-      message: 'Lorem Ipsum is simply dummy text of the printing and...',
+      message: 'No need for looking for restaurants numbers anymore',
     },
     {
       id: 'chef',
       label: 'Choose restaurant',
-      message: 'Lorem Ipsum is simply dummy text of the printing and...',
+      message: 'No need for looking for restaurants numbers anymore',
     },
     {
       id: 'payment',
       label: 'Pay and wait',
-      message: 'Lorem Ipsum is simply dummy text of the printing and...',
+      message: 'No need for looking for restaurants numbers anymore',
     },
   ];
   return (

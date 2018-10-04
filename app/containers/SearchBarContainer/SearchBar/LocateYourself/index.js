@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 
 import Icon from 'components/Icon';
 import Spinner from 'components/Spinner';
+import CircledItem from 'components/CircledItem';
+import { wildSant } from 'utils/css/colors';
+
 import StyledContainer from './StyledContainer';
 
 const LocateYourself = ({ getCurrentLocation, isSettlementLoaded }) => (
   <StyledContainer onClick={getCurrentLocation}>
-    {isSettlementLoaded && <Icon name="location" size={16} />}
+    {isSettlementLoaded && (
+      <CircledItem color={wildSant} width={28}>
+        <Icon name="location" size={16} />
+      </CircledItem>
+    )}
     {!isSettlementLoaded && <Spinner isActive={!isSettlementLoaded} />}
   </StyledContainer>
 );

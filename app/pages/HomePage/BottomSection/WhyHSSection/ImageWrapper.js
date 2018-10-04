@@ -2,13 +2,10 @@ import styled from 'styled-components';
 import { mediaSmall } from 'utils/css/styles';
 
 const ImageWrapper = styled.div`
-  position: absolute;
-  left: 10%;
-  top: -30px;
-  z-index: 0;
-  max-width: 40%;
+  width: 740px;
+
   ${mediaSmall`
-    top: -80px;
+    width: auto;
   `};
 `;
 

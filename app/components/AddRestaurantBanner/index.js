@@ -15,7 +15,12 @@ const AddRestaurantBanner = ({ isVisible, toggleVisibility }) => {
       <StyledBanner>
         <ActionText>Would you like to Join Us?</ActionText>
         <ButtonWrapper>
-          <Button label="Add restaurant" type="button" primary={false} />
+          <Button
+            label="Add restaurant"
+            type="button"
+            primary={false}
+            lift={false}
+          />
         </ButtonWrapper>
         {isVisible && (
           <IconWrapper onClick={toggleVisibility}>

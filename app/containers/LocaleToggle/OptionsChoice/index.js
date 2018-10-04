@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { fuscousGray } from 'utils/css/colors';
-// import StyledContainer from 'components/HomePage/StyledContainer';
 import Paragraph from 'components/Paragraph';
 import Group from 'components/Group';
 import ItemContainer from './ItemContainer';
@@ -17,10 +16,10 @@ const OptionsChoice = ({
   <Group>
     {options.map(option => (
       <ItemContainer key={option.id} onClick={() => onOptionSelect(option.id)}>
-        <Paragraph color={variant === 'dark' ? fuscousGray : 'white'}>
+        <Paragraph color={variant ? fuscousGray : 'white'} size={16}>
           {option.name}
         </Paragraph>
-        {option.id === selectedOption && <ActiveBorder />}
+        {option.id === selectedOption && <ActiveBorder variant={variant} />}
       </ItemContainer>
     ))}
   </Group>
@@ -36,10 +35,6 @@ OptionsChoice.propTypes = {
   selectedOption: PropTypes.string.isRequired,
   onOptionSelect: PropTypes.func.isRequired,
   variant: PropTypes.string,
-};
-
-OptionsChoice.defaultProps = {
-  variant: 'dark',
 };
 
 export default OptionsChoice;
