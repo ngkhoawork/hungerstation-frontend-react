@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import StyledButton from './StyledButton';
 import Text from './Text';
 
-const Button = ({ primary, label, color, backgroundImage, children }) => (
+const Button = ({ primary, label, color, backgroundImage, children, lift }) => (
   <StyledButton
     primary={primary}
     type="button"
     color={color}
     backgroundImage={backgroundImage}
+    lift={lift}
   >
     {children}
     <Text>{label}</Text>
@@ -22,6 +23,7 @@ Button.propTypes = {
   backgroundImage: PropTypes.string,
   children: PropTypes.object,
   color: PropTypes.string,
+  lift: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -30,6 +32,7 @@ Button.defaultProps = {
   backgroundImage: null,
   children: null,
   color: 'white',
+  lift: true,
 };
 
 export default Button;
