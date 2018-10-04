@@ -8,7 +8,7 @@ const LeftSection = styled.div`
   &:nth-of-type(2) {
     border-radius: 0 0 8px 8px;
     ${mediaSmall`
-      width: 80%;
+      width: 90%;
     `};
   }
 `;
