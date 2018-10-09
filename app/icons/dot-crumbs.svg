@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="4px" viewBox="0 0 4 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>dot-crumbs</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Restaurant" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="Restaurants-Page-B" transform="translate(-362.000000, -122.000000)" fill="#9F9F9F">
+            <g id="Crumbs" transform="translate(119.000000, 112.000000)">
+                <g id="Group-7" transform="translate(1.000000, 0.000000)">
+                    <circle id="dot-crumbs" cx="244" cy="12" r="2"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
