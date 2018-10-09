@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { silverChalice, jade } from 'utils/css/colors';
-
+import intl from 'utils/intlService';
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';
 import Paragraph from 'components/Paragraph';
 import StyledBottomPart from './StyledBottomPart';
 import Row from '../Row';
+import messages from './messages';
 
 const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
   <StyledBottomPart>
@@ -19,15 +20,20 @@ const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
     <Row>
       <Icon name="time" />
       <Paragraph size={12}>
-        {deliveryTimeMin}-{deliveryTimeMax} min
+        {intl.formatMessage(messages.time, {
+          min: deliveryTimeMin,
+          max: deliveryTimeMax,
+        })}
       </Paragraph>
       <Icon name="delivery" />
       <Paragraph size={12} color={silverChalice}>
-        SR 250
+        {intl.formatNumber(250, { style: 'currency', currency: 'SAR' })}
       </Paragraph>
       <Icon name="bag" />
       <Paragraph size={12} color={silverChalice}>
-        min. SR 55
+        {intl.formatMessage(messages.minValue, {
+          min: intl.formatNumber(250, { style: 'currency', currency: 'SAR' }),
+        })}
       </Paragraph>
     </Row>
   </StyledBottomPart>

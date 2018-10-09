@@ -1,72 +1,65 @@
 import React from 'react';
-
+import intl from 'utils/intlService';
 import StyledContainer from './StyledContainer';
 import DeliveryItem from './DeliveryItem';
+
+import messages from './messages';
 
 const DeliveryRegions = () => {
   const deliveries = [
     {
       id: 1,
-      title: 'Food delivery in',
-      region: 'Dubai',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.dubai),
+      description: intl.formatMessage(messages.description),
     },
     {
       id: 2,
-      title: 'Food delivery in',
-      region: 'Dubai',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.dubai),
+      description: intl.formatMessage(messages.description),
     },
     {
       id: 3,
-      title: 'Food delivery in',
-      region: 'Doha',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.doha),
+      description: intl.formatMessage(messages.description),
     },
     {
       id: 4,
-      title: 'Food delivery in',
-      region: 'Dubai',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.doha),
+      description: intl.formatMessage(messages.description),
     },
     {
       id: 5,
-      title: 'Food delivery in',
-      region: 'Doha',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.dubai),
+      description: intl.formatMessage(messages.description),
     },
     {
       id: 6,
-      title: 'Food delivery in',
-      region: 'Doha',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.doha),
+      description: intl.formatMessage(messages.description),
     },
     {
       id: 7,
-      title: 'Food delivery in',
-      region: 'Dubai',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.dubai),
+      description: intl.formatMessage(messages.description),
     },
     {
       id: 8,
-      title: 'Food delivery in',
-      region: 'Dubai',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.dubai),
+      description: intl.formatMessage(messages.description),
     },
     {
       id: 9,
-      title: 'Food delivery in',
-      region: 'Dubai',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+      title: intl.formatMessage(messages.title),
+      region: intl.formatMessage(messages.doha),
+      description: intl.formatMessage(messages.description),
     },
   ];
   return (

@@ -4,19 +4,22 @@ import { compose, withState, withHandlers } from 'recompose';
 
 import Button from 'components/Button';
 import Icon from 'components/Icon';
+import intl from 'utils/intlService';
 import StyledBanner from './StyledBanner';
 import ActionText from './ActionText';
 import IconWrapper from './IconWrapper';
 import ButtonWrapper from './ButtonWrapper';
 
+import messages from './messages';
+
 const AddRestaurantBanner = ({ isVisible, toggleVisibility }) => {
   if (isVisible)
     return (
       <StyledBanner>
-        <ActionText>Would you like to Join Us?</ActionText>
+        <ActionText>{intl.formatMessage(messages.actionText)}</ActionText>
         <ButtonWrapper>
           <Button
-            label="Add restaurant"
+            label={intl.formatMessage(messages.buttonLabel)}
             type="button"
             primary={false}
             lift={false}

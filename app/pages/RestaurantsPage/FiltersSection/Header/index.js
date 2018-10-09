@@ -6,18 +6,20 @@ import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import Group from 'components/Group';
+import intl from 'utils/intlService';
 
 import StyledHeader from './StyledHeader';
 import ButtonWrapper from './ButtonWrapper';
 import GroupWrapper from './GroupWrapper';
+import messages from './messages';
 
 const Header = ({ isModalOpened, closeModal }) => (
   <StyledHeader>
-    <Paragraph size={22}>Filters</Paragraph>
+    <Paragraph size={22}>{intl.formatMessage(messages.filters)}</Paragraph>
     <GroupWrapper isModalOpened={isModalOpened}>
       <Group>
         <Paragraph size={12} margin="0 5px 0 0">
-          Clear All
+          {intl.formatMessage(messages.clearAll)}
         </Paragraph>
         <Icon name="delete" />
       </Group>

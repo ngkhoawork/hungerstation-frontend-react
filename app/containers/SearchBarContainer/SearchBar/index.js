@@ -1,10 +1,12 @@
 import React from 'react';
 
 import Button from 'components/Button';
-
+import intl from 'utils/intlService';
 import DropdownInput from './DropdownInput';
 import LocateYourself from './LocateYourself';
 import * as Styled from './StyledComponents';
+
+import messages from './messages';
 
 const SearchBar = ({
   selectedCity,
@@ -18,14 +20,14 @@ const SearchBar = ({
 }) => (
   <Styled.Bar>
     <DropdownInput
-      placeholder="Enter city"
+      placeholder={intl.formatMessage(messages.city)}
       iconName="pin"
       suggestions={cities}
       onChange={selectCity}
       selectedItem={selectedCity}
     />
     <DropdownInput
-      placeholder="Enter District"
+      placeholder={intl.formatMessage(messages.district)}
       iconName="district"
       suggestions={districts}
       onChange={selectDistrict}
@@ -35,7 +37,7 @@ const SearchBar = ({
     <Styled.BarActions>
       <LocateYourself {...rest} />
       <Styled.ButtonWrapper onClick={handleSubmit}>
-        <Button label="Search" border="right" />
+        <Button label={intl.formatMessage(messages.search)} border="right" />
       </Styled.ButtonWrapper>
     </Styled.BarActions>
   </Styled.Bar>

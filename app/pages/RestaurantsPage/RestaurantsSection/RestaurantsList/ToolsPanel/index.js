@@ -1,15 +1,17 @@
 import React from 'react';
 
 import Icon from 'components/Icon';
+import intl from 'utils/intlService';
 import StyledToolPanel from './StyledToolPanel';
 import Dropdown from './Dropdown';
 import StyledTool from './StyledTool';
 import SearchInput from './SearchInput';
+import messages from './messages';
 
 const ToolsPanel = () => {
   const options = [
-    { id: 'pricehigh', label: 'Price High to Low' },
-    { id: 'pricelow', label: 'Price Low to High' },
+    { id: 'pricehigh', label: intl.formatMessage(messages.pricehigh) },
+    { id: 'pricelow', label: intl.formatMessage(messages.pricelow) },
   ];
   return (
     <StyledToolPanel>
@@ -17,7 +19,7 @@ const ToolsPanel = () => {
         <Dropdown
           rightIcon="arrowdown"
           options={options}
-          placeholder="Select sorting option"
+          placeholder={intl.formatMessage(messages.select)}
           handleOptionSelect={option => {
             console.log('Selecting an option', option);
           }}

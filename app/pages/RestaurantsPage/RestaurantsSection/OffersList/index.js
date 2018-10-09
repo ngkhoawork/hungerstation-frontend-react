@@ -46,7 +46,7 @@ export default class OffersList extends Component {
             <OfferItem key={offer.get('id')} offer={offer} />
           ))}
         </Slider>
-        <Pagination selectedPage={currentSlide + 1} pages={offers.size} />
+        <Pagination selectedPage={currentSlide + 1} pages={offers.count()} />
       </StyledOffersList>
     );
   }

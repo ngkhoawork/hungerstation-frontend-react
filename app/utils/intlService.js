@@ -31,8 +31,12 @@ export class Intl {
     return this.intl;
   }
 
-  formatMessage(args) {
-    return this.getIntl().formatMessage(args);
+  formatMessage(...args) {
+    return this.getIntl().formatMessage(...args);
+  }
+
+  formatNumber(...args) {
+    return this.getIntl().formatNumber(...args);
   }
 }
 

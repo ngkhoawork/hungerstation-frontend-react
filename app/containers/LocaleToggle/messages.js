@@ -11,4 +11,8 @@ export default defineMessages({
     id: 'app.containers.LocaleToggle.header',
     defaultMessage: 'This is LocaleToggle container !',
   },
+  language: {
+    id: 'app.containers.LocaleToggle.language',
+    defaultMessage: 'eng',
+  },
 });
