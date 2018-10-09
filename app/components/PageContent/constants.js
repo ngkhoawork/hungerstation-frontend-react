@@ -1,0 +1,1 @@
+export const LARGE_SCREEN_CONTENT_WIDTH = 1224;

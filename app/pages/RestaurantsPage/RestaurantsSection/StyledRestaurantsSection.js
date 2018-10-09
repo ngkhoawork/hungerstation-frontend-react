@@ -9,8 +9,7 @@ const StyledRestaurantsSection = styled.div`
       direction: 'column',
     },
     `
-    flex: 0.75;
-    padding: 10px 20px 10px 0;
+    width: 936px;
     overflow: hidden;
     position: relative;
   `,

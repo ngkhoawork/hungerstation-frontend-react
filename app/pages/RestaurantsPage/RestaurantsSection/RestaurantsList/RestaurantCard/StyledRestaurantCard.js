@@ -8,10 +8,10 @@ const StyledRestaurantCard = styled.div`
     { align: 'center', justify: 'space-between', direction: 'column' },
     `
     flex: 1 0 30%;
-    max-width: 260px;
-    height: 150px;
+    max-width: 288px;
+    height: 176px;
     border-radius: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     padding: 15px 15px 5px;
     background-image: url(${Figs});
     background-position: top;
@@ -19,27 +19,11 @@ const StyledRestaurantCard = styled.div`
     cursor: pointer;
   `,
   )};
-  ${mediaLess(1250)`
-    flex: 1 0 40%;
-    max-width: 340px;
-  `};
-  ${mediaLess(1000)`
-    flex: 1 0 30%;
-    max-width: 260px;
-  `};
-  ${mediaLess(860)`
-    flex: 1 0 40%;
-    max-width: 45%;
-  `};
-  ${mediaLess(600)`
-    flex: 1 0 100%;
-    min-width: 70%;
-    align-self: center;
-    height: 170px;
-    background-image: url(${FigsMobile});
-  `};
+
   ${mediaLess(500)`
-    min-width: 100%;
+    min-width: 324px;
+    background-image: url(${FigsMobile});
+
   `};
 `;
 

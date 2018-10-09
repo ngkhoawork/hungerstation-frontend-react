@@ -9,7 +9,10 @@ import RestaurantCard from './RestaurantCard';
 import ToolsPanel from './ToolsPanel';
 import StyledList from './StyledList';
 import LoadMore from './LoadMore';
-import ButtonWrapper from './ButtonWrapper';
+import ScrollToListTopWrapper from './ButtonWrapper';
+
+const PAGINATION_STEP = 9;
+const SCROLL_STEP = 400;
 
 export default class RestaurantsList extends Component {
   static propTypes = {
@@ -19,28 +22,49 @@ export default class RestaurantsList extends Component {
   constructor(props) {
     super(props);
     this.restaurantsListRef = React.createRef();
+    this.state = {
+      paginationStage: 1,
+    };
   }
 
-  handleScrollUp = () => {
-    this.restaurantsListRef.current.scrollIntoView();
+  handleScrollUp = () =>
+    this.restaurantsListRef.current.scrollIntoView({ behavior: 'smooth' });
+
+  showMoreItems = () => {
+    this.setState(prevState => ({
+      paginationStage: prevState.paginationStage + 1,
+    }));
+    window.scroll({ top: window.scrollY + SCROLL_STEP, behavior: 'smooth' });
   };
+
+  get showLoadMoreButton() {
+    const { restaurants } = this.props;
+    const { paginationStage } = this.state;
+    return paginationStage * PAGINATION_STEP <= restaurants.length;
+  }
 
   render() {
     const { restaurants } = this.props;
+    const { paginationStage } = this.state;
     return (
       <StyledRestaurantList innerRef={this.restaurantsListRef}>
         <ToolsPanel />
+
         <StyledList>
-          {restaurants.map(restaurant => (
-            <RestaurantCard key={restaurant.id} {...restaurant} />
-          ))}
+          {restaurants
+            .slice(0, paginationStage * PAGINATION_STEP)
+            .map(restaurant => (
+              <RestaurantCard key={restaurant.id} {...restaurant} />
+            ))}
         </StyledList>
-        <ButtonWrapper onClick={this.handleScrollUp}>
+
+        <ScrollToListTopWrapper onClick={this.handleScrollUp}>
           <CircledItem width={28} color={gold}>
             <Icon name="arrow-right" size={12} />
           </CircledItem>
-        </ButtonWrapper>
-        <LoadMore />
+        </ScrollToListTopWrapper>
+
+        {this.showLoadMoreButton && <LoadMore showMore={this.showMoreItems} />}
       </StyledRestaurantList>
     );
   }

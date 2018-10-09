@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PageContent from 'components/PageContent';
 import FiltersContainer from 'containers/FiltersContainer';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 
@@ -10,14 +11,16 @@ import FiltersWrapper from './FiltersWrapper';
 import StyledListPage from './StyledListPage';
 
 const RestaurantsPage = () => (
-  <StyledListPage>
-    <FiltersWrapper>
-      <FiltersContainer>
-        {props => <FiltersSection {...props} />}
-      </FiltersContainer>
-    </FiltersWrapper>
-    <RestaurantsSection />
-  </StyledListPage>
+  <PageContent>
+    <StyledListPage>
+      <FiltersWrapper>
+        <FiltersContainer>
+          {props => <FiltersSection {...props} />}
+        </FiltersContainer>
+      </FiltersWrapper>
+      <RestaurantsSection />
+    </StyledListPage>
+  </PageContent>
 );
 
 export default withHeaderAndFooter(RestaurantsPage);

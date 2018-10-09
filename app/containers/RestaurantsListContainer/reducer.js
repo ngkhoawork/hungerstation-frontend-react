@@ -72,6 +72,27 @@ export const initialState = fromJS({
       deliveryTimeMax: 45,
       minOrder: 250,
     },
+    {
+      id: '10',
+      name: 'Al Sayad Al',
+      deliveryTimeMin: 30,
+      deliveryTimeMax: 45,
+      minOrder: 250,
+    },
+    {
+      id: '11',
+      name: 'Al Sayad Al',
+      deliveryTimeMin: 30,
+      deliveryTimeMax: 45,
+      minOrder: 250,
+    },
+    {
+      id: '12',
+      name: 'Al Sayad Al',
+      deliveryTimeMin: 30,
+      deliveryTimeMax: 45,
+      minOrder: 250,
+    },
   ],
 });
 

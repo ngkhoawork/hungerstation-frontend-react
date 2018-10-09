@@ -6,11 +6,10 @@ const StyledListPage = styled.div`
     { align: 'flex-start', justify: 'space-between' },
     `
     width: 100%;
-    padding: 20px 56px;
+    background-color: #ffffff;
   `,
   )};
   ${mediaLess(1250)`
-    padding: 20px 20px 20px 30px;
   `};
   ${mediaLess(600)`
     padding: 0;
