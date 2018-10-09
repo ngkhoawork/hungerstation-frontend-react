@@ -1,10 +1,5 @@
-/**
- *
- * RestaurantsListContainer
- *
- */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'recompose';
@@ -28,12 +23,13 @@ const enhanced = compose(
   injectSaga({ key: 'restaurantsListContainer', saga }),
 );
 
-export const RestaurantsListContainer = ({ restaurants }) => (
-  <RestaurantsList restaurants={restaurants} />
+export const RestaurantsListContainer = ({ restaurants, sectionRef }) => (
+  <RestaurantsList restaurants={restaurants} sectionRef={sectionRef} />
 );
 
 RestaurantsListContainer.propTypes = {
   restaurants: restaurantsPropTypes,
+  sectionRef: PropTypes.element,
 };
 
 export default enhanced(RestaurantsListContainer);

@@ -1,18 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { flexBox, mediaLess } from 'utils/css/styles';
 
-import StyledSection from './StyledSection';
+const StyledSection = styled.div`
+  ${flexBox(
+    { align: 'flex-start', direction: 'column' },
+    `
+    position: relative;
+    margin-bottom: 70px;
+    width: 100%;
+  `,
+  )};
+  ${mediaLess(600)`
+    padding-left: 20px;
+    margin-bottom: 30px;
+  `};
+`;
 
-const Section = ({ children, header }) => (
-  <StyledSection>
-    {header}
-    {children}
-  </StyledSection>
-);
-
-Section.propTypes = {
-  children: PropTypes.node.isRequired,
-  header: PropTypes.node.isRequired,
-};
-
-export default Section;
+export default StyledSection;

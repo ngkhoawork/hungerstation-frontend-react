@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { restaurantsPropTypes } from 'propTypes/restaurants';
 import { gold } from 'utils/css/colors';
 
@@ -17,6 +18,7 @@ const SCROLL_STEP = 400;
 export default class RestaurantsList extends Component {
   static propTypes = {
     restaurants: restaurantsPropTypes,
+    sectionRef: PropTypes.element,
   };
 
   constructor(props) {
@@ -28,7 +30,10 @@ export default class RestaurantsList extends Component {
   }
 
   handleScrollUp = () =>
-    this.restaurantsListRef.current.scrollIntoView({ behavior: 'smooth' });
+    window.scroll({
+      top: this.props.sectionRef.current.offsetTop, //eslint-disable-line
+      behavior: 'smooth',
+    });
 
   showMoreItems = () => {
     this.setState(prevState => ({
