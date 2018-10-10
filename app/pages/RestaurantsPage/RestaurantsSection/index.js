@@ -50,7 +50,7 @@ const Wrapper = styled.div`
       direction: 'column',
     },
     `
-  width: 936px;
+  width: 912px;
   overflow: visible;
   position: relative;
 `,
@@ -60,6 +60,7 @@ const Wrapper = styled.div`
 `};
   ${mediaLess(600)`
   padding: 0;
+  width:100%
 `};
 `;
 

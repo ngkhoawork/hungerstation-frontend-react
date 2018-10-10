@@ -34,3 +34,8 @@ export const selectDistrictAction = createAction(
   'location/SELECT_DISTRICT',
   selectedDistrict => ({ selectedDistrict }),
 );
+
+export const submitSearchQuery = createAction(
+  'location/SUBMIT_SEARCH_QUERY',
+  history => ({ history }),
+);

@@ -12,6 +12,7 @@ const StyledRestaurantCard = styled.div`
     height: 176px;
     border-radius: 8px;
     margin-bottom: 24px;
+    margin-right: 24px;
     padding: 15px 15px 5px;
     background-image: url(${Figs});
     background-position: top;
@@ -20,10 +21,14 @@ const StyledRestaurantCard = styled.div`
   `,
   )};
 
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+
   ${mediaLess(500)`
     min-width: 324px;
     background-image: url(${FigsMobile});
-
+    margin-right: 0px;
   `};
 `;
 

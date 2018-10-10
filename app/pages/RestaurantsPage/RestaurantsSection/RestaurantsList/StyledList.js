@@ -3,9 +3,9 @@ import { flexBox, mediaLess } from 'utils/css/styles';
 
 const StyledList = styled.div`
   ${flexBox(
-    { align: 'flex-start', justify: 'space-between' },
+    { align: 'flex-start' },
     `
-    width: 936px;
+    width: 912px;
     flex-wrap: wrap;
   `,
   )};

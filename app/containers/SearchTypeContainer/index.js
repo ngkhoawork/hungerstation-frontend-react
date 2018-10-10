@@ -37,9 +37,9 @@ export default class SearchTypeContainer extends React.PureComponent {
   handleSelect = value => {
     const { selectSearchType } = this.props;
     if (!value) {
-      selectSearchType('delivery');
+      selectSearchType('hungerstation_delivery');
     } else {
-      selectSearchType('pickup');
+      selectSearchType('no_delivery');
     }
   };
 

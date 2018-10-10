@@ -1,5 +1,6 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { getUserPosition, getSettlementDetails, getUnit } from 'utils/location';
+import { fetchRestaurantsSaga } from 'modules/restaurants/sagas';
 import locationApi from './api';
 
 import {
@@ -11,8 +12,9 @@ import {
   toggleSettlementLoadedAction,
   selectCityAction,
   selectDistrictAction,
+  submitSearchQuery,
 } from './actions';
-import { selectCities } from './selectors';
+import { selectCities, selectDistrict, selectCity } from './selectors';
 
 function* getCitiesFlow() {
   const cachedCities = yield select(selectCities);
@@ -67,9 +69,21 @@ function* getCurrentLocationFlow() {
   }
 }
 
+function* submitSearchQueryActionFlow({ payload }) {
+  const district = yield select(selectDistrict);
+  const city = yield select(selectCity);
+
+  yield call(fetchRestaurantsSaga);
+
+  const path = `/restaurants/${city.get('name')}/${district.get('name')}`
+    .toLowerCase()
+    .replace(' ', '-');
+  payload.history.push(path);
+}
 // Individual exports for testing
 export default function* watchLocationActionsSaga() {
   yield takeEvery(getCitiesAction.type, getCitiesFlow);
   yield takeEvery(selectCityAction.type, selectCityFlow);
   yield takeEvery(getCurrentLocationAction.type, getCurrentLocationFlow);
+  yield takeEvery(submitSearchQuery.type, submitSearchQueryActionFlow);
 }

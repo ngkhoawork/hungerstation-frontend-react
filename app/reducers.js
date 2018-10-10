@@ -10,6 +10,7 @@ import formReducer from 'hocs/withFormState/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import authReducer from 'modules/auth/reducer';
 import locationReducer from 'modules/location/reducer';
+import restaurantsReducer from 'modules/restaurants/reducer';
 
 /*
  * routeReducer
@@ -49,6 +50,7 @@ export default function createReducer(injectedReducers) {
     auth: authReducer,
     location: locationReducer,
     form: formReducer,
+    restaurants: restaurantsReducer,
     ...injectedReducers,
   });
 }

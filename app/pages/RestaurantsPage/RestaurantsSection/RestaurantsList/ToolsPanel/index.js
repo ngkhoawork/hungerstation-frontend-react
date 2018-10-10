@@ -1,36 +1,69 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+import { injectSaga, injectReducer } from 'utils/injectors';
+import { flexBox, mediaLess } from 'utils/css/styles';
+import { wildSand } from 'utils/css/colors';
 
 import Icon from 'components/Icon';
-import intl from 'utils/intlService';
-import StyledToolPanel from './StyledToolPanel';
-import Dropdown from './Dropdown';
-import StyledTool from './StyledTool';
 import SearchInput from './SearchInput';
-import messages from './messages';
+import { searchRestaurantAction } from './actions';
+import reducer from './reducer';
+import saga from './saga';
 
-const ToolsPanel = () => {
-  const options = [
-    { id: 'pricehigh', label: intl.formatMessage(messages.pricehigh) },
-    { id: 'pricelow', label: intl.formatMessage(messages.pricelow) },
-  ];
-  return (
-    <StyledToolPanel>
-      <StyledTool>
-        <Dropdown
-          rightIcon="arrowdown"
-          options={options}
-          placeholder={intl.formatMessage(messages.select)}
-          handleOptionSelect={option => {
-            console.log('Selecting an option', option);
-          }}
-        />
-      </StyledTool>
-      <StyledTool>
-        <Icon name="magnifying-glass" size={15} />
-        <SearchInput />
-      </StyledTool>
-    </StyledToolPanel>
-  );
+const decorate = compose(
+  injectReducer({ key: 'RestaurantListToolsPanel', reducer }),
+  injectSaga({ key: 'RestaurantListToolsPanel', saga }),
+  connect(
+    null,
+    { searchRestaurantAction },
+  ),
+);
+// eslint-disable-next-line no-shadow
+const ToolsPanel = ({ searchRestaurantAction }) => (
+  <Wrapper>
+    <StyledTool>
+      <IconPositioning>
+        <Icon name="magnifying-glass" size={18} />
+      </IconPositioning>
+      <SearchInput searchRestaurantAction={searchRestaurantAction} />
+    </StyledTool>
+  </Wrapper>
+);
+
+export default decorate(ToolsPanel);
+
+ToolsPanel.propTypes = {
+  searchRestaurantAction: PropTypes.func.isRequired,
 };
 
-export default ToolsPanel;
+const Wrapper = styled.div`
+  ${flexBox(
+    { align: 'center', justify: 'space-between' },
+    `
+    width: 100%;
+    padding-top: 20px;
+    margin-bottom: 50px;
+    border-top: 1px solid ${wildSand};
+  `,
+  )};
+  ${mediaLess(600)`
+    margin-bottom: 10px;
+  `};
+`;
+
+const StyledTool = styled.div`
+  display: flex;
+  width: 360px;
+`;
+
+const IconPositioning = styled.div`
+  position absolute;
+  top: 24px;
+
+  ${mediaLess(600)`
+  top: 44px;
+`};
+`;

@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import { SELECT_SEARCH_TYPE } from './constants';
 
 export const initialState = fromJS({
-  selectedSearchType: 'delivery',
+  selectedSearchType: 'hungerstation_delivery',
 });
 
 function searchTypeContainerReducer(state = initialState, action) {
