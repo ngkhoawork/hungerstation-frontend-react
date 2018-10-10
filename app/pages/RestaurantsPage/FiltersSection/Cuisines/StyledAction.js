@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { wildSant } from 'utils/css/colors';
+import { wildSand } from 'utils/css/colors';
 import { flexBox } from 'utils/css/styles';
 
 const StyledAction = styled.div`
   ${flexBox({ align: 'center' })} padding-top: 20px;
-  border-top: 1px solid ${wildSant};
+  border-top: 1px solid ${wildSand};
   width: 100%;
   cursor: pointer;
   img {

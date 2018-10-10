@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
@@ -47,14 +48,14 @@ export default class SearchBarContainer extends React.PureComponent {
     selectDistrict: PropTypes.func.isRequired,
     selectedCity: PropTypes.object,
     selectedDistrict: PropTypes.object,
-    cities: PropTypes.arrayOf(
-      PropTypes.shape({
+    cities: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
       }).isRequired,
     ),
-    districts: PropTypes.arrayOf(
-      PropTypes.shape({
+    districts: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
       }).isRequired,
@@ -96,6 +97,7 @@ export default class SearchBarContainer extends React.PureComponent {
       selectedCity,
       selectedDistrict,
     } = this.props;
+
     return (
       <SearchBar
         cities={cities}

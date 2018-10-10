@@ -24,7 +24,7 @@ const Breadcrumbs = ({ crumbs }) => (
   <BreadcrumbsStyled>
     <ul>
       {crumbs.map((item, i) => (
-        <Fragment>
+        <Fragment key={item.key}>
           {i !== crumbs.length - 1 && (
             <Fragment>
               <li key={item.key}>

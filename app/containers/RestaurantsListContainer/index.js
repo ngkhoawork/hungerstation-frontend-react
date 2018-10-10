@@ -29,7 +29,7 @@ export const RestaurantsListContainer = ({ restaurants, sectionRef }) => (
 
 RestaurantsListContainer.propTypes = {
   restaurants: restaurantsPropTypes,
-  sectionRef: PropTypes.element,
+  sectionRef: PropTypes.shape({ current: PropTypes.element }),
 };
 
 export default enhanced(RestaurantsListContainer);

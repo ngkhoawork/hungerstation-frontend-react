@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/css/styles';
-import { wildSant } from 'utils/css/colors';
+import { wildSand } from 'utils/css/colors';
 
 const StyledSelect = styled.div`
   ${flexBox(
@@ -12,7 +12,7 @@ const StyledSelect = styled.div`
     overflow-y: scroll;
     position: absolute;
     z-index: 1000;
-    background-color: ${wildSant};
+    background-color: ${wildSand};
     border-radius: 8px;
   `,
   )};

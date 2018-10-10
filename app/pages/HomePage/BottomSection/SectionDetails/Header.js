@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { fuscousGray } from 'utils/css/colors';
 import { mediaMedium } from 'utils/css/styles';
 
-const Header = styled.p`
+const Header = styled.div`
   font-size: 36px;
   letter-spacing: 0.56px;
   color: ${fuscousGray};

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { wildSant, silverChalice } from 'utils/css/colors';
+import { wildSand, silverChalice } from 'utils/css/colors';
 import { compose, withState, withHandlers } from 'recompose';
 import { filtersCategoryPropTypes } from 'propTypes/filters';
 
@@ -25,7 +25,7 @@ const Cuisines = ({
       {cuisineList.map(cuisine => (
         <StyledItem key={cuisine.get('id')}>
           <Group>
-            <CircledItem color={wildSant} width={28}>
+            <CircledItem color={wildSand} width={28}>
               <Icon
                 name={`${cuisine.get('id').toLowerCase()}-cuisine`}
                 size={12}

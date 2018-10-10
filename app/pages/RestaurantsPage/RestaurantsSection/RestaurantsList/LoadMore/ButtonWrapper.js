@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { mediaLess } from 'utils/css/styles';
 
 const ButtonWrapper = styled.div`
-  width: 260px;
+  width: 288px;
   height: 40px;
   align-self: center;
   margin-top: 10px;

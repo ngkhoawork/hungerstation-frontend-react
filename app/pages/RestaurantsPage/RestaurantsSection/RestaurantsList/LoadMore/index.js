@@ -1,6 +1,6 @@
 import React from 'react';
-import Proptypes from 'prop-types';
-import { wildSant } from 'utils/css/colors';
+import PropTypes from 'prop-types';
+import { alabaster } from 'utils/css/colors';
 import intl from 'utils/intlService';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
@@ -12,7 +12,8 @@ const LoadMore = ({ showMore }) => (
     <Button
       label={intl.formatMessage(messages.label)}
       primary={false}
-      color={wildSant}
+      lift={false}
+      color={alabaster}
     >
       <Icon name="refresh" />
     </Button>
@@ -20,7 +21,7 @@ const LoadMore = ({ showMore }) => (
 );
 
 LoadMore.propTypes = {
-  showMore: Proptypes.func.isRequired,
+  showMore: PropTypes.func.isRequired,
 };
 
 export default LoadMore;

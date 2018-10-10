@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { withStyles } from '@material-ui/core/styles';
 import Autocompleter from 'components/Autocompleter';
 
@@ -32,7 +33,7 @@ DropdownInput.propTypes = {
   iconName: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string,
-  suggestions: PropTypes.array.isRequired,
+  suggestions: ImmutablePropTypes.list.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 

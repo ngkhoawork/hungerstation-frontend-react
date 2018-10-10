@@ -18,7 +18,7 @@ const SCROLL_STEP = 400;
 export default class RestaurantsList extends Component {
   static propTypes = {
     restaurants: restaurantsPropTypes,
-    sectionRef: PropTypes.element,
+    sectionRef: PropTypes.shape({ current: PropTypes.element }),
   };
 
   constructor(props) {

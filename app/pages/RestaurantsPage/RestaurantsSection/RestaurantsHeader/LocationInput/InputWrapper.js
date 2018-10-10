@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { flexBox, mediaLess } from 'utils/css/styles';
-import { wildSant } from 'utils/css/colors';
+import { wildSand } from 'utils/css/colors';
 
 const InputWrapper = styled.div`
   ${flexBox(
     { align: 'center' },
     `
-    background-color: ${wildSant}
+    background-color: ${wildSand}
     border-radius: 8px;
     height: 35px;
     padding: 0 15px;

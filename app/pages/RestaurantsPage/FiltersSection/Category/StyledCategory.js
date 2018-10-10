@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/css/styles';
-import { wildSant } from 'utils/css/colors';
+import { wildSand } from 'utils/css/colors';
 
 const StyledCategory = styled.div`
   ${flexBox(
@@ -9,7 +9,7 @@ const StyledCategory = styled.div`
     width: 100%;
     margin: 20px 0;
     padding-bottom: 10px;
-    border-bottom: 1px solid ${wildSant};
+    border-bottom: 1px solid ${wildSand};
   `,
   )};
   &:last-of-type {

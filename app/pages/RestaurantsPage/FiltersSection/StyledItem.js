@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/css/styles';
-import { wildSant } from 'utils/css/colors';
+import { wildSand } from 'utils/css/colors';
 
 const StyledItem = styled.div`
   ${flexBox(
@@ -11,7 +11,7 @@ const StyledItem = styled.div`
   `,
   )};
   border-bottom: ${({ hasBorder }) =>
-    hasBorder ? `1px solid ${wildSant}` : 'none'};
+    hasBorder ? `1px solid ${wildSand}` : 'none'};
   &:last-of-type {
     border: 0;
   }

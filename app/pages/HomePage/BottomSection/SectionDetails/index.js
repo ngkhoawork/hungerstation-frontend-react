@@ -14,7 +14,7 @@ const SectionDetails = ({ header, description, children, left }) => (
 );
 
 SectionDetails.propTypes = {
-  header: PropTypes.string.isRequired,
+  header: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
   description: PropTypes.string.isRequired,
   children: PropTypes.element,
   left: PropTypes.bool,

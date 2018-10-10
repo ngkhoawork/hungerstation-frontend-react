@@ -52,7 +52,9 @@
     "*.js": [
       "npm run lint:eslint:fix",
       "git add --force"
-    ],
+    ]
+  },
+  "linters": {
     "*.json": [
       "prettier --write",
       "git add --force"
@@ -155,8 +157,8 @@
     "chalk": "^2.4.1",
     "compression": "1.7.2",
     "cross-env": "5.2.0",
-    "enzyme-redux": "^0.2.1",
     "downshift": "^2.2.2",
+    "enzyme-redux": "^0.2.1",
     "express": "^4.16.3",
     "fontfaceobserver": "2.0.13",
     "formik": "^1.0.3",

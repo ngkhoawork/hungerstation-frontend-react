@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';
-import { wildSant } from 'utils/css/colors';
+import { wildSand } from 'utils/css/colors';
 import { itemToString, getSuggestions } from 'utils/helpers';
 
 import Input from './Input';
@@ -65,7 +65,7 @@ const Autocomplete = props => {
                 },
                 startAdornment: (
                   <InputAdornment position="start">
-                    <CircledItem color={wildSant} width={28}>
+                    <CircledItem color={wildSand} width={28}>
                       <Icon name={icon} />
                     </CircledItem>
                   </InputAdornment>
@@ -79,6 +79,7 @@ const Autocomplete = props => {
                     <Suggestion
                       suggestion={suggestion}
                       index={index}
+                      key={suggestion.id}
                       itemProps={getItemProps({
                         item: suggestion,
                         classes: {
