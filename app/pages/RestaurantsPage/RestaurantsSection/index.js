@@ -11,7 +11,15 @@ import RestaurantsHeader from './RestaurantsHeader';
 import BriefFiltersSection from '../BriefFiltersSection';
 
 const RestaurantsSection = () => {
-  const restaurantsListSectionRef = React.createRef();
+  const topRef = React.createRef();
+
+  const handleScrollToTop = () => {
+    topRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
+
   return (
     <Wrapper>
       <Section>
@@ -19,14 +27,14 @@ const RestaurantsSection = () => {
         <OffersListContainer />
       </Section>
 
-      <Section innerRef={restaurantsListSectionRef}>
+      <Section innerRef={topRef}>
         <RestaurantsHeader />
         <BriefFiltersWrapper>
           <FiltersContainer>
             {props => <BriefFiltersSection {...props} />}
           </FiltersContainer>
         </BriefFiltersWrapper>
-        <RestaurantsListContainer sectionRef={restaurantsListSectionRef} />
+        <RestaurantsListContainer handleScrollToTop={handleScrollToTop} />
       </Section>
     </Wrapper>
   );

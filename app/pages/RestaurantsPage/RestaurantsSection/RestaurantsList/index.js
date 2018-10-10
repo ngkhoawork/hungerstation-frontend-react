@@ -18,22 +18,15 @@ const SCROLL_STEP = 400;
 export default class RestaurantsList extends Component {
   static propTypes = {
     restaurants: restaurantsPropTypes,
-    sectionRef: PropTypes.shape({ current: PropTypes.element }),
+    handleScrollToTop: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
-    this.restaurantsListRef = React.createRef();
     this.state = {
       paginationStage: 1,
     };
   }
-
-  handleScrollUp = () =>
-    window.scroll({
-      top: this.props.sectionRef.current.offsetTop, //eslint-disable-line
-      behavior: 'smooth',
-    });
 
   showMoreItems = () => {
     this.setState(prevState => ({
@@ -49,10 +42,11 @@ export default class RestaurantsList extends Component {
   }
 
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, handleScrollToTop } = this.props;
     const { paginationStage } = this.state;
+
     return (
-      <StyledRestaurantList innerRef={this.restaurantsListRef}>
+      <StyledRestaurantList>
         <ToolsPanel />
 
         <StyledList>
@@ -63,7 +57,7 @@ export default class RestaurantsList extends Component {
             ))}
         </StyledList>
 
-        <ScrollToListTopWrapper onClick={this.handleScrollUp}>
+        <ScrollToListTopWrapper onClick={handleScrollToTop}>
           <CircledItem width={28} color={gold}>
             <Icon name="arrow-right" size={12} />
           </CircledItem>

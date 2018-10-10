@@ -23,13 +23,19 @@ const enhanced = compose(
   injectSaga({ key: 'restaurantsListContainer', saga }),
 );
 
-export const RestaurantsListContainer = ({ restaurants, sectionRef }) => (
-  <RestaurantsList restaurants={restaurants} sectionRef={sectionRef} />
+export const RestaurantsListContainer = ({
+  restaurants,
+  handleScrollToTop,
+}) => (
+  <RestaurantsList
+    restaurants={restaurants}
+    handleScrollToTop={handleScrollToTop}
+  />
 );
 
 RestaurantsListContainer.propTypes = {
   restaurants: restaurantsPropTypes,
-  sectionRef: PropTypes.shape({ current: PropTypes.element }),
+  handleScrollToTop: PropTypes.func.isRequired,
 };
 
 export default enhanced(RestaurantsListContainer);
