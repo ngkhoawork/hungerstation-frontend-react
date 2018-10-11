@@ -8,7 +8,8 @@ properties(
 
 def app, utils, canDeploy, canBuildImage
 def imageName = 'gcr.io/hungerstation-configs/customer-website-frontend'
-def deployableBranches = ["development", "staging"]
+def deployableBranches = ["development"]
+def platformChart = "http://charts.hsips.net/charts/customer-website-frontend-0.1.0.tgz"
 
 pipeline {
   agent any
@@ -71,8 +72,7 @@ pipeline {
             TAG = "$BRANCH_NAME-$BUILD_NUMBER"
           }
 
-          utils.updateDeploymentImage('platform-customer-website-frontend',
-          'platform-customer-website-frontend', imageName, TAG, BRANCH_NAME)
+          utils.updateHelmRelease("development-customer", platformChart , TAG, "preview", "development")
         }
       }
     }
