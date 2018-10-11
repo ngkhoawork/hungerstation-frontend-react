@@ -10,8 +10,9 @@ const InputWrapper = styled.div`
     border-radius: 8px;
     height: 35px;
     padding: 0 15px;
-    min-width: 270px;
+    min-width: 350px;
     margin-bottom: 8px;
+    margin-right: 22%
   `,
   )};
   img {
