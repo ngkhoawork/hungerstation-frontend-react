@@ -3,12 +3,15 @@ import { flexBox } from 'utils/css/styles';
 
 const StyledAction = styled.div`
   ${flexBox(
-    { align: 'flex-end', justify: 'space-between' },
+    { align: 'center', justify: 'center' },
     `
-    width: 60px;
+    width: 100%;
     margin-bottom: 5px;
   `,
   )};
+  p {
+    margin-right: 10px;
+  }
 `;
 
 export default StyledAction;
