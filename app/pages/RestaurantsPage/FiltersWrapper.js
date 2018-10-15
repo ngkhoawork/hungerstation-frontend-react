@@ -5,7 +5,6 @@ const FiltersWrapper = styled.div`
   ${flexBox(
     { align: 'flex-start', justify: 'center', direction: 'column' },
     `
-    padding: 10px 20px;
     width: 186px;
   `,
   )};

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import RestaurantsList from 'pages/RestaurantsPage/RestaurantsSection/RestaurantsList';
 
 import { selectVisibleRestaurants } from 'modules/restaurants/selectors';
-import { restaurantsPropTypes } from 'propTypes/restaurants';
 
 const enhanced = connect(state => ({
   restaurants: selectVisibleRestaurants(state),
@@ -22,7 +21,7 @@ export const RestaurantsListContainer = ({
 );
 
 RestaurantsListContainer.propTypes = {
-  restaurants: restaurantsPropTypes,
+  restaurants: PropTypes.array,
   handleScrollToTop: PropTypes.func.isRequired,
 };
 

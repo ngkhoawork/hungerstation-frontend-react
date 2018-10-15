@@ -6,6 +6,7 @@ import {
   selectDistrictAction,
   setSettlementDetailsAction,
   toggleSettlementLoadedAction,
+  saveCurrentLocationAction,
 } from './actions';
 
 export const initialState = fromJS({
@@ -14,6 +15,10 @@ export const initialState = fromJS({
   selectedCity: null,
   selectedDistrict: null,
   isSettlementLoaded: true,
+  coords: {
+    lat: 24.7706825,
+    lng: 46.6627549,
+  },
 });
 
 function searchBarContainerReducer(state = initialState, action) {
@@ -30,6 +35,8 @@ function searchBarContainerReducer(state = initialState, action) {
       return onSetSettlementDetails(state, action);
     case toggleSettlementLoadedAction.type:
       return onToggleSettlementLoaded(state, action);
+    case saveCurrentLocationAction.type:
+      return onSaveCurrentLocationAction(state, action);
     default:
       return state;
   }
@@ -77,5 +84,10 @@ const onToggleSettlementLoaded = (state, action) => {
     isSettlementLoaded: isLoaded,
   });
 };
+
+const onSaveCurrentLocationAction = (state, action) =>
+  state.merge({
+    coords: action.payload,
+  });
 
 export default searchBarContainerReducer;

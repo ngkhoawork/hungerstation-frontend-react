@@ -9,7 +9,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   time: {
     id: 'app.components.RestaurantsList.RestaurantCard.time',
-    defaultMessage: '{min}-{max} min',
+    defaultMessage: '{max} min',
   },
   minValue: {
     id: 'app.components.RestaurantsList.RestaurantCard.minValue',

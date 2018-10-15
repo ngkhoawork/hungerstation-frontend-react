@@ -4,6 +4,11 @@ export const getCurrentLocationAction = createAction(
   'location/GET_CURRENT_LOCATION',
 );
 
+export const saveCurrentLocationAction = createAction(
+  'location/SAVE_CURRENT_LOCATION',
+  coords => ({ ...coords }),
+);
+
 export const getCitiesAction = createAction('location/GET_CITIES');
 
 export const setSettlementDetailsAction = createAction(

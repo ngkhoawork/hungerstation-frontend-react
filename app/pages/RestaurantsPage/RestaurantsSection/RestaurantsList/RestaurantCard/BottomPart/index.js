@@ -1,6 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { silverChalice, jade } from 'utils/css/colors';
+import { restaurantPropTypes } from 'prop-types';
+import {
+  silverChalice,
+  jade,
+  gold,
+  persimmon,
+  fuscousGray,
+} from 'utils/css/colors';
 import intl from 'utils/intlService';
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';
@@ -9,10 +15,19 @@ import StyledBottomPart from './StyledBottomPart';
 import Row from '../Row';
 import messages from './messages';
 
-const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
+const mappedStatusToColor = {
+  closed: persimmon,
+  busy: gold,
+  ready: jade,
+};
+
+const BottomPart = ({ name, deliveryTime, minOrder, deliveryFee, status }) => (
   <StyledBottomPart>
     <Row>
-      <CircledItem color={jade} width={7} />
+      <CircledItem
+        color={mappedStatusToColor[status] || fuscousGray}
+        width={7}
+      />
       <Paragraph size={17} margin="0 0 0 5px">
         {name}
       </Paragraph>
@@ -21,18 +36,20 @@ const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
       <Icon name="time" />
       <Paragraph size={12}>
         {intl.formatMessage(messages.time, {
-          min: deliveryTimeMin,
-          max: deliveryTimeMax,
+          max: deliveryTime,
         })}
       </Paragraph>
       <Icon name="delivery" />
       <Paragraph size={12} color={silverChalice}>
-        {intl.formatNumber(250, { style: 'currency', currency: 'SAR' })}
+        {intl.formatNumber(deliveryFee, { style: 'currency', currency: 'SAR' })}
       </Paragraph>
       <Icon name="bag" />
       <Paragraph size={12} color={silverChalice}>
         {intl.formatMessage(messages.minValue, {
-          min: intl.formatNumber(250, { style: 'currency', currency: 'SAR' }),
+          min: intl.formatNumber(minOrder, {
+            style: 'currency',
+            currency: 'SAR',
+          }),
         })}
       </Paragraph>
     </Row>
@@ -40,9 +57,7 @@ const BottomPart = ({ name, deliveryTimeMin, deliveryTimeMax }) => (
 );
 
 BottomPart.propTypes = {
-  name: PropTypes.string.isRequired,
-  deliveryTimeMin: PropTypes.number.isRequired,
-  deliveryTimeMax: PropTypes.number.isRequired,
+  ...restaurantPropTypes,
 };
 
 export default BottomPart;

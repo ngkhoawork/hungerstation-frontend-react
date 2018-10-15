@@ -79,7 +79,7 @@ const Autocomplete = props => {
                     <Suggestion
                       suggestion={suggestion}
                       index={index}
-                      key={suggestion.id}
+                      key={suggestion.get('name')}
                       itemProps={getItemProps({
                         item: suggestion,
                         classes: {

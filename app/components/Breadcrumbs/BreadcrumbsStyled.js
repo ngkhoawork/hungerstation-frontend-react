@@ -7,7 +7,8 @@ import { boulder } from 'utils/css/colors';
 export const BreadcrumbsStyled = styled.div`
   display: flex;
   justify-content: flex-start;
-  width: calc(100% - 112px);
+  margin-bottom: 16px;
+
   ${mediaSmall`
     width: calc(100% - 40px);
 
@@ -33,6 +34,10 @@ export const BreadcrumbsStyled = styled.div`
 
   a {
     display: inline-block;
+  }
+
+  ${ButtonLink} {
+    margin-top: -3px;
   }
 
   a:not(${ButtonLink}) {

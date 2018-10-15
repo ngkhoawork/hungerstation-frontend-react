@@ -5,9 +5,9 @@ import { flexBox, mediaLess, mediaGreater } from 'utils/css/styles';
 import OffersListContainer from 'containers/OffersListContainer';
 import FiltersContainer from 'containers/FiltersContainer';
 import RestaurantsListContainer from 'containers/RestaurantsListContainer';
+import RestaurantsHeaderContainer from 'containers/RestaurantsHeaderContainer';
 import Paragraph from 'components/Paragraph';
 import Section from './Section';
-import RestaurantsHeader from './RestaurantsHeader';
 import BriefFiltersSection from '../BriefFiltersSection';
 
 const RestaurantsSection = () => {
@@ -28,7 +28,7 @@ const RestaurantsSection = () => {
       </Section>
 
       <Section innerRef={topRef}>
-        <RestaurantsHeader />
+        <RestaurantsHeaderContainer />
         <BriefFiltersWrapper>
           <FiltersContainer>
             {props => <BriefFiltersSection {...props} />}

@@ -69,7 +69,7 @@
   "app.components.RestaurantsHeader.LocationInput.placeholder": "Almohammadeah, Baljursahi",
   "app.components.RestaurantsList.LoadMore.label": "Load More",
   "app.components.RestaurantsList.RestaurantCard.minValue": "min. {min}",
-  "app.components.RestaurantsList.RestaurantCard.time": "{min}-{max} min",
+  "app.components.RestaurantsList.RestaurantCard.time": "{max} min",
   "app.components.SearchBar.city": "Enter city",
   "app.components.SearchBar.district": "Enter District",
   "app.components.SearchBar.search": "Search",

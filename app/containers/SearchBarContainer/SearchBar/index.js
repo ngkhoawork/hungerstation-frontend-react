@@ -16,6 +16,7 @@ const SearchBar = ({
   selectDistrict,
   selectedDistrict,
   handleSubmit,
+  isSubmitting,
   ...rest
 }) => (
   <Styled.Bar>
@@ -36,8 +37,13 @@ const SearchBar = ({
     />
     <Styled.BarActions>
       <LocateYourself {...rest} />
-      <Styled.ButtonWrapper onClick={handleSubmit}>
-        <Button label={intl.formatMessage(messages.search)} border="right" />
+      <Styled.ButtonWrapper onClick={isSubmitting ? null : handleSubmit}>
+        <Button
+          label={intl.formatMessage(messages.search)}
+          border="right"
+          disabled={isSubmitting}
+          loading={isSubmitting}
+        />
       </Styled.ButtonWrapper>
     </Styled.BarActions>
   </Styled.Bar>

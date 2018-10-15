@@ -38,4 +38,9 @@ export const selectDistrict = createSelector(
   searchBarState => searchBarState.get('selectedDistrict'),
 );
 
+export const makeSelectLastCoords = () =>
+  createSelector(selectLocationDomain, locationState =>
+    locationState.get('coords').toJS(),
+  );
+
 export { selectLocationDomain };

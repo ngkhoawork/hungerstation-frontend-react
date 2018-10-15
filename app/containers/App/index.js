@@ -79,7 +79,10 @@ export default class App extends Component {
         <AddRestaurantBanner />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/restaurants" component={RestaurantsPage} />
+          <Route
+            path="/restaurants/:city/:district/:deliveryType?"
+            component={RestaurantsPage}
+          />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
 
           <Route path="/login" component={LoginPage} />

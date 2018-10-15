@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 export default {
-  getCities: PropTypes.func.isRequired,
-  selectCity: PropTypes.func.isRequired,
-  selectDistrict: PropTypes.func.isRequired,
+  getCities: PropTypes.func,
+  selectCity: PropTypes.func,
+  selectDistrict: PropTypes.func,
   selectedCity: PropTypes.object,
   selectedDistrict: PropTypes.object,
   cities: ImmutablePropTypes.listOf(
@@ -19,8 +19,9 @@ export default {
       name: PropTypes.string.isRequired,
     }).isRequired,
   ),
-  getCurrentLocation: PropTypes.func.isRequired,
-  isSettlementLoaded: PropTypes.bool.isRequired,
-  submitSearchQueryAction: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
+  getCurrentLocation: PropTypes.func,
+  isSettlementLoaded: PropTypes.bool,
+  submitSearchQueryAction: PropTypes.func,
+  history: PropTypes.object,
+  isSubmitting: PropTypes.bool,
 };

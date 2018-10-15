@@ -18,6 +18,8 @@ import {
   getCurrentLocationAction,
   submitSearchQuery,
 } from 'modules/location/actions';
+import { makeSelectSubmitting } from 'hocs/withFormState/selectors';
+
 import SearchBar from './SearchBar';
 import types from './propTypes';
 
@@ -27,6 +29,7 @@ const mapStateToProps = createStructuredSelector({
   isSettlementLoaded: selectIsSettlementLoaded,
   selectedCity: selectCity,
   selectedDistrict: selectDistrict,
+  isSubmitting: makeSelectSubmitting(),
 });
 
 const mapDispatchToProps = {
@@ -63,11 +66,8 @@ export default class SearchBarContainer extends React.PureComponent {
     } = this.props;
     const city = selectedCity && selectedCity.get('name', null);
     const district = selectedDistrict && selectedDistrict.get('name', null);
-    // let path = '/restaurants';
     if (city && district) {
       submitSearchQueryAction(history);
-      // path = `/restaurants/${city}/${district}`.toLowerCase().replace(' ', '-');
-      // history.push(path);
     }
   };
 
@@ -81,8 +81,8 @@ export default class SearchBarContainer extends React.PureComponent {
       isSettlementLoaded,
       selectedCity,
       selectedDistrict,
+      isSubmitting,
     } = this.props;
-
     return (
       <SearchBar
         cities={cities}
@@ -94,6 +94,7 @@ export default class SearchBarContainer extends React.PureComponent {
         selectedCity={selectedCity}
         selectedDistrict={selectedDistrict}
         handleSubmit={this.handleRedirect}
+        isSubmitting={isSubmitting}
       />
     );
   }

@@ -1,12 +1,30 @@
 const listCitiesQuery = `query ($country_id: Int!) {
-  listCities(country_id: $country_id) {
+  cities(country_id: $country_id) {
     id
     name
-    districts {
+    locals {
       id
       name
     }
   }
 }`;
 
-export { listCitiesQuery };
+const getDistrictBySlugQuery = `query ($slug: String) {
+  local(slug: $slug) {
+    id
+    name
+  }
+}`;
+
+const getLocalQuery = `query ($lat:Float!, $lng:Float!) {
+  locals(lat: $lat, lng: $lng) {
+    name
+    id
+    city {
+      name
+      id
+    }
+  }
+}`;
+
+export { listCitiesQuery, getLocalQuery, getDistrictBySlugQuery };

@@ -8,17 +8,20 @@ import BottomPart from './BottomPart';
 
 const RestaurantCard = ({
   name,
-  deliveryTimeMax,
-  deliveryTimeMin,
+  deliveryTime,
   minOrder,
+  rateAverage,
+  deliveryFee,
+  status,
 }) => (
   <StyledRestaurantCard>
-    <UpperPart brandSrc={BurgerKing} rating={4.9} />
+    <UpperPart brandSrc={BurgerKing} rating={rateAverage} />
     <BottomPart
       name={name}
-      deliveryTimeMax={deliveryTimeMax}
-      deliveryTimeMin={deliveryTimeMin}
+      deliveryTime={deliveryTime}
+      deliveryFee={deliveryFee}
       minOrder={minOrder}
+      status={status}
     />
   </StyledRestaurantCard>
 );

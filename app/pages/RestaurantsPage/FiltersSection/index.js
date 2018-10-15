@@ -1,64 +1,64 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { filtersCategoryPropTypes } from 'propTypes/filters';
 
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import Group from 'components/Group';
 import Paragraph from 'components/Paragraph';
 import intl from 'utils/intlService';
-
+import {
+  selectFilters,
+  selectChosenKitchenFiltersArray,
+  selectChosenDeliveryOptionsArray,
+} from 'modules/restaurants/selectors';
+import { toggleFilterAction } from 'modules/restaurants/actions';
 import Header from './Header';
-import Category from './Category';
-import Tags from './Tags';
 import Cuisines from './Cuisines';
 import DeliveryTypes from './DeliveryTypes';
 import Orders from './Orders';
-import ButtonWrapper from './ButtonWrapper';
-import ActionsWrapper from './ActionsWrapper';
-import ContentWrapper from './ContentWrapper';
+import { ButtonWrapper, ActionsWrapper, ContentWrapper } from './Styled';
+
 import messages from './messages';
 
+const decorate = connect(
+  state => ({
+    filters: selectFilters(state),
+    chosenKitchens: selectChosenKitchenFiltersArray(state),
+    chosenDeliveryOptions: selectChosenDeliveryOptionsArray(state),
+  }),
+  { toggleFilterAction },
+);
+
 const FiltersSection = ({
-  tags,
-  cuisines,
-  deliveryTypes,
-  toggleSection,
-  isModalOpened,
-  closeModal,
+  isModalOpened = false,
+  closeModal = () => console.log('close modal'),
+  filters: { kitchens, delivery_options },
+  toggleFilterAction,
+  chosenKitchens,
+  chosenDeliveryOptions,
 }) => (
   <React.Fragment>
     <Header isModalOpened={isModalOpened} closeModal={closeModal} />
     <ContentWrapper>
-      <Category
-        title={intl.formatMessage(messages.tags)}
-        isSectionExpanded={tags.get('isExpanded')}
-        toggleSection={() => toggleSection('tags')}
-      >
-        <Tags tags={tags} />
-      </Category>
-      <Category
+      <Cuisines
+        kitchens={kitchens}
+        toggleFilter={toggleFilterAction}
+        chosenKitchens={chosenKitchens}
         title={intl.formatMessage(messages.cuisines)}
-        isSectionExpanded={cuisines.get('isExpanded')}
-        toggleSection={() => toggleSection('cuisines')}
-      >
-        <Cuisines cuisines={cuisines} />
-      </Category>
-      <Category
-        title={intl.formatMessage(messages.tags)}
-        isSectionExpanded={deliveryTypes.get('isExpanded')}
-        toggleSection={() => toggleSection('deliveryTypes')}
-      >
-        <Orders />
-      </Category>
-      <Category
+      />
+
+      <Orders title={intl.formatMessage(messages.order)} />
+
+      <DeliveryTypes
+        deliveryOptions={delivery_options}
+        toggleFilter={toggleFilterAction}
+        chosenOptions={chosenDeliveryOptions}
         title={intl.formatMessage(messages.deliveryType)}
-        isSectionExpanded={deliveryTypes.get('isExpanded')}
-        toggleSection={() => toggleSection('deliveryTypes')}
-      >
-        <DeliveryTypes types={deliveryTypes} />
-      </Category>
+      />
     </ContentWrapper>
+
+    {/* BUTTONS IN MODAL */}
     <ActionsWrapper>
       <Group>
         <Icon name="delete" size={12} />
@@ -77,12 +77,15 @@ const FiltersSection = ({
 );
 
 FiltersSection.propTypes = {
-  tags: filtersCategoryPropTypes,
-  cuisines: filtersCategoryPropTypes,
-  deliveryTypes: filtersCategoryPropTypes,
-  toggleSection: PropTypes.func.isRequired,
-  isModalOpened: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
+  isModalOpened: PropTypes.bool,
+  closeModal: PropTypes.func,
+  toggleFilterAction: PropTypes.func,
+  filters: PropTypes.shape({
+    kitchens: PropTypes.array,
+    delivery_options: PropTypes.array,
+  }),
+  chosenKitchens: PropTypes.array,
+  chosenDeliveryOptions: PropTypes.array,
 };
 
-export default FiltersSection;
+export default decorate(FiltersSection);

@@ -8,6 +8,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import withSelectedLocation from 'hocs/withSelectedLocation';
+
 import Icon from 'components/Icon';
 import ButtonLink from 'components/ButtonLink';
 import { BreadcrumbsStyled } from './BreadcrumbsStyled';
@@ -20,12 +22,25 @@ const defaultRoute = [
   },
 ];
 
-const Breadcrumbs = ({ crumbs }) => (
+const defaultFilters = [
+  {
+    key: 'all-cuisines',
+    to: '/',
+    label: 'All cuisines',
+  },
+  {
+    key: 'all-delivery-types',
+    to: '/',
+    label: 'All delivery types',
+  },
+];
+
+const Breadcrumbs = ({ crumbs, location, filters }) => (
   <BreadcrumbsStyled>
     <ul>
-      {crumbs.map((item, i) => (
+      {crumbs.map(item => (
         <Fragment key={item.key}>
-          {i !== crumbs.length - 1 && (
+          {crumbs.length && (
             <Fragment>
               <li key={item.key}>
                 <Link to={item.to}>{item.label}</Link>
@@ -35,22 +50,39 @@ const Breadcrumbs = ({ crumbs }) => (
               </li>
             </Fragment>
           )}
-          {i === crumbs.length - 1 && (
-            <li>
-              <ButtonLink to={item.to}>{item.label}</ButtonLink>
-            </li>
-          )}
         </Fragment>
       ))}
+      {location &&
+        location.map(item => (
+          <Fragment>
+            <li key={item.get('id')}>
+              <Link to={item.get('name')}>{item.get('name')}</Link>
+            </li>
+            <li>
+              <Icon name="dot-crumbs" size={4} />
+            </li>
+          </Fragment>
+        ))}
+      {/* Filters */}
+      {filters &&
+        filters.map(item => (
+          <li key={item.key}>
+            <ButtonLink to={item.to}>{item.label}</ButtonLink>
+          </li>
+        ))}
     </ul>
   </BreadcrumbsStyled>
 );
 
 Breadcrumbs.propTypes = {
   crumbs: PropTypes.array,
+  location: PropTypes.array,
+  filters: PropTypes.array,
 };
 Breadcrumbs.defaultProps = {
   crumbs: defaultRoute,
+  location: [],
+  filters: defaultFilters,
 };
 
-export default Breadcrumbs;
+export default withSelectedLocation(Breadcrumbs);

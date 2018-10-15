@@ -2,25 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
-import { injectSaga, injectReducer } from 'utils/injectors';
 import { flexBox, mediaLess } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
+import { searchRestaurantAction } from 'modules/restaurants/actions';
 
 import Icon from 'components/Icon';
 import SearchInput from './SearchInput';
-import { searchRestaurantAction } from './actions';
-import reducer from './reducer';
-import saga from './saga';
 
-const decorate = compose(
-  injectReducer({ key: 'RestaurantListToolsPanel', reducer }),
-  injectSaga({ key: 'RestaurantListToolsPanel', saga }),
-  connect(
-    null,
-    { searchRestaurantAction },
-  ),
+const decorate = connect(
+  null,
+  { searchRestaurantAction },
 );
+
 // eslint-disable-next-line no-shadow
 const ToolsPanel = ({ searchRestaurantAction }) => (
   <Wrapper>
@@ -41,7 +34,7 @@ ToolsPanel.propTypes = {
 
 const Wrapper = styled.div`
   ${flexBox(
-    { align: 'center', justify: 'space-between' },
+    { align: 'center', justify: 'flex-end' },
     `
     width: 100%;
     padding-top: 20px;

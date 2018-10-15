@@ -21,7 +21,6 @@ const StyledInput = styled.input`
     { align: 'flex-end', justify: 'center' },
     `
     line-height: 30px;
-    max-width: 336px;
     width: 100%;
     font-size: 16px;
     font-family: 'HungerStation-Light', sans-serif;
