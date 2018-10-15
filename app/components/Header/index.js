@@ -15,8 +15,42 @@ import RightSection from './RightSection';
 import StyledHeader, { StyledBrandLogo, StyledContent } from './StyledHeader';
 import logo from '../../images/hungerstation-logo-shadow.svg';
 import messages from './messages';
+import DropdownMenu from '../DropdownMenu';
 
-const Header = ({ variant }) => (
+const menu = [
+  {
+    id: 'profile',
+    label: 'My profile',
+    icon: 'user',
+    to: '/my-profile',
+  },
+  {
+    id: 'order',
+    label: 'My orders',
+    icon: 'user',
+    to: '/my-orders',
+  },
+  {
+    id: 'wallet',
+    label: 'My wallet',
+    icon: 'user',
+    to: '/my-wallet',
+  },
+  {
+    id: 'favorite',
+    label: 'Favorite',
+    icon: 'user',
+    to: '/favorite',
+  },
+  {
+    id: 'card',
+    label: 'Credit card info',
+    icon: 'user',
+    to: '/credit-card-info',
+  },
+];
+
+const Header = ({ variant, isLoggedIn = false, userInfo = null }) => (
   <StyledHeader gold={variant === 'gold'}>
     <StyledContent>
       <Link to="/">
@@ -24,11 +58,15 @@ const Header = ({ variant }) => (
       </Link>
       <RightSection>
         <LocaleToggle variant={variant} />
-        <StyledLink to="/login">
-          <Paragraph color={variant ? fuscousGray : 'white'}>
-            {intl.formatMessage(messages.login)}
-          </Paragraph>
-        </StyledLink>
+        {isLoggedIn ? (
+          <DropdownMenu label={userInfo.name} items={menu} leftIcon="basket" />
+        ) : (
+          <StyledLink to="/login">
+            <Paragraph class="" color={variant ? fuscousGray : 'white'}>
+              {intl.formatMessage(messages.login)}
+            </Paragraph>
+          </StyledLink>
+        )}
         <CircledItem color="gold" width={28} withShadow>
           <Icon name="basket" />
         </CircledItem>
@@ -39,6 +77,8 @@ const Header = ({ variant }) => (
 
 Header.propTypes = {
   variant: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
+  userInfo: PropTypes.object,
 };
 
 export default Header;

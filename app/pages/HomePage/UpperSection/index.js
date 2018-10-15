@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 
 import SearchTypeContainer from 'containers/SearchTypeContainer';
 import SearchBarContainer from 'containers/SearchBarContainer';
+import AppHeader from 'containers/AppHeader';
 
-import AppHeader from 'components/Header';
 import StyledUpperSection from './StyledUpperSection';
 import Subheader from './Subheader';
 import Header from './Header';
@@ -15,7 +15,7 @@ import QuickFilters from './SearchTypes/QuickFilters';
 
 const UpperSection = () => (
   <StyledUpperSection>
-    <AppHeader />
+    <AppHeader userInfo={{ name: 'john doe' }} />
     <Subheader>Food Delivery From</Subheader>
     <Header>The Top Restaurants in Saudi Arabia</Header>
     <StyledSection>

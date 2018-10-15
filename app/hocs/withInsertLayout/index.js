@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Header from 'components/Header';
+import AppHeader from 'containers/AppHeader';
 import Footer from 'components/Footer';
 
 const withInsertLayout = ({
@@ -7,7 +7,7 @@ const withInsertLayout = ({
   footer = { display: true },
 }) => Component => props => (
   <Fragment>
-    {header.display && <Header variant={header.variant} />}
+    {header.display && <AppHeader variant={header.variant} />}
 
     <Component {...props} />
 

@@ -34,4 +34,9 @@ export const StyledContent = styled.div`
   justify-content: space-between;
   margin: 0 auto;
 `;
+export const StyledUserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 export default StyledHeader;
