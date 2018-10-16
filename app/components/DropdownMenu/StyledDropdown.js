@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/css/styles';
+import Paragraph from 'components/Paragraph/StyledParagraph';
+import Icon from 'components/Icon/StyledIcon';
 
 const StyledDropdown = styled.div`
   ${flexBox(
@@ -8,12 +10,16 @@ const StyledDropdown = styled.div`
     height: 40px;
     border-radius: 8px;
     width: 100%;
-
-    p {
-      margin: 0 15px 0 10px;
-    }
   `,
   )};
+
+  & > ${Paragraph} {
+    margin: 5px 20px 0 10px;
+  }
+
+  ${Icon} {
+    margin-top: 5px;
+  }
 `;
 
 export default StyledDropdown;

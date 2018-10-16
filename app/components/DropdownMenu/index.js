@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
+import { persimmon } from 'utils/css/colors';
 import StyledDropdown from './StyledDropdown';
 import DropdownWrapper from './DropdownWrapper';
 import SubMenu from './SubMenu';
@@ -58,11 +59,11 @@ class DropdownMenu extends Component {
           onClick={this.toggleDropdown}
           innerRef={this.dropdownWrapperRef}
         >
-          {leftIcon && (
-            <CircledItem color="white" width={26} withShadow>
-              <Icon name="basket" />
-            </CircledItem>
-          )}
+          <CircledItem color="white" width={22} withShadow>
+            <Paragraph size={16} color={persimmon}>
+              {leftIcon}
+            </Paragraph>
+          </CircledItem>
           <Paragraph size={16}>{label}</Paragraph>
           <Icon name="arrow-dropdown" />
         </StyledDropdown>

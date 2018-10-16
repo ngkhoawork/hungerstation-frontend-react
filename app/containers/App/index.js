@@ -32,35 +32,35 @@ import ModalContainer from 'containers/ModalContainer';
 import FiltersContainer from 'containers/FiltersContainer';
 
 import { makeSelectLocale } from '../LanguageProvider/selectors';
-// import { authenticateUser } from './authActions';
+import { authenticateUser } from '../../modules/auth/actions';
 import StyledApp from './StyledApp';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   dir: locale === 'ar' ? 'rtl' : 'ltr',
 }));
 
-// const mapDispatchToProps = {
-//   authenticateUser,
-// };
+const mapDispatchToProps = {
+  authenticateUser,
+};
 
 @withRouter
 @connect(
   mapStateToProps,
-  // mapDispatchToProps,
+  mapDispatchToProps,
 )
 export default class App extends Component {
   static propTypes = {
     dir: PropTypes.string,
-    // authenticateUser: PropTypes.func.isRequired,
+    authenticateUser: PropTypes.func.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
     }),
   };
 
-  // componentWillMount() {
-  //   const { authenticateUser: authenticate } = this.props;
-  //   authenticate();
-  // }
+  componentWillMount() {
+    const { authenticateUser: authenticate } = this.props;
+    authenticate();
+  }
 
   render() {
     const { dir, location } = this.props;

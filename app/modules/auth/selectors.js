@@ -8,12 +8,20 @@ const makeSelectLocation = () =>
 
 export const makeSelectIsLoggedIn = createSelector(
   selectAuth,
-  authState => authState && authState.get('loggedIn', null),
+  authState => authState && authState.get('loggedIn', false),
+);
+
+export const makeSelectCurrentUser = createSelector(
+  selectAuth,
+  authState =>
+    authState && authState.get('currentUser')
+      ? authState.get('currentUser').toJS()
+      : null,
 );
 
 export const makeSelectTokens = createSelector(
   selectAuth,
-  authState => authState && authState.get('tokens', null),
+  authState => authState && authState.get('tokens').toJS(),
 );
 
 export { makeSelectLocation };

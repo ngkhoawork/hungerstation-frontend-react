@@ -50,7 +50,7 @@ const menu = [
   },
 ];
 
-const Header = ({ variant, isLoggedIn = false, userInfo = null }) => (
+const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
   <StyledHeader gold={variant === 'gold'}>
     <StyledContent>
       <LeftSection>
@@ -63,7 +63,11 @@ const Header = ({ variant, isLoggedIn = false, userInfo = null }) => (
       </CenterSection>
       <RightSection>
         {isLoggedIn ? (
-          <DropdownMenu label={userInfo.name} items={menu} leftIcon="basket" />
+          <DropdownMenu
+            label={userInfo.name}
+            items={menu}
+            leftIcon={userInfo.name.split(' ')[1][0]}
+          />
         ) : (
           <StyledLink to="/login">
             <Paragraph

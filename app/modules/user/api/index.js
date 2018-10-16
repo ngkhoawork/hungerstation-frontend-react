@@ -14,7 +14,6 @@ const logout = () => Promise.resolve(true);
 
 const refreshToken = token => request(refreshTokenMutation, { token });
 
-const getUser = (token, userId) =>
-  protectedRequest(token, userQuery, { userId });
+const getUser = token => protectedRequest(token, userQuery);
 
 export default { register, login, logout, refreshToken, getUser };

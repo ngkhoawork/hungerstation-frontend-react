@@ -18,7 +18,7 @@ import { protectedRequest } from 'utils/api';
 import { saveTokens } from 'modules/common/sagas';
 
 import { LOGOUT, REQUEST_ERROR, AUTHENTICATE_USER } from './constants';
-import { setAuthState, updateTokens } from './actions';
+import { setAuthState, updateTokens, setCurrentUser, logout } from './actions';
 import { makeSelectTokens } from './selectors';
 
 export function* logoutFlow() {
@@ -26,16 +26,16 @@ export function* logoutFlow() {
     yield take(LOGOUT);
     yield put(setAuthState(false));
 
-    yield call(logout);
+    yield call(logoutWoker);
     yield call(clearStorageItem, 'tokens');
     yield call(clearStorageItem, 'userId');
     yield call(forwardTo, '/');
   }
 }
 
-export function* logout() {
+export function* logoutWoker() {
   // We tell Redux we're in the middle of a request
-  yield put(setAuthState(true));
+  // yield put(setAuthState(true));
 
   try {
     const response = yield call(usersApi.logout);
@@ -86,7 +86,7 @@ export function* refreshTokens() {
     });
     return null;
   } catch (err) {
-    yield call(logout);
+    yield put(logout());
     return err;
   }
 }
@@ -122,12 +122,21 @@ export function* makeAuthenticatedRequest(action = {}) {
   }
 }
 
+export function* getCurrentUser(tokens) {
+  try {
+    const { showUser } = yield call(usersApi.getUser, tokens.accessToken);
+    yield put(setCurrentUser({ user: showUser }));
+  } catch (err) {
+    yield put(logout());
+    yield put(setCurrentUser({ user: null }));
+  }
+}
+
 export function* authenticationFlow() {
   while (true) {
     yield take(AUTHENTICATE_USER);
 
     const tokens = yield call(getStorageItem, 'tokens');
-    const userId = yield call(getStorageItem, 'userId');
 
     if (tokens && Object.keys(tokens)) {
       yield put(updateTokens(JSON.parse(tokens)));
@@ -135,12 +144,12 @@ export function* authenticationFlow() {
       const shouldRefresh = yield call(needRefresh);
 
       if (!shouldRefresh) {
-        yield call(usersApi.getUser, tokens.accessToken, userId);
+        yield call(getCurrentUser, JSON.parse(tokens));
       } else {
         const error = yield call(refreshTokens);
         if (!error) {
           yield delay(50);
-          yield call(usersApi.getUser, tokens.accessToken, userId);
+          yield call(getCurrentUser, JSON.parse(tokens));
         }
       }
     }

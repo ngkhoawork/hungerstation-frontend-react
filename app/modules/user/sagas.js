@@ -1,7 +1,7 @@
 import { takeEvery, race, call, put, take } from 'redux-saga/effects';
 
 import { saveTokens } from 'modules/common/sagas';
-import { logUserIn, logout, setAuthState } from 'modules/auth/actions';
+import { setCurrentUser, logout, setAuthState } from 'modules/auth/actions';
 import { LOGOUT } from 'modules/auth/constants';
 
 import { setStorageItem } from 'utils/localStorage';
@@ -35,9 +35,9 @@ export function* loginFlow({ payload, meta: redirectToRoute }) {
         accessToken: authenticatedUser.token,
         accessTokenExpiresAt: parseJwt(authenticatedUser.token).iat,
       });
-      yield call(setStorageItem, 'userId', authenticatedUser.user_id);
+      yield call(setStorageItem, 'userId', authenticatedUser.user.id);
       yield put(stopSubmit());
-      yield put(logUserIn(authenticatedUser));
+      yield put(setCurrentUser(authenticatedUser));
       yield call(forwardTo, redirectToRoute);
     }
 
@@ -62,17 +62,15 @@ export function* registerFlow({ payload }) {
       isRegistering: true,
     });
 
-    if (response && response.user_id) {
+    if (response && response.user) {
       yield saveTokens({
         refreshToken: response.refresh_token,
         accessToken: response.token,
         accessTokenExpiresAt: parseJwt(response.token).iat,
       });
-      yield put(logUserIn(response));
-      yield call(setStorageItem, 'userId', response.user_id);
-
+      yield call(setStorageItem, 'userId', response.user.id);
       yield put(stopSubmit());
-
+      yield put(setCurrentUser(response));
       yield call(forwardTo, redirectToRoute);
     }
   } catch (error) {

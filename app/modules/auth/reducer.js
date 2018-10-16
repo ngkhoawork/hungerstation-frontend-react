@@ -7,8 +7,8 @@ import {
   SENDING_REQUEST,
   REQUEST_ERROR,
   CLEAR_ERROR,
-  AUTHENTICATE_USER,
   UPDATE_TOKENS,
+  SET_CURRENT_USER,
 } from './constants';
 
 // The initial application state
@@ -25,7 +25,7 @@ const initialState = fromJS({
     refreshToken: null,
     accessTokenExpiresAt: null,
   },
-  userId: null,
+  currentUser: {},
 });
 
 function reducer(state = initialState, action) {
@@ -38,8 +38,10 @@ function reducer(state = initialState, action) {
       return onRequestError(state, action);
     case CLEAR_ERROR:
       return onClearError(state);
-    case AUTHENTICATE_USER:
-      return onAuthenticateUser(state, action);
+    // case AUTHENTICATE_USER:
+    //   return onAuthenticateUser(state, action);
+    case SET_CURRENT_USER:
+      return onSetCurrentUser(state, action);
     case UPDATE_TOKENS:
       return onUpdateTokens(state, action);
     default:
@@ -71,17 +73,26 @@ const onRequestError = (state, action) => {
   });
 };
 
-const onAuthenticateUser = (state, action) => {
-  const { refreshToken, accessToken, accessTokenExpiresAt, userId } = action;
+// const onAuthenticateUser = (state, action) => {
+//   const { refreshToken, accessToken, accessTokenExpiresAt, user } = action;
+//   console.log('onAuthenticateUser');
+//   return state.merge({
+//     tokens: {
+//       refreshToken,
+//       accessToken,
+//       accessTokenExpiresAt,
+//     },
+//     currentUser: user,
+//     loggedIn: true,
+//   });
+// };
+
+const onSetCurrentUser = (state, action) => {
+  const { user } = action;
 
   return state.merge({
-    tokens: {
-      refreshToken,
-      accessToken,
-      accessTokenExpiresAt,
-    },
-    userId,
-    isLoggedIn: true,
+    currentUser: user,
+    loggedIn: true,
   });
 };
 

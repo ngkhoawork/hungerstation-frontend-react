@@ -15,7 +15,7 @@ import QuickFilters from './SearchTypes/QuickFilters';
 
 const UpperSection = () => (
   <StyledUpperSection>
-    <AppHeader userInfo={{ name: 'john doe' }} />
+    <AppHeader />
     <Subheader>Food Delivery From</Subheader>
     <Header>The Top Restaurants in Saudi Arabia</Header>
     <StyledSection>

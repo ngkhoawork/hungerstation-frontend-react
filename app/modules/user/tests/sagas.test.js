@@ -5,7 +5,7 @@ import { parseJwt } from 'utils/tokens';
 import { setStorageItem } from 'utils/localStorage';
 import { forwardTo } from 'utils/route';
 
-import { logUserIn } from 'modules/auth/actions';
+import { setCurrentUser } from 'modules/auth/actions';
 import { LOGOUT } from 'modules/auth/constants';
 
 import {
@@ -85,7 +85,7 @@ describe('User Sagas', () => {
 
     it('Expect to save user information into the storage', () => {
       expect(gen.next().value).toEqual(
-        call(setStorageItem, 'userId', userResponse.user_id),
+        call(setStorageItem, 'userId', userResponse.user.id),
       );
     });
 
@@ -94,7 +94,7 @@ describe('User Sagas', () => {
     });
 
     it('Expect to update store with user values', () => {
-      expect(gen.next().value).toEqual(put(logUserIn(userResponse)));
+      expect(gen.next().value).toEqual(put(setCurrentUser(userResponse)));
     });
 
     it('Expect to redirect user to restaurant page', () => {
@@ -140,12 +140,12 @@ describe('User Sagas', () => {
     });
 
     it('Expect to update store with user values', () => {
-      expect(gen.next().value).toEqual(put(logUserIn(userResponse)));
+      expect(gen.next().value).toEqual(put(setCurrentUser(userResponse)));
     });
 
     it('Expect to save user information into the storage', () => {
       expect(gen.next().value).toEqual(
-        call(setStorageItem, 'userId', userResponse.user_id),
+        call(setStorageItem, 'userId', userResponse.user.id),
       );
     });
 

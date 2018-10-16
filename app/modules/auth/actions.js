@@ -9,7 +9,7 @@ import {
   LOGOUT,
   REQUEST_ERROR,
   CLEAR_ERROR,
-  LOG_USER_IN,
+  SET_CURRENT_USER,
   UPDATE_TOKENS,
   AUTHENTICATE_USER,
 } from './constants';
@@ -43,17 +43,9 @@ export const clearError = () => ({
   type: CLEAR_ERROR,
 });
 
-export const logUserIn = (
-  refreshToken,
-  accessToken,
-  accessTokenExpiresAt,
-  userId,
-) => ({
-  type: LOG_USER_IN,
-  refreshToken,
-  accessToken,
-  accessTokenExpiresAt,
-  userId,
+export const setCurrentUser = ({ user }) => ({
+  type: SET_CURRENT_USER,
+  user,
 });
 
 export const updateTokens = tokens => ({
