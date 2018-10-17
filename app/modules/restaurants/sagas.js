@@ -94,7 +94,7 @@ export function* filterRestaurantListSaga() {
     (acc, { id, name, kitchensIds, deliveryTime, minOrder }) => {
       // checking for time estimation and minimum order quantities
       const isOrderFiltersPassing =
-        deliveryTime <= chosenDeliveryTime && minOrder >= chosenMinOrderValue;
+        deliveryTime <= chosenDeliveryTime && minOrder <= chosenMinOrderValue;
       // checking for the same items in two arr (intersection)
       // in chosen kitchens we got arr of kitchenFilters id
       // in kitchensIds we got arr of kitchensIds related to restaurant
