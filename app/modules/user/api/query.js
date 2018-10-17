@@ -1,16 +1,11 @@
 const userQuery = `query {
-    showUser {
+    user {
       id
       mobile
       country_id
       user_type
-      avatar
       name
       email
-      referral_code
-      zendesk_token
-      need_survey
-      already_referred
     }
   }`;
 
@@ -23,13 +18,8 @@ const authenticateUserMutation = `mutation AuthenticateUser($mobile:String!,$pas
         mobile
         country_id
         user_type
-        avatar
         name
         email
-        referral_code
-        zendesk_token
-        need_survey
-        already_referred
       }
     }
   }`;
@@ -43,13 +33,8 @@ const createUserMutation = `mutation CreateUser($name:String!,$mobile:String!,$e
         mobile
         country_id
         user_type
-        avatar
         name
         email
-        referral_code
-        zendesk_token
-        need_survey
-        already_referred
       }
     }
   }`;
