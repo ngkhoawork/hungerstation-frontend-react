@@ -38,8 +38,6 @@ function reducer(state = initialState, action) {
       return onRequestError(state, action);
     case CLEAR_ERROR:
       return onClearError(state);
-    // case AUTHENTICATE_USER:
-    //   return onAuthenticateUser(state, action);
     case SET_CURRENT_USER:
       return onSetCurrentUser(state, action);
     case UPDATE_TOKENS:
@@ -72,20 +70,6 @@ const onRequestError = (state, action) => {
     error,
   });
 };
-
-// const onAuthenticateUser = (state, action) => {
-//   const { refreshToken, accessToken, accessTokenExpiresAt, user } = action;
-//   console.log('onAuthenticateUser');
-//   return state.merge({
-//     tokens: {
-//       refreshToken,
-//       accessToken,
-//       accessTokenExpiresAt,
-//     },
-//     currentUser: user,
-//     loggedIn: true,
-//   });
-// };
 
 const onSetCurrentUser = (state, action) => {
   const { user } = action;
