@@ -21,33 +21,33 @@ const menu = [
   {
     id: 'profile',
     label: 'My profile',
-    icon: 'user',
+    icon: 'profile',
     to: '/my-profile',
   },
-  {
-    id: 'order',
-    label: 'My orders',
-    icon: 'user',
-    to: '/my-orders',
-  },
-  {
-    id: 'wallet',
-    label: 'My wallet',
-    icon: 'user',
-    to: '/my-wallet',
-  },
-  {
-    id: 'favorite',
-    label: 'Favorite',
-    icon: 'user',
-    to: '/favorite',
-  },
-  {
-    id: 'card',
-    label: 'Credit card info',
-    icon: 'user',
-    to: '/credit-card-info',
-  },
+  // {
+  //   id: 'order',
+  //   label: 'My orders',
+  //   icon: 'user',
+  //   to: '/my-orders',
+  // },
+  // {
+  //   id: 'wallet',
+  //   label: 'My wallet',
+  //   icon: 'user',
+  //   to: '/my-wallet',
+  // },
+  // {
+  //   id: 'favorite',
+  //   label: 'Favorite',
+  //   icon: 'user',
+  //   to: '/favorite',
+  // },
+  // {
+  //   id: 'card',
+  //   label: 'Credit card info',
+  //   icon: 'user',
+  //   to: '/credit-card-info',
+  // },
 ];
 
 const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (

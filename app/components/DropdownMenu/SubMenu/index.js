@@ -16,7 +16,7 @@ const SubMenu = ({ items }) => (
         <StyledMenu>
           {item.icon && (
             <CircledItem color={wildSand} width={24} withShadow>
-              <Icon name="bag" />
+              <Icon name={item.icon} />
             </CircledItem>
           )}
           <Paragraph size={14} color={boulder}>
