@@ -124,8 +124,8 @@ export function* makeAuthenticatedRequest(action = {}) {
 
 export function* getCurrentUser(tokens) {
   try {
-    const { showUser } = yield call(usersApi.getUser, tokens.accessToken);
-    yield put(setCurrentUser({ user: showUser }));
+    const { user } = yield call(usersApi.getUser, tokens.accessToken);
+    yield put(setCurrentUser({ user }));
   } catch (err) {
     yield put(logout());
     yield put(setCurrentUser({ user: null }));
