@@ -16,7 +16,6 @@ const StyledDropdown = styled.span`
     height: ${searchBarHeight};
     border: 1px solid lightgrey;
     border-radius: 8px;
-    padding: 0 20px;
     width: 100%;
     margin-bottom: 20px;
     &:first-of-type {

@@ -10,6 +10,8 @@ const StyledUpperSection = styled.div`
   ${flexBox(
     { align: 'center', justify: 'center', direction: 'column' },
     `
+  border-radius: 8px;
+  margin-top: 8px;
   width: 100%;
   padding-bottom: 80px;
   background-position-x: center;

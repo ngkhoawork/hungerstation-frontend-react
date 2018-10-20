@@ -64,7 +64,7 @@ const Autocomplete = props => {
                   }
                 },
                 startAdornment: (
-                  <InputAdornment position="start">
+                  <InputAdornment className={classes.icon} position="start">
                     <CircledItem color={wildSand} width={28}>
                       <Icon name={icon} />
                     </CircledItem>

@@ -5,7 +5,7 @@ const StyledSection = styled.div`
   ${flexBox(
     { align: 'center', justify: 'space-between' },
     `
-      padding: 0 113px 30px;
+      padding: 0 113px 48px;
     `,
   )};
   ${mediaMedium`

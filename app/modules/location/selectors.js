@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { List } from 'immutable';
+import { sample } from 'utils/helpers';
 import { initialState } from './reducer';
 
 /**
@@ -41,6 +42,17 @@ export const selectDistrict = createSelector(
 export const makeSelectLastCoords = () =>
   createSelector(selectLocationDomain, locationState =>
     locationState.get('coords').toJS(),
+  );
+
+export const makeSampleCities = () =>
+  createSelector(selectLocationDomain, locationState => {
+    const cities = locationState.get('cities').toJS();
+    return sample(cities, 9);
+  });
+
+export const makeSelectDistricts = () =>
+  createSelector(selectLocationDomain, locationState =>
+    locationState.get('districts').toJS(),
   );
 
 export { selectLocationDomain };

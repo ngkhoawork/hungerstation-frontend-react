@@ -6,14 +6,14 @@ import StyledSearchType from '../StyledContainer';
 const StyledContainer = styled.div`
   ${flexBox({ align: 'center', justify: 'space-between' })};
 
-  ${Paragraph} {
-    margin-left: 24px;
-  }
-
   ${StyledSearchType} && {
     ${mediaMedium`
       display: none;
     `};
+  }
+
+  ${Paragraph} {
+    margin: 0 12px;
   }
 `;
 

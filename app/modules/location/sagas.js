@@ -3,12 +3,11 @@ import { delay } from 'redux-saga';
 // import { getUserPosition } from 'utils/location';
 import { fetchRestaurantsAction } from 'modules/restaurants/actions';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
-// import { fetchDeliveriesFiltersSaga } from 'modules/restaurants/sagas';
 import { makeSelectSearchType } from 'containers/SearchTypeContainer/selectors';
+import { slugify } from 'utils/helpers';
 import locationApi from './api';
 
 import {
-  getCitiesAction,
   getCurrentLocationAction,
   saveCurrentLocationAction,
   setCitiesAction,
@@ -92,11 +91,9 @@ function* fetchRestaurantsFlow({ payload }) {
   );
   yield call(delay, 500);
 
-  const cityName = city.get('name').trim();
-  const districtName = district.get('name').trim();
-  const path = `/restaurants/${cityName}/${districtName}/${deliveryType}`
-    .toLowerCase()
-    .replace(/\s/g, '-');
+  const cityName = slugify(city.get('name'));
+  const districtName = slugify(district.get('name'));
+  const path = `/restaurants/${cityName}/${districtName}`;
 
   payload.history.push(path);
 
@@ -105,7 +102,7 @@ function* fetchRestaurantsFlow({ payload }) {
 
 // Individual exports for testing
 export default function* watchLocationActionsSaga() {
-  yield takeEvery(getCitiesAction.type, getCitiesFlow);
+  yield getCitiesFlow();
   yield takeEvery(selectCityAction.type, selectCityFlow);
   yield takeEvery(getCurrentLocationAction.type, getCurrentLocationFlow);
   yield takeEvery(submitSearchQuery.type, fetchRestaurantsFlow);

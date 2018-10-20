@@ -40,12 +40,11 @@ const BarActions = styled.div`
   ${flexBox(
     {},
     `
-    margin-right: 10px;
+    margin: 0 10px;
   `,
   )};
   ${mediaMedium`
     width: 100%;
-    margin-right: 0;
   `};
 `;
 

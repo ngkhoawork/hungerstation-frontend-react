@@ -52,10 +52,10 @@ export default class SearchBarContainer extends React.PureComponent {
     districts: null,
   };
 
-  componentDidMount() {
-    const { getCities } = this.props;
-    getCities();
-  }
+  // componentDidMount() {
+  //   const { getCities } = this.props;
+  //   getCities();
+  // }
 
   handleRedirect = () => {
     const {

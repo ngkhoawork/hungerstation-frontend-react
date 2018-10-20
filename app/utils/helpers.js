@@ -40,3 +40,28 @@ export const getSuggestions = (suggestions, value) => {
 };
 
 export const itemToString = item => (item ? item.get('name') : '');
+
+export const slugify = string =>
+  string
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s/g, '-');
+
+export const shuffle = array => {
+  const arr = [...array];
+  let n = arr.length;
+  let i;
+  let tmp;
+
+  while (n) {
+    n -= 1;
+    i = Math.floor(n * Math.random());
+    tmp = arr[i];
+    arr[i] = arr[n];
+    arr[n] = tmp;
+  }
+  return arr;
+};
+
+export const sample = (array, size) => shuffle(array).slice(0, size);

@@ -6,7 +6,6 @@ import { LARGE_SCREEN_CONTENT_WIDTH } from 'components/PageContent/constants';
 const StyledHeader = styled.div`
   ${props => props.gold && `background-color: ${gold};`};
   display: flex;
-
   width: 100%;
   height: 100px;
   font-family: 'HungerStation-Regular', sans-serif;
@@ -31,7 +30,7 @@ export const StyledContent = styled.div`
   width: ${LARGE_SCREEN_CONTENT_WIDTH}px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 0 auto;
 `;
 export const StyledUserInfo = styled.div`

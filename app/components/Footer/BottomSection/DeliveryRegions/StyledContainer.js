@@ -6,6 +6,7 @@ import StyledSection from '../StyledSection';
 const StyledContainer = styled.span`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   ${StyledSection} && {
     ${mediaMedium`

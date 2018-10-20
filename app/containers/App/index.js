@@ -27,7 +27,6 @@ import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
 import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
 
 import UserProfile from 'components/UserProfile';
-import AddRestaurantBanner from 'components/AddRestaurantBanner';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
 import ModalContainer from 'containers/ModalContainer';
 import FiltersContainer from 'containers/FiltersContainer';
@@ -76,7 +75,6 @@ export default class App extends Component {
           </FiltersContainer>
         </ModalContainer>
 
-        <AddRestaurantBanner />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route

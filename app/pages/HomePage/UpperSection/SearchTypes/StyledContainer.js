@@ -3,9 +3,9 @@ import { flexBox, mediaMedium } from 'utils/css/styles';
 
 const StyledContainer = styled.div`
   ${flexBox(
-    { align: 'center', justify: 'space-between' },
+    { align: 'center', justify: 'flex-end' },
     `
-      margin: 0 24px;
+      margin: 0 12px;
     `,
   )};
   ${mediaMedium`

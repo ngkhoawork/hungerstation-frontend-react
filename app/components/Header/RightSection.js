@@ -5,7 +5,8 @@ const RightSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex: 0.25;
+  flex: 1;
+
   ${mediaMedium`
     flex: 0.4;
   `};

@@ -1,19 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import QuickFilters from './QuickFilters';
 import StyledContainer from './StyledContainer';
-import Types from './Types';
+// import Types from './Types';
 
-const SearchTypes = ({ selectSearchType }) => (
+const SearchTypes = () => (
   <StyledContainer>
-    <Types onSelect={selectSearchType} />
+    {/* <Types onSelect={selectSearchType} /> */}
     <QuickFilters />
   </StyledContainer>
 );
 
-SearchTypes.propTypes = {
-  selectSearchType: PropTypes.func.isRequired,
-};
+// SearchTypes.propTypes = {
+//   selectSearchType: PropTypes.func.isRequired,
+// };
 
 export default SearchTypes;

@@ -1,12 +1,6 @@
 export default () => ({
-  root: {
-    flexGrow: 1,
-    marginLeft: '16px',
-  },
-  formControlRoot: {
-    '@media (min-width: 850px)': {
-      marginLeft: '16px',
-    },
+  icon: {
+    margin: '0 8px',
   },
   input: {
     padding: '3px 0 0 0',
@@ -36,8 +30,8 @@ export default () => ({
     borderRadius: '8px',
     boxShadow: '8px 7px 23px 0 rgba(59, 59, 59, 0.1)',
     '@media (max-width: 850px)': {
-      left: '-20px',
-      right: '-20px',
+      left: '0px',
+      right: '0px',
     },
   },
   menuItem: {

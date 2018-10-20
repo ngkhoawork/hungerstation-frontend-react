@@ -8,7 +8,11 @@ const Description = styled.p`
   letter-spacing: 0.46px;
   opacity: 0.6;
   margin: 0;
-  width: 70%;
+
+  a {
+    color: ${ironsideGray};
+    text-decoration: none;
+  }
 `;
 
 export default Description;
