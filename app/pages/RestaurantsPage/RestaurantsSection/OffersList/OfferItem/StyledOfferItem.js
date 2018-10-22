@@ -10,7 +10,7 @@ const StyledOfferItem = styled.div`
   min-width: 340px;
   height: 180px;
   border-radius: 8px;
-  margin-right: 20px;
+  margin-right: 24px;
   background-image: url(${Desert});
   background-position: center;
   padding: 16px;
