@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import intl from 'utils/intlService';
@@ -14,7 +14,11 @@ const Price = styled.div`
 
 const OrderElement = ({ price, hasTag, ...props }) => (
   <Price {...props}>
-    {hasTag ? <Icon name="price-tag" /> : null}
+    {hasTag ? (
+      <Fragment>
+        <Icon name="price-tag" /> &nbsp;
+      </Fragment>
+    ) : null}
     {intl.formatNumber(price, { style: 'currency', currency: 'SAR' })}
   </Price>
 );
