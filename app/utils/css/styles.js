@@ -24,6 +24,17 @@ const styles = () => ({
   },
 });
 
+export const fontCorrection = css`
+  padding-top: 3px;
+`;
+
+export const flex = ({ align, justify, direction }) => css`
+  display: flex;
+  ${align ? `align-items: ${align}` : 'stretch'};
+  ${justify ? `justify-content: ${justify}` : 'flex-start'};
+  ${direction ? `flex-direction: ${direction}` : 'row'};
+`;
+
 export const flexBox = ({ align, justify, direction }, ...args) => {
   const flexProps = `
     display: flex;
@@ -47,6 +58,7 @@ export const mediaGreater = getMedia('greaterThan');
 
 export const mediaSmall = mediaLess(560);
 export const mediaMedium = mediaLess(850);
+export const mediaMediumGreater = mediaGreater(849);
 export const mediaLarge = mediaLess(1130);
 
 export const getDisplayProp = isModalOpened =>
