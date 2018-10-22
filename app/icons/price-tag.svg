@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/green-leaf</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="label/vegan" transform="translate(-8.000000, -4.000000)">
+            <g id="icon/green-leaf" transform="translate(8.000000, 4.000000)">
+                <circle id="Oval" fill-opacity="0.126415308" fill="#9EDFAD" fill-rule="evenodd" cx="8.5" cy="8.5" r="8.5"></circle>
+                <path d="M6.72688657,6.88736972 C7.89584175,5.71801085 12.125,5 12.125,5 C12.125,5 11.4069477,9.22891427 10.2375214,10.397802 C9.26786813,11.3673993 7.69606867,11.3673993 6.72688657,10.397802 C5.75770448,9.42820468 5.75770448,7.8564959 6.72688657,6.88736972 Z" id="Shape" stroke="#32D48A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M5,12.5 L8.5,9" id="Shape" stroke="#32D48A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

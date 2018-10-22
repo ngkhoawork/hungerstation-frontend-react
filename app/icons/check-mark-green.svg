@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/check-mark-green</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Restaurant" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Restaurants-Page-B" transform="translate(-284.000000, -1044.000000)">
+            <g id="Left-hand-menu" transform="translate(119.000000, 230.000000)">
+                <g id="delivery-type" transform="translate(0.000000, 764.000000)">
+                    <g id="icon/new" transform="translate(165.000000, 50.000000)">
+                        <rect id="Rectangle-12" fill-opacity="0.126415308" fill="#9EDFAD" fill-rule="evenodd" x="0" y="0" width="16" height="16" rx="8"></rect>
+                        <polyline id="Shape" stroke="#00C269" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(8.304785, 8.401347) rotate(-270.000000) translate(-8.304785, -8.401347) " points="6.12566069 4.70343846 10.4839097 9.72202827 8.10668298 12.099255"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
