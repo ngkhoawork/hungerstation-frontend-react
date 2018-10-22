@@ -53,6 +53,25 @@ const getMedia = dimension => size => (...args) => css`
   `};
 `;
 
+export const device = {
+  retina: (...args) => css`
+    @media (-webkit-min-device-pixel-ratio: 1.25),
+      (-o-min-device-pixel-ratio: 5/4),
+      (min-resolution: 120dpi),
+      (min-resolution: 1.25dppx) {
+      ${css(...args)};
+    }
+  `,
+  retina3x: (...args) => css`
+    @media (-webkit-min-device-pixel-ratio: 2.25),
+      (-o-min-device-pixel-ratio: 9/4),
+      (min-resolution: 216dpi),
+      (min-resolution: 2.25dppx) {
+      ${css(...args)};
+    }
+  `,
+};
+
 export const mediaLess = getMedia('lessThan');
 export const mediaGreater = getMedia('greaterThan');
 
