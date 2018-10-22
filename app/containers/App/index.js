@@ -20,6 +20,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import HomePage from 'pages/HomePage/Loadable';
 import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
+import RestaurantPage from 'pages/RestaurantPage';
 import LoginPage from 'pages/LoginPage/Loadable';
 import RegistrationPage from 'pages/RegistrationPage/Loadable';
 import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
@@ -27,6 +28,7 @@ import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
 
 import UserProfile from 'components/UserProfile';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
+import ModalContainer from 'containers/ModalContainer';
 
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import { authenticateUser } from '../../modules/auth/actions';
@@ -68,6 +70,7 @@ export default class App extends Component {
         <CssBaseline />
 
         <Modals />
+        <ModalContainer />
 
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -75,6 +78,7 @@ export default class App extends Component {
             path="/restaurants/:city/:district/:deliveryType?"
             component={RestaurantsPage}
           />
+          <Route path="/restaurant/:id" component={RestaurantPage} />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
 
           <Route path="/login" component={LoginPage} />
