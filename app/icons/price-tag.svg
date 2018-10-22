@@ -1,16 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
-    <title>icon/green-leaf</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="label/vegan" transform="translate(-8.000000, -4.000000)">
-            <g id="icon/green-leaf" transform="translate(8.000000, 4.000000)">
-                <circle id="Oval" fill-opacity="0.126415308" fill="#9EDFAD" fill-rule="evenodd" cx="8.5" cy="8.5" r="8.5"></circle>
-                <path d="M6.72688657,6.88736972 C7.89584175,5.71801085 12.125,5 12.125,5 C12.125,5 11.4069477,9.22891427 10.2375214,10.397802 C9.26786813,11.3673993 7.69606867,11.3673993 6.72688657,10.397802 C5.75770448,9.42820468 5.75770448,7.8564959 6.72688657,6.88736972 Z" id="Shape" stroke="#32D48A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M5,12.5 L8.5,9" id="Shape" stroke="#32D48A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 12 12.2" style="enable-background:new 0 0 12 12.2;" xml:space="preserve" width="12px" height="12px">
+<style type="text/css">
+	.st0{fill:none;stroke:#00C269;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+	.st1{fill:#00C269;}
+</style>
+<title>icon/price-tag</title>
+<desc>Created with Sketch.</desc>
+<g id="Restaurant-Page">
+	<g id="Restaurant-Detail-A" transform="translate(-857.000000, -522.000000)">
+		<g id="Items" transform="translate(303.000000, 619.000000)">
+			<g id="Group-5">
+				<g id="iteam_1">
+					<g id="price" transform="translate(655.000000, 0.000000)">
+						<g id="icon_x2F_price-tag-2" transform="translate(0.000000, 4.000000)">
+							<g id="Group-15">
+								<polygon id="Shape" class="st0" points="-100,-99.8 -95.6,-99.8 -90,-94.2 -94.3,-89.8 -100,-95.5 								"/>
+								<circle id="Oval" class="st1" cx="-96.4" cy="-96.3" r="1"/>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
 </svg>
