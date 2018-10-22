@@ -7,6 +7,7 @@ export const ProductTypeBar = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  flex-wrap: wrap;
 
   ${mediaMedium`flex-direction: row;`};
 `;
