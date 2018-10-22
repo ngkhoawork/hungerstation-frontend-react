@@ -1,11 +1,26 @@
 import styled from 'styled-components';
-import { pageOffsetX, mobPageOffsetX, borderRadius } from 'utils/css/variables';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  maxPageWidth,
+  pageOffsetX,
+  mobPageOffsetX,
+  borderRadius,
+} from 'utils/css/variables';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  device,
+} from 'utils/css/styles';
 import restaurantImg from 'images/restaurant.png';
+import restaurantImg2x from 'images/restaurant@2x.png';
+import restaurantImg3x from 'images/restaurant@3x.png';
 
 export const StyledPage = styled.div`
   width: 100%;
+  max-width: ${maxPageWidth};
   margin-bottom: 60px;
+
+  ${mediaMedium`max-width: 100%;`};
 `;
 
 export const NavHeader = styled.div`
@@ -23,6 +38,7 @@ export const ContentContainer = styled.div`
 
 export const LeftSide = styled.div`
   flex-grow: 1;
+  max-width: 100%;
 `;
 
 export const RightSide = styled.div`
@@ -38,12 +54,18 @@ export const Header = styled.div`
   border-top-right-radius: ${borderRadius};
   padding-top: 42.2%;
   width: 100%;
-  background: url(${restaurantImg}) no-repeat;
+  background-image: url(${restaurantImg});
+  background-repeat: no-repeat;
 
   ${mediaMedium`
-    margin-bottom: 60px;
+    margin-bottom: 100px;
     border-radius: 0;
+    background-size: cover;
   `};
+
+  ${device.retina`background-image: url(${restaurantImg2x});`};
+
+  ${device.retina3x`background-image: url(${restaurantImg3x});`};
 `;
 
 export const RestaurantInfoContainer = styled.div`
@@ -55,7 +77,7 @@ export const RestaurantInfoContainer = styled.div`
   ${mediaMedium`
     left: ${mobPageOffsetX};
     right: ${mobPageOffsetX};
-    bottom: -20%;
+    bottom: -100px;
   `};
 `;
 

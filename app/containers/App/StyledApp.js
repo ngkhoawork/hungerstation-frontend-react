@@ -10,6 +10,7 @@ const StyledApp = styled.div`
   })};
   background-color: ${({ dark }) => (dark ? alabaster : 'white')};
   font-family: 'HungerStation-Regular', sans-serif;
+  overflow-x: hidden;
 `;
 
 export default StyledApp;
