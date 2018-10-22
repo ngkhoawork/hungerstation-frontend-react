@@ -1,13 +1,8 @@
 import styled from 'styled-components';
 import BurgerIcon from 'images/burger-icon.png';
-import {
-  flex,
-  fontCorrection,
-  mediaMedium,
-  mediaMediumGreater,
-} from 'utils/css/styles';
+import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
-import { lightGray, silverChalice, fuscousGray, jade } from 'utils/css/colors';
+import { lightGray, silverChalice, fuscousGray } from 'utils/css/colors';
 
 export const List = styled.div`
   width: 100%;
@@ -78,14 +73,6 @@ export const PriceContainer = styled.div`
     right: 0;
     top: -20px;
   `};
-`;
-
-export const Price = styled.div`
-  color: ${jade};
-  font-family: ${fontFamilyRegular};
-  font-size: 16px;
-  margin-left: 5px;
-  ${fontCorrection};
 `;
 
 export const Footer = styled.div`
