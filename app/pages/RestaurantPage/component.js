@@ -44,6 +44,8 @@ const RestaurantPage = ({
     onAddToCart(product);
   };
 
+  const handleBasketClick = () => onShowModal(CartContainer);
+
   return (
     <StyledPage>
       <NavHeader>
@@ -66,9 +68,7 @@ const RestaurantPage = ({
             />
           </ProductsContainer>
           <CartBtns>
-            <BasketBtn onClick={() => console.log('check basket')}>
-              Check basket
-            </BasketBtn>
+            <BasketBtn onClick={handleBasketClick}>Check basket</BasketBtn>
             <ViewCartButton quantity={2} price={120} />
           </CartBtns>
         </LeftSide>
