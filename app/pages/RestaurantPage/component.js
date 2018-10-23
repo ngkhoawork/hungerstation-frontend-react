@@ -7,7 +7,8 @@ import { ViewCartButton } from 'components/Cart';
 import RestaurantInfo from 'components/RestaurantInfo';
 import RestaurantProductTypes from 'components/RestaurantProductTypes';
 import RestaurantProducts from 'components/RestaurantProducts';
-// import MealOptions from 'components/MealOptions';
+import MealOptions from 'components/MealOptions';
+import { maxModalHeight } from 'utils/css/variables';
 import {
   StyledPage,
   NavHeader,
@@ -25,10 +26,23 @@ import {
 const RestaurantPage = ({
   restaurant,
   onAddToCart,
-  // onShowModal,
-  // onHideModal,
+  onShowModal,
+  onHideModal,
 }) => {
   const { info, types, products } = restaurant;
+
+  const handleAddClick = product => {
+    const MealOptionsHOC = () => (
+      <MealOptions
+        meal={product}
+        onCancel={onHideModal}
+        style={{ maxHeight: maxModalHeight }}
+      />
+    );
+
+    onShowModal(MealOptionsHOC);
+    onAddToCart(product);
+  };
 
   return (
     <StyledPage>
@@ -48,7 +62,7 @@ const RestaurantPage = ({
             </StyledProductTypes>
             <RestaurantProducts
               products={products}
-              onProductClick={onAddToCart}
+              onProductClick={handleAddClick}
             />
           </ProductsContainer>
           <CartBtns>

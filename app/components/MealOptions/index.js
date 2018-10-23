@@ -61,7 +61,7 @@ class MealOptions extends Component {
   };
 
   render() {
-    const { onCancel } = this.props;
+    const { meal, onCancel, style } = this.props;
     // const { dropdowns, radios, checkboxes } = this.state;
     const dropdowns = [{ name: 'Choose size', hint: 'Required' }];
     const radios = [
@@ -82,13 +82,10 @@ class MealOptions extends Component {
     ];
 
     return (
-      <Container>
+      <Container style={style}>
         <Header>
-          <Title>Whooper</Title>
-          <Description>
-            A classic composition fo grilled blab blablabl abla bla lab blablabl
-            abla bla lab blablabl abla bla lab blablabl abla bla
-          </Description>
+          <Title>{meal.title}</Title>
+          <Description>{meal.description}</Description>
           <CircledItem
             color={gold}
             width={30}
@@ -141,7 +138,9 @@ class MealOptions extends Component {
 }
 
 MealOptions.propTypes = {
+  meal: PropTypes.object.isRequired,
   onCancel: PropTypes.func.isRequired,
+  style: PropTypes.object,
 };
 
 export default MealOptions;
