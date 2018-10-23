@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { keyBy, pick, values, flow, find } from 'lodash/fp';
 import { initialState } from './reducer';
 
 /**
@@ -25,7 +26,11 @@ const selectVisibleRestaurantsIds = createSelector(
 export const selectVisibleRestaurants = createSelector(
   selectRestaurants,
   selectVisibleRestaurantsIds,
-  (restaurants, ids) => restaurants.filter(({ id }) => ids.includes(id)).toJS(),
+  (restaurants, ids) =>
+    ids.reduce((acc, curr) => {
+      const el = restaurants.find(({ id }) => id === curr);
+      return el ? [...acc, el] : [acc];
+    }, []),
 );
 
 // FILTERS
@@ -49,9 +54,47 @@ export const selectChosenKitchenFiltersArray = createSelector(
   chosenFiltersMap => chosenFiltersMap.get('kitchens').toArray(),
 );
 
-export const selectChosenDeliveryOptionsArray = createSelector(
+export const selectChosenDeliveryOption = createSelector(
   selectChosenFilters,
-  chosenFiltersMap => chosenFiltersMap.get('delivery_options').toArray(),
+  chosenFiltersMap => chosenFiltersMap.get('delivery_option'),
 );
 
+export const selectChosenMinOreder = createSelector(
+  selectChosenFilters,
+  chosenFiltersMap => chosenFiltersMap.get('min_order'),
+);
+
+export const selectChosenDeliveryTime = createSelector(
+  selectChosenFilters,
+  chosenFiltersMap => chosenFiltersMap.get('delivery_time'),
+);
+
+const pickArrayElementsByIds = ids =>
+  flow(
+    keyBy('id'),
+    pick(ids),
+    values,
+  );
+
+export const selectDynamicFilters = createSelector(
+  selectFilters,
+  selectChosenKitchenFiltersArray,
+  selectChosenDeliveryOption,
+  ({ kitchens, delivery_options }, kitchensIds, deliveryOption) => {
+    /* eslint-disable */
+    const dynamicKitchensNames = kitchensIds.length
+      ? pickArrayElementsByIds(kitchensIds)(kitchens).reduce(
+          (acc, { name }) => [...acc, name],
+          [],
+        )
+      : ['All Cusines'];
+    /* eslint-anable */
+
+    const dynamicDeliveryOption =
+      deliveryOption === 'all'
+        ? 'All Delivery Types'
+        : find({ type: deliveryOption }, delivery_options).name;
+    return [...dynamicKitchensNames, dynamicDeliveryOption];
+  },
+);
 export { selectRestaurantDomain };

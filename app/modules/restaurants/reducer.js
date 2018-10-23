@@ -5,8 +5,19 @@ import {
   fetchDeliveryFiltersSuccessAction,
   toggleFilterAction,
   searchRestaurantAction,
+  resetChosenFiltersAction,
+  saveFiltersStageAction,
+  discartFiltersToSavedStageAction,
+  changeOrderFilterAction,
 } from './actions';
 import { MIN_ORDER_RANGE, TIME_ESTIMATION_RANGE } from './constants';
+
+const INITIAL_CHOSEN_FILTERS_STATE = {
+  kitchens: {},
+  delivery_option: 'all',
+  min_order: MIN_ORDER_RANGE.max,
+  delivery_time: TIME_ESTIMATION_RANGE.min,
+};
 
 export const initialState = fromJS({
   restaurants: [],
@@ -15,45 +26,62 @@ export const initialState = fromJS({
     kitchens: [],
     delivery_options: [],
   },
-  chosenFilters: {
-    kitchens: {},
-    delivery_options: {},
-    min_order: MIN_ORDER_RANGE.min,
-    delivery_time: TIME_ESTIMATION_RANGE.min,
-  },
+  chosenFilters: INITIAL_CHOSEN_FILTERS_STATE,
+  filtersStage: {},
   search: '',
 });
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case updateRestaurantsListing.type:
-      return state.set('restaurants', List(action.payload.restaurants)).set(
-        'visibleRestaurantsIds',
+      return state.set('restaurants', List(action.payload.restaurants));
 
-        action.payload.restaurants.reduce((acc, curr) => [...acc, curr.id], []),
-      );
     case updateVisibleRestaurantsAction.type:
       return state.set('visibleRestaurantsIds', action.payload);
+
     case fetchDeliveryFiltersSuccessAction.type: {
-      const { kitchens, delivery_options } = action.payload;
+      const { kitchens, delivery_providers } = action.payload;
       return state.updateIn(['filters'], map =>
-        map.set('kitchens', kitchens).set('delivery_options', delivery_options),
+        map
+          .set('kitchens', kitchens)
+          .set('delivery_options', delivery_providers),
       );
     }
+
+    case changeOrderFilterAction.type: {
+      const { filterKey, value } = action.payload;
+      return state.updateIn(['chosenFilters'], map =>
+        map.updateIn([filterKey], () => value),
+      );
+    }
+
     case toggleFilterAction.type: {
       const { filterKey, value } = action.payload;
       return state.updateIn(['chosenFilters'], map =>
         map.updateIn(
           [filterKey],
-          filterKey === 'min_order' || filterKey === 'delivery_time'
+          filterKey === 'delivery_option'
             ? () => value
             : map =>
                 map.has(value) ? map.delete(value) : map.set(value, value), //eslint-disable-line
         ),
       );
     }
+
+    case resetChosenFiltersAction.type:
+      return state.update('chosenFilters', () =>
+        fromJS(INITIAL_CHOSEN_FILTERS_STATE),
+      );
+
+    case saveFiltersStageAction.type:
+      return state.update('filtersStage', () => state.get('chosenFilters'));
+
+    case discartFiltersToSavedStageAction.type:
+      return state.update('chosenFilters', () => state.get('filtersStage'));
+
     case searchRestaurantAction.type:
       return state.set('search', action.payload);
+
     default:
       return state;
   }

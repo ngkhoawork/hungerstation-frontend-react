@@ -17,6 +17,11 @@ export const updateVisibleRestaurantsAction = createAction(
   retaurantsIdsArray => retaurantsIdsArray,
 );
 
+export const searchRestaurantAction = createAction(
+  'restaurants/SEARCH_RESTAURANT',
+  string => string,
+);
+
 // FILTERS
 export const fetchDeliveryFiltersAction = createAction(
   'restaurant/FETCH_DELIVERY_FILTERS',
@@ -24,7 +29,7 @@ export const fetchDeliveryFiltersAction = createAction(
 
 export const fetchDeliveryFiltersSuccessAction = createAction(
   'restaurant/FETCH_DELIVERY_FILTERS_SUCCESS',
-  ({ kitchens, delivery_options }) => ({ kitchens, delivery_options }),
+  ({ kitchens, delivery_providers }) => ({ kitchens, delivery_providers }),
 );
 
 export const toggleFilterAction = createAction(
@@ -32,7 +37,24 @@ export const toggleFilterAction = createAction(
   ({ filterKey, value }) => ({ filterKey, value }),
 );
 
-export const searchRestaurantAction = createAction(
-  'restaurants/SEARCH_RESTAURANT',
-  string => string,
+export const changeOrderFilterAction = createAction(
+  'restaurants/CHANGE_ORDER_FILTER',
+  ({ filterKey, value }) => ({ filterKey, value }),
+);
+
+export const saveFiltersStageAction = createAction(
+  'restaurants/SAVE_FILTERS_STAGE',
+);
+
+export const discartFiltersToSavedStageAction = createAction(
+  'restaurants/DISCARD_FILTERS_TO_SAVED_STAGE',
+);
+
+export const resetChosenFiltersAction = createAction(
+  'restaurants/RESET_CHOSEN_FILTERS',
+);
+
+export const addToDynamicFilters = createAction(
+  'restaurants/ADD_TO_DYNAMIC_FILTERS',
+  filterLabel => filterLabel,
 );

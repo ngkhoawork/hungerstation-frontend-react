@@ -1,50 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { toggleModal } from 'hocs/withModal/actions';
-import { makeSelectIsOpen } from 'hocs/withModal/selectors';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import Group from 'components/Group';
 import Paragraph from 'components/Paragraph';
 import intl from 'utils/intlService';
-import {
-  selectFilters,
-  selectChosenKitchenFiltersArray,
-  selectChosenDeliveryOption,
-  selectDynamicFilters,
-} from 'modules/restaurants/selectors';
-import {
-  toggleFilterAction,
-  resetChosenFiltersAction,
-  discartFiltersToSavedStageAction,
-} from 'modules/restaurants/actions';
 import Header from './Header';
 import Cuisines from './Cuisines';
 import DeliveryTypes from './DeliveryTypes';
 import Orders from './Orders';
 import { ButtonWrapper, ActionsWrapper, ContentWrapper } from './Styled';
 
+import Expander from '../Expander';
 import messages from './messages';
-
-const selectIsOpen = makeSelectIsOpen();
-
-export const decorate = connect(
-  state => ({
-    filters: selectFilters(state),
-    chosenKitchens: selectChosenKitchenFiltersArray(state),
-    chosenDeliveryOption: selectChosenDeliveryOption(state),
-    isModalOpen: selectIsOpen(state),
-    dynamicFilters: selectDynamicFilters(state),
-  }),
-  {
-    toggleFilterAction,
-    resetChosenFiltersAction,
-    discartFiltersToSavedStageAction,
-    toggleModal,
-  },
-);
+import { decorate } from './index';
 
 const FiltersSection = ({
   isModalOpen,
@@ -55,9 +26,8 @@ const FiltersSection = ({
   discartFiltersToSavedStageAction,
   chosenKitchens,
   chosenDeliveryOption,
-  dynamicFilters,
 }) => (
-  <React.Fragment>
+  <Wrapper>
     <Header
       isModalOpened={isModalOpen}
       resetFilters={resetChosenFiltersAction}
@@ -65,24 +35,27 @@ const FiltersSection = ({
         discartFiltersToSavedStageAction();
         toggleModal(false);
       }}
-      dynamicFilters={dynamicFilters}
     />
     <ContentWrapper>
-      <Cuisines
-        kitchens={kitchens}
-        toggleFilter={toggleFilterAction}
-        chosenKitchens={chosenKitchens}
-        title={intl.formatMessage(messages.cuisines)}
-      />
+      <Expander label={intl.formatMessage(messages.cuisines)}>
+        <Cuisines
+          kitchens={kitchens}
+          toggleFilter={toggleFilterAction}
+          chosenKitchens={chosenKitchens}
+        />
+      </Expander>
 
-      <Orders title={intl.formatMessage(messages.order)} />
+      <Expander label={intl.formatMessage(messages.order)}>
+        <Orders />
+      </Expander>
 
-      <DeliveryTypes
-        deliveryOptions={delivery_options}
-        toggleFilter={toggleFilterAction}
-        chosenOption={chosenDeliveryOption}
-        title={intl.formatMessage(messages.deliveryType)}
-      />
+      <Expander label={intl.formatMessage(messages.deliveryType)}>
+        <DeliveryTypes
+          deliveryOptions={delivery_options}
+          toggleFilter={toggleFilterAction}
+          chosenOption={chosenDeliveryOption}
+        />
+      </Expander>
     </ContentWrapper>
 
     {/* BUTTONS IN MODAL */}
@@ -103,8 +76,13 @@ const FiltersSection = ({
         </Button>
       </ButtonWrapper>
     </ActionsWrapper>
-  </React.Fragment>
+  </Wrapper>
 );
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 FiltersSection.propTypes = {
   isModalOpen: PropTypes.bool,
@@ -118,7 +96,6 @@ FiltersSection.propTypes = {
   chosenKitchens: PropTypes.array,
   chosenDeliveryOption: PropTypes.string,
   discartFiltersToSavedStageAction: PropTypes.func,
-  dynamicFilters: PropTypes.array,
 };
 
 export default decorate(FiltersSection);

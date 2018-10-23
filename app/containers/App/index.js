@@ -20,7 +20,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import HomePage from 'pages/HomePage/Loadable';
 import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
-import FiltersSection from 'pages/RestaurantsPage/FiltersSection';
 import LoginPage from 'pages/LoginPage/Loadable';
 import RegistrationPage from 'pages/RegistrationPage/Loadable';
 import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
@@ -28,12 +27,11 @@ import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
 
 import UserProfile from 'components/UserProfile';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
-import ModalContainer from 'containers/ModalContainer';
-import FiltersContainer from 'containers/FiltersContainer';
 
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import { authenticateUser } from '../../modules/auth/actions';
 import StyledApp from './StyledApp';
+import Modals from './Modals';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   dir: locale === 'ar' ? 'rtl' : 'ltr',
@@ -69,11 +67,7 @@ export default class App extends Component {
       <StyledApp dir={dir} dark={isDark}>
         <CssBaseline />
 
-        <ModalContainer>
-          <FiltersContainer>
-            {props => <FiltersSection {...props} />}
-          </FiltersContainer>
-        </ModalContainer>
+        <Modals />
 
         <Switch>
           <Route exact path="/" component={HomePage} />

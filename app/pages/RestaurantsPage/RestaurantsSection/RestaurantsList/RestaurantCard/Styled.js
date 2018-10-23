@@ -32,4 +32,31 @@ const StyledRestaurantCard = styled.div`
   `};
 `;
 
-export default StyledRestaurantCard;
+const StyledUpperPart = styled.div`
+  ${flexBox(
+    { align: 'center', justify: 'space-between' },
+    `
+    width: 100%;
+    flex: 0.2;
+  `,
+  )};
+`;
+
+const StyledBottomPart = styled.div`
+  ${flexBox(
+    { align: 'flex-start', direction: 'column' },
+    `
+    width: 100%;
+    flex: 0.38;
+    div > p {
+      margin-top: 4px;
+      margin-right: 10px;
+    }
+    div > img {
+      margin-right: 5px;
+    }
+  `,
+  )};
+`;
+
+export { StyledRestaurantCard, StyledUpperPart, StyledBottomPart };

@@ -1,25 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { fuscousGray } from 'utils/css/colors';
 
-import StyledParagraph from './StyledParagraph';
+const StyledParagraph = styled.p`
+  font-family: ${({ light }) =>
+    `HungerStation-${light ? 'Light' : 'Regular'}, sans-serif`};
+  font-size: ${({ size }) => (size ? `${size}px` : '14px')};
+  color: ${({ color }) => color || fuscousGray};
+  margin-top: 3px;
+  margin: ${({ margin }) => margin || 0};
+`;
 
-const Paragraph = ({ children, ...rest }) => (
-  <StyledParagraph {...rest}>{children}</StyledParagraph>
-);
-
-Paragraph.propTypes = {
-  children: PropTypes.node.isRequired,
-  light: PropTypes.bool,
-  size: PropTypes.number,
-  color: PropTypes.string,
-  margin: PropTypes.string,
-};
-
-Paragraph.defaultProps = {
-  light: false,
-  color: fuscousGray,
-  size: 14,
-};
-
-export default Paragraph;
+export default StyledParagraph;

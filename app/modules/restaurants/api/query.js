@@ -6,9 +6,10 @@ const getDeliveryFiltersQuery = `query {
 			image_thumb
 			image_original
     }
-    delivery_options{
+    delivery_providers{
       id
       name
+      type
     }
   }
 }`;
@@ -20,12 +21,15 @@ const getDeliveriesQuery = `query GetDeliveries($lat:Float, $lng:Float, $localId
         id
         delivery_provider
         status
+        has_promotion
         restaurant{
           id
           name
+          logo
           rate_average
           kitchens{
             id
+            name
           }
         }
       }

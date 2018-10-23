@@ -1,26 +1,47 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { filtersCategoryPropTypes } from 'propTypes/filters';
+// import { filtersCategoryPropTypes } from 'propTypes/filters';
 import intl from 'utils/intlService';
 import Group from 'components/Group';
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
+import { saveFiltersStageAction } from 'modules/restaurants/actions';
+import { toggleModal } from 'hocs/withModal/actions';
+import { makeSelectIsOpen } from 'hocs/withModal/selectors';
 
 import Header from '../FiltersSection/Header';
-import Category from '../FiltersSection/Category';
-import Tags from '../FiltersSection/Tags';
+// import Category from '../FiltersSection/Category';
+// import Tags from '../FiltersSection/Tags';
 import messages from './messages';
 
-const BriefFiltersSection = ({ isModalOpened, tags, openModal }) => (
+const selectIsOpen = makeSelectIsOpen();
+
+const decorate = connect(
+  state => ({ isModalOpened: selectIsOpen(state) }),
+  { toggleModal, saveFiltersStageAction },
+);
+
+const BriefFiltersSection = ({
+  isModalOpened,
+  // tags,
+  toggleModal,
+  saveFiltersStageAction,
+}) => (
   <React.Fragment>
     <Header isModalOpened={isModalOpened} />
-    <Category
+    {/* <Category
       title={intl.formatMessage(messages.tags)}
-      isSectionExpanded={tags.get('isExpanded')}
+      isSectionExpanded={true}
+    > */}
+    {/* <Tags tags={tags} /> */}
+    {/* </Category> */}
+    <Group
+      onClick={() => {
+        saveFiltersStageAction();
+        toggleModal(true);
+      }}
     >
-      <Tags tags={tags} />
-    </Category>
-    <Group onClick={openModal}>
       <Paragraph margin="0 5px 0 0">
         {intl.formatMessage(messages.moreFilters)}
       </Paragraph>
@@ -31,8 +52,9 @@ const BriefFiltersSection = ({ isModalOpened, tags, openModal }) => (
 
 BriefFiltersSection.propTypes = {
   isModalOpened: PropTypes.bool.isRequired,
-  tags: filtersCategoryPropTypes,
-  openModal: PropTypes.func.isRequired,
+  // tags: filtersCategoryPropTypes,
+  toggleModal: PropTypes.func,
+  saveFiltersStageAction: PropTypes.func,
 };
 
-export default BriefFiltersSection;
+export default decorate(BriefFiltersSection);

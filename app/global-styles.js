@@ -12,8 +12,7 @@ import HSBwoff from './vendor/fonts/HungerStation-Bold.woff';
 import HSBwoff2 from './vendor/fonts/HungerStation-Bold.woff2';
 import HSBotf from './vendor/fonts/HungerStation-Bold.otf';
 
-/* eslint no-unused-expressions: 0 */
-injectGlobal`
+export const global = injectGlobal`
   @font-face {
     font-family: 'HungerStation-Regular';
     src: url(${HSRwoff2});

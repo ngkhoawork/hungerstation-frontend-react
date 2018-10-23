@@ -15,4 +15,12 @@ export default defineMessages({
     id: 'app.components.RestaurantsList.RestaurantCard.minValue',
     defaultMessage: 'min. {min}',
   },
+  currency: {
+    id: 'app.components.RestaurantsList.RestaurantCard.currency',
+    defaultMessage: 'SR {value}',
+  },
+  promoted: {
+    id: 'app.components.RestaurantsList.RestaurantCard.promoted',
+    defaultMessage: 'Promoted',
+  },
 });

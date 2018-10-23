@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flexBox, mediaMedium } from 'utils/css/styles';
-import Paragraph from 'components/Paragraph/StyledParagraph';
+import Paragraph from 'components/Paragraph';
 import StyledSearchType from '../StyledContainer';
 
 const StyledContainer = styled.div`

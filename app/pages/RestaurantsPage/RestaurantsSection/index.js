@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { flexBox, mediaLess, mediaGreater } from 'utils/css/styles';
 
-import OffersListContainer from 'containers/OffersListContainer';
-import FiltersContainer from 'containers/FiltersContainer';
+// import OffersListContainer from 'containers/OffersListContainer';
 import RestaurantsListContainer from 'containers/RestaurantsListContainer';
 import RestaurantsHeaderContainer from 'containers/RestaurantsHeaderContainer';
-import Paragraph from 'components/Paragraph';
+// import Paragraph from 'components/Paragraph';
 import Section from './Section';
 import BriefFiltersSection from '../BriefFiltersSection';
 
@@ -22,17 +21,15 @@ const RestaurantsSection = () => {
 
   return (
     <Wrapper>
-      <Section>
+      {/* <Section>
         <Paragraph size={30}>Top offers</Paragraph>
         <OffersListContainer />
-      </Section>
+      </Section> */}
 
       <Section innerRef={topRef}>
         <RestaurantsHeaderContainer />
         <BriefFiltersWrapper>
-          <FiltersContainer>
-            {props => <BriefFiltersSection {...props} />}
-          </FiltersContainer>
+          <BriefFiltersSection />
         </BriefFiltersWrapper>
         <RestaurantsListContainer handleScrollToTop={handleScrollToTop} />
       </Section>
