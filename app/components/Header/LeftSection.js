@@ -1,5 +1,6 @@
 import styled from 'styled-components';
+import { flex } from 'utils/css/styles';
 
 export default styled.div`
-  width: 208px;
+  ${flex({ align: 'center' })};
 `;

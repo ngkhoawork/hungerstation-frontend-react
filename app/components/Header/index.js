@@ -9,7 +9,7 @@ import intl from 'utils/intlService';
 
 import { fuscousGray } from 'utils/css/colors';
 
-import CenterSection from './CenterSection';
+import LinkWrapper from './LinkWrapper';
 import RightSection from './RightSection';
 import LeftSection from './LeftSection';
 import StyledHeader, { StyledBrandLogo, StyledContent } from './StyledHeader';
@@ -54,13 +54,13 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
   <StyledHeader gold={variant === 'gold'}>
     <StyledContent>
       <LeftSection>
-        <Link to="/">
-          <StyledBrandLogo alt="logo" src={logo} height={53} />
-        </Link>
-      </LeftSection>
-      <CenterSection>
+        <LinkWrapper>
+          <Link to="/">
+            <StyledBrandLogo alt="logo" src={logo} height={53} />
+          </Link>
+        </LinkWrapper>
         <LocaleToggle variant={variant} />
-      </CenterSection>
+      </LeftSection>
       <RightSection>
         {isLoggedIn ? (
           <DropdownMenu

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { gold } from 'utils/css/colors';
-import { mediaSmall, mediaMedium, mediaLess } from 'utils/css/styles';
-import { LARGE_SCREEN_CONTENT_WIDTH } from 'components/PageContent/constants';
+import { flex, mediaSmall, mediaMedium, mediaLess } from 'utils/css/styles';
+import { pageOffsetX, maxPageWidth } from 'utils/css/variables';
 
 const StyledHeader = styled.div`
   ${props => props.gold && `background-color: ${gold};`};
@@ -10,7 +10,8 @@ const StyledHeader = styled.div`
   height: 100px;
   font-family: 'HungerStation-Regular', sans-serif;
   z-index: 100;
-  max-width: 1446px;
+  max-width: ${maxPageWidth};
+  overflow-x: hidden;
 
   ${mediaLess('950px')`
     padding: 32px 80px
@@ -27,10 +28,10 @@ export const StyledBrandLogo = styled.img`
   filter: drop-shadow(0 0 3px #e4e8e6);
 `;
 export const StyledContent = styled.div`
-  width: ${LARGE_SCREEN_CONTENT_WIDTH}px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  width: 100%;
+  padding: 0 ${pageOffsetX};
+  ${mediaMedium`padding: 0 20px;`};
+  ${flex({ align: 'center', justify: 'space-between' })};
   margin: 0 auto;
 `;
 export const StyledUserInfo = styled.div`
