@@ -9,4 +9,9 @@ export const makeSelectIsOpen = () =>
     modalState.get('isOpen'),
   );
 
+export const makeSelectView = () =>
+  createSelector(selectModalContainerDomain, modalState =>
+    modalState.get('view'),
+  );
+
 export { selectModalContainerDomain };

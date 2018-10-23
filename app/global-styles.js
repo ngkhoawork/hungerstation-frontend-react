@@ -1,5 +1,6 @@
 import { injectGlobal } from 'styled-components';
 import { jade } from 'utils/css/colors';
+import { zIndexModal, borderRadius } from 'utils/css/variables';
 import HSRwoff from './vendor/fonts/HungerStation-Regular.woff';
 import HSRwoff2 from './vendor/fonts/HungerStation-Regular.woff2';
 import HSRotf from './vendor/fonts/HungerStation-Regular.otf';
@@ -68,17 +69,11 @@ export const global = injectGlobal`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    width: 600px;
-    max-width: 100%;
-    height: 900px;
-    max-height: 100%;
-    z-index: 101;
-    outline: 9999px solid rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    max-width: 96%;
+    max-height: 96%;
+    outline: none;
+    border-radius: ${borderRadius};
+    overflow: hidden;
   }
 
   .Overlay {
@@ -87,10 +82,8 @@ export const global = injectGlobal`
     left: 0;
     width: 100%;
     height: 100%;
-  }
-
-  .ReactModal__Body--open {
-    overflow-y: hidden;
+    z-index: ${zIndexModal};
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .slick-dots {

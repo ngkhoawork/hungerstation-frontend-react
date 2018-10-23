@@ -8,3 +8,4 @@ export const pageOffsetX = '113px';
 export const mobPageOffsetX = '30px';
 
 export const zIndexDropdown = 700;
+export const zIndexModal = 1000;

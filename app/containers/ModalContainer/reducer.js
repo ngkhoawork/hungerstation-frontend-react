@@ -9,27 +9,18 @@ import { SHOW_MODAL, HIDE_MODAL } from './constants';
 
 export const initialState = fromJS({
   isOpen: false,
+  view: null,
 });
 
-const modalContainerReducer = (state = initialState, action) => {
-  switch (action.type) {
+const modalContainerReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case SHOW_MODAL:
-      return onShowModal(state);
+      return state.merge({ isOpen: true, view: payload.view });
     case HIDE_MODAL:
-      return onHideModal(state);
+      return state.merge(initialState);
     default:
       return state;
   }
 };
-
-const onShowModal = state =>
-  state.merge({
-    isOpen: true,
-  });
-
-const onHideModal = state =>
-  state.merge({
-    isOpen: false,
-  });
 
 export default modalContainerReducer;

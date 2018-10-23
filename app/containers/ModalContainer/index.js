@@ -12,11 +12,12 @@ import ReactModal from 'react-modal';
 import { compose } from 'recompose';
 
 import injectReducer from 'utils/injectors/injectReducer';
-import { makeSelectIsOpen } from './selectors';
+import { makeSelectIsOpen, makeSelectView } from './selectors';
 import reducer from './reducer';
 
 const mapStateToProps = createStructuredSelector({
   isOpen: makeSelectIsOpen(),
+  view: makeSelectView(),
 });
 
 const enhanced = compose(
@@ -24,7 +25,7 @@ const enhanced = compose(
   injectReducer({ key: 'modalContainer', reducer }),
 );
 
-export const ModalContainer = ({ children, isOpen }) => (
+export const ModalContainer = ({ isOpen, view: View }) => (
   <ReactModal
     isOpen={isOpen}
     shouldCloseOnOverlayClick
@@ -33,12 +34,12 @@ export const ModalContainer = ({ children, isOpen }) => (
     overlayClassName="Overlay"
     ariaHideApp={false}
   >
-    {children}
+    <View />
   </ReactModal>
 );
 
 ModalContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+  view: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
   isOpen: PropTypes.bool.isRequired,
 };
 
