@@ -68,3 +68,15 @@ export const sample = (array, size) => shuffle(array).slice(0, size);
 
 export const sortAlphabetically = arr =>
   arr.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+
+export function isChildOf(element, parentId) {
+  let parent = element.parentElement;
+
+  while (parent) {
+    if (parent.id === parentId) return true;
+
+    parent = parent.parentElement;
+  }
+
+  return false;
+}
