@@ -4,7 +4,7 @@ import { borderRadius } from 'utils/css/variables';
 import { jade, alabaster } from 'utils/css/colors';
 
 export const Container = styled.div`
-  margin: 20px 0;
+  margin-bottom: 20px;
 `;
 
 export const Header = styled.div`
