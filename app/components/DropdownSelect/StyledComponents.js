@@ -14,8 +14,8 @@ import {
 
 export const Container = styled.div`
   position: relative;
-  display: inline-block;
   font-family: ${fontFamilyLight};
+  display: ${({ isBlock }) => (isBlock ? 'block' : 'inline-block')};
 `;
 
 export const List = styled.ul`
@@ -67,13 +67,12 @@ export const SelectedItem = styled.div`
   background-color: ${alabaster};
   border: solid 1px ${lightGray};
   border-radius: ${borderRadius};
-  padding: 8px 16px;
+  padding: 6px 12px;
 
   ${({ isBlock }) =>
     isBlock &&
     css`
       ${flex({ justify: 'space-between', align: 'center' })};
-      padding: 10px 15px;
     `};
 `;
 

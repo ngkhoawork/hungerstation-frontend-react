@@ -98,7 +98,7 @@ class DropdownSelect extends Component {
     const selectedItemValue = this.getSelectedItemValue();
 
     return (
-      <Container id={this.id}>
+      <Container id={this.id} isBlock={isBlock}>
         <SelectedItem isBlock={isBlock} onClick={this.handleToggle}>
           {selectedItemValue === undefined ? null : (
             <SelectedItemValue>{selectedItemValue}</SelectedItemValue>
