@@ -41,7 +41,7 @@ Button.propTypes = {
   size: PropTypes.string,
   label: PropTypes.string,
   backgroundImage: PropTypes.string,
-  children: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   color: PropTypes.string,
   lift: PropTypes.bool,
   disabled: PropTypes.bool,
