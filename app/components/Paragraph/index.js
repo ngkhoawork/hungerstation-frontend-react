@@ -6,7 +6,6 @@ const StyledParagraph = styled.p`
     `HungerStation-${light ? 'Light' : 'Regular'}, sans-serif`};
   font-size: ${({ size }) => (size ? `${size}px` : '14px')};
   color: ${({ color }) => color || fuscousGray};
-  margin-top: 3px;
   margin: ${({ margin }) => margin || 0};
 `;
 

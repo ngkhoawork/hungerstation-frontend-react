@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flexBox, mediaLess } from 'utils/css/styles';
-import Paragraph from 'components/Paragraph/StyledParagraph';
+import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon/StyledIcon';
 
 const StyledRestaurantList = styled.div`

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flexBox } from 'utils/css/styles';
-import Paragraph from 'components/Paragraph/StyledParagraph';
+import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon/StyledIcon';
 
 const StyledDropdown = styled.div`
