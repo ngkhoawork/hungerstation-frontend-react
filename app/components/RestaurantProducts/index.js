@@ -22,7 +22,7 @@ const renderFooter = price => (
     </PriceContainer>
     <span role="button">
       Add to cart &nbsp;
-      <Icon name="arrow-circled-right" size={15} />
+      <Icon name="arrow-circled-right" offsetY="-1" size={15} />
     </span>
   </Fragment>
 );
