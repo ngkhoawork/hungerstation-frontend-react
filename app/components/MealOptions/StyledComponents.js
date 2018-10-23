@@ -1,18 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { flex, borderBottom } from 'utils/css/styles';
 import { fuscousGray, silverChalice } from 'utils/css/colors';
 import { fontFamilyRegular, fontFamilyLight } from 'utils/css/variables';
 
 export const Container = styled.div`
-  padding: 30px 20px;
+  padding: 30px;
   background: white;
   position: relative;
   ${flex({ direction: 'column' })};
+  ${({ style }) => css(style)};
 `;
 
 export const Header = styled.div`
   flex-shrink: 0;
   ${borderBottom};
+  margin-right: 20px;
 `;
 
 export const Title = styled.div`
@@ -40,6 +42,8 @@ export const Content = styled.div`
   ${flex({ direction: 'column' })};
   overflow-y: auto;
   flex-grow: 1;
+  margin: 20px 0;
+  padding-right: 10px;
 `;
 
 export const Footer = styled.div`
