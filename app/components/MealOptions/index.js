@@ -127,7 +127,7 @@ class MealOptions extends Component {
             Total &nbsp;
             <Price price={300} isPrimary />
             &nbsp; &nbsp; &nbsp;
-            <Button primary inline size="lg" onClick={() => console.log('add')}>
+            <Button primary inline size="l" onClick={() => console.log('add')}>
               Add to cart
             </Button>
           </FooterRightSide>

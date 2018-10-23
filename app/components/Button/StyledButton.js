@@ -17,7 +17,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   outline: 0;
   padding: ${({ size }) => {
-    if (size === 'lg') return '14px 28px';
+    if (size === 'l') return '14px 28px';
+    if (size === 'xl') return '18px 34px';
     return '10px 20px';
   }};
   font-family: ${fontFamilyRegular};

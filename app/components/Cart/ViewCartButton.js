@@ -18,20 +18,19 @@ const ButtonWrapper = styled.div`
 const Content = styled.div`
   font-family: ${fontFamilyRegular} !important;
   position: relative;
-  padding: 20px;
   width: 100%;
 `;
 
 const LeftSide = styled.span`
   position: absolute;
   left: 20px;
-  top: 15px;
+  top: -4px;
 `;
 
 const RightSide = styled.span`
   position: absolute;
   right: 20px;
-  top: 25px;
+  top: 4px;
 `;
 
 const Label = styled.span`
@@ -43,7 +42,7 @@ const Label = styled.span`
 
 const ViewCartButton = ({ quantity, price }) => (
   <ButtonWrapper>
-    <Button primary={false} color={alabaster}>
+    <Button primary={false} size="xl" color={alabaster}>
       <Content>
         <LeftSide>
           {quantity !== undefined ? (
