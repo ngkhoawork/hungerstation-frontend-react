@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { gold, paleSlate } from 'utils/css/colors';
 import getImage from 'utils/css/images';
 import { flexBox } from 'utils/css/styles';
+import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import Spinner from 'components/Spinner/StyledSpinner';
 
 const StyledButton = styled.button`
   ${flexBox({ align: 'center', justify: 'center' })} height: 100%;
-  width: 100%;
-  border-radius: 8px;
+  width: ${({ inline }) => (inline ? 'auto' : '100%')};
+  border-radius: ${borderRadius};
   background-color: ${({ primary, color }) => (primary ? gold : color)};
   background-image: url(${({ backgroundImage }) => getImage(backgroundImage)});
   background-position: center;
@@ -15,6 +16,12 @@ const StyledButton = styled.button`
     lift ? '0 10px 20px 0 rgba(126, 125, 125, 0.15)' : 'none'};
   cursor: pointer;
   outline: 0;
+  padding: ${({ size }) => {
+    if (size === 'lg') return '14px 28px';
+    return '10px 20px';
+  }};
+  font-family: ${fontFamilyRegular};
+  line-height: 1;
 
   :disabled {
     background-color: ${paleSlate};

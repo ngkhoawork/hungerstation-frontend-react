@@ -7,6 +7,8 @@ import Text from './Text';
 
 const Button = ({
   primary,
+  inline,
+  size,
   label,
   color,
   backgroundImage,
@@ -14,15 +16,19 @@ const Button = ({
   lift,
   disabled,
   loading,
+  onClick,
 }) => (
   <StyledButton
     primary={primary}
+    inline={inline}
+    size={size}
     type="button"
     color={color}
     backgroundImage={backgroundImage}
     lift={lift}
     disabled={disabled}
     loading={loading}
+    onClick={onClick}
   >
     {children}
     {loading ? <Spinner isActive /> : <Text>{label}</Text>}
@@ -31,6 +37,8 @@ const Button = ({
 
 Button.propTypes = {
   primary: PropTypes.bool,
+  inline: PropTypes.bool,
+  size: PropTypes.string,
   label: PropTypes.string,
   backgroundImage: PropTypes.string,
   children: PropTypes.object,
@@ -38,6 +46,7 @@ Button.propTypes = {
   lift: PropTypes.bool,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
