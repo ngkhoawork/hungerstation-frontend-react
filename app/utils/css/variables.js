@@ -1,4 +1,5 @@
 export const fontFamilyRegular = 'HungerStation-Regular, sans-serif';
+export const fontFamilyLight = 'HungerStation-Light, sans-serif';
 export const boxShadow = '8px 12px 23px -3px rgba(59, 59, 59, 0.13)';
 export const borderRadius = '8px';
 
