@@ -4,8 +4,15 @@ import PropTypes from 'prop-types';
 import StyledItem from './StyledItem';
 import Circle from './Circle';
 
-const CircledItem = ({ width, children, color, withShadow }) => (
-  <StyledItem width={width}>
+const CircledItem = ({
+  width,
+  children,
+  color,
+  withShadow,
+  onClick,
+  style,
+}) => (
+  <StyledItem width={width} onClick={onClick} style={style}>
     <Circle color={color} width={width} withShadow={withShadow} />
     {children}
   </StyledItem>
@@ -16,6 +23,8 @@ CircledItem.propTypes = {
   color: PropTypes.string.isRequired,
   children: PropTypes.node,
   withShadow: PropTypes.bool,
+  onClick: PropTypes.func,
+  style: PropTypes.object,
 };
 
 CircledItem.defaultProps = {
