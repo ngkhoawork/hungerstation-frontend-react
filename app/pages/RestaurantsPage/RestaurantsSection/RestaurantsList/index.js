@@ -10,6 +10,7 @@ import RestaurantCard from './RestaurantCard';
 import ToolsPanel from './ToolsPanel';
 import StyledList from './StyledList';
 import LoadMore from './LoadMore';
+import NotFound from './NotFound';
 import ScrollToListTopWrapper from './ButtonWrapper';
 
 const PAGINATION_STEP = 9;
@@ -48,15 +49,17 @@ export default class RestaurantsList extends Component {
     return (
       <StyledRestaurantList>
         <ToolsPanel />
-
-        <StyledList>
-          {restaurants
-            .slice(0, paginationStage * PAGINATION_STEP)
-            .map(restaurant => (
-              <RestaurantCard key={restaurant.id} {...restaurant} />
-            ))}
-        </StyledList>
-
+        {restaurants.length > 0 ? (
+          <StyledList>
+            {restaurants
+              .slice(0, paginationStage * PAGINATION_STEP)
+              .map(restaurant => (
+                <RestaurantCard key={restaurant.id} {...restaurant} />
+              ))}
+          </StyledList>
+        ) : (
+          <NotFound />
+        )}
         <ScrollToListTopWrapper onClick={handleScrollToTop}>
           <CircledItem width={28} color={gold}>
             <Icon name="arrow-right" size={12} />
