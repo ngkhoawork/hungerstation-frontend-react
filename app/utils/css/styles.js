@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 import media from 'styled-media-query';
+import { lightGray } from './colors';
 
 const styles = () => ({
   button: {
@@ -23,10 +24,6 @@ const styles = () => ({
     marginBottom: '8px',
   },
 });
-
-export const fontCorrection = css`
-  padding-top: 3px;
-`;
 
 export const flex = ({ align, justify, direction }) => css`
   display: flex;
@@ -85,5 +82,12 @@ export const getDisplayProp = isModalOpened =>
   `
     display: none;
   `;
+
+export const fontCorrection = css`
+  padding-top: 3px;
+`;
+export const borderBottom = css`
+  border-bottom: solid 1px ${lightGray};
+`;
 
 export default styles;
