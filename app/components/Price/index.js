@@ -6,7 +6,7 @@ import Icon from 'components/Icon';
 import { fontFamilyRegular } from 'utils/css/variables';
 import { jade, silverChalice } from 'utils/css/colors';
 
-const Price = styled.div`
+const Price = styled.span`
   color: ${({ isPrimary }) => (isPrimary ? jade : silverChalice)};
   font-size: ${({ size }) => size || 16}px;
   font-family: ${fontFamilyRegular};
@@ -16,7 +16,7 @@ const OrderElement = ({ price, hasTag, ...props }) => (
   <Price {...props}>
     {hasTag ? (
       <Fragment>
-        <Icon name="price-tag" /> &nbsp;
+        <Icon name="price-tag" offsetY="-1" /> &nbsp;
       </Fragment>
     ) : null}
     {intl.formatNumber(price, { style: 'currency', currency: 'SAR' })}
