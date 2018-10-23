@@ -22,6 +22,7 @@ export const Hint = styled.span`
   padding: 5px 10px;
   background-color: ${alabaster};
   border-radius: ${borderRadius};
+  margin-left: 10px;
 
   + span {
     margin-left: 10px;

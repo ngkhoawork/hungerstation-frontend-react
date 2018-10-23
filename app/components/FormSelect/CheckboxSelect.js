@@ -1,23 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { gold, fuscousGray, lightGray } from 'utils/css/colors';
-import { fontFamilyRegular } from 'utils/css/variables';
-import { withStyles } from '@material-ui/core/styles';
+import { gold } from 'utils/css/colors';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
-import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
-
-const FormControlLabel = withStyles({
-  root: {
-    borderBottom: `solid 1px ${lightGray}`,
-  },
-  label: {
-    color: `${fuscousGray}`,
-    fontFamily: `${fontFamilyRegular}`,
-    paddingTop: '3px',
-  },
-})(MuiFormControlLabel);
+import FormControlLabel from './FormControlLabel';
 
 const Checkbox = styled(MuiCheckbox)`
   color: ${gold} !important;
@@ -37,7 +24,7 @@ const CheckboxSelect = ({ name, options, onChange }) => (
         label={option.label}
         control={
           <Checkbox
-            value={option.value}
+            value={`${option.value}`}
             checked={option.isChecked}
             onChange={() => onChange(name, option)}
             disableRipple
