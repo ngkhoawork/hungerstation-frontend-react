@@ -1,6 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { showModal, hideModal } from 'containers/ModalContainer/actions';
 import BurgerKing from 'images/burgerking.png';
 import RestaurantPage from './component';
 
@@ -31,20 +32,24 @@ const restaurant = {
   products,
 };
 
-const RestaurantPageHOC = () => (
+const RestaurantPageHOC = ({ showModal, hideModal }) => (
   <RestaurantPage
     restaurant={restaurant}
-    onProductAddToCart={product => console.log(product)}
+    onAddToCart={product => console.log(product)}
+    onShowModal={showModal}
+    onHideModal={hideModal}
   />
 );
 
-// RestaurantPageHOC.propTypes = {};
+RestaurantPageHOC.propTypes = {
+  showModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired,
+};
 
-export default RestaurantPageHOC;
-// export default connect(
-//   state => ({}),
-//   {},
-// )(RestaurantPageHOC);
+export default connect(
+  null,
+  { showModal, hideModal },
+)(RestaurantPageHOC);
 
 /*
 branch(id: 6) {

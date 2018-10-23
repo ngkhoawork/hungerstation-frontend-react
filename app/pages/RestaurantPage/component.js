@@ -7,6 +7,7 @@ import { ViewCartButton } from 'components/Cart';
 import RestaurantInfo from 'components/RestaurantInfo';
 import RestaurantProductTypes from 'components/RestaurantProductTypes';
 import RestaurantProducts from 'components/RestaurantProducts';
+// import MealOptions from 'components/MealOptions';
 import {
   StyledPage,
   NavHeader,
@@ -21,7 +22,12 @@ import {
   BasketBtn,
 } from './StyledComponents';
 
-const RestaurantPage = ({ restaurant, onProductAddToCart }) => {
+const RestaurantPage = ({
+  restaurant,
+  onAddToCart,
+  // onShowModal,
+  // onHideModal,
+}) => {
   const { info, types, products } = restaurant;
 
   return (
@@ -42,7 +48,7 @@ const RestaurantPage = ({ restaurant, onProductAddToCart }) => {
             </StyledProductTypes>
             <RestaurantProducts
               products={products}
-              onProductClick={onProductAddToCart}
+              onProductClick={onAddToCart}
             />
           </ProductsContainer>
           <CartBtns>
@@ -64,7 +70,9 @@ RestaurantPage.propTypes = {
   restaurant: PropTypes.shape({
     types: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
-  onProductAddToCart: PropTypes.func.isRequired,
+  onAddToCart: PropTypes.func.isRequired,
+  onShowModal: PropTypes.func.isRequired,
+  onHideModal: PropTypes.func.isRequired,
 };
 
 export default withHeaderAndFooter(RestaurantPage);
