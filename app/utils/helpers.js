@@ -65,3 +65,6 @@ export const shuffle = array => {
 };
 
 export const sample = (array, size) => shuffle(array).slice(0, size);
+
+export const sortAlphabetically = arr =>
+  arr.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));

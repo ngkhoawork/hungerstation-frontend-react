@@ -13,12 +13,16 @@ export const selectCities = createSelector(
   selectLocationDomain,
   searchBarState => searchBarState.get('cities'),
 );
+export const selectDistricts = createSelector(
+  selectLocationDomain,
+  searchBarState => searchBarState.get('districts'),
+);
 
 export const selectCity = createSelector(selectLocationDomain, searchBarState =>
   searchBarState.get('selectedCity'),
 );
 
-export const selectDistricts = createSelector(
+export const selectedDistricts = createSelector(
   selectLocationDomain,
   selectCity,
   (searchBarState, city) => {
@@ -39,15 +43,15 @@ export const selectDistrict = createSelector(
   searchBarState => searchBarState.get('selectedDistrict'),
 );
 
-export const makeSelectLastCoords = () =>
-  createSelector(selectLocationDomain, locationState =>
-    locationState.get('coords').toJS(),
-  );
-
 export const makeSampleCities = () =>
-  createSelector(selectLocationDomain, locationState => {
-    const cities = locationState.get('cities').toJS();
-    return sample(cities, 9);
+  createSelector(selectCities, selectDistricts, (cities, districts) => {
+    if (districts.size) {
+      return sample(cities.toJS(), 9).map(city => ({
+        city,
+        districts: sample(districts.get(city.id).toJS(), 16),
+      }));
+    }
+    return [];
   });
 
 export const makeSelectDistricts = () =>

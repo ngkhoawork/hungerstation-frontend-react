@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { sortAlphabetically } from 'utils/helpers';
 import {
   setCitiesAction,
   setDistrictsAction,
@@ -44,6 +45,10 @@ function searchBarContainerReducer(state = initialState, action) {
 
 const onSetCities = (state, action) => {
   const { cities } = action.payload;
+  sortAlphabetically(cities);
+  // cities.sort((a, b) =>
+  //   a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+  // );
   return state.merge({
     cities,
   });

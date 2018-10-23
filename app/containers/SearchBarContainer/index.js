@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import {
   selectCities,
-  selectDistricts,
+  selectedDistricts,
   selectIsSettlementLoaded,
   selectCity,
   selectDistrict,
@@ -25,7 +25,7 @@ import types from './propTypes';
 
 const mapStateToProps = createStructuredSelector({
   cities: selectCities,
-  districts: selectDistricts,
+  districts: selectedDistricts,
   isSettlementLoaded: selectIsSettlementLoaded,
   selectedCity: selectCity,
   selectedDistrict: selectDistrict,

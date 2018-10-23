@@ -1,10 +1,10 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-// import { getUserPosition } from 'utils/location';
+import { getUserPosition } from 'utils/location';
 import { fetchRestaurantsAction } from 'modules/restaurants/actions';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 import { makeSelectSearchType } from 'containers/SearchTypeContainer/selectors';
-import { slugify } from 'utils/helpers';
+import { slugify, sortAlphabetically } from 'utils/helpers';
 import locationApi from './api';
 
 import {
@@ -26,11 +26,12 @@ function* getCitiesFlow() {
   if (!cachedCities.size) {
     const { cities: listCities } = yield call(locationApi.getCities, 1);
     const districtsMap = {};
-
-    const cities = listCities.map(({ id, locals, name }) => {
-      districtsMap[id] = locals;
-      return { name, id };
-    });
+    const cities = listCities
+      .filter(city => city.locals.length)
+      .map(({ id, locals, name }) => {
+        districtsMap[id] = sortAlphabetically(locals);
+        return { name, id };
+      });
 
     yield put(setCitiesAction(cities));
     yield put(setDistrictsAction(districtsMap));
@@ -44,15 +45,14 @@ function* selectCityFlow() {
 function* getCurrentLocationFlow() {
   yield put(toggleSettlementLoadedAction(false));
   try {
-    // const { coords } = yield call(getUserPosition);
-    const coords = {
-      lat: 24.6378253,
-      lng: 46.651656,
-      // lat: coords.latitude,
-      // lng: coords.longitude,
-    };
+    const { coords } = yield call(getUserPosition);
 
-    yield put(saveCurrentLocationAction(coords));
+    yield put(
+      saveCurrentLocationAction({
+        lat: coords.latitude,
+        lng: coords.longitude,
+      }),
+    );
 
     const { locals } = yield call(locationApi.getDistrict, coords);
     const [{ name: districtName, id: districtID, city }] = locals;

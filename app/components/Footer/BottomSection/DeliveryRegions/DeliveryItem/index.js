@@ -8,7 +8,7 @@ import Title from './Title';
 import Region from './Region';
 import Description from './Description';
 
-const DeliveryItem = ({ title, city, districts }) => (
+const DeliveryItem = ({ title, city: { city, districts } }) => (
   <StyledItem>
     <Title>
       {title}
@@ -16,7 +16,7 @@ const DeliveryItem = ({ title, city, districts }) => (
     </Title>
     <Description>
       {districts.map((district, i) => (
-        <Fragment>
+        <Fragment key={`delivery-item-${district.name}`}>
           {!!i && ', '}
           <Link
             to={`/restaurants/${slugify(city.name)}/${slugify(district.name)}`}
@@ -32,7 +32,6 @@ const DeliveryItem = ({ title, city, districts }) => (
 DeliveryItem.propTypes = {
   title: PropTypes.string.isRequired,
   city: PropTypes.object.isRequired,
-  districts: PropTypes.array.isRequired,
 };
 
 export default DeliveryItem;
