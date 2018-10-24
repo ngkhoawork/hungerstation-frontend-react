@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import values from 'lodash/values';
 import { initialState } from './reducer';
 
 const selectCartContainerState = state =>
@@ -6,15 +7,10 @@ const selectCartContainerState = state =>
 
 export const selectCartPurchases = createSelector(
   selectCartContainerState,
-  state => Object.values(state.purchases),
-);
-
-export const selectCartPurchasesQuantities = createSelector(
-  selectCartContainerState,
-  state => state.quantities,
+  state => values(state.purchases),
 );
 
 export const selectOrderAmount = createSelector(
-  selectCartContainerState,
-  state => state.orderAmount,
+  selectCartPurchases,
+  purchases => purchases.reduce((sum, { price }) => sum + price, 0),
 );
