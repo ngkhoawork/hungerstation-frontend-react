@@ -16,35 +16,45 @@ const Radio = styled(MuiRadio)`
   }
 `;
 
-const RadioSelect = ({ name, options, value, onChange }) => (
-  <RadioGroup
-    aria-label={name}
-    name={name}
-    value={`${value}`}
-    onChange={({ target }) => onChange(name, target.value)}
-  >
-    {options.map(({ label, value }) => (
-      <FormControlLabel
-        key={label}
-        label={label}
-        value={`${value}`}
-        control={<Radio disableRipple />}
-      />
-    ))}
-  </RadioGroup>
-);
+const RadioSelect = ({
+  name,
+  options,
+  value,
+  onChange,
+  labelKey,
+  valueKey,
+}) => {
+  const handleChange = ({ target }) => {
+    const option = options.find(({ id }) => id === target.value);
+    onChange(name, option);
+  };
+
+  return (
+    <RadioGroup
+      aria-label={name}
+      name={name}
+      value={value}
+      onChange={handleChange}
+    >
+      {options.map(option => (
+        <FormControlLabel
+          key={option.id}
+          label={option[labelKey] || option.label || option.name}
+          value={option[valueKey] || option.value || option.id}
+          control={<Radio disableRipple />}
+        />
+      ))}
+    </RadioGroup>
+  );
+};
 
 RadioSelect.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
-    }),
-  ),
+  options: PropTypes.arrayOf(PropTypes.object),
   onChange: PropTypes.func.isRequired,
+  labelKey: PropTypes.string,
+  valueKey: PropTypes.string,
 };
 
 export default RadioSelect;

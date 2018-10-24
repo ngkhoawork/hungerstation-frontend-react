@@ -17,7 +17,7 @@ class Section extends Component {
         <Header>
           <Title>{title}</Title>
           <div>
-            <Hint>{hint}</Hint>
+            {hint && <Hint>{hint}</Hint>}
             {isCollapsible ? (
               <ChevronIcon isOpen={isOpen} onClick={this.handleToggle} />
             ) : null}
