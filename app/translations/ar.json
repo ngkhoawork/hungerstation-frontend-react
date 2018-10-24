@@ -70,6 +70,7 @@
   "app.components.RestaurantsList.LoadMore.label": "",
   "app.components.RestaurantsList.RestaurantCard.minValue": "",
   "app.components.RestaurantsList.RestaurantCard.time": "",
+  "app.pages.RestaurantPage.checkBasket": "Check basket",
   "app.components.RestaurantHeader.status.busy": "",
   "app.components.RestaurantHeader.status.closed": "",
   "app.components.RestaurantHeader.status.opensAt": "",

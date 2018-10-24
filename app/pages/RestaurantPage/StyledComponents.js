@@ -36,6 +36,12 @@ export const ContentContainer = styled.div`
   align-items: flex-start;
 `;
 
+export const Loading = styled.div`
+  ${flex({ justify: 'center', align: 'center' })};
+  height: 100px;
+  font-size: 30px;
+`;
+
 export const LeftSide = styled.div`
   flex-grow: 1;
   max-width: 100%;
