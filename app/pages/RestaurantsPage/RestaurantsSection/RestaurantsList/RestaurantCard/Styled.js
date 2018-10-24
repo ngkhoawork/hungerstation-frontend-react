@@ -15,6 +15,7 @@ const StyledRestaurantCard = styled.div`
     margin-right: 24px;
     padding: 15px 15px 5px;
     background-image: url(${Figs});
+    background-size: 140%;
     background-position: top;
     box-shadow: 0 10px 20px 0 rgba(126, 125, 125, 0.15);
     cursor: pointer;

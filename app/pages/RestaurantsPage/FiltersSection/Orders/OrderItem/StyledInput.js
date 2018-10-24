@@ -20,6 +20,7 @@ const StyledInput = styled.input.attrs({
     border: 1px solid ${jade};
     cursor: pointer;
   }
+
   &::-moz-range-thumb {
     width: 25px;
     height: 25px;

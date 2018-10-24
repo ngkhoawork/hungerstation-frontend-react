@@ -15,6 +15,7 @@ import {
   resetChosenFiltersAction,
   discartFiltersToSavedStageAction,
   changeOrderFilterAction,
+  resetCusinesAction,
 } from './actions';
 import restaurantsApi from './api';
 import {
@@ -51,10 +52,7 @@ export function* fetchRestaurantsSaga({ payload }) {
   try {
     const [{ deliveries }] = yield all([
       call(restaurantsApi.getRestaurants, {
-        // TODO delete hardcoded
-        lat: 24.7706825,
-        lng: 46.6627549,
-        // ...callParams,
+        ...callParams,
       }),
       call(fetchDeliveriesFiltersSaga),
     ]);
@@ -178,6 +176,7 @@ export default function* watchRestaurantsActionsSaga() {
       discartFiltersToSavedStageAction.type,
       searchRestaurantAction.type,
       updateRestaurantsListing.type,
+      resetCusinesAction.type,
     ],
     filterRestaurantListSaga,
   );

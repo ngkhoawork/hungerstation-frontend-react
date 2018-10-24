@@ -7,7 +7,7 @@ import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
 import messages from './messages';
 import CategoryTitle from '../CategoryTitle';
-import { StyledFiltersContainer, StyledItem } from '../Styled';
+import { StyledFiltersCategoryWrapper, StyledItem } from '../Styled';
 
 const DeliveryTypes = ({
   deliveryOptions,
@@ -15,10 +15,11 @@ const DeliveryTypes = ({
   chosenOption,
   title,
 }) => (
-  <StyledFiltersContainer>
+  <StyledFiltersCategoryWrapper>
     <CategoryTitle title={title} withoutQuantity />
     <StyledItem
       hasBorder
+      selected={chosenOption === 'all'}
       onClick={() =>
         toggleFilter({ filterKey: 'delivery_option', value: 'all' })
       }
@@ -31,6 +32,7 @@ const DeliveryTypes = ({
     {deliveryOptions.map(({ id, name, type }) => (
       <StyledItem
         key={id}
+        selected={chosenOption === type}
         hasBorder
         onClick={() =>
           toggleFilter({ filterKey: 'delivery_option', value: type })
@@ -42,7 +44,7 @@ const DeliveryTypes = ({
         {chosenOption === type && <Icon name="check" />}
       </StyledItem>
     ))}
-  </StyledFiltersContainer>
+  </StyledFiltersCategoryWrapper>
 );
 
 DeliveryTypes.propTypes = {

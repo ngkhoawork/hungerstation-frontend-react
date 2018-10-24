@@ -54,7 +54,4 @@ export const resetChosenFiltersAction = createAction(
   'restaurants/RESET_CHOSEN_FILTERS',
 );
 
-export const addToDynamicFilters = createAction(
-  'restaurants/ADD_TO_DYNAMIC_FILTERS',
-  filterLabel => filterLabel,
-);
+export const resetCusinesAction = createAction('restaurants/RESET_CUSINES');

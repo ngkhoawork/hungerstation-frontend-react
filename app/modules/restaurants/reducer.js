@@ -9,6 +9,7 @@ import {
   saveFiltersStageAction,
   discartFiltersToSavedStageAction,
   changeOrderFilterAction,
+  resetCusinesAction,
 } from './actions';
 import { MIN_ORDER_RANGE, TIME_ESTIMATION_RANGE } from './constants';
 
@@ -67,6 +68,11 @@ function reducer(state = initialState, action) {
         ),
       );
     }
+
+    case resetCusinesAction.type:
+      return state.updateIn(['chosenFilters'], map =>
+        map.updateIn(['kitchens'], map => map.clear()),
+      );
 
     case resetChosenFiltersAction.type:
       return state.update('chosenFilters', () =>

@@ -1,7 +1,7 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { getUserPosition } from 'utils/location';
-import { fetchRestaurantsAction } from 'modules/restaurants/actions';
+import { fetchRestaurantsSaga } from 'modules/restaurants/sagas';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 import { makeSelectSearchType } from 'containers/SearchTypeContainer/selectors';
 import { slugify, sortAlphabetically } from 'utils/helpers';
@@ -83,12 +83,9 @@ function* fetchRestaurantsFlow({ payload }) {
   const deliveryType = yield select(makeSelectSearchType);
 
   yield put(startSubmit());
-  yield put(
-    fetchRestaurantsAction({
-      districtId: parseInt(district.get('id'), 10),
-      deliveryType,
-    }),
-  );
+  yield call(fetchRestaurantsSaga, {
+    payload: { districtId: parseInt(district.get('id'), 10), deliveryType },
+  });
   yield call(delay, 500);
 
   const cityName = slugify(city.get('name'));

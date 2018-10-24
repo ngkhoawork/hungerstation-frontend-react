@@ -7,12 +7,13 @@ import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
 import Group from 'components/Group';
 import CategoryTitle from '../CategoryTitle';
-import { StyledFiltersContainer, StyledItem } from '../Styled';
+import { StyledFiltersCategoryWrapper, StyledItem } from '../Styled';
 import {
   StyledExpandActionWrapper,
   StyledIconImage,
   SltyledKitchenItemsWrapper,
 } from './Styled';
+import AllCussinesItem from './AllCusines';
 
 class Cuisines extends React.Component {
   state = { expanded: false };
@@ -23,33 +24,53 @@ class Cuisines extends React.Component {
   render() {
     const { kitchens, chosenKitchens, toggleFilter, title } = this.props;
     const { expanded } = this.state;
+    const visibleKitchensInFilterBox = expanded
+      ? kitchens
+      : kitchens.slice(0, 3);
     return (
-      <StyledFiltersContainer>
+      <StyledFiltersCategoryWrapper>
         <CategoryTitle
           title={title}
           selectionQuantity={chosenKitchens.length}
         />
 
         <SltyledKitchenItemsWrapper expanded={expanded}>
-          {kitchens.map(({ id, name, image_thumb }) => (
-            <StyledItem
-              key={id}
-              onClick={() => toggleFilter({ filterKey: 'kitchens', value: id })}
-            >
-              <Group>
-                <CircledItem color={wildSand} width={28}>
-                  <StyledIconImage src={image_thumb} alt="x" />
-                </CircledItem>
-                <Paragraph
-                  color={chosenKitchens.includes(id) ? 'black' : silverChalice}
-                  margin="0 0 -3px 10px"
+          <AllCussinesItem isSelected={chosenKitchens.length === 0} />
+          {visibleKitchensInFilterBox.map(
+            ({ id, name, image_thumb }, index) => {
+              const isSelected = chosenKitchens.includes(id);
+              const isPreviousSelected = chosenKitchens.includes(
+                kitchens[index - 1] && kitchens[index - 1].id,
+              );
+              const isNextSelected = chosenKitchens.includes(
+                kitchens[index + 1] && kitchens[index + 1].id,
+              );
+              return (
+                <StyledItem
+                  key={id}
+                  selected={isSelected}
+                  isPreviousSelected={isPreviousSelected}
+                  isNextSelected={isNextSelected}
+                  onClick={() =>
+                    toggleFilter({ filterKey: 'kitchens', value: id })
+                  }
                 >
-                  {name}
-                </Paragraph>
-              </Group>
-              {chosenKitchens.includes(id) && <Icon name="check" />}
-            </StyledItem>
-          ))}
+                  <Group>
+                    <CircledItem color={wildSand} width={28}>
+                      <StyledIconImage src={image_thumb} alt="x" />
+                    </CircledItem>
+                    <Paragraph
+                      color={isSelected ? 'black' : silverChalice}
+                      margin="0 0 -3px 10px"
+                    >
+                      {name}
+                    </Paragraph>
+                  </Group>
+                  {isSelected && <Icon name="check" />}
+                </StyledItem>
+              );
+            },
+          )}
         </SltyledKitchenItemsWrapper>
 
         <StyledExpandActionWrapper
@@ -59,7 +80,7 @@ class Cuisines extends React.Component {
           <Paragraph>{expanded ? 'Less' : 'More'}</Paragraph>
           <Icon name="arrow-circled" size={13} />
         </StyledExpandActionWrapper>
-      </StyledFiltersContainer>
+      </StyledFiltersCategoryWrapper>
     );
   }
 }

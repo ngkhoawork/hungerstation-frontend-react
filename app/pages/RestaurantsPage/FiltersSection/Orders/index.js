@@ -13,7 +13,7 @@ import {
 } from 'modules/restaurants/selectors';
 
 import CategoryTitle from '../CategoryTitle';
-import { StyledFiltersContainer } from '../Styled';
+import { StyledFiltersCategoryWrapper } from '../Styled';
 import OrderItem from './OrderItem';
 
 const decorate = connect(
@@ -30,7 +30,7 @@ const Orders = ({
   chosenMinOrder,
   changeOrderFilterAction,
 }) => (
-  <StyledFiltersContainer>
+  <StyledFiltersCategoryWrapper>
     {title && <CategoryTitle title={title} withoutQuantity />}
     <OrderItem
       label="Minimum order"
@@ -46,7 +46,7 @@ const Orders = ({
       toggleFilterAction={changeOrderFilterAction}
       value={chosenDeliveryTime}
     /> */}
-  </StyledFiltersContainer>
+  </StyledFiltersCategoryWrapper>
 );
 
 Orders.propTypes = {

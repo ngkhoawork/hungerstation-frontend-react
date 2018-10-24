@@ -19,11 +19,11 @@ const StyledIconImage = styled.img`
   z-index: 20;
 `;
 
-// TODO add item height * 4 times instead 240 px
 const SltyledKitchenItemsWrapper = styled.div`
-  height: ${({ expanded }) => (expanded ? '100%' : '240px')};
+  height: 100%;
   width: 100%;
   overflow: hidden;
+  margin-bottom: 32px;
 `;
 
 export {

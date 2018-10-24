@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { jade, wildSand } from 'utils/css/colors';
+import { jade } from 'utils/css/colors';
 import { flexBox } from 'utils/css/styles';
 
 import Paragraph from 'components/Paragraph';
@@ -16,7 +16,7 @@ const CategoryTitle = ({
   <Wrapper>
     <StyledTitle>
       <Group>
-        <Paragraph size={17} margin="0 5px 0 0">
+        <Paragraph size={18} margin="0 5px 0 0">
           {title}
         </Paragraph>
         {!withoutQuantity && (
@@ -44,7 +44,6 @@ const StyledTitle = styled.div`
     { align: 'center', justify: 'space-between' },
     `
     width: 100%;
-    margin-bottom: 17px;
   `,
   )};
 `;
@@ -55,8 +54,6 @@ const Wrapper = styled.div`
     `
     width: 100%;
     margin: 20px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid ${wildSand};
   `,
   )};
   &:last-of-type {
