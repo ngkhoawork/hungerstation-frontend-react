@@ -16,7 +16,7 @@ import {
 import messages from './messages';
 
 const RestaurantCard = ({
-  id,
+  branchId,
   name,
   // deliveryTime,
   minOrder,
@@ -27,7 +27,7 @@ const RestaurantCard = ({
   kitchensNames,
   hasPromotion,
 }) => (
-  <StyledRestaurantCard to={`/restaurant/${id}`}>
+  <StyledRestaurantCard to={`/restaurant/${branchId}`}>
     <StyledUpperPart>
       <BrandLogo src={logo} />
       {hasPromotion && <Promoted />}
