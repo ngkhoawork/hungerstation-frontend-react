@@ -31,7 +31,7 @@ const DeliveryLocation = styled.div`
   font-weight: 300;
   letter-spacing: 0.22px;
   line-height: 17px;
-  margin: 0px auto 20px;
+  margin: 0 0 20px 20px;
 `;
 
 const IconPosition = styled.div`

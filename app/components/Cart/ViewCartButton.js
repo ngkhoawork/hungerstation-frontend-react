@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import intl from 'utils/intlService';
 import styled from 'styled-components';
 import { alabaster, fuscousGray } from 'utils/css/colors';
@@ -42,22 +43,24 @@ const Label = styled.span`
 
 const ViewCartButton = ({ quantity, price }) => (
   <ButtonWrapper>
-    <Button primary={false} size="xl" color={alabaster}>
-      <Content>
-        <LeftSide>
-          {quantity !== undefined ? (
-            <CircledItem color="white" width={30}>
-              <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
-            </CircledItem>
-          ) : null}
-        </LeftSide>
-        <Icon name="basket" />
-        <Label>{intl.formatMessage(messages.buttonLabel)}</Label>
-        <RightSide>
-          {price !== undefined ? <Price price={price} isPrimary /> : null}
-        </RightSide>
-      </Content>
-    </Button>
+    <Link to="/checkout">
+      <Button primary={false} size="xl" color={alabaster}>
+        <Content>
+          <LeftSide>
+            {quantity !== undefined ? (
+              <CircledItem color="white" width={30}>
+                <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
+              </CircledItem>
+            ) : null}
+          </LeftSide>
+          <Icon name="basket" />
+          <Label>{intl.formatMessage(messages.buttonLabel)}</Label>
+          <RightSide>
+            {price !== undefined ? <Price price={price} isPrimary /> : null}
+          </RightSide>
+        </Content>
+      </Button>
+    </Link>
   </ButtonWrapper>
 );
 

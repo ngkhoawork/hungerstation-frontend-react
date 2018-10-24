@@ -51,8 +51,9 @@ const OrderElement = ({
   id,
   quantity,
   price,
-  title,
-  description = '',
+  additions,
+  name,
+  description,
   onRemoveFromCart,
 }) => (
   <Fragment>
@@ -60,13 +61,16 @@ const OrderElement = ({
       <Row>
         <Quantity>{quantity}x</Quantity>
         <Column>
-          <Title>{title}</Title>
+          <Title>{name}</Title>
           <Description>{description}</Description>
         </Column>
       </Row>
       <Row>
         <Price>
-          {intl.formatNumber(price, { style: 'currency', currency: 'SAR' })}
+          {intl.formatNumber(
+            price + additions.reduce((sum, { price }) => sum + price, 0),
+            { style: 'currency', currency: 'SAR' },
+          )}
         </Price>
         <OrderElementDelete id={id} onRemoveFromCart={onRemoveFromCart} />
       </Row>
@@ -77,8 +81,9 @@ const OrderElement = ({
 OrderElement.propTypes = {
   ...OrderElementDelete.propTypes,
   quantity: PropTypes.number.isRequired,
+  additions: PropTypes.arrayOf(PropTypes.object),
   price: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   description: PropTypes.string,
 };
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import intl from 'utils/intlService';
 import OrderElement from './OrderElement';
 import DeliveryTo from './DeliveryTo';
-import MinOrderErrBox from './MinOrderErrBox';
+// import MinOrderErrBox from './MinOrderErrBox';
 import Amount from './Amount';
 import ViewCartButton from './ViewCartButton';
 import messages from './messages';
@@ -15,6 +15,7 @@ const Wrapper = styled.section`
   padding: 20px 20px 60px 20px;
   box-shadow: 0 0 35px 5px rgba(183, 157, 157, 0.1);
   flex: 0 0 353px;
+  max-width: 353px;
 `;
 
 const Title = styled.div`
@@ -29,24 +30,20 @@ const Title = styled.div`
   margin: 30px auto 16px;
 `;
 
-const Cart = ({
-  purchases,
-  quantitiesByProductId,
-  orderAmount,
-  removeFromCart,
-}) => (
+const Cart = ({ purchases, orderAmount, removeFromCart }) => (
   <Wrapper>
     <Title>{intl.formatMessage(messages.yourOrder)}</Title>
     <DeliveryTo />
     {purchases.map(purchase => (
       <OrderElement
-        {...purchase}
-        key={purchase.id}
-        quantity={quantitiesByProductId[purchase.id]}
+        {...purchase.product}
+        additions={purchase.additions}
+        quantity={purchase.quantity}
+        key={purchase.product.id}
         onRemoveFromCart={removeFromCart}
       />
     ))}
-    <MinOrderErrBox currentAmount={orderAmount} />
+    {/* <MinOrderErrBox currentAmount={orderAmount} /> */}
     <Amount amount={orderAmount} />
     <Amount isTotal amount={orderAmount} />
     <ViewCartButton />
@@ -55,7 +52,6 @@ const Cart = ({
 
 Cart.propTypes = {
   purchases: PropTypes.array.isRequired,
-  quantitiesByProductId: PropTypes.object.isRequired,
   orderAmount: PropTypes.number.isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };
