@@ -18,5 +18,4 @@ RUN yarn run build
 
 EXPOSE 3000
 
-ENTRYPOINT ["yarn", "run"]
-CMD ["start:prod"]
+CMD ["yarn", "run", "start:prod"]

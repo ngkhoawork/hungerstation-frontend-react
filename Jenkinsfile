@@ -6,7 +6,7 @@ properties(
   )]
 )
 
-def app, utils, canDeploy, canBuildImage
+def app, utils
 def imageName = 'gcr.io/hungerstation-configs/customer-website-frontend'
 def deployableBranches = ["development"]
 def platformChart = "http://charts.hsips.net/charts/customer-website-frontend-0.1.0.tgz"
@@ -27,16 +27,13 @@ pipeline {
         script {
           utils = load("./devops-works/jenkins-ci/utils.groovy")
           utils.setup() // Stop previous builds
-
-          canDeploy = env.IMAGE_TAG.asBoolean() || BRANCH_NAME in deployableBranches
-          canBuildImage = !env.IMAGE_TAG.asBoolean() && BRANCH_NAME in deployableBranches
         }
       }
     }
 
     stage('Build image') {
       when {
-        equals expected: true, actual: canBuildImage
+        expression { return !env.IMAGE_TAG.asBoolean() }
       }
 
       steps {
@@ -54,6 +51,31 @@ pipeline {
           utils.dockerRegistry {
             app = docker.build("$imageName:$COMMIT", "--build-arg API_ENV=$apiEnv .")
           }
+        }
+      }
+    }
+
+    stage('Test') {
+      when {
+        changeRequest()
+      }
+
+      steps {
+        script {
+          app.inside() {
+            sh "npm i -D && npm run lint"
+          }
+        }
+      }
+    }
+
+    stage('Push Image') {
+      when {
+        expression { return !env.IMAGE_TAG.asBoolean() && BRANCH_NAME in deployableBranches}
+      }
+
+      steps {
+        script {
           utils.pushImage(app, ["$COMMIT", "$BRANCH_NAME", "$BRANCH_NAME-$BUILD_NUMBER"])
         }
       }
