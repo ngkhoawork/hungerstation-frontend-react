@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import BurgerIcon from 'images/burger-icon.png';
+import imgPlaceholder from 'images/burger-icon.png';
 import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import { lightGray, silverChalice, fuscousGray } from 'utils/css/colors';
@@ -36,7 +36,7 @@ export const Img = styled.div`
   border-radius: 10px;
   box-shadow: 8px 12px 23px -3px rgba(59, 59, 59, 0.13);
   background-color: white;
-  background-image: url(${({ src }) => src || BurgerIcon});
+  background-image: url(${({ image }) => image || imgPlaceholder});
   background-size: contain;
   background-position: center;
   flex-shrink: 0;
@@ -76,14 +76,14 @@ export const PriceContainer = styled.div`
 `;
 
 export const Footer = styled.div`
-  ${mediaMedium`display: none;`};
+  ${flex({ justify: 'flex-end', align: 'center' })};
 
-  ${mediaMediumGreater`text-align: right;`};
+  ${mediaMedium`display: none;`};
 `;
 
 export const MobileFooter = styled.div`
   ${mediaMedium`
-    ${flex({ justify: 'space-between' })};
+    ${flex({ justify: 'space-between', align: 'center' })};
     border: solid 1px ${lightGray};
     border-radius: ${borderRadius};
     padding: 8px 16px;
@@ -92,4 +92,8 @@ export const MobileFooter = styled.div`
   `};
 
   ${mediaMediumGreater`display: none;`};
+`;
+
+export const AddBtn = styled.span`
+  flex-shrink: 0;
 `;

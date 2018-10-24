@@ -74,6 +74,7 @@
   "app.components.RestaurantHeader.status.closed": "",
   "app.components.RestaurantHeader.status.opensAt": "",
   "app.components.RestaurantHeader.status.openTill": "",
+  "app.components.RestaurantProducts.addToCart": "Add to cart",
   "app.components.MealOptions.addToCart": "Add to cart",
   "app.components.MealOptions.total": "Total",
   "app.components.MealOptions.required": "Required",
