@@ -11,6 +11,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import authReducer from 'modules/auth/reducer';
 import locationReducer from 'modules/location/reducer';
 import restaurantsReducer from 'modules/restaurants/reducer';
+import restaurantReducer from 'modules/restaurant/reducer';
 
 /*
  * routeReducer
@@ -51,6 +52,7 @@ export default function createReducer(injectedReducers) {
     location: locationReducer,
     form: formReducer,
     restaurants: restaurantsReducer,
+    restaurant: restaurantReducer,
     ...injectedReducers,
   });
 }
