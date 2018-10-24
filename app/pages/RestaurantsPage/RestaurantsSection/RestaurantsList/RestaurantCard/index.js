@@ -1,6 +1,5 @@
 import React from 'react';
 import { restaurantPropTypes } from 'prop-types';
-
 import intl from 'utils/intlService';
 import BrandLogo from 'components/BrandLogo';
 import Row from 'components/Row';
@@ -17,6 +16,7 @@ import {
 import messages from './messages';
 
 const RestaurantCard = ({
+  id,
   name,
   // deliveryTime,
   minOrder,
@@ -27,7 +27,7 @@ const RestaurantCard = ({
   kitchensNames,
   hasPromotion,
 }) => (
-  <StyledRestaurantCard>
+  <StyledRestaurantCard to={`/restaurant/${id}`}>
     <StyledUpperPart>
       <BrandLogo src={logo} />
       {hasPromotion && <Promoted />}

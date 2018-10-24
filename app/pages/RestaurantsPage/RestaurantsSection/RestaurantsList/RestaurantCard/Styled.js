@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { flexBox, mediaLess } from 'utils/css/styles';
 import Figs from 'images/figs.png';
 import FigsMobile from 'images/figs-mobile.png';
 
-const StyledRestaurantCard = styled.div`
+const StyledRestaurantCard = styled(Link)`
   ${flexBox(
     { align: 'center', justify: 'space-between', direction: 'column' },
     `
@@ -23,6 +24,8 @@ const StyledRestaurantCard = styled.div`
   };
   `,
   )};
+
+  text-decoration: none;
 
   &:nth-child(3n) {
     margin-right: 0;
