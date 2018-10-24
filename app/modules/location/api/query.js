@@ -9,8 +9,8 @@ const listCitiesQuery = `query ($country_id: Int!) {
   }
 }`;
 
-const getDistrictBySlugQuery = `query ($slug: String) {
-  local(slug: $slug) {
+const getDistrictBySlugQuery = `query ($slug: String, $citySlug: String) {
+  local(slug: $slug, city_slug: $citySlug) {
     id
     name
   }

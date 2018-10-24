@@ -54,8 +54,8 @@ const Breadcrumbs = ({ crumbs, location, filters }) => (
       ))}
       {location &&
         location.map(item => (
-          <Fragment>
-            <li key={item.get('id')}>
+          <Fragment key={item.get('id')}>
+            <li>
               <Link to={item.get('name')}>{item.get('name')}</Link>
             </li>
             <li>

@@ -36,8 +36,9 @@ export function* fetchRestaurantsSaga({ payload }) {
   if (payload.districtSlug) {
     const {
       local: { id },
-    } = yield call(locationApi.getDistrictBySlug, {
+    } = yield call(locationApi.getDistrictBySlugs, {
       slug: payload.districtSlug,
+      citySlug: payload.citySlug,
     });
 
     callParams = {

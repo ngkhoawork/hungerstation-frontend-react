@@ -13,6 +13,7 @@ const life = lifecycle({
     if (history.action === 'POP') {
       fetchRestaurantsAction({
         districtSlug: match.params.district,
+        citySlug: match.params.city,
         deliveryType: match.params.deliveryType,
       });
     }
