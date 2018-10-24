@@ -1,6 +1,11 @@
 import { injectGlobal } from 'styled-components';
 import { jade } from 'utils/css/colors';
-import { zIndexModal, borderRadius, maxModalHeight } from 'utils/css/variables';
+import {
+  zIndexModal,
+  borderRadius,
+  maxModalHeight,
+  maxModalWidth,
+} from 'utils/css/variables';
 import HSRwoff from './vendor/fonts/HungerStation-Regular.woff';
 import HSRwoff2 from './vendor/fonts/HungerStation-Regular.woff2';
 import HSRotf from './vendor/fonts/HungerStation-Regular.otf';
@@ -75,7 +80,7 @@ export const global = injectGlobal`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 96vw;
+    max-width: ${maxModalWidth};
     max-height: ${maxModalHeight};
     outline: none;
     border-radius: ${borderRadius};
