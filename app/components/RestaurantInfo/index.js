@@ -45,7 +45,7 @@ const renderStatus = status => {
   return null;
 };
 
-const RestaurantInfo = ({ logo, name, status, cuisines }) => (
+const RestaurantInfo = ({ logo, name, status, rateAverage, cuisines }) => (
   <StyledRestaurantInfo>
     <StyledLogo>
       <BrandLogo src={logo} size={45} />
@@ -58,16 +58,16 @@ const RestaurantInfo = ({ logo, name, status, cuisines }) => (
         <Name>
           {name}
           <RatingContainer>
-            <Icon size={10} name="star" />
-            4.9
+            <Icon size={10} name="star" offsetY="-1" />
+            {rateAverage}
           </RatingContainer>
         </Name>
         <Group>
-          {cuisines.map(cuisine => (
-            <StyledCuisine key={cuisine.id}>
-              <Icon name={`${cuisine.id}-cuisine`} size={14} />
+          {cuisines.map(({ id, name, image }) => (
+            <StyledCuisine key={id}>
+              <img src={image} alt={name} height="14" />
               <Paragraph size={12} color={alto}>
-                {cuisine.label}
+                {name}
               </Paragraph>
             </StyledCuisine>
           ))}
@@ -82,10 +82,12 @@ RestaurantInfo.propTypes = {
   logo: PropTypes.string,
   name: PropTypes.string.isRequired,
   status: PropTypes.string,
+  rateAverage: PropTypes.number,
   cuisines: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string,
     }),
   ),
 };
