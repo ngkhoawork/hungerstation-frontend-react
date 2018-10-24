@@ -1,14 +1,21 @@
 import styled, { css } from 'styled-components';
-import { flex, borderBottom } from 'utils/css/styles';
+import { mediaMedium, flex, borderBottom } from 'utils/css/styles';
 import { fuscousGray, silverChalice } from 'utils/css/colors';
-import { fontFamilyRegular, fontFamilyLight } from 'utils/css/variables';
+import {
+  fontFamilyRegular,
+  fontFamilyLight,
+  maxModalWidth,
+} from 'utils/css/variables';
 
 export const Container = styled.div`
   padding: 30px;
   background: white;
   position: relative;
+  width: 600px;
   ${flex({ direction: 'column' })};
   ${({ style }) => css(style)};
+
+  ${mediaMedium`width: ${maxModalWidth}`};
 `;
 
 export const Header = styled.div`

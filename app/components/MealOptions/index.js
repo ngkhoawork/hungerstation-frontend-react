@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import intl from 'utils/intlService';
-import DropdownSelect from 'components/DropdownSelect';
+import intl from 'utils/intlService';
+import values from 'lodash/values';
+// import DropdownSelect from 'components/DropdownSelect';
 import Price from 'components/Price';
 import QuantitySelect from 'components/QuantitySelect';
 import Button from 'components/Button';
 import CircledItem from 'components/CircledItem';
 import { Section, CheckboxSelect, RadioSelect } from 'components/FormSelect';
 import { gold } from 'utils/css/colors';
-// import messages from './messages';
+import messages from './messages';
 import {
   Container,
   Header,
@@ -24,67 +25,99 @@ class MealOptions extends Component {
   constructor(props) {
     super(props);
 
+    const { meal } = props;
+    const radios = {};
+    const checkboxes = {};
+    meal.modifierGroups.forEach(group => {
+      if (group.min === 1 && group.max === 1) {
+        radios[group.id] = {
+          ...group,
+          value: group.modifiers[0] && group.modifiers[0].id,
+        };
+      } else {
+        checkboxes[group.id] = {
+          ...group,
+          checked: {},
+        };
+      }
+    });
+
     this.state = {
-      // dropdowns: {},
-      // radios: {},
-      checkboxes: {},
+      radios,
+      checkboxes,
+      quantity: 1,
+      price: this.calculatePrice(1, [], radios),
+      additions: [],
     };
   }
 
-  handleDropdownSelect = (name, value) => {
-    this.setState(state => ({
-      dropdowns: { ...state.dropdowns, [name]: value },
-    }));
+  calculatePrice = (quantity, additions, radios) => {
+    let additionsPrice = additions.reduce((sum, { price }) => sum + price, 0);
+    additionsPrice += values(radios).reduce((sum, { value, modifiers }) => {
+      if (!value) return sum;
+
+      const modifier = modifiers.find(({ id }) => id === value);
+
+      return sum + modifier.price;
+    }, 0);
+
+    return (this.props.meal.price + additionsPrice) * quantity;
   };
 
-  handleRadioSelect = (name, value) => {
-    this.setState(state => ({
-      radios: { ...state.radios, [name]: value },
-    }));
+  // handleDropdownSelect = (name, value) => {
+  //   this.setState(state => ({
+  //     dropdowns: { ...state.dropdowns, [name]: value },
+  //   }));
+  // };
+
+  handleRadioSelect = (modifierGroupId, modifier) => {
+    const { quantity, radios, additions } = this.state;
+    const group = radios[modifierGroupId];
+    radios[modifierGroupId] = { ...group, value: modifier.id };
+    const price = this.calculatePrice(quantity, additions, radios);
+
+    this.setState({ radios, price });
   };
 
-  handleCheckboxSelect = (name, option) => {
-    const { checkboxes } = this.state;
-    const { name: options } = checkboxes;
-    const changedIndex = options.indexOf(option);
-    const updatedOptions = options
-      .slice(0, changedIndex)
-      .concat({ ...option, isChecked: !option.isChecked })
-      .concat(options.slice(changedIndex + 1));
+  handleCheckboxSelect = (modifierGroupId, modifier) => {
+    const { quantity, additions: oldAdditns, checkboxes, radios } = this.state;
+    const { checked } = checkboxes[modifierGroupId];
+    checked[modifier.id] = !checked[modifier.id];
+    const additions = checked[modifier.id]
+      ? oldAdditns.concat(modifier)
+      : oldAdditns.filter(({ id }) => id !== modifier.id);
+    const price = this.calculatePrice(quantity, additions, radios);
 
-    this.setState(state => ({
-      checkboxes: {
-        ...state.checkboxes,
-        [name]: updatedOptions,
-      },
-    }));
+    this.setState({ checkboxes, additions, price });
+  };
+
+  handleQuantityChange = quantity => {
+    if (quantity < 1) return;
+
+    const { additions, radios } = this.state;
+    const price = this.calculatePrice(quantity, additions, radios);
+    this.setState({ quantity, price });
+  };
+
+  handleAddToCart = () => {
+    const { meal, onSubmit } = this.props;
+    const { quantity, additions, price, radios } = this.state;
+    const radioAdditions = values(radios)
+      .filter(({ value }) => value)
+      .map(({ modifiers, value }) => modifiers.find(({ id }) => id === value));
+    const totalAdditions = additions.concat(radioAdditions);
+
+    onSubmit(meal, quantity, totalAdditions, price);
   };
 
   render() {
     const { meal, onCancel, style } = this.props;
-    // const { dropdowns, radios, checkboxes } = this.state;
-    const dropdowns = [{ name: 'Choose size', hint: 'Required' }];
-    const radios = [
-      { name: 'Basic ingredients', hint: 'Tap on item to exclude' },
-    ];
-    const checkboxes = [{ name: 'Type of bun', hint: 'Required' }];
-
-    const dropdownItems = [
-      { key: 1, value: 'prvi moji sledeci' },
-      { key: 0, value: 'drugi' },
-      { key: 3, value: 'treci' },
-    ];
-
-    const items = [
-      { value: 1, label: 'prvi moji sledeci', isChecked: false },
-      { value: 0, label: 'drugi', isChecked: true },
-      { value: 3, label: 'treci' },
-    ];
+    const { quantity, price, radios, checkboxes } = this.state;
 
     return (
       <Container style={style}>
         <Header>
-          <Title>{meal.title}</Title>
+          <Title>{meal.name}</Title>
           <Description>{meal.description}</Description>
           <CircledItem
             color={gold}
@@ -96,39 +129,43 @@ class MealOptions extends Component {
           </CircledItem>
         </Header>
         <Content>
-          {dropdowns.map(({ name, hint }) => (
-            <Section key={name} title={name} hint={hint} isCollapsible>
+          {/* {dropdowns.map(({ id, name, hint }) => (
+            <Section key={id} title={name} hint={hint} isCollapsible>
               <DropdownSelect items={dropdownItems} isBlock />
             </Section>
-          ))}
-          {checkboxes.map(({ name, hint }) => (
-            <Section key={name} title={name} hint={hint} isCollapsible>
+          ))} */}
+          {values(checkboxes).map(({ id, name, hint, modifiers, checked }) => (
+            <Section key={id} title={name} hint={hint} isCollapsible>
               <CheckboxSelect
-                name="Basic ingredients"
-                options={items}
-                onChange={() => {}}
+                name={id}
+                options={modifiers}
+                checkedOptions={checked}
+                onChange={this.handleCheckboxSelect}
               />
             </Section>
           ))}
-          {radios.map(({ name, hint }) => (
-            <Section key={name} title={name} hint={hint} isCollapsible>
+          {values(radios).map(({ id, name, hint, modifiers, value }) => (
+            <Section key={id} title={name} hint={hint} isCollapsible>
               <RadioSelect
-                name="Type of bun"
-                options={items}
-                value={0}
-                onChange={() => {}}
+                name={id}
+                options={modifiers}
+                value={value}
+                onChange={this.handleRadioSelect}
               />
             </Section>
           ))}
         </Content>
         <Footer>
-          <QuantitySelect quantity={1} onChange={() => {}} />
+          <QuantitySelect
+            quantity={quantity}
+            onChange={this.handleQuantityChange}
+          />
           <FooterRightSide>
-            Total &nbsp;
-            <Price price={300} isPrimary />
+            {intl.formatMessage(messages.total)} &nbsp;
+            <Price price={price} isPrimary />
             &nbsp; &nbsp; &nbsp;
-            <Button primary inline size="l" onClick={() => {}}>
-              Add to cart
+            <Button primary inline size="l" onClick={this.handleAddToCart}>
+              {intl.formatMessage(messages.addTocart)}
             </Button>
           </FooterRightSide>
         </Footer>
@@ -140,6 +177,7 @@ class MealOptions extends Component {
 MealOptions.propTypes = {
   meal: PropTypes.object.isRequired,
   onCancel: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   style: PropTypes.object,
 };
 
