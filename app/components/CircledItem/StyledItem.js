@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { flex } from 'utils/css/styles';
+import { fuscousGray } from 'utils/css/colors';
 
 const StyledItem = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
@@ -8,6 +9,7 @@ const StyledItem = styled.div`
   height: ${({ width }) => width}px;
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'initial')};
   user-select: none;
+  color: ${fuscousGray};
 
   & > p {
     z-index: 5;
