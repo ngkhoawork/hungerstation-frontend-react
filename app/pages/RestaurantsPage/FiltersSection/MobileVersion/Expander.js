@@ -1,9 +1,9 @@
 import React from 'react';
-import { element, string } from 'prop-types';
+import { element, string, number, bool } from 'prop-types';
 import styled from 'styled-components';
 import { wildSand } from 'utils/css/colors';
-import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
+import CategoryTitle from '../CategoryTitle';
 
 class Expander extends React.Component {
   state = { expanded: false };
@@ -12,11 +12,20 @@ class Expander extends React.Component {
 
   render() {
     const { expanded } = this.state;
-    const { children, label = 'Tags' } = this.props;
+    const {
+      children,
+      label = 'Tags',
+      quantity = 0,
+      withoutQuantity = false,
+    } = this.props;
     return (
       <Wrapper>
         <Row onClick={this.handleExpand}>
-          <Paragraph size={18}>{label}</Paragraph>
+          <CategoryTitle
+            title={label}
+            selectionQuantity={quantity}
+            withoutQuantity={withoutQuantity || !expanded}
+          />
           <Icon name="arrow-circled" size={16} />
         </Row>
         <Content expanded={expanded}>{children}</Content>
@@ -28,6 +37,8 @@ class Expander extends React.Component {
 Expander.propTypes = {
   children: element,
   label: string,
+  quantity: number,
+  withoutQuantity: bool,
 };
 
 export default Expander;
@@ -37,12 +48,13 @@ const Wrapper = styled.div`
   min-height: 48px;
   border-bottom: 1px solid ${wildSand};
   overflow: hidden;
-  padding: 24px 0;
+  margin-bottom: 12px;
 `;
 
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Content = styled.div`

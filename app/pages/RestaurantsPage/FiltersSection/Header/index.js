@@ -1,43 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { gold, wildSand } from 'utils/css/colors';
-
-import Paragraph from 'components/Paragraph';
-import CircledItem from 'components/CircledItem';
-import Icon from 'components/Icon';
-import Group from 'components/Group';
+import { wildSand } from 'utils/css/colors';
 import intl from 'utils/intlService';
 
-import ButtonWrapper from './ButtonWrapper';
-import GroupWrapper from './GroupWrapper';
+import Paragraph from 'components/Paragraph';
+
+import { selectDynamicFilters } from 'modules/restaurants/selectors';
+import { resetChosenFiltersAction } from 'modules/restaurants/actions';
+
 import messages from './messages';
+import ClearAll from '../ClearAll';
+
+const decorate = connect(
+  state => ({
+    dynamicFilters: selectDynamicFilters(state),
+  }),
+  {
+    resetChosenFiltersAction,
+  },
+);
 
 const Header = ({
-  isModalOpened,
-  closeModal,
-  resetFilters,
+  resetChosenFiltersAction: resetFilters,
+  withClear = false,
   dynamicFilters = [],
 }) => (
   <React.Fragment>
     <StyledHeader>
       <Paragraph size={22}>{intl.formatMessage(messages.filters)}</Paragraph>
-
-      <GroupWrapper onClick={resetFilters} isModalOpened={isModalOpened}>
-        <Group>
-          <Paragraph size={12} margin="0 5px 0 0">
-            {intl.formatMessage(messages.clearAll)}
-          </Paragraph>
-          <Icon name="delete" />
-        </Group>
-      </GroupWrapper>
-
-      {/* CLOSE BUTTON IN MODAL */}
-      <ButtonWrapper isModalOpened={isModalOpened} onClick={closeModal}>
-        <CircledItem color={gold} width={28}>
-          <Icon name="close" size={8} />
-        </CircledItem>
-      </ButtonWrapper>
+      {withClear && <ClearAll resetFilters={resetFilters} />}
     </StyledHeader>
 
     <DynamicFiltersSection>
@@ -47,13 +40,12 @@ const Header = ({
 );
 
 Header.propTypes = {
-  isModalOpened: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func,
-  resetFilters: PropTypes.func,
+  resetChosenFiltersAction: PropTypes.func,
   dynamicFilters: PropTypes.array,
+  withClear: PropTypes.bool,
 };
 
-export default Header;
+export default decorate(Header);
 
 const StyledHeader = styled.div`
   display: flex;

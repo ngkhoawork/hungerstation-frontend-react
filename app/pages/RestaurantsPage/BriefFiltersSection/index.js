@@ -1,9 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { filtersCategoryPropTypes } from 'propTypes/filters';
 import intl from 'utils/intlService';
-import Group from 'components/Group';
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
 import { saveFiltersStageAction } from 'modules/restaurants/actions';
@@ -11,8 +10,6 @@ import { toggleModal } from 'hocs/withModal/actions';
 import { makeSelectIsOpen } from 'hocs/withModal/selectors';
 
 import Header from '../FiltersSection/Header';
-// import Category from '../FiltersSection/Category';
-// import Tags from '../FiltersSection/Tags';
 import messages from './messages';
 
 const selectIsOpen = makeSelectIsOpen();
@@ -22,39 +19,33 @@ const decorate = connect(
   { toggleModal, saveFiltersStageAction },
 );
 
-const BriefFiltersSection = ({
-  isModalOpened,
-  // tags,
-  toggleModal,
-  saveFiltersStageAction,
-}) => (
+const BriefFiltersSection = ({ toggleModal, saveFiltersStageAction }) => (
   <React.Fragment>
-    <Header isModalOpened={isModalOpened} />
-    {/* <Category
-      title={intl.formatMessage(messages.tags)}
-      isSectionExpanded={true}
-    > */}
-    {/* <Tags tags={tags} /> */}
-    {/* </Category> */}
-    <Group
+    <Header withClear />
+
+    <MoreFiltersWrapper
       onClick={() => {
         saveFiltersStageAction();
         toggleModal(true);
       }}
     >
-      <Paragraph margin="0 5px 0 0">
+      <Paragraph size={18} margin="0 5px 0 0">
         {intl.formatMessage(messages.moreFilters)}
       </Paragraph>
-      <Icon name="arrow-circled" size={13} />
-    </Group>
+      <Icon name="arrow-circled" size={18} />
+    </MoreFiltersWrapper>
   </React.Fragment>
 );
 
+export default decorate(BriefFiltersSection);
+
 BriefFiltersSection.propTypes = {
-  isModalOpened: PropTypes.bool.isRequired,
-  // tags: filtersCategoryPropTypes,
   toggleModal: PropTypes.func,
   saveFiltersStageAction: PropTypes.func,
 };
 
-export default decorate(BriefFiltersSection);
+const MoreFiltersWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+`;

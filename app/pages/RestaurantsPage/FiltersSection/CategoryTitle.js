@@ -8,31 +8,28 @@ import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
 import Group from 'components/Group';
 
-const CategoryTitle = ({
-  title,
-  selectionQuantity,
-  withoutQuantity = false,
-}) => (
-  <Wrapper>
-    <StyledTitle>
-      <Group>
-        <Paragraph size={18} margin="0 5px 0 0">
-          {title}
-        </Paragraph>
-        {!withoutQuantity && (
-          <CircledItem width={15} color={jade}>
-            <Paragraph color="white" size={12}>
-              {selectionQuantity}
-            </Paragraph>
-          </CircledItem>
-        )}
-      </Group>
-    </StyledTitle>
-  </Wrapper>
-);
+const CategoryTitle = ({ title, selectionQuantity, withoutQuantity = false }) =>
+  title ? (
+    <Wrapper>
+      <StyledTitle>
+        <Group>
+          <Paragraph size={18} margin="0 5px 0 0">
+            {title}
+          </Paragraph>
+          {!withoutQuantity && (
+            <CircledItem width={15} color={jade}>
+              <Paragraph color="white" size={12}>
+                {selectionQuantity}
+              </Paragraph>
+            </CircledItem>
+          )}
+        </Group>
+      </StyledTitle>
+    </Wrapper>
+  ) : null;
 
 CategoryTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   selectionQuantity: PropTypes.number,
   withoutQuantity: PropTypes.bool,
 };

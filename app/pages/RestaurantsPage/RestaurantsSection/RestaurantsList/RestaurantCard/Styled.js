@@ -19,6 +19,8 @@ const StyledRestaurantCard = styled.div`
     background-position: top;
     box-shadow: 0 10px 20px 0 rgba(126, 125, 125, 0.15);
     cursor: pointer;
+  
+  };
   `,
   )};
 
@@ -30,6 +32,8 @@ const StyledRestaurantCard = styled.div`
     min-width: 324px;
     background-image: url(${FigsMobile});
     margin-right: 0px;
+    background-size: 100%;
+
   `};
 `;
 

@@ -60,11 +60,13 @@ export default class RestaurantsList extends Component {
         ) : (
           <NotFound />
         )}
-        <ScrollToListTopWrapper onClick={handleScrollToTop}>
-          <CircledItem width={28} color={gold}>
-            <Icon name="arrow-right" size={12} />
-          </CircledItem>
-        </ScrollToListTopWrapper>
+        {restaurants.length !== 0 && (
+          <ScrollToListTopWrapper onClick={handleScrollToTop}>
+            <CircledItem width={28} color={gold}>
+              <Icon name="arrow-right" size={12} />
+            </CircledItem>
+          </ScrollToListTopWrapper>
+        )}
 
         {this.showLoadMoreButton && <LoadMore showMore={this.showMoreItems} />}
       </StyledRestaurantList>

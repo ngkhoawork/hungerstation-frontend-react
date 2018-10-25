@@ -48,10 +48,9 @@ const Wrapper = styled.div`
   img {
     margin-bottom: 3px;
   }
-  ${mediaLess(860)`
-    margin-left: 20px;
-  `};
+
   ${mediaLess(600)`
     margin-left: 0;
+    margin-right: 0;
   `};
 `;

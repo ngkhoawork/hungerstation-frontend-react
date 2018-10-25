@@ -9,7 +9,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   moreFilters: {
     id: 'app.components.BriefFiltersSection.moreFilters',
-    defaultMessage: 'More Filters',
+    defaultMessage: 'More filters',
   },
   tags: {
     id: 'app.components.BriefFiltersSection.tags',

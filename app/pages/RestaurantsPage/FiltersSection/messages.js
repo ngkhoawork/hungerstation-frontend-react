@@ -1,9 +1,3 @@
-/*
- * FiltersSection Header Messages
- *
- * This contains all the text for the FiltersSection Header component.
- */
-
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
@@ -22,10 +16,6 @@ export default defineMessages({
   deliveryType: {
     id: 'app.components.FiltersSection.deliveryType',
     defaultMessage: 'Delivery Types',
-  },
-  clear: {
-    id: 'app.components.FiltersSection.clear',
-    defaultMessage: 'Clear',
   },
   buttonApply: {
     id: 'app.components.FiltersSection.buttonApply',
