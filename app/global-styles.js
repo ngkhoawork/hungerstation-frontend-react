@@ -76,6 +76,24 @@ export const global = injectGlobal`
     overflow: hidden;
   }
 
+   .FiltersModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 600px;
+    max-width: 100%;
+    height: 900px;
+    max-height: 100%;
+    z-index: 101;
+    outline: 9999px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .Overlay {
     position: absolute;
     top: 0;

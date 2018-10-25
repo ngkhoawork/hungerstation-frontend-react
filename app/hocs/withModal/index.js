@@ -27,7 +27,7 @@ const withModal = WrappedComponent => {
       isOpen={isOpen}
       shouldCloseOnOverlayClick
       shouldCloseOnEsc
-      className="Modal"
+      className="FiltersModal"
       overlayClassName="Overlay"
       ariaHideApp={false}
     >
