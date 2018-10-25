@@ -7,9 +7,9 @@ import {
   searchRestaurantAction,
   resetChosenFiltersAction,
   saveFiltersStageAction,
-  discartFiltersToSavedStageAction,
+  discardFiltersToSavedStageAction,
   changeOrderFilterAction,
-  resetCusinesAction,
+  resetCuisinesAction,
 } from './actions';
 import { MIN_ORDER_RANGE, TIME_ESTIMATION_RANGE } from './constants';
 
@@ -69,7 +69,7 @@ function reducer(state = initialState, action) {
       );
     }
 
-    case resetCusinesAction.type:
+    case resetCuisinesAction.type:
       return state.updateIn(['chosenFilters'], map =>
         map.updateIn(['kitchens'], map => map.clear()),
       );
@@ -82,7 +82,7 @@ function reducer(state = initialState, action) {
     case saveFiltersStageAction.type:
       return state.update('filtersStage', () => state.get('chosenFilters'));
 
-    case discartFiltersToSavedStageAction.type:
+    case discardFiltersToSavedStageAction.type:
       return state.update('chosenFilters', () => state.get('filtersStage'));
 
     case searchRestaurantAction.type:

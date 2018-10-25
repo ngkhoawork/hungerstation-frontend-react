@@ -1,8 +1,8 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  allCusines: {
-    id: 'app.components.FiltersSection.Cusines.allCusines',
-    defaultMessage: 'All Cusines',
+  allCuisines: {
+    id: 'app.components.FiltersSection.Cuisines.allCuisines',
+    defaultMessage: 'All Cuisines',
   },
 });

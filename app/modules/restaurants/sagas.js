@@ -14,9 +14,9 @@ import {
   searchRestaurantAction,
   updateVisibleRestaurantsAction,
   resetChosenFiltersAction,
-  discartFiltersToSavedStageAction,
+  discardFiltersToSavedStageAction,
   changeOrderFilterAction,
-  resetCusinesAction,
+  resetCuisinesAction,
 } from './actions';
 import restaurantsApi from './api';
 import {
@@ -178,10 +178,10 @@ export default function* watchRestaurantsActionsSaga() {
       toggleFilterAction.type,
       changeOrderFilterAction.type,
       resetChosenFiltersAction.type,
-      discartFiltersToSavedStageAction.type,
+      discardFiltersToSavedStageAction.type,
       searchRestaurantAction.type,
       updateRestaurantsListing.type,
-      resetCusinesAction.type,
+      resetCuisinesAction.type,
     ],
     filterRestaurantListSaga,
   );

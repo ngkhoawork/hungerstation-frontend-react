@@ -46,7 +46,7 @@ export const saveFiltersStageAction = createAction(
   'restaurants/SAVE_FILTERS_STAGE',
 );
 
-export const discartFiltersToSavedStageAction = createAction(
+export const discardFiltersToSavedStageAction = createAction(
   'restaurants/DISCARD_FILTERS_TO_SAVED_STAGE',
 );
 
@@ -54,4 +54,4 @@ export const resetChosenFiltersAction = createAction(
   'restaurants/RESET_CHOSEN_FILTERS',
 );
 
-export const resetCusinesAction = createAction('restaurants/RESET_CUSINES');
+export const resetCuisinesAction = createAction('restaurants/RESET_CUISINES');

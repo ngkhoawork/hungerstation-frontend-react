@@ -59,7 +59,7 @@ export const selectChosenDeliveryOption = createSelector(
   chosenFiltersMap => chosenFiltersMap.get('delivery_option'),
 );
 
-export const selectChosenMinOreder = createSelector(
+export const selectChosenMinOrder = createSelector(
   selectChosenFilters,
   chosenFiltersMap => chosenFiltersMap.get('min_order'),
 );
@@ -87,7 +87,7 @@ export const selectDynamicFilters = createSelector(
           (acc, { name }) => [...acc, name],
           [],
         )
-      : ['All Cusines'];
+      : ['All Cuisines'];
     /* eslint-anable */
 
     const dynamicDeliveryOption =

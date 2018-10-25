@@ -9,7 +9,7 @@ import {
 import { changeOrderFilterAction } from 'modules/restaurants/actions';
 import {
   selectChosenDeliveryTime,
-  selectChosenMinOreder,
+  selectChosenMinOrder,
 } from 'modules/restaurants/selectors';
 
 import CategoryTitle from '../CategoryTitle';
@@ -19,7 +19,7 @@ import OrderItem from './OrderItem';
 const decorate = connect(
   state => ({
     chosenDeliveryTime: selectChosenDeliveryTime(state),
-    chosenMinOrder: selectChosenMinOreder(state),
+    chosenMinOrder: selectChosenMinOrder(state),
   }),
   { changeOrderFilterAction },
 );

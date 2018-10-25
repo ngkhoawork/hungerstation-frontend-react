@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { silverChalice } from 'utils/css/colors';
 import intl from 'utils/intlService';
-import { resetCusinesAction } from 'modules/restaurants/actions';
+import { resetCuisinesAction } from 'modules/restaurants/actions';
 
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
@@ -14,8 +14,8 @@ import { StyledItem } from '../Styled';
 // import { StyledIconImage } from './Styled';
 import messages from './messages';
 
-const AllCussinesItem = ({ isSelected, resetCusinesAction }) => (
-  <StyledItem selected={isSelected} onClick={() => resetCusinesAction()}>
+const AllCuisinesItem = ({ isSelected, resetCuisinesAction }) => (
+  <StyledItem selected={isSelected} onClick={() => resetCuisinesAction()}>
     <Group>
       {/* <CircledItem color={wildSand} width={28}>
         <StyledIconImage alt="x" />
@@ -24,19 +24,19 @@ const AllCussinesItem = ({ isSelected, resetCusinesAction }) => (
         color={isSelected ? 'black' : silverChalice}
         margin="0 0 -3px 10px"
       >
-        {intl.formatMessage(messages.allCusines)}
+        {intl.formatMessage(messages.allCuisines)}
       </Paragraph>
     </Group>
     {isSelected && <Icon name="check" />}
   </StyledItem>
 );
 
-AllCussinesItem.propTypes = {
+AllCuisinesItem.propTypes = {
   isSelected: bool,
-  resetCusinesAction: func,
+  resetCuisinesAction: func,
 };
 
 export default connect(
   null,
-  { resetCusinesAction },
-)(AllCussinesItem);
+  { resetCuisinesAction },
+)(AllCuisinesItem);

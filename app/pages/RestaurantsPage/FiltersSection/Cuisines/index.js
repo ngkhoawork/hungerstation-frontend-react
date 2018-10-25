@@ -11,9 +11,9 @@ import { StyledFiltersCategoryWrapper, StyledItem } from '../Styled';
 import {
   StyledExpandActionWrapper,
   StyledIconImage,
-  SltyledKitchenItemsWrapper,
+  StyledKitchenItemsWrapper,
 } from './Styled';
-import AllCussinesItem from './AllCusines';
+import AllCuisinesItem from './AllCuisines';
 
 class Cuisines extends React.Component {
   state = { expanded: false };
@@ -34,8 +34,8 @@ class Cuisines extends React.Component {
           selectionQuantity={chosenKitchens.length}
         />
 
-        <SltyledKitchenItemsWrapper expanded={expanded}>
-          <AllCussinesItem isSelected={chosenKitchens.length === 0} />
+        <StyledKitchenItemsWrapper expanded={expanded}>
+          <AllCuisinesItem isSelected={chosenKitchens.length === 0} />
           {visibleKitchensInFilterBox.map(
             ({ id, name, image_thumb }, index) => {
               const isSelected = chosenKitchens.includes(id);
@@ -71,7 +71,7 @@ class Cuisines extends React.Component {
               );
             },
           )}
-        </SltyledKitchenItemsWrapper>
+        </StyledKitchenItemsWrapper>
 
         <StyledExpandActionWrapper
           onClick={this.toggleExpand}

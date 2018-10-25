@@ -19,7 +19,7 @@ const StyledIconImage = styled.img`
   z-index: 20;
 `;
 
-const SltyledKitchenItemsWrapper = styled.div`
+const StyledKitchenItemsWrapper = styled.div`
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -29,5 +29,5 @@ const SltyledKitchenItemsWrapper = styled.div`
 export {
   StyledExpandActionWrapper,
   StyledIconImage,
-  SltyledKitchenItemsWrapper,
+  StyledKitchenItemsWrapper,
 };

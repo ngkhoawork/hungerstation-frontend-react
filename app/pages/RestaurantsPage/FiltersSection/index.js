@@ -12,7 +12,7 @@ import {
 import {
   toggleFilterAction,
   resetChosenFiltersAction,
-  discartFiltersToSavedStageAction,
+  discardFiltersToSavedStageAction,
 } from 'modules/restaurants/actions';
 import Header from './Header';
 import Cuisines from './Cuisines';
@@ -31,7 +31,7 @@ export const decorate = connect(
   {
     toggleFilterAction,
     resetChosenFiltersAction,
-    discartFiltersToSavedStageAction,
+    discardFiltersToSavedStageAction,
     toggleModal,
   },
 );
