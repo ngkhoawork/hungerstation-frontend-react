@@ -8,6 +8,7 @@ import {
   setSettlementDetailsAction,
   toggleSettlementLoadedAction,
   saveCurrentLocationAction,
+  saveLocation,
 } from './actions';
 
 export const initialState = fromJS({
@@ -38,6 +39,8 @@ function searchBarContainerReducer(state = initialState, action) {
       return onToggleSettlementLoaded(state, action);
     case saveCurrentLocationAction.type:
       return onSaveCurrentLocationAction(state, action);
+    case saveLocation.type:
+      return onSaveLocation(state, action);
     default:
       return state;
   }
@@ -46,9 +49,6 @@ function searchBarContainerReducer(state = initialState, action) {
 const onSetCities = (state, action) => {
   const { cities } = action.payload;
   sortAlphabetically(cities);
-  // cities.sort((a, b) =>
-  //   a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
-  // );
   return state.merge({
     cities,
   });
@@ -65,6 +65,7 @@ const onSelectCity = (state, action) => {
   const { selectedCity } = action.payload;
   return state.merge({
     selectedCity,
+    selectedDistrict: null,
   });
 };
 
@@ -93,6 +94,15 @@ const onToggleSettlementLoaded = (state, action) => {
 const onSaveCurrentLocationAction = (state, action) =>
   state.merge({
     coords: action.payload,
+  });
+
+const onSaveLocation = (
+  state,
+  { payload: { selectedCity, selectedDistrict } },
+) =>
+  state.merge({
+    selectedCity,
+    selectedDistrict,
   });
 
 export default searchBarContainerReducer;

@@ -10,7 +10,7 @@ const getCities = countryId =>
 
 const getDistrict = coords => request(getLocalQuery, coords);
 
-const getDistrictBySlugs = (slug, citySlug) =>
-  request(getDistrictBySlugQuery, slug, citySlug);
+const getDistrictBySlug = ({ slug, citySlug }) =>
+  request(getDistrictBySlugQuery, { slug, citySlug });
 
-export default { getCities, getDistrict, getDistrictBySlugs };
+export default { getCities, getDistrict, getDistrictBySlug };

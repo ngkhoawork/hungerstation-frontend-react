@@ -1,3 +1,12 @@
+const localsShape = `
+  id
+  name
+  city {
+    id
+    name
+  }
+`;
+
 const listCitiesQuery = `query ($country_id: Int!) {
   cities(country_id: $country_id) {
     id
@@ -11,19 +20,13 @@ const listCitiesQuery = `query ($country_id: Int!) {
 
 const getDistrictBySlugQuery = `query ($slug: String, $citySlug: String) {
   local(slug: $slug, city_slug: $citySlug) {
-    id
-    name
+    ${localsShape}
   }
 }`;
 
 const getLocalQuery = `query ($lat:Float!, $lng:Float!) {
   locals(lat: $lat, lng: $lng) {
-    name
-    id
-    city {
-      name
-      id
-    }
+    ${localsShape}
   }
 }`;
 

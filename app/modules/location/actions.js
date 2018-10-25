@@ -4,6 +4,8 @@ export const getCurrentLocationAction = createAction(
   'location/GET_CURRENT_LOCATION',
 );
 
+export const getCurrentCityAction = createAction('location/GET_CURRENT_CITY');
+
 export const saveCurrentLocationAction = createAction(
   'location/SAVE_CURRENT_LOCATION',
   coords => ({ ...coords }),
@@ -42,5 +44,14 @@ export const selectDistrictAction = createAction(
 
 export const submitSearchQuery = createAction(
   'location/SUBMIT_SEARCH_QUERY',
-  history => ({ history }),
+  ({ history, selectedCity, selectedDistrict }) => ({
+    history,
+    selectedCity,
+    selectedDistrict,
+  }),
+);
+
+export const saveLocation = createAction(
+  'location/SAVE_LOCATION',
+  ({ selectedCity, selectedDistrict }) => ({ selectedCity, selectedDistrict }),
 );

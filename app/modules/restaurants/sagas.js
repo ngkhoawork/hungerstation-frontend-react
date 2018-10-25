@@ -1,7 +1,8 @@
 import { call, put, select, takeEvery, all } from 'redux-saga/effects';
-
-import locationApi from 'modules/location/api';
-
+import { slugify } from 'utils/helpers';
+import { fetchLocationSaga } from 'modules/location/sagas';
+import { submitSearchQuery } from 'modules/location/actions';
+import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 import { intersection, lowerCase } from 'lodash/fp';
 
 import {
@@ -25,26 +26,28 @@ import {
 } from './selectors';
 import { RESTAURANT_STATUSES } from './constants';
 
+function* fetchRestaurantsFromSearchBarSaga({
+  payload: { history, selectedCity, selectedDistrict },
+}) {
+  yield put(startSubmit());
+  yield call(fetchRestaurantsSaga, {
+    payload: { localId: parseInt(selectedDistrict.get('id'), 10) },
+  });
+
+  const cityName = slugify(selectedCity.get('name'));
+  const districtName = slugify(selectedDistrict.get('name'));
+  const path = `/restaurants/${cityName}/${districtName}`;
+
+  history.push(path);
+
+  yield put(stopSubmit());
+}
+
 export function* fetchRestaurantsSaga({ payload }) {
-  let callParams = {};
-  if (payload.districtId) {
-    callParams = {
-      localId: payload.districtId,
-    };
-  }
-
-  if (payload.districtSlug) {
-    const {
-      local: { id },
-    } = yield call(locationApi.getDistrictBySlugs, {
-      slug: payload.districtSlug,
-      citySlug: payload.citySlug,
-    });
-
-    callParams = {
-      localId: parseInt(id, 10),
-    };
-  }
+  const callParams = {};
+  callParams.localId = payload.localId
+    ? payload.localId
+    : yield call(fetchLocationSaga, { payload });
 
   if (payload.deliveryType) {
     callParams.deliveryType = payload.deliveryType;
@@ -167,6 +170,7 @@ export function* filterRestaurantListSaga() {
 }
 
 export default function* watchRestaurantsActionsSaga() {
+  yield takeEvery(submitSearchQuery.type, fetchRestaurantsFromSearchBarSaga);
   yield takeEvery(fetchRestaurantsAction.type, fetchRestaurantsSaga);
   yield takeEvery(fetchDeliveryFiltersAction.type, fetchDeliveriesFiltersSaga);
   yield takeEvery(

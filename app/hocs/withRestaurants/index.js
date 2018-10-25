@@ -12,8 +12,8 @@ const life = lifecycle({
 
     if (history.action === 'POP') {
       fetchRestaurantsAction({
-        districtSlug: match.params.district,
-        citySlug: match.params.city,
+        city: match.params.city,
+        district: match.params.district,
         deliveryType: match.params.deliveryType,
       });
     }

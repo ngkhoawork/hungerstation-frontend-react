@@ -29,7 +29,7 @@ export const selectVisibleRestaurants = createSelector(
   (restaurants, ids) =>
     ids.reduce((acc, curr) => {
       const el = restaurants.find(({ id }) => id === curr);
-      return el ? [...acc, el] : [acc];
+      return el ? [...acc, el] : acc;
     }, []),
 );
 

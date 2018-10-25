@@ -1,10 +1,6 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
 import { getUserPosition } from 'utils/location';
-import { fetchRestaurantsSaga } from 'modules/restaurants/sagas';
-import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
-import { makeSelectSearchType } from 'containers/SearchTypeContainer/selectors';
-import { slugify, sortAlphabetically } from 'utils/helpers';
+import { sortAlphabetically } from 'utils/helpers';
 import locationApi from './api';
 
 import {
@@ -14,13 +10,12 @@ import {
   setDistrictsAction,
   setSettlementDetailsAction,
   toggleSettlementLoadedAction,
-  selectCityAction,
-  selectDistrictAction,
-  submitSearchQuery,
+  saveLocation,
+  getCurrentCityAction,
 } from './actions';
-import { selectCities, selectDistrict, selectCity } from './selectors';
+import { selectCities } from './selectors';
 
-function* getCitiesFlow() {
+function* getCitiesSaga() {
   const cachedCities = yield select(selectCities);
 
   if (!cachedCities.size) {
@@ -38,26 +33,25 @@ function* getCitiesFlow() {
   }
 }
 
-function* selectCityFlow() {
-  yield put(selectDistrictAction(null));
-}
-
-function* getCurrentLocationFlow() {
+function* getCurrentLocationSaga() {
   yield put(toggleSettlementLoadedAction(false));
   try {
-    const { coords } = yield call(getUserPosition);
+    const {
+      coords: { latitude: lat, longitude: lng },
+    } = yield call(getUserPosition);
+    // Riyadh:
+    // const coords = { lat: 24.7965494, lng: 46.6199898 };
+    const coords = {
+      lat,
+      lng,
+    };
 
-    yield put(
-      saveCurrentLocationAction({
-        lat: coords.latitude,
-        lng: coords.longitude,
-      }),
-    );
+    yield put(saveCurrentLocationAction(coords));
 
     const { locals } = yield call(locationApi.getDistrict, coords);
-    const [{ name: districtName, id: districtID, city }] = locals;
 
-    if (city && districtID) {
+    if (locals.length) {
+      const [{ name: districtName, id: districtID, city }] = locals;
       yield put(
         setSettlementDetailsAction({
           city,
@@ -77,30 +71,58 @@ function* getCurrentLocationFlow() {
   }
 }
 
-function* fetchRestaurantsFlow({ payload }) {
-  const city = yield select(selectCity);
-  const district = yield select(selectDistrict);
-  const deliveryType = yield select(makeSelectSearchType);
+function* getCurrentCitySaga() {
+  const {
+    coords: { latitude: lat, longitude: lng },
+  } = yield call(getUserPosition);
+  // Riyadh:
+  // const coords = { lat: 24.7965494, lng: 46.6199898 };
+  const coords = {
+    lat,
+    lng,
+  };
 
-  yield put(startSubmit());
-  yield call(fetchRestaurantsSaga, {
-    payload: { districtId: parseInt(district.get('id'), 10), deliveryType },
-  });
-  yield call(delay, 500);
+  yield put(saveCurrentLocationAction(coords));
 
-  const cityName = slugify(city.get('name'));
-  const districtName = slugify(district.get('name'));
-  const path = `/restaurants/${cityName}/${districtName}`;
+  const { locals } = yield call(locationApi.getDistrict, coords);
 
-  payload.history.push(path);
+  if (locals.length) {
+    const [{ city }] = locals;
+    yield put(
+      setSettlementDetailsAction({
+        city,
+        district: null,
+      }),
+    );
+  } else {
+    throw Error(`Unsupported area.`);
+  }
+}
 
-  yield put(stopSubmit());
+export function* fetchLocationSaga({ payload }) {
+  try {
+    const {
+      local: { city, ...local },
+    } = yield call(locationApi.getDistrictBySlug, {
+      citySlug: payload.city,
+      slug: payload.district,
+    });
+
+    yield put(
+      saveLocation({
+        selectedCity: city,
+        selectedDistrict: local,
+      }),
+    );
+    return parseInt(local.id, 10);
+  } catch (e) {
+    return null;
+  }
 }
 
 // Individual exports for testing
 export default function* watchLocationActionsSaga() {
-  yield getCitiesFlow();
-  yield takeEvery(selectCityAction.type, selectCityFlow);
-  yield takeEvery(getCurrentLocationAction.type, getCurrentLocationFlow);
-  yield takeEvery(submitSearchQuery.type, fetchRestaurantsFlow);
+  yield takeEvery(getCurrentLocationAction.type, getCurrentLocationSaga);
+  yield takeEvery(getCurrentCityAction.type, getCurrentCitySaga);
+  yield getCitiesSaga();
 }

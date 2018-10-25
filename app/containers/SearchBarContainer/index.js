@@ -17,6 +17,7 @@ import {
   selectDistrictAction,
   getCurrentLocationAction,
   submitSearchQuery,
+  getCurrentCityAction,
 } from 'modules/location/actions';
 import { makeSelectSubmitting } from 'hocs/withFormState/selectors';
 
@@ -37,6 +38,7 @@ const mapDispatchToProps = {
   selectCity: selectCityAction,
   selectDistrict: selectDistrictAction,
   getCurrentLocation: getCurrentLocationAction,
+  getCurrentCity: getCurrentCityAction,
   submitSearchQueryAction: submitSearchQuery,
 };
 
@@ -46,28 +48,33 @@ const mapDispatchToProps = {
   mapDispatchToProps,
 )
 /* eslint-disable react/prefer-stateless-function */
-export default class SearchBarContainer extends React.PureComponent {
+export default class SearchBarContainer extends React.Component {
   static defaultProps = {
     cities: null,
     districts: null,
   };
 
-  // componentDidMount() {
-  //   const { getCities } = this.props;
-  //   getCities();
-  // }
+  componentDidMount() {
+    const { getCurrentCity, selectedDistrict } = this.props;
 
-  handleRedirect = () => {
+    if (!selectedDistrict) {
+      getCurrentCity();
+    }
+  }
+
+  handleSubmit = () => {
     const {
       history,
-      selectedCity,
       selectedDistrict,
+      selectedCity,
       submitSearchQueryAction,
     } = this.props;
-    const city = selectedCity && selectedCity.get('name', null);
-    const district = selectedDistrict && selectedDistrict.get('name', null);
-    if (city && district) {
-      submitSearchQueryAction(history);
+    if (selectedDistrict) {
+      submitSearchQueryAction({
+        selectedCity,
+        selectedDistrict,
+        history,
+      });
     }
   };
 
@@ -93,7 +100,7 @@ export default class SearchBarContainer extends React.PureComponent {
         isSettlementLoaded={isSettlementLoaded}
         selectedCity={selectedCity}
         selectedDistrict={selectedDistrict}
-        handleSubmit={this.handleRedirect}
+        handleSubmit={this.handleSubmit}
         isSubmitting={isSubmitting}
       />
     );
