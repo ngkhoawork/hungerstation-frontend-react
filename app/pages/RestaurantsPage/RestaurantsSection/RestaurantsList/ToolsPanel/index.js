@@ -14,7 +14,6 @@ const decorate = connect(
   { searchRestaurantAction },
 );
 
-// eslint-disable-next-line no-shadow
 const ToolsPanel = ({ searchRestaurantAction }) => (
   <Wrapper>
     <StyledTool>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { restaurantsPropTypes } from 'propTypes/restaurants';
+import { mediaLess, flexBox } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
 
 import CircledItem from 'components/CircledItem';
@@ -11,7 +13,6 @@ import ToolsPanel from './ToolsPanel';
 import StyledList from './StyledList';
 import LoadMore from './LoadMore';
 import NotFound from './NotFound';
-import ScrollToListTopWrapper from './ButtonWrapper';
 
 const PAGINATION_STEP = 9;
 const SCROLL_STEP = 400;
@@ -60,16 +61,40 @@ export default class RestaurantsList extends Component {
         ) : (
           <NotFound />
         )}
-        {restaurants.length !== 0 && (
-          <ScrollToListTopWrapper onClick={handleScrollToTop}>
-            <CircledItem width={28} color={gold}>
-              <Icon name="arrow-right" size={12} />
-            </CircledItem>
-          </ScrollToListTopWrapper>
-        )}
+        <ActionButtonsWrapper>
+          {restaurants.length !== 0 && (
+            <ScrollToListTopWrapper onClick={handleScrollToTop}>
+              <CircledItem width={28} color={gold} withShadow>
+                <Icon name="arrow-right" size={12} />
+              </CircledItem>
+            </ScrollToListTopWrapper>
+          )}
 
-        {this.showLoadMoreButton && <LoadMore showMore={this.showMoreItems} />}
+          {this.showLoadMoreButton && (
+            <LoadMore showMore={this.showMoreItems} />
+          )}
+        </ActionButtonsWrapper>
       </StyledRestaurantList>
     );
   }
 }
+
+const ActionButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 40px;
+
+  ${mediaLess(500)`
+  justify-content: flex-start;
+  `};
+`;
+
+const ScrollToListTopWrapper = styled.div`
+  ${flexBox({ align: 'center', justify: 'center' })};
+  position: absolute;
+  bottom: 5px;
+  right: 0px;
+  transform: rotate(270deg);
+`;
