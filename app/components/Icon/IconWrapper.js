@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const IconWrapper = styled.div`
   display: inline-flex;
-  align-item: center;
+  align-items: center;
   justify-content: center;
   position: relative;
   z-index: 15;

@@ -6,7 +6,7 @@ import Icon from 'components/Icon';
 
 const Rating = ({ rating }) => (
   <Wrapper>
-    <Icon name="star" offsetY={0} />
+    <Icon name="star" offsetY="0" />
     <Paragraph size={12}>{rating}</Paragraph>
   </Wrapper>
 );

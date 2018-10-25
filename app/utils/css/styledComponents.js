@@ -21,7 +21,7 @@ export const StyledForm = styled.form`
   `};
 `;
 
-export const StyledFieldWrapper = styled(Field);
+export const StyledFieldWrapper = Field;
 
 export const StyledPage = styled.div`
   ${flexBox({
