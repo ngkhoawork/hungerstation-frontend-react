@@ -106,7 +106,7 @@ class MealOptions extends Component {
               <CheckboxSelect
                 name="Basic ingredients"
                 options={items}
-                onChange={(e, b) => console.log(e, b)}
+                onChange={() => {}}
               />
             </Section>
           ))}
@@ -116,18 +116,18 @@ class MealOptions extends Component {
                 name="Type of bun"
                 options={items}
                 value={0}
-                onChange={(e, b) => console.log(e, b)}
+                onChange={() => {}}
               />
             </Section>
           ))}
         </Content>
         <Footer>
-          <QuantitySelect quantity={1} onChange={console.log} />
+          <QuantitySelect quantity={1} onChange={() => {}} />
           <FooterRightSide>
             Total &nbsp;
             <Price price={300} isPrimary />
             &nbsp; &nbsp; &nbsp;
-            <Button primary inline size="l" onClick={() => console.log('add')}>
+            <Button primary inline size="l" onClick={() => {}}>
               Add to cart
             </Button>
           </FooterRightSide>

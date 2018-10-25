@@ -12,8 +12,7 @@ export default class ForgotPasswordFormContainer extends PureComponent {
   render() {
     const { submitHandler } = this.props;
 
-    const submit = values => {
-      console.log(values);
+    const submit = () => {
       // start saga
     };
 

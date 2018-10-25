@@ -20,7 +20,7 @@ export const BreadcrumbsStyled = styled.div`
   ul {
     display: flex;
     list-style: none;
-    font-family: 'HungerStation-Light';
+    font-family: 'HungerStation-Light', sans-serif;
     justify-content: flex-start;
     padding: 16px 0px;
     margin: 4px 0;
@@ -36,7 +36,7 @@ export const BreadcrumbsStyled = styled.div`
     display: inline-block;
   }
 
-  ${ButtonLink} {
+  ${/* sc-selector */ ButtonLink} {
     margin-top: -3px;
   }
 

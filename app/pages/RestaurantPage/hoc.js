@@ -35,7 +35,7 @@ const restaurant = {
 const RestaurantPageHOC = ({ showModal, hideModal }) => (
   <RestaurantPage
     restaurant={restaurant}
-    onAddToCart={product => console.log(product)}
+    onAddToCart={() => {}}
     onShowModal={showModal}
     onHideModal={hideModal}
   />

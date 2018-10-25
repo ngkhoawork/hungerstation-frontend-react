@@ -20,10 +20,12 @@ const StyledRestaurantList = styled.div`
     padding: 20px;
     padding-left: 0;
   `};
-  ${Icon} {
+
+  ${/* sc-custom "icon" */ Icon} {
     margin-bottom: 10px;
   }
-  ${Paragraph} {
+
+  ${/* sc-selector */ Paragraph} {
     &:last-child {
       width: 270px;
       text-align: center;

@@ -34,7 +34,7 @@ export default Expander;
 
 const Wrapper = styled.div`
   width: 100%;
-  min-heght: 48px;
+  min-height: 48px;
   border-bottom: 1px solid ${wildSand};
   overflow: hidden;
   padding: 24px 0;

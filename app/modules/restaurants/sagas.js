@@ -75,7 +75,7 @@ export function* fetchRestaurantsSaga({ payload }) {
 
     yield put(updateRestaurantsListing(restaurants));
   } catch (e) {
-    console.log(e);
+    throw e;
   }
 }
 
@@ -84,7 +84,7 @@ export function* fetchDeliveriesFiltersSaga() {
     const { delivery_filters } = yield call(restaurantsApi.getDeliveryFilters);
     yield put(fetchDeliveryFiltersSuccessAction(delivery_filters));
   } catch (e) {
-    console.log(e);
+    throw e;
   }
 }
 

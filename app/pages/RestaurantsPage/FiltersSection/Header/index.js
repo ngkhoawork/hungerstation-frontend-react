@@ -74,7 +74,7 @@ const DynamicFiltersSection = styled.div`
 
 const FilterName = styled.span`
   color: #6f6e6b;
-  font-family: 'HungerStation-Light';
+  font-family: 'HungerStation-Light', sans-serif;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.44px;

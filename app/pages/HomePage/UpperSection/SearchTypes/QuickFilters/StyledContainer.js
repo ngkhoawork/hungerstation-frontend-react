@@ -12,7 +12,7 @@ const StyledContainer = styled.div`
     `};
   }
 
-  ${Paragraph} {
+  ${/* sc-selector */ Paragraph} {
     margin: 0 12px;
   }
 `;

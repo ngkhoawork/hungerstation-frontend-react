@@ -17,7 +17,7 @@ const StyledDropdown = styled.div`
     margin: 5px 20px 0 10px;
   }
 
-  ${Icon} {
+  ${/* sc-selector */ Icon} {
     margin-top: 5px;
   }
 `;

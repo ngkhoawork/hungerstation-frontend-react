@@ -7,7 +7,7 @@ const DetailsWrapper = styled.div`
   padding: 160px 60px 80px;
   border-radius: 8px;
 
-  ${IconWrapper} {
+  ${/* sc-selector */ IconWrapper} {
     margin-bottom: 24px;
   }
   ${mediaMedium`
