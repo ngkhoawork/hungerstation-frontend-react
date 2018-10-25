@@ -17,6 +17,7 @@ const Button = ({
   disabled,
   loading,
   onClick,
+  fontSize,
 }) => (
   <StyledButton
     primary={primary}
@@ -31,7 +32,7 @@ const Button = ({
     onClick={onClick}
   >
     {children}
-    {loading ? <Spinner isActive /> : <Text>{label}</Text>}
+    {loading ? <Spinner isActive /> : <Text fontSize={fontSize}>{label}</Text>}
   </StyledButton>
 );
 
@@ -47,6 +48,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
+  fontSize: PropTypes.number,
 };
 
 Button.defaultProps = {
@@ -58,6 +60,7 @@ Button.defaultProps = {
   lift: true,
   disabled: false,
   loading: false,
+  fontSize: 14,
 };
 
 export default Button;
