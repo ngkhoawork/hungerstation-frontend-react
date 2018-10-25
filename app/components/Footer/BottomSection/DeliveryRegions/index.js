@@ -1,31 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import intl from 'utils/intlService';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { makeSampleCities } from 'modules/location/selectors';
+import { selectCities } from 'modules/location/selectors';
+import { selectCityAction } from 'modules/location/actions';
+import { forwardTo } from 'utils/route';
 import { createStructuredSelector } from 'reselect';
 import StyledContainer from './StyledContainer';
 import DeliveryItem from './DeliveryItem';
-import messages from './messages';
 
-const DeliveryRegions = ({ cities }) => (
+const handleScrollToTop = () => {
+  document.querySelector('html').scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
+};
+
+const DeliveryRegions = ({ cities, onClick }) => (
   <StyledContainer>
-    {!!cities.length &&
+    {!!cities.size &&
       cities.map(city => (
         <DeliveryItem
-          title={intl.formatMessage(messages.title)}
-          key={`delivery-region-${city.city.name}`}
-          city={city}
+          key={`delivery-region-${city.get('name')}`}
+          name={city.get('name')}
+          onClick={onClick(city)}
         />
       ))}
   </StyledContainer>
 );
 DeliveryRegions.propTypes = {
-  cities: PropTypes.array.isRequired,
+  cities: ImmutablePropTypes.list.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default connect(
   createStructuredSelector({
-    cities: makeSampleCities(),
+    cities: selectCities,
+  }),
+  dispatch => ({
+    onClick: city => () => {
+      dispatch(selectCityAction(city.toJS()));
+      handleScrollToTop();
+      forwardTo('/');
+    },
   }),
 )(DeliveryRegions);

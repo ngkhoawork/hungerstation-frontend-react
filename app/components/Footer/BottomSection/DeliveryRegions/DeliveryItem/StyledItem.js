@@ -6,8 +6,9 @@ const StyledItem = styled.div`
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 30%;
+  width: 25%;
   margin-bottom: 16px;
+  cursor: pointer;
 `;
 
 export default StyledItem;

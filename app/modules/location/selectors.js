@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 import { List } from 'immutable';
-import { sample } from 'utils/helpers';
 import { initialState } from './reducer';
 
 /**
@@ -22,6 +21,11 @@ export const selectCity = createSelector(selectLocationDomain, searchBarState =>
   searchBarState.get('selectedCity'),
 );
 
+export const selectDistrict = createSelector(
+  selectLocationDomain,
+  searchBarState => searchBarState.get('selectedDistrict'),
+);
+
 export const selectedDistricts = createSelector(
   selectLocationDomain,
   selectCity,
@@ -37,26 +41,3 @@ export const selectIsSettlementLoaded = createSelector(
   selectLocationDomain,
   searchBarState => searchBarState.get('isSettlementLoaded'),
 );
-
-export const selectDistrict = createSelector(
-  selectLocationDomain,
-  searchBarState => searchBarState.get('selectedDistrict'),
-);
-
-export const makeSampleCities = () =>
-  createSelector(selectCities, selectDistricts, (cities, districts) => {
-    if (districts.size) {
-      return sample(cities.toJS(), 9).map(city => ({
-        city,
-        districts: sample(districts.get(city.id).toJS(), 16),
-      }));
-    }
-    return [];
-  });
-
-export const makeSelectDistricts = () =>
-  createSelector(selectLocationDomain, locationState =>
-    locationState.get('districts').toJS(),
-  );
-
-export { selectLocationDomain };
