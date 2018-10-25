@@ -94,8 +94,6 @@ function* getCurrentCitySaga() {
         district: null,
       }),
     );
-  } else {
-    throw Error(`Unsupported area.`);
   }
 }
 

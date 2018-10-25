@@ -35,8 +35,8 @@ const SearchBar = ({
       selectedItem={selectedDistrict}
       disabled={!selectedCity}
     />
+    <LocateYourself {...rest} />
     <Styled.BarActions>
-      <LocateYourself {...rest} />
       <Styled.ButtonWrapper onClick={isSubmitting ? null : handleSubmit}>
         <Button
           label={intl.formatMessage(messages.search)}

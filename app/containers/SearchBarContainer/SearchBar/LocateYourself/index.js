@@ -9,9 +9,9 @@ import { wildSand } from 'utils/css/colors';
 import StyledContainer from './StyledContainer';
 
 const LocateYourself = ({ getCurrentLocation, isSettlementLoaded }) => (
-  <StyledContainer onClick={getCurrentLocation}>
+  <StyledContainer>
     {isSettlementLoaded && (
-      <CircledItem color={wildSand} width={28}>
+      <CircledItem color={wildSand} width={28} onClick={getCurrentLocation}>
         <Icon name="location" size={16} />
       </CircledItem>
     )}
