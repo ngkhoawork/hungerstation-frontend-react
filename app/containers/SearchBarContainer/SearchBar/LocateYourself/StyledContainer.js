@@ -10,7 +10,6 @@ const StyledContainer = styled.span`
     right: 5%;
     margin-right: 16px;
   `};
-  }
 `;
 
 export default StyledContainer;
