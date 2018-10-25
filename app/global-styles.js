@@ -4,22 +4,23 @@ import { zIndexModal, borderRadius, maxModalHeight } from 'utils/css/variables';
 import HSRwoff from './vendor/fonts/HungerStation-Regular.woff';
 import HSRwoff2 from './vendor/fonts/HungerStation-Regular.woff2';
 import HSRotf from './vendor/fonts/HungerStation-Regular.otf';
-import HSReot from './vendor/fonts/HungerStation-Regular.eot?#iefix';
+import HSReot from './vendor/fonts/HungerStation-Regular.eot';
 
 import HSLwoff from './vendor/fonts/HungerStation-Light.woff';
 import HSLwoff2 from './vendor/fonts/HungerStation-Light.woff2';
 import HSLotf from './vendor/fonts/HungerStation-Light.otf';
-import HSLeot from './vendor/fonts/HungerStation-Light.eot?#iefix';
+import HSLeot from './vendor/fonts/HungerStation-Light.eot';
 
 import HSBwoff from './vendor/fonts/HungerStation-Bold.woff';
 import HSBwoff2 from './vendor/fonts/HungerStation-Bold.woff2';
 import HSBotf from './vendor/fonts/HungerStation-Bold.otf';
-import HSBeot from './vendor/fonts/HungerStation-Bold.eot?#iefix';
+import HSBeot from './vendor/fonts/HungerStation-Bold.eot';
 
 export const global = injectGlobal`
   @font-face {
     font-family: 'HungerStation-Regular';
-    src: url(${HSReot}) format('embedded-opentype'),
+    src: url(${HSReot});
+    src: url(${HSReot}?#iefix) format('embedded-opentype'),
       url(${HSRwoff2}) format('woff2'),
       url(${HSRwoff}) format('woff'),
       url(${HSRotf}) format('opentype');
@@ -29,7 +30,8 @@ export const global = injectGlobal`
 
   @font-face {
     font-family: 'HungerStation-Light';
-    src: url(${HSLeot}) format('embedded-opentype'),
+    src: url(${HSLeot});
+    src: url(${HSLeot}?#iefix) format('embedded-opentype'),
       url(${HSLwoff2})  format('woff2'),
       url(${HSLwoff}) format('woff'),
       url(${HSLotf}) format('opentype');
@@ -39,7 +41,8 @@ export const global = injectGlobal`
 
   @font-face {
     font-family: 'HungerStation-Bold';
-    src: url(${HSBeot}) format('embedded-opentype'),
+    src: url(${HSBeot});
+    src: url(${HSBeot}?#iefix) format('embedded-opentype'),
       url(${HSBwoff2}) format('woff2'),
       url(${HSBwoff}) format('woff'),
       url(${HSBotf}) format('opentype');
