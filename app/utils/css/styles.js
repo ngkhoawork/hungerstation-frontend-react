@@ -14,10 +14,11 @@ const styles = () => ({
   buttonText: {
     display: 'inline-block',
     fontSize: '20px',
-    lineHeight: '1.3em',
+    lineHeight: '1em',
     height: '20px',
   },
   buttonIcon: {
+    marginTop: '2px',
     marginRight: '4px',
   },
   fieldWrapper: {

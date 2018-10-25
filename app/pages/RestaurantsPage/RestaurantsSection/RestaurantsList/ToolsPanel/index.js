@@ -52,8 +52,8 @@ const StyledTool = styled.div`
 `;
 
 const IconPositioning = styled.div`
-  position: absolute;
-  top: 24px;
+  position absolute;
+  top: 30px;
 
   ${mediaLess(600)`
   top: 44px;

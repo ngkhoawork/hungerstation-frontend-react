@@ -8,7 +8,7 @@ const StyledExpandActionWrapper = styled.div`
   width: 100%;
   cursor: pointer;
   img {
-    margin: 0 0 3px 10px;
+    margin: 0 0 0 10px;
     transform: rotate(${({ isExpanded }) => (isExpanded ? 180 : 0)}deg);
   }
 `;

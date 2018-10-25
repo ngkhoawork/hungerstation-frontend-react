@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   `,
   )};
   img {
-    margin-bottom: 3px;
+    margin-top: 5px;
   }
 
   ${mediaLess(600)`

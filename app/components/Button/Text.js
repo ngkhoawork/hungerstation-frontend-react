@@ -6,7 +6,6 @@ const Text = styled.p`
   font-size: ${({ fontSize }) => fontSize}px;
   font-family: 'HungerStation-Regular', sans-serif;
   margin: 0;
-  margin-top: 4px;
 `;
 
 export default Text;

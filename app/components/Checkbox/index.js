@@ -8,7 +8,7 @@ const TextInner = styled.span`
   [dir='rtl'] & {
     margin-right: 3px;
   }
-  vertical-align: text-top;
+  vertical-align: top;
   line-height: 16px;
 `;
 

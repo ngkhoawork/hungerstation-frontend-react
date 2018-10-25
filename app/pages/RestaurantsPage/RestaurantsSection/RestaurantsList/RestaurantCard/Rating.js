@@ -6,7 +6,7 @@ import Icon from 'components/Icon';
 
 const Rating = ({ rating }) => (
   <Wrapper>
-    <Icon name="star" />
+    <Icon name="star" offsetY={0} />
     <Paragraph size={12}>{rating}</Paragraph>
   </Wrapper>
 );
@@ -17,6 +17,7 @@ export default Rating;
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
+  line-height: 1em;
 `;

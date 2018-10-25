@@ -22,7 +22,7 @@ const StyledButton = styled.button`
     return '10px 20px';
   }};
   font-family: ${fontFamilyRegular};
-  line-height: 1;
+  line-height: 1em;
 
   :disabled {
     background-color: ${paleSlate};
@@ -36,7 +36,6 @@ const StyledButton = styled.button`
     }
   }
   img {
-    margin-bottom: 3px;
     margin-right: 5px;
   }
 `;

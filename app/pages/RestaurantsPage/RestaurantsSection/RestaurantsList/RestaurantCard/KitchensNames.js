@@ -27,4 +27,7 @@ const ParagraphWithPoint = styled(Paragraph)`
     content: '•';
     margin-right: 5px;
   }
+  height: 18px;
+  padding: 0;
+  margin: 2px 0 5px 0;
 `;

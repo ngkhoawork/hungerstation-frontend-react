@@ -37,6 +37,9 @@ const themeObj = {
       },
     },
     MuiButton: {
+      label: {
+        lineHeight: '1em',
+      },
       contained: {
         '&$disabled': {
           color: fuscousGray,

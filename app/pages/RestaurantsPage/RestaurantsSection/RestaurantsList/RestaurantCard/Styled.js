@@ -52,9 +52,8 @@ const StyledBottomPart = styled.div`
     { align: 'flex-start', direction: 'column' },
     `
     width: 100%;
-    flex: 0.38;
+    flex: 0.5;
     div > p {
-      margin-top: 4px;
       margin-right: 10px;
     }
     div > img {

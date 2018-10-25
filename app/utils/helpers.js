@@ -80,3 +80,23 @@ export function isChildOf(element, parentId) {
 
   return false;
 }
+
+export function getOS() {
+  const OS_Name = navigator.appVersion;
+  if (OS_Name.indexOf('Win') !== -1) {
+    return 'Win';
+  }
+  if (OS_Name.indexOf('Mac') !== -1) {
+    return 'Mac';
+  }
+  if (OS_Name.indexOf('X11') !== -1) {
+    return 'X11';
+  }
+  if (OS_Name.indexOf('Linux') !== -1) {
+    return 'Linux';
+  }
+  if (OS_Name.indexOf('SunOS') !== -1) {
+    return 'SunOS';
+  }
+  return 'Win';
+}
