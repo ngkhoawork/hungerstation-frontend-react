@@ -2,9 +2,7 @@ export default () => ({
   icon: {
     margin: '0 8px',
   },
-  input: {
-    padding: '3px 0 0 0',
-  },
+  input: {},
   inputRoot: {
     fontFamily: `'HungerStation-Light', sans-serif`,
     flexWrap: 'wrap',
