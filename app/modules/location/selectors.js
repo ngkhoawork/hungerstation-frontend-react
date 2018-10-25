@@ -6,7 +6,8 @@ import { initialState } from './reducer';
  * Direct selector to the searchBarContainer state domain
  */
 
-const selectLocationDomain = state => state.get('location', initialState);
+export const selectLocationDomain = state =>
+  state.get('location', initialState);
 
 export const selectCities = createSelector(
   selectLocationDomain,
