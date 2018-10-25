@@ -52,7 +52,7 @@ const StyledBottomPart = styled.div`
     { align: 'flex-start', direction: 'column' },
     `
     width: 100%;
-    flex: 0.5;
+    flex: 0.4;
     div > p {
       margin-right: 10px;
     }

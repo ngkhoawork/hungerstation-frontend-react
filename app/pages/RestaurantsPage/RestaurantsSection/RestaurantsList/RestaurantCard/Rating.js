@@ -17,7 +17,7 @@ export default Rating;
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   line-height: 1em;
 `;
