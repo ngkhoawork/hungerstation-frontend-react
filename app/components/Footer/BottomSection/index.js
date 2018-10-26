@@ -1,14 +1,17 @@
 import React from 'react';
 
+import ContainerDimensions from 'react-container-dimensions';
 import StyledSection from './StyledSection';
 import DeliveryRegions from './DeliveryRegions';
-import DeliveryRegionsMobile from './DeliveryRegionsMobile';
 
 const BottomSection = () => (
-  <StyledSection>
-    <DeliveryRegions />
-    <DeliveryRegionsMobile />
-  </StyledSection>
+  <ContainerDimensions>
+    {({ width }) => (
+      <StyledSection>
+        <DeliveryRegions mobile={width < 850} />
+      </StyledSection>
+    )}
+  </ContainerDimensions>
 );
 
 export default BottomSection;

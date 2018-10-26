@@ -177,6 +177,7 @@
     "minimist": "1.2.0",
     "prop-types": "15.6.1",
     "react": "16.4.1",
+    "react-container-dimensions": "^1.4.1",
     "react-dom": "16.4.1",
     "react-helmet": "5.2.0",
     "react-immutable-proptypes": "^2.1.0",

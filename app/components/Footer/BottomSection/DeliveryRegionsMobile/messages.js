@@ -55,4 +55,8 @@ export default defineMessages({
     id: 'app.components.DeliveryRegionsMobile.seeMore',
     defaultMessage: 'See more',
   },
+  seeLess: {
+    id: 'app.components.DeliveryRegionsMobile.seeLess',
+    defaultMessage: 'See less',
+  },
 });
