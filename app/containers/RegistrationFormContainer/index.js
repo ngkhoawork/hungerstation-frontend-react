@@ -43,6 +43,7 @@ export const RegistrationFormContainer = ({
       email: '',
       password: '',
       repeatPassword: '',
+      redirectToRoute: '/',
     }}
     validationSchema={schema}
     validateOnBlur={false}

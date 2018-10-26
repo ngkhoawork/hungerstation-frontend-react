@@ -6,10 +6,11 @@ export const loginAction = createAction(
 );
 export const registerAction = createAction(
   'users/REGISTER',
-  ({ name, mobile, email, password }) => ({
+  ({ name, mobile, email, password, redirectToRoute }) => ({
     name,
     mobile,
     email,
     password,
+    redirectToRoute,
   }),
 );
