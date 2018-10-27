@@ -23,7 +23,7 @@ const MobileFiltersSection = ({
   toggleModal,
   filters: { kitchens, delivery_options },
   toggleFilterAction,
-  discartFiltersToSavedStageAction,
+  discardFiltersToSavedStageAction,
   chosenKitchens,
   chosenDeliveryOption,
   resetChosenFiltersAction,
@@ -70,7 +70,7 @@ const MobileFiltersSection = ({
     {/* MODAL BUTTONS */}
     <CloseButtonWrapper
       onClick={() => {
-        discartFiltersToSavedStageAction();
+        discardFiltersToSavedStageAction();
         toggleModal(false);
       }}
     >
@@ -102,7 +102,7 @@ MobileFiltersSection.propTypes = {
   }),
   chosenKitchens: PropTypes.array,
   chosenDeliveryOption: PropTypes.string,
-  discartFiltersToSavedStageAction: PropTypes.func,
+  discardFiltersToSavedStageAction: PropTypes.func,
   resetChosenFiltersAction: PropTypes.func,
 };
 

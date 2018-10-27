@@ -55,7 +55,7 @@ const StyledTag = styled.span`
     `
     margin-right: 8px;
     border-radius: 8px;
-    padding: 5px 8px 1px;
+    padding: 3px 8px 4px;
   `,
   )};
   background-color: ${({ isSelected }) => (isSelected ? gold : wildSand)};
