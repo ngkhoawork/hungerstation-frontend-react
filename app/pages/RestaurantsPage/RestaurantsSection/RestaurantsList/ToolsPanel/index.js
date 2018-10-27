@@ -6,6 +6,7 @@ import { flexBox, mediaLess } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 import { searchRestaurantAction } from 'modules/restaurants/actions';
 
+import Tags from 'pages/RestaurantsPage/FiltersSection/Tags';
 import Icon from 'components/Icon';
 import SearchInput from './SearchInput';
 
@@ -16,6 +17,10 @@ const decorate = connect(
 
 const ToolsPanel = ({ searchRestaurantAction }) => (
   <Wrapper>
+    <StyledToolUndisplayedInMobile>
+      <Tags />
+    </StyledToolUndisplayedInMobile>
+
     <StyledTool>
       <IconPositioning>
         <Icon name="magnifying-glass" size={18} />
@@ -49,6 +54,12 @@ const Wrapper = styled.div`
 const StyledTool = styled.div`
   display: flex;
   width: 360px;
+`;
+
+const StyledToolUndisplayedInMobile = styled(StyledTool)`
+  ${mediaLess(600)`
+  display: none;
+`};
 `;
 
 const IconPositioning = styled.div`

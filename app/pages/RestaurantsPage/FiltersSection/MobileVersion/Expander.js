@@ -19,7 +19,7 @@ class Expander extends React.Component {
       withoutQuantity = false,
     } = this.props;
     return (
-      <Wrapper>
+      <Wrapper expanded={expanded}>
         <Row onClick={this.handleExpand}>
           <CategoryTitle
             title={label}
@@ -48,6 +48,7 @@ const Wrapper = styled.div`
   min-height: 48px;
   border-bottom: 1px solid ${wildSand};
   overflow: hidden;
+  ${({ expanded }) => expanded && 'padding-bottom: 24px;'};
   margin-bottom: 12px;
 `;
 

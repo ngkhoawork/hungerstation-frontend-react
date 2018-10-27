@@ -1,17 +1,37 @@
 import React from 'react';
-import { silverChalice } from 'utils/css/colors';
-import { filtersCategoryPropTypes } from 'propTypes/filters';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { array, func, shape } from 'prop-types';
+import { flexBox } from 'utils/css/styles';
+import { silverChalice, gold, wildSand } from 'utils/css/colors';
+import { toggleFilterAction } from 'modules/restaurants/actions';
+import {
+  selectFilters,
+  selectChosenTagsArray,
+} from 'modules/restaurants/selectors';
 
 import Paragraph from 'components/Paragraph';
-import StyledTagsContainer from './StyledTagsContainer';
-import StyledTag from './StyledTag';
 
-const Tags = ({ tags }) => (
+const decorate = connect(
+  state => ({
+    filters: selectFilters(state),
+    chosenTagsTypes: selectChosenTagsArray(state),
+  }),
+  { toggleFilterAction },
+);
+
+const Tags = ({ filters: { tags }, chosenTagsTypes, toggleFilterAction }) => (
   <StyledTagsContainer>
-    {tags.map(tag => (
-      <StyledTag key={tag.id} isSelected={tag.isSelected}>
-        <Paragraph color={tag.isSelected ? 'black' : silverChalice}>
-          {tag.label}
+    {tags.map(({ id, name, type }) => (
+      <StyledTag
+        key={id}
+        isSelected={chosenTagsTypes.includes(type)}
+        onClick={() => toggleFilterAction({ filterKey: 'tags', value: type })}
+      >
+        <Paragraph
+          color={chosenTagsTypes.includes(type) ? 'black' : silverChalice}
+        >
+          {name}
         </Paragraph>
       </StyledTag>
     ))}
@@ -19,7 +39,33 @@ const Tags = ({ tags }) => (
 );
 
 Tags.propTypes = {
-  tags: filtersCategoryPropTypes,
+  filters: shape({
+    tags: array,
+  }),
+  chosenTagsTypes: array,
+  toggleFilterAction: func,
 };
 
-export default Tags;
+export TagsTiltle from './TagsTitle';
+export default decorate(Tags);
+
+const StyledTag = styled.span`
+  ${flexBox(
+    { align: 'flex-start' },
+    `
+    margin-right: 8px;
+    border-radius: 8px;
+    padding: 5px 8px 1px;
+  `,
+  )};
+  background-color: ${({ isSelected }) => (isSelected ? gold : wildSand)};
+`;
+
+const StyledTagsContainer = styled.div`
+  ${flexBox(
+    { align: 'flex-start' },
+    `
+    flex-wrap: wrap
+  `,
+  )};
+`;

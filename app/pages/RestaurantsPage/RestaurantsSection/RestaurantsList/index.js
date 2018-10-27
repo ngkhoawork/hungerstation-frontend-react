@@ -61,6 +61,7 @@ export default class RestaurantsList extends Component {
         ) : (
           <NotFound />
         )}
+
         <ActionButtonsWrapper>
           {restaurants.length !== 0 && (
             <ScrollToListTopWrapper onClick={handleScrollToTop}>

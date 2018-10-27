@@ -11,6 +11,7 @@ import Expander from './Expander';
 import Header from '../Header';
 
 import ClearAll from '../ClearAll';
+import Tags from '../Tags';
 import Cuisines from '../Cuisines';
 import DeliveryTypes from '../DeliveryTypes';
 import Orders from '../Orders';
@@ -34,6 +35,10 @@ const MobileFiltersSection = ({
       <ClearAllPosition>
         <ClearAll resetFilters={resetChosenFiltersAction} />
       </ClearAllPosition>
+
+      <Expander label={intl.formatMessage(messages.tags)} withoutQuantity>
+        <Tags />
+      </Expander>
 
       <Expander
         label={intl.formatMessage(messages.cuisines)}
@@ -86,6 +91,21 @@ const MobileFiltersSection = ({
   </Wrapper>
 );
 
+export default decorate(MobileFiltersSection);
+
+MobileFiltersSection.propTypes = {
+  toggleModal: PropTypes.func,
+  toggleFilterAction: PropTypes.func,
+  filters: PropTypes.shape({
+    kitchens: PropTypes.array,
+    delivery_options: PropTypes.array,
+  }),
+  chosenKitchens: PropTypes.array,
+  chosenDeliveryOption: PropTypes.string,
+  discartFiltersToSavedStageAction: PropTypes.func,
+  resetChosenFiltersAction: PropTypes.func,
+};
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -115,18 +135,3 @@ const CloseButtonWrapper = styled.div`
   top: 4px;
   background-color: transparent;
 `;
-
-MobileFiltersSection.propTypes = {
-  toggleModal: PropTypes.func,
-  toggleFilterAction: PropTypes.func,
-  filters: PropTypes.shape({
-    kitchens: PropTypes.array,
-    delivery_options: PropTypes.array,
-  }),
-  chosenKitchens: PropTypes.array,
-  chosenDeliveryOption: PropTypes.string,
-  discartFiltersToSavedStageAction: PropTypes.func,
-  resetChosenFiltersAction: PropTypes.func,
-};
-
-export default decorate(MobileFiltersSection);

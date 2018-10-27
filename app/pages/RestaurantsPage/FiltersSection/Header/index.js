@@ -27,7 +27,7 @@ const Header = ({
   withClear = false,
   dynamicFilters = [],
 }) => (
-  <React.Fragment>
+  <Wrapper>
     <StyledHeader>
       <Paragraph size={22}>{intl.formatMessage(messages.filters)}</Paragraph>
       {withClear && <ClearAll resetFilters={resetFilters} />}
@@ -36,7 +36,7 @@ const Header = ({
     <DynamicFiltersSection>
       {dynamicFilters.map(name => <FilterName key={name}>{name}</FilterName>)}
     </DynamicFiltersSection>
-  </React.Fragment>
+  </Wrapper>
 );
 
 Header.propTypes = {
@@ -46,6 +46,10 @@ Header.propTypes = {
 };
 
 export default decorate(Header);
+
+const Wrapper = styled.div`
+  border-bottom: 1px solid ${wildSand};
+`;
 
 const StyledHeader = styled.div`
   display: flex;
@@ -60,7 +64,6 @@ const StyledHeader = styled.div`
 const DynamicFiltersSection = styled.div`
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 1px solid ${wildSand};
   padding-bottom: 16px;
 `;
 

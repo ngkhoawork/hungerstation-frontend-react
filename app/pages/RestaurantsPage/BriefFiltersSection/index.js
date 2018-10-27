@@ -3,26 +3,33 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
+import { wildSand } from 'utils/css/colors';
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
 import { saveFiltersStageAction } from 'modules/restaurants/actions';
+import { selectChosenTagsArray } from 'modules/restaurants/selectors';
 import { toggleModal } from 'hocs/withModal/actions';
-import { makeSelectIsOpen } from 'hocs/withModal/selectors';
 
+import Tags, { TagsTiltle } from '../FiltersSection/Tags';
 import Header from '../FiltersSection/Header';
 import messages from './messages';
 
-const selectIsOpen = makeSelectIsOpen();
-
 const decorate = connect(
-  state => ({ isModalOpened: selectIsOpen(state) }),
+  state => ({ chosenTags: selectChosenTagsArray(state) }),
   { toggleModal, saveFiltersStageAction },
 );
 
-const BriefFiltersSection = ({ toggleModal, saveFiltersStageAction }) => (
+const BriefFiltersSection = ({
+  toggleModal,
+  saveFiltersStageAction,
+  chosenTags,
+}) => (
   <React.Fragment>
     <Header withClear />
-
+    <TagsWrapper>
+      <TagsTiltle selectionQuantity={chosenTags.length} />
+      <Tags />
+    </TagsWrapper>
     <MoreFiltersWrapper
       onClick={() => {
         saveFiltersStageAction();
@@ -42,10 +49,16 @@ export default decorate(BriefFiltersSection);
 BriefFiltersSection.propTypes = {
   toggleModal: PropTypes.func,
   saveFiltersStageAction: PropTypes.func,
+  chosenTags: PropTypes.array,
 };
 
 const MoreFiltersWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
+`;
+
+const TagsWrapper = styled.div`
+  border-bottom: 1px solid ${wildSand};
+  padding-bottom: 24px;
 `;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/css/styles';
+import { flexBox, mediaLess } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 
 const ContentWrapper = styled.div`
@@ -9,6 +9,10 @@ const ContentWrapper = styled.div`
     width: 0px;
     background: transparent;
   }
+  ${mediaLess(600)`
+  height: calc(100% - 176px);
+  border-bottom: 1px solid ${wildSand};
+  `};
 `;
 
 const StyledFiltersCategoryWrapper = styled.div`
