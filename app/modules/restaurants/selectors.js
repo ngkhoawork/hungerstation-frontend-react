@@ -54,6 +54,11 @@ export const selectChosenKitchenFiltersArray = createSelector(
   chosenFiltersMap => chosenFiltersMap.get('kitchens').toArray(),
 );
 
+export const selectChosenTagsArray = createSelector(
+  selectChosenFilters,
+  chosenFiltersMap => chosenFiltersMap.get('tags').toArray(),
+);
+
 export const selectChosenDeliveryOption = createSelector(
   selectChosenFilters,
   chosenFiltersMap => chosenFiltersMap.get('delivery_option'),
@@ -69,18 +74,35 @@ export const selectChosenDeliveryTime = createSelector(
   chosenFiltersMap => chosenFiltersMap.get('delivery_time'),
 );
 
-const pickArrayElementsByIds = ids =>
+const pickArrayElementsByProp = propType => array =>
   flow(
-    keyBy('id'),
-    pick(ids),
+    keyBy(propType),
+    pick(array),
     values,
   );
+
+const pickArrayElementsByIds = pickArrayElementsByProp('id');
+const pickArrayElementsByType = pickArrayElementsByProp('type');
+
+export const selectIsFiltersInitial = createSelector(
+  selectChosenKitchenFiltersArray,
+  selectChosenTagsArray,
+  selectChosenDeliveryOption,
+  (kitchens, tags, delivery) =>
+    kitchens.length === 0 && tags.length === 0 && delivery === 'all',
+);
 
 export const selectDynamicFilters = createSelector(
   selectFilters,
   selectChosenKitchenFiltersArray,
+  selectChosenTagsArray,
   selectChosenDeliveryOption,
-  ({ kitchens, delivery_options }, kitchensIds, deliveryOption) => {
+  (
+    { kitchens, delivery_options, tags },
+    kitchensIds,
+    tagsTypes,
+    deliveryOption,
+  ) => {
     /* eslint-disable */
     const dynamicKitchensNames = kitchensIds.length
       ? pickArrayElementsByIds(kitchensIds)(kitchens).reduce(
@@ -90,11 +112,17 @@ export const selectDynamicFilters = createSelector(
       : ['All Cuisines'];
     /* eslint-anable */
 
+    const dynamicTags = pickArrayElementsByType(tagsTypes)(tags).reduce(
+      (acc, { name }) => [...acc, name],
+      [],
+    );
+
     const dynamicDeliveryOption =
       deliveryOption === 'all'
         ? 'All Delivery Types'
         : find({ type: deliveryOption }, delivery_options).name;
-    return [...dynamicKitchensNames, dynamicDeliveryOption];
+
+    return [...dynamicKitchensNames, ...dynamicTags, dynamicDeliveryOption];
   },
 );
 export { selectRestaurantDomain };

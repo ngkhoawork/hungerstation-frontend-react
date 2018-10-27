@@ -3,8 +3,7 @@ import { slugify } from 'utils/helpers';
 import { fetchLocationSaga } from 'modules/location/sagas';
 import { submitSearchQuery } from 'modules/location/actions';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
-import { intersection, lowerCase } from 'lodash/fp';
-
+import { intersection, lowerCase, camelCase } from 'lodash/fp';
 import {
   updateRestaurantsListing,
   fetchRestaurantsAction,
@@ -73,6 +72,11 @@ export function* fetchRestaurantsSaga({ payload }) {
       deliveryFee: item.delivery_fee,
       status: item.branch.status,
       hasPromotion: item.branch.has_promotion,
+      // filter tags
+      acceptCreditCard: item.branch.accept_credit_card,
+      acceptVoucher: item.branch.accept_voucher,
+      acceptCashOnDelivery: item.branch.accept_cash_on_delivery,
+      //
       kitchensIds: item.branch.restaurant.kitchens.map(({ id }) => id),
       kitchensNames: item.branch.restaurant.kitchens.map(({ name }) => name),
     }));
@@ -97,12 +101,20 @@ export function* filterRestaurantListSaga() {
   const searchString = yield select(selectSearchString);
   const chosenFilters = yield select(selectChosenFilters);
   const chosenKitchens = chosenFilters.get('kitchens').toArray();
+  // need to be camelCased because type of tag got underscores, but restaurant
+  // item state has camelCasedValue
+  const chosenTagsTypes = chosenFilters
+    .get('tags')
+    .toArray()
+    .map(el => camelCase(el));
   const chosenDeliveryOption = chosenFilters.get('delivery_option');
   const chosenMinOrderValue = chosenFilters.get('min_order');
   // const chosenDeliveryTime = chosenFilters.get('delivery_time');
 
+  // search RegExp
   const regex = new RegExp(lowerCase(searchString));
 
+  // status handling
   let sortByStatusState = {
     ready: [],
     busy: [],
@@ -133,6 +145,7 @@ export function* filterRestaurantListSaga() {
       deliveryProvider,
       status,
       hasPromotion,
+      ...rest
     }) => {
       // checking for time estimation and minimum order quantities
       const isOrderFiltersPassing =
@@ -149,11 +162,20 @@ export function* filterRestaurantListSaga() {
       const isRelevantToDeliveryFilter =
         chosenDeliveryOption === 'all' ||
         chosenDeliveryOption === deliveryProvider;
+      // checking filter Tags
+      const acceptedChosenTags = chosenTagsTypes.filter(
+        type => rest[type] === true,
+      );
+      const restaurantIncludesFiltertags =
+        chosenTagsTypes.length > 0
+          ? acceptedChosenTags.length === chosenTagsTypes.length
+          : true;
       // sorting by status and promotion
       sortByStatusState =
         regex.test(lowerCase(name)) &&
         isKitchensIntersection &&
         isRelevantToDeliveryFilter &&
+        restaurantIncludesFiltertags &&
         isOrderFiltersPassing
           ? reduceByStatus(sortByStatusState, status, id, hasPromotion)
           : sortByStatusState;

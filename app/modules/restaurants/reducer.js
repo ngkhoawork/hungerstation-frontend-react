@@ -13,8 +13,16 @@ import {
 } from './actions';
 import { MIN_ORDER_RANGE, TIME_ESTIMATION_RANGE } from './constants';
 
+// TODO [API] delete this when API will be ready
+const TAGS_MOCK = [
+  { id: '11111', name: 'Online Payment', type: 'accept_credit_card' },
+  { id: '22222', name: 'Voucher', type: 'accept_voucher' },
+  { id: '33333', name: 'Cash on delivery', type: 'accept_cash_on_delivery' },
+];
+
 const INITIAL_CHOSEN_FILTERS_STATE = {
   kitchens: {},
+  tags: {},
   delivery_option: 'all',
   min_order: MIN_ORDER_RANGE.max,
   delivery_time: TIME_ESTIMATION_RANGE.min,
@@ -26,6 +34,7 @@ export const initialState = fromJS({
   filters: {
     kitchens: [],
     delivery_options: [],
+    tags: TAGS_MOCK,
   },
   chosenFilters: INITIAL_CHOSEN_FILTERS_STATE,
   filtersStage: {},

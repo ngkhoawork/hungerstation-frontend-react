@@ -19,6 +19,9 @@ const getDeliveriesQuery = `query GetDeliveries($lat:Float, $lng:Float, $localId
       id
       branch{
         id
+        accept_credit_card
+        accept_cash_on_delivery
+        accept_voucher
         delivery_provider
         status
         has_promotion
