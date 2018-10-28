@@ -31,10 +31,16 @@ export function* fetchRestaurantSaga({ payload: id }) {
       status: branch.status,
       logo: branch.restaurant.logo,
       rateAverage: branch.restaurant.rate_average,
+      deliveryConditions: branch.delivery_conditions,
       cuisines: branch.restaurant.kitchens.map(({ id, name, image_thumb }) => ({
         id,
         name,
         image: image_thumb,
+      })),
+      menuGroups: menu.menugroups.map(({ id, name, working_times }) => ({
+        id,
+        name,
+        workingTimes: working_times,
       })),
       menuItems: menu.menuitems.map(item => ({
         id: item.id,
@@ -43,6 +49,7 @@ export function* fetchRestaurantSaga({ payload: id }) {
         shortName: item.short_name,
         price: parseFloat(item.price),
         description: item.description,
+        menuGroupId: item.menugroup_id,
         workingTimes: item.working_times,
         modifierGroups: modifierGroups.filter(
           ({ id }) => item.modifier_group_ids.indexOf(parseInt(id, 10)) > -1,

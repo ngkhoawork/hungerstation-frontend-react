@@ -6,7 +6,7 @@ import Back from 'containers/Back';
 import CartContainer from 'containers/CartContainer';
 import { ViewCartButton } from 'components/Cart';
 import RestaurantInfo from 'components/RestaurantInfo';
-import RestaurantProductTypes from 'components/RestaurantProductTypes';
+import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
 import MealOptions from 'components/MealOptions';
 import { maxModalHeight } from 'utils/css/variables';
@@ -26,16 +26,23 @@ import {
   BasketBtn,
 } from './StyledComponents';
 
-const types = ['Featured', 'Burgers', 'Desserts', 'Drinks'];
-
 class RestaurantPage extends React.Component {
   constructor(props) {
     super(props);
 
+    const { menuGroups } = props.restaurant;
     this.state = {
-      selectedProductType: types[0],
+      selectedMenuGroup: menuGroups && menuGroups[0],
       totalOrder: {},
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.restaurant.menuGroups && !state.selectedMenuGroup) {
+      return { selectedMenuGroup: props.restaurant.menuGroups[0] };
+    }
+
+    return null;
   }
 
   handleAddClick = product => {
@@ -53,8 +60,8 @@ class RestaurantPage extends React.Component {
 
   handleBasketClick = () => this.props.onShowModal(CartContainer);
 
-  handleProductTypeClick = selectedProductType =>
-    this.setState({ selectedProductType });
+  handleMenuGroupSelect = selectedMenuGroup =>
+    this.setState({ selectedMenuGroup });
 
   handleAddOptions = (product, quantity, additions, price) => {
     const { totalOrder } = this.state;
@@ -73,12 +80,11 @@ class RestaurantPage extends React.Component {
   };
 
   renderContent = () => {
-    const { menuItems, ...info } = this.props.restaurant;
-    const { selectedProductType, totalOrder } = this.state;
-    const shownProducts = menuItems;
-    // const shownProducts = menuItems.filter(
-    //   ({ type }) => type === selectedProductType,
-    // );
+    const { menuItems, menuGroups, ...info } = this.props.restaurant;
+    const { selectedMenuGroup, totalOrder } = this.state;
+    const shownProducts = menuItems.filter(
+      ({ menuGroupId }) => menuGroupId === parseInt(selectedMenuGroup.id, 10),
+    );
     const totalQuantity = Object.keys(totalOrder).reduce(
       (sum, key) => sum + totalOrder[key].quantity,
       0,
@@ -97,10 +103,10 @@ class RestaurantPage extends React.Component {
         </Header>
         <ProductsContainer>
           <StyledProductTypes>
-            <RestaurantProductTypes
-              types={types}
-              active={selectedProductType}
-              onClick={this.handleProductTypeClick}
+            <TypeSelect
+              types={menuGroups}
+              active={selectedMenuGroup}
+              onSelect={this.handleMenuGroupSelect}
             />
           </StyledProductTypes>
           <RestaurantProducts

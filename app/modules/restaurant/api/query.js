@@ -3,6 +3,12 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
     id
     name
     status
+    delivery_conditions {
+      id
+      delivery_fee
+      delivery_estimation_time
+      minimum_order
+    }
     restaurant{
       id
       name
@@ -21,6 +27,7 @@ export const getBranchMenuQuery = `query GetBranchMenu($branchId: Int!) {
   menu(branch_id: $branchId) {
     menugroups {
       id
+      name
       display_mode
       working_times {
         id
