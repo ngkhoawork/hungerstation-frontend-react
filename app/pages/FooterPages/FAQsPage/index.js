@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import PageContent from 'components/PageContent';
 import Back from 'containers/Back';
 import FAQs from 'components/FAQs';
-
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { fetchFaqs } from 'modules/faqs/actions';
 import { selectGroupState } from 'modules/faqs/selectors';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';

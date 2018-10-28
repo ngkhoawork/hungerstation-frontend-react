@@ -30,9 +30,8 @@ export const Line = styled.div`
   margin-top: 50px;
   margin-bottom: 20px;
   ${mediaMedium`
-        width: 330px;
-        margin-top: 0px;
-
+    width: 330px;
+    margin-top: 0px;
   `};
 `;
 

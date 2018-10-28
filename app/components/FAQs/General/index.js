@@ -30,4 +30,5 @@ const General = props => (
     )}
   </div>
 );
+
 export default General;
