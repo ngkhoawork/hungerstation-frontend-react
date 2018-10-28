@@ -8,12 +8,12 @@ export const Wrapper = styled.div`
   ${flexBox(
     { align: 'flex-start', justify: 'space-between' },
     `
-    width: 100%;
-    background-color: #ffffff;
-    padding-bottom: 100px;
-    padding-top: 100px;
-    flex-wrap: wrap;
-  `,
+      width: 100%;
+      background-color: #ffffff;
+      padding-bottom: 100px;
+      padding-top: 100px;
+      flex-wrap: wrap;
+    `,
   )};
   ${mediaLess(600)`
     padding: 10px;
@@ -24,14 +24,14 @@ export const MenuBar = styled.div`
   ${flexBox(
     { align: 'flex-start', justify: 'center', direction: 'column' },
     `
-    margin-top: 43px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 160px;
-    flex: unset;
-    margin-right: 30px;
-    width: 170px;
-  `,
+      margin-top: 43px;
+      display: flex;
+      flex-direction: column;
+      padding-top: 160px;
+      flex: unset;
+      margin-right: 30px;
+      width: 170px;
+    `,
   )};
   ${mediaMedium`
     display: none;
@@ -54,26 +54,22 @@ export const MenuItem = styled.div`
 
 export const MiddleSection = styled.div`
   ${flexBox(
-    {
-      align: 'flex-start',
-      justify: 'flex-start',
-      direction: 'column',
-    },
+    { align: 'flex-start', justify: 'flex-start', direction: 'column' },
     `
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-`,
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    `,
   )};
   ${mediaLess(1000)`
-  flex: 1;
-  display: block;
-`};
+    flex: 1;
+    display: block;
+  `};
   ${mediaLess(600)`
-  padding: 10px;
-  width:100%
-  display: inline;
-`};
+    padding: 10px;
+    width: 100%;
+    display: inline;
+  `};
 `;
 
 export const Title = styled.div`
@@ -81,7 +77,6 @@ export const Title = styled.div`
   white-space: pre-wrap;
   ${mediaMedium`
     padding-left: 25px;
-
   `};
 `;
 export const SubTitle = styled.div`
@@ -119,18 +114,15 @@ export const MenuBarMobile = styled.div`
     flex: 0 1 30%;
   `};
   ${mediaMedium`
-
     display: block;
     border-color: lightGray;
     border-radius: 8px;
     background: #ffff;
     border-style: solid;
     border-width: 1px;
-    font-family= regular;
+    font-family: ${fontFamilyRegular};
     padding: 1px 10px;
-    margin-bottom: 20px
-
-
+    margin-bottom: 20px;
   `};
 `;
 

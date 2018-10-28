@@ -11,8 +11,8 @@ export const IconContainer = styled.span`
   top: ${({ isOpen }) => (isOpen ? -1 : 0)}px;
 
   ${mediaMedium`
-  display: block;
-  padding: 0
+    display: block;
+    padding: 0
   `};
 `;
 

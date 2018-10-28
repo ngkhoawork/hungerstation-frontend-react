@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 import intl from 'utils/intlService';
-import { flex } from 'utils/css/styles';
+import { flexBox } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
 import messages from './messages';
 
 const StyledBack = styled.div`
-  ${flex({ align: 'center', justify: 'center' })};
+  ${flexBox({ align: 'center', justify: 'center' })};
   display: inline-flex;
   color: ${fuscousGray};
   cursor: pointer;
@@ -19,6 +19,7 @@ const StyledBack = styled.div`
 
 const Label = styled.div`
   margin-left: 5px;
+  padding-top: 3px;
 `;
 
 const Back = ({ onClick }) => (

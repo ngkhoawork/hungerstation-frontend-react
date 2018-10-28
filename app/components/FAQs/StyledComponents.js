@@ -40,5 +40,5 @@ export const HeaderWrapper = styled.div`
   margin-bottom: 20px;
   ${mediaMedium`
     width: 330px;
-    `};
+  `};
 `;
