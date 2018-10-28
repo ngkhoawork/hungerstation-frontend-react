@@ -3,7 +3,7 @@ import { flex, mediaMedium } from 'utils/css/styles';
 import { fuscousGray, silverChalice, alabaster } from 'utils/css/colors';
 import { borderRadius } from 'utils/css/variables';
 
-export const ProductTypeBar = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -12,7 +12,7 @@ export const ProductTypeBar = styled.div`
   ${mediaMedium`flex-direction: row;`};
 `;
 
-export const ProductType = styled.span`
+export const Type = styled.span`
   ${flex({ justify: 'space-between', align: 'center' })};
   padding: 7px;
   margin-bottom: 10px;
@@ -33,8 +33,6 @@ export const ProductType = styled.span`
 `;
 
 export const Name = styled.span`
-  padding-top: 6px;
-
   ${({ active }) =>
     active &&
     `
