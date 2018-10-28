@@ -58,7 +58,7 @@ const RestaurantInfo = ({ logo, name, status, rateAverage, cuisines }) => (
         <Name>
           {name}
           <RatingContainer>
-            <Icon size={10} name="star" offsetY="-1" />
+            <Icon size={10} name="star" />
             {rateAverage}
           </RatingContainer>
         </Name>

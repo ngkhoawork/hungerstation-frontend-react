@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { fontCorrection } from 'utils/css/styles';
 import { gold, lightGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
 import CircledItem from 'components/CircledItem';
@@ -16,7 +15,6 @@ const Container = styled.div`
 
 const Quantity = styled.span`
   margin: 0 10px;
-  ${fontCorrection};
 `;
 
 const QuantitySelect = ({ quantity, onChange }) => (
@@ -26,11 +24,11 @@ const QuantitySelect = ({ quantity, onChange }) => (
       width={24}
       onClick={() => onChange(quantity - 1)}
     >
-      <span style={{ zIndex: 1, paddingTop: 3 }}>-</span>
+      <span style={{ zIndex: 1 }}>-</span>
     </CircledItem>
     <Quantity>{quantity}</Quantity>
     <CircledItem color={gold} width={24} onClick={() => onChange(quantity + 1)}>
-      <span style={{ zIndex: 1, paddingTop: 3 }}>+</span>
+      <span style={{ zIndex: 1 }}>+</span>
     </CircledItem>
   </Container>
 );

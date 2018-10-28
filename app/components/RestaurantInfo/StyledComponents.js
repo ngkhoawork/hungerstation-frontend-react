@@ -68,7 +68,8 @@ export const Name = styled.div`
   ${mediaMediumGreater`position: relative;`};
 `;
 
-export const RatingContainer = styled.span`
+export const RatingContainer = styled.div`
+  ${flex({ align: 'center' })};
   color: ${fuscousGray};
   font-size: 12px;
   position: absolute;

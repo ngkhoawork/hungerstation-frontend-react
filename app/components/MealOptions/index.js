@@ -125,7 +125,7 @@ class MealOptions extends Component {
             onClick={onCancel}
             style={CloseBtnStyle}
           >
-            <span style={{ zIndex: 1, paddingTop: 2 }}>x</span>
+            <span style={{ zIndex: 1 }}>x</span>
           </CircledItem>
         </Header>
         <Content>

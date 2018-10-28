@@ -10,6 +10,7 @@ const StyledItem = styled.div`
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'initial')};
   user-select: none;
   color: ${fuscousGray};
+  line-height: 1;
 
   & > p {
     z-index: 5;

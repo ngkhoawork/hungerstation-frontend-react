@@ -25,7 +25,7 @@ const renderFooter = price => (
     </PriceContainer>
     <AddBtn>
       {intl.formatMessage(messages.addToCart)} &nbsp;
-      <Icon name="arrow-circled-right" offsetY="-1" size={15} />
+      <Icon name="arrow-circled-right" size={15} />
     </AddBtn>
   </Fragment>
 );

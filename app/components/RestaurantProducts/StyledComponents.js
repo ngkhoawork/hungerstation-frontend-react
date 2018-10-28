@@ -86,7 +86,7 @@ export const MobileFooter = styled.div`
     ${flex({ justify: 'space-between', align: 'center' })};
     border: solid 1px ${lightGray};
     border-radius: ${borderRadius};
-    padding: 8px 16px;
+    padding: 12px 16px;
     width: 100%;
     margin-top: 20px;
   `};
@@ -94,6 +94,8 @@ export const MobileFooter = styled.div`
   ${mediaMediumGreater`display: none;`};
 `;
 
-export const AddBtn = styled.span`
+export const AddBtn = styled.div`
+  ${flex({ align: 'center' })};
+  line-height: 1;
   flex-shrink: 0;
 `;

@@ -16,7 +16,7 @@ const StyledBack = styled.div`
 
 const Label = styled.div`
   margin-left: 5px;
-  padding-top: 3px;
+  line-height: 1;
 `;
 
 const Back = ({ onClick }) => (
