@@ -18,6 +18,7 @@ const Button = ({
   loading,
   onClick,
   fontSize,
+  style,
 }) => (
   <StyledButton
     primary={primary}
@@ -30,6 +31,7 @@ const Button = ({
     disabled={disabled}
     loading={loading}
     onClick={onClick}
+    style={style}
   >
     {children}
     {loading ? <Spinner isActive /> : <Text fontSize={fontSize}>{label}</Text>}
@@ -42,13 +44,18 @@ Button.propTypes = {
   size: PropTypes.string,
   label: PropTypes.string,
   backgroundImage: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   color: PropTypes.string,
   lift: PropTypes.bool,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   fontSize: PropTypes.number,
+  style: PropTypes.object,
 };
 
 Button.defaultProps = {

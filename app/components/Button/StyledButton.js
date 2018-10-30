@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { gold, paleSlate } from 'utils/css/colors';
 import getImage from 'utils/css/images';
 import { flexBox } from 'utils/css/styles';
@@ -38,6 +38,8 @@ const StyledButton = styled.button`
   img {
     margin-right: 5px;
   }
+
+  ${({ style }) => style && css(style)};
 `;
 
 export default StyledButton;
