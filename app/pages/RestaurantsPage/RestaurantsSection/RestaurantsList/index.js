@@ -49,7 +49,7 @@ export default class RestaurantsList extends Component {
 
     return (
       <StyledRestaurantList>
-        <ToolsPanel />
+        <ToolsPanel hasData={restaurants.length > 0} />
         {restaurants.length > 0 ? (
           <StyledList>
             {restaurants

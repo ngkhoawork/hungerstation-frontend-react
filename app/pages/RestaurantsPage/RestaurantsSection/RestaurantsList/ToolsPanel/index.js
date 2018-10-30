@@ -5,34 +5,38 @@ import { connect } from 'react-redux';
 import { flexBox, mediaLess } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 import { searchRestaurantAction } from 'modules/restaurants/actions';
-
+import { selectSearchString } from 'modules/restaurants/selectors';
 import Tags from 'pages/RestaurantsPage/FiltersSection/Tags';
 import Icon from 'components/Icon';
 import SearchInput from './SearchInput';
 
 const decorate = connect(
-  null,
+  state => ({ search: selectSearchString(state) }),
   { searchRestaurantAction },
 );
 
-const ToolsPanel = ({ searchRestaurantAction }) => (
+const ToolsPanel = ({ hasData, searchRestaurantAction, search }) => (
   <Wrapper>
     <StyledToolUndisplayedInMobile>
       <Tags />
     </StyledToolUndisplayedInMobile>
 
-    <StyledTool>
-      <IconPositioning>
-        <Icon name="magnifying-glass" size={18} />
-      </IconPositioning>
-      <SearchInput searchRestaurantAction={searchRestaurantAction} />
-    </StyledTool>
+    {(search || hasData) && (
+      <StyledTool>
+        <IconPositioning>
+          <Icon name="magnifying-glass" size={18} />
+        </IconPositioning>
+        <SearchInput searchRestaurantAction={searchRestaurantAction} />
+      </StyledTool>
+    )}
   </Wrapper>
 );
 
 export default decorate(ToolsPanel);
 
 ToolsPanel.propTypes = {
+  hasData: PropTypes.bool,
+  search: PropTypes.string,
   searchRestaurantAction: PropTypes.func.isRequired,
 };
 
