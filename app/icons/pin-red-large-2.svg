@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 61 61" style="enable-background:new 0 0 61 61;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FC9287;fill-opacity:0.1044;}
+	.st1{fill:none;stroke:#FC9287;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+	.st2{fill:none;stroke:#FC9287;stroke-width:1.4;stroke-linecap:square;}
+	.st3{fill:none;stroke:#FC9287;stroke-width:1.4;stroke-linecap:round;}
+</style>
+<title>icon/pin-red-large</title>
+<desc>Created with Sketch.</desc>
+<g id="New-Checkout">
+	<g id="Checkout---Order-Amout-below-required" transform="translate(-604.000000, -188.000000)">
+		<g id="Oops" transform="translate(520.000000, 248.000000)">
+			<g id="icon_x2F_course" transform="translate(184.000000, 40.000000)">
+				<path id="Rectangle-12" class="st0" d="M-69.5-97.5L-69.5-97.5c15.5,0,28,12.5,28,28l0,0c0,15.5-12.5,28-28,28l0,0
+					c-15.5,0-28-12.5-28-28l0,0C-97.5-85-85-97.5-69.5-97.5z"/>
+				<g id="Group" transform="translate(24.000000, 19.000000)">
+				</g>
+				<g id="Group-13" transform="translate(16.000000, 13.000000)">
+					<path id="Stroke-1" class="st1" d="M-85-97.5v4"/>
+					<path id="Stroke-3" class="st1" d="M-91-95.5v4"/>
+					<path id="Stroke-5" class="st1" d="M-79-95.5v4"/>
+					<path id="Stroke-7" class="st1" d="M-97.5-72h25"/>
+					<path id="Stroke-9" class="st2" d="M-85-88.5c1.4,0,2.5,1.1,2.5,2.5c0,1.4-1.1,2.5-2.5,2.5s-2.5-1.1-2.5-2.5
+						C-87.5-87.4-86.4-88.5-85-88.5z"/>
+					<path id="Stroke-11" class="st1" d="M-96.5-71.5c0-6.6,5.2-12,11.5-12s11.5,5.4,11.5,12"/>
+				</g>
+				
+					<g id="Group-10" transform="translate(43.000000, 23.500000) rotate(-90.000000) translate(-43.000000, -23.500000) translate(37.000000, 17.000000)">
+					<path id="Stroke-1_1_" class="st3" d="M99.2-94.5h9.3"/>
+					<polyline id="Stroke-3_1_" class="st1" points="102.2,-97.5 99.2,-94.5 102.2,-91.5 					"/>
+					<g id="Group-9" transform="translate(2.000000, 12.000000)">
+						<g id="Clip-8">
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
