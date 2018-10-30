@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { flex, mediaMedium } from 'utils/css/styles';
 import { fuscousGray, silverChalice, alabaster } from 'utils/css/colors';
 import { borderRadius } from 'utils/css/variables';
@@ -10,6 +10,8 @@ export const Container = styled.div`
   flex-wrap: wrap;
 
   ${mediaMedium`flex-direction: row;`};
+
+  ${({ style }) => style && css(style)};
 `;
 
 export const Type = styled.span`
@@ -30,6 +32,8 @@ export const Type = styled.span`
     background-color: ${alabaster};
     border-radius: ${borderRadius};
   `};
+
+  ${({ style }) => style && css(style)};
 `;
 
 export const Name = styled.span`
