@@ -7,10 +7,10 @@ import messages from './messages';
 
 const MenuLinks = () => {
   const links = [
-    { id: 'about-us', label: intl.formatMessage(messages.aboutUs) },
-    { id: 'contact-us', label: intl.formatMessage(messages.contactUs) },
-    { id: 'help', label: intl.formatMessage(messages.help) },
-    { id: 'faqs', label: intl.formatMessage(messages.faqs) },
+    // { id: 'about-us', label: intl.formatMessage(messages.aboutUs) },
+    { id: 'contactus', label: intl.formatMessage(messages.contactUs) },
+    // { id: 'help', label: intl.formatMessage(messages.help) },
+    { id: 'faqs/oreder-related', label: intl.formatMessage(messages.faqs) },
     { id: 'terms-of-use', label: intl.formatMessage(messages.termsOfUse) },
     {
       id: 'add-restaurants',
@@ -18,7 +18,7 @@ const MenuLinks = () => {
     },
     { id: 'privacy-policy', label: intl.formatMessage(messages.privacyPolicy) },
     { id: 'careers', label: intl.formatMessage(messages.careers) },
-    { id: 'blog', label: intl.formatMessage(messages.blog) },
+    // { id: 'blog', label: intl.formatMessage(messages.blog) },
   ];
   return (
     <StyledContainer>

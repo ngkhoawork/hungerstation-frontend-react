@@ -26,6 +26,7 @@ import LoginPage from 'pages/LoginPage/Loadable';
 import RegistrationPage from 'pages/RegistrationPage/Loadable';
 import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
 import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
+import FAQsPage from 'pages/FooterPages/FAQsPage/Loadable';
 
 import UserProfile from 'components/UserProfile';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
@@ -94,6 +95,7 @@ export default class App extends Component {
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
+          <Route exact path="/faqs/oreder-related" component={FAQsPage} />
 
           <Redirect from="*" to="/" />
         </Switch>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mediaMedium } from 'utils/css/styles';
 
 const TextItem = styled.span`
   display: inline-block;
@@ -11,6 +12,10 @@ const TextItem = styled.span`
     `HungerStation-${
       fontFamily !== 'regular' ? 'Light' : 'Regular'
     }, sans-serif`};
+
+  ${mediaMedium`
+    width: 330px;
+  `};
 `;
 
 export default TextItem;

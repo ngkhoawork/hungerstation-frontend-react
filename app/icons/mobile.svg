@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="14px" viewBox="0 0 10 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="2nd-Navigation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Contact-Us---Validation" transform="translate(-836.000000, -569.000000)" stroke="#9F9F9F" stroke-width="1.4">
+            <g id="Contact-Details" transform="translate(801.000000, 453.000000)">
+                <g id="Icons" transform="translate(24.000000, 66.000000)">
+                    <g id="Group-2" transform="translate(0.000000, 40.000000)">
+                        <g id="phone" transform="translate(11.000000, 10.000000)">
+                            <g id="Group" transform="translate(0.384615, 0.384615)">
+                                <rect id="Rectangle-path" x="0.384615385" y="0.384615385" width="8.46153846" height="11.5384615" rx="2"></rect>
+                                <circle id="Oval" cx="4.61538462" cy="9.23076923" r="1"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
