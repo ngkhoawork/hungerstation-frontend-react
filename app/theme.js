@@ -83,6 +83,9 @@ const themeObj = {
           borderBottomColor: persimmon,
           transform: 'scaleX(1)', // error is always underlined in red
         },
+        '&:hover:not($disabled):not($focused):not($error):before': {
+          borderBottom: `1px solid ${dustyGray}`,
+        },
       },
     },
     MuiFormHelperText: {
