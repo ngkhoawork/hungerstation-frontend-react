@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
-import { borderRadius, boxShadow } from 'utils/css/variables';
+import { borderRadius, boxShadowBottomRight } from 'utils/css/variables';
 import {
   persimmon,
   errorLight,
@@ -21,7 +21,7 @@ export const StyledRestaurantInfo = styled.div`
     border-radius: ${borderRadius};
     flex-direction: column;
     padding-bottom: 30px;
-    box-shadow: ${boxShadow};
+    box-shadow: ${boxShadowBottomRight};
   `};
 `;
 
