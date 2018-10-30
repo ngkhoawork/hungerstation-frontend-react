@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { flexBox } from 'utils/css/styles';
 
 export default styled.div`
@@ -20,4 +20,6 @@ export default styled.div`
       }
     `,
   )};
+
+  ${({ style }) => style && css(style)};
 `;

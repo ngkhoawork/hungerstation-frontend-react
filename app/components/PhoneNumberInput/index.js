@@ -47,12 +47,13 @@ class PhoneNumberInput extends React.PureComponent {
     const {
       field,
       form: { errors, touched },
+      style,
       ...rest
     } = this.props;
     const { prefix, phone } = this.state;
 
     return (
-      <StyledWrapper>
+      <StyledWrapper style={style}>
         <div className="prefix">
           <TextField
             label=" "
@@ -97,6 +98,7 @@ class PhoneNumberInput extends React.PureComponent {
 }
 
 PhoneNumberInput.propTypes = {
+  style: PropTypes.object,
   field: PropTypes.object.isRequired,
   errors: PropTypes.shape({
     phone: PropTypes.string,
