@@ -9,7 +9,7 @@ import RestaurantPage from './component';
 
 class RestaurantPageHOC extends React.Component {
   componentDidMount() {
-    this.props.fetchRestaurant(this.props.match.params.id);
+    this.props.fetchRestaurant(this.props.match.params.branchId);
   }
 
   render() {
