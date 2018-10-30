@@ -5,6 +5,7 @@ import Icon from 'components/Icon';
 import intl from 'utils/intlService';
 import { flex } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
+import { fontFamilyRegular } from 'utils/css/variables';
 import messages from './messages';
 
 const StyledBack = styled.div`
@@ -12,11 +13,12 @@ const StyledBack = styled.div`
   display: inline-flex;
   color: ${fuscousGray};
   cursor: pointer;
+  font-family: ${fontFamilyRegular};
+  line-height: 1;
 `;
 
 const Label = styled.div`
   margin-left: 5px;
-  line-height: 1;
 `;
 
 const Back = ({ onClick }) => (
