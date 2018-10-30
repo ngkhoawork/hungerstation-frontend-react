@@ -20,7 +20,6 @@ const ToolsPanel = ({ hasData, searchRestaurantAction, search }) => (
     <StyledToolUndisplayedInMobile>
       <Tags />
     </StyledToolUndisplayedInMobile>
-
     {(search || hasData) && (
       <StyledTool>
         <IconPositioning>
@@ -42,7 +41,7 @@ ToolsPanel.propTypes = {
 
 const Wrapper = styled.div`
   ${flexBox(
-    { align: 'center', justify: 'flex-end' },
+    { align: 'center', justify: 'space-between' },
     `
     width: 100%;
     padding-top: 20px;
@@ -62,8 +61,9 @@ const StyledTool = styled.div`
 
 const StyledToolUndisplayedInMobile = styled(StyledTool)`
   ${mediaLess(600)`
-  display: none;
-`};
+    display: none;
+  `};
+  width: auto;
 `;
 
 const IconPositioning = styled.div`
