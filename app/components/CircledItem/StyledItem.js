@@ -4,6 +4,7 @@ import { fuscousGray } from 'utils/css/colors';
 
 const StyledItem = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
+  display: ${({ inline }) => (inline ? 'inline-flex' : 'flex')};
   position: relative;
   width: ${({ width }) => width}px;
   height: ${({ width }) => width}px;
