@@ -8,7 +8,7 @@ import { silverChalice } from 'utils/css/colors';
 const CardTitle = ({ iconName, text, textSize = 14 }) => (
   <Row align="center">
     <Icon name={iconName} />
-    <Paragraph size={textSize} color={silverChalice} margin="0 0 0 5px">
+    <Paragraph size={textSize} color={silverChalice}>
       {text}
     </Paragraph>
   </Row>

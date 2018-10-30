@@ -17,7 +17,13 @@ export default Rating;
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-end;
   line-height: 1em;
+  div > img {
+    margin: 4px 3px 0 0 !important;
+  }
+  & > p {
+    margin-right: 0px !important;
+  }
 `;

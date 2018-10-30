@@ -14,7 +14,7 @@ const mappedStatusToColor = {
 const CardTitle = ({ name, status }) => (
   <Row align="center">
     <CircledItem color={mappedStatusToColor[status] || fuscousGray} width={7} />
-    <Paragraph size={17} margin="0 0 0 5px">
+    <Paragraph size={17} margin="0 0 0 6px">
       {name}
     </Paragraph>
   </Row>

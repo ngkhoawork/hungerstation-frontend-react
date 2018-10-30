@@ -25,9 +25,9 @@ export default KitchensNames;
 const ParagraphWithPoint = styled(Paragraph)`
   &:before {
     content: '•';
-    margin-right: 5px;
+    margin-right: 2px;
   }
   height: 18px;
   padding: 0;
-  margin: 2px 0 5px 0;
+  margin: 0px 8px 5px 0 !important;
 `;

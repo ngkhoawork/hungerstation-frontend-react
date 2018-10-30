@@ -57,10 +57,10 @@ const StyledBottomPart = styled.div`
     width: 100%;
     flex: 0.4;
     div > p {
-      margin-right: 10px;
+      margin-right: 18px;
     }
     div > img {
-      margin-right: 5px;
+      margin-right: 9px;
     }
   `,
   )};

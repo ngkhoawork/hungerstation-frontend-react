@@ -30,7 +30,7 @@ const RestaurantCard = ({
   <StyledRestaurantCard to={`/restaurant/${branchId}`}>
     <StyledUpperPart>
       <BrandLogo src={logo} size={40} />
-      {hasPromotion && <Promoted />}
+      {!hasPromotion && <Promoted />}
     </StyledUpperPart>
 
     <StyledBottomPart>
