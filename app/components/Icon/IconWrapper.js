@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const IconWrapper = styled.div`
   display: inline-flex;
@@ -6,7 +6,10 @@ const IconWrapper = styled.div`
   justify-content: center;
   position: relative;
   z-index: 15;
+  cursor: ${({ onClick }) => (onClick ? 'pointer' : 'inherit')};
   top: ${({ offsetY }) => offsetY || 0}px;
+
+  ${({ style }) => style && css(style)};
 `;
 
 export default IconWrapper;
