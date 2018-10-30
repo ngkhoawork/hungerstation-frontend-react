@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { array, func, shape } from 'prop-types';
+import { array, func, shape, string } from 'prop-types';
 import { flexBox } from 'utils/css/styles';
 import { silverChalice, gold, wildSand } from 'utils/css/colors';
 import { toggleFilterAction } from 'modules/restaurants/actions';
 import {
   selectFilters,
   selectChosenTagsArray,
+  selectChosenDeliveryOption,
 } from 'modules/restaurants/selectors';
 
 import Paragraph from 'components/Paragraph';
@@ -16,20 +17,41 @@ const decorate = connect(
   state => ({
     filters: selectFilters(state),
     chosenTagsTypes: selectChosenTagsArray(state),
+    chosenDeliveryOption: selectChosenDeliveryOption(state),
   }),
   { toggleFilterAction },
 );
 
-const Tags = ({ filters: { tags }, chosenTagsTypes, toggleFilterAction }) => (
+const Tags = ({
+  filters: { tags },
+  chosenTagsTypes,
+  chosenDeliveryOption,
+  toggleFilterAction,
+}) => (
   <StyledTagsContainer>
     {tags.map(({ id, name, type }) => (
       <StyledTag
         key={id}
-        isSelected={chosenTagsTypes.includes(type)}
-        onClick={() => toggleFilterAction({ filterKey: 'tags', value: type })}
+        isSelected={
+          chosenTagsTypes.includes(type) || chosenDeliveryOption === type
+        }
+        onClick={() =>
+          toggleFilterAction({
+            filterKey:
+              type === 'hungerstation_delivery' ? 'delivery_option' : 'tags',
+            value:
+              type === 'hungerstation_delivery' && chosenDeliveryOption === type
+                ? 'all'
+                : type,
+          })
+        }
       >
         <Paragraph
-          color={chosenTagsTypes.includes(type) ? 'black' : silverChalice}
+          color={
+            chosenTagsTypes.includes(type) || chosenDeliveryOption === type
+              ? 'black'
+              : silverChalice
+          }
         >
           {name}
         </Paragraph>
@@ -43,6 +65,7 @@ Tags.propTypes = {
     tags: array,
   }),
   chosenTagsTypes: array,
+  chosenDeliveryOption: string,
   toggleFilterAction: func,
 };
 

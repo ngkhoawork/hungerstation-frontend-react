@@ -18,7 +18,7 @@ const TAGS_MOCK = [
   { id: '11111', name: 'Online Payment', type: 'accept_credit_card' },
   { id: '22222', name: 'Voucher', type: 'accept_voucher' },
   { id: '33333', name: 'Cash on delivery', type: 'accept_cash_on_delivery' },
-  { id: '44444', name: 'Fast Delivery', type: 'fast_delivery' },
+  { id: '44444', name: 'Fast Delivery', type: 'hungerstation_delivery' },
 ];
 
 const INITIAL_CHOSEN_FILTERS_STATE = {
