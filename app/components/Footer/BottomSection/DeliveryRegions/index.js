@@ -30,9 +30,11 @@ const withExpand = compose(
 
 const DeliveryRegions = ({ cities, onClick, expanded, toggle, mobile }) => [
   mobile && (
-    <Paragraph size={16}>{intl.formatMessage(messages.header)}</Paragraph>
+    <Paragraph key="deliveryRegionsParagraph" size={16}>
+      {intl.formatMessage(messages.header)}
+    </Paragraph>
   ),
-  <StyledContainer>
+  <StyledContainer key="deliveryRegionsContainer">
     {!!cities &&
       cities.map(city => (
         <DeliveryItem
