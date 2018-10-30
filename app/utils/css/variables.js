@@ -1,13 +1,20 @@
+import { lightGray } from './colors';
+
+export const fontFamilyBold = 'HungerStation-Bold, sans-serif';
 export const fontFamilyRegular = 'HungerStation-Regular, sans-serif';
 export const fontFamilyLight = 'HungerStation-Light, sans-serif';
-export const boxShadow = '8px 12px 23px -3px rgba(59, 59, 59, 0.13)';
+export const boxShadowBottomRight = '8px 12px 23px -3px rgba(59, 59, 59, 0.13)';
+export const boxShadow = '1px 5px 27px -3px rgba(59, 59, 59, 0.13)';
 export const borderRadius = '8px';
+export const border = `solid 1px ${lightGray}`;
 
-export const maxModalHeight = '96vh';
-export const maxModalWidth = '96vw';
+export const maxModalHeight = '98vh';
+export const maxModalWidth = '98vw';
 export const maxPageWidth = '1446px';
 export const pageOffsetX = '113px';
 export const mobPageOffsetX = '30px';
+export const stepIndent = '210px';
+export const addressIndent = '90px';
 
 export const zIndexDropdown = 700;
 export const zIndexModal = 1000;
