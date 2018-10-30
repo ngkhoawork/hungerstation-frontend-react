@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import intl from 'utils/intlService';
 import { jade, lightGray, fuscousGray } from 'utils/css/colors';
+import { fontFamilyRegular } from 'utils/css/variables';
 import { flex } from 'utils/css/styles';
-import messages from './messages';
 
 const Wrapper = styled.div`
   ${flex({ justify: 'space-between' })};
@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   margin: 20px 0;
   color: ${fuscousGray};
   font-size: ${({ isTotal }) => (isTotal ? '20px' : '18px')};
+  font-family: ${fontFamilyRegular};
   line-height: 1;
   border-bottom: ${({ isTotal }) =>
     isTotal ? 'none' : `solid 1px ${lightGray}`};
@@ -21,14 +22,10 @@ const Quantity = styled.span`
   ${({ isTotal }) => isTotal && `color: ${jade};`};
 `;
 
-const Amount = ({ amount = 0, isTotal = false }) => (
+const Amount = ({ label, amount = 0, isTotal = false }) => (
   <Fragment>
     <Wrapper isTotal={isTotal}>
-      <span>
-        {isTotal
-          ? intl.formatMessage(messages.totalAmount)
-          : intl.formatMessage(messages.amount)}
-      </span>
+      <span>{label}</span>
       <Quantity isTotal={isTotal}>
         {intl.formatNumber(amount, { style: 'currency', currency: 'SAR' })}
       </Quantity>
@@ -37,6 +34,7 @@ const Amount = ({ amount = 0, isTotal = false }) => (
 );
 
 Amount.propTypes = {
+  label: PropTypes.string.isRequired,
   amount: PropTypes.number,
   isTotal: PropTypes.bool,
 };

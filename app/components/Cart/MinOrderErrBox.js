@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import intl from 'utils/intlService';
 import { borderRadius } from 'utils/css/variables';
 import { persimmon } from 'utils/css/colors';
 import { flex } from 'utils/css/styles';
 import Icon from 'components/Icon';
+import messages from './messages';
 
 const Wrapper = styled.section`
   border-radius: ${borderRadius};
@@ -20,25 +22,24 @@ const TextBox = styled.div`
   margin-left: 10px;
 `;
 
-const MinOrderErrBox = ({
-  restaurantName = 'BurgerKing',
-  minAmount = 850,
-  currentAmount = 800,
-}) =>
+const MinOrderErrBox = ({ restaurantName, minAmount, currentAmount }) =>
   currentAmount < minAmount ? (
     <Wrapper>
       <Icon name="info-red" size={16} />
       <TextBox>
-        {restaurantName} minimum order amount SR {minAmount}. current order
-        total is SR {currentAmount}.
+        {intl.formatMessage(messages.minOrderError, {
+          restaurantName,
+          minAmount,
+          currentAmount,
+        })}
       </TextBox>
     </Wrapper>
   ) : null;
 
 MinOrderErrBox.propTypes = {
-  restaurantName: PropTypes.string,
-  minAmount: PropTypes.number,
-  currentAmount: PropTypes.number,
+  restaurantName: PropTypes.string.isRequired,
+  minAmount: PropTypes.number.isRequired,
+  currentAmount: PropTypes.number.isRequired,
 };
 
 export default MinOrderErrBox;
