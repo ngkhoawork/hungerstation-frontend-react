@@ -23,7 +23,6 @@ class SaveAddress extends React.Component {
   }
 
   handleTypeSelect = selectedType => {
-    console.log(selectedType);
     this.setState({ selectedType });
   };
 

@@ -85,7 +85,8 @@ class AddAddress extends React.Component {
     googleMaps.event.removeListener(this.autocompleteListener);
   }
 
-  setFieldValue = (type, value) => console.log(type, value);
+  // setFieldValue = (type, value) => console.log(type, value);
+  setFieldValue = () => {};
 
   geocodeLatLng = location => {
     this.geocoder.geocode({ location }, (results, status) => {
@@ -157,8 +158,8 @@ class AddAddress extends React.Component {
 
   handleSubmit = () => {
     const saveAddressState = this.saveAddressRef.getState();
-    console.log(saveAddressState);
-    this.props.onSubmit();
+    // TODO: pass all other data as well
+    this.props.onSubmit({ saveAddressState });
   };
 
   render() {

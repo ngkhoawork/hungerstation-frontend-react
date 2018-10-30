@@ -17,7 +17,6 @@ import reducer from './reducer';
 
 class AddressesContainer extends React.Component {
   componentDidMount() {
-    console.log(this.props.isSettlementLoaded);
     if (!this.props.isSettlementLoaded) {
       this.props.getCurrentLocationAction();
     }
