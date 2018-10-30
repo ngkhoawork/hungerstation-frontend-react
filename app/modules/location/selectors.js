@@ -38,6 +38,11 @@ export const selectedDistricts = createSelector(
   },
 );
 
+export const selectCoords = createSelector(
+  selectLocationDomain,
+  locationState => locationState.get('coords').toJS(),
+);
+
 export const selectIsSettlementLoaded = createSelector(
   selectLocationDomain,
   searchBarState => searchBarState.get('isSettlementLoaded'),
