@@ -125,14 +125,6 @@ class AddAddress extends React.Component {
     if (newZoom > 13) this.map.setZoom(newZoom);
   };
 
-  handleLocateMeClick = () => {
-    if (this.props.isUserLocated) {
-      this.setLocation(this.props.location);
-    } else {
-      this.props.onLocateMeClick();
-    }
-  };
-
   handleMapMove = debounce(() => {
     if (isPlaceSelectAction) {
       isPlaceSelectAction = false;
@@ -191,7 +183,7 @@ class AddAddress extends React.Component {
   };
 
   render() {
-    const { address, phone, disabledTypes } = this.props;
+    const { address, phone, disabledTypes, onLocateMeClick } = this.props;
     const { locationName, description } = this.state;
     const mobile = address.mobile || (phone || '').substr(4);
     const isCreate = !address.id;
@@ -217,7 +209,7 @@ class AddAddress extends React.Component {
             name="gps"
             size={22}
             style={locateMeStyle}
-            onClick={this.handleLocateMeClick}
+            onClick={onLocateMeClick}
           />
           <ZoomCtrl>
             <ZoomBtn onClick={() => this.handleZoomChange(1)}>+</ZoomBtn>
@@ -278,7 +270,6 @@ AddAddress.propTypes = {
   address: PropTypes.object,
   disabledTypes: PropTypes.array,
   location: PropTypes.object,
-  isUserLocated: PropTypes.bool,
   onLocateMeClick: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };

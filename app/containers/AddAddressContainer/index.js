@@ -33,7 +33,7 @@ class AddAddressContainer extends React.Component {
   };
 
   render() {
-    const { latLng, isUserLocated, user, address, addresses } = this.props;
+    const { latLng, user, address, addresses } = this.props;
     const disabledTypes = addresses
       .map(({ specific_type }) => specific_type)
       .filter(type => type !== otherAddressType);
@@ -44,7 +44,6 @@ class AddAddressContainer extends React.Component {
         address={address}
         disabledTypes={disabledTypes}
         location={latLng}
-        isUserLocated={isUserLocated}
         onLocateMeClick={this.props.getCurrentLocationAction}
         onSubmit={this.handleAddAddressSubmit}
       />
