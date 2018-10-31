@@ -16,7 +16,6 @@ import { StyledForm, StyledFieldWrapper } from 'utils/css/styledComponents';
 import TextInput from 'components/TextInput';
 import Icon from 'components/Icon';
 import Checkbox from 'components/Checkbox';
-import Paragraph from 'components/Paragraph';
 
 import messages from './messages';
 
@@ -37,13 +36,13 @@ const LoginForm = ({ handleSubmit, submitting, classes, error }) => (
       component={TextInput}
       label={intl.formatMessage(messages.passwordLabel)}
     />
-    <Paragraph margin="16px 0 0">
+    <div style={{ margin: '16px 0 0' }}>
       <StyledFieldWrapper
         name="rememberMe"
         component={Checkbox}
         label={intl.formatMessage(messages.rememberMeLabel)}
       />
-    </Paragraph>
+    </div>
     <Button
       type="submit"
       disabled={submitting}
