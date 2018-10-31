@@ -27,6 +27,14 @@ export const selectDistrict = createSelector(
   searchBarState => searchBarState.get('selectedDistrict'),
 );
 
+export const selectDistrictId = createSelector(
+  selectLocationDomain,
+  locationState => {
+    const district = locationState.get('selectedDistrict');
+    return district && district.get('id');
+  },
+);
+
 export const selectedDistricts = createSelector(
   selectLocationDomain,
   selectCity,
