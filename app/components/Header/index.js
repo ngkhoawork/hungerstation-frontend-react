@@ -50,6 +50,14 @@ const menu = [
   // },
 ];
 
+const getLeftIcon = name => {
+  if (!name) return '';
+
+  const nameParts = name.split(' ');
+
+  return nameParts[1] ? nameParts[1][0] : nameParts[0][0];
+};
+
 const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
   <StyledHeader gold={variant === 'gold'}>
     <StyledContent>
@@ -66,7 +74,7 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
           <DropdownMenu
             label={userInfo.name}
             items={menu}
-            leftIcon={userInfo.name.split(' ')[1][0]}
+            leftIcon={getLeftIcon(userInfo.name)}
           />
         ) : (
           <StyledLink to="/login">
