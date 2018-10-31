@@ -3,6 +3,8 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
     id
     name
     status
+    latitude
+    longitude
     delivery_conditions {
       id
       delivery_fee

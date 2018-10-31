@@ -29,6 +29,8 @@ export function* fetchRestaurantSaga({ payload: id }) {
       id: branch.id,
       name: branch.name,
       status: branch.status,
+      latitude: branch.latitude,
+      longitude: branch.longitude,
       logo: branch.restaurant.logo,
       rateAverage: branch.restaurant.rate_average,
       deliveryConditions: branch.delivery_conditions,

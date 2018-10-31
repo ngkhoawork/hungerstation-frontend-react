@@ -93,6 +93,7 @@ const onToggleSettlementLoaded = (state, action) => {
 const onSaveCurrentLocationAction = (state, action) =>
   state.merge({
     coords: action.payload,
+    isSettlementLoaded: true,
   });
 
 const onSaveLocation = (

@@ -8,6 +8,11 @@ export const selectAddresses = createSelector(
   state => state.addresses,
 );
 
+export const selectAddressesLoading = createSelector(
+  selectAddressState,
+  state => state.isLoading,
+);
+
 export const selectPrimaryAddress = createSelector(
   selectAddressState,
   state => state.primaryAddress,

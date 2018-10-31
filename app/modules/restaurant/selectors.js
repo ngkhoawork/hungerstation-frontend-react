@@ -8,3 +8,8 @@ export const selectRestaurantName = createSelector(
   selectRestaurantState,
   state => state.restaurant.name,
 );
+
+export const selectRestaurantCoords = createSelector(
+  selectRestaurantState,
+  ({ restaurant }) => ({ lat: restaurant.latitude, lng: restaurant.longitude }),
+);
