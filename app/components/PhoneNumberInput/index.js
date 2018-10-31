@@ -19,10 +19,14 @@ const countriesMap = new Map(countryCodes);
 
 /* eslint-disable react/prefer-stateless-function */
 class PhoneNumberInput extends React.PureComponent {
-  state = {
-    prefix: 'sa',
-    phone: '',
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      prefix: 'sa',
+      phone: props.phone || '',
+    };
+  }
 
   handleChange = type => e => {
     const {
