@@ -9,6 +9,7 @@ export const borderRadius = '8px';
 export const border = `solid 1px ${lightGray}`;
 
 export const maxModalHeight = '98vh';
+export const maxModalContentHeight = 'calc(98vh - 94px)';
 export const maxModalWidth = '98vw';
 export const maxPageWidth = '1446px';
 export const pageOffsetX = '113px';
