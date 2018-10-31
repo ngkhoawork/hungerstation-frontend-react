@@ -72,9 +72,9 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
       <RightSection>
         {isLoggedIn ? (
           <DropdownMenu
-            label={userInfo.name}
+            label={userInfo && userInfo.name}
             items={menu}
-            leftIcon={getLeftIcon(userInfo.name)}
+            leftIcon={getLeftIcon(userInfo && userInfo.name)}
           />
         ) : (
           <StyledLink to="/login">
