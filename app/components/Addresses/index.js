@@ -10,49 +10,61 @@ import Address from 'components/Address';
 import Section from './Section';
 import messages from './messages';
 
-const Addresses = ({ onAddClick, onEditClick, onSelectToggle }) => (
-  <React.Fragment>
-    <Section title={intl.formatMessage(messages.current)}>
-      <Address
-        isWithBorder
-        isSelected
-        address={{ address: 'Almohamad, Baljurshani', type: 'home' }}
-        onSelectToggle={onSelectToggle}
-        onEditClick={onEditClick}
-      />
-      <BtnContainer>
-        <Button
-          primary={false}
-          lift={false}
-          inline
-          size="l"
-          color={alabaster}
-          onClick={onAddClick}
-        >
-          <React.Fragment>
-            {intl.formatMessage(messages.addNew)} &nbsp;
-            <Icon name="add-new-address" size={16} />
-          </React.Fragment>
-        </Button>
-      </BtnContainer>
-    </Section>
+const Addresses = ({
+  selectedAddress,
+  recentAddresses,
+  onAddClick,
+  onEditClick,
+  onSelectToggle,
+}) => {
+  const renderRecentAddresses = () => (
     <Section title={intl.formatMessage(messages.recent)}>
-      <Address
-        address={{ address: 'Almohamad, Baljurshani', type: 'work' }}
-        onSelectToggle={onSelectToggle}
-        onEditClick={onEditClick}
-      />
-      <Address
-        address={{ address: 'Almohamad, Baljurshani', type: 'home' }}
-        onSelectToggle={onSelectToggle}
-        onEditClick={onEditClick}
-      />
+      {recentAddresses.map(address => (
+        <Address
+          key={`${address.id} ${address.lat} ${address.lng} ${address.street}`}
+          address={address}
+          onSelectToggle={onSelectToggle}
+          onEditClick={onEditClick}
+        />
+      ))}
     </Section>
-  </React.Fragment>
-);
+  );
+
+  return (
+    <React.Fragment>
+      <Section title={intl.formatMessage(messages.current)}>
+        {selectedAddress ? (
+          <Address
+            isWithBorder
+            isSelected
+            address={selectedAddress}
+            onEditClick={onEditClick}
+          />
+        ) : null}
+        <BtnContainer>
+          <Button
+            primary={false}
+            lift={false}
+            inline
+            size="l"
+            color={alabaster}
+            onClick={onAddClick}
+          >
+            <React.Fragment>
+              {intl.formatMessage(messages.addNew)} &nbsp;
+              <Icon name="add-new-address" size={16} />
+            </React.Fragment>
+          </Button>
+        </BtnContainer>
+      </Section>
+      {recentAddresses.length ? renderRecentAddresses() : null}
+    </React.Fragment>
+  );
+};
 
 Addresses.propTypes = {
-  // addresses: PropTypes.arrayOf(PropTypes.object),
+  selectedAddress: PropTypes.object,
+  recentAddresses: PropTypes.arrayOf(PropTypes.object),
   onAddClick: PropTypes.func.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onSelectToggle: PropTypes.func.isRequired,
