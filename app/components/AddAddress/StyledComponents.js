@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { flex, mediaMedium } from 'utils/css/styles';
-import { maxModalWidth, fontFamilyBold } from 'utils/css/variables';
+import {
+  maxModalWidth,
+  maxModalContentHeight,
+  fontFamilyBold,
+} from 'utils/css/variables';
 import { lightGray } from 'utils/css/colors';
 
 export const Container = styled.div`
@@ -8,6 +12,7 @@ export const Container = styled.div`
   text-align: center;
   width: 700px;
   position: relative;
+  max-height: ${maxModalContentHeight};
 
   ${mediaMedium`width: calc(${maxModalWidth} - 40px)`};
 `;

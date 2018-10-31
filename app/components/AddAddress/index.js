@@ -5,13 +5,16 @@ import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import intl from 'utils/intlService';
+import { clearUndefs } from 'utils/helpers';
 import ModalFrame from 'containers/ModalFrameContainer';
 import Button from 'components/Button';
 import PhoneNumberInput from 'components/PhoneNumberInput';
 import CheckboxIcon from 'components/CheckboxIcon';
 import Icon from 'components/Icon';
+// import countryCodes from 'utils/countryCodes';
 import messages from './messages';
 import SaveAddress from './SaveAddress';
+import { getStreet, getBuildingNumber } from './helpers';
 import {
   Container,
   Map,
@@ -35,16 +38,20 @@ class AddAddress extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { locationName: '' };
+    const { address } = props;
+    const { description = '', street, building_number } = address;
+    const locationName = address.street ? `${building_number} ${street}` : '';
+    this.state = { locationName, description };
     this.locationRef = React.createRef();
-    this.descRef = React.createRef();
+    this.phoneRef = React.createRef();
     this.saveAddressRef = React.createRef();
   }
 
   componentDidMount() {
     googleMaps = window.google.maps;
 
-    const { lat, lng } = this.props.location;
+    const { location, address } = this.props;
+    const { lat, lng } = address.lat ? address : location;
 
     this.map = new googleMaps.Map(document.getElementById(mapId), {
       zoom: 16,
@@ -62,7 +69,6 @@ class AddAddress extends React.Component {
 
     this.autocomplete = new googleMaps.places.Autocomplete(
       document.getElementById(autocompleteId),
-      // geocode | address, sa | ba
       { types: ['address'], componentRestrictions: { country: 'sa' } },
     );
 
@@ -80,13 +86,16 @@ class AddAddress extends React.Component {
     );
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.setLocation(this.props.location);
+    }
+  }
+
   onComponentWillUnmount() {
     googleMaps.event.removeListener(this.mapListener);
     googleMaps.event.removeListener(this.autocompleteListener);
   }
-
-  // setFieldValue = (type, value) => console.log(type, value);
-  setFieldValue = () => {};
 
   geocodeLatLng = location => {
     this.geocoder.geocode({ location }, (results, status) => {
@@ -105,25 +114,20 @@ class AddAddress extends React.Component {
     });
   };
 
+  setLocation = latLng => {
+    this.map.setCenter(latLng);
+    this.geocodeLatLng(latLng);
+  };
+
   handleZoomChange = change => {
     const newZoom = this.map.getZoom() + change;
 
-    if (newZoom > 13) {
-      this.map.setZoom(newZoom);
-
-      // const { location } = this.props;
-      // const { selectedPlace } = this.state;
-      // const center =
-      //   selectedPlace && selectedPlace.geometry
-      //     ? selectedPlace.geometry.location
-      //     : location;
-      // this.map.setCenter(center);
-    }
+    if (newZoom > 13) this.map.setZoom(newZoom);
   };
 
   handleLocateMeClick = () => {
-    if (this.props.isUserLocation) {
-      this.map.setCenter(this.props.location);
+    if (this.props.isUserLocated) {
+      this.setLocation(this.props.location);
     } else {
       this.props.onLocateMeClick();
     }
@@ -143,33 +147,61 @@ class AddAddress extends React.Component {
   handleLocationInputChange = ({ target }) =>
     this.setState({ locationName: target.value });
 
+  handleDescriptionInputChange = ({ target }) =>
+    this.setState({ description: target.value });
+
   handlePlaceSelect = () => {
-    const selectedPlace = {
-      ...this.autocomplete.getPlace(),
-      fullAddress: this.locationRef.current.value,
-    };
+    const selectedPlace = this.autocomplete.getPlace();
 
     if (!selectedPlace.geometry) return;
 
     isPlaceSelectAction = true;
     this.map.setCenter(selectedPlace.geometry.location);
-    this.setState({ selectedPlace, locationName: selectedPlace.fullAddress });
+    this.setState({
+      selectedPlace,
+      locationName: this.locationRef.current.value,
+    });
   };
 
   handleSubmit = () => {
-    const saveAddressState = this.saveAddressRef.getState();
-    // TODO: pass all other data as well
-    this.props.onSubmit({ saveAddressState });
+    const { address } = this.props;
+    const { selectedPlace, description, locationName } = this.state;
+    const saveAddressState = this.saveAddressRef.current.getState();
+
+    if (!saveAddressState || !description) return;
+
+    const { specific_type, name } = saveAddressState;
+    const { geometry } = selectedPlace;
+
+    const payload = {
+      id: address.id,
+      name,
+      specific_type,
+      lat: geometry.location.lat(),
+      lng: geometry.location.lng(),
+      description,
+      // mobile: `${countryCodes[0][1].label}${this.phoneRef.current.value}`,
+      mobile: this.phoneRef.current.value,
+      street: getStreet(selectedPlace),
+      building_number: getBuildingNumber(selectedPlace),
+      line1: locationName,
+    };
+
+    this.props.onSubmit(clearUndefs(payload));
   };
 
   render() {
-    const { address = {} } = this.props;
-    const { locationName } = this.state;
-    const isDescValid = true;
-    const { selectedPlace } = this.state; // eslint-disable-line
+    const { address, phone, disabledTypes } = this.props;
+    const { locationName, description } = this.state;
+    const mobile = address.mobile || (phone || '').substr(4);
+    const isCreate = !address.id;
 
     return (
-      <ModalFrame title={intl.formatMessage(messages.title)}>
+      <ModalFrame
+        title={intl.formatMessage(
+          messages[`${isCreate ? 'create' : 'update'}Title`],
+        )}
+      >
         <Container>
           <Map id={mapId} />
           <Icon name="location-big" style={markerStyle} />
@@ -197,12 +229,13 @@ class AddAddress extends React.Component {
               <Desc>
                 <TextField
                   type="text"
-                  defaultValue={address.description}
-                  inputRef={this.descRef}
+                  required
+                  value={description}
+                  onChange={this.handleDescriptionInputChange}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CheckboxIcon isChecked={isDescValid} />
+                        <CheckboxIcon isChecked={!!description} />
                       </InputAdornment>
                     ),
                   }}
@@ -211,17 +244,25 @@ class AddAddress extends React.Component {
                 />
               </Desc>
               <PhoneNumberInput
+                phone={mobile}
                 form={{
-                  setFieldValue: this.setFieldValue,
+                  setFieldValue: () => {},
                   touched: {},
                   errors: {},
                 }}
                 field={{}}
                 style={{ alignItems: 'center' }}
-                InputProps={{ style: { marginBottom: 5 } }}
+                inputRef={this.phoneRef}
+                InputProps={{
+                  style: { marginBottom: 5 },
+                }}
               />
             </Row>
-            <SaveAddress innerRef={this.saveAddressRef} address={address} />
+            <SaveAddress
+              ref={this.saveAddressRef}
+              address={address}
+              disabledTypes={disabledTypes}
+            />
           </Content>
           <Button primary size="xl" onClick={this.handleSubmit}>
             {intl.formatMessage(messages.set)}
@@ -233,11 +274,17 @@ class AddAddress extends React.Component {
 }
 
 AddAddress.propTypes = {
+  phone: PropTypes.string,
   address: PropTypes.object,
+  disabledTypes: PropTypes.array,
   location: PropTypes.object,
-  isUserLocation: PropTypes.bool,
+  isUserLocated: PropTypes.bool,
   onLocateMeClick: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+};
+
+AddAddress.defaultProps = {
+  address: {},
 };
 
 export default AddAddress;

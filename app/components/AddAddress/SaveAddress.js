@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import intl from 'utils/intlService';
-import { addressTypes } from 'components/Address/constants';
+import { addressTypes, otherAddressType } from 'modules/address/constants';
+import { isChangeableType } from 'modules/address/helpers';
+import addressMessages from 'modules/address/messages';
 import TypeSelect from 'components/TypeSelect';
 import CheckboxIcon from 'components/CheckboxIcon';
 import { flex } from 'utils/css/styles';
@@ -15,19 +17,45 @@ class SaveAddress extends React.Component {
   constructor(props) {
     super(props);
 
+    const { address, disabledTypes } = this.props;
+    const { specific_type: type } = address;
+    const types = addressTypes.map(({ key }) => key);
+    this.disabledTypes = type ? types.filter(t => t !== type) : disabledTypes;
+    this.isChangeableType = type ? isChangeableType(type) : true;
+    this.addressTypes = addressTypes.map(addr => ({
+      ...addr,
+      name: intl.formatMessage(addressMessages[addr.key]),
+    }));
     this.nameRef = React.createRef();
     this.state = {
-      isSaveChecked: false,
-      selectedType: addressTypes[0],
+      isSaveChecked: !!type,
+      selectedType: this.addressTypes.find(({ key }) => key === type) || {},
     };
   }
 
-  handleTypeSelect = selectedType => {
-    this.setState({ selectedType });
+  getState = () => {
+    const { selectedType, isSaveChecked } = this.state;
+    const name = this.nameRef.current.value;
+    const specific_type = selectedType.key;
+
+    if (!isSaveChecked) return {};
+
+    if (!specific_type || (specific_type === otherAddressType && !name)) {
+      return false;
+    }
+
+    return { specific_type, name: name || undefined };
   };
 
-  handleSaveToggle = () =>
-    this.setState(state => ({ isSaveChecked: !state.isSaveChecked }));
+  handleTypeSelect = selectedType => {
+    if (this.isChangeableType) this.setState({ selectedType });
+  };
+
+  handleSaveToggle = () => {
+    if (this.isChangeableType) {
+      this.setState(state => ({ isSaveChecked: !state.isSaveChecked }));
+    }
+  };
 
   render() {
     const { address } = this.props;
@@ -45,16 +73,24 @@ class SaveAddress extends React.Component {
         </Header>
         <Content isVisible={isSaveChecked}>
           <TypeSelect
-            types={addressTypes}
+            types={this.addressTypes}
             active={selectedType}
             onSelect={this.handleTypeSelect}
             style={typesStyle}
             typeStyle={typeStyle}
+            disabledTypeStyle={disabledTypeStyle}
+            disabledTypes={this.disabledTypes}
           />
           <Name>
             <TextField
               type="text"
+              required={selectedType.key === otherAddressType}
               defaultValue={address.name}
+              disabled={
+                !selectedType.key ||
+                !this.isChangeableType ||
+                !isChangeableType(selectedType.key)
+              }
               inputRef={this.nameRef}
               label={intl.formatMessage(messages.name)}
               fullWidth
@@ -68,6 +104,7 @@ class SaveAddress extends React.Component {
 
 SaveAddress.propTypes = {
   address: PropTypes.object,
+  disabledTypes: PropTypes.array,
 };
 
 export default SaveAddress;
@@ -88,11 +125,15 @@ const typesStyle = {
   flexDirection: 'row',
 };
 
-const typeStyle = {
-  border,
-  borderRadius,
+const disabledTypeStyle = {
   padding: '6px 12px',
   marginRight: 10,
+};
+
+const typeStyle = {
+  ...disabledTypeStyle,
+  border,
+  borderRadius,
 };
 
 const Content = styled.div`

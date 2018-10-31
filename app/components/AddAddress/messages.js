@@ -1,9 +1,13 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  title: {
-    id: 'app.components.AddAddress.title',
+  createTitle: {
+    id: 'app.components.AddAddress.createTitle',
     defaultMessage: 'Add New Address',
+  },
+  updateTitle: {
+    id: 'app.components.AddAddress.updateTitle',
+    defaultMessage: 'Edit Address',
   },
   description: {
     id: 'app.components.AddAddress.description',
