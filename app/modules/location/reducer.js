@@ -16,7 +16,6 @@ export const initialState = fromJS({
   districts: [],
   selectedCity: null,
   selectedDistrict: null,
-  isSettlementLoaded: true,
   coords: {
     lat: 24.7706825,
     lng: 46.6627549,

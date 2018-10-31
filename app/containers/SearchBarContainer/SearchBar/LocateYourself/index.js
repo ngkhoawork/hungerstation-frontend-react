@@ -10,18 +10,18 @@ import StyledContainer from './StyledContainer';
 
 const LocateYourself = ({ getCurrentLocation, isSettlementLoaded }) => (
   <StyledContainer>
-    {isSettlementLoaded && (
+    {(isSettlementLoaded || isSettlementLoaded === undefined) && (
       <CircledItem color={wildSand} width={28} onClick={getCurrentLocation}>
         <Icon name="location" size={16} />
       </CircledItem>
     )}
-    {!isSettlementLoaded && <Spinner isActive={!isSettlementLoaded} />}
+    {isSettlementLoaded === false && <Spinner isActive={!isSettlementLoaded} />}
   </StyledContainer>
 );
 
 LocateYourself.propTypes = {
   getCurrentLocation: PropTypes.func.isRequired,
-  isSettlementLoaded: PropTypes.bool.isRequired,
+  isSettlementLoaded: PropTypes.bool,
 };
 
 export default LocateYourself;
