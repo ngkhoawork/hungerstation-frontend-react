@@ -9,6 +9,10 @@ export default defineMessages({
     id: 'app.components.AddAddress.updateTitle',
     defaultMessage: 'Edit Address',
   },
+  subtitle: {
+    id: 'app.components.AddAddress.susbtitle',
+    defaultMessage: `You don't have any eligible addresses, please add new address details`,
+  },
   description: {
     id: 'app.components.AddAddress.description',
     defaultMessage: 'Description',

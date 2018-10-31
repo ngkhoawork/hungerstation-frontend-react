@@ -193,6 +193,7 @@ class AddAddress extends React.Component {
         title={intl.formatMessage(
           messages[`${isCreate ? 'create' : 'update'}Title`],
         )}
+        subtitle={isCreate ? intl.formatMessage(messages.subtitle) : ''}
       >
         <Container>
           <Map id={mapId} />
