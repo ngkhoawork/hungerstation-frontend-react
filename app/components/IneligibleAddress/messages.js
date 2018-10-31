@@ -7,8 +7,8 @@ export default defineMessages({
   },
   description: {
     id: 'app.components.CheckoutPage.IneligibleAddress.description',
-    defaultMessage: `Sorry this restaurant does not ship to this address.
-      Try to change location or restaurant.`,
+    defaultMessage: `Sorry, Selected address is not eligible for delivery by the restaurant.
+      Please change your address or choose a different restaurant.`,
   },
   edit: {
     id: 'app.components.CheckoutPage.IneligibleAddress.edit',
