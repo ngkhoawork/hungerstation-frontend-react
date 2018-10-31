@@ -1,6 +1,7 @@
 import React from 'react';
 import { restaurantPropTypes } from 'prop-types';
 import intl from 'utils/intlService';
+import { getPathname } from 'utils/location';
 import BrandLogo from 'components/BrandLogo';
 import Row from 'components/Row';
 import CardTitle from './CardTitle';
@@ -27,9 +28,7 @@ const RestaurantCard = ({
   kitchensNames,
   hasPromotion,
 }) => (
-  <StyledRestaurantCard
-    to={`${window.location.pathname}/restaurant/${branchId}`}
-  >
+  <StyledRestaurantCard to={`${getPathname()}/restaurant/${branchId}`}>
     <StyledUpperPart>
       <BrandLogo src={logo} size={60} />
       {!hasPromotion && <Promoted />}

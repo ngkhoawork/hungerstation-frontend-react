@@ -14,3 +14,11 @@ export const getSettlementDetails = coors => {
 
 export const getUnit = (addressComponents, type) =>
   addressComponents.find(component => component.types.indexOf(type) > -1);
+
+export const getPathname = () => {
+  const { pathname } = window.location;
+
+  return pathname.substr(-1) === '/'
+    ? pathname.substr(0, pathname.length - 1)
+    : pathname;
+};

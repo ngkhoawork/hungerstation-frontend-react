@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import intl from 'utils/intlService';
+import { getPathname } from 'utils/location';
 import styled from 'styled-components';
 import { alabaster, fuscousGray, jade } from 'utils/css/colors';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
@@ -13,7 +14,7 @@ import messages from './messages';
 
 const ViewCartButton = ({ isCheckout, quantity, price }) => (
   <ButtonWrapper>
-    <Link to={isCheckout ? '/payment' : `${window.location.pathname}/checkout`}>
+    <Link to={isCheckout ? '/payment' : `${getPathname()}/checkout`}>
       <Button primary={false} color={isCheckout ? jade : alabaster} size="xl">
         <Content>
           <LeftSide>
