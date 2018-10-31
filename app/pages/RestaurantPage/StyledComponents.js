@@ -62,6 +62,7 @@ export const Header = styled.div`
   width: 100%;
   background-image: url(${restaurantImg});
   background-repeat: no-repeat;
+  background-size: cover;
 
   ${mediaMedium`
     margin-bottom: 100px;
