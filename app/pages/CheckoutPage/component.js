@@ -5,9 +5,7 @@ import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import CartContainer from 'containers/CartContainer';
 import AddressesContainer from 'containers/AddressesContainer';
 import Back from 'containers/Back';
-import Button from 'components/Button';
-import Step from './Step';
-import IneligibleAddress from './IneligibleAddress';
+import Step from 'components/Step';
 import messages from './messages';
 import {
   Container,
@@ -17,13 +15,20 @@ import {
   RightSide,
 } from './StyledComponents';
 
-const CheckoutPage = ({ showModal }) => {
-  const handleIneligibleAddress = () => {
-    const IneligibleAddressHOC = () => (
-      <IneligibleAddress onEditClick={() => {}} onSearchClick={() => {}} />
-    );
-    showModal(IneligibleAddressHOC);
-  };
+const CheckoutPage = ({ isLoading }) => {
+  const renderContent = () => (
+    <React.Fragment>
+      <Step stepNo={1} stepCount={3} title={intl.formatMessage(messages.step1)}>
+        <AddressesContainer />
+      </Step>
+      <Step stepNo={2} stepCount={3} title={intl.formatMessage(messages.step2)}>
+        <div>Step 2</div>
+      </Step>
+      <Step stepNo={3} stepCount={3} title={intl.formatMessage(messages.step3)}>
+        <div>Step 3</div>
+      </Step>
+    </React.Fragment>
+  );
 
   return (
     <Container>
@@ -31,31 +36,7 @@ const CheckoutPage = ({ showModal }) => {
         <Back />
       </NavHeader>
       <ContentContainer>
-        <LeftSide>
-          <Step
-            stepNo={1}
-            stepCount={3}
-            title={intl.formatMessage(messages.step1)}
-          >
-            <AddressesContainer />
-          </Step>
-          <Step
-            stepNo={2}
-            stepCount={3}
-            title={intl.formatMessage(messages.step2)}
-          >
-            <Button inline onClick={handleIneligibleAddress}>
-              Open Ineligible Modal
-            </Button>
-          </Step>
-          <Step
-            stepNo={3}
-            stepCount={3}
-            title={intl.formatMessage(messages.step3)}
-          >
-            <div>Step 3</div>
-          </Step>
-        </LeftSide>
+        <LeftSide>{isLoading ? null : renderContent()}</LeftSide>
         <RightSide>
           <CartContainer />
         </RightSide>
@@ -65,8 +46,7 @@ const CheckoutPage = ({ showModal }) => {
 };
 
 CheckoutPage.propTypes = {
-  // user: PropTypes.object.isRequired,
-  showModal: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default withHeaderAndFooter(CheckoutPage);
