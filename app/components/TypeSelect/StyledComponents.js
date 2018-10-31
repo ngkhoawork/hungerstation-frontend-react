@@ -20,6 +20,8 @@ export const Type = styled.span`
   margin-bottom: 10px;
   text-decoration: none;
   color: ${silverChalice};
+  overflow: hidden;
+  position: relative;
   font-size: 14px;
   cursor: pointer;
   line-height: 1;
@@ -34,6 +36,16 @@ export const Type = styled.span`
   `};
 
   ${({ style }) => style && css(style)};
+`;
+
+export const DisabledOverlay = styled.div`
+  background-color: ${alabaster};
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 
 export const Name = styled.span`
