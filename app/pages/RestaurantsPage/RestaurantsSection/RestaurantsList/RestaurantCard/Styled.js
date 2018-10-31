@@ -45,7 +45,7 @@ const StyledUpperPart = styled.div`
     { align: 'center', justify: 'space-between' },
     `
     width: 100%;
-    flex: 0.2;
+    flex: 0.4;
   `,
   )};
 `;
