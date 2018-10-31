@@ -75,12 +75,19 @@ export default class App extends Component {
 
         <Switch>
           <Route exact path="/" component={HomePage} />
+          {/* TODO: this route should be under restaurant page */}
+          <PrivateRouteContainer
+            path="/restaurants/:city/:district/restaurant/:branchId/checkout"
+            component={CheckoutPage}
+          />
+          <Route
+            path="/restaurants/:city/:district/restaurant/:branchId"
+            component={RestaurantPage}
+          />
           <Route
             path="/restaurants/:city/:district/:deliveryType?"
             component={RestaurantsPage}
           />
-          <Route path="/restaurant/:branchId" component={RestaurantPage} />
-          <Route path="/checkout" component={CheckoutPage} />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
 
           <Route path="/login" component={LoginPage} />

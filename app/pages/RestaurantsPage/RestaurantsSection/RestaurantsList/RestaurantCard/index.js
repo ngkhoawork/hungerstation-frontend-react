@@ -27,7 +27,9 @@ const RestaurantCard = ({
   kitchensNames,
   hasPromotion,
 }) => (
-  <StyledRestaurantCard to={`/restaurant/${branchId}`}>
+  <StyledRestaurantCard
+    to={`${window.location.pathname}/restaurant/${branchId}`}
+  >
     <StyledUpperPart>
       <BrandLogo src={logo} size={60} />
       {!hasPromotion && <Promoted />}

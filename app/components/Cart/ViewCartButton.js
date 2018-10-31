@@ -13,7 +13,7 @@ import messages from './messages';
 
 const ViewCartButton = ({ isCheckout, quantity, price }) => (
   <ButtonWrapper>
-    <Link to={isCheckout ? '/payment' : '/checkout'}>
+    <Link to={isCheckout ? '/payment' : `${window.location.pathname}/checkout`}>
       <Button primary={false} color={isCheckout ? jade : alabaster} size="xl">
         <Content>
           <LeftSide>
