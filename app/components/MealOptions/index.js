@@ -38,6 +38,7 @@ class MealOptions extends Component {
         checkboxes[group.id] = {
           ...group,
           checked: {},
+          hint: group.min === 1 ? 'required' : 'select',
         };
       }
     });
@@ -135,7 +136,12 @@ class MealOptions extends Component {
             </Section>
           ))} */}
           {values(checkboxes).map(({ id, name, hint, modifiers, checked }) => (
-            <Section key={id} title={name} hint={hint} isCollapsible>
+            <Section
+              key={id}
+              title={name}
+              hint={intl.formatMessage(messages[hint])}
+              isCollapsible
+            >
               <CheckboxSelect
                 name={id}
                 options={modifiers}
@@ -144,8 +150,13 @@ class MealOptions extends Component {
               />
             </Section>
           ))}
-          {values(radios).map(({ id, name, hint, modifiers, value }) => (
-            <Section key={id} title={name} hint={hint} isCollapsible>
+          {values(radios).map(({ id, name, modifiers, value }) => (
+            <Section
+              key={id}
+              title={name}
+              hint={intl.formatMessage(messages.required)}
+              isCollapsible
+            >
               <RadioSelect
                 name={id}
                 options={modifiers}

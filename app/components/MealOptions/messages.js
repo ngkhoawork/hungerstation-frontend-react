@@ -13,4 +13,8 @@ export default defineMessages({
     id: 'app.components.MealOptions.required',
     defaultMessage: 'Required',
   },
+  select: {
+    id: 'app.components.MealOptions.select',
+    defaultMessage: 'Tap on item to include',
+  },
 });
