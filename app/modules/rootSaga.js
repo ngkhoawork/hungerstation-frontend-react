@@ -4,6 +4,7 @@ import userSagas from './user/sagas';
 import locationSagas from './location/sagas';
 import restaurantSagas from './restaurant/sagas';
 import restaurantsSagas from './restaurants/sagas';
+import addressSagas from './address/sagas';
 
 export default function* root() {
   yield fork(authSagas);
@@ -11,5 +12,6 @@ export default function* root() {
   yield fork(locationSagas);
   yield fork(restaurantsSagas);
   yield fork(restaurantSagas);
+  yield fork(addressSagas);
   // yield spawn(monitorSaga);
 }
