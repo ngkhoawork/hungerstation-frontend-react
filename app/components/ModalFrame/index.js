@@ -5,12 +5,13 @@ import { flex } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
-import { Title } from 'components/Typography';
+import { Title, Description } from 'components/Typography';
 
-const ModalFrame = ({ title, onCancel, children, style }) => (
+const ModalFrame = ({ title, subtitle, onCancel, children, style }) => (
   <Container style={style}>
     <Header>
       <Title>{title}</Title>
+      <Description style={{ margin: 3 }}>{subtitle}</Description>
       <CircledItem
         color={gold}
         width={30}
@@ -33,6 +34,7 @@ ModalFrame.propTypes = {
   onCancel: PropTypes.func.isRequired,
   style: PropTypes.object,
   title: PropTypes.string,
+  subtitle: PropTypes.string,
 };
 
 export default ModalFrame;
@@ -49,7 +51,8 @@ const Container = styled.div`
 
 const Header = styled.div`
   align-self: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  text-align: center;
 `;
 
 const CloseBtnStyle = {
