@@ -100,3 +100,12 @@ export function getOS() {
   }
   return 'Win';
 }
+
+export function clearUndefs(obj) {
+  const shallowCopy = { ...obj };
+  Object.keys(shallowCopy).forEach(key => {
+    if (shallowCopy[key] === undefined) delete shallowCopy[key];
+  });
+
+  return shallowCopy;
+}
