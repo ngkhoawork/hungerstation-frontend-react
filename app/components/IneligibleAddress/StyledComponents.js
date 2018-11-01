@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 import { jade } from 'utils/css/colors';
 
 export const Content = styled.div`
@@ -13,8 +13,13 @@ export const Footer = styled.div`
   flex-wrap: wrap;
 
   button {
-    margin: 5px 10px;
+    margin: 5px 10px 10px;
   }
+
+  ${mediaMedium`
+    flex-direction: column;
+    align-items: center;
+  `};
 `;
 
 export const SearchBtnStyle = {
