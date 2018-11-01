@@ -28,7 +28,7 @@ const color = {
 const Container = styled.div`
   border-radius: ${borderRadius};
   background-color: ${({ type }) => bgColor[type] || bgColor.default};
-  padding: 20px;
+  padding: ${({ size }) => (size === 's' ? 10 : 20)}px;
   ${flex({ justify: 'center', align: 'flex-start' })};
 `;
 const Message = styled.div`
@@ -38,8 +38,8 @@ const Message = styled.div`
   margin-left: 10px;
 `;
 
-const Notice = ({ message, type }) => (
-  <Container type={type}>
+const Notice = ({ message, type, size }) => (
+  <Container type={type} size={size}>
     <Icon name={`info-${type}`} size={20} />
     <Message type={type}>{message}</Message>
   </Container>
@@ -48,6 +48,7 @@ const Notice = ({ message, type }) => (
 Notice.propTypes = {
   message: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['success', 'error', 'default']),
+  size: PropTypes.oneOf(['s']),
 };
 
 Notice.defaultProps = {
