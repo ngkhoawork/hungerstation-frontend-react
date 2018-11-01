@@ -6,13 +6,13 @@ const countryCodes = [
       icon: 'saudi-flag',
     },
   ],
-  // [
-  //   'ba',
-  //   {
-  //     label: '+973',
-  //     icon: 'bahrain-flag',
-  //   },
-  // ],
+  [
+    'ba',
+    {
+      label: '+973',
+      icon: 'bahrain-flag',
+    },
+  ],
 ];
 
 export default countryCodes;
