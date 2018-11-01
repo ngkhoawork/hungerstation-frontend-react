@@ -9,6 +9,7 @@ const IconWrapper = styled.div`
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'inherit')};
   top: ${({ offsetY }) => offsetY || 0}px;
 
+  ${({ css }) => css};
   ${({ style }) => style && css(style)};
 `;
 
