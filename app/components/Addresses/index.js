@@ -12,6 +12,7 @@ import messages from './messages';
 
 const Addresses = ({
   selectedAddress,
+  addresses,
   recentAddresses,
   onAddClick,
   onEditClick,
@@ -21,7 +22,7 @@ const Addresses = ({
     <Section title={intl.formatMessage(messages.recent)}>
       {recentAddresses.map(address => (
         <Address
-          key={`${address.id} ${address.lat} ${address.lng} ${address.street}`}
+          key={`${address.id} ${address.lat} ${address.lng}`}
           address={address}
           onSelectToggle={onSelectToggle}
           onEditClick={onEditClick}
@@ -41,6 +42,14 @@ const Addresses = ({
             onEditClick={onEditClick}
           />
         ) : null}
+        {addresses.map(address => (
+          <Address
+            key={`${address.id} ${address.lat} ${address.lng}`}
+            address={address}
+            onSelectToggle={onSelectToggle}
+            onEditClick={onEditClick}
+          />
+        ))}
         <BtnContainer>
           <Button
             primary={false}
@@ -64,6 +73,7 @@ const Addresses = ({
 
 Addresses.propTypes = {
   selectedAddress: PropTypes.object,
+  addresses: PropTypes.arrayOf(PropTypes.object),
   recentAddresses: PropTypes.arrayOf(PropTypes.object),
   onAddClick: PropTypes.func.isRequired,
   onEditClick: PropTypes.func.isRequired,

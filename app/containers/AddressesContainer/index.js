@@ -28,7 +28,8 @@ class AddressesContainer extends React.Component {
     return (
       <Addresses
         selectedAddress={primaryAddress}
-        recentAddresses={addresses.filter(addr => addr !== primaryAddress)}
+        addresses={addresses.filter(addr => addr !== primaryAddress)}
+        recentAddresses={[]}
         onAddClick={this.handleAddAddress}
         onEditClick={this.handleAddAddress}
         onSelectToggle={this.handleAddressSelect}
