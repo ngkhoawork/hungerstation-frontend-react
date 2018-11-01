@@ -3,7 +3,7 @@ import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 import { borderRadius, boxShadowBottomRight } from 'utils/css/variables';
 import {
   persimmon,
-  errorLight,
+  errorBg,
   jade,
   silverChalice,
   fuscousGray,
@@ -106,7 +106,7 @@ export const Status = styled.div`
   padding: 8px 12px;
   border-radius: ${borderRadius};
   background-color: ${({ color }) => {
-    if (color === 'error') return errorLight;
+    if (color === 'error') return errorBg;
     return alabaster;
   }};
   color: ${({ color }) => {

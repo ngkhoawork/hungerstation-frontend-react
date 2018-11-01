@@ -25,7 +25,7 @@ const TextBox = styled.div`
 const MinOrderErrBox = ({ restaurantName, minAmount, currentAmount }) =>
   currentAmount < minAmount ? (
     <Wrapper>
-      <Icon name="info-red" size={16} />
+      <Icon name="info-error" size={16} />
       <TextBox>
         {intl.formatMessage(messages.minOrderError, {
           restaurantName,
