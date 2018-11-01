@@ -31,7 +31,7 @@ class CheckoutPageHOC extends React.Component {
       (!prevProps.addresses && addresses && !addresses.length) ||
       (prevProps.isLoadingAddresses && !isLoadingAddresses && !addresses.length)
     ) {
-      this.props.showModal(AddAddressContainer);
+      // this.props.showModal(AddAddressContainer);
     }
   }
 

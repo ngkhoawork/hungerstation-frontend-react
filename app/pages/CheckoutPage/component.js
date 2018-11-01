@@ -4,6 +4,7 @@ import intl from 'utils/intlService';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import CartContainer from 'containers/CartContainer';
 import AddressesContainer from 'containers/AddressesContainer';
+import DeliveryOptionsContainer from 'containers/DeliveryOptionsContainer';
 import Back from 'containers/Back';
 import Step from 'components/Step';
 import messages from './messages';
@@ -22,7 +23,7 @@ const CheckoutPage = ({ isLoading }) => {
         <AddressesContainer />
       </Step>
       <Step stepNo={2} stepCount={3} title={intl.formatMessage(messages.step2)}>
-        <div>Step 2</div>
+        <DeliveryOptionsContainer />
       </Step>
       <Step stepNo={3} stepCount={3} title={intl.formatMessage(messages.step3)}>
         <div>Step 3</div>
