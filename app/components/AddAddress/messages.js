@@ -11,7 +11,11 @@ export default defineMessages({
   },
   subtitle: {
     id: 'app.components.AddAddress.susbtitle',
-    defaultMessage: `You don't have any eligible addresses, please add new address details`,
+    defaultMessage: `You don't have any saved addresses, please add new address details`,
+  },
+  noEligibleAddr: {
+    id: 'app.components.AddAddress.noEligibleAddress',
+    defaultMessage: `You don't have eligible saved address for delivery by this restaurant, please add a new address`,
   },
   description: {
     id: 'app.components.AddAddress.description',

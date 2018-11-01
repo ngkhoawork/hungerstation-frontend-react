@@ -10,7 +10,7 @@ import Button from 'components/Button';
 import PhoneNumberInput from 'components/PhoneNumberInput';
 import CheckboxIcon from 'components/CheckboxIcon';
 import Icon from 'components/Icon';
-// import countryCodes from 'utils/countryCodes';
+import Notice from 'components/Notice';
 import messages from './messages';
 import SaveAddress from './SaveAddress';
 import { getStreet, getBuildingNumber } from './helpers';
@@ -171,7 +171,6 @@ class AddAddress extends React.Component {
       lat: geometry.location.lat(),
       lng: geometry.location.lng(),
       description,
-      // mobile: `${countryCodes[0][1].label}${this.phoneRef.current.value}`,
       mobile: this.phoneRef.current.value,
       street: getStreet(selectedPlace),
       building_number: getBuildingNumber(selectedPlace),
@@ -182,7 +181,7 @@ class AddAddress extends React.Component {
   };
 
   render() {
-    const { address, phone, disabledTypes, onLocateMeClick } = this.props;
+    const { address, phone, disabledTypes, hasNoAddress } = this.props;
     const { locationName, description } = this.state;
     const mobile = address.mobile || (phone || '').substr(4);
     const isCreate = !address.id;
@@ -192,7 +191,9 @@ class AddAddress extends React.Component {
         title={intl.formatMessage(
           messages[`${isCreate ? 'create' : 'update'}Title`],
         )}
-        subtitle={isCreate ? intl.formatMessage(messages.subtitle) : ''}
+        subtitle={
+          isCreate && hasNoAddress ? intl.formatMessage(messages.subtitle) : ''
+        }
         isMobileFullscreen
       >
         <Container>
@@ -209,7 +210,7 @@ class AddAddress extends React.Component {
             name="gps"
             size={22}
             css={locateMeStyle}
-            onClick={onLocateMeClick}
+            onClick={this.props.onLocateMeClick}
           />
           <ZoomCtrl>
             <ZoomBtn onClick={() => this.handleZoomChange(1)}>+</ZoomBtn>
@@ -217,6 +218,12 @@ class AddAddress extends React.Component {
             <ZoomBtn onClick={() => this.handleZoomChange(-1)}>-</ZoomBtn>
           </ZoomCtrl>
           <Content>
+            {this.props.hasNoEligible ? (
+              <Notice
+                message={intl.formatMessage(messages.noEligibleAddr)}
+                type="error"
+              />
+            ) : null}
             <InputsContainer>
               <Desc>
                 <TextField
@@ -256,7 +263,12 @@ class AddAddress extends React.Component {
               disabledTypes={disabledTypes}
             />
           </Content>
-          <Button primary size="xl" onClick={this.handleSubmit}>
+          <Button
+            primary
+            size="xl"
+            style={{ flexShrink: 0 }}
+            onClick={this.handleSubmit}
+          >
             {intl.formatMessage(messages.set)}
           </Button>
         </Container>
@@ -269,6 +281,8 @@ AddAddress.propTypes = {
   phone: PropTypes.string,
   address: PropTypes.object,
   disabledTypes: PropTypes.array,
+  hasNoEligible: PropTypes.bool,
+  hasNoAddress: PropTypes.bool,
   location: PropTypes.object,
   onLocateMeClick: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
