@@ -31,7 +31,7 @@ export default defineMessages({
   },
   set: {
     id: 'app.components.AddAddress.set',
-    defaultMessage: 'Set address',
+    defaultMessage: 'Set Address',
   },
   name: {
     id: 'app.components.AddAddress.name',

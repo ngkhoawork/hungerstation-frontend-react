@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import Input from '@material-ui/core/Input';
 import { flex, mediaMedium } from 'utils/css/styles';
 import {
   maxModalWidth,
@@ -32,20 +33,26 @@ export const markerStyle = {
   left: `calc(50% - ${locationBigIconSize}/2)`,
 };
 
-export const locationInputStyle = {
-  width: '70%',
-  position: 'absolute',
-  top: 20,
-  left: '15%',
-  background: 'white',
-  padding: '0 30px 0 10px',
-};
+export const StyledInput = styled(Input)`
+  position: absolute !important;
+  width: 70%;
+  top: 20px;
+  left: 15%;
+  background: white;
+  padding: 0 30px 0 10px;
+  ${mediaMedium`
+    width: 100%;
+    left: 0;
+  `};
+`;
 
-export const locateMeStyle = {
-  position: 'absolute',
-  top: 25,
-  right: 'calc(15% + 5px)',
-};
+export const locateMeStyle = css`
+  position: absolute;
+  top: 25px;
+  right: calc(15% + 5px);
+
+  ${mediaMedium`right: 5px;`};
+`;
 
 export const Content = styled.div`
   overflow-y: auto;
@@ -54,13 +61,17 @@ export const Content = styled.div`
   padding-right: 10px;
 `;
 
-export const Row = styled.div`
+export const InputsContainer = styled.div`
   ${flex({})};
+
+  ${mediaMedium`flex-direction: column`};
 `;
 
 export const Desc = styled.div`
   width: 50%;
   margin-right: 20px;
+
+  ${mediaMedium`width: 100%`};
 `;
 
 export const ZoomCtrl = styled.div`

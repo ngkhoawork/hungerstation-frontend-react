@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import TextField from '@material-ui/core/TextField';
-import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import intl from 'utils/intlService';
 import { clearUndefs } from 'utils/helpers';
@@ -19,10 +18,10 @@ import {
   Container,
   Map,
   markerStyle,
-  locationInputStyle,
+  StyledInput,
   locateMeStyle,
   Content,
-  Row,
+  InputsContainer,
   Desc,
   ZoomCtrl,
   ZoomBorder,
@@ -194,22 +193,22 @@ class AddAddress extends React.Component {
           messages[`${isCreate ? 'create' : 'update'}Title`],
         )}
         subtitle={isCreate ? intl.formatMessage(messages.subtitle) : ''}
+        isMobileFullscreen
       >
         <Container>
           <Map id={mapId} />
           <Icon name="location-big" style={markerStyle} />
-          <Input
+          <StyledInput
             type="text"
             id={autocompleteId}
             inputRef={this.locationRef}
-            style={locationInputStyle}
             value={locationName}
             onChange={this.handleLocationInputChange}
           />
           <Icon
             name="gps"
             size={22}
-            style={locateMeStyle}
+            css={locateMeStyle}
             onClick={onLocateMeClick}
           />
           <ZoomCtrl>
@@ -218,7 +217,7 @@ class AddAddress extends React.Component {
             <ZoomBtn onClick={() => this.handleZoomChange(-1)}>-</ZoomBtn>
           </ZoomCtrl>
           <Content>
-            <Row>
+            <InputsContainer>
               <Desc>
                 <TextField
                   type="text"
@@ -250,7 +249,7 @@ class AddAddress extends React.Component {
                   style: { marginBottom: 5 },
                 }}
               />
-            </Row>
+            </InputsContainer>
             <SaveAddress
               ref={this.saveAddressRef}
               address={address}

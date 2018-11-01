@@ -119,7 +119,7 @@
   "app.components.AddAddress.phone": "Phone",
   "app.components.AddAddress.number": "Number",
   "app.components.AddAddress.save": "Save address",
-  "app.components.AddAddress.set": "Set address",
+  "app.components.AddAddress.set": "Set Address",
   "app.components.AddAddress.name": "Location name",
   "app.components.SearchBar.city": "Enter city",
   "app.components.SearchBar.district": "Enter District",
