@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { flexBox, mediaSmall } from 'utils/css/styles';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
+import { alabaster } from './colors';
+import { zIndexDisabledOverlay } from './variables';
 
 export const CenteredContent = styled.div`
   ${flexBox(
@@ -48,4 +50,16 @@ export const StyledLink = styled(Link)`
   color: ${({ color }) => color};
   text-decoration: none;
   margin: 0;
+`;
+
+export const DisabledOverlay = styled.div`
+  background-color: ${alabaster};
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: initial;
+  z-index: ${zIndexDisabledOverlay};
 `;

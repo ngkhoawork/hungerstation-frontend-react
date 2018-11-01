@@ -18,4 +18,5 @@ export const stepIndent = '210px';
 export const addressIndent = '90px';
 
 export const zIndexDropdown = 700;
+export const zIndexDisabledOverlay = 800;
 export const zIndexModal = 1000;

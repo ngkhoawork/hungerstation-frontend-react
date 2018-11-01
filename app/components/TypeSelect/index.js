@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from 'components/Icon';
-import { Container, Type, Name, DisabledOverlay } from './StyledComponents';
+import { DisabledOverlay } from 'utils/css/styledComponents';
+import { Container, Type, Name } from './StyledComponents';
 
 const getKey = ({ id, key }) => {
   if (id !== undefined) return 'id';
