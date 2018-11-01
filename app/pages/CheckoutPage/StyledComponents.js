@@ -36,5 +36,8 @@ export const LeftSide = styled.div`
 export const RightSide = styled.div`
   margin: 0 20px;
 
-  ${mediaMedium`display: none;`};
+  ${mediaMedium`
+    margin: 20px 0;
+    width: 100%;
+  `};
 `;

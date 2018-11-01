@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import intl from 'utils/intlService';
+import { mediaMedium } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyLight } from 'utils/css/variables';
 import OrderElement from './OrderElement';
@@ -19,6 +20,8 @@ const Wrapper = styled.section`
   box-shadow: 0 0 35px 5px rgba(183, 157, 157, 0.1);
   flex: 0 0 353px;
   max-width: 353px;
+
+  ${mediaMedium`width: 100%; max-width: 100%;`};
 `;
 
 const Title = styled.div`
