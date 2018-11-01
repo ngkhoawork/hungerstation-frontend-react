@@ -44,6 +44,8 @@ class AddAddressContainer extends React.Component {
         address={address}
         disabledTypes={disabledTypes}
         location={latLng}
+        hasNoEligible={!addresses.length}
+        hasNoAddress={!addresses.length}
         onLocateMeClick={this.props.getCurrentLocationAction}
         onSubmit={this.handleAddAddressSubmit}
       />
