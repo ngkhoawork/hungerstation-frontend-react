@@ -77,6 +77,7 @@ export const mediaSmall = mediaLess(560);
 export const mediaMedium = mediaLess(850);
 export const mediaMediumGreater = mediaGreater(849);
 export const mediaLarge = mediaLess(1130);
+export const mediaLargeGreater = mediaGreater(1129);
 
 export const getDisplayProp = isModalOpened =>
   !isModalOpened &&
