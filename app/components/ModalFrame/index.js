@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { flex } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
+import {
+  maxModalWidth,
+  maxModalHeight,
+  borderRadius,
+} from 'utils/css/variables';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import { Title, Description } from 'components/Typography';
 
-const ModalFrame = ({ title, subtitle, onCancel, children, style }) => (
-  <Container style={style}>
+const ModalFrame = ({ title, subtitle, onCancel, children, ...props }) => (
+  <Container {...props}>
     <Header>
       <Title>{title}</Title>
       <Description style={{ margin: 3 }}>{subtitle}</Description>
@@ -35,9 +40,19 @@ ModalFrame.propTypes = {
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  isFullscreen: PropTypes.bool,
+  isMobileFullscreen: PropTypes.bool,
 };
 
 export default ModalFrame;
+
+const fullscreen = css`
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+`;
 
 const Container = styled.div`
   position: relative;
@@ -45,6 +60,12 @@ const Container = styled.div`
   background: white;
   width: max-content;
   ${flex({ direction: 'column' })};
+  max-width: ${maxModalWidth};
+  max-height: ${maxModalHeight};
+  border-radius: ${borderRadius};
+
+  ${({ isFullscreen }) => isFullscreen && fullscreen};
+  ${({ isMobileFullscreen }) => isMobileFullscreen && mediaMedium(fullscreen)};
 
   ${({ style }) => style && css(style)};
 `;
