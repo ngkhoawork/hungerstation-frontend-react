@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { flex, borderBottom } from 'utils/css/styles';
+import {
+  flex,
+  borderBottom,
+  mediaMedium,
+  mediaMediumGreater,
+} from 'utils/css/styles';
 import { stepIndent } from 'utils/css/variables';
 import { fuscousGray, silverChalice } from 'utils/css/colors';
 import intl from 'utils/intlService';
@@ -44,12 +49,19 @@ const Header = styled.div`
   ${flex({ align: 'center' })};
   ${borderBottom};
   padding: 30px 0;
+
+  ${mediaMedium`
+    flex-direction: column;
+    align-items: flex-start;
+  `};
 `;
 
 const Index = styled.span`
   width: ${stepIndent};
   font-size: 14px;
   line-height: 1;
+
+  ${mediaMedium`margin-bottom: 5px;`};
 `;
 
 const StepNo = styled.span`
@@ -61,5 +73,9 @@ const StepCount = styled.span`
 `;
 
 const Content = styled.div`
-  padding: 30px 0 30px ${stepIndent};
+  padding: 30px 0;
+
+  ${mediaMediumGreater`
+    padding-left: ${stepIndent};
+  `};
 `;
