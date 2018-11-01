@@ -1,4 +1,4 @@
-const MIN_ORDER_RANGE = { min: 0, max: 500 };
+const MIN_ORDER_RANGE = { min: 0, max: 300 };
 const TIME_ESTIMATION_RANGE = { min: 0, max: 120 };
 
 const RESTAURANT_DELIVERY = 'restaurant_delivery';
