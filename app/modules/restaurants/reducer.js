@@ -1,4 +1,5 @@
 import { fromJS, List } from 'immutable';
+import { maxBy } from 'lodash';
 import {
   updateRestaurantsListing,
   updateVisibleRestaurantsAction,
@@ -32,6 +33,10 @@ const INITIAL_CHOSEN_FILTERS_STATE = {
 export const initialState = fromJS({
   restaurants: [],
   visibleRestaurantsIds: [],
+  minOrderRange: {
+    min: 0,
+    max: 500,
+  },
   filters: {
     kitchens: [],
     delivery_options: [],
@@ -44,8 +49,16 @@ export const initialState = fromJS({
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case updateRestaurantsListing.type:
-      return state.set('restaurants', List(action.payload.restaurants));
+    case updateRestaurantsListing.type: {
+      const max = maxBy(action.payload.restaurants, 'minOrder');
+      return state
+        .set('restaurants', List(action.payload.restaurants))
+        .updateIn(['minOrderRange', 'max'], () => (max ? max.minOrder : 0))
+        .updateIn(
+          ['chosenFilters', 'min_order'],
+          () => (max ? max.minOrder : 0),
+        );
+    }
 
     case updateVisibleRestaurantsAction.type:
       return state.set('visibleRestaurantsIds', action.payload);

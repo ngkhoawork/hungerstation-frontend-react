@@ -2,14 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {
-  MIN_ORDER_RANGE,
-  // TIME_ESTIMATION_RANGE,
-} from 'modules/restaurants/constants';
 import { changeOrderFilterAction } from 'modules/restaurants/actions';
 import {
   selectChosenDeliveryTime,
   selectChosenMinOrder,
+  selectMinOrderRange,
 } from 'modules/restaurants/selectors';
 
 import CategoryTitle from '../CategoryTitle';
@@ -20,6 +17,7 @@ const decorate = connect(
   state => ({
     chosenDeliveryTime: selectChosenDeliveryTime(state),
     chosenMinOrder: selectChosenMinOrder(state),
+    minOrderRange: selectMinOrderRange(state),
   }),
   { changeOrderFilterAction },
 );
@@ -29,12 +27,13 @@ const Orders = ({
   // chosenDeliveryTime,
   chosenMinOrder,
   changeOrderFilterAction,
+  minOrderRange,
 }) => (
   <StyledFiltersCategoryWrapper>
     {title && <CategoryTitle title={title} withoutQuantity />}
     <OrderItem
       label="Minimum order"
-      range={MIN_ORDER_RANGE}
+      range={minOrderRange}
       filterKey="min_order"
       toggleFilterAction={changeOrderFilterAction}
       value={chosenMinOrder}
@@ -53,6 +52,10 @@ Orders.propTypes = {
   title: PropTypes.string,
   // chosenDeliveryTime: PropTypes.number,
   chosenMinOrder: PropTypes.number,
+  minOrderRange: PropTypes.shape({
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+  }),
   changeOrderFilterAction: PropTypes.func,
 };
 

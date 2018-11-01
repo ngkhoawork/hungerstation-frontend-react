@@ -23,6 +23,11 @@ const selectVisibleRestaurantsIds = createSelector(
   restaurantsState => restaurantsState.get('visibleRestaurantsIds'),
 );
 
+export const selectMinOrderRange = createSelector(
+  selectRestaurantDomain,
+  restaurantsState => restaurantsState.get('minOrderRange').toJS(),
+);
+
 export const selectVisibleRestaurants = createSelector(
   selectRestaurants,
   selectVisibleRestaurantsIds,
