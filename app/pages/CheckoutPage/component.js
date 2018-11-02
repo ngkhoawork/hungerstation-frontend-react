@@ -5,8 +5,11 @@ import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import CartContainer from 'containers/CartContainer';
 import AddressesContainer from 'containers/AddressesContainer';
 import DeliveryOptionsContainer from 'containers/DeliveryOptionsContainer';
+import PaymentOptionsContainer from 'containers/PaymentOptionsContainer';
 import Back from 'containers/Back';
 import Step from 'components/Step';
+import Note from 'components/Note';
+import { border } from 'utils/css/variables';
 import messages from './messages';
 import {
   Container,
@@ -26,8 +29,9 @@ const CheckoutPage = ({ isLoading }) => {
         <DeliveryOptionsContainer />
       </Step>
       <Step stepNo={3} stepCount={3} title={intl.formatMessage(messages.step3)}>
-        <div>Step 3</div>
+        <PaymentOptionsContainer />
       </Step>
+      <Note style={{ borderTop: border, padding: '20px 0' }} />
     </React.Fragment>
   );
 
