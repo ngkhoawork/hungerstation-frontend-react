@@ -10,6 +10,7 @@ const Title = styled.div`
   line-height: 1;
 
   ${({ style }) => style && css(style)};
+  ${({ css }) => css};
 `;
 
 export default Title;
