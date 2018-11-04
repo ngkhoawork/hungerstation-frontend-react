@@ -30,16 +30,20 @@ class RestaurantPage extends React.Component {
   constructor(props) {
     super(props);
 
-    const { menuGroups } = props.restaurant;
+    const { menuGroups, id } = props.restaurant;
     this.state = {
+      restaurantId: id, // eslint-disable-line react/no-unused-state
       selectedMenuGroup: menuGroups && menuGroups[0],
       totalOrder: {},
     };
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.restaurant.menuGroups && !state.selectedMenuGroup) {
-      return { selectedMenuGroup: props.restaurant.menuGroups[0] };
+  static getDerivedStateFromProps({ restaurant }, { restaurantId }) {
+    if (restaurant.id !== restaurantId) {
+      return {
+        selectedMenuGroup: restaurant.menuGroups[0],
+        restaurantId: restaurant.id,
+      };
     }
 
     return null;
@@ -80,7 +84,8 @@ class RestaurantPage extends React.Component {
   };
 
   renderContent = () => {
-    const { menuItems, menuGroups, ...info } = this.props.restaurant;
+    const { cartItems, restaurant } = this.props;
+    const { menuItems, menuGroups, ...info } = restaurant;
     const { selectedMenuGroup, totalOrder } = this.state;
     const shownProducts = menuItems.filter(
       ({ menuGroupId }) => menuGroupId === parseInt(selectedMenuGroup.id, 10),
@@ -111,6 +116,7 @@ class RestaurantPage extends React.Component {
           </StyledProductTypes>
           <RestaurantProducts
             products={shownProducts}
+            cartProducts={cartItems}
             onProductClick={this.handleAddClick}
           />
         </ProductsContainer>
@@ -125,7 +131,7 @@ class RestaurantPage extends React.Component {
   };
 
   render() {
-    const { menuItems } = this.props.restaurant;
+    const { isLoading } = this.props;
 
     return (
       <StyledPage>
@@ -134,7 +140,7 @@ class RestaurantPage extends React.Component {
         </NavHeader>
         <ContentContainer>
           <LeftSide>
-            {menuItems ? this.renderContent() : <Loading>Loading...</Loading>}
+            {isLoading ? <Loading>Loading...</Loading> : this.renderContent()}
           </LeftSide>
           <RightSide>
             <CartContainer />
@@ -146,6 +152,8 @@ class RestaurantPage extends React.Component {
 }
 
 RestaurantPage.propTypes = {
+  isLoading: PropTypes.bool,
+  cartItems: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
   onAddToCart: PropTypes.func.isRequired,
   onShowModal: PropTypes.func.isRequired,
