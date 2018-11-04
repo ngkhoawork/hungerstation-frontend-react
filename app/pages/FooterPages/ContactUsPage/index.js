@@ -14,7 +14,7 @@ import {
   Wrapper,
   BottomSide,
   UpperSide,
-  Descreption,
+  Description,
   ContactUs,
 } from './StyledComponents';
 
@@ -24,9 +24,9 @@ const ContactUsPage = () => (
     <Wrapper>
       <UpperSide>
         <MapHS />
-        <Descreption>
+        <Description>
           <LocationInformation />
-        </Descreption>
+        </Description>
       </UpperSide>
 
       <BottomSide>

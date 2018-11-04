@@ -40,25 +40,23 @@ const RestaurantsSection = () => {
 export default RestaurantsSection;
 
 const Wrapper = styled.div`
-  ${flexBox(
-    {
-      align: 'flex-start',
-      justify: 'flex-start',
-      direction: 'column',
-    },
-    `
   width: 912px;
   overflow: visible;
   position: relative;
-`,
-  )};
+  ${flexBox({
+    align: 'flex-start',
+    justify: 'flex-start',
+    direction: 'column',
+  })};
+
   ${mediaLess(1000)`
-  flex: 1;
-`};
+    flex: 1;
+  `};
+
   ${mediaLess(600)`
-  padding: 0;
-  width:100%
-`};
+    padding: 0;
+    width:100%
+  `};
 `;
 
 const BriefFiltersWrapper = styled.div`

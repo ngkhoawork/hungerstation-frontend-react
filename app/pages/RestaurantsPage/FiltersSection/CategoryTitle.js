@@ -8,8 +8,23 @@ import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
 import Group from 'components/Group';
 
+const StyledTitle = styled.div`
+  width: 100%;
+  ${flexBox({ align: 'center', justify: 'space-between' })};
+`;
+
+const Wrapper = styled.div`
+  ${flexBox({ align: 'flex-start', direction: 'column' })};
+  width: 100%;
+  margin: 20px 0;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+`;
+
 const CategoryTitle = ({ title, selectionQuantity, withoutQuantity = false }) =>
-  title ? (
+  title && (
     <Wrapper>
       <StyledTitle>
         <Group>
@@ -26,7 +41,7 @@ const CategoryTitle = ({ title, selectionQuantity, withoutQuantity = false }) =>
         </Group>
       </StyledTitle>
     </Wrapper>
-  ) : null;
+  );
 
 CategoryTitle.propTypes = {
   title: PropTypes.string,
@@ -35,25 +50,3 @@ CategoryTitle.propTypes = {
 };
 
 export default CategoryTitle;
-
-const StyledTitle = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'space-between' },
-    `
-    width: 100%;
-  `,
-  )};
-`;
-
-const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'flex-start', direction: 'column' },
-    `
-    width: 100%;
-    margin: 20px 0;
-  `,
-  )};
-  &:last-of-type {
-    border-bottom: 0;
-  }
-`;

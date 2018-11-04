@@ -17,13 +17,8 @@ const Back = () => (
 export default Back;
 
 const BackIcon = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'center' },
-    `
-
-    margin-top: 16px
-  `,
-  )};
+  margin-top: 16px;
+  ${flexBox({ align: 'center', justify: 'center' })};
   height: 17px;
   width: 111px;
   color: #434340;

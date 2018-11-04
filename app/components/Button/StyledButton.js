@@ -6,7 +6,8 @@ import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import Spinner from 'components/Spinner/StyledSpinner';
 
 const StyledButton = styled.button`
-  ${flexBox({ align: 'center', justify: 'center' })} height: 100%;
+  ${flexBox({ align: 'center', justify: 'center' })};
+  height: 100%;
   width: ${({ inline }) => (inline ? 'auto' : '100%')};
   border-radius: ${borderRadius};
   background-color: ${({ primary, color }) => (primary ? gold : color)};

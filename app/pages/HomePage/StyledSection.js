@@ -4,6 +4,7 @@ import { flexBox } from 'utils/css/styles';
 
 const StyledSection = styled.div`
   ${flexBox({ direction: 'column' })};
+
   ${media.lessThan('850px')`
     width: 90%;
   `};

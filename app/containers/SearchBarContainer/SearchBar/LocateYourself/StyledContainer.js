@@ -5,6 +5,7 @@ const StyledContainer = styled.span`
   ${flexBox({ align: 'center' })};
   padding: 0 10px;
   cursor: pointer;
+
   ${mediaMedium`
     position: absolute;
     right: 5%;

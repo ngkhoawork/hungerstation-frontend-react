@@ -10,9 +10,21 @@ import { saveFiltersStageAction } from 'modules/restaurants/actions';
 import { selectChosenTagsArray } from 'modules/restaurants/selectors';
 import { toggleModal } from 'hocs/withModal/actions';
 
-import Tags, { TagsTiltle } from '../FiltersSection/Tags';
+import Tags from '../FiltersSection/Tags';
+import TagsTitle from '../FiltersSection/Tags/TagsTitle';
 import Header from '../FiltersSection/Header';
 import messages from './messages';
+
+const MoreFiltersWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+`;
+
+const TagsWrapper = styled.div`
+  border-bottom: 1px solid ${wildSand};
+  padding-bottom: 24px;
+`;
 
 const decorate = connect(
   state => ({ chosenTags: selectChosenTagsArray(state) }),
@@ -27,7 +39,7 @@ const BriefFiltersSection = ({
   <React.Fragment>
     <Header withClear />
     <TagsWrapper>
-      <TagsTiltle selectionQuantity={chosenTags.length} />
+      <TagsTitle selectionQuantity={chosenTags.length} />
       <Tags />
     </TagsWrapper>
     <MoreFiltersWrapper
@@ -44,21 +56,10 @@ const BriefFiltersSection = ({
   </React.Fragment>
 );
 
-export default decorate(BriefFiltersSection);
-
 BriefFiltersSection.propTypes = {
   toggleModal: PropTypes.func,
   saveFiltersStageAction: PropTypes.func,
   chosenTags: PropTypes.array,
 };
 
-const MoreFiltersWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 24px;
-`;
-
-const TagsWrapper = styled.div`
-  border-bottom: 1px solid ${wildSand};
-  padding-bottom: 24px;
-`;
+export default decorate(BriefFiltersSection);

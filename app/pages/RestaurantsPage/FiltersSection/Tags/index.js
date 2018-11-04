@@ -13,6 +13,19 @@ import {
 
 import Paragraph from 'components/Paragraph';
 
+const StyledTag = styled.span`
+  ${flexBox({ align: 'flex-start' })};
+  margin-right: 8px;
+  border-radius: 8px;
+  padding: 3px 8px 4px;
+  background-color: ${({ isSelected }) => (isSelected ? gold : wildSand)};
+`;
+
+const StyledTagsContainer = styled.div`
+  ${flexBox({ align: 'flex-start' })};
+  flex-wrap: wrap;
+`;
+
 const decorate = connect(
   state => ({
     filters: selectFilters(state),
@@ -69,26 +82,4 @@ Tags.propTypes = {
   toggleFilterAction: func,
 };
 
-export TagsTiltle from './TagsTitle';
 export default decorate(Tags);
-
-const StyledTag = styled.span`
-  ${flexBox(
-    { align: 'flex-start' },
-    `
-    margin-right: 8px;
-    border-radius: 8px;
-    padding: 3px 8px 4px;
-  `,
-  )};
-  background-color: ${({ isSelected }) => (isSelected ? gold : wildSand)};
-`;
-
-const StyledTagsContainer = styled.div`
-  ${flexBox(
-    { align: 'flex-start' },
-    `
-    flex-wrap: wrap
-  `,
-  )};
-`;

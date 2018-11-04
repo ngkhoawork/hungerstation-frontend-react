@@ -2,56 +2,41 @@ import styled from 'styled-components';
 import { flexBox, mediaLess } from 'utils/css/styles';
 
 export const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'flex-start', justify: 'space-between' },
-    `
+  ${flexBox({ align: 'flex-start', justify: 'space-between' })};
   width: 100%;
   background-color: #ffffff;
+  padding-top: 6%;
   padding-bottom: 100px;
-  padding-top: 100px;
   flex-flow: row;
   flex-wrap: wrap;
-  padding-top: 6%;
-`,
-  )};
 
-  ${mediaLess(1250)`
-`};
   ${mediaLess(600)`
-  padding: 20px;
-`};
+    padding: 20px;
+  `};
 `;
 
 export const UpperSide = styled.div`
-  ${flexBox(
-    { align: 'flex-start', justify: 'space-between' },
-    `
   width: 100%;
   height: 100%;
-  `,
-  )};
+  ${flexBox({ align: 'flex-start', justify: 'space-between' })};
+
   ${mediaLess(600)`
     padding: 20px;
-    
   `};
 `;
 
 export const BottomSide = styled.div`
-  ${flexBox(
-    { align: 'flex-start', justify: 'space-between' },
-    `
-padding-top: 12%;
-`,
-  )};
+  padding-top: 12%;
+  ${flexBox({ align: 'flex-start', justify: 'space-between' })};
 `;
 
-export const Descreption = styled.div`
+export const Description = styled.div`
   padding-left: 4%;
-  z-index: 2 ${mediaLess(600)`
+  z-index: 2;
+  ${mediaLess(600)`
     padding-top: 75%;
-    
   `};
 `;
 export const ContactUs = styled.div`
-  //  padding-left: 300px;
+  ${'' /* padding-left: 300px; */};
 `;

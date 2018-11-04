@@ -11,6 +11,6 @@ const TagsTitle = ({ selectionQuantity }) => (
   />
 );
 
-export default TagsTitle;
-
 TagsTitle.propTypes = { selectionQuantity: number };
+
+export default TagsTitle;

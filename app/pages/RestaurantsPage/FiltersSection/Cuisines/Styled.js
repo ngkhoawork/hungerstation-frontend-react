@@ -3,10 +3,12 @@ import { wildSand } from 'utils/css/colors';
 import { flexBox } from 'utils/css/styles';
 
 const StyledExpandActionWrapper = styled.div`
-  ${flexBox({ align: 'center' })} padding-top: 20px;
+  ${flexBox({ align: 'center' })};
+  padding-top: 20px;
   border-top: 1px solid ${wildSand};
   width: 100%;
   cursor: pointer;
+
   img {
     margin: 0 0 0 10px;
     transform: rotate(${({ isExpanded }) => (isExpanded ? 180 : 0)}deg);

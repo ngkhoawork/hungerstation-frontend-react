@@ -3,17 +3,14 @@ import { flexBox, mediaSmall } from 'utils/css/styles';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
 import { alabaster } from './colors';
-import { zIndexDisabledOverlay } from './variables';
+import { zIndexDisabledOverlay, fontFamilyRegular } from './variables';
 
 export const CenteredContent = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'space-evenly' },
-    `
-      > * {
-        margin: 0 8px;
-      }
-    `,
-  )};
+  ${flexBox({ align: 'center', justify: 'space-evenly' })};
+
+  > * {
+    margin: 0 8px;
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -32,7 +29,7 @@ export const StyledPage = styled.div`
     justify: 'flex-start',
   })};
 
-  font-family: 'HungerStation-Regular', sans-serif;
+  font-family: ${fontFamilyRegular};
   padding: 57px;
   background-color: #fff;
   border-radius: 8px;

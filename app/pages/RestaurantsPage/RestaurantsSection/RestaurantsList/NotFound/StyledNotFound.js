@@ -4,18 +4,16 @@ import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon/StyledIcon';
 
 const StyledRestaurantList = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'center', direction: 'column' },
-    `
-    flex-wrap: wrap;
-    width: 100%;
-    height: 50vh;
-  `,
-  )};
+  ${flexBox({ align: 'center', justify: 'center', direction: 'column' })};
+  flex-wrap: wrap;
+  width: 100%;
+  height: 50vh;
   position: relative;
+
   ${mediaLess(1250)`
     justify: center;
   `};
+
   ${mediaLess(600)`
     flex-wrap: nowrap;
     padding: 20px;

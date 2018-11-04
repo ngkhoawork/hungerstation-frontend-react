@@ -36,15 +36,12 @@ const StyledLocation = styled.a`
 `;
 
 const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'center' },
-    `
-    height: 35px;
-    padding: 0 15px;
-    min-width: 350px;
-    margin-right: 22%
-  `,
-  )};
+  height: 35px;
+  padding: 0 15px;
+  min-width: 350px;
+  margin-right: 22%;
+  ${flexBox({ align: 'center' })};
+
   img {
     margin-top: 5px;
   }

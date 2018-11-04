@@ -7,9 +7,8 @@ import BackgroundMobile from 'images/background-small.png';
 import BackgroundMedium from 'images/background-medium.png';
 
 const StyledUpperSection = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'center', direction: 'column' },
-    `
+  ${flexBox({ align: 'center', justify: 'center', direction: 'column' })};
+
   border-radius: 8px;
   margin-top: 8px;
   width: 100%;
@@ -17,14 +16,14 @@ const StyledUpperSection = styled.div`
   background-position-x: center;
   background-position-y: -2px;
   background-image: url(${BackgroundCropped});
-  `,
-  )};
+
   ${mediaMedium`
     background-image: url(${BackgroundMedium});
     padding-bottom: 20px;
     background-position-y: bottom;
     background-color: ${paleSlate};
   `};
+
   ${mediaSmall`
     background-image: url(${BackgroundMobile});
     background-size: 100%;

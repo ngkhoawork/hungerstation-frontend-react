@@ -10,6 +10,40 @@ import Tags from 'pages/RestaurantsPage/FiltersSection/Tags';
 import Icon from 'components/Icon';
 import SearchInput from './SearchInput';
 
+const StyledTool = styled.div`
+  display: flex;
+  width: 360px;
+`;
+
+const StyledToolUndisplayedInMobile = styled(StyledTool)`
+  width: auto;
+
+  ${mediaLess(600)`
+    display: none;
+  `};
+`;
+
+const IconPositioning = styled.div`
+  position: absolute;
+  top: 30px;
+
+  ${mediaLess(600)`
+    top: 44px;
+  `};
+`;
+
+const Wrapper = styled.div`
+  ${flexBox({ align: 'center', justify: 'space-between' })};
+  width: 100%;
+  padding-top: 20px;
+  margin-bottom: 50px;
+  border-top: 1px solid ${wildSand};
+
+  ${mediaLess(600)`
+    margin-bottom: 10px;
+  `};
+`;
+
 const decorate = connect(
   state => ({ search: selectSearchString(state) }),
   { searchRestaurantAction },
@@ -31,46 +65,10 @@ const ToolsPanel = ({ hasData, searchRestaurantAction, search }) => (
   </Wrapper>
 );
 
-export default decorate(ToolsPanel);
-
 ToolsPanel.propTypes = {
   hasData: PropTypes.bool,
   search: PropTypes.string,
   searchRestaurantAction: PropTypes.func.isRequired,
 };
 
-const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'space-between' },
-    `
-    width: 100%;
-    padding-top: 20px;
-    margin-bottom: 50px;
-    border-top: 1px solid ${wildSand};
-  `,
-  )};
-  ${mediaLess(600)`
-    margin-bottom: 10px;
-  `};
-`;
-
-const StyledTool = styled.div`
-  display: flex;
-  width: 360px;
-`;
-
-const StyledToolUndisplayedInMobile = styled(StyledTool)`
-  ${mediaLess(600)`
-    display: none;
-  `};
-  width: auto;
-`;
-
-const IconPositioning = styled.div`
-  position: absolute;
-  top: 30px;
-
-  ${mediaLess(600)`
-  top: 44px;
-`};
-`;
+export default decorate(ToolsPanel);

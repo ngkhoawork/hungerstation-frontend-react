@@ -39,10 +39,9 @@ RestaurantsHeader.propTypes = {
 export default decorate(RestaurantsHeader);
 
 const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'space-between' },
-    `width: 100%; margin-bottom: 10px;`,
-  )};
+  ${flexBox({ align: 'center', justify: 'space-between' })};
+  width: 100%;
+  margin-bottom: 10px;
 
   ${mediaLess(600)`
     align-items: flex-start;

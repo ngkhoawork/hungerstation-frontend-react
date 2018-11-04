@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { flexBox, mediaLess } from 'utils/css/styles';
 
 const ButtonWrapper = styled.div`
-  ${flexBox({ align: 'center', justify: 'center' })} position: absolute;
+  ${flexBox({ align: 'center', justify: 'center' })};
+  position: absolute;
   top: 135px;
   right: -5px !important;
   cursor: pointer;

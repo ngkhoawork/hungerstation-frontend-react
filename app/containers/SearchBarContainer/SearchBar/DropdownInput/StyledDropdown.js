@@ -4,24 +4,22 @@ import { flexBox } from 'utils/css/styles';
 import { searchBarHeight } from '../StyledComponents';
 
 const StyledDropdown = styled.span`
-  ${flexBox(
-    { align: 'center', justify: 'flex-start' },
-    `
-      height: 100%;
-      width: 100%;
-      cursor: pointer;
-    `,
-  )};
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  ${flexBox({ align: 'center', justify: 'flex-start' })};
+
   ${media.lessThan('850px')`
     height: ${searchBarHeight};
     border: 1px solid lightgrey;
     border-radius: 8px;
     width: 100%;
     margin-bottom: 20px;
+    background-color: white;
+
     &:first-of-type {
       margin-left: 0;
     }
-    background-color: white;
   `};
 `;
 

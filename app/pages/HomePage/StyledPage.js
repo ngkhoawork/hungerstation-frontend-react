@@ -8,6 +8,7 @@ const StyledPage = styled.div`
   max-width: 1446px;
   width: 100%;
   ${flexBox({ align: 'center', justify: 'center', direction: 'column' })};
+
   ${mediaMedium`
     padding: 0 10px;
   `};

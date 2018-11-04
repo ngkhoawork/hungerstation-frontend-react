@@ -16,28 +16,22 @@ const ContentWrapper = styled.div`
 `;
 
 const StyledFiltersCategoryWrapper = styled.div`
-  ${flexBox(
-    { align: 'flex-start', direction: 'column' },
-    `
-    width: 100%;
-    margin-bottom: 24px;
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  `,
-  )};
+  ${flexBox({ align: 'flex-start', direction: 'column' })};
+  width: 100%;
+  margin-bottom: 24px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
 const StyledItem = styled.div`
-  ${flexBox(
-    { align: 'center', justify: 'space-between' },
-    `
-    height: 42px;
-    border-radius: 8px;
-    width: 100%;
-    padding: 8px;
-  `,
-  )};
+  ${flexBox({ align: 'center', justify: 'space-between' })};
+  height: 42px;
+  border-radius: 8px;
+  width: 100%;
+  padding: 8px;
+
   ${({ selected }) => selected && `background-color: rgba(66,66,66,0.05);`}
   ${({ isPreviousSelected }) =>
     isPreviousSelected &&
@@ -48,6 +42,7 @@ const StyledItem = styled.div`
 
   border-bottom: ${({ hasBorder }) =>
     hasBorder ? `1px solid ${wildSand}` : 'none'};
+
   &:last-of-type {
     border: 0;
   }

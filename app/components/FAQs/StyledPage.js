@@ -5,34 +5,26 @@ import { fontFamilyRegular } from 'utils/css/variables';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
-  ${flexBox(
-    { align: 'flex-start', justify: 'space-between' },
-    `
-      width: 100%;
-      background-color: #ffffff;
-      padding-bottom: 100px;
-      padding-top: 100px;
-      flex-wrap: wrap;
-    `,
-  )};
+  width: 100%;
+  background-color: #ffffff;
+  padding-bottom: 100px;
+  padding-top: 100px;
+  flex-wrap: wrap;
+  ${flexBox({ align: 'flex-start', justify: 'space-between' })};
   ${mediaLess(600)`
     padding: 10px;
   `};
 `;
 
 export const MenuBar = styled.div`
-  ${flexBox(
-    { align: 'flex-start', justify: 'center', direction: 'column' },
-    `
-      margin-top: 43px;
-      display: flex;
-      flex-direction: column;
-      padding-top: 160px;
-      flex: unset;
-      margin-right: 30px;
-      width: 170px;
-    `,
-  )};
+  margin-top: 43px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 160px;
+  flex: unset;
+  margin-right: 30px;
+  width: 170px;
+  ${flexBox({ align: 'flex-start', justify: 'center', direction: 'column' })};
   ${mediaMedium`
     display: none;
   `};
@@ -53,18 +45,20 @@ export const MenuItem = styled.div`
 `;
 
 export const MiddleSection = styled.div`
-  ${flexBox(
-    { align: 'flex-start', justify: 'flex-start', direction: 'column' },
-    `
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-    `,
-  )};
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  ${flexBox({
+    align: 'flex-start',
+    justify: 'flex-start',
+    direction: 'column',
+  })};
+
   ${mediaLess(1000)`
     flex: 1;
     display: block;
   `};
+
   ${mediaLess(600)`
     padding: 10px;
     width: 100%;
@@ -103,6 +97,7 @@ export const StyledLink = styled(Link)`
   ${mediaLess(1080)`
     flex: 0 1 30%;
   `};
+
   ${mediaMedium`
     margin-bottom: 5px;
   `};
