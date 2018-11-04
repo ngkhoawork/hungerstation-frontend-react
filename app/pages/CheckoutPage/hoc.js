@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { getStorageItem } from 'utils/localStorage';
 import { saveCurrentLocationAction } from 'modules/location/actions';
 import { fetchAddresses } from 'modules/address/actions';
 import {
@@ -10,19 +11,27 @@ import {
 } from 'modules/address/selectors';
 import { selectRestaurantCoords } from 'modules/restaurant/selectors';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
+import { initCart } from 'containers/CartContainer/actions';
 import AddAddressContainer from 'containers/AddAddressContainer';
 import IneligibleAddress from 'components/IneligibleAddress';
 import CheckoutPage from './component';
 
 class CheckoutPageHOC extends React.Component {
   componentDidMount() {
-    const { restaurantCoords } = this.props;
+    const {
+      restaurantCoords,
+      match: {
+        params: { branchId },
+      },
+    } = this.props;
 
     if (restaurantCoords.lat) {
       this.props.saveCurrentLocationAction(restaurantCoords);
     }
 
     this.props.fetchAddresses(this.props.match.params.branchId);
+
+    if (getStorageItem('branchId') === branchId) this.props.initCart();
   }
 
   componentDidUpdate(prevProps) {
@@ -31,7 +40,7 @@ class CheckoutPageHOC extends React.Component {
       (!prevProps.addresses && addresses && !addresses.length) ||
       (prevProps.isLoadingAddresses && !isLoadingAddresses && !addresses.length)
     ) {
-      // this.props.showModal(AddAddressContainer);
+      this.props.showModal(AddAddressContainer);
     }
   }
 
@@ -78,6 +87,7 @@ CheckoutPageHOC.propTypes = {
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   saveCurrentLocationAction: PropTypes.func.isRequired,
+  initCart: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -86,5 +96,5 @@ export default connect(
     isLoadingAddresses: selectAddressesLoading,
     restaurantCoords: selectRestaurantCoords,
   }),
-  { showModal, hideModal, fetchAddresses, saveCurrentLocationAction },
+  { showModal, hideModal, fetchAddresses, saveCurrentLocationAction, initCart },
 )(CheckoutPageHOC);
