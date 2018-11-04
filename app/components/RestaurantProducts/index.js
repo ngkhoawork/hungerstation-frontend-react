@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
 import Icon from 'components/Icon';
 import Price from 'components/Price';
+import { Title } from 'components/Typography';
 import messages from './messages';
 import {
   List,
   Item,
   ContentContainer,
   Content,
-  Title,
+  TitleContainer,
+  titleIconStyle,
+  titleStyle,
   Description,
   Img,
   PriceContainer,
@@ -30,7 +33,7 @@ const renderFooter = price => (
   </Fragment>
 );
 
-const RestaurantProducts = ({ products, onProductClick }) => (
+const RestaurantProducts = ({ products, cartProducts, onProductClick }) => (
   <List>
     {products.map(product => (
       <Item key={product.id} onClick={() => onProductClick(product)}>
@@ -38,7 +41,12 @@ const RestaurantProducts = ({ products, onProductClick }) => (
           <Img image={product.image} />
           <Content>
             <div>
-              <Title>{product.name}</Title>
+              <TitleContainer>
+                {cartProducts.find(({ id }) => id === product.id) ? (
+                  <Icon name="vegan" size={18} css={titleIconStyle} />
+                ) : null}
+                <Title css={titleStyle}>{product.name}</Title>
+              </TitleContainer>
               <Description>{product.description}</Description>
             </div>
             <Footer>{renderFooter(product.price)}</Footer>
@@ -50,16 +58,17 @@ const RestaurantProducts = ({ products, onProductClick }) => (
   </List>
 );
 
+const RestaurantProductPropType = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  price: PropTypes.number,
+});
+
 RestaurantProducts.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string,
-      image: PropTypes.string,
-      price: PropTypes.number,
-    }),
-  ).isRequired,
+  products: PropTypes.arrayOf(RestaurantProductPropType).isRequired,
+  cartProducts: PropTypes.arrayOf(RestaurantProductPropType).isRequired,
   onProductClick: PropTypes.func.isRequired,
 };
 

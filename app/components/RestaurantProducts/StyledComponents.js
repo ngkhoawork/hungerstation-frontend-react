@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import imgPlaceholder from 'images/burger-icon.png';
 import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
-import { lightGray, silverChalice, fuscousGray } from 'utils/css/colors';
+import { lightGray, silverChalice } from 'utils/css/colors';
 
 export const List = styled.div`
   width: 100%;
@@ -48,13 +48,17 @@ export const Content = styled.div`
   flex-grow: 1;
 `;
 
-export const Title = styled.div`
-  height: 16px;
-  color: ${fuscousGray};
-  font-family: ${fontFamilyRegular};
-  font-size: 18px;
-  line-height: 16px;
+export const TitleContainer = styled.div`
+  ${flex({ align: 'center' })};
   margin-bottom: 10px;
+`;
+
+export const titleIconStyle = css`
+  margin-right: 10px;
+`;
+
+export const titleStyle = css`
+  font-size: 18px;
 `;
 
 export const Description = styled.div`
