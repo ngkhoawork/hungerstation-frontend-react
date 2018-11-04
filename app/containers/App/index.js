@@ -27,6 +27,7 @@ import RegistrationPage from 'pages/RegistrationPage/Loadable';
 import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
 import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
 import FAQsPage from 'pages/FooterPages/FAQsPage/Loadable';
+import ContactUsPage from 'pages/FooterPages/ContactUsPage/Loadable';
 
 import UserProfile from 'components/UserProfile';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
@@ -96,6 +97,7 @@ export default class App extends Component {
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
           <Route exact path="/faqs" component={FAQsPage} />
+          <Route path="/contactus" component={ContactUsPage} />
 
           <Redirect from="*" to="/" />
         </Switch>
