@@ -5,11 +5,10 @@ import Icon from 'components/Icon';
 import { mediaMedium } from 'utils/css/styles';
 
 export const IconContainer = styled.span`
-  display: inline-block;
+  display: none;
   position: relative;
   transform: rotate(${({ isOpen }) => (isOpen ? 180 : 0)}deg);
   top: ${({ isOpen }) => (isOpen ? -1 : 0)}px;
-  display: none;
 
   ${mediaMedium`
   display: block;

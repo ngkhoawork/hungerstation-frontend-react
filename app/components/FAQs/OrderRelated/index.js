@@ -3,17 +3,17 @@ import { FormattedMessage } from 'react-intl';
 
 import TextItem from 'components/TextItem';
 import DropDownMobile from '../Mobile/DropDownMobile';
-import { Line, Answer, HeaderWraper } from '../StyledComponents';
+import { Line, Answer, HeaderWrapper } from '../StyledComponents';
 
 import messages from './messages';
 
 const OrderRelated = () => (
   <div>
-    <HeaderWraper>
+    <HeaderWrapper>
       <TextItem size={24} fontFamily="regular">
         <FormattedMessage {...messages.Title} />
       </TextItem>
-    </HeaderWraper>
+    </HeaderWrapper>
 
     <TextItem size={16} fontFamily="regular">
       <DropDownMobile

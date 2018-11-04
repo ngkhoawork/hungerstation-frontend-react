@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { flexBox, mediaMedium, mediaLess } from 'utils/css/styles';
+import { fontFamilyRegular } from 'utils/css/variables';
+
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
@@ -13,8 +15,6 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
   `,
   )};
-  ${mediaLess(1250)`
-  `};
   ${mediaLess(600)`
     padding: 10px;
   `};
@@ -24,7 +24,7 @@ export const MenuBar = styled.div`
   ${flexBox(
     { align: 'flex-start', justify: 'center', direction: 'column' },
     `
-    margin-top: 43px; 
+    margin-top: 43px;
     display: flex;
     flex-direction: column;
     padding-top: 160px;
@@ -35,9 +35,9 @@ export const MenuBar = styled.div`
   )};
   ${mediaMedium`
     display: none;
-    
   `};
 `;
+
 export const MenuItem = styled.div`
   display: block;
   text-decoration: none;
@@ -71,7 +71,7 @@ export const MiddleSection = styled.div`
 `};
   ${mediaLess(600)`
   padding: 10px;
-  width:100%  
+  width:100%
   display: inline;
 `};
 `;
@@ -81,7 +81,7 @@ export const Title = styled.div`
   white-space: pre-wrap;
   ${mediaMedium`
     padding-left: 25px;
-    
+
   `};
 `;
 export const SubTitle = styled.div`
@@ -89,7 +89,7 @@ export const SubTitle = styled.div`
   width: 470px;
   opacity: 0.6;
   color: #6f6e6b;
-  font-family: HungerStation;
+  font-family: ${fontFamilyRegular};
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.5px;
@@ -119,17 +119,17 @@ export const MenuBarMobile = styled.div`
     flex: 0 1 30%;
   `};
   ${mediaMedium`
-    
+
     display: block;
     border-color: lightGray;
     border-radius: 8px;
     background: #ffff;
     border-style: solid;
     border-width: 1px;
-    font-family= regular; 
+    font-family= regular;
     padding: 1px 10px;
     margin-bottom: 20px
-    
+
 
   `};
 `;

@@ -2,18 +2,18 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import TextItem from 'components/TextItem';
-import { Answer, HeaderWraper } from '../StyledComponents';
+import { Answer, HeaderWrapper } from '../StyledComponents';
 import DropDownMobile from '../Mobile/DropDownMobile';
 
 import messages from './messages';
 
 const Technical = () => (
   <div>
-    <HeaderWraper>
+    <HeaderWrapper>
       <TextItem size={24} fontFamily="regular">
         <FormattedMessage {...messages.Title} />
       </TextItem>
-    </HeaderWraper>
+    </HeaderWrapper>
     <br />
     <TextItem size={16} fontFamily="regular">
       <DropDownMobile

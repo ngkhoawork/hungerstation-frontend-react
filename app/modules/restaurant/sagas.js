@@ -62,7 +62,7 @@ export function* fetchRestaurantSaga({ payload: id }) {
     yield put(fetchRestaurantSuccess({ restaurant }));
   } catch (e) {
     yield put(fetchRestaurantError());
-    console.log(e);
+    throw e;
   }
 }
 
