@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { gold } from 'utils/css/colors';
 import { flex, mediaSmall, mediaMedium, mediaLess } from 'utils/css/styles';
-import { pageOffsetX, maxPageWidth } from 'utils/css/variables';
+import { headerHeight, pageOffsetX, maxPageWidth } from 'utils/css/variables';
 
 const StyledHeader = styled.div`
   ${props => props.gold && `background-color: ${gold};`};
   display: flex;
   width: 100%;
-  height: 100px;
+  height: ${headerHeight};
   font-family: 'HungerStation-Regular', sans-serif;
   z-index: 100;
   max-width: ${maxPageWidth};

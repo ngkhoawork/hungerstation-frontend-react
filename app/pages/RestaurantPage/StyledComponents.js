@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {
+  navHeaderHeight,
   maxPageWidth,
   pageOffsetX,
   mobPageOffsetX,
@@ -24,7 +25,7 @@ export const StyledPage = styled.div`
 `;
 
 export const NavHeader = styled.div`
-  height: 46px;
+  height: ${navHeaderHeight};
   padding: 0 ${pageOffsetX};
   ${flex({ align: 'center' })};
 
@@ -102,7 +103,12 @@ export const StyledProductTypes = styled.div`
   width: 140px;
   flex-shrink: 0;
 
-  ${mediaMediumGreater`margin-right: 20px;`};
+  ${mediaMediumGreater`
+    margin-right: 20px;
+    position: sticky;
+    top: 10px;
+    align-self: flex-start;
+  `};
 
   ${mediaMedium`
     width: 100%;
