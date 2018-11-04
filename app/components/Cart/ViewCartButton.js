@@ -15,7 +15,12 @@ import messages from './messages';
 const ViewCartButton = ({ isCheckout, quantity, price }) => (
   <ButtonWrapper>
     <Link to={isCheckout ? '/payment' : `${getPathname()}/checkout`}>
-      <Button primary={false} color={isCheckout ? jade : alabaster} size="xl">
+      <Button
+        primary={false}
+        color={isCheckout ? jade : alabaster}
+        size="xl"
+        style={{ whiteSpace: 'nowrap' }}
+      >
         <Content>
           <LeftSide>
             {quantity !== undefined ? (
