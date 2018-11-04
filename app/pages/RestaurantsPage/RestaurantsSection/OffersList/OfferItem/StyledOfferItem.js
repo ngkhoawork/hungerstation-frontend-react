@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess } from 'utils/css/styles';
 import Desert from 'images/desert.png';
 
 const StyledOfferItem = styled.div`
-  ${flexBox({
+  ${flex({
     justify: 'space-between',
     direction: 'column',
   })};

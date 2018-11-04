@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 import Paragraph from 'components/Paragraph';
 
 const StyledDropdown = styled.div`
   height: 40px;
   border-radius: 8px;
   width: 100%;
-  ${flexBox({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'center', justify: 'space-between' })};
 
   & > ${Paragraph} {
     margin: 0 15px 0 10px;

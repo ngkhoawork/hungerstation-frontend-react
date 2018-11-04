@@ -1,18 +1,17 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium, mediaSmall } from 'utils/css/styles';
+import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
 
 const StyledSection = styled.div`
-  ${flexBox({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'center', justify: 'space-between' })};
   padding: 0 113px 48px;
 
   ${mediaMedium`
-    flex-direction: column;
-    align-items: flex-start;
+    ${flex({ align: 'flex-start', direction: 'column' }, false)};
     padding: 30px 113px 10px;
   `};
 
   ${mediaSmall`
-    align-items: flex-start;
+    ${flex({ align: 'flex-start' }, false)};
     padding: 20px 40px;
   `};
 `;

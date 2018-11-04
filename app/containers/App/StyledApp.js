@@ -1,15 +1,17 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/css/styles';
+
+import { fontFamilyRegular } from 'utils/css/variables';
+import { flex } from 'utils/css/styles';
 import { alabaster } from 'utils/css/colors';
 
 const StyledApp = styled.div`
-  ${flexBox({
+  ${flex({
     align: 'center',
     direction: 'column',
     justify: 'flex-start',
   })};
   background-color: ${({ dark }) => (dark ? alabaster : 'white')};
-  font-family: 'HungerStation-Regular', sans-serif;
+  font-family: ${fontFamilyRegular};
 `;
 
 export default StyledApp;

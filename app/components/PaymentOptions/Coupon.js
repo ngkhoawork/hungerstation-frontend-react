@@ -13,11 +13,10 @@ import { Title } from 'components/Typography';
 import messages from './messages';
 
 const Container = styled.div`
-  ${flex({ align: 'center' })};
+  ${flex({ align: 'center', wrap: 'wrap' })};
   padding: 20px;
   border-radius: ${borderRadius};
   border: ${border};
-  flex-wrap: wrap;
 
   ${mediaMedium`
     ${flex({ direction: 'column', align: 'flex-start' })};
@@ -26,19 +25,18 @@ const Container = styled.div`
 
 const LeftSide = styled.div`
   width: ${addressIndent};
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
   margin: 0 10px 15px;
 
   ${mediaMedium`width: 100%; margin: 0 0 10px 0;`};
 `;
 
 const Content = styled.div`
-  ${flex({ align: 'center' })};
-  flex-grow: 1;
+  ${flex({ align: 'center', grow: 1 })};
 
   ${mediaMedium`
-    ${flex({ direction: 'column', align: 'flex-end' })};
     width: 100%;
+    ${flex({ direction: 'column', align: 'flex-end' })};
   `};
 `;
 

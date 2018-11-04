@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { flexBox, mediaSmall } from 'utils/css/styles';
+import { flex, mediaSmall } from 'utils/css/styles';
 import PhoneVisual from 'images/phone-visual.png';
 import PhoneVisualSmall from 'images/phone-visual-small.png';
 import { wildSand } from 'utils/css/colors';
 
 const StyledSection = styled.div`
-  ${flexBox({ align: 'flex-start', justify: 'center' })};
+  ${flex({ align: 'flex-start', justify: 'center' })};
 
   width: 100%;
   border-radius: 8px;
@@ -36,8 +36,7 @@ const StyledSection = styled.div`
   `};
 
   ${mediaSmall`
-    flex-direction: column;
-    align-items: center;
+    ${flex({ align: 'center', direction: 'column' }, false)};
   ${({ hasBackground }) =>
     hasBackground &&
     `

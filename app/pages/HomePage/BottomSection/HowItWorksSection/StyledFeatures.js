@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium, mediaSmall } from 'utils/css/styles';
+import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
 
 const StyledFeatures = styled.div`
-  ${flexBox({ justify: 'center' }, `margin: 0 10% 20px`)};
+  ${flex({ justify: 'center' })};
+  margin: 0 10% 20px;
 
   ${mediaMedium`
-    flex-direction: column;
-    align-items: center;
+    ${flex({ align: 'center', direction: 'column' }, false)};
   `};
+
   ${mediaSmall`
     margin: 0 20px;
   `};

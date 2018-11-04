@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { flexBox, mediaSmall } from 'utils/css/styles';
+import { flex, mediaSmall } from 'utils/css/styles';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
 import { alabaster } from './colors';
 import { zIndexDisabledOverlay, fontFamilyRegular } from './variables';
 
 export const CenteredContent = styled.div`
-  ${flexBox({ align: 'center', justify: 'space-evenly' })};
+  ${flex({ align: 'center', justify: 'space-evenly' })};
 
   > * {
     margin: 0 8px;
@@ -23,7 +23,7 @@ export const StyledForm = styled.form`
 export const StyledFieldWrapper = Field;
 
 export const StyledPage = styled.div`
-  ${flexBox({
+  ${flex({
     align: 'center',
     direction: 'column',
     justify: 'flex-start',

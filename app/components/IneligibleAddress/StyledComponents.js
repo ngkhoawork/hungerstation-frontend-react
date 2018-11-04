@@ -9,15 +9,14 @@ export const Content = styled.div`
 `;
 
 export const Footer = styled.div`
-  ${flex({ justify: 'center' })};
-  flex-wrap: wrap;
+  ${flex({ justify: 'center', wrap: 'wrap' })};
 
   button {
     margin: 5px 10px 10px;
   }
 
   ${mediaMedium`
-    flex-direction: column;
+    ${flex({ direction: 'column' }, false)};
     align-items: center;
   `};
 `;

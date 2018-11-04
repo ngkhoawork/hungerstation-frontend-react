@@ -39,13 +39,12 @@ export const Img = styled.div`
   background-image: url(${({ image }) => image || imgPlaceholder});
   background-size: contain;
   background-position: center;
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
 `;
 
 export const Content = styled.div`
   margin-left: 30px;
-  ${flex({ direction: 'column', justify: 'space-between' })};
-  flex-grow: 1;
+  ${flex({ direction: 'column', justify: 'space-between', grow: 1 })};
 `;
 
 export const TitleContainer = styled.div`
@@ -95,11 +94,12 @@ export const MobileFooter = styled.div`
     margin-top: 20px;
   `};
 
-  ${mediaMediumGreater`display: none;`};
+  ${mediaMediumGreater`
+    display: none;
+  `};
 `;
 
 export const AddBtn = styled.div`
-  ${flex({ align: 'center' })};
+  ${flex({ align: 'center', shrink: 0 })};
   line-height: 1;
-  flex-shrink: 0;
 `;

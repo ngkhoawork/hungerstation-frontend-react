@@ -19,7 +19,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
   ${borderBottom};
   margin-right: 20px;
 `;
@@ -46,16 +46,14 @@ export const CloseBtnStyle = {
 };
 
 export const Content = styled.div`
-  ${flex({ direction: 'column' })};
+  ${flex({ direction: 'column', grow: 1 })};
   overflow-y: auto;
-  flex-grow: 1;
   margin: 20px 0;
   padding-right: 10px;
 `;
 
 export const Footer = styled.div`
-  flex-shrink: 0;
-  ${flex({ justify: 'space-between' })};
+  ${flex({ justify: 'space-between', shrink: 0 })};
 `;
 
 export const FooterRightSide = styled.div`

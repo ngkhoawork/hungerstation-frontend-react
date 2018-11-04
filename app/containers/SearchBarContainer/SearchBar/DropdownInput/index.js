@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { withStyles } from '@material-ui/core/styles';
-import Autocompleter from 'components/Autocompleter';
+
+import AutoCompleter from 'components/AutoCompleter';
 
 import styles from './styles';
 import StyledDropdown from './StyledDropdown';
 
-const HomePageAutocomplete = withStyles(styles)(Autocompleter);
+const HomePageAutocomplete = withStyles(styles)(AutoCompleter);
 
 const DropdownInput = ({
   iconName,

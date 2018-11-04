@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 
 const ContentWrapper = styled.div`
@@ -9,14 +9,15 @@ const ContentWrapper = styled.div`
     width: 0px;
     background: transparent;
   }
+
   ${mediaLess(600)`
-  height: calc(100% - 176px);
-  border-bottom: 1px solid ${wildSand};
+    height: calc(100% - 176px);
+    border-bottom: 1px solid ${wildSand};
   `};
 `;
 
 const StyledFiltersCategoryWrapper = styled.div`
-  ${flexBox({ align: 'flex-start', direction: 'column' })};
+  ${flex({ align: 'flex-start', direction: 'column' })};
   width: 100%;
   margin-bottom: 24px;
 
@@ -26,7 +27,7 @@ const StyledFiltersCategoryWrapper = styled.div`
 `;
 
 const StyledItem = styled.div`
-  ${flexBox({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'center', justify: 'space-between' })};
   height: 42px;
   border-radius: 8px;
   width: 100%;

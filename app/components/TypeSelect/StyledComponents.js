@@ -4,12 +4,12 @@ import { fuscousGray, silverChalice, alabaster } from 'utils/css/colors';
 import { borderRadius } from 'utils/css/variables';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  flex-wrap: wrap;
+  ${flex({ direction: 'column', wrap: 'wrap' })};
 
-  ${mediaMedium`flex-direction: row;`};
+  ${mediaMedium`
+    ${flex({ direction: 'row' }, false)};
+  `};
 
   ${({ style }) => style && css(style)};
 `;
@@ -26,7 +26,9 @@ export const Type = styled.span`
   cursor: pointer;
   line-height: 1;
 
-  ${mediaMedium`margin-right: 10px;`};
+  ${mediaMedium`
+    margin-right: 10px;
+  `};
 
   ${({ active }) =>
     active &&

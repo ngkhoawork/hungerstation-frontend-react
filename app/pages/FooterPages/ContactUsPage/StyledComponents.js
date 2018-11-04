@@ -1,14 +1,17 @@
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess } from 'utils/css/styles';
 
 export const Wrapper = styled.div`
-  ${flexBox({ align: 'flex-start', justify: 'space-between' })};
   width: 100%;
   background-color: #ffffff;
   padding-top: 6%;
   padding-bottom: 100px;
-  flex-flow: row;
-  flex-wrap: wrap;
+  ${flex({
+    direction: 'row',
+    align: 'flex-start',
+    justify: 'space-between',
+    wrap: 'wrap',
+  })};
 
   ${mediaLess(600)`
     padding: 20px;
@@ -18,7 +21,7 @@ export const Wrapper = styled.div`
 export const UpperSide = styled.div`
   width: 100%;
   height: 100%;
-  ${flexBox({ align: 'flex-start', justify: 'space-between' })};
+  ${flex({ align: 'flex-start', justify: 'space-between' })};
 
   ${mediaLess(600)`
     padding: 20px;
@@ -27,7 +30,7 @@ export const UpperSide = styled.div`
 
 export const BottomSide = styled.div`
   padding-top: 12%;
-  ${flexBox({ align: 'flex-start', justify: 'space-between' })};
+  ${flex({ align: 'flex-start', justify: 'space-between' })};
 `;
 
 export const Description = styled.div`

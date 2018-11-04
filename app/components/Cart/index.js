@@ -46,7 +46,7 @@ const From = styled.div`
 `;
 
 const Unshrinkable = styled.div`
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
 `;
 
 const Items = styled.div`

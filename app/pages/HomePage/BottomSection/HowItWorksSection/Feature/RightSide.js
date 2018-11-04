@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
+import { flex } from 'utils/css/styles';
+
 const RightSide = styled.span`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  ${flex({ justify: 'flex-start', direction: 'column' })};
 `;
 
 export default RightSide;

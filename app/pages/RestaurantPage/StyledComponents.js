@@ -21,7 +21,9 @@ export const StyledPage = styled.div`
   max-width: ${maxPageWidth};
   margin-bottom: 60px;
 
-  ${mediaMedium`max-width: 100%;`};
+  ${mediaMedium`
+    max-width: 100%;
+  `};
 `;
 
 export const NavHeader = styled.div`
@@ -29,12 +31,13 @@ export const NavHeader = styled.div`
   padding: 0 ${pageOffsetX};
   ${flex({ align: 'center' })};
 
-  ${mediaMedium`padding: ${mobPageOffsetX};`};
+  ${mediaMedium`
+    padding: ${mobPageOffsetX};
+  `};
 `;
 
 export const ContentContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
+  ${flex({ align: 'flex-start' })};
 `;
 
 export const Loading = styled.div`
@@ -44,7 +47,7 @@ export const Loading = styled.div`
 `;
 
 export const LeftSide = styled.div`
-  flex-grow: 1;
+  ${flex({ grow: 1 }, false)};
   max-width: 100%;
 `;
 
@@ -53,7 +56,9 @@ export const RightSide = styled.div`
   position: sticky;
   top: 0;
 
-  ${mediaMedium`display: none;`};
+  ${mediaMedium`
+    display: none;
+  `};
 `;
 
 export const Header = styled.div`
@@ -71,9 +76,13 @@ export const Header = styled.div`
     background-size: cover;
   `};
 
-  ${device.retina`background-image: url(${restaurantImg2x});`};
+  ${device.retina`
+    background-image: url(${restaurantImg2x});
+  `};
 
-  ${device.retina3x`background-image: url(${restaurantImg3x});`};
+  ${device.retina3x`
+    background-image: url(${restaurantImg3x});
+  `};
 `;
 
 export const RestaurantInfoContainer = styled.div`
@@ -91,17 +100,17 @@ export const RestaurantInfoContainer = styled.div`
 
 export const ProductsContainer = styled.div`
   padding: 40px 0 0 ${pageOffsetX};
-  display: flex;
+  ${flex()};
 
   ${mediaMedium`
     padding: 40px ${mobPageOffsetX} 0;
-    flex-direction: column;
+    ${flex({ direction: 'column' }, false)};
   `};
 `;
 
 export const StyledProductTypes = styled.div`
   width: 140px;
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
 
   ${mediaMediumGreater`
     margin-right: 20px;

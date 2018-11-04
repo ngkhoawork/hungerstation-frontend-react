@@ -8,8 +8,7 @@ import Icon from 'components/Icon';
 import { Title } from 'components/Typography';
 
 const Container = styled.div`
-  ${flex({ align: 'center' })};
-  flex-wrap: wrap;
+  ${flex({ align: 'center', wrap: 'wrap' })};
   padding: 10px 20px;
   border-radius: ${borderRadius};
   border: ${border};
@@ -21,12 +20,11 @@ const Container = styled.div`
 
 const LeftSide = styled.div`
   padding: 20px;
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
 `;
 
 const Content = styled.div`
-  ${flex({ align: 'center' })};
-  flex-wrap: wrap;
+  ${flex({ align: 'center', wrap: 'wrap' })};
   font-size: 18px;
   letter-spacing: 0.25px;
 `;

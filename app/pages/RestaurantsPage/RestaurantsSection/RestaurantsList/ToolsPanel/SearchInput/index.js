@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 import { fontFamilyLight } from 'utils/css/variables';
 
 const StyledInput = styled.input`
-  ${flexBox({ align: 'flex-end', justify: 'center' })};
+  ${flex({ align: 'flex-end', justify: 'center' })};
   line-height: 30px;
   width: 100%;
   font-size: 16px;

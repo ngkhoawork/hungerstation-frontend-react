@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { gold } from 'utils/css/colors';
 import MuiRadio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+
+import { gold } from 'utils/css/colors';
+import { flex } from 'utils/css/styles';
 import FormControlLabel from './FormControlLabel';
 
 const Radio = styled(MuiRadio)`
@@ -12,7 +14,7 @@ const Radio = styled(MuiRadio)`
   height: 40px !important;
 
   span:first-child {
-    justify-content: flex-start;
+    ${flex({ justify: 'flex-start' }, false)};
   }
 `;
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { gold } from 'utils/css/colors';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
+
+import { gold } from 'utils/css/colors';
+import { flex } from 'utils/css/styles';
 import FormControlLabel from './FormControlLabel';
 
 const Checkbox = styled(MuiCheckbox)`
@@ -12,7 +14,7 @@ const Checkbox = styled(MuiCheckbox)`
   height: 40px !important;
 
   span:first-child {
-    justify-content: flex-start;
+    ${flex({ justify: 'flex-start' }, false)};
   }
 `;
 

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 
 const StyledLabel = styled.div`
-  ${flexBox({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'center', justify: 'space-between' })};
   width: 100%;
 `;
 

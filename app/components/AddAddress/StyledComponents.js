@@ -51,27 +51,33 @@ export const locateMeStyle = css`
   top: 25px;
   right: calc(15% + 5px);
 
-  ${mediaMedium`right: 5px;`};
+  ${mediaMedium`
+    right: 5px;
+  `};
 `;
 
 export const Content = styled.div`
   overflow-y: auto;
-  flex-grow: 1;
+  ${flex({ grow: 1 }, false)};
   margin-bottom: 20px;
   padding-right: 10px;
 `;
 
 export const InputsContainer = styled.div`
-  ${flex({})};
+  ${flex()};
 
-  ${mediaMedium`flex-direction: column`};
+  ${mediaMedium`
+    ${flex({ direction: 'column' }, false)};
+  `};
 `;
 
 export const Desc = styled.div`
   width: 50%;
   margin-right: 20px;
 
-  ${mediaMedium`width: 100%`};
+  ${mediaMedium`
+    width: 100%;
+  `};
 `;
 
 export const ZoomCtrl = styled.div`

@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { array, func, shape, string } from 'prop-types';
-import { flexBox } from 'utils/css/styles';
+
+import { flex } from 'utils/css/styles';
 import { silverChalice, gold, wildSand } from 'utils/css/colors';
 import { toggleFilterAction } from 'modules/restaurants/actions';
 import {
@@ -10,11 +11,10 @@ import {
   selectChosenTagsArray,
   selectChosenDeliveryOption,
 } from 'modules/restaurants/selectors';
-
 import Paragraph from 'components/Paragraph';
 
 const StyledTag = styled.span`
-  ${flexBox({ align: 'flex-start' })};
+  ${flex({ align: 'flex-start' })};
   margin-right: 8px;
   border-radius: 8px;
   padding: 3px 8px 4px;
@@ -22,8 +22,7 @@ const StyledTag = styled.span`
 `;
 
 const StyledTagsContainer = styled.div`
-  ${flexBox({ align: 'flex-start' })};
-  flex-wrap: wrap;
+  ${flex({ align: 'flex-start', wrap: 'wrap' })};
 `;
 
 const decorate = connect(

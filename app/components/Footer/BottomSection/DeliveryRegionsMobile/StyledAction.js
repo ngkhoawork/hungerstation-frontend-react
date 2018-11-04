@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 
 const StyledAction = styled.div`
-  ${flexBox({ align: 'center', justify: 'center' })};
+  ${flex({ align: 'center', justify: 'center' })};
   width: 100%;
   margin-bottom: 5px;
 

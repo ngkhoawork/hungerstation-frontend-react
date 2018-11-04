@@ -2,16 +2,46 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
+import { fontFamilyLight } from 'utils/css/variables';
 import { wildSand } from 'utils/css/colors';
+import { flex } from 'utils/css/styles';
 import intl from 'utils/intlService';
-
 import Paragraph from 'components/Paragraph';
-
 import { selectDynamicFilters } from 'modules/restaurants/selectors';
 import { resetChosenFiltersAction } from 'modules/restaurants/actions';
-
 import messages from './messages';
 import ClearAll from '../ClearAll';
+
+const Wrapper = styled.div`
+  border-bottom: 1px solid ${wildSand};
+`;
+
+const StyledHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding-bottom: 16px;
+  margin-top: 5px;
+`;
+
+const DynamicFiltersSection = styled.div`
+  ${flex({ warp: 'wrap' })};
+
+  padding-bottom: 16px;
+`;
+
+const FilterName = styled.span`
+  color: #6f6e6b;
+  font-family: ${fontFamilyLight};
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.44px;
+  line-height: 16px;
+  padding-right: 8px;
+`;
 
 const decorate = connect(
   state => ({
@@ -46,33 +76,3 @@ Header.propTypes = {
 };
 
 export default decorate(Header);
-
-const Wrapper = styled.div`
-  border-bottom: 1px solid ${wildSand};
-`;
-
-const StyledHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  width: 100%;
-  padding-bottom: 16px;
-  margin-top: 5px;
-`;
-
-const DynamicFiltersSection = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding-bottom: 16px;
-`;
-
-const FilterName = styled.span`
-  color: #6f6e6b;
-  font-family: 'HungerStation-Light', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 0.44px;
-  line-height: 16px;
-  padding-right: 8px;
-`;

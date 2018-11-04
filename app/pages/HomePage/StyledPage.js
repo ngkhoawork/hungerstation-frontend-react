@@ -1,13 +1,15 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium } from 'utils/css/styles';
+
+import { flex, mediaMedium } from 'utils/css/styles';
+import { fontFamilyRegular } from 'utils/css/variables';
 
 const StyledPage = styled.div`
   background: ${props => (props.dark ? '#f7f7f7' : '#ffffff')};
-  font-family: 'HungerStation-Regular', sans-serif;
+  font-family: ${fontFamilyRegular};
   z-index: 100;
   max-width: 1446px;
   width: 100%;
-  ${flexBox({ align: 'center', justify: 'center', direction: 'column' })};
+  ${flex({ align: 'center', justify: 'center', direction: 'column' })};
 
   ${mediaMedium`
     padding: 0 10px;

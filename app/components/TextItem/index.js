@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+
+import { fontFamilyRegular, fontFamilyLight } from 'utils/css/variables';
 import { mediaMedium } from 'utils/css/styles';
 
 const TextItem = styled.span`
@@ -9,9 +11,7 @@ const TextItem = styled.span`
   margin: ${({ margin }) => margin || 0};
   cursor: pointer;
   font-family: ${({ fontFamily }) =>
-    `HungerStation-${
-      fontFamily !== 'regular' ? 'Light' : 'Regular'
-    }, sans-serif`};
+    fontFamily === 'regular' ? fontFamilyRegular : fontFamilyLight};
 
   ${mediaMedium`
     width: 330px;

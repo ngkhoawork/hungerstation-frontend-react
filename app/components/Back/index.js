@@ -1,24 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Icon from 'components/Icon';
-import styled from 'styled-components';
-import { mediaMedium, mediaLess, flexBox } from 'utils/css/styles';
-
-const Back = () => (
-  <BackIcon>
-    <StyledLink to="/">
-      <Icon name="arrow-back" size={16} />
-      &nbsp;Back
-    </StyledLink>
-  </BackIcon>
-);
-
-export default Back;
+import { mediaMedium, mediaLess, flex } from 'utils/css/styles';
 
 const BackIcon = styled.div`
   margin-top: 16px;
-  ${flexBox({ align: 'center', justify: 'center' })};
+  ${flex({ align: 'center', justify: 'center' })};
   height: 17px;
   width: 111px;
   color: #434340;
@@ -40,3 +29,14 @@ const StyledLink = styled(Link)`
   color: black;
   text-decoration: none;
 `;
+
+const Back = () => (
+  <BackIcon>
+    <StyledLink to="/">
+      <Icon name="arrow-back" size={16} />
+      &nbsp;Back
+    </StyledLink>
+  </BackIcon>
+);
+
+export default Back;

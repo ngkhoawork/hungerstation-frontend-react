@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+
 import { ironsideGray } from 'utils/css/colors';
 import { mediaSmall } from 'utils/css/styles';
+import { fontFamilyLight } from 'utils/css/variables';
 
 const DetailsText = styled.p`
   color: ${ironsideGray};
-  font-family: 'HungerStation-Light', sans-serif;
+  font-family: ${fontFamilyLight};
   font-size: 16px;
   letter-spacing: 0.5px;
   margin: 24px 0 32px;

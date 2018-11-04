@@ -1,29 +1,26 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium, mediaSmall } from 'utils/css/styles';
+import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
 
 const StyledFeature = styled.span`
-  ${flexBox(
-    {},
-    `
-    width: 224px;
-    max-width: 224px;
-    position: relative;
-    margin-right: 192px;
+  ${flex()};
+  width: 224px;
+  max-width: 224px;
+  position: relative;
+  margin-right: 192px;
 
-  `,
-  )};
+  &:last-child {
+    margin-right: 0;
+  }
+
   ${mediaMedium`
     flex: 1;
     margin: 0 35px 0px 20px;
     margin-right: 0px;
   `};
-  ${mediaSmall`
-  margin: 0 0 0 72px;
-  `};
 
-  &:last-child {
-    margin-right: 0;
-  }
+  ${mediaSmall`
+    margin: 0 0 0 72px;
+  `};
 `;
 
 export const StyledFeatureIcon = styled.div`

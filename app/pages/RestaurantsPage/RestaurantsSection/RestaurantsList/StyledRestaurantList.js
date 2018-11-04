@@ -1,22 +1,22 @@
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess } from 'utils/css/styles';
 
 const StyledRestaurantList = styled.div`
-  flex-wrap: wrap;
   width: 100%;
   position: relative;
-  ${flexBox({
+  ${flex({
     align: 'flex-start',
     justify: 'space-between',
     direction: 'column',
+    wrap: 'wrap',
   })};
 
   ${mediaLess(1250)`
-    justify: flex-start;
+    ${flex({ justify: 'flex-start' }, false)}
   `};
 
   ${mediaLess(600)`
-    flex-wrap: nowrap;
+    ${flex({ wrap: 'nowrap' }, false)};
     padding: 20px;
     padding-left: 0;
   `};

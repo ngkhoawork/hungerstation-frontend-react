@@ -26,24 +26,19 @@ const styles = () => ({
   },
 });
 
-export const flex = ({ align, justify, direction }) => css`
-  display: flex;
-  ${align ? `align-items: ${align}` : 'stretch'};
-  ${justify ? `justify-content: ${justify}` : 'flex-start'};
-  ${direction ? `flex-direction: ${direction}` : 'row'};
+export const flex = (
+  { align, justify, direction, wrap, grow, shrink, basis },
+  display = true,
+) => css`
+  ${display && 'display: flex;'};
+  ${align && `align-items: ${align}`};
+  ${justify && `justify-content: ${justify}`};
+  ${direction && `flex-direction: ${direction}`};
+  ${wrap && `flex-wrap: ${wrap}`};
+  ${grow && `flex-grow: ${grow}`};
+  ${shrink && `flex-shrink: ${shrink}`};
+  ${basis && `flex-basis: ${basis}`};
 `;
-
-export const flexBox = ({ align, justify, direction }, ...args) => {
-  const flexProps = `
-    display: flex;
-    ${align ? `align-items: ${align}` : null};
-    ${justify ? `justify-content: ${justify}` : null};
-    ${direction ? `flex-direction: ${direction}` : 'row'};
-  `;
-  return css`
-    ${css(...flexProps, ...args)};
-  `;
-};
 
 const getMedia = dimension => size => (...args) => css`
   ${media[dimension](`${size}px`)`

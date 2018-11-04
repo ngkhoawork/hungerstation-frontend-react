@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { flexBox, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 import { searchRestaurantAction } from 'modules/restaurants/actions';
 import { selectSearchString } from 'modules/restaurants/selectors';
@@ -33,7 +33,7 @@ const IconPositioning = styled.div`
 `;
 
 const Wrapper = styled.div`
-  ${flexBox({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'center', justify: 'space-between' })};
   width: 100%;
   padding-top: 20px;
   margin-bottom: 50px;

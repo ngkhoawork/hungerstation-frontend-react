@@ -7,8 +7,7 @@ import { jade, lightGray, silverChalice, fuscousGray } from 'utils/css/colors';
 import OrderElementDelete from './OrderElementDelete';
 
 const Column = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${flex({ direction: 'column' })};
 `;
 
 const Wrapper = styled.div`

@@ -1,14 +1,12 @@
 import styled from 'styled-components';
-import { mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 
 const StyledContainer = styled.span`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   width: 100%;
+  ${flex({ justify: 'space-between', wrap: 'wrap' })};
 
   ${mediaMedium`
-    justify-content: flex-start;
+    ${flex({ justify: 'flex-start' }, false)};
   `};
 `;
 

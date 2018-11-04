@@ -1,14 +1,12 @@
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess } from 'utils/css/styles';
 
 const StyledList = styled.div`
   width: 912px;
-  flex-wrap: wrap;
-  ${flexBox({ align: 'flex-start' })};
+  ${flex({ align: 'flex-start', wrap: 'wrap' })};
 
   ${mediaLess(600)`
-    flex-direction: column;
-    align-items: center;
+    ${flex({ direction: 'column', align: 'center' }, false)};
     width: 100%;
 `};
 `;

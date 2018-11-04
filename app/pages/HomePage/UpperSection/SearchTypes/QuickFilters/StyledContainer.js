@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 import Paragraph from 'components/Paragraph';
 import StyledSearchType from '../StyledContainer';
 
 const StyledContainer = styled.div`
-  ${flexBox({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'center', justify: 'space-between' })};
 
   ${StyledSearchType} && {
     ${mediaMedium`

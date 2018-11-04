@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { jade } from 'utils/css/colors';
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
@@ -10,11 +10,11 @@ import Group from 'components/Group';
 
 const StyledTitle = styled.div`
   width: 100%;
-  ${flexBox({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'center', justify: 'space-between' })};
 `;
 
 const Wrapper = styled.div`
-  ${flexBox({ align: 'flex-start', direction: 'column' })};
+  ${flex({ align: 'flex-start', direction: 'column' })};
   width: 100%;
   margin: 20px 0;
 

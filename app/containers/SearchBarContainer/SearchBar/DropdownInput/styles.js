@@ -1,10 +1,12 @@
+import { fontFamilyRegular, fontFamilyLight } from 'utils/css/variables';
+
 export default () => ({
   icon: {
     margin: '0 8px',
   },
   input: {},
   inputRoot: {
-    fontFamily: `'HungerStation-Light', sans-serif`,
+    fontFamily: fontFamilyLight,
     flexWrap: 'wrap',
     margin: '0 8px',
   },
@@ -33,7 +35,7 @@ export default () => ({
     },
   },
   menuItem: {
-    fontFamily: `'HungerStation-Regular', sans-serif`,
+    fontFamily: fontFamilyRegular,
     '&:last-of-type': {
       borderBottomLeftRadius: '8px',
       borderBottomRightRadius: '8px',

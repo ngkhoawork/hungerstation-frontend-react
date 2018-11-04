@@ -121,18 +121,16 @@ const Container = styled.div`
 const LeftSide = styled.div`
   width: ${addressIndent};
   padding: 20px 20px 20px 40px;
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
 `;
 
 const Content = styled.div`
-  ${flex({ direction: 'column' })};
+  ${flex({ direction: 'column', grow: 1 })};
   font-size: 16px;
   line-height: 1;
   color: ${fuscousGray};
-  flex-grow: 1;
   margin-right: 10px;
 `;
-// overflow: hidden;
 
 const Name = styled.div`
   position: relative;

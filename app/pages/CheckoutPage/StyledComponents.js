@@ -20,7 +20,9 @@ export const NavHeader = styled.div`
   padding: 0 ${pageOffsetX};
   ${flex({ align: 'center' })};
 
-  ${mediaMedium`padding: ${mobPageOffsetX};`};
+  ${mediaMedium`
+    padding: ${mobPageOffsetX};
+  `};
 `;
 
 export const ContentContainer = styled.div`
@@ -29,12 +31,12 @@ export const ContentContainer = styled.div`
 
   ${mediaMedium`
     padding: 0 ${mobPageOffsetX};
-    flex-direction: column;
+    ${flex({ direction: 'column' }, false)};
   `};
 `;
 
 export const LeftSide = styled.div`
-  flex-grow: 1;
+  ${flex({ grow: 1 }, false)};
   width: 100%;
 `;
 

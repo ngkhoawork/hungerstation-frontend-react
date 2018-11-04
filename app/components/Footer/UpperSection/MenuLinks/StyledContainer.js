@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { mediaMedium, mediaLess } from 'utils/css/styles';
+import { flex, mediaMedium, mediaLess } from 'utils/css/styles';
 
 const StyledContainer = styled.div`
-  display: flex;
-  flex: 0.9;
-  justify-content: space-between;
+  ${flex({ grow: 0.9, justify: 'space-between' })};
+
   ${mediaLess(1080)`
-    flex-wrap: wrap;
+    ${flex({ wrap: 'wrap' }, false)};
   `};
+
   ${mediaMedium`
     margin-bottom: 20px;
   `};

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { flexBox, mediaGreater } from 'utils/css/styles';
+import { flex, mediaGreater } from 'utils/css/styles';
 
 import StyledSection from '../StyledSection';
 
 const StyledMobileSection = styled.div`
-  ${flexBox({
+  ${flex({
     align: 'flex-start',
     justify: 'flex-start',
     direction: 'column',

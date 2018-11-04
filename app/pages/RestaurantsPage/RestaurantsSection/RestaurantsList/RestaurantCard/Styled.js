@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { flexBox, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess } from 'utils/css/styles';
 import Figs from 'images/figs.png';
 import FigsMobile from 'images/figs-mobile.png';
 
 const StyledRestaurantCard = styled(Link)`
-  ${flexBox({
+  ${flex({
     align: 'center',
     justify: 'space-between',
     direction: 'column',
@@ -37,13 +37,13 @@ const StyledRestaurantCard = styled(Link)`
 `;
 
 const StyledUpperPart = styled.div`
-  ${flexBox({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'center', justify: 'space-between' })};
   width: 100%;
   flex: 0.4;
 `;
 
 const StyledBottomPart = styled.div`
-  ${flexBox({ align: 'flex-start', direction: 'column' })};
+  ${flex({ align: 'flex-start', direction: 'column' })};
   width: 100%;
   flex: 0.4;
 

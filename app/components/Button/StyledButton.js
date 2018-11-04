@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { gold, paleSlate } from 'utils/css/colors';
 import getImage from 'utils/css/images';
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import Spinner from 'components/Spinner/StyledSpinner';
 
 const StyledButton = styled.button`
-  ${flexBox({ align: 'center', justify: 'center' })};
+  ${flex({ align: 'center', justify: 'center' })};
   height: 100%;
   width: ${({ inline }) => (inline ? 'auto' : '100%')};
   border-radius: ${borderRadius};

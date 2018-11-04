@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import intl from 'utils/intlService';
 import { gold } from 'utils/css/colors';
+import { flex } from 'utils/css/styles';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';
@@ -107,8 +108,8 @@ MobileFiltersSection.propTypes = {
 };
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${flex({ direction: 'column' })};
+
   position: relative;
   height: 100vh;
 `;

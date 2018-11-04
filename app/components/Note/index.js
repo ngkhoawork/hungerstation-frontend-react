@@ -11,13 +11,15 @@ import messages from './messages';
 const Container = styled.div`
   ${flex({ align: 'center' })};
 
-  ${mediaMedium`${flex({ direction: 'column', align: 'flex-start' })};`};
+  ${mediaMedium`
+    ${flex({ direction: 'column', align: 'flex-start' }, false)};
+  `};
 
   ${({ style }) => style && css(style)};
 `;
 
 const Header = styled.div`
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
   width: ${stepIndent};
 `;
 

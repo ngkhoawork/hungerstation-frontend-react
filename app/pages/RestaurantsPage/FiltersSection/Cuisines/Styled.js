@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { wildSand } from 'utils/css/colors';
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 
 const StyledExpandActionWrapper = styled.div`
-  ${flexBox({ align: 'center' })};
+  ${flex({ align: 'center' })};
   padding-top: 20px;
   border-top: 1px solid ${wildSand};
   width: 100%;

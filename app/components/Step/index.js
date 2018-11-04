@@ -51,8 +51,7 @@ const Header = styled.div`
   padding: 30px 0;
 
   ${mediaMedium`
-    flex-direction: column;
-    align-items: flex-start;
+    ${flex({ align: 'flex-start', direction: 'column' }, false)};
   `};
 `;
 

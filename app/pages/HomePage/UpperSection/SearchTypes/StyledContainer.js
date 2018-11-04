@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 
 const StyledContainer = styled.div`
   margin: 0 12px;
-  ${flexBox({ align: 'center', justify: 'flex-end' })};
+  ${flex({ align: 'center', justify: 'flex-end' })};
 
   ${mediaMedium`
     justify-content: center;

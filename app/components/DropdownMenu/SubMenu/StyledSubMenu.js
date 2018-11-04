@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 
 const StyledSelect = styled.div`
   background-color: white;
@@ -9,7 +9,7 @@ const StyledSelect = styled.div`
   position: absolute;
   z-index: 1000;
   border-radius: 8px;
-  ${flexBox({ direction: 'column' })};
+  ${flex({ direction: 'column' })};
 `;
 
 export default StyledSelect;

@@ -15,7 +15,9 @@ import messages from './messages';
 const Options = styled.div`
   ${flex({})};
 
-  ${mediaMedium`flex-direction: column;`};
+  ${mediaMedium`
+    ${flex({ direction: 'column' })};
+  `};
 `;
 
 const DeliveryOption = styled.div`
@@ -42,15 +44,14 @@ const DeliveryOption = styled.div`
 
 const LeftSide = styled.div`
   padding: 20px;
-  flex-shrink: 0;
+  ${flex({ shrink: 0 }, false)};
 `;
 
 const Content = styled.div`
-  ${flex({ direction: 'column' })};
+  ${flex({ direction: 'column', grow: 1 })};
   font-size: 16px;
   line-height: 1;
   color: ${fuscousGray};
-  flex-grow: 1;
 `;
 
 const titleStyle = {

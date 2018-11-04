@@ -2,10 +2,36 @@ import React from 'react';
 import { string } from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { flexBox, mediaLess } from 'utils/css/styles';
+
+import { flex, mediaLess } from 'utils/css/styles';
+import { fontFamilyLight } from 'utils/css/variables';
 import { forwardTo } from 'utils/route';
 import { selectCity, selectDistrict } from 'modules/location/selectors';
 import Icon from 'components/Icon';
+
+const StyledLocation = styled.a`
+  font-size: 16px;
+  font-family: ${fontFamilyLight};
+  margin-left: 10px;
+  cursor: pointer;
+`;
+
+const Wrapper = styled.div`
+  height: 35px;
+  padding: 0 15px;
+  min-width: 350px;
+  margin-right: 22%;
+  ${flex({ align: 'center' })};
+
+  img {
+    margin-top: 5px;
+  }
+
+  ${mediaLess(600)`
+    margin-left: 0;
+    margin-right: 0;
+  `};
+`;
 
 const decorate = connect(state => ({
   city: selectCity(state) && selectCity(state).get('name'),
@@ -27,27 +53,3 @@ LocationInput.propTypes = {
 };
 
 export default decorate(LocationInput);
-
-const StyledLocation = styled.a`
-  font-size: 16px;
-  font-family: 'HungerStation-Light', sans-serif;
-  margin-left: 10px;
-  cursor: pointer;
-`;
-
-const Wrapper = styled.div`
-  height: 35px;
-  padding: 0 15px;
-  min-width: 350px;
-  margin-right: 22%;
-  ${flexBox({ align: 'center' })};
-
-  img {
-    margin-top: 5px;
-  }
-
-  ${mediaLess(600)`
-    margin-left: 0;
-    margin-right: 0;
-  `};
-`;

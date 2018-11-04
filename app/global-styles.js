@@ -1,6 +1,8 @@
 import { injectGlobal } from 'styled-components';
+
 import { jade } from 'utils/css/colors';
-import { zIndexModal } from 'utils/css/variables';
+import { flex } from 'utils/css/styles';
+import { zIndexModal, fontFamilyRegular } from 'utils/css/variables';
 import HSRwoff from './vendor/fonts/HungerStation-Regular.woff';
 import HSRwoff2 from './vendor/fonts/HungerStation-Regular.woff2';
 import HSRotf from './vendor/fonts/HungerStation-Regular.otf';
@@ -60,7 +62,7 @@ export const global = injectGlobal`
   }
 
   body.fontLoaded {
-    font-family: 'HungerStation-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: ${fontFamilyRegular};
   }
 
   #app {
@@ -81,7 +83,7 @@ export const global = injectGlobal`
     overflow: hidden;
   }
 
-   .FiltersModal {
+  .FiltersModal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -94,9 +96,7 @@ export const global = injectGlobal`
     z-index: 101;
     outline: 9999px solid rgba(0, 0, 0, 0.5);
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    ${flex({ justify: 'space-between', direction: 'column' })};
   }
 
   .Overlay {

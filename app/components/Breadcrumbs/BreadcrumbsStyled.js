@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 import ButtonLink from 'components/ButtonLink';
-import { mediaSmall } from 'utils/css/styles';
+import { flex, mediaSmall } from 'utils/css/styles';
 import { boulder } from 'utils/css/colors';
+import { fontFamilyLight } from 'utils/css/variables';
 
 export const BreadcrumbsStyled = styled.div`
-  display: flex;
-  justify-content: flex-start;
+  ${flex()};
 
   ${mediaSmall`
     width: calc(100% - 40px);
@@ -17,10 +17,9 @@ export const BreadcrumbsStyled = styled.div`
   `};
 
   ul {
-    display: flex;
+    ${flex()};
     list-style: none;
-    font-family: 'HungerStation-Light', sans-serif;
-    justify-content: flex-start;
+    font-family: ${fontFamilyLight};
     margin-top: 20px;
   }
 

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 import { fuscousGray } from 'utils/css/colors';
+import { fontFamilyRegular } from 'utils/css/variables';
 
 export default styled(Link)`
   text-decoration: none;
@@ -10,7 +12,7 @@ export default styled(Link)`
   vertical-align: middle;
   line-height: 1em;
   font-size: 14px;
-  font-family: 'HungerStation-Regular', sans-serif;
+  font-family: ${fontFamilyRegular};
   color: ${fuscousGray};
   margin: 0px 3px;
 

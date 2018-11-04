@@ -18,18 +18,17 @@ export const StyledRestaurantInfo = styled.div`
   background-color: white;
 
   ${mediaMedium`
+    ${flex({ direction: 'column' }, false)};
     border-radius: ${borderRadius};
-    flex-direction: column;
     padding-bottom: 30px;
     box-shadow: ${boxShadowBottomRight};
   `};
 `;
 
 export const StyledLogo = styled.div`
-  ${flex({ align: 'center', justify: 'center' })};
+  ${flex({ align: 'center', justify: 'center', shrink: 0 })};
   height: 160px;
   width: 140px;
-  flex-shrink: 0;
   position: relative;
   background-color: rgba(234, 234, 234, 1);
   border-radius: 8px 0 0 0px;
@@ -50,7 +49,7 @@ export const StyledDetailsContainer = styled.div`
   padding: 20px 30px 25px 20px;
 
   ${mediaMedium`
-    align-items: flex-start;
+    ${flex({ align: 'flex-start' }, false)};
     margin: 10px 0 20px 0;
   `};
 `;

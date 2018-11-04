@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 
 const StyledContainer = styled.span`
-  ${flexBox({ align: 'center' })};
+  ${flex({ align: 'center' })};
   padding: 0 10px;
   cursor: pointer;
 

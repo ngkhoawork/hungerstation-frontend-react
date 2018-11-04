@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexBox, mediaMedium, mediaLess } from 'utils/css/styles';
+import { flex, mediaMedium, mediaLess } from 'utils/css/styles';
 import { fontFamilyRegular } from 'utils/css/variables';
 
 import { Link } from 'react-router-dom';
@@ -9,8 +9,7 @@ export const Wrapper = styled.div`
   background-color: #ffffff;
   padding-bottom: 100px;
   padding-top: 100px;
-  flex-wrap: wrap;
-  ${flexBox({ align: 'flex-start', justify: 'space-between' })};
+  ${flex({ align: 'flex-start', justify: 'space-between', wrap: 'wrap' })};
   ${mediaLess(600)`
     padding: 10px;
   `};
@@ -18,13 +17,11 @@ export const Wrapper = styled.div`
 
 export const MenuBar = styled.div`
   margin-top: 43px;
-  display: flex;
-  flex-direction: column;
   padding-top: 160px;
-  flex: unset;
   margin-right: 30px;
   width: 170px;
-  ${flexBox({ align: 'flex-start', justify: 'center', direction: 'column' })};
+  ${flex({ align: 'flex-start', justify: 'center', direction: 'column' })};
+
   ${mediaMedium`
     display: none;
   `};
@@ -45,13 +42,11 @@ export const MenuItem = styled.div`
 `;
 
 export const MiddleSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  ${flexBox({
+  ${flex({
     align: 'flex-start',
     justify: 'flex-start',
     direction: 'column',
+    wrap: 'wrap',
   })};
 
   ${mediaLess(1000)`
@@ -86,7 +81,7 @@ export const SubTitle = styled.div`
 `;
 
 export const Content = styled.div`
-  flex-direction: column;
+  ${flex({ direction: 'column' }, false)};
   width: 700px;
 `;
 

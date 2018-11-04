@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { flexBox } from 'utils/css/styles';
+import { flex } from 'utils/css/styles';
 import { searchBarHeight } from '../StyledComponents';
 
 const StyledDropdown = styled.span`
   height: 100%;
   width: 100%;
   cursor: pointer;
-  ${flexBox({ align: 'center', justify: 'flex-start' })};
+  ${flex({ align: 'center', justify: 'flex-start' })};
 
   ${media.lessThan('850px')`
     height: ${searchBarHeight};
