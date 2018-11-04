@@ -15,6 +15,7 @@ import restaurantsReducer from 'modules/restaurants/reducer';
 import restaurantReducer from 'modules/restaurant/reducer';
 import addressReducer from 'modules/address/reducer';
 import checkoutReducer from 'modules/checkout/reducer';
+import faqsReducer from 'modules/faqs/reducer';
 
 /*
  * routeReducer
@@ -59,6 +60,7 @@ export default function createReducer(injectedReducers) {
     address: addressReducer,
     checkout: checkoutReducer,
     cart: cartReducer,
+    faqs: faqsReducer,
     ...injectedReducers,
   });
 }

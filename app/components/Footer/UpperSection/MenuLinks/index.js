@@ -10,7 +10,7 @@ const MenuLinks = () => {
     // { id: 'about-us', label: intl.formatMessage(messages.aboutUs) },
     { id: 'contactus', label: intl.formatMessage(messages.contactUs) },
     // { id: 'help', label: intl.formatMessage(messages.help) },
-    { id: 'faqs/oreder-related', label: intl.formatMessage(messages.faqs) },
+    { id: 'faqs', label: intl.formatMessage(messages.faqs) },
     { id: 'terms-of-use', label: intl.formatMessage(messages.termsOfUse) },
     {
       id: 'add-restaurants',

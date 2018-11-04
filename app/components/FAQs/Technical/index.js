@@ -6,8 +6,7 @@ import { Answer, HeaderWrapper } from '../StyledComponents';
 import DropDownMobile from '../Mobile/DropDownMobile';
 
 import messages from './messages';
-
-const Technical = () => (
+const Technical = props => (
   <div>
     <HeaderWrapper>
       <TextItem size={24} fontFamily="regular">
@@ -15,16 +14,19 @@ const Technical = () => (
       </TextItem>
     </HeaderWrapper>
     <br />
-    <TextItem size={16} fontFamily="regular">
-      <DropDownMobile
-        title={<FormattedMessage {...messages.SiteNotOpeningQ} />}
-        isCollapsible
-      >
-        <Answer>
-          <FormattedMessage {...messages.SiteNotOpeningA} />
-        </Answer>
-      </DropDownMobile>
-    </TextItem>
+    {props.title.map(
+      item =>
+        item.faqgroup.title === 'Technical ' ? (
+          <div>
+            <TextItem size={16} fontFamily="regular">
+              <DropDownMobile title={item.question} isCollapsible>
+                <Answer>{item.answer}</Answer>
+              </DropDownMobile>
+            </TextItem>
+          </div>
+        ) : null,
+    )}
   </div>
 );
+
 export default Technical;

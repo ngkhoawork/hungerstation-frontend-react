@@ -95,7 +95,7 @@ export default class App extends Component {
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
-          <Route exact path="/faqs/oreder-related" component={FAQsPage} />
+          <Route exact path="/faqs" component={FAQsPage} />
 
           <Redirect from="*" to="/" />
         </Switch>
