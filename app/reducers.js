@@ -8,6 +8,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import formReducer from 'hocs/withFormState/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import cartReducer from 'containers/CartContainer/reducer';
 import authReducer from 'modules/auth/reducer';
 import locationReducer from 'modules/location/reducer';
 import restaurantsReducer from 'modules/restaurants/reducer';
@@ -57,6 +58,7 @@ export default function createReducer(injectedReducers) {
     restaurant: restaurantReducer,
     address: addressReducer,
     checkout: checkoutReducer,
+    cart: cartReducer,
     ...injectedReducers,
   });
 }
