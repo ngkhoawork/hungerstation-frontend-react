@@ -119,6 +119,7 @@ export const global = injectGlobal`
     height: 100%;
     z-index: ${zIndexModal};
     background: rgba(0, 0, 0, 0.5);
+    position: fixed;
   }
 
   .ReactModal__Body--open {
