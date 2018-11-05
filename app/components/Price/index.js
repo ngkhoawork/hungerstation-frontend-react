@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import intl from 'utils/intlService';
+import intl, { priceIntlOptions } from 'utils/intlService';
 import Icon from 'components/Icon';
 import { fontFamilyRegular } from 'utils/css/variables';
 import { jade, silverChalice } from 'utils/css/colors';
@@ -19,11 +19,7 @@ const OrderElement = ({ price, hasTag, ...props }) => (
         <Icon name="price-tag" offsetY="-1" /> &nbsp;
       </Fragment>
     ) : null}
-    {intl.formatNumber(price, {
-      style: 'currency',
-      currency: 'SAR',
-      minimumFractionDigits: 0,
-    })}
+    {intl.formatNumber(price, priceIntlOptions)}
   </Price>
 );
 

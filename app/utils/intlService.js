@@ -2,6 +2,12 @@ import { IntlProvider } from 'react-intl';
 
 import { translationMessages, DEFAULT_LOCALE } from '../i18n';
 
+export const priceIntlOptions = {
+  style: 'currency',
+  currency: 'SAR',
+  minimumFractionDigits: 0,
+};
+
 export class Intl {
   constructor(locale = DEFAULT_LOCALE) {
     this.locale = locale;
