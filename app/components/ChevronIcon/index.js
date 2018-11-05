@@ -12,7 +12,7 @@ export const IconContainer = styled.span`
 
 const ChevronIcon = props => (
   <IconContainer {...props}>
-    <Icon name="chevron" />
+    <Icon name="more" />
   </IconContainer>
 );
 
