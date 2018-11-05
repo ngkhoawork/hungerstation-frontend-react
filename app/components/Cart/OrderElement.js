@@ -47,7 +47,6 @@ const Price = styled.div`
 `;
 
 const OrderElement = ({
-  id,
   quantity,
   price,
   additions,
@@ -71,7 +70,7 @@ const OrderElement = ({
             { style: 'currency', currency: 'SAR' },
           )}
         </Price>
-        <OrderElementDelete id={id} onRemoveFromCart={onRemoveFromCart} />
+        <OrderElementDelete onRemoveFromCart={onRemoveFromCart} />
       </Row>
     </Wrapper>
   </Fragment>

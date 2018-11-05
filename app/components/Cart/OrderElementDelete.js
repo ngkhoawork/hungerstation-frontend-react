@@ -8,14 +8,13 @@ const DeleteButton = styled.div`
   margin: -6px 5px 0;
 `;
 
-const OrderElementDelete = ({ id, onRemoveFromCart }) => (
-  <DeleteButton role="button" onClick={() => onRemoveFromCart(id)}>
+const OrderElementDelete = ({ onRemoveFromCart }) => (
+  <DeleteButton role="button" onClick={onRemoveFromCart}>
     <Icon name="trash-red" />
   </DeleteButton>
 );
 
 OrderElementDelete.propTypes = {
-  id: PropTypes.string.isRequired,
   onRemoveFromCart: PropTypes.func.isRequired,
 };
 

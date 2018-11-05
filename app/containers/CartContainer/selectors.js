@@ -1,13 +1,11 @@
 import { createSelector } from 'reselect';
-import values from 'lodash/values';
 import { initialState } from './reducer';
 
-const selectCartContainerState = state =>
-  state.get('cart', initialState).toJS();
+const selectCartContainerState = state => state.get('cart', initialState);
 
 export const selectCartPurchases = createSelector(
   selectCartContainerState,
-  state => values(state.purchases),
+  state => state.purchases,
 );
 
 export const selectOrderAmount = createSelector(

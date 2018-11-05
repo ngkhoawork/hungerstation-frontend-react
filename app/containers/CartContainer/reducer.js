@@ -1,4 +1,3 @@
-import { fromJS, Map } from 'immutable';
 import {
   clearStorageItem,
   getStorageItem,
@@ -8,14 +7,12 @@ import { initCart, addToCart, removeFromCart, emptyCart } from './actions';
 
 let isInitialized = false;
 
-export const initialState = fromJS({
-  purchases: {},
-});
+export const initialState = {
+  purchases: [],
+};
 
-function saveCartItems(state) {
-  const cartItems = state.get('purchases').toJS();
-  setStorageItem('cartItems', JSON.stringify(cartItems));
-}
+const saveCartItems = purchases =>
+  setStorageItem('cartItems', JSON.stringify(purchases));
 
 function cartContainerReducer(state = initialState, { type, payload }) {
   switch (type) {
@@ -23,27 +20,26 @@ function cartContainerReducer(state = initialState, { type, payload }) {
       if (isInitialized) return state;
 
       isInitialized = true;
-      const savedPurchases = JSON.parse(getStorageItem('cartItems') || '{}');
+      const purchases = JSON.parse(getStorageItem('cartItems') || '[]');
 
-      return state.set('purchases', Map(savedPurchases));
+      return Object.assign({}, state, { purchases });
     }
 
     case addToCart.type: {
-      const newState = state.updateIn(['purchases'], map =>
-        map.set(payload.product.id, payload),
-      );
-      saveCartItems(newState);
+      const purchases = state.purchases.concat({
+        ...payload,
+        id: `${Math.random()}${Date.now()}`,
+      });
+      saveCartItems(purchases);
 
-      return newState;
+      return Object.assign({}, state, { purchases });
     }
 
     case removeFromCart.type: {
-      const newState = state.updateIn(['purchases'], map =>
-        map.delete(payload),
-      );
-      saveCartItems(newState);
+      const purchases = state.purchases.filter(({ id }) => id !== payload);
+      saveCartItems(purchases);
 
-      return newState;
+      return Object.assign({}, state, { purchases });
     }
 
     case emptyCart.type: {

@@ -76,8 +76,8 @@ const Cart = ({
           {...purchase.product}
           additions={purchase.additions}
           quantity={purchase.quantity}
-          key={purchase.product.id}
-          onRemoveFromCart={removeFromCart}
+          key={purchase.id}
+          onRemoveFromCart={() => removeFromCart(purchase.id)}
         />
       ))}
     </Items>
