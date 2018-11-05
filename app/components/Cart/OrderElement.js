@@ -51,7 +51,6 @@ const OrderElement = ({
   price,
   additions,
   name,
-  description,
   onRemoveFromCart,
 }) => (
   <Fragment>
@@ -60,7 +59,9 @@ const OrderElement = ({
         <Quantity>{quantity}x</Quantity>
         <Column>
           <Title>{name}</Title>
-          <Description>{description}</Description>
+          <Description>
+            {additions.map(({ name }) => name).join(', ')}
+          </Description>
         </Column>
       </Row>
       <Row>

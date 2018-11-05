@@ -40,7 +40,7 @@ const IconPosition = styled.div`
   left: -20px;
 `;
 
-const DeliveryTo = ({ city = 'Almohammadeah', district = 'Baljursahi' }) => (
+const DeliveryTo = ({ city, district }) => (
   <Wrapper>
     <DeliveryTitle>{intl.formatMessage(messages.deliveryTo)}</DeliveryTitle>
     <DeliveryLocation>

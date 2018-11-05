@@ -59,50 +59,62 @@ const Cart = ({
   purchases,
   orderAmount,
   discount,
+  city,
+  district,
   removeFromCart,
-}) => (
-  <Wrapper>
-    <Unshrinkable>
-      <Title style={titleStyle}>
-        {intl.formatMessage(
-          messages[isCheckout ? 'yourOrderFrom' : 'yourOrder'],
-        )}
-      </Title>
-      {isCheckout ? <From>{from}</From> : <DeliveryTo />}
-    </Unshrinkable>
-    <Items>
-      {purchases.map(purchase => (
-        <OrderElement
-          {...purchase.product}
-          additions={purchase.additions}
-          quantity={purchase.quantity}
-          key={purchase.id}
-          onRemoveFromCart={() => removeFromCart(purchase.id)}
-        />
-      ))}
-    </Items>
-    <Unshrinkable>
-      {/* <MinOrderErrBox currentAmount={orderAmount} /> */}
-      <Amount
-        label={intl.formatMessage(messages.amount)}
-        amount={orderAmount}
-      />
-      {discount ? (
+}) => {
+  const renderSubtitle = () => {
+    if (isCheckout) return <From>{from}</From>;
+
+    if (city && district) return <DeliveryTo city={city} district={district} />;
+
+    return null;
+  };
+
+  return (
+    <Wrapper>
+      <Unshrinkable>
+        <Title style={titleStyle}>
+          {intl.formatMessage(
+            messages[isCheckout ? 'yourOrderFrom' : 'yourOrder'],
+          )}
+        </Title>
+        {renderSubtitle()}
+      </Unshrinkable>
+      <Items>
+        {purchases.map(purchase => (
+          <OrderElement
+            {...purchase.product}
+            additions={purchase.additions}
+            quantity={purchase.quantity}
+            key={purchase.id}
+            onRemoveFromCart={() => removeFromCart(purchase.id)}
+          />
+        ))}
+      </Items>
+      <Unshrinkable>
+        {/* <MinOrderErrBox currentAmount={orderAmount} /> */}
         <Amount
-          label={intl.formatMessage(messages.discount)}
-          amount={-discount}
+          label={intl.formatMessage(messages.amount)}
+          amount={orderAmount}
         />
-      ) : null}
-      <Amount
-        isTotal
-        label={intl.formatMessage(messages.total)}
-        amount={orderAmount}
-      />
-      {isCheckout ? <Notice /> : null}
-      <ViewCartButton isCheckout={isCheckout} />
-    </Unshrinkable>
-  </Wrapper>
-);
+        {discount ? (
+          <Amount
+            label={intl.formatMessage(messages.discount)}
+            amount={-discount}
+          />
+        ) : null}
+        <Amount
+          isTotal
+          label={intl.formatMessage(messages.total)}
+          amount={orderAmount}
+        />
+        {isCheckout ? <Notice /> : null}
+        <ViewCartButton isCheckout={isCheckout} />
+      </Unshrinkable>
+    </Wrapper>
+  );
+};
 
 Cart.propTypes = {
   isCheckout: PropTypes.bool,
@@ -110,6 +122,8 @@ Cart.propTypes = {
   purchases: PropTypes.array.isRequired,
   orderAmount: PropTypes.number.isRequired,
   discount: PropTypes.number,
+  city: PropTypes.string,
+  district: PropTypes.string,
   removeFromCart: PropTypes.func.isRequired,
 };
 
