@@ -17,7 +17,7 @@ const PaymentOptionsContainer = ({ checkoutState, ...props }) => (
     onOptionSelect={props.selectPaymentOption}
     onCouponSubmit={props.setCoupon}
     onCouponDelete={props.setCoupon}
-    coupon={checkoutState.coupon || { name: 'my coupon 123', isValid: true }}
+    coupon={checkoutState.coupon}
   />
 );
 

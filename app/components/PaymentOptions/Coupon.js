@@ -97,39 +97,60 @@ const getAdornment = coupon => {
   );
 };
 
-const Coupon = ({ coupon = {}, onSubmit, onDelete }) => (
-  <Container>
-    <Block>
-      <LeftSide>
-        <Title>{intl.formatMessage(messages.addCoupon)}</Title>
-      </LeftSide>
-      <Content>
-        <TextField
-          type="text"
-          defaultValue={coupon.name}
-          label={intl.formatMessage(messages.haveCoupon)}
-          fullWidth
-          InputProps={{
-            endAdornment: getAdornment(coupon),
-          }}
-        />
-        <MobileNotice>{renderNotice(coupon)}</MobileNotice>
-        <Button
-          inline
-          primary={false}
-          lift={false}
-          style={{ border, flexShrink: 0, margin: '10px 0 10px 20px' }}
-          onClick={coupon.id ? onDelete : onSubmit}
-        >
-          {intl.formatMessage(
-            messages[`${coupon.id ? 'delete' : 'add'}Coupon`],
-          )}
-        </Button>
-      </Content>
-    </Block>
-    <DesktopNotice>{renderNotice(coupon)}</DesktopNotice>
-  </Container>
-);
+class Coupon extends React.Component {
+  constructor() {
+    super();
+    this.state = { name: '' };
+  }
+
+  handleNameChange = ({ target }) => this.setState({ name: target.value });
+
+  handleSubmit = () => this.props.onSubmit(this.state.name);
+
+  handleDelete = () => {
+    this.setState({ name: '' });
+    this.props.onDelete();
+  };
+
+  render() {
+    const { coupon = {} } = this.props;
+
+    return (
+      <Container>
+        <Block>
+          <LeftSide>
+            <Title>{intl.formatMessage(messages.addCoupon)}</Title>
+          </LeftSide>
+          <Content>
+            <TextField
+              type="text"
+              value={this.state.name}
+              onChange={this.handleNameChange}
+              label={intl.formatMessage(messages.haveCoupon)}
+              fullWidth
+              InputProps={{
+                endAdornment: getAdornment(coupon),
+              }}
+            />
+            <MobileNotice>{renderNotice(coupon)}</MobileNotice>
+            <Button
+              inline
+              primary={false}
+              lift={false}
+              style={{ border, flexShrink: 0, margin: '10px 0 10px 20px' }}
+              onClick={coupon.id ? this.handleDelete : this.handleSubmit}
+            >
+              {intl.formatMessage(
+                messages[`${coupon.id ? 'delete' : 'add'}Coupon`],
+              )}
+            </Button>
+          </Content>
+        </Block>
+        <DesktopNotice>{renderNotice(coupon)}</DesktopNotice>
+      </Container>
+    );
+  }
+}
 
 Coupon.propTypes = {
   coupon: PropTypes.object,
