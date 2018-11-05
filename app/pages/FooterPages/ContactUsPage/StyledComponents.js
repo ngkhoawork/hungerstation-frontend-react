@@ -34,10 +34,11 @@ export const BottomSide = styled.div`
 `;
 
 export const Description = styled.div`
-  padding-left: 4%;
+  padding-left: 63%;
   z-index: 2;
   ${mediaLess(600)`
     padding-top: 75%;
+    padding-left: 4%;
   `};
 `;
 export const ContactUs = styled.div`

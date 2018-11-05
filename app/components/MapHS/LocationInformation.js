@@ -6,39 +6,30 @@ import styled from 'styled-components';
 import { mediaLess } from 'utils/css/styles';
 import { fontFamilyRegular } from 'utils/css/variables';
 
-class LocationInformation extends React.Component {
-  openMap = () => {
-    window.open(
-      'https://maps.google.com/maps?daddr=24.817629257410555,46.6416639907593&amp;ll=',
-    );
-  };
+const openMap = () => {
+  window.open(
+    'https://maps.google.com/maps?daddr=24.817629257410555,46.6416639907593&amp;ll=',
+  );
+};
+const LocationInformation = () => (
+  <div>
+    <TextItem size={24} fontFamily="regular">
+      Anas Ibn Malik Road
+    </TextItem>
+    <Text>
+      Alsahafah <br />
+      Riyadh <br />
+      Saudi Arabia
+    </Text>
+    <ButtonWrapper>
+      <Button primary type="button" label="Google Map" onClick={openMap} />
+    </ButtonWrapper>
+  </div>
+);
 
-  render() {
-    return (
-      <Wrapper>
-        <TextItem size={24} fontFamily="regular">
-          Anas Ibn Malik Road
-        </TextItem>
-        <Text>
-          Alsahafah <br />
-          Riyadh <br />
-          Saudi Arabia
-        </Text>
-        <ButtonWrapper>
-          <Button
-            primary
-            type="button"
-            label="Google Map"
-            onClick={this.openMap}
-          />
-        </ButtonWrapper>
-      </Wrapper>
-    );
-  }
-}
 export default LocationInformation;
 
-export const ButtonWrapper = styled.div`
+const ButtonWrapper = styled.div`
   width: 144px;
   height: 40px;
   ${mediaLess(600)`
@@ -47,7 +38,7 @@ export const ButtonWrapper = styled.div`
   `};
 `;
 
-export const Text = styled.p`
+const Text = styled.p`
   width: 541px;
   opacity: 0.6;
   color: #6f6e6b;
@@ -57,5 +48,3 @@ export const Text = styled.p`
   letter-spacing: 0.5px;
   line-height: 24px;
 `;
-
-const Wrapper = styled.div;
