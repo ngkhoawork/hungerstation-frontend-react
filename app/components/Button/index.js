@@ -5,34 +5,8 @@ import Spinner from 'components/Spinner';
 import StyledButton from './StyledButton';
 import Text from './Text';
 
-const Button = ({
-  primary,
-  inline,
-  size,
-  label,
-  color,
-  backgroundImage,
-  children,
-  lift,
-  disabled,
-  loading,
-  onClick,
-  fontSize,
-  style,
-}) => (
-  <StyledButton
-    primary={primary}
-    inline={inline}
-    size={size}
-    type="button"
-    color={color}
-    backgroundImage={backgroundImage}
-    lift={lift}
-    disabled={disabled}
-    loading={loading}
-    onClick={onClick}
-    style={style}
-  >
+const Button = ({ children, label, loading, fontSize, ...props }) => (
+  <StyledButton type="button" {...props}>
     {children}
     {loading ? <Spinner isActive /> : <Text fontSize={fontSize}>{label}</Text>}
   </StyledButton>

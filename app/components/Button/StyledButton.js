@@ -26,7 +26,7 @@ const StyledButton = styled.button`
   line-height: 1em;
 
   :disabled {
-    background-color: ${paleSlate};
+    background-color: ${({ disabledColor }) => disabledColor || paleSlate};
     cursor: default;
 
     & ${Spinner} {
