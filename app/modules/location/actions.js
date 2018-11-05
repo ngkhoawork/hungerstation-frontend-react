@@ -1,5 +1,10 @@
 import createAction from 'utils/actions/createAction';
 
+export const getLocation = createAction(
+  'location/GET_LOCATION',
+  payload => payload,
+);
+
 export const getCurrentLocationAction = createAction(
   'location/GET_CURRENT_LOCATION',
 );

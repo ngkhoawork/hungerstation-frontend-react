@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 import { getUserPosition } from 'utils/location';
 import { sortAlphabetically } from 'utils/helpers';
 import locationApi from './api';
@@ -11,6 +11,7 @@ import {
   setSettlementDetailsAction,
   toggleSettlementLoadedAction,
   saveLocation,
+  getLocation,
   getCurrentCityAction,
 } from './actions';
 import { selectCities } from './selectors';
@@ -122,5 +123,6 @@ export function* fetchLocationSaga({ payload }) {
 export default function* watchLocationActionsSaga() {
   yield takeEvery(getCurrentLocationAction.type, getCurrentLocationSaga);
   yield takeEvery(getCurrentCityAction.type, getCurrentCitySaga);
+  yield takeLatest(getLocation.type, fetchLocationSaga);
   yield getCitiesSaga();
 }
