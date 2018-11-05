@@ -1,7 +1,6 @@
 import { injectGlobal } from 'styled-components';
-
-import { jade } from 'utils/css/colors';
 import { flex } from 'utils/css/styles';
+import { jade, alabaster } from 'utils/css/colors';
 import { zIndexModal, fontFamilyRegular } from 'utils/css/variables';
 import HSRwoff from './vendor/fonts/HungerStation-Regular.woff';
 import HSRwoff2 from './vendor/fonts/HungerStation-Regular.woff2';
@@ -65,6 +64,22 @@ export const global = injectGlobal`
     font-family: ${fontFamilyRegular};
   }
 
+  ::-webkit-scrollbar-track {
+    border-radius: 5.5px;
+    background-color: ${alabaster};
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 5.5px;
+    background-color: ${alabaster};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5.5px;
+    background-color: #e4e4e4;
+  }
+
   #app {
     background-color: #F7F7F7;
     min-height: 100%;
@@ -94,13 +109,10 @@ export const global = injectGlobal`
     height: 900px;
     max-height: 100%;
     z-index: 101;
-    outline: 9999px solid rgba(0, 0, 0, 0.5);
-    padding: 20px;
     ${flex({ justify: 'space-between', direction: 'column' })};
   }
 
   .Overlay {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
