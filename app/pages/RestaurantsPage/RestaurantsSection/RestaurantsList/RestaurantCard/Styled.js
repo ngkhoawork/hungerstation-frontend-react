@@ -17,7 +17,7 @@ const StyledRestaurantCard = styled(Link)`
   margin-bottom: 24px;
   margin-right: 24px;
   padding: 15px 15px 5px;
-  background-image: url(${Figs});
+  background-image: ${({ cover }) => cover || `url(${Figs})`};
   background-size: 140%;
   background-position: top;
   box-shadow: 0 10px 20px 0 rgba(126, 125, 125, 0.15);
@@ -30,7 +30,7 @@ const StyledRestaurantCard = styled(Link)`
 
   ${mediaLess(500)`
     min-width: 324px;
-    background-image: url(${FigsMobile});
+    background-image: ${({ cover }) => cover || `url(${FigsMobile})`};
     margin-right: 0px;
     background-size: 100%;
   `};

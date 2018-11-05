@@ -25,10 +25,14 @@ const RestaurantCard = ({
   deliveryFee,
   status,
   logo,
+  coverPhoto,
   kitchensNames,
   hasPromotion,
 }) => (
-  <StyledRestaurantCard to={`${getPathname()}/restaurant/${branchId}`}>
+  <StyledRestaurantCard
+    to={`${getPathname()}/restaurant/${branchId}`}
+    cover={coverPhoto}
+  >
     <StyledUpperPart>
       <BrandLogo src={logo} size={60} />
       {!hasPromotion && <Promoted />}

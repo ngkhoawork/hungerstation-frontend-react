@@ -34,6 +34,7 @@ export function* fetchRestaurantSaga({ payload: id }) {
       longitude: branch.longitude,
       logo: branch.restaurant.logo,
       rateAverage: branch.restaurant.rate_average,
+      coverPhoto: branch.restaurant.cover_photo,
       deliveryConditions: branch.delivery_conditions,
       cuisines: branch.restaurant.kitchens.map(({ id, name, image_thumb }) => ({
         id,

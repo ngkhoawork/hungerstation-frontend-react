@@ -6,6 +6,7 @@ export const restaurantPropTypes = PropTypes.shape({
   deliveryTime: PropTypes.number.isRequired,
   minOrder: PropTypes.number.isRequired,
   rateAverage: PropTypes.number.isRequired,
+  coverPhoto: PropTypes.string,
 });
 
 export const restaurantsPropTypes = PropTypes.arrayOf(restaurantPropTypes);

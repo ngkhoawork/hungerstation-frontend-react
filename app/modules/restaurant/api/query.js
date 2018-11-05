@@ -30,6 +30,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
       id
       name
       logo
+      cover_photo
       rate_average
       kitchens{
         id

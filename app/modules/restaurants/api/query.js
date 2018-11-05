@@ -29,6 +29,7 @@ const getDeliveriesQuery = `query GetDeliveries($lat:Float, $lng:Float, $localId
           id
           name
           logo
+          cover_photo
           rate_average
           kitchens{
             id
