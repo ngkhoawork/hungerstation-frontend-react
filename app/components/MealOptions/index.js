@@ -38,6 +38,7 @@ class MealOptions extends Component {
         checkboxes[group.id] = {
           ...group,
           checked: {},
+          max: group.max,
           hint: group.min === 1 ? 'required' : 'select',
         };
       }
@@ -135,21 +136,24 @@ class MealOptions extends Component {
               <DropdownSelect items={dropdownItems} isBlock />
             </Section>
           ))} */}
-          {values(checkboxes).map(({ id, name, hint, modifiers, checked }) => (
-            <Section
-              key={id}
-              title={name}
-              hint={intl.formatMessage(messages[hint])}
-              isCollapsible
-            >
-              <CheckboxSelect
-                name={id}
-                options={modifiers}
-                checkedOptions={checked}
-                onChange={this.handleCheckboxSelect}
-              />
-            </Section>
-          ))}
+          {values(checkboxes).map(
+            ({ id, name, max, hint, modifiers, checked }) => (
+              <Section
+                key={id}
+                title={name}
+                hint={intl.formatMessage(messages[hint])}
+                isCollapsible
+              >
+                <CheckboxSelect
+                  name={id}
+                  max={max}
+                  options={modifiers}
+                  checkedOptions={checked}
+                  onChange={this.handleCheckboxSelect}
+                />
+              </Section>
+            ),
+          )}
           {values(radios).map(({ id, name, modifiers, value }) => (
             <Section
               key={id}
