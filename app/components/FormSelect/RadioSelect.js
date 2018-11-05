@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MuiRadio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-
 import { gold } from 'utils/css/colors';
 import { flex } from 'utils/css/styles';
+import CheckBoxIcon from 'components/CheckboxIcon';
+import Icon from 'components/Icon';
 import FormControlLabel from './FormControlLabel';
 
 const Radio = styled(MuiRadio)`
@@ -43,7 +44,13 @@ const RadioSelect = ({
           key={option.id}
           label={option[labelKey] || option.label || option.name}
           value={option[valueKey] || option.value || option.id}
-          control={<Radio disableRipple />}
+          control={
+            <Radio
+              disableRipple
+              icon={<CheckBoxIcon />}
+              checkedIcon={<Icon name="radio" size={20} />}
+            />
+          }
         />
       ))}
     </RadioGroup>

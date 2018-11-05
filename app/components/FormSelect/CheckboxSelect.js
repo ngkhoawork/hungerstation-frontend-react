@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
-
 import { gold } from 'utils/css/colors';
 import { flex } from 'utils/css/styles';
+import CheckBoxIcon from 'components/CheckboxIcon';
 import FormControlLabel from './FormControlLabel';
 
 const Checkbox = styled(MuiCheckbox)`
@@ -52,6 +52,8 @@ const CheckboxSelect = ({
               }
               onChange={() => handleChange(name, option)}
               disableRipple
+              icon={<CheckBoxIcon />}
+              checkedIcon={<CheckBoxIcon isChecked />}
             />
           }
         />
