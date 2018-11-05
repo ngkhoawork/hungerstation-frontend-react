@@ -12,11 +12,19 @@ import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import { Title, Description } from 'components/Typography';
 
-const ModalFrame = ({ title, subtitle, onCancel, children, ...props }) => (
+const ModalFrame = ({
+  title,
+  subtitle,
+  onCancel,
+  children,
+  headerStyle,
+  headerCss,
+  ...props
+}) => (
   <Container {...props}>
-    <Header>
+    <Header style={headerStyle} css={headerCss}>
       <Title>{title}</Title>
-      <Description style={{ margin: 3 }}>{subtitle}</Description>
+      <Description style={{ margin: '3px 0' }}>{subtitle}</Description>
       <CircledItem
         color={gold}
         width={30}
@@ -68,12 +76,18 @@ const Container = styled.div`
   ${({ isMobileFullscreen }) => isMobileFullscreen && mediaMedium(fullscreen)};
 
   ${({ style }) => style && css(style)};
+  ${({ css }) => css};
 `;
 
 const Header = styled.div`
   align-self: center;
   margin-bottom: 10px;
   text-align: center;
+  width: calc(100% - 40px);
+  margin-right: 40px;
+
+  ${({ style }) => style && css(style)};
+  ${({ css }) => css};
 `;
 
 const CloseBtnStyle = {
