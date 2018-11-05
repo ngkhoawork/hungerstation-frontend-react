@@ -13,14 +13,22 @@ export default defineMessages({
     id: 'app.components.Cart.deliveryTo',
     defaultMessage: 'Delivery to',
   },
-  errorBoxMessage: {
+  minOrderError: {
     id: 'app.components.Cart.minOrderError',
     defaultMessage:
-      '{restaurantName} minimum order amount SR {minAmount}. current order total is SR {currentAmount}.',
+      '{restaurantName} minimum order amount is {minAmount}. Current order total is {orderAmount}.',
   },
   amount: {
     id: 'app.components.Cart.amount',
     defaultMessage: 'Order Amount',
+  },
+  selectDelivery: {
+    id: 'app.components.Cart.selectDelivery',
+    defaultMessage: 'Please choose delivery option',
+  },
+  deliveryFee: {
+    id: 'app.components.Cart.deliveryFee',
+    defaultMessage: 'Delivery fee',
   },
   discount: {
     id: 'app.components.Cart.discount',

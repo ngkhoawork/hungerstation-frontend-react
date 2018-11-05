@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import intl from 'utils/intlService';
-import { mediaMedium, flex } from 'utils/css/styles';
+import intl, { priceIntlOptions } from 'utils/intlService';
+import { mediaMedium, mediaLargeGreater, flex } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import {
   fontFamilyLight,
@@ -10,10 +10,10 @@ import {
   navHeaderHeight,
 } from 'utils/css/variables';
 import { Title } from 'components/Typography';
+import Notice from 'components/Notice';
 import OrderElement from './OrderElement';
 import DeliveryTo from './DeliveryTo';
-import Notice from './Notice';
-// import MinOrderErrBox from './MinOrderErrBox';
+import CartNotice from './Notice';
 import Amount from './Amount';
 import ViewCartButton from './ViewCartButton';
 import messages from './messages';
@@ -28,7 +28,8 @@ const Wrapper = styled.section`
   max-height: calc(100vh - ${headerHeight} - ${navHeaderHeight});
   ${flex({ direction: 'column' })};
 
-  ${mediaMedium`width: 100%; max-width: 100%;`};
+  ${mediaMedium`width: 100%; min-width: 100%; max-width: 100%;`};
+  ${mediaLargeGreater`min-width: 353px;`};
 `;
 
 const titleStyle = {
@@ -51,6 +52,9 @@ const Unshrinkable = styled.div`
 
 const Items = styled.div`
   overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 130px;
+  flex-shrink: 0;
 `;
 
 const Cart = ({
@@ -58,7 +62,9 @@ const Cart = ({
   from,
   purchases,
   orderAmount,
+  minAmount,
   discount,
+  deliveryFee,
   city,
   district,
   removeFromCart,
@@ -70,7 +76,7 @@ const Cart = ({
 
     return null;
   };
-
+  console.log(minAmount, orderAmount);
   return (
     <Wrapper>
       <Unshrinkable>
@@ -93,11 +99,32 @@ const Cart = ({
         ))}
       </Items>
       <Unshrinkable>
-        {/* <MinOrderErrBox currentAmount={orderAmount} /> */}
+        {minAmount > orderAmount ? (
+          <Notice
+            message={intl.formatMessage(messages.minOrderError, {
+              restaurantName: from,
+              minAmount: intl.formatNumber(minAmount, priceIntlOptions),
+              orderAmount: intl.formatNumber(orderAmount, priceIntlOptions),
+            })}
+            type="error"
+            size="s"
+          />
+        ) : null}
         <Amount
           label={intl.formatMessage(messages.amount)}
           amount={orderAmount}
         />
+        {isCheckout ? (
+          <Amount
+            label={intl.formatMessage(messages.deliveryFee)}
+            note={
+              deliveryFee === undefined
+                ? intl.formatMessage(messages.selectDelivery)
+                : ''
+            }
+            amount={deliveryFee}
+          />
+        ) : null}
         {discount ? (
           <Amount
             label={intl.formatMessage(messages.discount)}
@@ -107,10 +134,13 @@ const Cart = ({
         <Amount
           isTotal
           label={intl.formatMessage(messages.total)}
-          amount={orderAmount}
+          amount={orderAmount + (deliveryFee || 0) - discount}
         />
-        {isCheckout ? <Notice /> : null}
-        <ViewCartButton isCheckout={isCheckout} />
+        {isCheckout ? <CartNotice /> : null}
+        <ViewCartButton
+          isCheckout={isCheckout}
+          isDisabled={!purchases.length}
+        />
       </Unshrinkable>
     </Wrapper>
   );
@@ -120,7 +150,9 @@ Cart.propTypes = {
   isCheckout: PropTypes.bool,
   from: PropTypes.string,
   purchases: PropTypes.array.isRequired,
+  minAmount: PropTypes.number,
   orderAmount: PropTypes.number.isRequired,
+  deliveryFee: PropTypes.number,
   discount: PropTypes.number,
   city: PropTypes.string,
   district: PropTypes.string,

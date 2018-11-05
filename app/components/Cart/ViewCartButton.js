@@ -12,40 +12,50 @@ import Button from 'components/Button';
 import Price from 'components/Price';
 import messages from './messages';
 
-const ViewCartButton = ({ isCheckout, quantity, price }) => (
-  <ButtonWrapper>
-    <Link to={isCheckout ? '/payment' : `${getPathname()}/checkout`}>
-      <Button
-        primary={false}
-        color={isCheckout ? jade : alabaster}
-        size="xl"
-        style={{ whiteSpace: 'nowrap' }}
-      >
-        <Content>
-          <LeftSide>
-            {quantity !== undefined ? (
-              <CircledItem color="white" width={30}>
-                <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
-              </CircledItem>
-            ) : null}
-          </LeftSide>
-          <Icon name={isCheckout ? 'basket-white' : 'basket'} />
-          <Label isCheckout={isCheckout}>
-            {intl.formatMessage(
-              messages[isCheckout ? 'placeOrder' : 'viewCart'],
-            )}
-          </Label>
-          <RightSide>
-            {price !== undefined ? <Price price={price} isPrimary /> : null}
-          </RightSide>
-        </Content>
-      </Button>
-    </Link>
-  </ButtonWrapper>
-);
+const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
+  const getHref = () => {
+    if (isDisabled) return '#';
+    return isCheckout ? '/payment' : `${getPathname()}/checkout`;
+  };
+
+  return (
+    <ButtonWrapper>
+      <Link to={getHref()}>
+        <Button
+          primary={!isCheckout}
+          color={isCheckout ? jade : undefined}
+          size="xl"
+          style={{ whiteSpace: 'nowrap' }}
+          disabled={isDisabled}
+          disabledColor={alabaster}
+        >
+          <Content>
+            <LeftSide>
+              {quantity !== undefined ? (
+                <CircledItem color="white" width={30}>
+                  <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
+                </CircledItem>
+              ) : null}
+            </LeftSide>
+            <Icon name={isCheckout ? 'basket-white' : 'basket'} />
+            <Label isCheckout={isCheckout} isDisabled={isDisabled}>
+              {intl.formatMessage(
+                messages[isCheckout ? 'placeOrder' : 'viewCart'],
+              )}
+            </Label>
+            <RightSide>
+              {price !== undefined ? <Price price={price} isPrimary /> : null}
+            </RightSide>
+          </Content>
+        </Button>
+      </Link>
+    </ButtonWrapper>
+  );
+};
 
 ViewCartButton.propTypes = {
   isCheckout: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   quantity: PropTypes.number,
   price: PropTypes.number,
 };
@@ -76,7 +86,8 @@ const RightSide = styled.span`
 `;
 
 const Label = styled.span`
-  color: ${({ isCheckout }) => (isCheckout ? 'white' : fuscousGray)};
+  color: ${({ isCheckout, isDisabled }) =>
+    isCheckout && !isDisabled ? 'white' : fuscousGray};
   font-size: 20px;
   display: inline-block;
   margin-top: 2px;

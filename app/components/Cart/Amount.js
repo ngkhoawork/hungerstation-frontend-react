@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import intl from 'utils/intlService';
+import intl, { priceIntlOptions } from 'utils/intlService';
 import { jade, lightGray, fuscousGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
 import { flex } from 'utils/css/styles';
+import { Description } from 'components/Typography';
 
 const Wrapper = styled.div`
   ${flex({ justify: 'space-between' })};
@@ -22,23 +23,24 @@ const Quantity = styled.span`
   ${({ isTotal }) => isTotal && `color: ${jade};`};
 `;
 
-const Amount = ({ label, amount = 0, isTotal = false }) => (
+const Amount = ({ label, amount = 0, isTotal = false, note }) => (
   <Fragment>
     <Wrapper isTotal={isTotal}>
       <span>{label}</span>
-      <Quantity isTotal={isTotal}>
-        {intl.formatNumber(amount, {
-          style: 'currency',
-          currency: 'SAR',
-          minimumFractionDigits: 0,
-        })}
-      </Quantity>
+      {note ? (
+        <Description style={{ margin: '0 0 0 10px' }}>{note}</Description>
+      ) : (
+        <Quantity isTotal={isTotal}>
+          {intl.formatNumber(amount, priceIntlOptions)}
+        </Quantity>
+      )}
     </Wrapper>
   </Fragment>
 );
 
 Amount.propTypes = {
   label: PropTypes.string.isRequired,
+  note: PropTypes.string,
   amount: PropTypes.number,
   isTotal: PropTypes.bool,
 };
