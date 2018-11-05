@@ -19,7 +19,7 @@ import {
   RightSide,
 } from './StyledComponents';
 
-const CheckoutPage = ({ isLoading }) => {
+const CheckoutPage = ({ isLoading, params }) => {
   const renderContent = () => (
     <React.Fragment>
       <Step stepNo={1} stepCount={3} title={intl.formatMessage(messages.step1)}>
@@ -43,7 +43,7 @@ const CheckoutPage = ({ isLoading }) => {
       <ContentContainer>
         <LeftSide>{isLoading ? null : renderContent()}</LeftSide>
         <RightSide>
-          <CartContainer />
+          <CartContainer params={params} />
         </RightSide>
       </ContentContainer>
     </Container>
@@ -51,6 +51,7 @@ const CheckoutPage = ({ isLoading }) => {
 };
 
 CheckoutPage.propTypes = {
+  params: PropTypes.object.isRequired,
   isLoading: PropTypes.bool,
 };
 

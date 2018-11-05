@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getStorageItem, setStorageItem } from 'utils/localStorage';
+import { setStorageItem } from 'utils/localStorage';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
-import {
-  addToCart,
-  emptyCart,
-  initCart,
-} from 'containers/CartContainer/actions';
+import { addToCart, emptyCart } from 'containers/CartContainer/actions';
 import { selectCartPurchases } from 'containers/CartContainer/selectors';
 import { fetchRestaurant } from 'modules/restaurant/actions';
 import { selectRestaurantState } from 'modules/restaurant/selectors';
@@ -25,8 +21,6 @@ class RestaurantPageHOC extends React.Component {
     this.props.fetchRestaurant(branchId);
 
     if (restaurant.id && branchId !== restaurant.id) this.props.emptyCart();
-
-    if (getStorageItem('branchId') === branchId) this.props.initCart();
   }
 
   componentDidUpdate({ restaurantState: { restaurant } }) {
@@ -55,10 +49,12 @@ class RestaurantPageHOC extends React.Component {
       hideModal,
       restaurantState: { restaurant, isLoading },
       cartItems,
+      match,
     } = this.props;
 
     return (
       <RestaurantPage
+        params={match.params}
         isLoading={isLoading || isLoading === undefined}
         restaurant={restaurant}
         cartItems={cartItems.map(({ product }) => product)}
@@ -76,7 +72,6 @@ RestaurantPageHOC.propTypes = {
   restaurantState: PropTypes.object.isRequired,
   cartItems: PropTypes.array.isRequired,
   addToCart: PropTypes.func.isRequired,
-  initCart: PropTypes.func.isRequired,
   emptyCart: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
@@ -87,5 +82,5 @@ export default connect(
     restaurantState: selectRestaurantState(state),
     cartItems: selectCartPurchases(state),
   }),
-  { showModal, hideModal, fetchRestaurant, addToCart, emptyCart, initCart },
+  { showModal, hideModal, fetchRestaurant, addToCart, emptyCart },
 )(RestaurantPageHOC);

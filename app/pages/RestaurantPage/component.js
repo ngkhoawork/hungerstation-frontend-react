@@ -125,7 +125,7 @@ class RestaurantPage extends React.Component {
   };
 
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, params } = this.props;
 
     return (
       <StyledPage>
@@ -137,7 +137,7 @@ class RestaurantPage extends React.Component {
             {isLoading ? <Loading>Loading...</Loading> : this.renderContent()}
           </LeftSide>
           <RightSide>
-            <CartContainer />
+            <CartContainer params={params} />
           </RightSide>
         </ContentContainer>
       </StyledPage>
@@ -148,6 +148,7 @@ class RestaurantPage extends React.Component {
 RestaurantPage.propTypes = {
   isLoading: PropTypes.bool,
   cartItems: PropTypes.array.isRequired,
+  params: PropTypes.object.isRequired,
   restaurant: PropTypes.object.isRequired,
   onAddToCart: PropTypes.func.isRequired,
   onShowModal: PropTypes.func.isRequired,

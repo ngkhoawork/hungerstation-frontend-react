@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getStorageItem } from 'utils/localStorage';
 import { saveCurrentLocationAction } from 'modules/location/actions';
 import { fetchAddresses } from 'modules/address/actions';
 import {
@@ -11,27 +10,19 @@ import {
 } from 'modules/address/selectors';
 import { selectRestaurantCoords } from 'modules/restaurant/selectors';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
-import { initCart } from 'containers/CartContainer/actions';
 import AddAddressContainer from 'containers/AddAddressContainer';
 import IneligibleAddress from 'components/IneligibleAddress';
 import CheckoutPage from './component';
 
 class CheckoutPageHOC extends React.Component {
   componentDidMount() {
-    const {
-      restaurantCoords,
-      match: {
-        params: { branchId },
-      },
-    } = this.props;
+    const { restaurantCoords, match } = this.props;
 
     if (restaurantCoords.lat) {
       this.props.saveCurrentLocationAction(restaurantCoords);
     }
 
-    this.props.fetchAddresses(this.props.match.params.branchId);
-
-    if (getStorageItem('branchId') === branchId) this.props.initCart();
+    this.props.fetchAddresses(match.params.branchId);
   }
 
   componentDidUpdate(prevProps) {
@@ -71,9 +62,11 @@ class CheckoutPageHOC extends React.Component {
   };
 
   render() {
-    const { addresses } = this.props;
+    const { addresses, match } = this.props;
 
-    return <CheckoutPage isLoading={addresses === undefined} />;
+    return (
+      <CheckoutPage params={match.params} isLoading={addresses === undefined} />
+    );
   }
 }
 
@@ -87,7 +80,6 @@ CheckoutPageHOC.propTypes = {
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   saveCurrentLocationAction: PropTypes.func.isRequired,
-  initCart: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -96,5 +88,5 @@ export default connect(
     isLoadingAddresses: selectAddressesLoading,
     restaurantCoords: selectRestaurantCoords,
   }),
-  { showModal, hideModal, fetchAddresses, saveCurrentLocationAction, initCart },
+  { showModal, hideModal, fetchAddresses, saveCurrentLocationAction },
 )(CheckoutPageHOC);
