@@ -19,7 +19,11 @@ const OrderElement = ({ price, hasTag, ...props }) => (
         <Icon name="price-tag" offsetY="-1" /> &nbsp;
       </Fragment>
     ) : null}
-    {intl.formatNumber(price, { style: 'currency', currency: 'SAR' })}
+    {intl.formatNumber(price, {
+      style: 'currency',
+      currency: 'SAR',
+      minimumFractionDigits: 0,
+    })}
   </Price>
 );
 

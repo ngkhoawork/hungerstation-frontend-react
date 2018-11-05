@@ -27,7 +27,11 @@ const Amount = ({ label, amount = 0, isTotal = false }) => (
     <Wrapper isTotal={isTotal}>
       <span>{label}</span>
       <Quantity isTotal={isTotal}>
-        {intl.formatNumber(amount, { style: 'currency', currency: 'SAR' })}
+        {intl.formatNumber(amount, {
+          style: 'currency',
+          currency: 'SAR',
+          minimumFractionDigits: 0,
+        })}
       </Quantity>
     </Wrapper>
   </Fragment>
