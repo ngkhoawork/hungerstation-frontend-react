@@ -100,7 +100,7 @@ export const RestaurantInfoContainer = styled.div`
 
 export const ProductsContainer = styled.div`
   padding: 40px 0 0 ${pageOffsetX};
-  ${flex()};
+  ${flex({}, true)};
 
   ${mediaMedium`
     padding: 40px ${mobPageOffsetX} 0;

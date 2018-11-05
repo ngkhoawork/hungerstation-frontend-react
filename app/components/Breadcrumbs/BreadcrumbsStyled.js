@@ -6,7 +6,7 @@ import { boulder } from 'utils/css/colors';
 import { fontFamilyLight } from 'utils/css/variables';
 
 export const BreadcrumbsStyled = styled.div`
-  ${flex()};
+  ${flex({}, true)};
 
   ${mediaSmall`
     width: calc(100% - 40px);
@@ -17,7 +17,7 @@ export const BreadcrumbsStyled = styled.div`
   `};
 
   ul {
-    ${flex()};
+    ${flex({}, true)};
     list-style: none;
     font-family: ${fontFamilyLight};
     margin-top: 20px;

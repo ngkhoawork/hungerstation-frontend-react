@@ -23,7 +23,7 @@ const Bar = styled.span`
   width: 808px;
 
   ${media.lessThan('850px')`
-  ${flex({ direction: 'column', justify: 'center', align: 'center' }, false)};
+    ${flex({ direction: 'column', justify: 'center', align: 'center' }, false)};
     align-self: center;
     height: auto;
     border: 0;
@@ -33,7 +33,7 @@ const Bar = styled.span`
 `;
 
 const BarActions = styled.div`
-  ${flex()};
+  ${flex({}, true)};
   margin: 0 10px;
 
   ${mediaMedium`

@@ -64,7 +64,7 @@ export const Content = styled.div`
 `;
 
 export const InputsContainer = styled.div`
-  ${flex()};
+  ${flex({}, true)};
 
   ${mediaMedium`
     ${flex({ direction: 'column' }, false)};

@@ -27,7 +27,7 @@ const styles = () => ({
 });
 
 export const flex = (
-  { align, justify, direction, wrap, grow, shrink, basis },
+  { align, justify, direction, wrap, grow, shrink, basis } = {},
   display = true,
 ) => css`
   ${display && 'display: flex;'};
