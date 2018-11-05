@@ -2,20 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
 import values from 'lodash/values';
+import ModalFrame from 'containers/ModalFrameContainer';
 // import DropdownSelect from 'components/DropdownSelect';
 import Price from 'components/Price';
 import QuantitySelect from 'components/QuantitySelect';
 import Button from 'components/Button';
-import CircledItem from 'components/CircledItem';
 import { Section, CheckboxSelect, RadioSelect } from 'components/FormSelect';
-import { gold } from 'utils/css/colors';
 import messages from './messages';
 import {
-  Container,
-  Header,
-  Title,
-  Description,
-  CloseBtnStyle,
+  containerStyle,
+  headerStyle,
   Content,
   Footer,
   FooterRightSide,
@@ -113,23 +109,17 @@ class MealOptions extends Component {
   };
 
   render() {
-    const { meal, onCancel, style } = this.props;
+    const { meal } = this.props;
     const { quantity, price, radios, checkboxes } = this.state;
 
     return (
-      <Container style={style}>
-        <Header>
-          <Title>{meal.name}</Title>
-          <Description>{meal.description}</Description>
-          <CircledItem
-            color={gold}
-            width={30}
-            onClick={onCancel}
-            style={CloseBtnStyle}
-          >
-            <span style={{ zIndex: 1 }}>x</span>
-          </CircledItem>
-        </Header>
+      <ModalFrame
+        title={meal.name}
+        subtitle={meal.description}
+        isMobileFullscreen
+        css={containerStyle}
+        headerCss={headerStyle}
+      >
         <Content>
           {/* {dropdowns.map(({ id, name, hint }) => (
             <Section key={id} title={name} hint={hint} isCollapsible>
@@ -184,16 +174,14 @@ class MealOptions extends Component {
             </Button>
           </FooterRightSide>
         </Footer>
-      </Container>
+      </ModalFrame>
     );
   }
 }
 
 MealOptions.propTypes = {
   meal: PropTypes.object.isRequired,
-  onCancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  style: PropTypes.object,
 };
 
 export default MealOptions;

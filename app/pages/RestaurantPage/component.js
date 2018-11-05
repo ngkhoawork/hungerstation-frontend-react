@@ -9,7 +9,6 @@ import RestaurantInfo from 'components/RestaurantInfo';
 import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
 import MealOptions from 'components/MealOptions';
-import { maxModalHeight } from 'utils/css/variables';
 import messages from './messages';
 import {
   StyledPage,
@@ -51,12 +50,7 @@ class RestaurantPage extends React.Component {
 
   handleAddClick = product => {
     const MealOptionsHOC = () => (
-      <MealOptions
-        meal={product}
-        onSubmit={this.handleAddOptions}
-        onCancel={this.props.onHideModal}
-        style={{ maxHeight: maxModalHeight }}
-      />
+      <MealOptions meal={product} onSubmit={this.handleAddOptions} />
     );
 
     this.props.onShowModal(MealOptionsHOC);
