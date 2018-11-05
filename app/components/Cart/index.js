@@ -76,7 +76,7 @@ const Cart = ({
 
     return null;
   };
-  console.log(minAmount, orderAmount);
+
   return (
     <Wrapper>
       <Unshrinkable>
