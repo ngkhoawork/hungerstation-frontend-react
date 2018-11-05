@@ -35,9 +35,9 @@ export const flex = (
   ${justify && `justify-content: ${justify}`};
   ${direction && `flex-direction: ${direction}`};
   ${wrap && `flex-wrap: ${wrap}`};
-  ${grow && `flex-grow: ${grow}`};
-  ${shrink && `flex-shrink: ${shrink}`};
-  ${basis && `flex-basis: ${basis}`};
+  ${grow !== undefined && `flex-grow: ${grow}`};
+  ${shrink !== undefined && `flex-shrink: ${shrink}`};
+  ${basis !== undefined && `flex-basis: ${basis}`};
 `;
 
 const getMedia = dimension => size => (...args) => css`
