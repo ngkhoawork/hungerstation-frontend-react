@@ -111,7 +111,7 @@ class RestaurantPage extends React.Component {
           </StyledProductTypes>
           <RestaurantProducts
             products={shownProducts}
-            cartProducts={cartItems}
+            cartItems={cartItems}
             onProductClick={this.handleAddClick}
           />
         </ProductsContainer>

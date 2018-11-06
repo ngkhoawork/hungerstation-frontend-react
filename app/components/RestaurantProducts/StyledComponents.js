@@ -52,10 +52,6 @@ export const TitleContainer = styled.div`
   margin-bottom: 10px;
 `;
 
-export const titleIconStyle = css`
-  margin-right: 10px;
-`;
-
 export const titleStyle = css`
   font-size: 18px;
 `;

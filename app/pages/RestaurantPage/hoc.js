@@ -57,7 +57,7 @@ class RestaurantPageHOC extends React.Component {
         params={match.params}
         isLoading={isLoading || isLoading === undefined}
         restaurant={restaurant}
-        cartItems={cartItems.map(({ product }) => product)}
+        cartItems={cartItems}
         onAddToCart={this.handleAddToCart}
         onShowModal={showModal}
         onHideModal={hideModal}
