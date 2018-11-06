@@ -18,6 +18,12 @@ export const Footer = styled.div`
   ${mediaMedium`
     ${flex({ direction: 'column' }, false)};
     align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+
+    button {
+      width: 100%;
+    }
   `};
 `;
 
