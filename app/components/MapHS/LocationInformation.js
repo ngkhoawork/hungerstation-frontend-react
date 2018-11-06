@@ -1,33 +1,10 @@
 import React from 'react';
-import TextItem from 'components/TextItem';
-
-import Button from 'components/Button';
 import styled from 'styled-components';
+
+import TextItem from 'components/TextItem';
+import Button from 'components/Button';
 import { mediaLess } from 'utils/css/styles';
 import { fontFamilyRegular } from 'utils/css/variables';
-
-const openMap = () => {
-  window.open(
-    'https://maps.google.com/maps?daddr=24.817629257410555,46.6416639907593&amp;ll=',
-  );
-};
-const LocationInformation = () => (
-  <div>
-    <TextItem size={24} fontFamily="regular">
-      Anas Ibn Malik Road
-    </TextItem>
-    <Text>
-      Alsahafah <br />
-      Riyadh <br />
-      Saudi Arabia
-    </Text>
-    <ButtonWrapper>
-      <Button primary type="button" label="Google Map" onClick={openMap} />
-    </ButtonWrapper>
-  </div>
-);
-
-export default LocationInformation;
 
 const ButtonWrapper = styled.div`
   width: 144px;
@@ -48,3 +25,27 @@ const Text = styled.p`
   letter-spacing: 0.5px;
   line-height: 24px;
 `;
+
+const openMap = () => {
+  window.open(
+    'https://maps.google.com/maps?daddr=24.817629257410555,46.6416639907593&amp;ll=',
+  );
+};
+
+const LocationInformation = () => (
+  <div>
+    <TextItem size={24} fontFamily="regular">
+      Anas Ibn Malik Road
+    </TextItem>
+    <Text>
+      Alsahafah <br />
+      Riyadh <br />
+      Saudi Arabia
+    </Text>
+    <ButtonWrapper>
+      <Button primary type="button" label="Google Map" onClick={openMap} />
+    </ButtonWrapper>
+  </div>
+);
+
+export default LocationInformation;

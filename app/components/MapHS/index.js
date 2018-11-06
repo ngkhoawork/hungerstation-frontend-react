@@ -30,6 +30,5 @@ const MapStyles = styled.div`
   ${mediaLess(600)`
     width: 80%;
     height: 30%;
-
   `};
 `;
