@@ -4,14 +4,15 @@ import intl from 'utils/intlService';
 import Icon from 'components/Icon';
 import Price from 'components/Price';
 import { Title } from 'components/Typography';
+import BasketQuantity from './BasketQuantity';
 import messages from './messages';
+import { RestaurantProductPropType } from './constants';
 import {
   List,
   Item,
   ContentContainer,
   Content,
   TitleContainer,
-  titleIconStyle,
   titleStyle,
   Description,
   Img,
@@ -33,7 +34,7 @@ const renderFooter = price => (
   </Fragment>
 );
 
-const RestaurantProducts = ({ products, cartProducts, onProductClick }) => (
+const RestaurantProducts = ({ products, cartItems, onProductClick }) => (
   <List>
     {products.map(product => (
       <Item key={product.id} onClick={() => onProductClick(product)}>
@@ -42,9 +43,7 @@ const RestaurantProducts = ({ products, cartProducts, onProductClick }) => (
           <Content>
             <div>
               <TitleContainer>
-                {cartProducts.find(({ id }) => id === product.id) ? (
-                  <Icon name="vegan" size={18} css={titleIconStyle} />
-                ) : null}
+                <BasketQuantity cartItems={cartItems} product={product} />
                 <Title css={titleStyle}>{product.name}</Title>
               </TitleContainer>
               <Description>{product.description}</Description>
@@ -58,17 +57,9 @@ const RestaurantProducts = ({ products, cartProducts, onProductClick }) => (
   </List>
 );
 
-const RestaurantProductPropType = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  price: PropTypes.number,
-});
-
 RestaurantProducts.propTypes = {
   products: PropTypes.arrayOf(RestaurantProductPropType).isRequired,
-  cartProducts: PropTypes.arrayOf(RestaurantProductPropType).isRequired,
+  cartItems: PropTypes.array.isRequired,
   onProductClick: PropTypes.func.isRequired,
 };
 
