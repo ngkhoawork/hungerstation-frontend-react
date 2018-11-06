@@ -86,7 +86,7 @@ const OrderElement = ({
         <Icon
           name="trash-red"
           size={20}
-          style={{ marginLeft: 5 }}
+          style={{ margin: '0 5px' }}
           onClick={onRemoveFromCart}
         />
       </Row>
