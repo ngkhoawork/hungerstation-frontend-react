@@ -2,24 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { getDeepProp } from 'utils/helpers';
 import { saveCurrentLocationAction } from 'modules/location/actions';
 import { fetchAddresses } from 'modules/address/actions';
 import {
   selectAddresses,
   selectAddressesLoading,
 } from 'modules/address/selectors';
-import { selectRestaurantCoords } from 'modules/restaurant/selectors';
+import { selectRestaurant } from 'modules/restaurant/selectors';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
+import {
+  selectCartPurchases,
+  selectOrderAmount,
+} from 'containers/CartContainer/selectors';
+import InsufficientOrderAmount from 'containers/InsufficientOrderAmount';
 import AddAddressContainer from 'containers/AddAddressContainer';
 import IneligibleAddress from 'components/IneligibleAddress';
 import CheckoutPage from './component';
 
 class CheckoutPageHOC extends React.Component {
   componentDidMount() {
-    const { restaurantCoords, match } = this.props;
+    const { restaurant, match } = this.props;
 
-    if (restaurantCoords.lat) {
-      this.props.saveCurrentLocationAction(restaurantCoords);
+    if (restaurant.latitude) {
+      this.props.saveCurrentLocationAction({
+        lat: restaurant.latitude,
+        lng: restaurant.longitude,
+      });
     }
 
     this.props.fetchAddresses(match.params.branchId);
@@ -27,11 +36,26 @@ class CheckoutPageHOC extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { addresses, isLoadingAddresses } = this.props;
+
     if (
       (!prevProps.addresses && addresses && !addresses.length) ||
       (prevProps.isLoadingAddresses && !isLoadingAddresses && !addresses.length)
     ) {
       this.props.showModal(AddAddressContainer);
+    }
+
+    const { orderAmount, restaurant, purchases, history, match } = this.props;
+    const minOrderAmount = getDeepProp(restaurant, [
+      'deliveryConditions',
+      'minimum_order',
+    ]);
+
+    if (prevProps.purchases.length && !purchases.length) {
+      const { district, city } = match.params;
+
+      history.push(`/restaurants/${city}/${district}`);
+    } else if (orderAmount && orderAmount < minOrderAmount) {
+      this.props.showModal(InsufficientOrderAmount);
     }
   }
 
@@ -73,7 +97,9 @@ class CheckoutPageHOC extends React.Component {
 CheckoutPageHOC.propTypes = {
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  restaurantCoords: PropTypes.object,
+  orderAmount: PropTypes.number.isRequired,
+  purchases: PropTypes.array.isRequired,
+  restaurant: PropTypes.object.isRequired,
   addresses: PropTypes.array,
   isLoadingAddresses: PropTypes.bool,
   fetchAddresses: PropTypes.func.isRequired,
@@ -84,9 +110,11 @@ CheckoutPageHOC.propTypes = {
 
 export default connect(
   createStructuredSelector({
+    restaurant: selectRestaurant,
+    orderAmount: selectOrderAmount,
+    purchases: selectCartPurchases,
     addresses: selectAddresses,
     isLoadingAddresses: selectAddressesLoading,
-    restaurantCoords: selectRestaurantCoords,
   }),
   { showModal, hideModal, fetchAddresses, saveCurrentLocationAction },
 )(CheckoutPageHOC);

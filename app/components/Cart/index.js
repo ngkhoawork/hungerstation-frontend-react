@@ -141,7 +141,7 @@ const Cart = ({
         {isCheckout ? <CartNotice /> : null}
         <ViewCartButton
           isCheckout={isCheckout}
-          isDisabled={!purchases.length}
+          isDisabled={!purchases.length || minAmount > orderAmount}
         />
       </Unshrinkable>
     </Wrapper>

@@ -4,12 +4,7 @@ import { initialState } from './reducer';
 export const selectRestaurantState = state =>
   state.get('restaurant', initialState).toJS();
 
-export const selectRestaurantName = createSelector(
+export const selectRestaurant = createSelector(
   selectRestaurantState,
-  state => state.restaurant.name,
-);
-
-export const selectRestaurantCoords = createSelector(
-  selectRestaurantState,
-  ({ restaurant }) => ({ lat: restaurant.latitude, lng: restaurant.longitude }),
+  state => state.restaurant,
 );
