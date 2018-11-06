@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { getStorageItem } from 'utils/localStorage';
+import { getDeepProp } from 'utils/helpers';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
 import { selectCheckoutState } from 'modules/checkout/selectors';
 import { selectRestaurantState } from 'modules/restaurant/selectors';
@@ -50,10 +51,10 @@ class CartContainer extends React.Component {
       <Cart
         {...props}
         from={restaurant.name}
-        minAmount={
-          restaurant.deliveryConditions &&
-          restaurant.deliveryConditions.minimum_order
-        }
+        minAmount={getDeepProp(restaurant, [
+          'deliveryConditions',
+          'minimum_order',
+        ])}
         discount={coupon && coupon.isValid ? coupon.value : 0}
         deliveryFee={delivery && delivery.price}
         city={city && city.get('name')}
