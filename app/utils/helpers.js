@@ -109,3 +109,12 @@ export function clearUndefs(obj) {
 
   return shallowCopy;
 }
+
+export const getDeepProp = (object = {}, props = []) => {
+  let tempObj = object;
+  props.forEach(prop => {
+    tempObj = (tempObj || {})[prop];
+  });
+
+  return tempObj;
+};
