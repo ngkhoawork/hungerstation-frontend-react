@@ -50,7 +50,7 @@ class RestaurantPage extends React.Component {
 
   handleAddClick = product => {
     const MealOptionsHOC = () => (
-      <MealOptions meal={product} onSubmit={this.handleAddOptions} />
+      <MealOptions purchase={{ product }} onSubmit={this.handleAddOptions} />
     );
 
     this.props.onShowModal(MealOptionsHOC);
@@ -61,7 +61,8 @@ class RestaurantPage extends React.Component {
   handleMenuGroupSelect = selectedMenuGroup =>
     this.setState({ selectedMenuGroup });
 
-  handleAddOptions = (product, quantity, additions, price) => {
+  handleAddOptions = purchase => {
+    const { product, quantity, additions, price } = purchase;
     const { totalOrder } = this.state;
     const order = totalOrder[product.id]
       ? totalOrder[product.id]
@@ -74,7 +75,7 @@ class RestaurantPage extends React.Component {
 
     this.setState({ totalOrder });
     this.props.onHideModal();
-    this.props.onAddToCart({ product, quantity, additions, price });
+    this.props.onAddToCart(purchase);
   };
 
   renderContent = () => {

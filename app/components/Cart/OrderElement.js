@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import intl from 'utils/intlService';
 import { flex } from 'utils/css/styles';
 import { jade, lightGray, silverChalice, fuscousGray } from 'utils/css/colors';
-import OrderElementDelete from './OrderElementDelete';
+import Icon from 'components/Icon';
 
 const Column = styled.div`
   ${flex({ direction: 'column' })};
@@ -31,12 +31,16 @@ const Quantity = styled.div`
   margin-right: 10px;
 `;
 
-export const Title = styled.div`
+const TitleWrapper = styled.div`
+  ${flex({ align: 'flex-start' })};
+`;
+
+const Title = styled.div`
   color: ${fuscousGray};
   font-size: 18px;
 `;
 
-export const Description = styled.div`
+const Description = styled.div`
   color: ${silverChalice};
   font-size: 14px;
 `;
@@ -51,6 +55,7 @@ const OrderElement = ({
   price,
   additions,
   name,
+  onEditClick,
   onRemoveFromCart,
 }) => (
   <Fragment>
@@ -58,7 +63,14 @@ const OrderElement = ({
       <Row>
         <Quantity>{quantity}x</Quantity>
         <Column>
-          <Title>{name}</Title>
+          <TitleWrapper>
+            <Title>{name}</Title>
+            <Icon
+              name="edit"
+              style={{ margin: '0 10px 0 5px' }}
+              onClick={onEditClick}
+            />
+          </TitleWrapper>
           <Description>
             {additions.map(({ name }) => name).join(', ')}
           </Description>
@@ -71,19 +83,24 @@ const OrderElement = ({
             { style: 'currency', currency: 'SAR' },
           )}
         </Price>
-        <OrderElementDelete onRemoveFromCart={onRemoveFromCart} />
+        <Icon
+          name="trash-red"
+          size={20}
+          style={{ marginLeft: 5 }}
+          onClick={onRemoveFromCart}
+        />
       </Row>
     </Wrapper>
   </Fragment>
 );
 
 OrderElement.propTypes = {
-  ...OrderElementDelete.propTypes,
   quantity: PropTypes.number.isRequired,
   additions: PropTypes.arrayOf(PropTypes.object),
   price: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  onEditClick: PropTypes.func.isRequired,
+  onRemoveFromCart: PropTypes.func.isRequired,
 };
 
 export default OrderElement;

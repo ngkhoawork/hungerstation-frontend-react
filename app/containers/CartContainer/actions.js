@@ -7,6 +7,11 @@ export const addToCart = createAction(
   purchaseObj => purchaseObj,
 );
 
+export const editCartItem = createAction(
+  'CartContainer/EDIT_CART_ITEM',
+  purchaseObj => purchaseObj,
+);
+
 export const removeFromCart = createAction(
   'CartContainer/REMOVE_FROM_CART',
   purchaseId => purchaseId,

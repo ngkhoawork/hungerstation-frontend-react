@@ -21,31 +21,40 @@ class MealOptions extends Component {
   constructor(props) {
     super(props);
 
-    const { meal } = props;
-    const radios = {};
-    const checkboxes = {};
-    meal.modifierGroups.forEach(group => {
-      if (group.min === 1 && group.max === 1) {
-        radios[group.id] = {
-          ...group,
-          value: group.modifiers[0] && group.modifiers[0].id,
-        };
-      } else {
-        checkboxes[group.id] = {
-          ...group,
-          checked: {},
-          max: group.max,
-          hint: group.min === 1 ? 'required' : 'select',
-        };
-      }
-    });
+    const { purchase } = props;
+    const { product, price } = purchase;
+    const radios = purchase.radios || {};
+    const checkboxes = purchase.checkboxes || {};
 
+    if (!purchase.radios && !purchase.checkboxes) {
+      product.modifierGroups.forEach(group => {
+        if (group.min === 1 && group.max === 1) {
+          radios[group.id] = {
+            ...group,
+            value: group.modifiers[0] && group.modifiers[0].id,
+          };
+        } else {
+          checkboxes[group.id] = {
+            ...group,
+            checked: {},
+            max: group.max,
+            hint: group.min === 1 ? 'required' : 'select',
+          };
+        }
+      });
+    }
+
+    const quantity = purchase.quantity || 1;
+    const additions = purchase.checkboxAdditions || [];
     this.state = {
       radios,
       checkboxes,
-      quantity: 1,
-      price: this.calculatePrice(1, [], radios),
-      additions: [],
+      quantity,
+      additions,
+      price:
+        price !== undefined
+          ? price
+          : this.calculatePrice(quantity, additions, radios),
     };
   }
 
@@ -59,7 +68,7 @@ class MealOptions extends Component {
       return sum + modifier.price;
     }, 0);
 
-    return (this.props.meal.price + additionsPrice) * quantity;
+    return (this.props.purchase.product.price + additionsPrice) * quantity;
   };
 
   // handleDropdownSelect = (name, value) => {
@@ -98,24 +107,33 @@ class MealOptions extends Component {
   };
 
   handleAddToCart = () => {
-    const { meal, onSubmit } = this.props;
-    const { quantity, additions, price, radios } = this.state;
+    const { purchase, onSubmit } = this.props;
+    const { quantity, additions, price, radios, checkboxes } = this.state;
     const radioAdditions = values(radios)
       .filter(({ value }) => value)
       .map(({ modifiers, value }) => modifiers.find(({ id }) => id === value));
     const totalAdditions = additions.concat(radioAdditions);
 
-    onSubmit(meal, quantity, totalAdditions, price);
+    onSubmit({
+      id: purchase.id,
+      product: purchase.product,
+      quantity,
+      additions: totalAdditions,
+      price,
+      radios,
+      checkboxes,
+      checkboxAdditions: additions,
+    });
   };
 
   render() {
-    const { meal } = this.props;
+    const { product } = this.props.purchase;
     const { quantity, price, radios, checkboxes } = this.state;
 
     return (
       <ModalFrame
-        title={meal.name}
-        subtitle={meal.description}
+        title={product.name}
+        subtitle={product.description}
         isMobileFullscreen
         css={containerStyle}
         headerCss={headerStyle}
@@ -180,7 +198,14 @@ class MealOptions extends Component {
 }
 
 MealOptions.propTypes = {
-  meal: PropTypes.object.isRequired,
+  purchase: PropTypes.shape({
+    product: PropTypes.object.isRequired,
+    radios: PropTypes.object,
+    checkboxes: PropTypes.object,
+    checkboxAdditions: PropTypes.array,
+    quantity: PropTypes.number,
+    price: PropTypes.number,
+  }).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

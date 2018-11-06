@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { getStorageItem } from 'utils/localStorage';
-import Cart from 'components/Cart';
+import { showModal, hideModal } from 'containers/ModalContainer/actions';
 import { selectCheckoutState } from 'modules/checkout/selectors';
 import { selectRestaurantState } from 'modules/restaurant/selectors';
 import { getLocation } from 'modules/location/actions';
 import { selectDistrict, selectCity } from 'modules/location/selectors';
-import { removeFromCart, initCart } from './actions';
+import MealOptions from 'components/MealOptions';
+import Cart from 'components/Cart';
+import { editCartItem, removeFromCart, initCart } from './actions';
 import { selectCartPurchases, selectOrderAmount } from './selectors';
 
 class CartContainer extends React.Component {
@@ -20,6 +22,19 @@ class CartContainer extends React.Component {
 
     if (getStorageItem('branchId') === params.branchId) this.props.initCart();
   }
+
+  handleEditClick = purchase => {
+    const MealOptionsHOC = () => (
+      <MealOptions purchase={purchase} onSubmit={this.handleEditSubmit} />
+    );
+
+    this.props.showModal(MealOptionsHOC);
+  };
+
+  handleEditSubmit = purchase => {
+    this.props.editCartItem(purchase);
+    this.props.hideModal();
+  };
 
   render() {
     const {
@@ -44,6 +59,7 @@ class CartContainer extends React.Component {
         city={city && city.get('name')}
         district={district && district.get('name')}
         isCheckout={this.isCheckout}
+        onItemEditClick={this.handleEditClick}
       />
     );
   }
@@ -60,6 +76,13 @@ export default compose(
       city: selectCity(state),
       district: selectDistrict(state),
     }),
-    { removeFromCart, initCart, getLocation },
+    {
+      editCartItem,
+      removeFromCart,
+      initCart,
+      getLocation,
+      showModal,
+      hideModal,
+    },
   ),
 )(CartContainer);

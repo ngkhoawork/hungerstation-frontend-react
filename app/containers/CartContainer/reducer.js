@@ -3,7 +3,13 @@ import {
   getStorageItem,
   setStorageItem,
 } from 'utils/localStorage';
-import { initCart, addToCart, removeFromCart, emptyCart } from './actions';
+import {
+  initCart,
+  addToCart,
+  editCartItem,
+  removeFromCart,
+  emptyCart,
+} from './actions';
 
 let isInitialized = false;
 
@@ -30,6 +36,21 @@ function cartContainerReducer(state = initialState, { type, payload }) {
         ...payload,
         id: `${Math.random()}${Date.now()}`,
       });
+      saveCartItems(purchases);
+
+      return Object.assign({}, state, { purchases });
+    }
+
+    case editCartItem.type: {
+      const editedPurchase = state.purchases.find(
+        ({ id }) => id === payload.id,
+      );
+      const editedPurchaseIndex = state.purchases.indexOf(editedPurchase);
+      const purchases = state.purchases
+        .slice(0, editedPurchaseIndex)
+        .concat(payload)
+        .concat(state.purchases.slice(editedPurchaseIndex + 1));
+
       saveCartItems(purchases);
 
       return Object.assign({}, state, { purchases });

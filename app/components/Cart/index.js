@@ -68,6 +68,7 @@ const Cart = ({
   city,
   district,
   removeFromCart,
+  onItemEditClick,
 }) => {
   const renderSubtitle = () => {
     if (isCheckout) return <From>{from}</From>;
@@ -95,6 +96,7 @@ const Cart = ({
             quantity={purchase.quantity}
             key={purchase.id}
             onRemoveFromCart={() => removeFromCart(purchase.id)}
+            onEditClick={() => onItemEditClick(purchase)}
           />
         ))}
       </Items>
@@ -157,6 +159,7 @@ Cart.propTypes = {
   city: PropTypes.string,
   district: PropTypes.string,
   removeFromCart: PropTypes.func.isRequired,
+  onItemEditClick: PropTypes.func.isRequired,
 };
 
 export { ViewCartButton };

@@ -48,7 +48,7 @@ export const Content = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  ${flex({ align: 'center' })};
+  ${flex({ align: 'flex-start' })};
   margin-bottom: 10px;
 `;
 
