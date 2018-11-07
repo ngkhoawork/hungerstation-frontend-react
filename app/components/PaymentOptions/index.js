@@ -16,11 +16,13 @@ const PaymentOptions = ({
   onCouponDelete,
 }) => (
   <div>
-    <Cards
-      cards={cards}
-      selectedOption={selectedOption}
-      onSelect={onOptionSelect}
-    />
+    {cards.length ? (
+      <Cards
+        cards={cards}
+        selectedOption={selectedOption}
+        onSelect={onOptionSelect}
+      />
+    ) : null}
     <PaymentSection title={intl.formatMessage(messages.otherOptions)}>
       <OptionContainer
         onSelect={() => onOptionSelect({ cash: true })}

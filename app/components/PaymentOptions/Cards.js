@@ -12,7 +12,7 @@ const titleStyle = {
   margin: '0 20px',
 };
 
-const Cards = ({ selectedOption, cards, onSelect }) => (
+const Cards = ({ selectedOption, cards = [], onSelect }) => (
   <PaymentSection title={intl.formatMessage(messages.cards)}>
     {cards.map(card => (
       <OptionContainer
@@ -24,7 +24,7 @@ const Cards = ({ selectedOption, cards, onSelect }) => (
       >
         <Title style={titleStyle}>
           ••••&nbsp;&nbsp;&nbsp;••••&nbsp;&nbsp;&nbsp;••••&nbsp;&nbsp;&nbsp;
-          {card.number}
+          {card.number.substr(-4)}
         </Title>
       </OptionContainer>
     ))}
