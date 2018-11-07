@@ -60,9 +60,8 @@ export default class App extends Component {
     }),
   };
 
-  componentWillMount() {
-    const { authenticateUser: authenticate } = this.props;
-    authenticate();
+  componentDidMount() {
+    this.props.authenticateUser();
   }
 
   render() {
@@ -77,7 +76,6 @@ export default class App extends Component {
 
         <Switch>
           <Route exact path="/" component={HomePage} />
-          {/* TODO: this route should be under restaurant page */}
           <PrivateRouteContainer
             path="/restaurants/:city/:district/restaurant/:branchId/checkout"
             component={CheckoutPage}
