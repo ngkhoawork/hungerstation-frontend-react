@@ -24,7 +24,11 @@ const getName = ({ name, specific_type, street, building_number }) => {
     return intl.formatMessage(addressMessages[specific_type]);
   }
 
-  return name || `${street} ${building_number || ''}`.trim();
+  return (
+    name ||
+    `${street || ''} ${building_number || ''}`.trim() ||
+    intl.formatMessage(addressMessages.old_style)
+  );
 };
 
 const getDescription = ({
@@ -34,7 +38,7 @@ const getDescription = ({
   building_number,
   name,
 }) => {
-  const address = `${street} ${building_number || ''}`.trim();
+  const address = `${street || ''} ${building_number || ''}`.trim();
 
   if (specific_type) return address;
 
