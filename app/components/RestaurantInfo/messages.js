@@ -10,13 +10,13 @@ export default defineMessages({
       id: 'app.components.RestaurantHeader.status.closed',
       defaultMessage: 'Closed',
     },
-    opensAt: {
-      id: 'app.components.RestaurantHeader.status.opensAt',
-      defaultMessage: 'Opens at',
+    soon: {
+      id: 'app.components.RestaurantHeader.status.soon',
+      defaultMessage: 'Opens at {time}',
     },
-    openTill: {
-      id: 'app.components.RestaurantHeader.status.openTill',
-      defaultMessage: 'Open till',
+    ready: {
+      id: 'app.components.RestaurantHeader.status.ready',
+      defaultMessage: 'Open till {time}',
     },
   },
 });

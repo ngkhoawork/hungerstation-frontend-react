@@ -20,18 +20,30 @@ import {
   RatingContainer,
 } from './StyledComponents';
 
-const renderStatus = status => {
-  const getMsg = type => `• ${intl.formatMessage(messages.status[type])}`;
+const getMsg = (type, params = {}) =>
+  `• ${intl.formatMessage(messages.status[type], params)}`;
 
-  if (status === 'openTill') {
-    return <Status color="success">{getMsg('openTill')}</Status>;
+const getTime = minutes => {
+  const now = new Date();
+  now.setHours(Math.floor(minutes / 60), minutes % 60);
+
+  return intl.formatTime(now);
+};
+
+const renderStatus = (status, { start_minute, end_minute } = {}) => {
+  if (status === 'ready' && end_minute !== undefined) {
+    return (
+      <Status color="success">
+        {getMsg('ready', { time: getTime(end_minute) })}
+      </Status>
+    );
   }
 
-  if (status === 'opensAt') {
+  if (status === 'soon' && start_minute !== undefined) {
     return (
       <Fragment>
         <Status color="error">{getMsg('closed')}</Status>
-        <Status>{getMsg('opensAt')}</Status>
+        <Status>{getMsg('soon', { time: getTime(start_minute) })}</Status>
       </Fragment>
     );
   }
@@ -45,7 +57,14 @@ const renderStatus = status => {
   return null;
 };
 
-const RestaurantInfo = ({ logo, name, status, rateAverage, cuisines }) => (
+const RestaurantInfo = ({
+  logo,
+  name,
+  status,
+  working_times,
+  rateAverage,
+  cuisines,
+}) => (
   <StyledRestaurantInfo>
     <StyledLogo>
       <BrandLogo src={logo} size={45} />
@@ -74,7 +93,7 @@ const RestaurantInfo = ({ logo, name, status, rateAverage, cuisines }) => (
         </Group>
       </StyledDetails>
     </StyledDetailsContainer>
-    <StatusContainer>{renderStatus(status)}</StatusContainer>
+    <StatusContainer>{renderStatus(status, working_times)}</StatusContainer>
   </StyledRestaurantInfo>
 );
 
@@ -82,6 +101,7 @@ RestaurantInfo.propTypes = {
   logo: PropTypes.string,
   name: PropTypes.string.isRequired,
   status: PropTypes.string,
+  working_times: PropTypes.object,
   rateAverage: PropTypes.number,
   cuisines: PropTypes.arrayOf(
     PropTypes.shape({
