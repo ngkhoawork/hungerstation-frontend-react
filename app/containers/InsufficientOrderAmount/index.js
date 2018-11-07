@@ -8,8 +8,6 @@ import { hideModal } from 'containers/ModalContainer/actions';
 
 const InsufficientOrderAmountHOC = ({ hideModal, history, location }) => {
   const handleAddMore = () => {
-    // TODO: once Login page is fixed to not push but replace state this
-    // can be just: history.goBack();
     const path = location.pathname.split('/');
     path.pop(); // remove /checkout from pathname
     history.push(path.join('/'));
