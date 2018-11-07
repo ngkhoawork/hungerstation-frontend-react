@@ -30,7 +30,11 @@ const ScrollToListTopWrapper = styled.div`
   position: absolute;
   bottom: 5px;
   right: 0px;
-  margin-right: -72px;
+  margin-right: -8%;
+  ${mediaLess(1400)`
+    margin-right: 0px;
+  `};
+
   transform: rotate(270deg);
 `;
 
