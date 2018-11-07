@@ -1,7 +1,11 @@
 import {
   selectDeliveryOption,
   selectPaymentOption,
-  setCoupon,
+  removeCoupon,
+  fetchDeliveryOptionsSuccess,
+  fetchCreditCardsSuccess,
+  validateCouponSuccess,
+  validateCouponError,
 } from './actions';
 
 export const initialState = {};
@@ -14,15 +18,32 @@ function reducer(state = initialState, { type, payload }) {
     case selectPaymentOption.type:
       return Object.assign({}, state, { selectedPaymentOption: payload });
 
-    case setCoupon.type:
+    case fetchDeliveryOptionsSuccess.type: {
+      const { options, default_option } = payload;
+
       return Object.assign({}, state, {
-        coupon: {
-          ...payload,
-          id: payload && 1,
-          value: 12,
-          isValid: payload && Date.now() % 2 === 0,
-        },
+        deliveryOptions: options,
+        selectedDeliveryOption: default_option
+          ? options.find(({ key }) => key === default_option)
+          : null,
       });
+    }
+
+    case fetchCreditCardsSuccess.type:
+      return Object.assign({}, state, { cards: payload });
+
+    case validateCouponSuccess.type:
+      return Object.assign({}, state, {
+        coupon: { ...payload, isValid: true },
+      });
+
+    case validateCouponError.type:
+      return Object.assign({}, state, {
+        coupon: { ...payload, isValid: false },
+      });
+
+    case removeCoupon.type:
+      return Object.assign({}, state, { coupon: null });
 
     default:
       return state;
