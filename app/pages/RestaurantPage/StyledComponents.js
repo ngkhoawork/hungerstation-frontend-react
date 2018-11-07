@@ -15,9 +15,10 @@ import {
   mediaMediumGreater,
   device,
 } from 'utils/css/styles';
-import restaurantImg from 'images/restaurant.png';
-import restaurantImg2x from 'images/restaurant@2x.png';
-import restaurantImg3x from 'images/restaurant@3x.png';
+import { gold } from 'utils/css/colors';
+import restaurantImg from 'images/bg-pattern.png';
+import restaurantImg2x from 'images/bg-pattern@2x.png';
+import restaurantImg3x from 'images/bg-pattern@3x.svg';
 
 export const StyledPage = styled.div`
   width: 100%;
@@ -76,6 +77,7 @@ export const Header = styled.div`
   background-image: url(${restaurantImg});
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: ${gold};
 
   ${mediaMedium`
     margin-bottom: 100px;
