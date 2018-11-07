@@ -16,7 +16,10 @@ const MenuLinks = () => {
       id: 'add-restaurants',
       label: intl.formatMessage(messages.addRestaruants),
     },
-    { id: 'privacy-policy', label: intl.formatMessage(messages.privacyPolicy) },
+    {
+      id: 'privacy-policy/who-we-are',
+      label: intl.formatMessage(messages.privacyPolicy),
+    },
     { id: 'careers', label: intl.formatMessage(messages.careers) },
     // { id: 'blog', label: intl.formatMessage(messages.blog) },
   ];

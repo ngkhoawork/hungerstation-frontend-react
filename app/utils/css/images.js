@@ -5,6 +5,7 @@ import Pizza from 'images/pizza.png';
 import Networking from 'images/networking.png';
 import Googleplay from 'icons/googleplay.svg';
 import AppleStore from 'icons/appstore.svg';
+import privacy_policy from 'images/privacy_policy.png';
 
 const getImage = name => {
   switch (name) {
@@ -22,6 +23,8 @@ const getImage = name => {
       return Googleplay;
     case 'applestore':
       return AppleStore;
+    case 'privacy_policy':
+      return privacy_policy;
     default:
       return null;
   }
