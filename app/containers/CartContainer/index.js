@@ -46,6 +46,19 @@ class CartContainer extends React.Component {
       params,
       ...props
     } = this.props;
+    let discount = 0;
+
+    if (coupon && coupon.isValid) {
+      const { restaurants, cutbacks, discounts } = coupon;
+
+      if (
+        !restaurants.length ||
+        restaurants.indexOf(restaurant.restaurantId) > -1
+      ) {
+        if (cutbacks[0]) discount = cutbacks[0].cutback_amount;
+        if (discounts[0]) discount = discounts[0].discount_amount;
+      }
+    }
 
     return (
       <Cart
@@ -55,7 +68,7 @@ class CartContainer extends React.Component {
           'deliveryConditions',
           'minimum_order',
         ])}
-        discount={coupon && coupon.isValid ? coupon.value : 0}
+        discount={discount}
         deliveryFee={delivery && delivery.price}
         city={city && city.get('name')}
         district={district && district.get('name')}
