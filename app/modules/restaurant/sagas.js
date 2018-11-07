@@ -27,6 +27,7 @@ export function* fetchRestaurantSaga({ payload: id }) {
     }));
     const restaurant = {
       id: branch.id,
+      restaurantId: branch.restaurant.id,
       name: branch.restaurant.name,
       status: branch.status,
       latitude: branch.latitude,
