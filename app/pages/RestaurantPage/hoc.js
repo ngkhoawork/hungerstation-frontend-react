@@ -38,6 +38,10 @@ class RestaurantPageHOC extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.hideModal();
+  }
+
   handleAddToCart = product => {
     this.props.addToCart(product);
     setStorageItem('branchId', this.props.match.params.branchId);
@@ -45,8 +49,6 @@ class RestaurantPageHOC extends React.Component {
 
   render() {
     const {
-      showModal,
-      hideModal,
       restaurantState: { restaurant, isLoading },
       cartItems,
       match,
@@ -59,8 +61,8 @@ class RestaurantPageHOC extends React.Component {
         restaurant={restaurant}
         cartItems={cartItems}
         onAddToCart={this.handleAddToCart}
-        onShowModal={showModal}
-        onHideModal={hideModal}
+        onShowModal={this.props.showModal}
+        onHideModal={this.props.hideModal}
       />
     );
   }
