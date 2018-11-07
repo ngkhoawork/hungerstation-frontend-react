@@ -31,7 +31,10 @@ const Amount = ({ label, amount = 0, isTotal = false, note }) => (
         <Description style={{ margin: '0 0 0 10px' }}>{note}</Description>
       ) : (
         <Quantity isTotal={isTotal}>
-          {intl.formatNumber(amount, priceIntlOptions)}
+          {`${amount < 0 ? '- ' : ''}${intl.formatNumber(
+            Math.abs(amount),
+            priceIntlOptions,
+          )}`}
         </Quantity>
       )}
     </Wrapper>
