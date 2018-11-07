@@ -1,5 +1,10 @@
 import createAction from 'utils/actions/createAction';
 
+export const setBranchId = createAction(
+  'restaurant/SET_BRANCH_ID',
+  payload => payload,
+);
+
 export const fetchRestaurant = createAction(
   'restaurant/FETCH_RESTAURANT',
   payload => payload,
