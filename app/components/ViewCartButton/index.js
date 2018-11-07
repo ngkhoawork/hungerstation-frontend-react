@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import intl from 'utils/intlService';
 import { getPathname } from 'utils/location';
-import styled from 'styled-components';
-import { alabaster, fuscousGray, jade } from 'utils/css/colors';
-import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
+import { alabaster, jade } from 'utils/css/colors';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
 import Price from 'components/Price';
 import messages from './messages';
+import {
+  ButtonWrapper,
+  Content,
+  LeftSide,
+  Label,
+  RightSide,
+} from './StyledComponents';
 
 const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
   const getHref = () => {
@@ -31,7 +36,7 @@ const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
         >
           <Content>
             <LeftSide>
-              {quantity !== undefined ? (
+              {!isCheckout && quantity !== undefined ? (
                 <CircledItem color="white" width={30}>
                   <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
                 </CircledItem>
@@ -44,7 +49,9 @@ const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
               )}
             </Label>
             <RightSide>
-              {price !== undefined ? <Price price={price} isPrimary /> : null}
+              {!isCheckout && price !== undefined ? (
+                <Price price={price} isPrimary />
+              ) : null}
             </RightSide>
           </Content>
         </Button>
@@ -61,34 +68,3 @@ ViewCartButton.propTypes = {
 };
 
 export default ViewCartButton;
-
-const ButtonWrapper = styled.div`
-  width: 100%;
-  border-radius: ${borderRadius};
-`;
-
-const Content = styled.div`
-  font-family: ${fontFamilyRegular} !important;
-  position: relative;
-  width: 100%;
-`;
-
-const LeftSide = styled.span`
-  position: absolute;
-  left: 20px;
-  top: -4px;
-`;
-
-const RightSide = styled.span`
-  position: absolute;
-  right: 20px;
-  top: 4px;
-`;
-
-const Label = styled.span`
-  color: ${({ isCheckout, isDisabled }) =>
-    isCheckout && !isDisabled ? 'white' : fuscousGray};
-  font-size: 20px;
-  display: inline-block;
-  margin-top: 2px;
-`;

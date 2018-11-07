@@ -4,7 +4,7 @@ import intl from 'utils/intlService';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
 import CartContainer from 'containers/CartContainer';
-import { ViewCartButton } from 'components/Cart';
+import ViewCartButton from 'containers/ViewCartButton';
 import RestaurantInfo from 'components/RestaurantInfo';
 import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
@@ -33,7 +33,6 @@ class RestaurantPage extends React.Component {
     this.state = {
       restaurantId: id, // eslint-disable-line react/no-unused-state
       selectedMenuGroup: menuGroups && menuGroups[0],
-      totalOrder: {},
     };
   }
 
@@ -62,18 +61,6 @@ class RestaurantPage extends React.Component {
     this.setState({ selectedMenuGroup });
 
   handleAddOptions = purchase => {
-    const { product, quantity, additions, price } = purchase;
-    const { totalOrder } = this.state;
-    const order = totalOrder[product.id]
-      ? totalOrder[product.id]
-      : { product, quantity: 0, price: 0 };
-
-    order.quantity += quantity;
-    order.price += price;
-    order.additions = (order.additions || []).concat(additions);
-    totalOrder[product.id] = order;
-
-    this.setState({ totalOrder });
     this.props.onHideModal();
     this.props.onAddToCart(purchase);
   };
@@ -81,17 +68,9 @@ class RestaurantPage extends React.Component {
   renderContent = () => {
     const { cartItems, restaurant } = this.props;
     const { menuItems, menuGroups, ...info } = restaurant;
-    const { selectedMenuGroup, totalOrder } = this.state;
+    const { selectedMenuGroup } = this.state;
     const shownProducts = menuItems.filter(
       ({ menuGroupId }) => menuGroupId === parseInt(selectedMenuGroup.id, 10),
-    );
-    const totalQuantity = Object.keys(totalOrder).reduce(
-      (sum, key) => sum + totalOrder[key].quantity,
-      0,
-    );
-    const totalPrice = Object.keys(totalOrder).reduce(
-      (sum, key) => sum + totalOrder[key].price,
-      0,
     );
 
     return (
@@ -119,7 +98,7 @@ class RestaurantPage extends React.Component {
           <BasketBtn onClick={this.handleBasketClick}>
             {intl.formatMessage(messages.checkBasket)}
           </BasketBtn>
-          <ViewCartButton quantity={totalQuantity} price={totalPrice} />
+          <ViewCartButton />
         </CartBtns>
       </Fragment>
     );

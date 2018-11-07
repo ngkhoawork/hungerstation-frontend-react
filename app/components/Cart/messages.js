@@ -58,12 +58,4 @@ export default defineMessages({
     id: 'app.components.Cart.privacyPolicy',
     defaultMessage: 'Privacy Policy',
   },
-  viewCart: {
-    id: 'app.components.Cart.viewCart',
-    defaultMessage: 'View Cart',
-  },
-  placeOrder: {
-    id: 'app.components.Cart.placeOrder',
-    defaultMessage: 'Place order',
-  },
 });

@@ -9,13 +9,13 @@ import {
   headerHeight,
   navHeaderHeight,
 } from 'utils/css/variables';
+import ViewCartButton from 'containers/ViewCartButton';
 import { Title } from 'components/Typography';
 import Notice from 'components/Notice';
 import OrderElement from './OrderElement';
 import DeliveryTo from './DeliveryTo';
 import CartNotice from './Notice';
 import Amount from './Amount';
-import ViewCartButton from './ViewCartButton';
 import messages from './messages';
 
 const Wrapper = styled.section`
@@ -139,10 +139,7 @@ const Cart = ({
           amount={orderAmount + (deliveryFee || 0) - discount}
         />
         {isCheckout ? <CartNotice /> : null}
-        <ViewCartButton
-          isCheckout={isCheckout}
-          isDisabled={!purchases.length || minAmount > orderAmount}
-        />
+        <ViewCartButton />
       </Unshrinkable>
     </Wrapper>
   );
@@ -162,5 +159,4 @@ Cart.propTypes = {
   onItemEditClick: PropTypes.func.isRequired,
 };
 
-export { ViewCartButton };
 export default Cart;
