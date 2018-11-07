@@ -44,6 +44,10 @@ export class Intl {
   formatNumber(...args) {
     return this.getIntl().formatNumber(...args);
   }
+
+  formatTime(...args) {
+    return this.getIntl().formatTime(...args);
+  }
 }
 
 const intlService = new Intl();
