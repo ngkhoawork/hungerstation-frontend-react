@@ -48,7 +48,10 @@ export const selectedDistricts = createSelector(
 
 export const selectCoords = createSelector(
   selectLocationDomain,
-  locationState => locationState.get('coords').toJS(),
+  locationState => {
+    const { lat, lng } = locationState.get('coords').toJS();
+    return { latitude: lat, longitude: lng };
+  },
 );
 
 export const selectIsSettlementLoaded = createSelector(

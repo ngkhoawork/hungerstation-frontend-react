@@ -50,7 +50,9 @@ class AddAddress extends React.Component {
     googleMaps = window.google.maps;
 
     const { location, address } = this.props;
-    const { lat, lng } = address.lat ? address : location;
+    const { latitude: lat, longitude: lng } = address.latitude
+      ? address
+      : location;
 
     this.map = new googleMaps.Map(document.getElementById(mapId), {
       zoom: 16,
@@ -87,7 +89,8 @@ class AddAddress extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
-      this.setLocation(this.props.location);
+      const { latitude: lat, longitude: lng } = this.props.location;
+      this.setLocation({ lat, lng });
     }
   }
 
@@ -168,8 +171,8 @@ class AddAddress extends React.Component {
       id: address.id,
       name,
       specific_type,
-      lat: geometry.location.lat(),
-      lng: geometry.location.lng(),
+      latitude: geometry.location.lat(),
+      longitude: geometry.location.lng(),
       description,
       mobile: this.phoneRef.current.value,
       street: getStreet(selectedPlace),

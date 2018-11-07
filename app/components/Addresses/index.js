@@ -44,7 +44,7 @@ const Addresses = ({
         ) : null}
         {addresses.map(address => (
           <Address
-            key={`${address.id} ${address.lat} ${address.lng}`}
+            key={`${address.id} ${address.latitude} ${address.longitude}`}
             address={address}
             onSelectToggle={onSelectToggle}
             onEditClick={onEditClick}
