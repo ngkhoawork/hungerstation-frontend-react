@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { getDeepProp } from 'utils/helpers';
 import { saveCurrentLocationAction } from 'modules/location/actions';
 import { fetchAddresses } from 'modules/address/actions';
+import { setBranchId } from 'modules/restaurant/actions';
 import {
   selectAddresses,
   selectAddressesLoading,
@@ -31,6 +32,7 @@ class CheckoutPageHOC extends React.Component {
       });
     }
 
+    this.props.setBranchId(match.params.branchId);
     this.props.fetchAddresses(match.params.branchId);
   }
 
@@ -59,6 +61,10 @@ class CheckoutPageHOC extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.hideModal();
+  }
+
   // TODO: need to get ineligible addresses as well from the backend to be able
   // to take one of them for editing.
   handleIneligibleAddrEdit = () => {
@@ -68,9 +74,9 @@ class CheckoutPageHOC extends React.Component {
 
   // TODO: not quite clear where should this go to...??
   handleIneligibleAddrSearch = () => {
-    const { hideModal, history, match } = this.props;
+    const { history, match } = this.props;
     const { district, city } = match.params;
-    hideModal();
+    this.props.hideModal();
 
     history.push(`/restaurants/${city}/${district}`);
   };
@@ -106,6 +112,7 @@ CheckoutPageHOC.propTypes = {
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   saveCurrentLocationAction: PropTypes.func.isRequired,
+  setBranchId: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -116,5 +123,11 @@ export default connect(
     addresses: selectAddresses,
     isLoadingAddresses: selectAddressesLoading,
   }),
-  { showModal, hideModal, fetchAddresses, saveCurrentLocationAction },
+  {
+    showModal,
+    hideModal,
+    fetchAddresses,
+    saveCurrentLocationAction,
+    setBranchId,
+  },
 )(CheckoutPageHOC);
