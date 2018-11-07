@@ -5,6 +5,7 @@ import {
   pageOffsetX,
   mobPageOffsetX,
   borderRadius,
+  zIndexStickyMenu,
 } from 'utils/css/variables';
 import {
   flex,
@@ -111,16 +112,20 @@ export const ProductsContainer = styled.div`
 export const StyledProductTypes = styled.div`
   width: 140px;
   ${flex({ shrink: 0 }, false)};
+  position: sticky;
+  background: white;
+  z-index: ${zIndexStickyMenu};
 
   ${mediaMediumGreater`
     margin-right: 20px;
-    position: sticky;
     top: 10px;
     align-self: flex-start;
   `};
 
   ${mediaMedium`
     width: 100%;
+    padding-top: 10px;
+    top: 0;
     margin-bottom: 20px;
   `};
 `;

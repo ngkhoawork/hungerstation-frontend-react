@@ -19,6 +19,7 @@ export const mobPageOffsetX = '30px';
 export const stepIndent = '210px';
 export const addressIndent = '90px';
 
+export const zIndexStickyMenu = 300;
 export const zIndexDropdown = 700;
 export const zIndexDisabledOverlay = 800;
 export const zIndexModal = 1000;
