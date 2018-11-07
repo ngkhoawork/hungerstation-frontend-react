@@ -11,6 +11,24 @@ export const getAddresses = (token, branchId) =>
   });
 
 export const saveAddress = (token, payload) => {
-  const action = payload.id ? updateAddressMutation : createAddressMutation;
-  protectedRequest(token, action, { ...payload });
+  if (payload.id) {
+    updateAddress(token, payload);
+  } else {
+    createAddress(token, payload);
+  }
+};
+
+const createAddress = (token, { branchId, ...payload }) => {
+  protectedRequest(token, createAddressMutation, {
+    // branchId: parseInt(branchId, 10),
+    ...payload,
+  });
+};
+
+const updateAddress = (token, { district, branchId, ...payload }) => {
+  protectedRequest(token, updateAddressMutation, {
+    district: parseInt(district, 10),
+    // branchId: parseInt(branchId, 10),
+    ...payload,
+  });
 };

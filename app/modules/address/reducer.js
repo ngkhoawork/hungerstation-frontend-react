@@ -17,7 +17,8 @@ function reducer(state = initialState, { type, payload }) {
     case fetchAddressesSuccess.type:
       return Object.assign({}, state, {
         isLoading: false,
-        addresses: payload.addresses,
+        addresses: payload,
+        primaryAddress: payload[0],
       });
 
     case saveAddressSuccess.type: {

@@ -30,8 +30,8 @@ export const getAddressesQuery = `query GetAddresses($branchId: Int!) {
 
 export const createAddressMutation = `mutation CreateAddress(
   $district: Int!,
-  $lat: Float!,
-  $lng: Float!,
+  $latitude: Float!,
+  $longitude: Float!,
   $name: String,
   $description: String,
   $mobile: String,
@@ -42,8 +42,8 @@ export const createAddressMutation = `mutation CreateAddress(
 ) {
   createAddress(
     local_id: $district
-    latitude: $lat
-    longitude: $lng
+    latitude: $latitude
+    longitude: $longitude
     name: $name
     description: $description
     mobile: $mobile
@@ -80,10 +80,10 @@ export const createAddressMutation = `mutation CreateAddress(
 }`;
 
 export const updateAddressMutation = `mutation UpdateAddress(
-  $id: Int!,
+  $id: ID!,
   $district: Int,
-  $lat: Float,
-  $lng: Float,
+  $latitude: Float,
+  $longitude: Float,
   $name: String,
   $description: String,
   $mobile: String,
@@ -95,8 +95,8 @@ export const updateAddressMutation = `mutation UpdateAddress(
   updateAddress(
     id: $id
     local_id: $district
-    latitude: $lat
-    longitude: $lng
+    latitude: $latitude
+    longitude: $longitude
     name: $name
     description: $description
     mobile: $mobile

@@ -16,11 +16,12 @@ export function* fetchAddressesSaga({ payload }) {
 
     const { accessToken } = yield select(makeSelectTokens);
     const { addresses } = yield call(api.getAddresses, accessToken, payload);
-    const parsedAddresses = addresses.map(({ address_details }) => ({
-      ...address_details,
+    const parsedAddresses = addresses.map(({ id, address_details }) => ({
+      ...address_details[0],
+      id,
     }));
 
-    yield put(fetchAddressesSuccess({ addresses: parsedAddresses }));
+    yield put(fetchAddressesSuccess(parsedAddresses));
   } catch (e) {
     yield put(addressError());
     // console.log(e);
@@ -43,10 +44,10 @@ export function* saveAddressSaga({ payload }) {
     yield put(addressRequest());
 
     // const { accessToken } = yield select(makeSelectTokens);
-    // const { address } = yield call(api.saveAddress, accessToken, payload);
-    const address = { ...payload, id: payload.id || `${Math.random()}` };
-
-    yield put(saveAddressSuccess(address));
+    // const response = yield call(api.saveAddress, accessToken, payload);
+    // const address = { ...payload, id: payload.id || `${Math.random()}` };
+    // console.log(response);
+    // yield put(saveAddressSuccess(address));
   } catch (e) {
     yield put(addressError());
     // console.log(e);
