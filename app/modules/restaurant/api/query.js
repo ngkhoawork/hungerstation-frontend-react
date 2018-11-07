@@ -5,6 +5,21 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
     status
     latitude
     longitude
+    accept_cash_on_delivery
+    accept_credit_card
+    working_time {
+      weektimes {
+        start_minute
+        end_minute
+        monday
+        tuesday
+        wednesday
+        thursday
+        friday
+        saturday
+        sunday
+      }
+    }
     delivery_conditions {
       id
       delivery_fee
@@ -32,10 +47,15 @@ export const getBranchMenuQuery = `query GetBranchMenu($branchId: Int!) {
       name
       display_mode
       working_times {
-        id
-        day
-        opening
-        closing
+        start_minute
+        end_minute
+        monday
+        tuesday
+        wednesday
+        thursday
+        friday
+        saturday
+        sunday
       }
     }
     menuitems {
@@ -48,10 +68,15 @@ export const getBranchMenuQuery = `query GetBranchMenu($branchId: Int!) {
       menugroup_id
       modifier_group_ids
       working_times {
-        id
-        day
-        opening
-        closing
+        start_minute
+        end_minute
+        monday
+        tuesday
+        wednesday
+        thursday
+        friday
+        saturday
+        sunday
       }
     }
     modifiers {
