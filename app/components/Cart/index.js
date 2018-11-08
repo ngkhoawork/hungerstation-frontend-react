@@ -4,11 +4,7 @@ import styled from 'styled-components';
 import intl, { priceIntlOptions } from 'utils/intlService';
 import { mediaMedium, mediaLargeGreater, flex } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
-import {
-  fontFamilyLight,
-  headerHeight,
-  navHeaderHeight,
-} from 'utils/css/variables';
+import { fontFamilyLight } from 'utils/css/variables';
 import ViewCartButton from 'containers/ViewCartButton';
 import { Title } from 'components/Typography';
 import Notice from 'components/Notice';
@@ -25,7 +21,6 @@ const Wrapper = styled.section`
   box-shadow: 0 0 35px 5px rgba(183, 157, 157, 0.1);
   flex: 0 0 353px;
   max-width: 353px;
-  max-height: calc(100vh - ${headerHeight} - ${navHeaderHeight});
   ${flex({ direction: 'column' })};
 
   ${mediaMedium`width: 100%; min-width: 100%; max-width: 100%;`};
@@ -136,7 +131,11 @@ const Cart = ({
         <Amount
           isTotal
           label={intl.formatMessage(messages.total)}
-          amount={orderAmount + (deliveryFee || 0) - discount}
+          amount={
+            isCheckout
+              ? orderAmount + (deliveryFee || 0) - discount
+              : orderAmount
+          }
         />
         {isCheckout ? <CartNotice /> : null}
         <ViewCartButton />
