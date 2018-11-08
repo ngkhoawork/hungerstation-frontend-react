@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { flex, mediaMedium, mediaLess } from 'utils/css/styles';
+import { fontFamilyRegular } from 'utils/css/variables';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
@@ -70,7 +71,7 @@ export const SubTitle = styled.div`
   width: 470px;
   opacity: 0.6;
   color: #6f6e6b;
-  font-family: HungerStation;
+  font-family: ${fontFamilyRegular};
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.5px;
@@ -112,7 +113,7 @@ export const MenuBarMobile = styled.div`
     background: #ffff;
     border-style: solid;
     border-width: 1px;
-    font-family= regular;
+    font-family= ${fontFamilyRegular};
     padding: 1px 10px;
     margin-bottom: 20px
 
@@ -126,5 +127,3 @@ export const Section = styled.div`
     display: block;
   `};
 `;
-
-export const Header = styled.div``;

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { mediaMedium } from 'utils/css/styles';
+import { fontFamilyLight } from 'utils/css/variables';
 
 export const Answer = styled.div`
   height: 100%;
   width: 624px;
   opacity: 0.6;
   color: #6f6e6b;
-  font-family: HungerStation;
+  font-family: ${fontFamilyLight};
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.44px;
