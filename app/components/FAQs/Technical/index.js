@@ -15,7 +15,11 @@ const Technical = props => (
     <br />
     {props.title.map(
       item =>
+<<<<<<< HEAD
         item.faqgroup.title === 'Technical ' ? (
+=======
+        item.faqgroup.title === 'Technical ' && (
+>>>>>>> fix and convert object to array
           <div key={item.id}>
             <TextItem size={16} fontFamily="regular">
               <DropDownMobile title={item.question} isCollapsible>

@@ -17,7 +17,11 @@ const OrderRelated = props => (
     <br />
     {props.title.map(
       item =>
+<<<<<<< HEAD
         item.faqgroup.title === 'Order Related ' ? (
+=======
+        item.faqgroup.title === 'Order Related ' && (
+>>>>>>> fix and convert object to array
           <div key={item.id}>
             <TextItem size={16} fontFamily="regular">
               <DropDownMobile title={item.question} isCollapsible>
