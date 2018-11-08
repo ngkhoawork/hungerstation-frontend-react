@@ -23,6 +23,7 @@ export const Hint = styled.span`
   background-color: ${alabaster};
   border-radius: ${borderRadius};
   margin-left: 10px;
+  white-space: nowrap;
 
   + span {
     margin-left: 10px;
