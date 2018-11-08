@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
 import intl from 'utils/intlService';
-import { addressTypes, otherAddressType } from 'modules/address/constants';
+import { addressTypes } from 'modules/address/constants';
 import { isChangeableType } from 'modules/address/helpers';
 import addressMessages from 'modules/address/messages';
 import TypeSelect from 'components/TypeSelect';
@@ -26,7 +25,6 @@ class SaveAddress extends React.Component {
       ...addr,
       name: intl.formatMessage(addressMessages[addr.key]),
     }));
-    this.nameRef = React.createRef();
     this.state = {
       isSaveChecked: !!type,
       selectedType: this.addressTypes.find(({ key }) => key === type) || {},
@@ -35,16 +33,11 @@ class SaveAddress extends React.Component {
 
   getState = () => {
     const { selectedType, isSaveChecked } = this.state;
-    const name = this.nameRef.current.value;
     const specific_type = selectedType.key;
 
     if (!isSaveChecked) return {};
 
-    if (!specific_type || (specific_type === otherAddressType && !name)) {
-      return false;
-    }
-
-    return { specific_type, name: name || undefined };
+    return { specific_type };
   };
 
   handleTypeSelect = selectedType => {
@@ -58,7 +51,6 @@ class SaveAddress extends React.Component {
   };
 
   render() {
-    const { address } = this.props;
     const { isSaveChecked, selectedType } = this.state;
 
     return (
@@ -81,21 +73,6 @@ class SaveAddress extends React.Component {
             disabledTypeStyle={disabledTypeStyle}
             disabledTypes={this.disabledTypes}
           />
-          <Name>
-            <TextField
-              type="text"
-              required={selectedType.key === otherAddressType}
-              defaultValue={address.name}
-              disabled={
-                !selectedType.key ||
-                !this.isChangeableType ||
-                !isChangeableType(selectedType.key)
-              }
-              inputRef={this.nameRef}
-              label={intl.formatMessage(messages.name)}
-              fullWidth
-            />
-          </Name>
         </Content>
       </Container>
     );
@@ -138,8 +115,4 @@ const typeStyle = {
 
 const Content = styled.div`
   display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
-`;
-
-const Name = styled.div`
-  width: calc(50% - 20px);
 `;

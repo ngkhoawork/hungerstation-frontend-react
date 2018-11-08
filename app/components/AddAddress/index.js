@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import intl from 'utils/intlService';
 import { clearUndefs } from 'utils/helpers';
+import { otherAddressType } from 'modules/address/constants';
 import ModalFrame from 'containers/ModalFrameContainer';
 import Button from 'components/Button';
 import PhoneNumberInput from 'components/PhoneNumberInput';
@@ -163,13 +164,12 @@ class AddAddress extends React.Component {
 
     if (!saveAddressState || !description) return;
 
-    const { specific_type, name } = saveAddressState;
+    const { specific_type } = saveAddressState;
     const { geometry } = selectedPlace;
 
     const payload = {
       id: address.id,
-      name,
-      specific_type,
+      specific_type: specific_type || otherAddressType,
       latitude: geometry.location.lat(),
       longitude: geometry.location.lng(),
       description,

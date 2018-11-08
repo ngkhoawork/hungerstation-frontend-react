@@ -32,7 +32,6 @@ export const createAddressMutation = `mutation CreateAddress(
   $district: Int!,
   $latitude: Float!,
   $longitude: Float!,
-  $name: String,
   $description: String,
   $mobile: String,
   $specific_type: String!,
@@ -44,7 +43,6 @@ export const createAddressMutation = `mutation CreateAddress(
     local_id: $district
     latitude: $latitude
     longitude: $longitude
-    name: $name
     description: $description
     mobile: $mobile
     specific_type: $specific_type
@@ -84,7 +82,6 @@ export const updateAddressMutation = `mutation UpdateAddress(
   $district: Int,
   $latitude: Float,
   $longitude: Float,
-  $name: String,
   $description: String,
   $mobile: String,
   $specific_type: String,
@@ -97,7 +94,6 @@ export const updateAddressMutation = `mutation UpdateAddress(
     local_id: $district
     latitude: $latitude
     longitude: $longitude
-    name: $name
     description: $description
     mobile: $mobile
     specific_type: $specific_type
