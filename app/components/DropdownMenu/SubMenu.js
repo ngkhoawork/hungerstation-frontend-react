@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import { StyledLink } from 'utils/css/styledComponents';
 import { wildSand, boulder } from 'utils/css/colors';
-import StyledMenu from './StyledMenu';
-import StyledSubMenu from './StyledSubMenu';
+import { StyledMenu, StyledSubMenu } from './StyledComponents';
 
-const SubMenu = ({ items }) => (
-  <StyledSubMenu className="fadeIn">
+const SubMenu = ({ items, isRightAligned }) => (
+  <StyledSubMenu className="fadeIn" isRightAligned={isRightAligned}>
     {items.map(item => (
       <StyledLink key={item.id} to={item.to}>
         <StyledMenu>
@@ -19,9 +16,7 @@ const SubMenu = ({ items }) => (
               <Icon name={item.icon} />
             </CircledItem>
           )}
-          <Paragraph size={14} color={boulder}>
-            {item.label}
-          </Paragraph>
+          <span style={{ fontSize: 14, color: boulder }}>{item.label}</span>
         </StyledMenu>
       </StyledLink>
     ))}
@@ -30,6 +25,7 @@ const SubMenu = ({ items }) => (
 
 SubMenu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isRightAligned: PropTypes.bool,
 };
 
 export default SubMenu;

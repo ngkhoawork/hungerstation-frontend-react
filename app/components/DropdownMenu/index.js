@@ -1,28 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
-import Paragraph from 'components/Paragraph';
 import { persimmon } from 'utils/css/colors';
-import StyledDropdown from './StyledDropdown';
-import DropdownWrapper from './DropdownWrapper';
+import { StyledDropdown } from './StyledComponents';
 import SubMenu from './SubMenu';
 
 class DropdownMenu extends Component {
-  static propTypes = {
-    leftIcon: PropTypes.string,
-    items: PropTypes.arrayOf(PropTypes.object).isRequired,
-    label: PropTypes.string,
-  };
-
-  static defaultProps = {
-    label: '',
-  };
-
-  state = {
-    isDropdownVisible: false,
-  };
+  state = { isDropdownVisible: false };
 
   dropdownWrapperRef = React.createRef();
 
@@ -51,26 +36,34 @@ class DropdownMenu extends Component {
   };
 
   render() {
-    const { leftIcon, label, items } = this.props;
+    const { leftIcon, label = '', items, isRightAligned } = this.props;
     const { isDropdownVisible } = this.state;
+
     return (
-      <DropdownWrapper>
+      <div style={{ position: 'relative' }}>
         <StyledDropdown
           onClick={this.toggleDropdown}
           innerRef={this.dropdownWrapperRef}
         >
           <CircledItem color="white" width={22} withShadow>
-            <Paragraph size={16} color={persimmon}>
-              {leftIcon}
-            </Paragraph>
+            <span style={{ color: persimmon, zIndex: 1 }}>{leftIcon}</span>
           </CircledItem>
-          <Paragraph size={16}>{label}</Paragraph>
+          <span>{label}</span>
           <Icon name="arrow-dropdown" />
         </StyledDropdown>
-        {isDropdownVisible && <SubMenu items={items} />}
-      </DropdownWrapper>
+        {isDropdownVisible ? (
+          <SubMenu items={items} isRightAligned={isRightAligned} />
+        ) : null}
+      </div>
     );
   }
 }
+
+DropdownMenu.propTypes = {
+  leftIcon: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  label: PropTypes.string,
+  isRightAligned: PropTypes.bool,
+};
 
 export default DropdownMenu;
