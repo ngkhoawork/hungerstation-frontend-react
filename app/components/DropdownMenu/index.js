@@ -45,7 +45,12 @@ class DropdownMenu extends Component {
           onClick={this.toggleDropdown}
           innerRef={this.dropdownWrapperRef}
         >
-          <CircledItem color="white" width={22} withShadow>
+          <CircledItem
+            color="white"
+            width={22}
+            style={{ cursor: 'pointer' }}
+            withShadow
+          >
             <span style={{ color: persimmon, zIndex: 1 }}>{leftIcon}</span>
           </CircledItem>
           <span>{label}</span>

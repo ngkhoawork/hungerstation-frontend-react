@@ -7,9 +7,11 @@ const dropdownHeight = '40px';
 
 export const StyledDropdown = styled.div`
   height: ${dropdownHeight};
-  border-radius: 8px;
+  border-radius: ${borderRadius};
+  cursor: pointer;
   font-size: 16px;
   width: 100%;
+  padding-right: 10px;
   ${flex({ align: 'center', justify: 'space-between' })};
 
   & > span {
