@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import Input from '@material-ui/core/Input';
-import { flex, mediaMedium } from 'utils/css/styles';
+import { flex, mediaSmall, mediaMedium } from 'utils/css/styles';
 import {
   maxModalWidth,
   maxModalContentHeight,
@@ -19,11 +19,17 @@ export const Container = styled.div`
 `;
 
 const mapHeight = '250px';
+const smallMapHeight = '180px';
 export const Map = styled.div`
   height: ${mapHeight};
   min-height: ${mapHeight};
   width: calc(100% + 40px);
   margin: 0 -20px 20px;
+
+  ${mediaSmall`
+    height: ${smallMapHeight};
+    min-height: ${smallMapHeight};
+  `};
 `;
 
 const locationBigIconSize = '56px';
@@ -88,6 +94,8 @@ export const ZoomCtrl = styled.div`
   border-radius: 2px;
   background: white;
   overflow: hidden;
+
+  ${mediaSmall`top: calc(${smallMapHeight} - 60px)`};
 `;
 
 export const ZoomBorder = styled.div`
