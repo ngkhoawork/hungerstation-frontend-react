@@ -24,7 +24,7 @@ export default defineMessages({
   },
   selectDelivery: {
     id: 'app.components.Cart.selectDelivery',
-    defaultMessage: 'Please choose delivery option',
+    defaultMessage: 'Select a delivery option',
   },
   deliveryFee: {
     id: 'app.components.Cart.deliveryFee',

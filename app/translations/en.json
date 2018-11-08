@@ -95,7 +95,7 @@
   "app.components.Cart.minOrderError": "{restaurantName} minimum order amount is {minAmount}. current order total is {orderAmount}.",
   "app.components.Cart.amount": "Order Amount",
   "app.components.Cart.deliveryFee": "Delivery fee",
-  "app.components.Cart.selectDelivery": "Please choose delivery option",
+  "app.components.Cart.selectDelivery": "Select a delivery option",
   "app.components.Cart.discount": "Discount",
   "app.components.Cart.total": "Total",
   "app.components.Cart.viewCart": "View Cart",
