@@ -10,7 +10,6 @@ import Button from 'components/Button';
 import PhoneNumberInput from 'components/PhoneNumberInput';
 import CheckboxIcon from 'components/CheckboxIcon';
 import Icon from 'components/Icon';
-import Notice from 'components/Notice';
 import messages from './messages';
 import SaveAddress from './SaveAddress';
 import { getStreet, getBuildingNumber } from './helpers';
@@ -221,12 +220,6 @@ class AddAddress extends React.Component {
             <ZoomBtn onClick={() => this.handleZoomChange(-1)}>-</ZoomBtn>
           </ZoomCtrl>
           <Content>
-            {this.props.hasNoEligible ? (
-              <Notice
-                message={intl.formatMessage(messages.noEligibleAddr)}
-                type="error"
-              />
-            ) : null}
             <InputsContainer>
               <Desc>
                 <TextField
@@ -284,7 +277,7 @@ AddAddress.propTypes = {
   phone: PropTypes.string,
   address: PropTypes.object,
   disabledTypes: PropTypes.array,
-  hasNoEligible: PropTypes.bool,
+  // hasNoEligible: PropTypes.bool,
   hasNoAddress: PropTypes.bool,
   location: PropTypes.object,
   onLocateMeClick: PropTypes.func.isRequired,
