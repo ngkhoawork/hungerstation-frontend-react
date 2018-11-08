@@ -41,6 +41,7 @@ const StyledButton = styled.button`
   }
 
   ${({ style }) => style && css(style)};
+  ${({ css }) => css};
 `;
 
 export default StyledButton;
