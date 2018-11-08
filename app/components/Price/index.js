@@ -10,6 +10,8 @@ const Price = styled.span`
   color: ${({ isPrimary }) => (isPrimary ? jade : silverChalice)};
   font-size: ${({ size }) => size || 16}px;
   font-family: ${fontFamilyRegular};
+
+  ${({ css }) => css};
 `;
 
 const OrderElement = ({ price, hasTag, ...props }) => (
