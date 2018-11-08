@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { mediaMediumGreater, flex, borderBottom } from 'utils/css/styles';
+import {
+  mediaMedium,
+  mediaMediumGreater,
+  flex,
+  borderBottom,
+} from 'utils/css/styles';
 
 export const containerStyle = css`
   ${mediaMediumGreater`width: 600px`};
@@ -20,8 +25,30 @@ export const Content = styled.div`
 
 export const Footer = styled.div`
   ${flex({ justify: 'space-between', shrink: 0 })};
+
+  ${mediaMedium`${flex({ align: 'center', direction: 'column' })}`};
+`;
+
+export const FooterLeftSide = styled.div`
+  ${flex({ align: 'center', justify: 'space-between' })};
+
+  ${mediaMedium`margin-bottom: 30px;`};
 `;
 
 export const FooterRightSide = styled.div`
   ${flex({ align: 'center' })};
+
+  ${mediaMedium`width: 100%;`};
+`;
+
+export const LeftSidePrice = styled.span`
+  ${mediaMediumGreater`display: none;`};
+`;
+
+export const RightSidePrice = styled.span`
+  ${mediaMedium`display: none;`};
+`;
+
+export const btn = css`
+  ${mediaMedium`width: 100%; padding: 18px;`};
 `;

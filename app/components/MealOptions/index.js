@@ -14,7 +14,11 @@ import {
   headerStyle,
   Content,
   Footer,
+  FooterLeftSide,
   FooterRightSide,
+  LeftSidePrice,
+  RightSidePrice,
+  btn,
 } from './StyledComponents';
 
 class MealOptions extends Component {
@@ -179,15 +183,30 @@ class MealOptions extends Component {
           ))}
         </Content>
         <Footer>
-          <QuantitySelect
-            quantity={quantity}
-            onChange={this.handleQuantityChange}
-          />
+          <FooterLeftSide>
+            <QuantitySelect
+              quantity={quantity}
+              onChange={this.handleQuantityChange}
+            />
+            <LeftSidePrice>
+              &nbsp; &nbsp; &nbsp;
+              {intl.formatMessage(messages.total)} &nbsp;
+              <Price price={price} isPrimary />
+            </LeftSidePrice>
+          </FooterLeftSide>
           <FooterRightSide>
-            {intl.formatMessage(messages.total)} &nbsp;
-            <Price price={price} isPrimary />
-            &nbsp; &nbsp; &nbsp;
-            <Button primary inline size="l" onClick={this.handleAddToCart}>
+            <RightSidePrice>
+              {intl.formatMessage(messages.total)} &nbsp;
+              <Price price={price} isPrimary />
+              &nbsp; &nbsp; &nbsp;
+            </RightSidePrice>
+            <Button
+              primary
+              inline
+              css={btn}
+              size="l"
+              onClick={this.handleAddToCart}
+            >
               {intl.formatMessage(messages.addTocart)}
             </Button>
           </FooterRightSide>
