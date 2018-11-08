@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { fuscousGray } from 'utils/css/colors';
-import { mediaMediumGreater } from 'utils/css/styles';
+import { mediaMediumGreater, mediaSmall } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 
 export const ButtonWrapper = styled.div`
@@ -19,6 +19,8 @@ export const LeftSide = styled.span`
   left: 20px;
   top: -4px;
 
+  ${mediaSmall`left: -10px`};
+
   ${mediaMediumGreater`display: none;`};
 `;
 
@@ -26,6 +28,8 @@ export const RightSide = styled.span`
   position: absolute;
   right: 20px;
   top: 4px;
+
+  ${mediaSmall`right: -10px`};
 
   ${mediaMediumGreater`display: none;`};
 `;
