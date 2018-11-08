@@ -16,7 +16,7 @@ const PaymentOptions = ({
   onCouponDelete,
 }) => (
   <div>
-    {cards.length ? (
+    {cards && cards.length ? (
       <Cards
         cards={cards}
         selectedOption={selectedOption}
