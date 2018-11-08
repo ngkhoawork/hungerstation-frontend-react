@@ -89,6 +89,7 @@ export default class SearchBarContainer extends React.Component {
       selectedCity,
       selectedDistrict,
       isSubmitting,
+      hideSearch,
     } = this.props;
     return (
       <SearchBar
@@ -102,6 +103,7 @@ export default class SearchBarContainer extends React.Component {
         selectedDistrict={selectedDistrict}
         handleSubmit={this.handleSubmit}
         isSubmitting={isSubmitting}
+        hideSearch={hideSearch}
       />
     );
   }

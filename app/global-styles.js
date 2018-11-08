@@ -95,7 +95,6 @@ export const global = injectGlobal`
     max-width: 100vw;
     max-height: 100vh;
     outline: none;
-    overflow: hidden;
   }
 
   .FiltersModal {

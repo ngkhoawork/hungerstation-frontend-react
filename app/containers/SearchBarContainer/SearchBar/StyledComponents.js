@@ -20,7 +20,7 @@ const Bar = styled.span`
   margin: 15px 0;
   height: ${searchBarHeight};
   background-color: white;
-  width: 808px;
+  width: ${({ shrink }) => (shrink ? '100%' : '808px')};
 
   ${media.lessThan('850px')`
     ${flex({ direction: 'column', justify: 'center', align: 'center' }, false)};

@@ -17,9 +17,10 @@ const SearchBar = ({
   selectedDistrict,
   handleSubmit,
   isSubmitting,
+  hideSearch,
   ...rest
 }) => (
-  <Styled.Bar>
+  <Styled.Bar shrink={hideSearch}>
     <DropdownInput
       placeholder={intl.formatMessage(messages.city)}
       iconName="pin"
@@ -36,16 +37,18 @@ const SearchBar = ({
       disabled={!selectedCity}
     />
     <LocateYourself {...rest} />
-    <Styled.BarActions>
-      <Styled.ButtonWrapper onClick={isSubmitting ? null : handleSubmit}>
-        <Button
-          label={intl.formatMessage(messages.search)}
-          border="right"
-          disabled={isSubmitting}
-          loading={isSubmitting}
-        />
-      </Styled.ButtonWrapper>
-    </Styled.BarActions>
+    {!hideSearch && (
+      <Styled.BarActions>
+        <Styled.ButtonWrapper onClick={isSubmitting ? null : handleSubmit}>
+          <Button
+            label={intl.formatMessage(messages.search)}
+            border="right"
+            disabled={isSubmitting}
+            loading={isSubmitting}
+          />
+        </Styled.ButtonWrapper>
+      </Styled.BarActions>
+    )}
   </Styled.Bar>
 );
 

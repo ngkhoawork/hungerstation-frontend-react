@@ -7,18 +7,35 @@ import { addToCart, emptyCart } from 'containers/CartContainer/actions';
 import { selectCartPurchases } from 'containers/CartContainer/selectors';
 import { fetchRestaurant } from 'modules/restaurant/actions';
 import { selectRestaurantState } from 'modules/restaurant/selectors';
+import LocationOptions from 'components/LocationOptions';
 import RestaurantPage from './component';
 
 class RestaurantPageHOC extends React.Component {
   componentDidMount() {
     const {
       match: {
-        params: { branchId },
+        params: { branchId, city, district },
       },
       restaurantState: { restaurant },
+      showPopup,
+      hideModal,
     } = this.props;
 
-    this.props.fetchRestaurant(branchId);
+    if (showPopup) {
+      const LocationOptionsHOC = () => (
+        <LocationOptions
+          city={city}
+          district={district}
+          onSubmit={() => {
+            hideModal();
+            this.props.fetchRestaurant(branchId);
+          }}
+        />
+      );
+      this.props.showModal(LocationOptionsHOC);
+    } else {
+      this.props.fetchRestaurant(branchId);
+    }
 
     if (restaurant.id && branchId !== restaurant.id) this.props.emptyCart();
   }
@@ -69,6 +86,7 @@ class RestaurantPageHOC extends React.Component {
 }
 
 RestaurantPageHOC.propTypes = {
+  showPopup: PropTypes.bool,
   match: PropTypes.object.isRequired,
   fetchRestaurant: PropTypes.func.isRequired,
   restaurantState: PropTypes.object.isRequired,

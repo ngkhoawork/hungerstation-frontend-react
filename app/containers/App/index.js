@@ -18,6 +18,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { setHistory } from 'utils/route';
+import { compose, withProps } from 'recompose';
+
 import HomePage from 'pages/HomePage/Loadable';
 import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
 import RestaurantPage from 'pages/RestaurantPage';
@@ -43,6 +45,9 @@ const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
 const mapDispatchToProps = {
   authenticateUser,
 };
+
+const enhance = compose(withProps(props => ({ ...props, showPopup: true })));
+const RestaurantPageWithPopup = enhance(RestaurantPage);
 
 @withRouter
 @connect(
@@ -83,6 +88,21 @@ export default class App extends Component {
           <Route
             path="/restaurants/:city/:district/restaurant/:branchId"
             component={RestaurantPage}
+          />
+          <Route
+            showPopup
+            path="/restaurant/:branchId"
+            component={RestaurantPageWithPopup}
+          />
+          <Route
+            showPopup
+            path="/restaurant/:branchId/:city"
+            component={RestaurantPageWithPopup}
+          />
+          <Route
+            showPopup
+            path="/restaurant/:branchId/:city/:district"
+            component={RestaurantPageWithPopup}
           />
           <Route
             path="/restaurants/:city/:district/:deliveryType?"
