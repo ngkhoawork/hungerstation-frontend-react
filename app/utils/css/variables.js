@@ -16,6 +16,7 @@ export const maxModalWidth = '98vw';
 export const maxPageWidth = '1446px';
 export const pageOffsetX = '113px';
 export const mobPageOffsetX = '30px';
+export const smallMobPageOffsetX = '20px';
 export const stepIndent = '210px';
 export const addressIndent = '90px';
 
