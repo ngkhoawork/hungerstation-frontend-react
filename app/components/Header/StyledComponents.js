@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { gold } from 'utils/css/colors';
 import { flex, mediaSmall, mediaMedium, mediaLess } from 'utils/css/styles';
 import {
@@ -8,6 +7,14 @@ import {
   pageOffsetX,
   maxPageWidth,
 } from 'utils/css/variables';
+
+export const RightSection = styled.div`
+  ${flex({ align: 'center', justify: 'space-between' })};
+`;
+
+export const LeftSection = styled.div`
+  ${flex({ align: 'center' })};
+`;
 
 export const StyledBrandLogo = styled.img`
   filter: drop-shadow(0 0 3px #e4e8e6);
@@ -27,15 +34,13 @@ export const StyledUserInfo = styled.div`
   justify-content: space-between;
 `;
 
-const StyledHeader = styled.div`
+export const StyledHeader = styled.div`
   ${props => props.gold && `background-color: ${gold};`};
   display: flex;
   width: 100%;
   height: ${headerHeight};
   font-family: ${fontFamilyRegular};
-  z-index: 100;
   max-width: ${maxPageWidth};
-  overflow-x: hidden;
 
   ${mediaLess('950px')`
     padding: 32px 80px
@@ -47,5 +52,3 @@ const StyledHeader = styled.div`
     padding: 10px;
   `};
 `;
-
-export default StyledHeader;

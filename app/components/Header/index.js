@@ -1,35 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import LocaleToggle from 'containers/LocaleToggle';
-import Paragraph from 'components/Paragraph';
-import { StyledLink } from 'utils/css/styledComponents';
 import intl from 'utils/intlService';
-
+import { StyledLink } from 'utils/css/styledComponents';
 import { fuscousGray } from 'utils/css/colors';
-
-import LinkWrapper from './LinkWrapper';
-import RightSection from './RightSection';
-import LeftSection from './LeftSection';
-import StyledHeader, { StyledBrandLogo, StyledContent } from './StyledHeader';
-import logo from '../../images/hungerstation-logo-shadow.svg';
+import DropdownMenu from 'components/DropdownMenu';
+import logo from 'images/hungerstation-logo-shadow.svg';
+import {
+  RightSection,
+  LeftSection,
+  StyledHeader,
+  StyledBrandLogo,
+  StyledContent,
+} from './StyledComponents';
 import messages from './messages';
-import DropdownMenu from '../DropdownMenu';
 
 const menu = [
   {
     id: 'profile',
-    label: 'My profile',
+    label: intl.formatMessage(messages.profile),
     icon: 'profile',
     to: '/my-profile',
   },
-  // {
-  //   id: 'order',
-  //   label: 'My orders',
-  //   icon: 'user',
-  //   to: '/my-orders',
-  // },
+  {
+    id: 'order',
+    label: intl.formatMessage(messages.orders),
+    icon: 'bag',
+    to: '/my-orders',
+  },
   // {
   //   id: 'wallet',
   //   label: 'My wallet',
@@ -62,11 +61,9 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
   <StyledHeader gold={variant === 'gold'}>
     <StyledContent>
       <LeftSection>
-        <LinkWrapper>
-          <Link to="/">
-            <StyledBrandLogo alt="logo" src={logo} height={53} />
-          </Link>
-        </LinkWrapper>
+        <Link to="/">
+          <StyledBrandLogo alt="logo" src={logo} height={53} />
+        </Link>
         <LocaleToggle variant={variant} />
       </LeftSection>
       <RightSection>
@@ -75,16 +72,15 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
             label={userInfo && userInfo.name}
             items={menu}
             leftIcon={getLeftIcon(userInfo && userInfo.name)}
+            isRightAligned
           />
         ) : (
           <StyledLink to="/login">
-            <Paragraph
-              class=""
-              color={variant ? fuscousGray : 'white'}
-              size={16}
+            <div
+              style={{ color: variant ? fuscousGray : 'white', fontSize: 16 }}
             >
               {intl.formatMessage(messages.login)}
-            </Paragraph>
+            </div>
           </StyledLink>
         )}
       </RightSection>
