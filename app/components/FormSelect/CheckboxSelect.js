@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
-import { gold } from 'utils/css/colors';
+import intl, { priceIntlOptions } from 'utils/intlService';
 import { flex } from 'utils/css/styles';
 import CheckBoxIcon from 'components/CheckboxIcon';
-import FormControlLabel from './FormControlLabel';
+import { getLabelKey, getValueKey } from './helpers';
+import { StyledFormControlLabel, Label, Price } from './StyledComponents';
 
 const Checkbox = styled(MuiCheckbox)`
-  color: ${gold} !important;
   width: 40px !important;
   height: 40px !important;
 
@@ -24,8 +24,7 @@ const CheckboxSelect = ({
   options,
   checkedOptions,
   onChange,
-  labelKey,
-  valueKey,
+  ...props
 }) => {
   const isChecked = option =>
     checkedOptions ? !!checkedOptions[option.id] : option.isChecked;
@@ -38,18 +37,28 @@ const CheckboxSelect = ({
     onChange(name, option);
   };
 
+  const labelKey = getLabelKey(options, props);
+  const valueKey = getValueKey(options, props);
+
   return (
     <FormGroup>
       {options.map(option => (
-        <FormControlLabel
+        <StyledFormControlLabel
           key={option.id}
-          label={option[labelKey] || option.label || option.name}
+          label={
+            <Label isSelected={isChecked(option)}>
+              {option[labelKey]}
+              {option.price ? (
+                <Price>
+                  +{intl.formatNumber(option.price, priceIntlOptions)}
+                </Price>
+              ) : null}
+            </Label>
+          }
           control={
             <Checkbox
-              value={option[valueKey] || option.value || option.id}
-              checked={
-                checkedOptions ? !!checkedOptions[option.id] : option.isChecked
-              }
+              value={option[valueKey]}
+              checked={isChecked(option)}
               onChange={() => handleChange(name, option)}
               disableRipple
               icon={<CheckBoxIcon />}

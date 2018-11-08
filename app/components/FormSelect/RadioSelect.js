@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MuiRadio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import { gold } from 'utils/css/colors';
+import intl, { priceIntlOptions } from 'utils/intlService';
 import { flex } from 'utils/css/styles';
 import CheckBoxIcon from 'components/CheckboxIcon';
 import Icon from 'components/Icon';
-import FormControlLabel from './FormControlLabel';
+import { getLabelKey, getValueKey } from './helpers';
+import { StyledFormControlLabel, Label, Price } from './StyledComponents';
 
 const Radio = styled(MuiRadio)`
-  color: ${gold} !important;
   width: 40px !important;
   height: 40px !important;
 
@@ -19,18 +19,14 @@ const Radio = styled(MuiRadio)`
   }
 `;
 
-const RadioSelect = ({
-  name,
-  options,
-  value,
-  onChange,
-  labelKey,
-  valueKey,
-}) => {
+const RadioSelect = ({ name, options, value, onChange, ...props }) => {
   const handleChange = ({ target }) => {
     const option = options.find(({ id }) => id === target.value);
     onChange(name, option);
   };
+
+  const labelKey = getLabelKey(options, props);
+  const valueKey = getValueKey(options, props);
 
   return (
     <RadioGroup
@@ -40,10 +36,19 @@ const RadioSelect = ({
       onChange={handleChange}
     >
       {options.map(option => (
-        <FormControlLabel
+        <StyledFormControlLabel
           key={option.id}
-          label={option[labelKey] || option.label || option.name}
-          value={option[valueKey] || option.value || option.id}
+          label={
+            <Label isSelected={value === option[valueKey]}>
+              {option[labelKey]}
+              {option.price ? (
+                <Price>
+                  +{intl.formatNumber(option.price, priceIntlOptions)}
+                </Price>
+              ) : null}
+            </Label>
+          }
+          value={option[valueKey]}
           control={
             <Radio
               disableRipple
