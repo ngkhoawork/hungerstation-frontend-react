@@ -16,9 +16,9 @@ import {
   device,
 } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
-import restaurantImg from 'images/bg-pattern.png';
-import restaurantImg2x from 'images/bg-pattern@2x.png';
-import restaurantImg3x from 'images/bg-pattern@3x.svg';
+import restaurantImg from 'images/bg-pattern-detail.png';
+import restaurantImg2x from 'images/bg-pattern-detail@2x.png';
+import restaurantImg3x from 'images/bg-pattern-detail@3x.png';
 
 export const StyledPage = styled.div`
   width: 100%;

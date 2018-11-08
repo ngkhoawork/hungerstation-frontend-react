@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { flex, mediaLess } from 'utils/css/styles';
 import BgPattern from 'images/bg-pattern.png';
-import BgPatternMobile from 'images/bg-pattern-mobile.png';
 import { gold } from 'utils/css/colors';
 
 const StyledRestaurantCard = styled(Link)`
@@ -31,7 +30,7 @@ const StyledRestaurantCard = styled(Link)`
 
   ${mediaLess(500)`
     min-width: 324px;
-    background-image: ${({ cover }) => cover || `url(${BgPatternMobile})`};
+    background-image: ${({ cover }) => cover || `url(${BgPattern})`};
     background-color: ${gold};
     margin-right: 0px;
     background-size: 100%;
