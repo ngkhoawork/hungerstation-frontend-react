@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 import imgPlaceholder from 'images/burger-icon.png';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaSmall,
+  mediaMedium,
+  mediaMediumGreater,
+} from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import { lightGray, silverChalice } from 'utils/css/colors';
 
@@ -45,6 +50,8 @@ export const Img = styled.div`
 export const Content = styled.div`
   margin-left: 30px;
   ${flex({ direction: 'column', justify: 'space-between', grow: 1 })};
+
+  ${mediaSmall`word-break: break-word;`};
 `;
 
 export const TitleContainer = styled.div`
