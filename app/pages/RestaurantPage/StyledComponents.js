@@ -4,11 +4,13 @@ import {
   maxPageWidth,
   pageOffsetX,
   mobPageOffsetX,
+  smallMobPageOffsetX,
   borderRadius,
   zIndexStickyMenu,
 } from 'utils/css/variables';
 import {
   flex,
+  mediaSmall,
   mediaMedium,
   mediaMediumGreater,
   device,
@@ -34,6 +36,10 @@ export const NavHeader = styled.div`
 
   ${mediaMedium`
     padding: ${mobPageOffsetX};
+  `};
+
+  ${mediaSmall`
+    padding: ${smallMobPageOffsetX};
   `};
 `;
 
@@ -97,6 +103,12 @@ export const RestaurantInfoContainer = styled.div`
     right: ${mobPageOffsetX};
     bottom: -100px;
   `};
+
+  ${mediaSmall`
+    left: ${smallMobPageOffsetX};
+    right: ${smallMobPageOffsetX};
+    bottom: -100px;
+  `};
 `;
 
 export const ProductsContainer = styled.div`
@@ -105,6 +117,11 @@ export const ProductsContainer = styled.div`
 
   ${mediaMedium`
     padding: 40px ${mobPageOffsetX} 0;
+    ${flex({ direction: 'column' }, false)};
+  `};
+
+  ${mediaSmall`
+    padding: 40px ${smallMobPageOffsetX} 0;
     ${flex({ direction: 'column' }, false)};
   `};
 `;
@@ -133,6 +150,8 @@ export const StyledProductTypes = styled.div`
 export const CartBtns = styled.div`
   margin: 30px ${mobPageOffsetX};
   text-align: center;
+
+  ${mediaSmall`margin: 30px ${smallMobPageOffsetX};`};
 
   ${mediaMediumGreater`display: none;`};
 `;
