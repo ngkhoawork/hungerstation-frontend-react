@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gold } from 'utils/css/colors';
-import { flex, mediaSmall, mediaMedium, mediaLess } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 import {
   fontFamilyRegular,
   headerHeight,
@@ -14,6 +14,7 @@ export const RightSection = styled.div`
 
 export const LeftSection = styled.div`
   ${flex({ align: 'center' })};
+  margin-left: -7px;
 `;
 
 export const StyledBrandLogo = styled.img`
@@ -41,14 +42,4 @@ export const StyledHeader = styled.div`
   height: ${headerHeight};
   font-family: ${fontFamilyRegular};
   max-width: ${maxPageWidth};
-
-  ${mediaLess('950px')`
-    padding: 32px 80px
-  `};
-  ${mediaMedium`
-    padding: 10px 20px;
-  `};
-  ${mediaSmall`
-    padding: 10px;
-  `};
 `;
