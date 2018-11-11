@@ -17,7 +17,7 @@ import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
+import { setHistory } from 'utils/route';
 import HomePage from 'pages/HomePage/Loadable';
 import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
 import RestaurantPage from 'pages/RestaurantPage';
@@ -28,13 +28,11 @@ import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
 import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
 import FAQsPage from 'pages/FooterPages/FAQsPage/Loadable';
 import ContactUsPage from 'pages/FooterPages/ContactUsPage/Loadable';
-
 import UserProfile from 'components/UserProfile';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
 import ModalContainer from 'containers/ModalContainer';
-
-import { makeSelectLocale } from '../LanguageProvider/selectors';
-import { authenticateUser } from '../../modules/auth/actions';
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
+import { authenticateUser } from 'modules/auth/actions';
 import StyledApp from './StyledApp';
 import Modals from './Modals';
 
@@ -53,6 +51,7 @@ const mapDispatchToProps = {
 )
 export default class App extends Component {
   static propTypes = {
+    history: PropTypes.object.isRequired,
     dir: PropTypes.string,
     authenticateUser: PropTypes.func.isRequired,
     location: PropTypes.shape({
@@ -61,6 +60,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
+    setHistory(this.props.history);
     this.props.authenticateUser();
   }
 
