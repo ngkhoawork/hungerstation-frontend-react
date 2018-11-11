@@ -42,7 +42,9 @@ const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
                 </CircledItem>
               ) : null}
             </LeftSide>
-            <Icon name={isCheckout ? 'basket-white' : 'basket'} />
+            <Icon
+              name={isCheckout && !isDisabled ? 'basket-white' : 'basket'}
+            />
             <Label isCheckout={isCheckout} isDisabled={isDisabled}>
               {intl.formatMessage(
                 messages[isCheckout ? 'placeOrder' : 'viewCart'],
