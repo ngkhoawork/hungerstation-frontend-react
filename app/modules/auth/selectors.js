@@ -8,7 +8,7 @@ const makeSelectLocation = () =>
 
 export const makeSelectIsLoggedIn = createSelector(
   selectAuth,
-  authState => authState && authState.get('loggedIn', false),
+  authState => authState && authState.get('loggedIn'),
 );
 
 export const makeSelectCurrentUser = createSelector(

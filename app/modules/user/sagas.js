@@ -7,7 +7,7 @@ import { LOGOUT } from 'modules/auth/constants';
 import { setStorageItem } from 'utils/localStorage';
 import { parseJwt } from 'utils/tokens';
 import { extractError } from 'utils/helpers';
-import { forwardTo } from 'utils/route';
+import { forwardTo, replace } from 'utils/route';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 
 import { loginAction, registerAction } from './actions';
@@ -38,7 +38,11 @@ export function* loginFlow({ payload, meta: redirectToRoute }) {
       yield call(setStorageItem, 'userId', authenticatedUser.user.id);
       yield put(stopSubmit());
       yield put(setCurrentUser(authenticatedUser));
-      yield call(forwardTo, redirectToRoute);
+
+      // TODO: check if there is a case where you would want back button
+      // to take you back to the login page. if so make a condition to
+      // in such case use forwardTo instead of replace.
+      yield call(replace, redirectToRoute);
     }
 
     if (logoutResponse) {

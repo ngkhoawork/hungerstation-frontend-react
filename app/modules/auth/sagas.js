@@ -136,21 +136,25 @@ export function* authenticationFlow() {
   while (true) {
     yield take(AUTHENTICATE_USER);
 
-    const tokens = yield call(getStorageItem, 'tokens');
+    const tokens = JSON.parse(getStorageItem('tokens'));
 
-    if (tokens && Object.keys(tokens)) {
-      yield put(updateTokens(JSON.parse(tokens)));
+    if (!tokens || !Object.keys(tokens).length) {
+      yield put(setAuthState(false));
 
-      const shouldRefresh = yield call(needRefresh);
+      return;
+    }
 
-      if (!shouldRefresh) {
-        yield call(getCurrentUser, JSON.parse(tokens));
-      } else {
-        const error = yield call(refreshTokens);
-        if (!error) {
-          yield delay(50);
-          yield call(getCurrentUser, JSON.parse(tokens));
-        }
+    yield put(updateTokens(tokens));
+
+    const shouldRefresh = yield call(needRefresh);
+
+    if (!shouldRefresh) {
+      yield call(getCurrentUser, tokens);
+    } else {
+      const error = yield call(refreshTokens);
+      if (!error) {
+        yield delay(50);
+        yield call(getCurrentUser, tokens);
       }
     }
   }

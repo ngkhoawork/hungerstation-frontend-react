@@ -19,7 +19,6 @@ const initialState = fromJS({
   },
   error: '',
   currentlySending: false,
-  loggedIn: false,
   tokens: {
     accessToken: null,
     refreshToken: null,
