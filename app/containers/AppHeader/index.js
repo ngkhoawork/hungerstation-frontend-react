@@ -33,7 +33,7 @@ const AppHeader = ({ isLoggedIn, currentUser, ...rest }) => (
 );
 
 AppHeader.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
   currentUser: PropTypes.object,
 };
 
