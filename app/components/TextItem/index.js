@@ -14,7 +14,8 @@ const TextItem = styled.span`
     fontFamily === 'regular' ? fontFamilyRegular : fontFamilyLight};
 
   ${mediaMedium`
-    width: 330px;
+    width: 100%;
+    text-align: center;
   `};
 `;
 
