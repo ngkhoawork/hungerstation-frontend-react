@@ -38,7 +38,7 @@ const ScrollToListTopWrapper = styled.div`
   transform: rotate(270deg);
 `;
 
-const PAGINATION_STEP = 9;
+const PAGINATION_STEP = 18;
 const SCROLL_STEP = 400;
 
 export default class RestaurantsList extends Component {
