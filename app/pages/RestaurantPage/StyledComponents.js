@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import {
-  navHeaderHeight,
   maxPageWidth,
   pageOffsetX,
   mobPageOffsetX,
@@ -27,20 +26,6 @@ export const StyledPage = styled.div`
 
   ${mediaMedium`
     max-width: 100%;
-  `};
-`;
-
-export const NavHeader = styled.div`
-  height: ${navHeaderHeight};
-  padding: 0 ${pageOffsetX};
-  ${flex({ align: 'center' })};
-
-  ${mediaMedium`
-    padding: ${mobPageOffsetX};
-  `};
-
-  ${mediaSmall`
-    padding: ${smallMobPageOffsetX};
   `};
 `;
 

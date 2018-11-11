@@ -1,9 +1,16 @@
 import styled from 'styled-components';
-import { flex, mediaSmall } from 'utils/css/styles';
+import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
 import { alabaster } from './colors';
-import { zIndexDisabledOverlay, fontFamilyRegular } from './variables';
+import {
+  zIndexDisabledOverlay,
+  fontFamilyRegular,
+  navHeaderHeight,
+  pageOffsetX,
+  mobPageOffsetX,
+  smallMobPageOffsetX,
+} from './variables';
 
 export const CenteredContent = styled.div`
   ${flex({ align: 'center', justify: 'space-evenly' })};
@@ -59,4 +66,18 @@ export const DisabledOverlay = styled.div`
   bottom: 0;
   cursor: initial;
   z-index: ${zIndexDisabledOverlay};
+`;
+
+export const NavHeader = styled.div`
+  height: ${navHeaderHeight};
+  padding: 0 ${pageOffsetX};
+  ${flex({ align: 'center' })};
+
+  ${mediaMedium`
+    padding: ${mobPageOffsetX};
+  `};
+
+  ${mediaSmall`
+    padding: ${smallMobPageOffsetX};
+  `};
 `;

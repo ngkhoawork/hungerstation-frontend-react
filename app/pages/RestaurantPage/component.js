@@ -9,10 +9,10 @@ import RestaurantInfo from 'components/RestaurantInfo';
 import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
 import MealOptions from 'components/MealOptions';
+import { NavHeader } from 'utils/css/styledComponents';
 import messages from './messages';
 import {
   StyledPage,
-  NavHeader,
   ContentContainer,
   Loading,
   LeftSide,
