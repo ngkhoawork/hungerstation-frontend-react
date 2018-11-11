@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 `;
 
 const CategoryTitle = ({ title, selectionQuantity, withoutQuantity = false }) =>
-  title && (
+  title ? (
     <Wrapper>
       <StyledTitle>
         <Group>
@@ -41,7 +41,7 @@ const CategoryTitle = ({ title, selectionQuantity, withoutQuantity = false }) =>
         </Group>
       </StyledTitle>
     </Wrapper>
-  );
+  ) : null;
 
 CategoryTitle.propTypes = {
   title: PropTypes.string,
