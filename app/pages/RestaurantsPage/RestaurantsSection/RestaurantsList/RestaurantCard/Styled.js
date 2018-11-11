@@ -38,7 +38,7 @@ const StyledRestaurantCard = styled(Link)`
 `;
 
 const StyledUpperPart = styled.div`
-  ${flex({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'flex-start', justify: 'space-between' })};
   width: 100%;
   flex: 0.4;
   padding: 15px 15px 5px 15px;
