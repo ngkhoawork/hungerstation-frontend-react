@@ -35,7 +35,10 @@ export const DeliveryOption = styled.div`
 
 export const LeftSide = styled.div`
   padding: 20px;
+  height: 60px;
   ${flex({ shrink: 0 }, false)};
+
+  ${mediaMedium`padding-left: 0`};
 `;
 
 export const Content = styled.div`

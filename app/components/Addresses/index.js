@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import intl from 'utils/intlService';
+import { mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 import { addressIndent } from 'utils/css/variables';
 import { alabaster } from 'utils/css/colors';
 import Button from 'components/Button';
@@ -56,6 +57,7 @@ const Addresses = ({
             lift={false}
             inline
             size="l"
+            css={addBtnCss}
             color={alabaster}
             onClick={onAddClick}
           >
@@ -83,5 +85,13 @@ Addresses.propTypes = {
 export default Addresses;
 
 const BtnContainer = styled.div`
-  margin-left: ${addressIndent};
+  margin-top: 10px;
+
+  ${mediaMediumGreater`
+    margin-left: ${addressIndent}
+  `};
+`;
+
+const addBtnCss = css`
+  ${mediaMedium`width: 100%;`};
 `;

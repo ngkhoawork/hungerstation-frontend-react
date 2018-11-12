@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import intl from 'utils/intlService';
 import { addressTypesObj, otherAddressType } from 'modules/address/constants';
 import addressMessages from 'modules/address/messages';
-import { flex } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 import { fuscousGray, alabaster } from 'utils/css/colors';
 import {
   addressIndent,
@@ -92,11 +92,13 @@ const Address = ({
         lift={false}
         inline
         size="l"
-        style={{ whiteSpace: 'nowrap' }}
+        css={editBtnCss}
         onClick={handleEditBtnClick}
       >
         <React.Fragment>
-          {intl.formatMessage(messages.edit)} &nbsp;
+          <EditBtnLabel>
+            {intl.formatMessage(messages.edit)} &nbsp;
+          </EditBtnLabel>
           <Icon name="edit" size={16} />
         </React.Fragment>
       </Button>
@@ -125,7 +127,13 @@ const Container = styled.div`
 const LeftSide = styled.div`
   width: ${addressIndent};
   padding: 20px 20px 20px 40px;
+  height: 60px;
   ${flex({ shrink: 0 }, false)};
+
+  ${mediaMedium`
+    width: auto;
+    padding: 20px;
+  `};
 `;
 
 const Content = styled.div`
@@ -157,10 +165,20 @@ const typeIconStyle = {
   // top: 0,
 };
 
+const editBtnCss = css`
+  white-space: nowrap;
+
+  ${mediaMedium`padding: 10px 3px 10px 10px;`};
+`;
+
 const Title = styled.span`
   font-family: ${fontFamilyRegular};
 `;
 
 const Location = styled.div`
   font-family: ${fontFamilyLight};
+`;
+
+const EditBtnLabel = styled.span`
+  ${mediaMedium`display: none;`};
 `;

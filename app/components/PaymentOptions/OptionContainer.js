@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { flex } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 import { borderRadius, border, boxShadow } from 'utils/css/variables';
 import CheckboxIcon from 'components/CheckboxIcon';
 import Icon from 'components/Icon';
@@ -18,9 +18,16 @@ const Container = styled.div`
   cursor: pointer;
 `;
 
+const Main = styled.div`
+  ${flex({ align: 'center' })};
+`;
+
 const LeftSide = styled.div`
   padding: 20px;
+  height: 60px;
   ${flex({ shrink: 0 }, false)};
+
+  ${mediaMedium`padding-left: 0`};
 `;
 
 const Content = styled.div`
@@ -36,21 +43,21 @@ const Block = styled.div`
 const titleStyle = {
   fontSize: 18,
   letterSpacing: 0.25,
-  margin: '0 20px',
+  margin: '0 0 0 20px',
 };
 
 const OptionContainer = ({ isSelected, onSelect, icon, title, children }) => (
   <Container onClick={onSelect} isSelected={isSelected}>
-    <LeftSide>
-      <CheckboxIcon isChecked={isSelected} />
-    </LeftSide>
-    <Content>
+    <Main>
+      <LeftSide>
+        <CheckboxIcon isChecked={isSelected} />
+      </LeftSide>
       <Block>
         <Icon name={icon} size={26} />
         <Title style={titleStyle}>{title}</Title>
       </Block>
-      {children}
-    </Content>
+    </Main>
+    <Content>{children}</Content>
   </Container>
 );
 
