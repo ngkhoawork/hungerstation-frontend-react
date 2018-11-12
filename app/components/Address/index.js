@@ -138,6 +138,7 @@ const Content = styled.div`
 
 const Name = styled.div`
   position: relative;
+  ${flex({ align: 'center' })};
 `;
 
 // const Name = styled.div`
@@ -150,6 +151,7 @@ const Name = styled.div`
 // `;
 
 const typeIconStyle = {
+  marginLeft: 5,
   // position: 'absolute',
   // right: 0,
   // top: 0,
