@@ -8,7 +8,9 @@ import {
   validateCouponError,
 } from './actions';
 
-export const initialState = {};
+export const initialState = {
+  selectedPaymentOption: { cash: true },
+};
 
 function reducer(state = initialState, { type, payload }) {
   switch (type) {
