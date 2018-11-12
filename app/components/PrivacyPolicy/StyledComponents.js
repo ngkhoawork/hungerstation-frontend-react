@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { mediaMedium } from 'utils/css/styles';
-import { fontFamilyLight } from 'utils/css/variables';
+import { fontFamilyLight, fontFamilyRegular } from 'utils/css/variables';
 
 export const Answer = styled.div`
   height: 100%;
@@ -39,4 +39,13 @@ export const HeaderWraper = styled.div`
   ${mediaMedium`
     width: 330px;
     `};
+`;
+
+export const Question = styled.div`
+  display: block;
+  font-size: 16;
+  font-family: ${fontFamilyRegular};
+  ${mediaMedium`
+    width: 100%;
+  `};
 `;

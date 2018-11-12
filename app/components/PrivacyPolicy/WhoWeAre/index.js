@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 
 import TextItem from 'components/TextItem';
 import DropDown from '../DropDown';
-import { Line, Answer, HeaderWraper } from '../StyledComponents';
+import { Line, Question, Answer, HeaderWraper } from '../StyledComponents';
 
 import messages from './messages';
 
@@ -15,7 +15,7 @@ const WhoWeAre = () => (
       </TextItem>
     </HeaderWraper>
 
-    <TextItem size={16} fontFamily="regular">
+    <Question>
       <DropDown
         title={<FormattedMessage {...messages.ourprivacyPolicyQ} />}
         isCollapsible
@@ -24,10 +24,10 @@ const WhoWeAre = () => (
           <FormattedMessage {...messages.ourprivacyPolicyA} />
         </Answer>
       </DropDown>
-    </TextItem>
+    </Question>
     <Line />
 
-    <TextItem size={16} fontFamily="regular">
+    <Question>
       <DropDown
         title={<FormattedMessage {...messages.OtherWebsitesQ} />}
         isCollapsible
@@ -36,10 +36,10 @@ const WhoWeAre = () => (
           <FormattedMessage {...messages.OtherWebsitesA} />
         </Answer>
       </DropDown>
-    </TextItem>
+    </Question>
     <Line />
 
-    <TextItem size={16} fontFamily="regular">
+    <Question>
       <DropDown
         title={<FormattedMessage {...messages.ContactQ} />}
         isCollapsible
@@ -48,7 +48,7 @@ const WhoWeAre = () => (
           <FormattedMessage {...messages.ContactA} />
         </Answer>
       </DropDown>
-    </TextItem>
+    </Question>
     <Line />
   </div>
 );

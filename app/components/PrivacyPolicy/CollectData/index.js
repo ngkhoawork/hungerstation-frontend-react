@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import TextItem from 'components/TextItem';
-import { Line, Answer, HeaderWraper } from '../StyledComponents';
+import { Line, Question, Answer, HeaderWraper } from '../StyledComponents';
 import DropDown from '../DropDown';
 
 import messages from './messages';
@@ -15,7 +15,7 @@ const CollectData = () => (
       </TextItem>
     </HeaderWraper>
     <br />
-    <TextItem size={16} fontFamily="regular">
+    <Question>
       <DropDown
         title={<FormattedMessage {...messages.ColletInformationQ} />}
         isCollapsible
@@ -24,9 +24,9 @@ const CollectData = () => (
           <FormattedMessage {...messages.ColletInformationA} />
         </Answer>
       </DropDown>
-    </TextItem>
+    </Question>
     <Line />
-    <TextItem size={16} fontFamily="regular">
+    <Question>
       <DropDown
         title={<FormattedMessage {...messages.CookiesQ} />}
         isCollapsible
@@ -35,9 +35,9 @@ const CollectData = () => (
           <FormattedMessage {...messages.CookiesA} />
         </Answer>
       </DropDown>
-    </TextItem>
+    </Question>
     <Line />
-    <TextItem size={16} fontFamily="regular">
+    <Question>
       <DropDown
         title={<FormattedMessage {...messages.StorageSecurityQ} />}
         isCollapsible
@@ -46,9 +46,9 @@ const CollectData = () => (
           <FormattedMessage {...messages.StorageSecurityA} />
         </Answer>
       </DropDown>
-    </TextItem>
+    </Question>
     <Line />
-    <TextItem size={16} fontFamily="regular">
+    <Question>
       <DropDown
         title={<FormattedMessage {...messages.UseInformationQ} />}
         isCollapsible
@@ -57,9 +57,9 @@ const CollectData = () => (
           <FormattedMessage {...messages.UseInformationA} />
         </Answer>
       </DropDown>
-    </TextItem>
+    </Question>
     <Line />
-    <TextItem size={16} fontFamily="regular">
+    <Question>
       <DropDown
         title={<FormattedMessage {...messages.AccessInformationQ} />}
         isCollapsible
@@ -68,7 +68,7 @@ const CollectData = () => (
           <FormattedMessage {...messages.AccessInformationA} />
         </Answer>
       </DropDown>
-    </TextItem>
+    </Question>
     <Line />
   </div>
 );

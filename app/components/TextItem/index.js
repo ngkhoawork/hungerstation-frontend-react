@@ -4,7 +4,7 @@ import { fontFamilyRegular, fontFamilyLight } from 'utils/css/variables';
 import { mediaMedium } from 'utils/css/styles';
 
 const TextItem = styled.span`
-  display: ${'display' || 'inline-block '};
+  display: inline-block;
   font-size: ${({ size }) => size}px;
   font-weight: ${({ weight }) => weight || 100};
   text-transform: ${({ transform }) => transform};

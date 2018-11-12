@@ -84,7 +84,7 @@ export const Content = styled.div`
   margin-bottom: 20%;
 
   ${mediaLess(600)`
-  display: -webkit-box;
+    display: inline;
   `};
 `;
 
