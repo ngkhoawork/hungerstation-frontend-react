@@ -91,16 +91,19 @@ export default class App extends Component {
           />
           <Route
             showPopup
+            exact
             path="/restaurant/:branchId"
             component={RestaurantPageWithPopup}
           />
           <Route
             showPopup
+            exact
             path="/restaurant/:branchId/:city"
             component={RestaurantPageWithPopup}
           />
           <Route
             showPopup
+            exact
             path="/restaurant/:branchId/:city/:district"
             component={RestaurantPageWithPopup}
           />

@@ -24,4 +24,8 @@ export default {
   submitSearchQueryAction: PropTypes.func,
   history: PropTypes.object,
   isSubmitting: PropTypes.bool,
+  initValues: PropTypes.shape({
+    city: PropTypes.string,
+    district: PropTypes.string,
+  }),
 };

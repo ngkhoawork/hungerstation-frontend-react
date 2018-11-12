@@ -12,7 +12,7 @@ import {
   Footer,
 } from './StyledComponents';
 
-const LocationOptions = ({ onSubmit }) => (
+const LocationOptions = ({ onSubmit, city, district }) => (
   <ModalFrame
     title="Select Location"
     subtitle="select address"
@@ -21,7 +21,13 @@ const LocationOptions = ({ onSubmit }) => (
     headerCss={headerStyle}
   >
     <Content>
-      <SearchBarContainer hideSearch />
+      <SearchBarContainer
+        initValues={{
+          city,
+          district,
+        }}
+        hideSearch
+      />
     </Content>
     <Footer>
       <Button primary inline size="l" onClick={onSubmit}>
@@ -33,6 +39,8 @@ const LocationOptions = ({ onSubmit }) => (
 
 LocationOptions.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  city: PropTypes.string,
+  district: PropTypes.string,
 };
 
 export default LocationOptions;

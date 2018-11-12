@@ -62,6 +62,23 @@ export default class SearchBarContainer extends React.Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    const { cities, initValues, selectCity } = newProps;
+    if (
+      initValues &&
+      initValues.city &&
+      cities.size > 0 &&
+      this.props.cities.size === 0
+    ) {
+      const initCity = cities.find(
+        value => value.get('name') === initValues.city,
+      );
+      if (initCity) {
+        selectCity(initCity);
+      }
+    }
+  }
+
   handleSubmit = () => {
     const {
       history,
