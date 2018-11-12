@@ -29,10 +29,9 @@ export const getAddressesQuery = `query GetAddresses($branchId: Int!) {
 }`;
 
 export const createAddressMutation = `mutation CreateAddress(
-  $district: Int!,
   $latitude: Float!,
   $longitude: Float!,
-  $description: String,
+  $description: String!,
   $mobile: String,
   $specific_type: String!,
   $street: String!,
@@ -40,7 +39,6 @@ export const createAddressMutation = `mutation CreateAddress(
   $line1: String,
 ) {
   createAddress(
-    local_id: $district
     latitude: $latitude
     longitude: $longitude
     description: $description
@@ -50,39 +48,15 @@ export const createAddressMutation = `mutation CreateAddress(
     building_number: $building_number
     line1: $line1
   ) {
-    address_details {
-      id
-      name
-      description
-      latitude
-      longitude
-      specific_type
-      local {
-        id
-        name
-        city {
-          id
-          name
-        }
-      }
-      dynamic_field {
-        building_number
-        street
-        apartment_number
-        line1
-        floor_number
-        block
-      }
-    }
+    id
   }
 }`;
 
 export const updateAddressMutation = `mutation UpdateAddress(
   $id: ID!,
-  $district: Int,
   $latitude: Float,
   $longitude: Float,
-  $description: String,
+  $description: String!,
   $mobile: String,
   $specific_type: String,
   $street: String,
@@ -91,7 +65,6 @@ export const updateAddressMutation = `mutation UpdateAddress(
 ) {
   updateAddress(
     id: $id
-    local_id: $district
     latitude: $latitude
     longitude: $longitude
     description: $description
@@ -101,29 +74,6 @@ export const updateAddressMutation = `mutation UpdateAddress(
     building_number: $building_number
     line1: $line1
   ) {
-    address_details {
-      id
-      name
-      description
-      latitude
-      longitude
-      specific_type
-      local {
-        id
-        name
-        city {
-          id
-          name
-        }
-      }
-      dynamic_field {
-        building_number
-        street
-        apartment_number
-        line1
-        floor_number
-        block
-      }
-    }
+    id
   }
 }`;

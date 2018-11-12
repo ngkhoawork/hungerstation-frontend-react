@@ -11,8 +11,8 @@ import { getCurrentLocationAction } from 'modules/location/actions';
 import {
   selectIsSettlementLoaded,
   selectCoords,
-  selectDistrictId,
 } from 'modules/location/selectors';
+import { selectRestaurantState } from 'modules/restaurant/selectors';
 import { makeSelectCurrentUser } from 'modules/auth/selectors';
 import { selectAddresses } from 'modules/address/selectors';
 import { hideModal } from 'containers/ModalContainer/actions';
@@ -27,9 +27,10 @@ class AddAddressContainer extends React.Component {
   }
 
   handleAddAddressSubmit = address => {
-    const { district, saveAddress, hideModal } = this.props;
-    saveAddress({ ...address, district });
-    hideModal();
+    const { restaurantState } = this.props;
+    const branchId = restaurantState.restaurant.id || restaurantState.branchId;
+    this.props.saveAddress({ address, branchId });
+    this.props.hideModal();
   };
 
   render() {
@@ -54,10 +55,10 @@ class AddAddressContainer extends React.Component {
 }
 
 AddAddressContainer.propTypes = {
-  district: PropTypes.string,
   address: PropTypes.object,
   addresses: PropTypes.array,
   user: PropTypes.object.isRequired,
+  restaurantState: PropTypes.object.isRequired,
   isUserLocated: PropTypes.bool,
   latLng: PropTypes.object.isRequired,
   getCurrentLocationAction: PropTypes.func.isRequired,
@@ -69,11 +70,11 @@ export default compose(
   withRouter,
   connect(
     createStructuredSelector({
-      district: selectDistrictId,
       addresses: selectAddresses,
       user: makeSelectCurrentUser,
       isUserLocated: selectIsSettlementLoaded,
       latLng: selectCoords,
+      restaurantState: selectRestaurantState,
     }),
     { getCurrentLocationAction, saveAddress, hideModal },
   ),

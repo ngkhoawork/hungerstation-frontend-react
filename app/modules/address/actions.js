@@ -17,11 +17,6 @@ export const saveAddress = createAction(
   payload => payload,
 );
 
-export const saveAddressSuccess = createAction(
-  'address/SAVE_ADDRESS_SUCCESS',
-  payload => payload,
-);
-
 export const addressError = createAction('address/ADDRESS_ERROR');
 
 export const setPrimaryAddress = createAction(

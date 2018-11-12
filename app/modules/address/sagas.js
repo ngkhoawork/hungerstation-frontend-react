@@ -1,3 +1,4 @@
+import { delay } from 'redux-saga';
 import { call, put, takeLatest, takeEvery, select } from 'redux-saga/effects';
 import { makeSelectTokens } from 'modules/auth/selectors';
 import {
@@ -5,7 +6,6 @@ import {
   fetchAddresses,
   fetchAddressesSuccess,
   saveAddress,
-  saveAddressSuccess,
   addressError,
 } from './actions';
 import * as api from './api';
@@ -30,24 +30,13 @@ export function* fetchAddressesSaga({ payload }) {
 
 export function* saveAddressSaga({ payload }) {
   try {
-    // if address shouldn't be saved but used only for current session's order
-    if (!payload.specific_type) {
-      yield put(
-        saveAddressSuccess({
-          ...payload,
-          id: payload.id || `${Math.random()}`,
-        }),
-      );
-      return;
-    }
+    const { address, branchId } = payload;
+    const { accessToken } = yield select(makeSelectTokens);
 
     yield put(addressRequest());
-
-    // const { accessToken } = yield select(makeSelectTokens);
-    // const response = yield call(api.saveAddress, accessToken, payload);
-    // const address = { ...payload, id: payload.id || `${Math.random()}` };
-    // console.log(response);
-    // yield put(saveAddressSuccess(address));
+    yield call(api.saveAddress, accessToken, address);
+    yield call(delay, 200);
+    yield put(fetchAddresses(branchId));
   } catch (e) {
     yield put(addressError());
     // console.log(e);
