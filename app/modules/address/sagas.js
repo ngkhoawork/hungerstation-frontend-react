@@ -18,6 +18,7 @@ export function* fetchAddressesSaga({ payload }) {
     const { addresses } = yield call(api.getAddresses, accessToken, payload);
     const parsedAddresses = addresses.map(({ id, address_details }) => ({
       ...address_details[0],
+      ...address_details[0].dynamic_field,
       id,
     }));
 

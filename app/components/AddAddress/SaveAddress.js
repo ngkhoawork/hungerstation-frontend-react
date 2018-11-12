@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import intl from 'utils/intlService';
-import { addressTypes } from 'modules/address/constants';
+import { addressTypes, otherAddressType } from 'modules/address/constants';
 import { isChangeableType } from 'modules/address/helpers';
 import addressMessages from 'modules/address/messages';
 import TypeSelect from 'components/TypeSelect';
@@ -18,15 +18,22 @@ class SaveAddress extends React.Component {
 
     const { address, disabledTypes } = this.props;
     const { specific_type: type } = address;
-    const types = addressTypes.map(({ key }) => key);
-    this.disabledTypes = type ? types.filter(t => t !== type) : disabledTypes;
+    const types = addressTypes
+      .filter(({ key }) => key !== otherAddressType)
+      .map(({ key }) => key);
+    this.disabledTypes =
+      type && type !== otherAddressType
+        ? types.filter(t => t !== type)
+        : disabledTypes;
     this.isChangeableType = type ? isChangeableType(type) : true;
-    this.addressTypes = addressTypes.map(addr => ({
-      ...addr,
-      name: intl.formatMessage(addressMessages[addr.key]),
-    }));
+    this.addressTypes = addressTypes
+      .filter(({ key }) => key !== otherAddressType)
+      .map(addr => ({
+        ...addr,
+        name: intl.formatMessage(addressMessages[addr.key]),
+      }));
     this.state = {
-      isSaveChecked: !!type,
+      isSaveChecked: !!type && type !== otherAddressType,
       selectedType: this.addressTypes.find(({ key }) => key === type) || {},
     };
   }

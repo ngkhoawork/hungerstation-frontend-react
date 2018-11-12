@@ -31,20 +31,6 @@ const getName = ({ name, specific_type, street, building_number }) => {
   );
 };
 
-const getDescription = ({
-  specific_type,
-  description,
-  street,
-  building_number,
-  name,
-}) => {
-  const address = `${street || ''} ${building_number || ''}`.trim();
-
-  if (specific_type) return address;
-
-  return name ? address : description;
-};
-
 const Address = ({
   address,
   isSelected,
@@ -84,7 +70,7 @@ const Address = ({
             />
           </CircledItem>
         </Name>
-        <Location>{getDescription(address)}</Location>
+        <Location>{address.description || ''}</Location>
       </Content>
       <Button
         primary={false}
