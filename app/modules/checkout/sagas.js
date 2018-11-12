@@ -4,7 +4,7 @@ import {
   fetchDeliveryOptions,
   fetchDeliveryOptionsSuccess,
   fetchCreditCards,
-  fetchCreditCardsSuccess,
+  // fetchCreditCardsSuccess,
   validateCoupon,
   validateCouponSuccess,
   validateCouponError,
@@ -21,16 +21,16 @@ export function* fetchDeliveryOptionsSaga({ payload }) {
   }
 }
 
-export function* fetchCreditCardsSaga({ payload }) {
+// export function* fetchCreditCardsSaga({ payload }) {
+export function* fetchCreditCardsSaga() {
   try {
-    const { accessToken } = yield select(makeSelectTokens);
-    const { credit_cards } = yield call(
-      api.getCreditCards,
-      accessToken,
-      payload,
-    );
-
-    yield put(fetchCreditCardsSuccess(credit_cards));
+    // const { accessToken } = yield select(makeSelectTokens);
+    // const { credit_cards } = yield call(
+    //   api.getCreditCards,
+    //   accessToken,
+    //   payload,
+    // );
+    // yield put(fetchCreditCardsSuccess(credit_cards));
   } catch (e) {
     // console.log(e);
   }
