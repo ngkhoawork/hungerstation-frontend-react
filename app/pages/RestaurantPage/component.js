@@ -10,6 +10,7 @@ import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
 import MealOptions from 'components/MealOptions';
 import { NavHeader } from 'utils/css/styledComponents';
+// import { isDayTimeMatch } from 'utils/helpers';
 import messages from './messages';
 import {
   StyledPage,
@@ -26,30 +27,48 @@ import {
 } from './StyledComponents';
 
 class RestaurantPage extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {};
+  // constructor(props) {
+  //   super(props);
 
-    const { menuGroups, id } = props.restaurant;
-    this.state = {
-      restaurantId: id, // eslint-disable-line react/no-unused-state
-      selectedMenuGroup: menuGroups && menuGroups[0],
-    };
-  }
+  //   const { menu, id } = props.restaurant;
 
-  static getDerivedStateFromProps({ restaurant }, { restaurantId }) {
-    if (restaurant.id !== restaurantId) {
+  //   // TODO: filter menugroups by day and time of day
+  //   const selectedMenuGroup = menu && menu.menugroups && menu.menugroups[0];
+
+  //   this.state = {
+  //     restaurantId: id, // eslint-disable-line react/no-unused-state
+  //     selectedMenuGroup,
+  //   };
+  // }
+
+  static getDerivedStateFromProps(props, state) {
+    const { menu, id } = props.restaurant;
+
+    if (id !== state.restaurantId) {
       return {
-        selectedMenuGroup: restaurant.menuGroups[0],
-        restaurantId: restaurant.id,
+        // selectedMenuGroup: menu.menugroups.find(isDayTimeMatch),
+        selectedMenuGroup: menu.menugroups[0],
+        restaurantId: id,
       };
     }
 
     return null;
   }
 
-  handleAddClick = product => {
+  handleAddClick = selectedProduct => {
+    const product = selectedProduct.menuitems
+      ? selectedProduct.menuitems[0]
+      : selectedProduct;
+    const parentProduct = selectedProduct.menuitems
+      ? selectedProduct
+      : undefined;
+
     const MealOptionsHOC = () => (
-      <MealOptions purchase={{ product }} onSubmit={this.handleAddOptions} />
+      <MealOptions
+        purchase={{ product, parentProduct }}
+        onSubmit={this.handleAddOptions}
+      />
     );
 
     this.props.onShowModal(MealOptionsHOC);
@@ -67,11 +86,15 @@ class RestaurantPage extends React.Component {
 
   renderContent = () => {
     const { cartItems, restaurant } = this.props;
-    const { menuItems, menuGroups, ...info } = restaurant;
+    const { menu, ...info } = restaurant;
     const { selectedMenuGroup } = this.state;
-    const shownProducts = menuItems.filter(
-      ({ menuGroupId }) => menuGroupId === parseInt(selectedMenuGroup.id, 10),
-    );
+
+    if (!selectedMenuGroup) return null;
+
+    // const shownProducts = selectedMenuGroup.products.find(isDayTimeMatch);
+    const shownProducts = selectedMenuGroup.products;
+
+    // console.log(shownProducts, selectedMenuGroup);
 
     return (
       <Fragment>
@@ -83,7 +106,7 @@ class RestaurantPage extends React.Component {
         <ProductsContainer>
           <StyledProductTypes>
             <TypeSelect
-              types={menuGroups}
+              types={menu.menugroups}
               active={selectedMenuGroup}
               onSelect={this.handleMenuGroupSelect}
             />
