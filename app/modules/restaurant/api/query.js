@@ -21,76 +21,125 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
       }
     }
     delivery_conditions {
-      id
       delivery_fee
       delivery_estimation_time
       minimum_order
     }
-    restaurant{
+    restaurant {
       id
       name
       logo
       cover_photo
       rate_average
-      kitchens{
+      kitchens {
         id
         name
         image_thumb
       }
-    }
-  }
-}`;
-
-export const getBranchMenuQuery = `query GetBranchMenu($branchId: Int!) {
-  menu(branch_id: $branchId) {
-    menugroups {
-      id
-      name
-      display_mode
-      working_times {
-        start_minute
-        end_minute
-        monday
-        tuesday
-        wednesday
-        thursday
-        friday
-        saturday
-        sunday
+      working_time {
+        weektimes {
+          start_minute
+          end_minute
+          monday
+          tuesday
+          wednesday
+          thursday
+          friday
+          saturday
+          sunday
+        }
       }
     }
-    menuitems {
-      id
-      name
-      short_name
-      description
-      price
-      images
-      menugroup_id
-      modifier_group_ids
-      working_times {
-        start_minute
-        end_minute
-        monday
-        tuesday
-        wednesday
-        thursday
-        friday
-        saturday
-        sunday
+    menu {
+      menugroups {
+        id
+        name
+        weight
+        working_times {
+          start_minute
+          end_minute
+          monday
+          tuesday
+          wednesday
+          thursday
+          friday
+          saturday
+          sunday
+        }
+        products {
+          id
+          name
+          description
+          images
+          weight
+          menuitems {
+            id
+            name
+            short_name
+            description
+            price
+            images
+            weight
+            working_times {
+              start_minute
+              end_minute
+              monday
+              tuesday
+              wednesday
+              thursday
+              friday
+              saturday
+              sunday
+            }
+            modifier_groups {
+              id
+              name
+              weight
+              min_option
+              max_option
+              modifiers {
+                id
+                price
+                name
+                weight
+              }
+            }
+          }
+        }
+        menuitems {
+          id
+          name
+          short_name
+          description
+          price
+          images
+          weight
+          working_times {
+            start_minute
+            end_minute
+            monday
+            tuesday
+            wednesday
+            thursday
+            friday
+            saturday
+            sunday
+          }
+          modifier_groups {
+            id
+            name
+            weight
+            min_option
+            max_option
+            modifiers {
+              id
+              price
+              name
+              weight
+            }
+          }
+        }
       }
-    }
-    modifiers {
-      id
-      price
-      name
-    }
-    modifier_groups {
-      id
-      name
-      min_option
-      max_option
-      modifier_ids
     }
   }
 }`;

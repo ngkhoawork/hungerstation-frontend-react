@@ -1,65 +1,49 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   fetchRestaurant,
   fetchRestaurantRequest,
   fetchRestaurantSuccess,
   fetchRestaurantError,
 } from './actions';
-import { getBranch, getBranchMenu } from './api';
+import { getBranch } from './api';
 
 export function* fetchRestaurantSaga({ payload: id }) {
   try {
     yield put(fetchRestaurantRequest());
 
-    const [{ branch }, { menu }] = yield all([
-      call(getBranch, id),
-      call(getBranchMenu, id),
-    ]);
+    const { branch } = yield call(getBranch, id);
 
-    const modifierGroups = menu.modifier_groups.map(group => ({
-      id: group.id,
-      name: group.name,
-      min: group.min_option,
-      max: group.max_option,
-      modifiers: menu.modifiers.filter(
-        ({ id }) => group.modifier_ids.indexOf(parseInt(id, 10)) > -1,
-      ),
-    }));
+    // console.log(JSON.parse(JSON.stringify(branch)));
+
+    // concat products and menuitems, sort by weight, convert prices to float
     const restaurant = {
-      id: branch.id,
-      restaurantId: branch.restaurant.id,
-      name: branch.restaurant.name,
-      status: branch.status,
-      latitude: branch.latitude,
-      longitude: branch.longitude,
-      logo: branch.restaurant.logo,
-      rateAverage: branch.restaurant.rate_average,
-      coverPhoto: branch.restaurant.cover_photo,
-      deliveryConditions: branch.delivery_conditions,
-      cuisines: branch.restaurant.kitchens.map(({ id, name, image_thumb }) => ({
-        id,
-        name,
-        image: image_thumb,
-      })),
-      menuGroups: menu.menugroups.map(({ id, name, working_times }) => ({
-        id,
-        name,
-        workingTimes: working_times,
-      })),
-      menuItems: menu.menuitems.map(item => ({
-        id: item.id,
-        image: item.images[0],
-        name: item.name,
-        shortName: item.short_name,
-        price: parseFloat(item.price),
-        description: item.description,
-        menuGroupId: item.menugroup_id,
-        workingTimes: item.working_times,
-        modifierGroups: modifierGroups.filter(
-          ({ id }) => item.modifier_group_ids.indexOf(parseInt(id, 10)) > -1,
-        ),
-      })),
+      ...branch,
+      menu: {
+        menugroups: branch.menu.menugroups
+          .sort((mgA, mgB) => mgA.weight - mgB.weight)
+          .map(({ products, menuitems, ...menugroup }) => ({
+            ...menugroup,
+            products: products
+              .concat(menuitems)
+              .sort((itemA, itemB) => itemA.weight - itemB.weight)
+              .map(item => ({
+                ...item,
+                // price: item.price && parseFloat(item.price),
+                price: item.price !== undefined ? parseFloat(item.price) : 0,
+                menuitems:
+                  item.menuitems &&
+                  item.menuitems
+                    .sort((itemA, itemB) => itemA.weight - itemB.weight)
+                    .map(({ price, ...menuitem }) => ({
+                      ...menuitem,
+                      price: parseFloat(price),
+                    })),
+              })),
+          })),
+      },
     };
+
+    // console.log(restaurant);
 
     yield put(fetchRestaurantSuccess({ restaurant }));
   } catch (e) {
