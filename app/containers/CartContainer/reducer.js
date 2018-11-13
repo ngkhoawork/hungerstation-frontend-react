@@ -36,6 +36,7 @@ function cartContainerReducer(state = initialState, { type, payload }) {
         ...payload,
         id: `${Math.random()}${Date.now()}`,
       });
+
       saveCartItems(purchases);
 
       return Object.assign({}, state, { purchases });
@@ -58,6 +59,7 @@ function cartContainerReducer(state = initialState, { type, payload }) {
 
     case removeFromCart.type: {
       const purchases = state.purchases.filter(({ id }) => id !== payload);
+
       saveCartItems(purchases);
 
       return Object.assign({}, state, { purchases });
@@ -65,6 +67,7 @@ function cartContainerReducer(state = initialState, { type, payload }) {
 
     case emptyCart.type: {
       clearStorageItem('cartItems');
+
       return Object.assign({}, state, { purchases: [] });
     }
 

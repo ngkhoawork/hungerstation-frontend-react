@@ -53,7 +53,7 @@ class CartContainer extends React.Component {
 
       if (
         !restaurants.length ||
-        restaurants.indexOf(restaurant.restaurantId) > -1
+        restaurants.indexOf(restaurant.restaurant.id) > -1
       ) {
         if (cutbacks[0]) discount = cutbacks[0].cutback_amount;
         if (discounts[0]) discount = discounts[0].discount_amount;
@@ -65,7 +65,7 @@ class CartContainer extends React.Component {
         {...props}
         from={restaurant.name}
         minAmount={getDeepProp(restaurant, [
-          'deliveryConditions',
+          'delivery_conditions',
           'minimum_order',
         ])}
         discount={discount}
