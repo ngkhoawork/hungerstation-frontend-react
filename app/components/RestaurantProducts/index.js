@@ -39,7 +39,7 @@ const RestaurantProducts = ({ products, cartItems, onProductClick }) => (
     {products.map(product => (
       <Item key={product.id} onClick={() => onProductClick(product)}>
         <ContentContainer>
-          <Img image={product.image} />
+          <Img image={product.images && product.images[0]} />
           <Content>
             <div>
               <TitleContainer>

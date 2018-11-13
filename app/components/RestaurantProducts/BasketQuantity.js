@@ -17,9 +17,14 @@ const Container = styled.span`
   margin-right: 5px;
 `;
 
-const BasketQuantity = ({ product: { id }, cartItems }) => {
+const BasketQuantity = ({ product: { id, menuitems }, cartItems }) => {
   const quantity = cartItems
-    .filter(({ product }) => product.id === id)
+    .filter(
+      ({ product, parentProduct }) =>
+        menuitems
+          ? parentProduct && parentProduct.id === id
+          : product.id === id,
+    )
     .reduce((sum, { quantity }) => sum + quantity, 0);
 
   if (!quantity) return null;
