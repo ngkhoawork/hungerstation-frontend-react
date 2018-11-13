@@ -10,7 +10,7 @@ import ButtonWrapper from './ButtonWrapper';
 
 const NotFound = () => (
   <StyledNotFound>
-    <Icon name="pin-red-large" size={56} />
+    <Icon name="bag-red" size={56} />
     <Paragraph size={36}>{intl.formatMessage(messages.text)}</Paragraph>
     <Paragraph light size={14} color={silverChalice}>
       {intl.formatMessage(messages.description)}

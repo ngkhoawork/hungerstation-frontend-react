@@ -7,6 +7,7 @@ import restaurantsSagas from './restaurants/sagas';
 import addressSagas from './address/sagas';
 import checkoutSagas from './checkout/sagas';
 import faqsSagas from './faqs/sagas';
+import ordersSagas from './orders/sagas';
 
 export default function* root() {
   yield fork(authSagas);
@@ -14,6 +15,7 @@ export default function* root() {
   yield fork(locationSagas);
   yield fork(restaurantsSagas);
   yield fork(restaurantSagas);
+  yield fork(ordersSagas);
   yield fork(addressSagas);
   yield fork(checkoutSagas);
   // yield spawn(monitorSaga);

@@ -29,7 +29,6 @@ class MyOrderPage extends React.Component {
         <Paragraph size={30} margin="0 0 0 11px">
           My orders
         </Paragraph>
-
         <StyledOrderList>
           {orders.length > 0 ? (
             <StyledList>

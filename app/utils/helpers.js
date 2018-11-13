@@ -156,3 +156,6 @@ export function daysUntilOpen(weektimes) {
 
   return daysDiff;
 }
+
+export const getOrderDescription = order =>
+  `${order.count || 1} x ${order.menuitem.name}`;

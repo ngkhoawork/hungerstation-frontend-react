@@ -85,6 +85,7 @@ const onUpdateTokens = (state, action) => {
   const { tokens } = action;
   return state.merge({
     tokens,
+    loggedIn: true,
   });
 };
 

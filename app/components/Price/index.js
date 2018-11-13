@@ -18,7 +18,7 @@ const OrderElement = ({ price, hasTag, ...props }) => (
   <Price {...props}>
     {hasTag ? (
       <Fragment>
-        <Icon name="price-tag" offsetY="-1" /> &nbsp;
+        <Icon name="price-tag" offsetY="1" /> &nbsp;
       </Fragment>
     ) : null}
     {intl.formatNumber(price, priceIntlOptions)}

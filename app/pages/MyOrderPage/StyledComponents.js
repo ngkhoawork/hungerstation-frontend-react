@@ -4,7 +4,6 @@ import {
   navHeaderHeight,
   maxPageWidth,
   fontFamilyLight,
-  fontFamilyRegular,
   mobPageOffsetX,
   smallMobPageOffsetX,
   borderRadius,
@@ -16,7 +15,14 @@ import {
   mediaLess,
   mediaMediumGreater,
 } from 'utils/css/styles';
-import { lightGray, silverChalice } from 'utils/css/colors';
+import {
+  lightGray,
+  alabaster,
+  silverChalice,
+  jade,
+  persimmon,
+  errorBg,
+} from 'utils/css/colors';
 
 export const StyledPage = styled.div`
   width: 100%;
@@ -44,13 +50,14 @@ export const NavHeader = styled.div`
 
 export const ContentContainer = styled.div`
   ${flex({ align: 'flex-start' })};
-  margin-top: 60px;
+  margin-top: 40px;
 `;
 
 export const Loading = styled.div`
   ${flex({ justify: 'center', align: 'center' })};
   height: 100px;
   font-size: 30px;
+  width: 100%;
 `;
 
 export const LeftSide = styled.div`
@@ -83,6 +90,7 @@ export const ProfileNavWrapper = styled.div`
 export const OrdersSection = styled.div`
   width: 912px;
   margin-left: 40px;
+  margin-bottom: 50px;
   overflow: visible;
   position: relative;
   ${flex({
@@ -137,12 +145,12 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
-  ${flex({ direction: 'column' })};
+  ${flex({ align: 'flex-start' })};
   position: relative;
-  padding-bottom: 20px;
-  margin: 40px 20px;
+  padding: 35px 0;
   border-bottom: 1px solid ${lightGray};
   cursor: pointer;
+  width: 100%;
 
   :last-child {
     border-bottom: none;
@@ -155,9 +163,9 @@ export const Item = styled.div`
 `;
 
 export const Img = styled.div`
-  height: 120px;
-  width: 120px;
-  border-radius: 10px;
+  height: 110px;
+  width: 110px;
+  border-radius: 55px;
   box-shadow: 8px 12px 23px -3px rgba(59, 59, 59, 0.13);
   background-color: white;
   background-image: url(${({ image }) => image || imgPlaceholder});
@@ -176,17 +184,23 @@ export const Content = styled.div`
 export const TitleContainer = styled.div`
   ${flex({ align: 'flex-start' })};
   margin-bottom: 10px;
+  flex-direction: column;
 `;
 
 export const titleStyle = css`
-  font-size: 18px;
+  font-size: 20px;
+`;
+
+export const OrderItems = styled.div`
+  color: #434340;
+  font-family: ${fontFamilyLight};
+  font-size: 14px;
+  line-height: 14px;
 `;
 
 export const Description = styled.div`
-  color: ${silverChalice};
-  font-family: ${fontFamilyRegular};
-  font-size: 14px;
-  line-height: 14px;
+  ${flex({ justify: 'space-between', grow: 1 })};
+  flex: 1;
 `;
 
 export const PriceContainer = styled.div`
@@ -194,15 +208,10 @@ export const PriceContainer = styled.div`
   ${flex({ align: 'center' })};
 
   ${mediaMediumGreater`
-    position: absolute;
-    right: 0;
-    top: -20px;
+    // position: absolute;
+    // right: 0;
+    // top: -20px;
   `};
-`;
-
-export const AddBtn = styled.div`
-  ${flex({ align: 'center', shrink: 0 })};
-  line-height: 1;
 `;
 
 export const Footer = styled.div`
@@ -211,35 +220,42 @@ export const Footer = styled.div`
   ${mediaMedium`display: none;`};
 `;
 
-export const MobileFooter = styled.div`
-  ${mediaMedium`
-    ${flex({ justify: 'space-between', align: 'center' })};
-    border: solid 1px ${lightGray};
-    border-radius: ${borderRadius};
-    padding: 12px 16px;
-    width: 100%;
-    margin-top: 20px;
-  `};
-
-  ${mediaMediumGreater`
-    display: none;
-  `};
-`;
-
 export const DeliveryLocation = styled.div`
   position: relative;
-  display: inline-block;
+  display: block;
   height: 17px;
   color: #434340;
   font-family: ${fontFamilyLight};
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.22px;
   line-height: 17px;
-  margin: 0 0 20px 20px;
+  margin: 6px 20px;
 `;
 
 export const IconPosition = styled.div`
   position: absolute;
   left: -20px;
+  top: 2px;
+`;
+
+export const Status = styled.div`
+  padding: 8px 12px;
+  border-radius: ${borderRadius};
+  background-color: ${({ color }) => {
+    if (color === 'error') return errorBg;
+    return alabaster;
+  }};
+  color: ${({ color }) => {
+    if (color === 'error') return persimmon;
+    if (color === 'success') return jade;
+    return silverChalice;
+  }};
+  font-size: 12px;
+  line-height: 1;
+  margin-left: 5px;
+`;
+
+export const OrderState = styled.div`
+  display: block;
 `;

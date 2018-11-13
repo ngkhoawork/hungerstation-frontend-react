@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>A504635A-DB89-4F12-A5A9-0DCEDC10497E</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="My-orders" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="My-orders-(no-Orders)" transform="translate(-804.000000, -338.000000)">
+            <g id="You_don't_have_orders_yet" transform="translate(609.000000, 338.000000)">
+                <g id="order-icon" transform="translate(195.000000, 0.000000)">
+                    <g id="order-Icon">
+                        <g id="Group">
+                            <g id="icon/bag-red">
+                                <rect id="Background" x="0" y="0" width="56" height="56"></rect>
+                                <path d="M17.913,19.1766132 L39.1395,19.1766132 C40.182,19.1766132 40.992,20.1707421 40.8675,21.3024442 L38.5665,42.3691349 C38.505,43.7301254 37.503,44.8012298 36.285,44.8028675 L20.7705,44.8028675 C19.551,44.8045053 18.546,43.7334009 18.4845,42.3691349 L16.185,21.3024442 C16.062,20.1707421 16.8705,19.1766132 17.913,19.1766132 Z" id="Stroke-1" stroke="#FC9287" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M22.659,19.1766132 L22.659,15.172255 C22.659,12.3290788 25.2855,10.0247304 28.527,10.0247304 C31.767,10.0247304 34.3935,12.3290788 34.3935,15.172255 L34.3935,19.1766132" id="Stroke-3" stroke="#FC9287" stroke-width="1.5"></path>
+                                <path d="M21,19.8512124 C21,20.7552638 21.672,21.4889867 22.5,21.4889867 C23.328,21.4889867 24,20.7552638 24,19.8512124 C24,18.9455232 23.328,18.2118003 22.5,18.2118003 C21.672,18.2118003 21,18.9455232 21,19.8512124 Z" id="Clip-9" fill="#FC9287"></path>
+                                <path d="M33.0015,19.8512124 C33.0015,20.7552638 33.672,21.4889867 34.5,21.4889867 C35.328,21.4889867 36,20.7552638 36,19.8512124 C36,18.9455232 35.328,18.2118003 34.5,18.2118003 C33.672,18.2118003 33.0015,18.9455232 33.0015,19.8512124 Z" id="Clip-12" fill="#FC9287"></path>
+                                <path d="M28,0 L28,0 C43.463973,-2.84068575e-15 56,12.536027 56,28 L56,28 C56,43.463973 43.463973,56 28,56 L28,56 C12.536027,56 1.8937905e-15,43.463973 0,28 L0,28 C-1.8937905e-15,12.536027 12.536027,2.84068575e-15 28,0 Z" id="Rectangle-12" fill-opacity="0.104421422" fill="#FC9287"></path>
+                                <g id="icon/tick" transform="translate(24.000000, 27.000000)">
+                                    <rect id="Background" x="0" y="0" width="9" height="9"></rect>
+                                    <g id="x" transform="translate(0.264706, 0.264706)" stroke="#FC9287" stroke-linecap="round" stroke-width="1.4">
+                                        <path d="M0.264705882,0.264705882 L8.20588235,8.20588235" id="Path-5"></path>
+                                        <path d="M8.20588235,0.264705882 L0.264705882,8.20588235 L8.20588235,0.264705882 Z" id="Path-5" stroke-linejoin="round"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

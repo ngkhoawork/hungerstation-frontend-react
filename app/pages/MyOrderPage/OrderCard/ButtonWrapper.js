@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { mediaLess } from 'utils/css/styles';
+import { flex, mediaLess } from 'utils/css/styles';
 
 const ButtonWrapper = styled.div`
-  width: 288px;
+  ${flex({ justify: 'flex-end', grow: 1 })};
   height: 40px;
   align-self: center;
-  margin-top: 10px;
+
   ${mediaLess(600)`
     align-self: flex-start;
     width: 240px;

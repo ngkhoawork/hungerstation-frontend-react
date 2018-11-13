@@ -1,4 +1,6 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { makeSelectTokens } from 'modules/auth/selectors';
+import { get } from 'lodash';
 import {
   fetchOrders,
   fetchOrdersRequest,
@@ -6,24 +8,36 @@ import {
   fetchOrdersError,
 } from './actions';
 import { getOrders } from './api';
+import { getOrderDescription } from '../../utils/helpers';
 
 export function* fetchOrdersSaga() {
   try {
     yield put(fetchOrdersRequest());
-
-    const { orders } = yield call(getOrders);
+    const { accessToken } = yield select(makeSelectTokens);
+    const { orders } = yield call(getOrders, accessToken);
 
     const myOrders = orders.map(order => ({
       id: order.id,
       state: order.state,
-      branchId: order.branch_id,
-      amount: order.amount,
+      address: get(
+        order,
+        ['address', 'address_details', 0, 'description'],
+        null,
+      ),
+      branchName: get(order, ['branch', 'name'], null),
+      image: get(order, ['branch', 'restaurant', 'logo'], null),
+      price: order.total,
       fee: order.fee,
+      deliveryProvider: order.delivery_provider,
+      deliveredAt: order.delivered_at ? new Date(order.delivered_at) : null,
+      dueAt: order.due_at ? new Date(order.due_at) : null,
       orderItems: order.orderitems.map(item => ({
-        id: item.id,
         orderId: item.order_id,
         menuItemId: item.menuitem_id,
+        menuItemName: item.menuitem.name,
         amount: item.amount,
+        count: item.count || 1,
+        description: getOrderDescription(item),
       })),
     }));
     yield put(fetchOrdersSuccess({ orders: myOrders }));
