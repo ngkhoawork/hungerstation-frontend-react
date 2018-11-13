@@ -1,7 +1,6 @@
 {
   "app.components.AddRestaurantBanner.actionText": "Would you like to Join Us?",
   "app.components.AddRestaurantBanner.buttonLabel": "Add restaurant",
-  "app.components.BrandLogo.altText": "Brand logo",
   "app.components.BriefFiltersSection.moreFilters": "More Filters",
   "app.components.BriefFiltersSection.tags": "Tags",
   "app.components.DeliveryRegions.description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s",
@@ -79,6 +78,7 @@
   "app.components.MealOptions.total": "Total",
   "app.components.MealOptions.required": "Required",
   "app.components.MealOptions.select": "Tap on item to include",
+  "app.components.MealOptions.selectOne": "Select one",
   "app.components.CheckoutPage.IneligibleAddress.title": "This reastaurant is not available in your area",
   "app.components.CheckoutPage.IneligibleAddress.description": "Sorry, Selected address is not eligible for delivery by the restaurant. Please change your address or choose a different restaurant.",
   "app.components.CheckoutPage.IneligibleAddress.edit": "Edit address",

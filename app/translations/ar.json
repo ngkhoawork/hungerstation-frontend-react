@@ -1,7 +1,6 @@
 {
   "app.components.AddRestaurantBanner.actionText": "Would you like to Join Us?",
   "app.components.AddRestaurantBanner.buttonLabel": "Add restaurant",
-  "app.components.BrandLogo.altText": "Brand logo",
   "app.components.BriefFiltersSection.moreFilters": "",
   "app.components.BriefFiltersSection.tags": "",
   "app.components.DeliveryRegions.description": "",
@@ -79,6 +78,7 @@
   "app.components.MealOptions.total": "Total",
   "app.components.MealOptions.required": "Required",
   "app.components.MealOptions.select": "Tap on item to include",
+  "app.components.MealOptions.selectOne": "Select one",
   "app.components.CheckoutPage.IneligibleAddress.title": "This reastaurant is not available in your area",
   "app.components.CheckoutPage.IneligibleAddress.description": "عذرا، الموقع المختار لايتم التوصيل له من قبل المطعم. فضلا قم بتغيير العنوان أو قم باختيار مطعم اّخر",
   "app.components.CheckoutPage.IneligibleAddress.edit": "Edit address",
