@@ -42,11 +42,14 @@ class DeliveryOptionsContainer extends React.Component {
 
   render() {
     const { checkoutState } = this.props;
+    const { deliveryOptions, selectedDeliveryOption } = checkoutState;
+
+    if ((deliveryOptions || []).length < 2) return null;
 
     return (
       <DeliveryOptions
-        selectedOption={checkoutState.selectedDeliveryOption}
-        options={checkoutState.deliveryOptions}
+        selectedOption={selectedDeliveryOption}
+        options={deliveryOptions}
         onSelect={this.props.selectDeliveryOption}
       />
     );

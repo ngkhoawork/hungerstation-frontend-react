@@ -19,16 +19,30 @@ import {
   RightSide,
 } from './StyledComponents';
 
-const CheckoutPage = ({ isLoading, params }) => {
+const CheckoutPage = ({ isLoading, params, deliveryOptions = [] }) => {
+  const hasDeliverySection = deliveryOptions.length > 1;
+
   const renderContent = () => (
     <React.Fragment>
       <Step stepNo={1} stepCount={3} title={intl.formatMessage(messages.step1)}>
         <AddressesContainer />
       </Step>
-      <Step stepNo={2} stepCount={3} title={intl.formatMessage(messages.step2)}>
+      {hasDeliverySection ? (
+        <Step
+          stepNo={2}
+          stepCount={3}
+          title={intl.formatMessage(messages.step2)}
+        >
+          <DeliveryOptionsContainer />
+        </Step>
+      ) : (
         <DeliveryOptionsContainer />
-      </Step>
-      <Step stepNo={3} stepCount={3} title={intl.formatMessage(messages.step3)}>
+      )}
+      <Step
+        stepNo={hasDeliverySection ? 3 : 2}
+        stepCount={hasDeliverySection ? 3 : 2}
+        title={intl.formatMessage(messages.step3)}
+      >
         <PaymentOptionsContainer />
       </Step>
       <Note style={{ borderTop: border, padding: '20px 0' }} />
@@ -51,6 +65,7 @@ const CheckoutPage = ({ isLoading, params }) => {
 };
 
 CheckoutPage.propTypes = {
+  deliveryOptions: PropTypes.array,
   params: PropTypes.object.isRequired,
   isLoading: PropTypes.bool,
 };

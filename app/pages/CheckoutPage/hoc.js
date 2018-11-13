@@ -16,6 +16,7 @@ import {
   selectCartPurchases,
   selectOrderAmount,
 } from 'containers/CartContainer/selectors';
+import { selectCheckoutState } from 'modules/checkout/selectors';
 import InsufficientOrderAmount from 'containers/InsufficientOrderAmount';
 import AddAddressContainer from 'containers/AddAddressContainer';
 import IneligibleAddress from 'components/IneligibleAddress';
@@ -92,10 +93,14 @@ class CheckoutPageHOC extends React.Component {
   };
 
   render() {
-    const { addresses, match } = this.props;
+    const { addresses, match, checkoutState } = this.props;
 
     return (
-      <CheckoutPage params={match.params} isLoading={addresses === undefined} />
+      <CheckoutPage
+        params={match.params}
+        isLoading={addresses === undefined}
+        deliveryOptions={checkoutState.deliveryOptions}
+      />
     );
   }
 }
@@ -106,6 +111,7 @@ CheckoutPageHOC.propTypes = {
   orderAmount: PropTypes.number.isRequired,
   purchases: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
+  checkoutState: PropTypes.object.isRequired,
   addresses: PropTypes.array,
   isLoadingAddresses: PropTypes.bool,
   fetchAddresses: PropTypes.func.isRequired,
@@ -122,6 +128,7 @@ export default connect(
     purchases: selectCartPurchases,
     addresses: selectAddresses,
     isLoadingAddresses: selectAddressesLoading,
+    checkoutState: selectCheckoutState,
   }),
   {
     showModal,
