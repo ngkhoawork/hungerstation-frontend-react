@@ -28,19 +28,6 @@ import {
 
 class RestaurantPage extends React.Component {
   state = {};
-  // constructor(props) {
-  //   super(props);
-
-  //   const { menu, id } = props.restaurant;
-
-  //   // TODO: filter menugroups by day and time of day
-  //   const selectedMenuGroup = menu && menu.menugroups && menu.menugroups[0];
-
-  //   this.state = {
-  //     restaurantId: id, // eslint-disable-line react/no-unused-state
-  //     selectedMenuGroup,
-  //   };
-  // }
 
   static getDerivedStateFromProps(props, state) {
     const { menu, id } = props.restaurant;
