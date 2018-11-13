@@ -27,7 +27,7 @@ export const List = styled.ul`
   border: solid 1px ${alabaster};
   border-radius: 4px;
   padding: 5px 15px;
-  max-height: 300px;
+  max-height: 100px;
   overflow: auto;
   text-align: center;
 
@@ -54,7 +54,7 @@ export const Item = styled.li`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 300px;
+  max-width: 100%;
 
   :hover {
     color: ${fuscousGray};
