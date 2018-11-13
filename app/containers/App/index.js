@@ -23,6 +23,7 @@ import { compose, withProps } from 'recompose';
 import HomePage from 'pages/HomePage/Loadable';
 import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
 import RestaurantPage from 'pages/RestaurantPage';
+import MyOrderPage from 'pages/MyOrderPage';
 import CheckoutPage from 'pages/CheckoutPage';
 import LoginPage from 'pages/LoginPage/Loadable';
 import RegistrationPage from 'pages/RegistrationPage/Loadable';
@@ -112,7 +113,7 @@ export default class App extends Component {
             component={RestaurantsPage}
           />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
-
+          <PrivateRouteContainer path="/my-orders" component={MyOrderPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
