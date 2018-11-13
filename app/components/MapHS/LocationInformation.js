@@ -1,18 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import TextItem from 'components/TextItem';
 import Button from 'components/Button';
-import { mediaLess } from 'utils/css/styles';
+import { mediaMedium } from 'utils/css/styles';
 import { fontFamilyRegular } from 'utils/css/variables';
 
 const ButtonWrapper = styled.div`
   width: 144px;
   height: 40px;
-  ${mediaLess(600)`
-    width: 55%;
-    height: 30%;
-  `};
+
+  ${mediaMedium`width: 100%; height: 50px;`};
 `;
 
 const Text = styled.p`
@@ -24,6 +21,8 @@ const Text = styled.p`
   font-weight: 300;
   letter-spacing: 0.5px;
   line-height: 24px;
+
+  ${mediaMedium`width: 100%;`};
 `;
 
 const openMap = () => {

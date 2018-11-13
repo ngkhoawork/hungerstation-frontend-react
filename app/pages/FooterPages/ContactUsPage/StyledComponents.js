@@ -1,46 +1,31 @@
-import styled from 'styled-components';
-import { flex, mediaLess } from 'utils/css/styles';
+import styled, { css } from 'styled-components';
+import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 
 export const Wrapper = styled.div`
   width: 100%;
-  background-color: #ffffff;
-  padding-top: 6%;
+  background-color: white;
+  padding-top: 60px;
   padding-bottom: 100px;
-  ${flex({
-    direction: 'row',
-    align: 'flex-start',
-    justify: 'space-between',
-    wrap: 'wrap',
-  })};
+  ${flex({ direction: 'column' })};
 
-  ${mediaLess(600)`
-    padding: 20px;
-  `};
+  ${mediaMedium`padding: 20px;`};
 `;
 
 export const UpperSide = styled.div`
   width: 100%;
-  height: 100%;
-  ${flex({ align: 'flex-start', justify: 'space-between' })};
+  ${flex({ align: 'flex-start' })};
 
-  ${mediaLess(600)`
-    padding: 20px;
+  ${mediaMedium`
+    ${flex({ align: 'stretch', direction: 'column' })};
   `};
+`;
+
+export const mapStyles = css`
+  ${mediaMedium`margin-bottom: 30px;`};
+  ${mediaMediumGreater`width: 50%; margin-right: 40px;`};
 `;
 
 export const BottomSide = styled.div`
-  padding-top: 12%;
+  padding-top: 40px;
   ${flex({ align: 'flex-start', justify: 'space-between' })};
-`;
-
-export const Description = styled.div`
-  padding-left: 63%;
-  z-index: 2;
-  ${mediaLess(600)`
-    padding-top: 75%;
-    padding-left: 4%;
-  `};
-`;
-export const ContactUs = styled.div`
-  ${'' /* padding-left: 300px; */};
 `;

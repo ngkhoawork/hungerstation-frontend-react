@@ -1,26 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-
 import Icon from 'components/Icon';
 import { fontFamilyRegular } from 'utils/css/variables';
 import { mediaMedium, flex } from 'utils/css/styles';
 import CircledItem from 'components/CircledItem';
 import Paragraph from 'components/Paragraph';
 import { wildSand, ironsideGray } from 'utils/css/colors';
+import SocialMedias from 'components/Footer/UpperSection/SocialMedias';
 import messages from './messages';
-import SocialMedias from '../Footer/UpperSection/SocialMedias';
 
 const Wrapper = styled.section`
   width: 289px;
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: white;
   box-shadow: 0 0 35px 5px rgba(183, 157, 157, 0.1);
   padding: 20px;
-  ${mediaMedium`
-    display: block;
-    margin-left: 20px;
-  `};
+
+  ${mediaMedium`width: 100%;`};
 `;
 
 const Text = styled.div`
@@ -45,7 +42,6 @@ const ContactDetails = () => (
     <Text>
       <FormattedMessage {...messages.header} />
     </Text>
-
     <Group>
       <CircledItem color={wildSand} width={28}>
         <Icon name="email" size={12} />

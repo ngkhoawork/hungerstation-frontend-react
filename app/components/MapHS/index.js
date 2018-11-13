@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { mediaLess } from 'utils/css/styles';
 
 class MapHS extends Component {
   componentDidMount() {
@@ -17,18 +16,19 @@ class MapHS extends Component {
   }
 
   render() {
-    return <MapStyles id="map" />;
+    return <MapStyles id="map" css={this.props.css} />;
   }
 }
+
+MapHS.propTypes = {
+  css: PropTypes.array,
+};
 
 export default MapHS;
 
 const MapStyles = styled.div`
-  width: 35%;
-  height: 30%;
-  position: absolute;
-  ${mediaLess(600)`
-    width: 80%;
-    height: 30%;
-  `};
+  width: 100%;
+  height: 40vh;
+
+  ${({ css }) => css};
 `;
