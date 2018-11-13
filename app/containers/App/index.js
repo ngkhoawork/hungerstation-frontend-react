@@ -118,7 +118,7 @@ export default class App extends Component {
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/forgot-password" component={ForgotPasswordPage} />
-          <Route exact path="/faqs" component={FAQsPage} />
+          <Route path="/faqs" component={FAQsPage} />
           <Route path="/contactus" component={ContactUsPage} />
 
           <Redirect from="*" to="/" />
