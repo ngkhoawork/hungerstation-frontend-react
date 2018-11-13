@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { mediaMedium } from 'utils/css/styles';
 
 const StyledLink = styled(Link)`
   margin-left: 20px;
-  ${mediaMedium`
+
+  :first-child {
     margin-left: 0;
-    margin-right: 20px;
-  `};
+  }
 `;
 
 export default StyledLink;
