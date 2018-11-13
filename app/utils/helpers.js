@@ -118,3 +118,26 @@ export const getDeepProp = (object = {}, props = []) => {
 
   return tempObj;
 };
+
+const weekdays = [
+  'sunday',
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+];
+export function isDayTimeMatch({ working_time, working_times }) {
+  const workingTime = working_time ? working_time.weektimes : working_times;
+
+  if (!workingTime) return false;
+
+  const { start_minute, end_minute } = workingTime;
+  const now = new Date();
+  const time = now.getHours() * 60 + now.getMinutes();
+
+  if (start_minute > time || end_minute < time) return false;
+
+  return workingTime[weekdays[now.getDay()]];
+}
