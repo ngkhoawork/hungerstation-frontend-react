@@ -81,8 +81,6 @@ class RestaurantPage extends React.Component {
     // const shownProducts = selectedMenuGroup.products.find(isDayTimeMatch);
     const shownProducts = selectedMenuGroup.products;
 
-    // console.log(shownProducts, selectedMenuGroup);
-
     return (
       <Fragment>
         <Header>
