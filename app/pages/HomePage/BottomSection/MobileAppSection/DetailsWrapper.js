@@ -10,10 +10,10 @@ const DetailsWrapper = styled.div`
   ${/* sc-selector */ IconWrapper} {
     margin-bottom: 24px;
   }
-  ${mediaMedium`
-    padding: 100px 20px 20px;
-  `} ${mediaSmall`
-    padding: 60px 40px 56px;
+  ${mediaMedium`padding: 100px 20px 20px;`};
+
+  ${mediaSmall`
+    padding: 60px 20px 56px;
 
     ${IconWrapper} {
       display: none;

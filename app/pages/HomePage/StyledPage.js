@@ -13,6 +13,7 @@ const StyledPage = styled.div`
 
   ${mediaMedium`
     padding: 0 10px;
+    max-width: 100%;
   `};
 `;
 

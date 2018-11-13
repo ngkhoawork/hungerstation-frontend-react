@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import SearchTypeContainer from 'containers/SearchTypeContainer';
+// import SearchTypeContainer from 'containers/SearchTypeContainer';
 import SearchBarContainer from 'containers/SearchBarContainer';
 import AppHeader from 'containers/AppHeader';
 
@@ -19,7 +19,7 @@ const UpperSection = () => (
     <Subheader>Food Delivery From</Subheader>
     <Header>The Top Restaurants in Saudi Arabia</Header>
     <StyledSection>
-      <SearchTypeContainer />
+      {/* <SearchTypeContainer /> */}
       <SearchBarContainer />
     </StyledSection>
     <FiltersWrapper>

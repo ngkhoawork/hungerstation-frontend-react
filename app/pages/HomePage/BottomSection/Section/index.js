@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyledSection, LeftSection, RightSection } from './StyledComponents';
 
-import StyledSection from './StyledSection';
-import LeftSection from './LeftSection';
-import RightSection from './RightSection';
-
-const Section = ({ leftSection, rightSection, hasBackground }) => (
-  <StyledSection hasBackground={hasBackground}>
-    <LeftSection>{leftSection}</LeftSection>
-    <RightSection>{rightSection}</RightSection>
+const Section = ({
+  leftSection,
+  rightSection,
+  rightSectionCss,
+  hasBackground,
+  css,
+}) => (
+  <StyledSection hasBackground={hasBackground} css={css}>
+    <LeftSection hasBackground={hasBackground}>{leftSection}</LeftSection>
+    <RightSection css={rightSectionCss}>{rightSection}</RightSection>
   </StyledSection>
 );
 
@@ -16,6 +19,8 @@ Section.propTypes = {
   leftSection: PropTypes.object,
   rightSection: PropTypes.object,
   hasBackground: PropTypes.bool,
+  css: PropTypes.array,
+  rightSectionCss: PropTypes.array,
 };
 
 Section.defaultProps = {
