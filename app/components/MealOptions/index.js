@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
 import values from 'lodash/values';
 import ModalFrame from 'containers/ModalFrameContainer';
-// import DropdownSelect from 'components/DropdownSelect';
+import DropdownSelect from 'components/DropdownSelect';
 import Price from 'components/Price';
 import QuantitySelect from 'components/QuantitySelect';
 import Button from 'components/Button';
@@ -26,13 +26,33 @@ class MealOptions extends Component {
     super(props);
 
     const { purchase } = props;
+    const { parentProduct, product } = purchase;
+    const state = this.generateState(purchase);
+    let dropdown;
+    let selectedMenuItem;
+
+    if (parentProduct) {
+      dropdown = { items: parentProduct.menuitems };
+      selectedMenuItem = dropdown.items.find(({ id }) => id === product.id);
+    }
+
+    this.state = {
+      ...state,
+      dropdown,
+      selectedMenuItem,
+    };
+  }
+
+  generateState = purchase => {
     const { product, price } = purchase;
     const radios = purchase.radios || {};
     const checkboxes = purchase.checkboxes || {};
+    const quantity = purchase.quantity || 1;
+    const additions = purchase.checkboxAdditions || [];
 
     if (!purchase.radios && !purchase.checkboxes) {
-      product.modifierGroups.forEach(group => {
-        if (group.min === 1 && group.max === 1) {
+      product.modifier_groups.forEach(group => {
+        if (group.min_option === 1 && group.max_option === 1) {
           radios[group.id] = {
             ...group,
             value: group.modifiers[0] && group.modifiers[0].id,
@@ -41,16 +61,14 @@ class MealOptions extends Component {
           checkboxes[group.id] = {
             ...group,
             checked: {},
-            max: group.max,
-            hint: group.min === 1 ? 'required' : 'select',
+            max: group.max_option,
+            hint: group.min_option === 1 ? 'required' : 'select',
           };
         }
       });
     }
 
-    const quantity = purchase.quantity || 1;
-    const additions = purchase.checkboxAdditions || [];
-    this.state = {
+    return {
       radios,
       checkboxes,
       quantity,
@@ -58,11 +76,14 @@ class MealOptions extends Component {
       price:
         price !== undefined
           ? price
-          : this.calculatePrice(quantity, additions, radios),
+          : this.calculatePrice(quantity, additions, radios, product),
     };
-  }
+  };
 
-  calculatePrice = (quantity, additions, radios) => {
+  calculatePrice = (quantity, additions, radios, product) => {
+    const { purchase } = this.props;
+    const { selectedMenuItem } = this.state || {};
+    const { price } = product || selectedMenuItem || purchase.product;
     let additionsPrice = additions.reduce((sum, { price }) => sum + price, 0);
     additionsPrice += values(radios).reduce((sum, { value, modifiers }) => {
       if (!value) return sum;
@@ -72,14 +93,13 @@ class MealOptions extends Component {
       return sum + modifier.price;
     }, 0);
 
-    return (this.props.purchase.product.price + additionsPrice) * quantity;
+    return (price + additionsPrice) * quantity;
   };
 
-  // handleDropdownSelect = (name, value) => {
-  //   this.setState(state => ({
-  //     dropdowns: { ...state.dropdowns, [name]: value },
-  //   }));
-  // };
+  handleDropdownSelect = selectedMenuItem => {
+    const state = this.generateState({ product: selectedMenuItem });
+    this.setState({ ...state, selectedMenuItem });
+  };
 
   handleRadioSelect = (modifierGroupId, modifier) => {
     const { quantity, radios, additions } = this.state;
@@ -107,12 +127,20 @@ class MealOptions extends Component {
 
     const { additions, radios } = this.state;
     const price = this.calculatePrice(quantity, additions, radios);
+
     this.setState({ quantity, price });
   };
 
   handleAddToCart = () => {
     const { purchase, onSubmit } = this.props;
-    const { quantity, additions, price, radios, checkboxes } = this.state;
+    const {
+      quantity,
+      additions,
+      price,
+      radios,
+      checkboxes,
+      selectedMenuItem,
+    } = this.state;
     const radioAdditions = values(radios)
       .filter(({ value }) => value)
       .map(({ modifiers, value }) => modifiers.find(({ id }) => id === value));
@@ -120,7 +148,8 @@ class MealOptions extends Component {
 
     onSubmit({
       id: purchase.id,
-      product: purchase.product,
+      product: selectedMenuItem || purchase.product,
+      parentProduct: purchase.parentProduct,
       quantity,
       additions: totalAdditions,
       price,
@@ -131,23 +160,31 @@ class MealOptions extends Component {
   };
 
   render() {
-    const { product } = this.props.purchase;
-    const { quantity, price, radios, checkboxes } = this.state;
+    const { product, parentProduct } = this.props.purchase;
+    const { quantity, price, radios, checkboxes, dropdown } = this.state;
+    const { name, description } = parentProduct || product;
 
     return (
       <ModalFrame
-        title={product.name}
-        subtitle={product.description}
+        title={name}
+        subtitle={description}
         isMobileFullscreen
         css={containerStyle}
         headerCss={headerStyle}
       >
         <Content>
-          {/* {dropdowns.map(({ id, name, hint }) => (
-            <Section key={id} title={name} hint={hint} isCollapsible>
-              <DropdownSelect items={dropdownItems} isBlock />
+          {dropdown ? (
+            <Section title={intl.formatMessage(messages.selectOne)}>
+              <DropdownSelect
+                items={dropdown.items}
+                selectedItem={this.state.selectedMenuItem}
+                onItemSelect={this.handleDropdownSelect}
+                itemKey="id"
+                itemValue="name"
+                isBlock
+              />
             </Section>
-          ))} */}
+          ) : null}
           {values(checkboxes).map(
             ({ id, name, max, hint, modifiers, checked }) => (
               <Section
@@ -219,6 +256,7 @@ class MealOptions extends Component {
 MealOptions.propTypes = {
   purchase: PropTypes.shape({
     product: PropTypes.object.isRequired,
+    parentProduct: PropTypes.object,
     radios: PropTypes.object,
     checkboxes: PropTypes.object,
     checkboxAdditions: PropTypes.array,

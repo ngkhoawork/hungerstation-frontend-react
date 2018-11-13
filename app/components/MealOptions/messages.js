@@ -17,4 +17,8 @@ export default defineMessages({
     id: 'app.components.MealOptions.select',
     defaultMessage: 'Tap on item to include',
   },
+  selectOne: {
+    id: 'app.components.MealOptions.selectOne',
+    defaultMessage: 'Select one',
+  },
 });
