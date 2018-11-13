@@ -19,8 +19,9 @@ export const headerStyle = css`
 export const Content = styled.div`
   ${flex({ direction: 'column', grow: 1 })};
   overflow-y: auto;
-  margin: 20px 0;
+  margin-bottom: 20px;
   padding-right: 10px;
+  min-height: 220px;
 `;
 
 export const Footer = styled.div`
