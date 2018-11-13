@@ -1,10 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-
 import TextItem from 'components/TextItem';
 import { Answer, HeaderWrapper } from '../StyledComponents';
 import DropDownMobile from '../Mobile/DropDownMobile';
-
 import messages from './messages';
 
 const Technical = props => (
@@ -17,15 +15,15 @@ const Technical = props => (
     <br />
     {props.title.map(
       item =>
-        item.faqgroup.title === 'Technical ' && (
-          <div>
+        item.faqgroup.title === 'Technical ' ? (
+          <div key={item.id}>
             <TextItem size={16} fontFamily="regular">
               <DropDownMobile title={item.question} isCollapsible>
                 <Answer>{item.answer}</Answer>
               </DropDownMobile>
             </TextItem>
           </div>
-        ),
+        ) : null,
     )}
   </div>
 );

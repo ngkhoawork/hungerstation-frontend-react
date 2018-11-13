@@ -14,9 +14,9 @@ export default defineMessages({
     id: 'app.components.FAQsPage.subheader',
     defaultMessage: 'Here you can find most popular questions',
   },
-  orederRelated: {
-    id: 'app.components.FAQsPage.orederRelated',
-    defaultMessage: 'Oreder Related',
+  orderRelated: {
+    id: 'app.components.FAQsPage.orderRelated',
+    defaultMessage: 'Order Related',
   },
   technical: {
     id: 'app.components.FAQsPage.technical',

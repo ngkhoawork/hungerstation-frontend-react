@@ -18,7 +18,7 @@ const General = props => (
     {props.title.map(
       item =>
         item.faqgroup.title === 'General' ? (
-          <div>
+          <div key={item.id}>
             <TextItem size={16} fontFamily="regular">
               <DropDownMobile title={item.question} isCollapsible>
                 <Answer>{item.answer}</Answer>

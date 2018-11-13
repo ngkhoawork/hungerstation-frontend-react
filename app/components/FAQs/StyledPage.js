@@ -78,11 +78,17 @@ export const SubTitle = styled.div`
   font-weight: 300;
   letter-spacing: 0.5px;
   line-height: 24px;
+
+  ${mediaMedium`
+    width: 100%;
+  `};
 `;
 
 export const Content = styled.div`
   ${flex({ direction: 'column' }, false)};
   width: 700px;
+
+  ${mediaMedium`width: 100%;`};
 `;
 
 export const StyledLink = styled(Link)`
@@ -100,9 +106,9 @@ export const StyledLink = styled(Link)`
 
 export const MenuBarMobile = styled.div`
   display: none;
-  ${mediaLess(1080)`
-    flex: 0 1 30%;
-  `};
+
+  ${mediaLess(1080)`flex: 0 1 30%;`};
+
   ${mediaMedium`
     display: block;
     border-color: lightGray;

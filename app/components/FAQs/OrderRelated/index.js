@@ -17,8 +17,8 @@ const OrderRelated = props => (
     <br />
     {props.title.map(
       item =>
-        item.faqgroup.title === 'Order Related ' && (
-          <div>
+        item.faqgroup.title === 'Order Related ' ? (
+          <div key={item.id}>
             <TextItem size={16} fontFamily="regular">
               <DropDownMobile title={item.question} isCollapsible>
                 <Answer>{item.answer}</Answer>
@@ -26,7 +26,7 @@ const OrderRelated = props => (
             </TextItem>
             <Line />
           </div>
-        ),
+        ) : null,
     )}
   </div>
 );

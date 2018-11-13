@@ -15,6 +15,7 @@ export const Answer = styled.div`
   word-wrap: break-word;
   margin-top: 10px;
   margin-bottom: 20px;
+
   ${mediaMedium`
     width: 300px;
     margin-bottom: 10px;
@@ -29,6 +30,7 @@ export const Line = styled.div`
   opacity: 0.22;
   margin-top: 50px;
   margin-bottom: 20px;
+
   ${mediaMedium`
     width: 330px;
     margin-top: 0px;
@@ -37,7 +39,6 @@ export const Line = styled.div`
 
 export const HeaderWrapper = styled.div`
   margin-bottom: 20px;
-  ${mediaMedium`
-    width: 330px;
-  `};
+
+  ${mediaMedium`width: 100%;`};
 `;
