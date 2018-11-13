@@ -27,22 +27,27 @@ class DropdownSelect extends Component {
     window.addEventListener('click', this.handleClick);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.selectedItem && props.selectedItem !== state.selectedItem) {
+      return { selectedItem: props.selectedItem };
+    }
+
+    return null;
+  }
+
   componentWillUnmount() {
     window.removeEventListener('click', this.handleClick);
   }
 
   getSelectedItemValue = () => {
-    const { type, items, itemValue, placeholder, selectedItem } = this.props;
-    const { selectedItem: stateSelectedItem } = this.state;
+    const { type, itemValue, placeholder } = this.props;
+    const { selectedItem } = this.state;
 
     if (type === 'button') return '';
 
-    if (placeholder && !selectedItem && !stateSelectedItem) {
-      return placeholder;
-    }
+    if (placeholder && !selectedItem) return placeholder;
 
-    const selItem = selectedItem || stateSelectedItem || items[0];
-    const selItemValue = itemValue ? selItem[itemValue] : selItem.value;
+    const selItemValue = selectedItem[itemValue || 'value'];
 
     return selItemValue !== undefined ? selItemValue : 'Select One';
   };
@@ -58,25 +63,20 @@ class DropdownSelect extends Component {
     if (!isChildOf(target, this.id)) this.setState({ isOpen: false });
   };
 
-  handleItemSelect = selItem => {
-    const { type, selectedItem, onItemSelect } = this.props;
+  handleItemSelect = selectedItem => {
+    const { onItemSelect } = this.props;
 
-    this.setState({ isOpen: false });
+    this.setState({ isOpen: false, selectedItem });
 
-    if (!selectedItem && type !== 'button') {
-      this.setState({ selectedItem: selItem });
-    }
-
-    if (onItemSelect) onItemSelect(selItem);
+    if (onItemSelect) onItemSelect(selectedItem);
   };
 
   renderListItem = item => {
-    const { itemKey, itemValue, selectedItem } = this.props;
-    const { selectedItem: stateSelectedItem } = this.state;
+    const { itemKey, itemValue } = this.props;
+    const { selectedItem } = this.state;
     const key = itemKey ? item[itemKey] : item.key;
     const value = itemValue ? item[itemValue] : item.value;
-    const selItem = selectedItem || stateSelectedItem;
-    const selectedItemKey = selItem && selItem[key];
+    const selectedItemKey = selectedItem && selectedItem[key];
 
     return (
       <Item
