@@ -23,7 +23,7 @@ class Section extends Component {
             ) : null}
           </div>
         </Header>
-        <Content isOpen={isCollapsible && isOpen}>{children}</Content>
+        <Content isOpen={isOpen}>{children}</Content>
       </Container>
     );
   }
