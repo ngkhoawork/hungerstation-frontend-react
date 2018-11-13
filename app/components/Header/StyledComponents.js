@@ -42,4 +42,6 @@ export const StyledHeader = styled.div`
   height: ${headerHeight};
   font-family: ${fontFamilyRegular};
   max-width: ${maxPageWidth};
+
+  ${mediaMedium`max-width: 100%;`};
 `;

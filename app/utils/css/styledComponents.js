@@ -70,6 +70,7 @@ export const DisabledOverlay = styled.div`
 
 export const NavHeader = styled.div`
   height: ${navHeaderHeight};
+  width: 100%;
   padding: 0 ${pageOffsetX};
   ${flex({ align: 'center' })};
 
