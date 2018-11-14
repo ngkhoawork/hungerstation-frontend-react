@@ -61,7 +61,12 @@ class RestaurantPage extends React.Component {
     this.props.onShowModal(MealOptionsHOC);
   };
 
-  handleBasketClick = () => this.props.onShowModal(CartContainer);
+  handleBasketClick = () => {
+    const CartContainerHOC = () => (
+      <CartContainer params={this.props.params} isModal />
+    );
+    this.props.onShowModal(CartContainerHOC);
+  };
 
   handleMenuGroupSelect = selectedMenuGroup =>
     this.setState({ selectedMenuGroup });

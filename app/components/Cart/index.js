@@ -6,6 +6,7 @@ import { mediaMedium, mediaLargeGreater, flex } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyLight } from 'utils/css/variables';
 import ViewCartButton from 'containers/ViewCartButton';
+import ModalFrame from 'containers/ModalFrameContainer';
 import { Title } from 'components/Typography';
 import Notice from 'components/Notice';
 import OrderElement from './OrderElement';
@@ -22,6 +23,15 @@ const Wrapper = styled.section`
   flex: 0 0 353px;
   max-width: 353px;
   ${flex({ direction: 'column' })};
+
+  ${({ isModal }) =>
+    isModal &&
+    `
+    box-shadow: none;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 0 10px;
+  `};
 
   ${mediaMedium`width: 100%; min-width: 100%; max-width: 100%;`};
   ${mediaLargeGreater`min-width: 353px;`};
@@ -43,6 +53,8 @@ const From = styled.div`
 
 const Unshrinkable = styled.div`
   ${flex({ shrink: 0 }, false)};
+
+  ${({ isModal }) => isModal && `margin-right: 40px;`};
 `;
 
 const Items = styled.div`
@@ -50,9 +62,18 @@ const Items = styled.div`
   overflow-x: hidden;
   max-height: 130px;
   flex-shrink: 0;
+
+  ${({ isModal }) =>
+    isModal &&
+    `
+    max-height: initial;
+    flex-shrink: 1;
+    margin-bottom: 20px;
+  `};
 `;
 
 const Cart = ({
+  isModal,
   isCheckout,
   from,
   purchases,
@@ -65,6 +86,9 @@ const Cart = ({
   removeFromCart,
   onItemEditClick,
 }) => {
+  const title = intl.formatMessage(
+    messages[isCheckout ? 'yourOrderFrom' : 'yourOrder'],
+  );
   const renderSubtitle = () => {
     if (isCheckout) return <From>{from}</From>;
 
@@ -73,17 +97,13 @@ const Cart = ({
     return null;
   };
 
-  return (
-    <Wrapper>
-      <Unshrinkable>
-        <Title style={titleStyle}>
-          {intl.formatMessage(
-            messages[isCheckout ? 'yourOrderFrom' : 'yourOrder'],
-          )}
-        </Title>
+  const renderCart = () => (
+    <Wrapper isModal={isModal}>
+      <Unshrinkable isModal={isModal}>
+        {isModal ? null : <Title style={titleStyle}>{title}</Title>}
         {renderSubtitle()}
       </Unshrinkable>
-      <Items>
+      <Items isModal={isModal}>
         {purchases.map(purchase => (
           <OrderElement
             {...purchase.product}
@@ -138,13 +158,23 @@ const Cart = ({
           }
         />
         {isCheckout ? <CartNotice /> : null}
-        <ViewCartButton />
+        <ViewCartButton isModal={isModal} />
       </Unshrinkable>
     </Wrapper>
   );
+
+  if (isModal)
+    return (
+      <ModalFrame isFullscreen title={title}>
+        {renderCart()}
+      </ModalFrame>
+    );
+
+  return renderCart();
 };
 
 Cart.propTypes = {
+  isModal: PropTypes.bool,
   isCheckout: PropTypes.bool,
   from: PropTypes.string,
   purchases: PropTypes.array.isRequired,

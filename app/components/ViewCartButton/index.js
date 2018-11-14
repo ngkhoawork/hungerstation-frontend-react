@@ -17,7 +17,13 @@ import {
   RightSide,
 } from './StyledComponents';
 
-const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
+const ViewCartButton = ({
+  isModal,
+  isCheckout,
+  isDisabled,
+  quantity,
+  price,
+}) => {
   const getHref = () => {
     if (isDisabled) return '#';
     return isCheckout ? '/payment' : `${getPathname()}/checkout`;
@@ -36,7 +42,7 @@ const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
         >
           <Content>
             <LeftSide>
-              {!isCheckout && quantity !== undefined ? (
+              {!isModal && !isCheckout && quantity !== undefined ? (
                 <CircledItem color="white" width={30}>
                   <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
                 </CircledItem>
@@ -51,7 +57,7 @@ const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
               )}
             </Label>
             <RightSide>
-              {!isCheckout && price !== undefined ? (
+              {!isModal && !isCheckout && price !== undefined ? (
                 <Price price={price} isPrimary />
               ) : null}
             </RightSide>
@@ -63,6 +69,7 @@ const ViewCartButton = ({ isCheckout, isDisabled, quantity, price }) => {
 };
 
 ViewCartButton.propTypes = {
+  isModal: PropTypes.bool,
   isCheckout: PropTypes.bool,
   isDisabled: PropTypes.bool,
   quantity: PropTypes.number,

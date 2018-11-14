@@ -20,6 +20,7 @@ const ViewCartButtonHOC = ({
   restaurant,
   checkoutState: { selectedDeliveryOption },
   primaryAddress,
+  ...props
 }) => {
   const isCheckout = location.pathname.split('/').pop() === 'checkout';
   const minAmount = getDeepProp(restaurant, [
@@ -37,6 +38,7 @@ const ViewCartButtonHOC = ({
 
   return (
     <ViewCartButton
+      {...props}
       isCheckout={isCheckout}
       isDisabled={isDisabled}
       quantity={totalQuantity}
