@@ -262,7 +262,7 @@ class AddAddress extends React.Component {
           <Button
             primary
             size="xl"
-            style={{ flexShrink: 0 }}
+            style={{ flexShrink: 0, height: 'auto' }}
             onClick={this.handleSubmit}
           >
             {intl.formatMessage(messages.set)}
