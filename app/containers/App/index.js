@@ -17,6 +17,7 @@ import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { setHistory } from 'utils/route';
 import { compose, withProps } from 'recompose';
 
 import HomePage from 'pages/HomePage/Loadable';
@@ -57,12 +58,17 @@ const RestaurantPageWithPopup = enhance(RestaurantPage);
 )
 export default class App extends Component {
   static propTypes = {
+    history: PropTypes.object.isRequired,
     dir: PropTypes.string,
     authenticateUser: PropTypes.func.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
     }),
   };
+
+  componentDidMount() {
+    setHistory(this.props.history);
+  }
 
   componentWillMount() {
     this.props.authenticateUser();
