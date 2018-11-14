@@ -27,7 +27,7 @@ function reducer(state = initialState, { type, payload }) {
         deliveryOptions: options,
         selectedDeliveryOption: default_option
           ? options.find(({ key }) => key === default_option)
-          : null,
+          : undefined,
       });
     }
 
