@@ -16,15 +16,8 @@ const Wrapper = styled.section`
   background-color: white;
   box-shadow: 0 0 35px 5px rgba(183, 157, 157, 0.1);
   padding: 20px;
-<<<<<<< HEAD
 
   ${mediaMedium`width: 100%;`};
-=======
-  ${mediaMedium`
-    display: block;
-    margin-left: 12%;
-  `};
->>>>>>> change fetching data
 `;
 
 const Text = styled.div`

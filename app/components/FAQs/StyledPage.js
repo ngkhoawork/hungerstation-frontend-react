@@ -84,26 +84,8 @@ export const SubTitle = styled.div`
 export const Content = styled.div`
   ${flex({ direction: 'column' }, false)};
   width: 700px;
-<<<<<<< HEAD
 
   ${mediaMedium`width: 100%;`};
-`;
-
-export const StyledLink = styled(Link)`
-  font-size: 14px;
-  color: #9f9f9f;
-  text-decoration: none;
-  ${mediaLess(1080)`
-    flex: 0 1 30%;
-  `};
-
-  ${mediaMedium`
-    margin-bottom: 5px;
-=======
-  ${mediaLess(600)`
-    width: 100%
->>>>>>> change fetching data
-  `};
 `;
 
 export const MenuBarMobile = styled.div`

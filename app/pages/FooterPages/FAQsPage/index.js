@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
 import { NavHeader } from 'utils/css/styledComponents';
-=======
 import values from 'lodash/values';
 
->>>>>>> change fetching data
 import PageContent from 'components/PageContent';
 import Back from 'containers/Back';
 import FAQs from 'components/FAQs';
@@ -21,21 +18,14 @@ class FAQsPage extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <React.Fragment>
         <NavHeader>
           <Back />
         </NavHeader>
         <PageContent>
-          <FAQs faqsGroups={this.props.faqsState} />
+          <FAQs faqsGroups={values(this.props.faqsState.faqs)} />
         </PageContent>
       </React.Fragment>
-=======
-      <PageContent>
-        <Back />
-        <FAQs faqsGroups={values(this.props.faqsState.faqs)} />
-      </PageContent>
->>>>>>> change fetching data
     );
   }
 }
