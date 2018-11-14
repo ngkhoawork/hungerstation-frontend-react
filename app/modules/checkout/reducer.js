@@ -6,10 +6,13 @@ import {
   fetchCreditCardsSuccess,
   validateCouponSuccess,
   validateCouponError,
+  createOrderSuccess,
+  setNote,
 } from './actions';
 
 export const initialState = {
   selectedPaymentOption: { cash: true },
+  note: '',
 };
 
 function reducer(state = initialState, { type, payload }) {
@@ -22,12 +25,15 @@ function reducer(state = initialState, { type, payload }) {
 
     case fetchDeliveryOptionsSuccess.type: {
       const { options, default_option } = payload;
+      let selectedDeliveryOption = default_option
+        ? options.find(({ key }) => key === default_option)
+        : undefined;
+
+      if (options.length === 1) [selectedDeliveryOption] = options;
 
       return Object.assign({}, state, {
         deliveryOptions: options,
-        selectedDeliveryOption: default_option
-          ? options.find(({ key }) => key === default_option)
-          : undefined,
+        selectedDeliveryOption,
       });
     }
 
@@ -46,6 +52,12 @@ function reducer(state = initialState, { type, payload }) {
 
     case removeCoupon.type:
       return Object.assign({}, state, { coupon: undefined });
+
+    case createOrderSuccess.type:
+      return Object.assign({}, state, { order: payload });
+
+    case setNote.type:
+      return Object.assign({}, state, { note: payload });
 
     default:
       return state;

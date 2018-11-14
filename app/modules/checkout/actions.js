@@ -45,4 +45,16 @@ export const selectPaymentOption = createAction(
   payload => payload,
 );
 
+export const setNote = createAction('checkout/SET_NOTE', payload => payload);
+
+export const createOrder = createAction(
+  'checkout/CREATE_ORDER',
+  payload => payload,
+);
+
+export const createOrderSuccess = createAction(
+  'checkout/CREATE_ORDER_SUCCESS',
+  payload => payload,
+);
+
 export const removeCoupon = createAction('checkout/REMOVE_COUPON');
