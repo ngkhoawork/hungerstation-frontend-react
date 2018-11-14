@@ -17,6 +17,7 @@ import {
   selectOrderAmount,
 } from 'containers/CartContainer/selectors';
 import { selectCheckoutState } from 'modules/checkout/selectors';
+import { setNote } from 'modules/checkout/actions';
 import InsufficientOrderAmount from 'containers/InsufficientOrderAmount';
 import AddAddressContainer from 'containers/AddAddressContainer';
 import IneligibleAddress from 'components/IneligibleAddress';
@@ -100,6 +101,8 @@ class CheckoutPageHOC extends React.Component {
         params={match.params}
         isLoading={addresses === undefined}
         deliveryOptions={checkoutState.deliveryOptions}
+        note={checkoutState.note}
+        onNoteChange={this.props.setNote}
       />
     );
   }
@@ -119,6 +122,7 @@ CheckoutPageHOC.propTypes = {
   hideModal: PropTypes.func.isRequired,
   saveCurrentLocationAction: PropTypes.func.isRequired,
   setBranchId: PropTypes.func.isRequired,
+  setNote: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -136,5 +140,6 @@ export default connect(
     fetchAddresses,
     saveCurrentLocationAction,
     setBranchId,
+    setNote,
   },
 )(CheckoutPageHOC);
