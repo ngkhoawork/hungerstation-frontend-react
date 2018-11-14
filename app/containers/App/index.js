@@ -17,13 +17,12 @@ import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { setHistory } from 'utils/route';
 import { compose, withProps } from 'recompose';
 
 import HomePage from 'pages/HomePage/Loadable';
 import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
 import RestaurantPage from 'pages/RestaurantPage';
-import MyOrderPage from 'pages/MyOrderPage';
+import OrdersPage from 'pages/OrdersPage';
 import CheckoutPage from 'pages/CheckoutPage';
 import LoginPage from 'pages/LoginPage/Loadable';
 import RegistrationPage from 'pages/RegistrationPage/Loadable';
@@ -57,7 +56,6 @@ const RestaurantPageWithPopup = enhance(RestaurantPage);
 )
 export default class App extends Component {
   static propTypes = {
-    history: PropTypes.object.isRequired,
     dir: PropTypes.string,
     authenticateUser: PropTypes.func.isRequired,
     location: PropTypes.shape({
@@ -112,7 +110,11 @@ export default class App extends Component {
             component={RestaurantsPage}
           />
           <PrivateRouteContainer path="/userprofile" component={UserProfile} />
-          <PrivateRouteContainer path="/my-orders" component={MyOrderPage} />
+          <PrivateRouteContainer
+            exact
+            path="/my-orders"
+            component={OrdersPage}
+          />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />

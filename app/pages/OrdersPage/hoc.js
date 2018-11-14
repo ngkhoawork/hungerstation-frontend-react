@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchOrders } from 'modules/orders/actions';
-import MyOrderPage from './component';
+import OrdersPage from './component';
 import { selectOrdersState } from '../../modules/orders/selectors';
 
-class MyOrderPageHOC extends React.Component {
+class OrdersPageHOC extends React.Component {
   componentDidMount() {
     this.props.fetchOrders();
   }
@@ -17,7 +17,7 @@ class MyOrderPageHOC extends React.Component {
     } = this.props;
 
     return (
-      <MyOrderPage
+      <OrdersPage
         isLoading={isLoading || isLoading === undefined}
         orders={orders}
         selectedOrder={selectedOrder}
@@ -27,7 +27,7 @@ class MyOrderPageHOC extends React.Component {
   }
 }
 
-MyOrderPageHOC.propTypes = {
+OrdersPageHOC.propTypes = {
   fetchOrders: PropTypes.func.isRequired,
   ordersState: PropTypes.object.isRequired,
   match: PropTypes.object,
@@ -38,4 +38,4 @@ export default connect(
     ordersState: selectOrdersState(state),
   }),
   { fetchOrders },
-)(MyOrderPageHOC);
+)(OrdersPageHOC);

@@ -17,7 +17,7 @@ import {
   StyledList,
 } from './StyledComponents';
 
-class MyOrderPage extends React.Component {
+class OrdersPage extends React.Component {
   handleDetailClick = () => {
     // implement view order detail
   };
@@ -67,10 +67,10 @@ class MyOrderPage extends React.Component {
   }
 }
 
-MyOrderPage.propTypes = {
+OrdersPage.propTypes = {
   isLoading: PropTypes.bool,
   orders: PropTypes.array.isRequired,
   path: PropTypes.string,
 };
 
-export default withHeaderAndFooter(MyOrderPage);
+export default withHeaderAndFooter(OrdersPage);

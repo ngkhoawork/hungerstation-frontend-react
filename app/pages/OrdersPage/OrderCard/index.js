@@ -35,7 +35,7 @@ const getDeliveryType = provider =>
     : intl.formatMessage(messages.restaurantDelivery);
 
 const OrderCard = ({ order, onOrderClick }) => (
-  <Item key={order.id} onClick={() => onOrderClick(order)}>
+  <Item key={order.id}>
     <Img image={order.image} />
     <Content>
       <div>
@@ -78,6 +78,7 @@ const OrderCard = ({ order, onOrderClick }) => (
               color={alabaster}
               fontSize={16}
               inline
+              onClick={onOrderClick}
             />
           </ButtonWrapper>
         </Row>

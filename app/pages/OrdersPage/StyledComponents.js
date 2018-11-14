@@ -149,7 +149,6 @@ export const Item = styled.div`
   position: relative;
   padding: 35px 0;
   border-bottom: 1px solid ${lightGray};
-  cursor: pointer;
   width: 100%;
 
   :last-child {
