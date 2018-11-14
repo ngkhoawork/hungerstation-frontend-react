@@ -10,9 +10,13 @@ export default defineMessages({
       id: 'app.components.RestaurantHeader.status.closed',
       defaultMessage: 'Closed',
     },
+    tomorrow: {
+      id: 'app.components.RestaurantHeader.status.tomorrow',
+      defaultMessage: 'Opens at {time}',
+    },
     soon: {
       id: 'app.components.RestaurantHeader.status.soon',
-      defaultMessage: 'Opens at {time}',
+      defaultMessage: 'Opens on {day} at {time}',
     },
     ready: {
       id: 'app.components.RestaurantHeader.status.ready',

@@ -101,7 +101,7 @@ export const StatusContainer = styled.div`
   `};
 `;
 
-export const Status = styled.div`
+export const StatusContent = styled.div`
   padding: 8px 12px;
   border-radius: ${borderRadius};
   background-color: ${({ color }) => {
