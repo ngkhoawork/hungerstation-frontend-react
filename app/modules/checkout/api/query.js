@@ -89,13 +89,27 @@ export const validateCouponQuery = `query ValidateCoupon($code: String!) {
 //   orderitemlinkradiooptionitems: [OrderItemOption]
 // }`;
 
+// $paymentInfo: [PaymentInfo!]!,
+//   $orderItems: [OrderItem!]!,
+
+// $orderItems: [{
+//   menuitem_id: Int!
+//   count: Int!
+//   orderitem_link_modifiers: [Int]
+//   total_cost: Float
+// }!]!
+
+// orderitems: [{
+//   menuitem_id: 106299
+//   count: 2
+//   orderitem_link_modifiers: []
+// }]
+
 export const createOrderMutation = `mutation CreateOrder (
   $branchId: Int!,
   $districtId: Int!,
   $addressId: Int!,
-  $deliveryOptionId: !Int,
-  $paymentInfo: [PaymentInfo!]!,
-  $orderItems: [OrderItem!]!,
+  $deliveryOptionId: Int!,
   $coupon: String,
   $note: String,
 ) {
@@ -106,13 +120,21 @@ export const createOrderMutation = `mutation CreateOrder (
     local_id: $districtId
     delivery_option: $deliveryOptionId
     coupon: $coupon
-    payment_info: $paymentInfo
     orderitems: $orderItems
   ) {
     id
     state
     branch_id
     amount
+    deliverydelay
+    user_id
+    payment_method
+    fee
+    discount
+    TotalWithoutFee
+    TotalWithoutFeeWithoutDiscount
+    failure_cause_description
+    delivery_provider
     orderitems {
       id
       menuitem_id

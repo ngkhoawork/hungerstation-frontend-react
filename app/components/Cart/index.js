@@ -85,6 +85,7 @@ const Cart = ({
   district,
   removeFromCart,
   onItemEditClick,
+  onCartSubmit,
 }) => {
   const title = intl.formatMessage(
     messages[isCheckout ? 'yourOrderFrom' : 'yourOrder'],
@@ -158,7 +159,7 @@ const Cart = ({
           }
         />
         {isCheckout ? <CartNotice /> : null}
-        <ViewCartButton isModal={isModal} />
+        <ViewCartButton isModal={isModal} onClick={onCartSubmit} />
       </Unshrinkable>
     </Wrapper>
   );
@@ -186,6 +187,7 @@ Cart.propTypes = {
   district: PropTypes.string,
   removeFromCart: PropTypes.func.isRequired,
   onItemEditClick: PropTypes.func.isRequired,
+  onCartSubmit: PropTypes.func,
 };
 
 export default Cart;

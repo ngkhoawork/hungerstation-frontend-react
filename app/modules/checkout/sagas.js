@@ -8,6 +8,8 @@ import {
   validateCoupon,
   validateCouponSuccess,
   validateCouponError,
+  createOrder,
+  createOrderSuccess,
 } from './actions';
 import * as api from './api';
 
@@ -52,8 +54,20 @@ export function* validateCouponSaga({ payload }) {
   }
 }
 
+export function* createOrderSaga({ payload }) {
+  try {
+    const { accessToken } = yield select(makeSelectTokens);
+    const { createOrder } = yield call(api.createOrder, accessToken, payload);
+
+    yield put(createOrderSuccess(createOrder));
+  } catch (e) {
+    // console.log(e);
+  }
+}
+
 export default function* watchAddressActionsSaga() {
   yield takeLatest(fetchDeliveryOptions.type, fetchDeliveryOptionsSaga);
   yield takeLatest(fetchCreditCards.type, fetchCreditCardsSaga);
   yield takeLatest(validateCoupon.type, validateCouponSaga);
+  yield takeLatest(createOrder.type, createOrderSaga);
 }

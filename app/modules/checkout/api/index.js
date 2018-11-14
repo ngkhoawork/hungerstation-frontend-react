@@ -20,5 +20,17 @@ export const validateCoupon = (token, code) =>
   protectedRequest(token, validateCouponQuery, { code });
 
 export const createOrder = (token, payload) => {
-  protectedRequest(token, createOrderMutation, { ...payload });
+  const orderItems = payload.orderItems.map(
+    item => `{
+      menuitem_id: ${item.menuitem_id}
+      count: ${item.count}
+      orderitem_link_modifiers: [${item.orderitem_link_modifiers.join(', ')}]
+    }`,
+  );
+  const mutation = createOrderMutation.replace(
+    '$orderItems',
+    `[${orderItems.join(' ')}]`,
+  );
+  // console.log(mutation, payload);
+  protectedRequest(token, mutation, payload);
 };
