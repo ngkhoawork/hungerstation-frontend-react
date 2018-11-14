@@ -6,6 +6,7 @@ import { compose } from 'recompose';
 import { getDeepProp } from 'utils/helpers';
 import { selectCheckoutState } from 'modules/checkout/selectors';
 import { selectRestaurantState } from 'modules/restaurant/selectors';
+import { selectPrimaryAddress } from 'modules/address/selectors';
 import {
   selectCartPurchases,
   selectOrderAmount,
@@ -18,6 +19,7 @@ const ViewCartButtonHOC = ({
   purchases,
   restaurant,
   checkoutState: { selectedDeliveryOption },
+  primaryAddress,
 }) => {
   const isCheckout = location.pathname.split('/').pop() === 'checkout';
   const minAmount = getDeepProp(restaurant, [
@@ -31,7 +33,7 @@ const ViewCartButtonHOC = ({
   const isDisabled =
     !purchases.length ||
     minAmount > orderAmount ||
-    (isCheckout && !selectedDeliveryOption);
+    (isCheckout && (!selectedDeliveryOption || !primaryAddress));
 
   return (
     <ViewCartButton
@@ -49,6 +51,7 @@ ViewCartButtonHOC.propTypes = {
   purchases: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
   checkoutState: PropTypes.object.isRequired,
+  primaryAddress: PropTypes.object,
 };
 
 export default compose(
@@ -58,5 +61,6 @@ export default compose(
     purchases: selectCartPurchases(state),
     orderAmount: selectOrderAmount(state),
     checkoutState: selectCheckoutState(state),
+    primaryAddress: selectPrimaryAddress(state),
   })),
 )(ViewCartButtonHOC);
