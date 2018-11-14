@@ -19,7 +19,7 @@ import {
   RightSide,
 } from './StyledComponents';
 
-const CheckoutPage = ({ isLoading, params, deliveryOptions = [] }) => {
+const CheckoutPage = ({ params, deliveryOptions = [], ...props }) => {
   const hasDeliverySection = deliveryOptions.length > 1;
 
   const renderContent = () => (
@@ -45,7 +45,11 @@ const CheckoutPage = ({ isLoading, params, deliveryOptions = [] }) => {
       >
         <PaymentOptionsContainer />
       </Step>
-      <Note style={{ borderTop: border, padding: '20px 0' }} />
+      <Note
+        style={{ borderTop: border, padding: '20px 0' }}
+        note={props.note}
+        onChange={props.onNoteChange}
+      />
     </React.Fragment>
   );
 
@@ -55,7 +59,7 @@ const CheckoutPage = ({ isLoading, params, deliveryOptions = [] }) => {
         <Back />
       </NavHeader>
       <ContentContainer>
-        <LeftSide>{isLoading ? null : renderContent()}</LeftSide>
+        <LeftSide>{props.isLoading ? null : renderContent()}</LeftSide>
         <RightSide>
           <CartContainer params={params} />
         </RightSide>
@@ -65,6 +69,8 @@ const CheckoutPage = ({ isLoading, params, deliveryOptions = [] }) => {
 };
 
 CheckoutPage.propTypes = {
+  note: PropTypes.string,
+  onNoteChange: PropTypes.func.isRequired,
   deliveryOptions: PropTypes.array,
   params: PropTypes.object.isRequired,
   isLoading: PropTypes.bool,
