@@ -1,12 +1,11 @@
 export const getFaqsQuery = `query getFaqs {
-  faqs { 
-    faqgroup{
+  faq_groups { 
+    faq{
       id
-      title
-      faq_type
+    	answer
+      question
     }
     id
-    question
-    answer
+    title
   }
 }`;

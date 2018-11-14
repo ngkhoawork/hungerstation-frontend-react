@@ -1,19 +1,20 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Switch, Route } from 'react-router-dom';
 import values from 'lodash/values';
 import intl from 'utils/intlService';
 =======
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+=======
+>>>>>>> change fetching data
 import values from 'lodash/values';
 
 >>>>>>> fix and convert object to array
 import ContactDetails from 'components/ContactDetails';
-import OrderRelated from 'components/FAQs/OrderRelated';
-import Technical from 'components/FAQs/Technical';
-import General from 'components/FAQs/General';
 import TextItem from 'components/TextItem';
 import { FormattedMessage } from 'react-intl';
+import FaqContent from './FaqContent';
 import DropDownMobile from './Mobile/DropDownMobile';
 import messages from './messages';
 import {
@@ -21,7 +22,6 @@ import {
   MenuBar,
   MenuItem,
   Content,
-  StyledLink,
   MiddleSection,
   Title,
   SubTitle,
@@ -29,6 +29,7 @@ import {
   Section,
 } from './StyledPage';
 
+<<<<<<< HEAD
 const FAQs = ({ faqsGroups }) => {
   // /map for titles
   const titles = values(faqsGroups.faqs).map(item => item.faqgroup.title);
@@ -109,45 +110,72 @@ const FAQs = ({ faqsGroups }) => {
       </MiddleSection>
 =======
           </MenuBar>
+=======
+class FAQs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shown: true,
+      titleId: '',
+      title: '',
+      faq: '',
+    };
+  }
 
-          <MiddleSection>
-            <Title>
-              <TextItem size={40} weight={300} fontFamily="regular">
-                <FormattedMessage {...messages.header} />
-              </TextItem>
-              <SubTitle>
-                <FormattedMessage {...messages.subheader} />
-              </SubTitle>
-            </Title>
+  showContent = (id, title, faq) => {
+    this.setState(prevState => ({
+      shown: prevState.shown,
+      titleId: id,
+      title,
+      faq,
+    }));
+  };
 
-            {/* DropDown Menu Mobile */}
-            <Section>
-              <TextItem size={28} weight={300} fontFamily="regular">
-                Sections
-              </TextItem>
-            </Section>
+  render() {
+    return (
+      <Wrapper>
+        <MenuBar>
+          {values(this.props.faqsGroups).map(item => (
+            <MenuItem
+              key={item.id}
+              onClick={() => this.showContent(item.id, item.title, item.faq)}
+            >
+              {item.title}
+            </MenuItem>
+          ))}
+        </MenuBar>
+>>>>>>> change fetching data
 
-            <MenuBarMobile>
-              <DropDownMobile
-                title={<FormattedMessage {...messages.orederRelated} />}
-                isCollapsible
-              >
-                {titleUnique.map(title => (
-                  <MenuItem key={title}>
-                    <StyledLink to={`/faqs/${title}`}>{title}</StyledLink>
-                  </MenuItem>
-                ))}
-              </DropDownMobile>
-            </MenuBarMobile>
+        <MiddleSection>
+          <Title>
+            <TextItem size={40} weight={300} fontFamily="regular">
+              <FormattedMessage {...messages.header} />
+            </TextItem>
+            <SubTitle>
+              <FormattedMessage {...messages.subheader} />
+            </SubTitle>
+          </Title>
 
-            <Content>
-              {this.routes.map(route => (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  component={route.main}
-                />
+          {/* DropDown Menu Mobile */}
+          <Section>
+            <TextItem size={28} weight={300} fontFamily="regular">
+              <FormattedMessage {...messages.sections} />
+            </TextItem>
+          </Section>
+
+          <MenuBarMobile>
+            <DropDownMobile title={this.state.title} isCollapsible>
+              {values(this.props.faqsGroups).map(item => (
+                <MenuItem
+                  key={item.id}
+                  onClick={() =>
+                    this.showContent(item.id, item.title, item.faq)
+                  }
+                >
+                  {item.title}
+                </MenuItem>
               ))}
+<<<<<<< HEAD
             </Content>
           </MiddleSection>
 >>>>>>> fix and convert object to array
@@ -157,4 +185,25 @@ const FAQs = ({ faqsGroups }) => {
   );
 };
 
+=======
+            </DropDownMobile>
+          </MenuBarMobile>
+
+          <Content>
+            {this.state.shown && (
+              <FaqContent
+                id={this.state.titleId}
+                title={this.state.title}
+                faq={this.state.faq}
+              />
+            )}
+          </Content>
+        </MiddleSection>
+
+        <ContactDetails />
+      </Wrapper>
+    );
+  }
+}
+>>>>>>> change fetching data
 export default FAQs;

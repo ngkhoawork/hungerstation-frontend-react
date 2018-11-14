@@ -2,13 +2,10 @@ import styled from 'styled-components';
 import { flex, mediaMedium, mediaLess } from 'utils/css/styles';
 import { fontFamilyRegular } from 'utils/css/variables';
 
-import { Link } from 'react-router-dom';
-
 export const Wrapper = styled.div`
   width: 100%;
   background-color: #ffffff;
   padding-bottom: 100px;
-  padding-top: 100px;
   ${flex({ align: 'flex-start', justify: 'space-between', wrap: 'wrap' })};
   ${mediaLess(600)`
     padding: 10px;
@@ -70,7 +67,7 @@ export const Title = styled.div`
 `;
 export const SubTitle = styled.div`
   height: 24px;
-  width: 470px;
+  width: 100%;
   opacity: 0.6;
   color: #6f6e6b;
   font-family: ${fontFamilyRegular};
@@ -87,6 +84,7 @@ export const SubTitle = styled.div`
 export const Content = styled.div`
   ${flex({ direction: 'column' }, false)};
   width: 700px;
+<<<<<<< HEAD
 
   ${mediaMedium`width: 100%;`};
 `;
@@ -101,6 +99,10 @@ export const StyledLink = styled(Link)`
 
   ${mediaMedium`
     margin-bottom: 5px;
+=======
+  ${mediaLess(600)`
+    width: 100%
+>>>>>>> change fetching data
   `};
 `;
 

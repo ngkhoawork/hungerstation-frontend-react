@@ -14,6 +14,7 @@ export default defineMessages({
     id: 'app.components.FAQsPage.subheader',
     defaultMessage: 'Here you can find most popular questions',
   },
+<<<<<<< HEAD
   orderRelated: {
     id: 'app.components.FAQsPage.orderRelated',
     defaultMessage: 'Order Related',
@@ -25,5 +26,10 @@ export default defineMessages({
   general: {
     id: 'app.components.FAQsPage.general',
     defaultMessage: 'General',
+=======
+  sections: {
+    id: 'app.components.FAQsPage.sections',
+    defaultMessage: 'Sections',
+>>>>>>> change fetching data
   },
 });

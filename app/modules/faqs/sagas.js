@@ -10,11 +10,8 @@ import { getFaqs } from './api';
 export function* fetchFaqsSaga() {
   try {
     yield put(fetchFaqsRequest());
-
     const [faqs] = yield all([call(getFaqs)]);
-
-    const faqsGroups = faqs.faqs.map(group => group);
-
+    const faqsGroups = faqs.faq_groups.map(group => group);
     yield put(fetchFaqsSuccess(faqsGroups));
   } catch (e) {
     yield put(fetchFaqsError());

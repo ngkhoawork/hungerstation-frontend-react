@@ -18,7 +18,7 @@ export const Answer = styled.div`
 
   ${mediaMedium`
     width: 300px;
-    margin-bottom: 10px;
+    margin-bottom: 42%;
   `};
 `;
 
@@ -33,12 +33,19 @@ export const Line = styled.div`
 
   ${mediaMedium`
     width: 330px;
-    margin-top: 0px;
+    margin-bottom: 15%;
   `};
 `;
 
 export const HeaderWrapper = styled.div`
   margin-bottom: 20px;
+<<<<<<< HEAD
 
   ${mediaMedium`width: 100%;`};
+=======
+  padding-right: 40%;
+  ${mediaMedium`
+    width: 330px;
+  `};
+>>>>>>> change fetching data
 `;

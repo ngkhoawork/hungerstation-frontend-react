@@ -4,7 +4,7 @@ import ShowMoreIcon from './ShowMoreIcon';
 import { Container, Header, Title, Content } from './StyledComponents';
 
 class DropDownMobile extends Component {
-  state = { isOpen: true };
+  state = { isOpen: false };
 
   handleToggle = () => this.setState(state => ({ isOpen: !state.isOpen }));
 
