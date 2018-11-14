@@ -19,7 +19,7 @@ export function* fetchRestaurantSaga({ payload: id }) {
     const restaurant = {
       ...branch,
       menu: {
-        menugroups: branch.menu.menugroups
+        menugroups: (branch.menu.menugroups || [])
           .sort((mgA, mgB) => mgA.weight - mgB.weight)
           .map(({ products, menuitems, ...menugroup }) => ({
             ...menugroup,
