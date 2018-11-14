@@ -23,6 +23,7 @@ import HomePage from 'pages/HomePage/Loadable';
 import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
 import RestaurantPage from 'pages/RestaurantPage';
 import OrdersPage from 'pages/OrdersPage';
+import OrderDetailPage from 'pages/OrderDetailPage';
 import CheckoutPage from 'pages/CheckoutPage';
 import LoginPage from 'pages/LoginPage/Loadable';
 import RegistrationPage from 'pages/RegistrationPage/Loadable';
@@ -114,6 +115,11 @@ export default class App extends Component {
             exact
             path="/my-orders"
             component={OrdersPage}
+          />
+          <PrivateRouteContainer
+            exact
+            path="/my-orders/:orderId"
+            component={OrderDetailPage}
           />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />

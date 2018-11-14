@@ -18,8 +18,8 @@ import {
 } from './StyledComponents';
 
 class OrdersPage extends React.Component {
-  handleDetailClick = () => {
-    // implement view order detail
+  handleDetailClick = orderId => {
+    this.props.history.push(`/my-orders/${orderId}`);
   };
 
   renderOrders() {
@@ -71,6 +71,7 @@ OrdersPage.propTypes = {
   isLoading: PropTypes.bool,
   orders: PropTypes.array.isRequired,
   path: PropTypes.string,
+  history: PropTypes.object.isRequired,
 };
 
 export default withHeaderAndFooter(OrdersPage);

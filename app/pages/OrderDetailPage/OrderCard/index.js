@@ -78,9 +78,7 @@ const OrderCard = ({ order, onOrderClick }) => (
               color={alabaster}
               fontSize={16}
               inline
-              onClick={() => {
-                onOrderClick(order.id);
-              }}
+              onClick={onOrderClick}
             />
           </ButtonWrapper>
         </Row>
