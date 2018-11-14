@@ -23,9 +23,10 @@ const ViewCartButton = ({
   isDisabled,
   quantity,
   price,
+  onClick,
 }) => {
   const getHref = () => {
-    if (isDisabled) return '#';
+    if (isDisabled || onClick) return '#';
     return isCheckout ? '/payment' : `${getPathname()}/checkout`;
   };
 
@@ -39,6 +40,7 @@ const ViewCartButton = ({
           style={{ whiteSpace: 'nowrap' }}
           disabled={isDisabled}
           disabledColor={alabaster}
+          onClick={onClick}
         >
           <Content>
             <LeftSide>
@@ -74,6 +76,7 @@ ViewCartButton.propTypes = {
   isDisabled: PropTypes.bool,
   quantity: PropTypes.number,
   price: PropTypes.number,
+  onClick: PropTypes.func,
 };
 
 export default ViewCartButton;
