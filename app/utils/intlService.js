@@ -48,6 +48,14 @@ export class Intl {
   formatTime(...args) {
     return this.getIntl().formatTime(...args);
   }
+
+  formatDate(...args) {
+    return this.getIntl().formatDate(...args);
+  }
+
+  formatRelative(...args) {
+    return this.getIntl().formatRelative(...args);
+  }
 }
 
 const intlService = new Intl();
