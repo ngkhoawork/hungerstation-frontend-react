@@ -12,7 +12,7 @@ const getTime = minutes => {
   const date = new Date();
   date.setHours(Math.floor(minutes / 60), minutes % 60);
 
-  return intl.formatTime(date, { format: 'short' });
+  return intl.formatTime(date);
 };
 
 const renderStatus = (status, working_time) => {
