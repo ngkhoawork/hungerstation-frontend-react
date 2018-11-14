@@ -23,26 +23,31 @@ const Header = styled.div`
   width: ${stepIndent};
 `;
 
-const Note = ({ note, style }) => (
-  <Container style={style}>
-    <Header>
-      <Description style={{ margin: 0 }}>
-        {intl.formatMessage(messages.optional)}
-      </Description>
-      <Title>{intl.formatMessage(messages.notes)}</Title>
-    </Header>
-    <TextField
-      type="text"
-      defaultValue={note}
-      label={intl.formatMessage(messages.instructions)}
-      fullWidth
-    />
-  </Container>
-);
+const Note = ({ note, style, onChange }) => {
+  const handleChange = ({ target }) => onChange(target.value);
+  return (
+    <Container style={style}>
+      <Header>
+        <Description style={{ margin: 0 }}>
+          {intl.formatMessage(messages.optional)}
+        </Description>
+        <Title>{intl.formatMessage(messages.notes)}</Title>
+      </Header>
+      <TextField
+        type="text"
+        value={note}
+        onChange={handleChange}
+        label={intl.formatMessage(messages.instructions)}
+        fullWidth
+      />
+    </Container>
+  );
+};
 
 Note.propTypes = {
   note: PropTypes.string,
   style: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Note;
