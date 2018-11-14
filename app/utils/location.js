@@ -1,6 +1,8 @@
 const MAPS_API_URL = 'http://maps.googleapis.com/maps/api/geocode/';
 
-export const getUserPosition = (option = { enableHighAccuracy: true }) =>
+export const getUserPosition = (
+  option = { enableHighAccuracy: false, timeout: 6000 },
+) =>
   new Promise((res, rej) => {
     navigator.geolocation.getCurrentPosition(res, rej, option);
   });

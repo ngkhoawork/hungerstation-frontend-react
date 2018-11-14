@@ -87,10 +87,10 @@ class AddAddress extends React.Component {
     );
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      const { latitude: lat, longitude: lng } = this.props.location;
-      this.setLocation({ lat, lng });
+  componentDidUpdate({ location }) {
+    const { latitude, longitude } = this.props.location;
+    if (latitude !== location.latitude || longitude !== location.longitude) {
+      this.setLocation({ lat: latitude, lng: longitude });
     }
   }
 
@@ -117,6 +117,7 @@ class AddAddress extends React.Component {
   };
 
   setLocation = latLng => {
+    isPlaceSelectAction = true;
     this.map.setCenter(latLng);
     this.geocodeLatLng(latLng);
   };
