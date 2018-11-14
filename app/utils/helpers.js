@@ -133,11 +133,26 @@ export function isDayTimeMatch({ working_time, working_times }) {
 
   if (!workingTime) return false;
 
-  const { start_minute, end_minute } = workingTime;
+  const { start_minute, end_minute } = workingTime[0];
+
+  if (!start_minute || !end_minute) return false;
+
   const now = new Date();
   const time = now.getHours() * 60 + now.getMinutes();
 
   if (start_minute > time || end_minute < time) return false;
 
-  return workingTime[weekdays[now.getDay()]];
+  return workingTime[0][weekdays[now.getDay()]];
+}
+
+export function daysUntilOpen(weektimes) {
+  const now = new Date();
+  const todayIndex = now.getDay();
+  let firstDayIndex = todayIndex + 1;
+
+  while (!weektimes[weekdays[firstDayIndex]]) firstDayIndex += 1;
+
+  const daysDiff = (firstDayIndex - todayIndex + 7) % 7;
+
+  return daysDiff;
 }
