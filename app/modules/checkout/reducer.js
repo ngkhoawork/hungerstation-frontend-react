@@ -45,7 +45,7 @@ function reducer(state = initialState, { type, payload }) {
       });
 
     case removeCoupon.type:
-      return Object.assign({}, state, { coupon: null });
+      return Object.assign({}, state, { coupon: undefined });
 
     default:
       return state;
