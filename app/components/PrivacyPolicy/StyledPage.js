@@ -22,8 +22,6 @@ export const Wrapper = styled.div`
 
 export const MenuBar = styled.div`
   ${flex({ align: 'flex-start', justify: 'center', direction: 'column' })};
-  display: flex;
-  flex-direction: column;
   padding-top: 22%;
   margin-right: 30px;
   width: 170px;
