@@ -55,7 +55,7 @@ const ViewCartButton = ({
             />
             <Label isCheckout={isCheckout} isDisabled={isDisabled}>
               {intl.formatMessage(
-                messages[isCheckout ? 'placeOrder' : 'viewCart'],
+                messages[isCheckout ? 'placeOrder' : 'goToCheckout'],
               )}
             </Label>
             <RightSide>

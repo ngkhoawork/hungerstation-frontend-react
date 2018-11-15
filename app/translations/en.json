@@ -98,7 +98,7 @@
   "app.components.Cart.selectDelivery": "Select a delivery option",
   "app.components.Cart.discount": "Discount",
   "app.components.Cart.total": "Total",
-  "app.components.Cart.viewCart": "View Cart",
+  "app.components.Cart.goToCheckout": "Go to Checkout",
   "app.components.Cart.placeOrder": "Place order",
   "app.components.Cart.vat": "All prices are {percent}% VAT inclusive",
   "app.components.Cart.agreement": "By making this purchase you agree to our ",
