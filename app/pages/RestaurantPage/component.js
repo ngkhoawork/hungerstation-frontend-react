@@ -44,6 +44,8 @@ class RestaurantPage extends React.Component {
   }
 
   handleAddClick = selectedProduct => {
+    if (this.props.restaurant.status === 'closed') return;
+
     const product = selectedProduct.menuitems
       ? selectedProduct.menuitems[0]
       : selectedProduct;
