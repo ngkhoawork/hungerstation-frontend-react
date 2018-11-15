@@ -61,7 +61,7 @@ const Cart = ({
       message = intl.formatMessage(messages.busy, { name });
     }
 
-    if (branch.status !== 'soon') {
+    if (branch.status === 'soon') {
       const allMessages = [intl.formatMessage(messages.closed, { name })];
 
       const weektimes = getDeepProp(
