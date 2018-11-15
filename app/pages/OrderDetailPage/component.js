@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
+import CartContainer from 'containers/CartContainer';
 import OrderCard from './OrderCard';
 import {
   NavHeader,
@@ -12,15 +13,18 @@ import {
   ProfileNavWrapper,
   OrderDetailSection,
   StyledOrderList,
+  LeftSide,
+  RightSide,
+  Loading,
 } from './StyledComponents';
 
-class OrdersPage extends React.Component {
-  handleDetailClick = () => {
-    // implement view order detail
+class OrderDetailPage extends React.Component {
+  handleRateClick = () => {
+    // implement rate click function
   };
 
   render() {
-    const { order } = this.props;
+    const { order, params, path } = this.props;
     return (
       <PageContent>
         <NavHeader>
@@ -28,19 +32,30 @@ class OrdersPage extends React.Component {
         </NavHeader>
         <ContentContainer>
           <ProfileNavWrapper>
-            <ProfileNav active={this.props.path} />
+            <ProfileNav active={path} />
           </ProfileNavWrapper>
           <OrderDetailSection>
-            <Paragraph size={30} margin="0 0 0 11px">
-              Order details
-            </Paragraph>
-            <StyledOrderList>
-              <OrderCard
-                key={order.id}
-                order={order}
-                onOrderClick={this.handleDetailClick}
-              />
-            </StyledOrderList>
+            {order ? (
+              <Fragment>
+                <LeftSide>
+                  <Paragraph size={30} margin="0 0 0 11px">
+                    Order details
+                  </Paragraph>
+                  <StyledOrderList>
+                    <OrderCard
+                      key={order.id}
+                      order={order}
+                      onRateClick={this.handleRateClick}
+                    />
+                  </StyledOrderList>
+                </LeftSide>
+                <RightSide>
+                  <CartContainer params={params} />
+                </RightSide>
+              </Fragment>
+            ) : (
+              <Loading>Loading...</Loading>
+            )}
           </OrderDetailSection>
         </ContentContainer>
       </PageContent>
@@ -48,9 +63,10 @@ class OrdersPage extends React.Component {
   }
 }
 
-OrdersPage.propTypes = {
-  order: PropTypes.object.isRequired,
+OrderDetailPage.propTypes = {
+  order: PropTypes.object,
+  params: PropTypes.object,
   path: PropTypes.string,
 };
 
-export default withHeaderAndFooter(OrdersPage);
+export default withHeaderAndFooter(OrderDetailPage);

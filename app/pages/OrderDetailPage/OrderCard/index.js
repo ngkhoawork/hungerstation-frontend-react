@@ -8,6 +8,7 @@ import Row from 'components/Row';
 import { Title } from 'components/Typography';
 import { alabaster } from 'utils/css/colors';
 import DateTimeElement from 'components/DateTime';
+import { css } from 'styled-components';
 
 import messages from './messages';
 import DeliveryType from './DeliveryType';
@@ -29,12 +30,23 @@ import {
 import OrderId from './OrderId';
 import ButtonWrapper from './ButtonWrapper';
 
+const rateButtonCss = css`
+  &:after {
+    content: '★';
+    font-size: 8px;
+    margin-left: 8px;
+    margin-top: 2px;
+    vertical-align: text-top;
+    line-height: 15px;
+  }
+`;
+
 const getDeliveryType = provider =>
   provider === 'hungerstation_delivery'
     ? intl.formatMessage(messages.fastDelivery)
     : intl.formatMessage(messages.restaurantDelivery);
 
-const OrderCard = ({ order, onOrderClick }) => (
+const OrderCard = ({ order, onRateClick }) => (
   <Item key={order.id}>
     <Img image={order.image} />
     <Content>
@@ -72,13 +84,14 @@ const OrderCard = ({ order, onOrderClick }) => (
           </Description>
           <ButtonWrapper>
             <Button
-              label={intl.formatMessage(messages.details)}
+              label={intl.formatMessage(messages.rateRestaurant)}
               primary={false}
               lift={false}
               color={alabaster}
               fontSize={16}
               inline
-              onClick={onOrderClick}
+              onClick={onRateClick}
+              css={rateButtonCss}
             />
           </ButtonWrapper>
         </Row>
@@ -89,6 +102,7 @@ const OrderCard = ({ order, onOrderClick }) => (
 
 OrderCard.propTypes = {
   order: PropTypes.object.isRequired,
-  onOrderClick: PropTypes.func.isRequired,
+  onRateClick: PropTypes.func.isRequired,
 };
+
 export default OrderCard;

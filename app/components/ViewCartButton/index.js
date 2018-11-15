@@ -21,6 +21,7 @@ const ViewCartButton = ({
   isModal,
   isCheckout,
   isDisabled,
+  isOrderDetail,
   quantity,
   price,
   onClick,
@@ -29,6 +30,16 @@ const ViewCartButton = ({
     if (isDisabled || onClick) return '#';
     return isCheckout ? '/payment' : `${getPathname()}/checkout`;
   };
+
+  let label;
+
+  if (isCheckout) {
+    label = 'placeOrder';
+  } else if (isOrderDetail) {
+    label = 'replaceOrder';
+  } else {
+    label = 'viewCart';
+  }
 
   return (
     <ButtonWrapper>
@@ -54,9 +65,7 @@ const ViewCartButton = ({
               name={isCheckout && !isDisabled ? 'basket-white' : 'basket'}
             />
             <Label isCheckout={isCheckout} isDisabled={isDisabled}>
-              {intl.formatMessage(
-                messages[isCheckout ? 'placeOrder' : 'goToCheckout'],
-              )}
+              {intl.formatMessage(messages[label])}
             </Label>
             <RightSide>
               {!isModal && !isCheckout && price !== undefined ? (
@@ -74,6 +83,7 @@ ViewCartButton.propTypes = {
   isModal: PropTypes.bool,
   isCheckout: PropTypes.bool,
   isDisabled: PropTypes.bool,
+  isOrderDetail: PropTypes.bool,
   quantity: PropTypes.number,
   price: PropTypes.number,
   onClick: PropTypes.func,

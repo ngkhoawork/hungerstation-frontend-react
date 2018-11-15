@@ -7,16 +7,16 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  details: {
-    id: 'app.components.MyOrdersPage.OrderCard.details',
-    defaultMessage: 'Details ...',
+  rateRestaurant: {
+    id: 'app.components.OrderDetailPage.OrderCard.rateRestaurant',
+    defaultMessage: 'Rate restaurant',
   },
   restaurantDelivery: {
-    id: 'app.components.MyOrdersPage.OrderCard.restaurantDelivery',
+    id: 'app.components.OrderDetailPage.OrderCard.restaurantDelivery',
     defaultMessage: 'Restaurant delivery',
   },
   fastDelivery: {
-    id: 'app.components.MyOrdersPage.OrderCard.fastDelivery',
+    id: 'app.components.OrderDetailPage.OrderCard.fastDelivery',
     defaultMessage: 'Fast delivery',
   },
 });

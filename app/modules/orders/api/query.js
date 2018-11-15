@@ -5,11 +5,23 @@ export const getOrdersQuery = `query {
     address {
       address_details {
         description
+        local {
+          id
+          name
+          city {
+            id
+            name
+          }
+        }
       }
     }
     branch {
+      id
       name
+      latitude
+      longitude
       restaurant {
+        id
         logo
       }
     }

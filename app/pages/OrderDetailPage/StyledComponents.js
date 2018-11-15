@@ -88,15 +88,14 @@ export const ProfileNavWrapper = styled.div`
 `;
 
 export const OrderDetailSection = styled.div`
-  width: 912px;
+  width: 100%;
   margin-left: 40px;
   margin-bottom: 50px;
   overflow: visible;
   position: relative;
   ${flex({
-    align: 'flex-start',
+    align: 'space-between',
     justify: 'flex-start',
-    direction: 'column',
   })};
 
   ${mediaLess(1000)`
@@ -105,7 +104,10 @@ export const OrderDetailSection = styled.div`
 
   ${mediaLess(600)`
     padding: 0;
-    width:100%
+    width:100%;
+    
+    ${flex({ direction: 'column', align: 'center' }, false)};
+    
   `};
 `;
 
@@ -113,10 +115,8 @@ export const StyledOrderList = styled.div`
   width: 100%;
   position: relative;
   ${flex({
-    align: 'flex-start',
-    justify: 'space-between',
-    direction: 'column',
-    wrap: 'wrap',
+    align: 'space-between',
+    justify: 'flex-start',
   })};
 
   ${mediaLess(1250)`
@@ -131,7 +131,7 @@ export const StyledOrderList = styled.div`
 `;
 
 export const StyledList = styled.div`
-  width: 912px;
+  width: 100%;
   ${flex({ align: 'flex-start', wrap: 'wrap' })};
 
   ${mediaLess(600)`
