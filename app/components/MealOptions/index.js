@@ -52,6 +52,8 @@ class MealOptions extends Component {
 
     if (!purchase.radios && !purchase.checkboxes) {
       product.modifier_groups.forEach(group => {
+        if (!group.modifiers.length) return;
+
         if (group.min_option === 1 && group.max_option === 1) {
           radios[group.id] = {
             ...group,
