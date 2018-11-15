@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import intl, { getLocaleName } from 'utils/intlService';
+import intl from 'utils/intlService';
 import Icon from 'components/Icon';
 import Price from 'components/Price';
 import { Title } from 'components/Typography';
@@ -44,7 +44,7 @@ const RestaurantProducts = ({ products, cartItems, onProductClick }) => (
             <div>
               <TitleContainer>
                 <BasketQuantity cartItems={cartItems} product={product} />
-                <Title css={titleStyle}>{getLocaleName(product)}</Title>
+                <Title css={titleStyle}>{product.name}</Title>
               </TitleContainer>
               <Description>{product.description}</Description>
             </div>

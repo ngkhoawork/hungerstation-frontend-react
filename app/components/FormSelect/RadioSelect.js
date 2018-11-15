@@ -27,7 +27,6 @@ const RadioSelect = ({ name, options, value, onChange, ...props }) => {
 
   const labelKey = getLabelKey(options, props);
   const valueKey = getValueKey(options, props);
-  const isLabelKeyFunc = typeof props.labelKey === 'function';
 
   return (
     <RadioGroup
@@ -41,7 +40,7 @@ const RadioSelect = ({ name, options, value, onChange, ...props }) => {
           key={option.id}
           label={
             <Label isSelected={value === option[valueKey]}>
-              {isLabelKeyFunc ? props.labelKey(option) : option[labelKey]}
+              {option[labelKey]}
               {option.price ? (
                 <Price>
                   +{intl.formatNumber(option.price, priceIntlOptions)}
@@ -68,7 +67,7 @@ RadioSelect.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   options: PropTypes.arrayOf(PropTypes.object),
   onChange: PropTypes.func.isRequired,
-  labelKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  labelKey: PropTypes.string,
   valueKey: PropTypes.string,
 };
 
