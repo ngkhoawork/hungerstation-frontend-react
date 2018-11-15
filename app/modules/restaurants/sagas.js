@@ -127,7 +127,7 @@ export function* filterRestaurantListSaga() {
       case RESTAURANT_STATUSES[status]:
         return {
           ...state,
-          // we need to view promoted items first for every restaturant status
+          // we need to view promoted items first for every restaurant status
           [status]: hasPromotion
             ? [id, ...state[status]]
             : [...state[status], id],
