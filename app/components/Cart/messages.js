@@ -58,4 +58,20 @@ export default defineMessages({
     id: 'app.components.Cart.privacyPolicy',
     defaultMessage: 'Privacy Policy',
   },
+  closed: {
+    id: 'app.components.Cart.closed',
+    defaultMessage: '{name} is currently closed.',
+  },
+  tmrw: {
+    id: 'app.components.Cart.tmrw',
+    defaultMessage: 'Opens at {time}.',
+  },
+  soon: {
+    id: 'app.components.Cart.soon',
+    defaultMessage: 'Opens on {day} at {time}.',
+  },
+  busy: {
+    id: 'app.components.Cart.busy',
+    defaultMessage: `{name} is currently busy and can't take any new orders`,
+  },
 });

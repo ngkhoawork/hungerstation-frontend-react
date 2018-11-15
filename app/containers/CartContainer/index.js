@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { getStorageItem } from 'utils/localStorage';
-import { getDeepProp, clearUndefs } from 'utils/helpers';
+import { clearUndefs } from 'utils/helpers';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
 import { selectCheckoutState } from 'modules/checkout/selectors';
 import { createOrder } from 'modules/checkout/actions';
@@ -44,7 +44,6 @@ class CartContainer extends React.Component {
       params,
       district,
       primaryAddress,
-      // orderAmount,
       purchases,
       checkoutState,
     } = this.props;
@@ -62,7 +61,6 @@ class CartContainer extends React.Component {
         orderitem_link_modifiers: item.additions.map(({ id }) =>
           parseInt(id, 10),
         ),
-        // total_cost: Float
       })),
     });
 
@@ -95,16 +93,11 @@ class CartContainer extends React.Component {
     return (
       <Cart
         {...props}
-        from={restaurant.name}
-        minAmount={getDeepProp(restaurant, [
-          'delivery_conditions',
-          0,
-          'minimum_order',
-        ])}
         discount={discount}
         deliveryFee={delivery && delivery.price}
         city={city && city.get('name')}
         district={district && district.get('name')}
+        branch={restaurant}
         isCheckout={this.isCheckout}
         onItemEditClick={this.handleEditClick}
         onCartSubmit={this.isCheckout ? this.handleOrderCreate : undefined}
