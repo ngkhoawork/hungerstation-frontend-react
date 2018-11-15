@@ -48,10 +48,10 @@ const RestaurantProducts = ({ products, cartItems, onProductClick }) => (
               </TitleContainer>
               <Description>{product.description}</Description>
             </div>
-            <Footer>{renderFooter(product.price)}</Footer>
+            <Footer>{renderFooter(product.list_price)}</Footer>
           </Content>
         </ContentContainer>
-        <MobileFooter>{renderFooter(product.price)}</MobileFooter>
+        <MobileFooter>{renderFooter(product.list_price)}</MobileFooter>
       </Item>
     ))}
   </List>
