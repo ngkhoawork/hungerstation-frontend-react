@@ -16,6 +16,14 @@ const getTime = minutes => {
 };
 
 const renderStatus = (status, working_time) => {
+  if (status === 'busy') {
+    return <StatusContent color="error">{getMsg('busy')}</StatusContent>;
+  }
+
+  if (status === 'closed') {
+    return <StatusContent>{getMsg('closed')}</StatusContent>;
+  }
+
   const weektimes = getDeepProp(working_time, ['weektimes', 0]);
   // const isCurrentlyOpen = isDayTimeMatch({ working_time });
 
@@ -55,14 +63,6 @@ const renderStatus = (status, working_time) => {
         <StatusContent>{message}</StatusContent>
       </Fragment>
     );
-  }
-
-  if (status === 'busy') {
-    return <StatusContent color="error">{getMsg('busy')}</StatusContent>;
-  }
-
-  if (status === 'closed') {
-    return <StatusContent>{getMsg('closed')}</StatusContent>;
   }
 
   return null;
