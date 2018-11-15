@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { borderRadius } from 'utils/css/variables';
 import {
   persimmon,
@@ -30,6 +30,8 @@ const Container = styled.div`
   background-color: ${({ type }) => bgColor[type] || bgColor.default};
   padding: ${({ size }) => (size === 's' ? 10 : 20)}px;
   ${flex({ justify: 'center', align: 'flex-start' })};
+
+  ${({ style }) => style && css(style)};
 `;
 const Message = styled.div`
   color: ${({ type }) => color[type] || color.default};
@@ -38,8 +40,8 @@ const Message = styled.div`
   margin-left: 10px;
 `;
 
-const Notice = ({ message, type, size }) => (
-  <Container type={type} size={size}>
+const Notice = ({ message, type, size, ...props }) => (
+  <Container type={type} size={size} {...props}>
     <Icon name={`info-${type}`} size={20} />
     <Message type={type}>{message}</Message>
   </Container>
