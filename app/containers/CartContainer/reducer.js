@@ -3,6 +3,7 @@ import {
   getStorageItem,
   setStorageItem,
 } from 'utils/localStorage';
+import { createOrderSuccess } from 'modules/checkout/actions';
 import {
   initCart,
   addToCart,
@@ -70,6 +71,9 @@ function cartContainerReducer(state = initialState, { type, payload }) {
 
       return Object.assign({}, state, { purchases: [] });
     }
+
+    case createOrderSuccess.type:
+      return Object.assign({}, initialState);
 
     default:
       return state;

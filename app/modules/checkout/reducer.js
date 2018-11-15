@@ -53,11 +53,11 @@ function reducer(state = initialState, { type, payload }) {
     case removeCoupon.type:
       return Object.assign({}, state, { coupon: undefined });
 
-    case createOrderSuccess.type:
-      return Object.assign({}, state, { order: payload });
-
     case setNote.type:
       return Object.assign({}, state, { note: payload });
+
+    case createOrderSuccess.type:
+      return Object.assign({}, initialState);
 
     default:
       return state;
