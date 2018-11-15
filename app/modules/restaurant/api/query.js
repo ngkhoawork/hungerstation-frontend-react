@@ -54,6 +54,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
       menugroups {
         id
         name
+        name_en
         weight
         working_times {
           start_minute
@@ -69,6 +70,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
         products {
           id
           name
+          name_en
           description
           images
           list_price
@@ -77,6 +79,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
             id
             name
             short_name
+            name_en
             description
             price
             list_price
@@ -96,6 +99,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
             modifier_groups {
               id
               name
+              name_en
               weight
               min_option
               max_option
@@ -103,6 +107,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
                 id
                 price
                 name
+                name_en
                 weight
               }
             }
@@ -112,6 +117,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
           id
           name
           short_name
+          name_en
           description
           price
           list_price
@@ -131,6 +137,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
           modifier_groups {
             id
             name
+            name_en
             weight
             min_option
             max_option
@@ -138,6 +145,7 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
               id
               price
               name
+              name_en
               weight
             }
           }
