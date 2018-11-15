@@ -25,6 +25,7 @@ const ViewCartButtonHOC = ({
   const isCheckout = location.pathname.split('/').pop() === 'checkout';
   const minAmount = getDeepProp(restaurant, [
     'delivery_conditions',
+    0,
     'minimum_order',
   ]);
   const totalQuantity = purchases.reduce(

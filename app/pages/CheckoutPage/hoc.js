@@ -51,6 +51,7 @@ class CheckoutPageHOC extends React.Component {
     const { orderAmount, restaurant, purchases, history, match } = this.props;
     const minOrderAmount = getDeepProp(restaurant, [
       'delivery_conditions',
+      0,
       'minimum_order',
     ]);
 

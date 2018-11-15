@@ -98,6 +98,7 @@ class CartContainer extends React.Component {
         from={restaurant.name}
         minAmount={getDeepProp(restaurant, [
           'delivery_conditions',
+          0,
           'minimum_order',
         ])}
         discount={discount}
