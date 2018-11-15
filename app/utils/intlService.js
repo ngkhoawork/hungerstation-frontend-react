@@ -8,6 +8,11 @@ export const priceIntlOptions = {
   minimumFractionDigits: 0,
 };
 
+export const getLocaleName = ({ name, name_en }, locale) => {
+  if (locale === 'sa') return name;
+  return name_en || name;
+};
+
 export class Intl {
   constructor(locale = DEFAULT_LOCALE) {
     this.locale = locale;
