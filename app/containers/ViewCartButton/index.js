@@ -33,6 +33,7 @@ const ViewCartButtonHOC = ({
     0,
   );
   const isDisabled =
+    restaurant.status !== 'ready' ||
     !purchases.length ||
     minAmount > orderAmount ||
     (isCheckout && (!selectedDeliveryOption || !primaryAddress));
