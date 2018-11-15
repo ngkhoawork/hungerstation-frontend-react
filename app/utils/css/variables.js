@@ -4,6 +4,7 @@ export const fontFamilyBold = 'HungerStation-Bold, sans-serif';
 export const fontFamilyRegular = 'HungerStation-Regular, sans-serif';
 export const fontFamilyLight = 'HungerStation-Light, sans-serif';
 export const boxShadowBottomRight = '8px 12px 23px -3px rgba(59, 59, 59, 0.13)';
+export const boxShadowBottomRightLight = '8px 7px 23px 0 rgba(59,59,59,0.07)';
 export const boxShadow = '1px 5px 27px -3px rgba(59, 59, 59, 0.13)';
 export const borderRadius = '8px';
 export const border = `solid 1px ${lightGray}`;

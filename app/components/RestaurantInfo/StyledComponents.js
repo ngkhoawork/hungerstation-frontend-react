@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
-import { borderRadius, boxShadowBottomRight } from 'utils/css/variables';
+import {
+  borderRadius,
+  boxShadowBottomRight,
+  boxShadowBottomRightLight,
+} from 'utils/css/variables';
 import {
   persimmon,
   errorBg,
@@ -14,7 +18,6 @@ export const StyledRestaurantInfo = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
   border-top-left-radius: ${borderRadius};
   position: relative;
-  overflow: hidden;
   background-color: white;
 
   ${mediaMedium`
@@ -47,6 +50,10 @@ export const StyledDetailsContainer = styled.div`
   max-height: 160px;
   width: 100%;
   padding: 20px 30px 25px 20px;
+
+  ${mediaMediumGreater`
+    box-shadow: ${boxShadowBottomRightLight};
+  `};
 
   ${mediaMedium`
     ${flex({ align: 'flex-start' }, false)};
