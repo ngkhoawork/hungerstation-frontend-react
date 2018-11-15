@@ -1,19 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
-import { getDeepProp, daysUntilOpen } from 'utils/helpers';
+import { getDeepProp, daysUntilOpen, getTime } from 'utils/helpers';
 import messages from './messages';
 import { StatusContainer, StatusContent } from './StyledComponents';
 
 const getMsg = (type, params = {}) =>
   `• ${intl.formatMessage(messages.status[type], params)}`;
-
-const getTime = minutes => {
-  const date = new Date();
-  date.setHours(Math.floor(minutes / 60), minutes % 60);
-
-  return intl.formatTime(date);
-};
 
 const renderStatus = (status, working_time) => {
   if (status === 'busy') {
@@ -32,7 +25,7 @@ const renderStatus = (status, working_time) => {
   const { start_minute, end_minute } = weektimes;
 
   // if (status === 'ready' && isCurrentlyOpen) {
-  if (status === 'ready') {
+  if (status === 'ready' && typeof end_minute === 'number') {
     return (
       <StatusContent color="success">
         {getMsg('ready', { time: getTime(end_minute) })}
@@ -41,7 +34,7 @@ const renderStatus = (status, working_time) => {
   }
 
   // if (status === 'soon' && !isCurrentlyOpen) {
-  if (status === 'soon') {
+  if (status === 'soon' && typeof start_minute === 'number') {
     const daysDiff = daysUntilOpen(weektimes);
     let message;
 

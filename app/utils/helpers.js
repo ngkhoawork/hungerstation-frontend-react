@@ -1,5 +1,6 @@
 // TODO add intl support
 import deburr from 'lodash/deburr';
+import intl from 'utils/intlService';
 
 export const extractError = error => {
   let err;
@@ -156,6 +157,13 @@ export function daysUntilOpen(weektimes) {
 
   return daysDiff;
 }
+
+export const getTime = minutes => {
+  const date = new Date();
+  date.setHours(Math.floor(minutes / 60), minutes % 60);
+
+  return intl.formatTime(date);
+};
 
 export const getOrderDescription = order =>
   `${order.count || 1} x ${order.menuitem.name}`;
