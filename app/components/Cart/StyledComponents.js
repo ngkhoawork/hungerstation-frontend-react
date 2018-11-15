@@ -8,9 +8,8 @@ export const Wrapper = styled.section`
   background-color: white;
   padding: 20px 20px 30px 20px;
   box-shadow: 0 0 35px 5px rgba(183, 157, 157, 0.1);
-  flex: 0 0 353px;
   max-width: 353px;
-  ${flex({ direction: 'column' })};
+  ${flex({ direction: 'column', grow: 0, shrink: 0, basis: '353px' })};
 
   ${({ isModal }) =>
     isModal &&
