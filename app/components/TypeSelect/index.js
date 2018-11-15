@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLocaleName } from 'utils/intlService';
 import Icon from 'components/Icon';
 import { DisabledOverlay } from 'utils/css/styledComponents';
 import { Container, Type, Name } from './StyledComponents';
@@ -38,7 +39,9 @@ const TypeSelect = ({
           {type.icon ? (
             <Icon name={type.icon} size={18} style={{ marginRight: 10 }} />
           ) : null}
-          <Name active={active === type}>{type.label || type.name}</Name>
+          <Name active={active === type}>
+            {type.label || getLocaleName(type)}
+          </Name>
           {withActiveIcon && active === type ? (
             <Icon name="check-mark-green" size={18} />
           ) : null}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import intl from 'utils/intlService';
+import intl, { getLocaleName } from 'utils/intlService';
 import values from 'lodash/values';
 import ModalFrame from 'containers/ModalFrameContainer';
 import DropdownSelect from 'components/DropdownSelect';
@@ -182,7 +182,7 @@ class MealOptions extends Component {
                 selectedItem={this.state.selectedMenuItem}
                 onItemSelect={this.handleDropdownSelect}
                 itemKey="id"
-                itemValue="name"
+                itemValue={getLocaleName}
                 isBlock
               />
             </Section>
@@ -201,6 +201,7 @@ class MealOptions extends Component {
                   options={modifiers}
                   checkedOptions={checked}
                   onChange={this.handleCheckboxSelect}
+                  labelKey={getLocaleName}
                 />
               </Section>
             ),
@@ -217,6 +218,7 @@ class MealOptions extends Component {
                 options={modifiers}
                 value={value}
                 onChange={this.handleRadioSelect}
+                labelKey={getLocaleName}
               />
             </Section>
           ))}

@@ -39,6 +39,7 @@ const CheckboxSelect = ({
 
   const labelKey = getLabelKey(options, props);
   const valueKey = getValueKey(options, props);
+  const isLabelKeyFunc = typeof props.labelKey === 'function';
 
   return (
     <FormGroup>
@@ -47,7 +48,7 @@ const CheckboxSelect = ({
           key={option.id}
           label={
             <Label isSelected={isChecked(option)}>
-              {option[labelKey]}
+              {isLabelKeyFunc ? props.labelKey(option) : option[labelKey]}
               {option.price ? (
                 <Price>
                   +{intl.formatNumber(option.price, priceIntlOptions)}
@@ -77,7 +78,7 @@ CheckboxSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
   checkedOptions: PropTypes.object,
   onChange: PropTypes.func.isRequired,
-  labelKey: PropTypes.string,
+  labelKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   valueKey: PropTypes.string,
 };
 

@@ -47,7 +47,10 @@ class DropdownSelect extends Component {
 
     if (placeholder && !selectedItem) return placeholder;
 
-    const selItemValue = selectedItem[itemValue || 'value'];
+    const selItemValue =
+      typeof itemValue === 'function'
+        ? itemValue(selectedItem)
+        : selectedItem[itemValue || 'value'];
 
     return selItemValue !== undefined ? selItemValue : 'Select One';
   };
@@ -75,7 +78,10 @@ class DropdownSelect extends Component {
     const { itemKey, itemValue } = this.props;
     const { selectedItem } = this.state;
     const key = itemKey ? item[itemKey] : item.key;
-    const value = itemValue ? item[itemValue] : item.value;
+    const value =
+      typeof itemValue === 'function'
+        ? itemValue(item)
+        : item[itemValue || value];
     const selectedItemKey = selectedItem && selectedItem[key];
 
     return (
@@ -117,7 +123,7 @@ DropdownSelect.propTypes = {
   placeholder: PropTypes.string,
   isBlock: PropTypes.bool,
   itemKey: PropTypes.string,
-  itemValue: PropTypes.string,
+  itemValue: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   items: PropTypes.array.isRequired,
   onItemSelect: PropTypes.func,
   defaultSelectedItem: PropTypes.oneOfType([

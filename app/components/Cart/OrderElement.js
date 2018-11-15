@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import intl from 'utils/intlService';
+import intl, { getLocaleName } from 'utils/intlService';
 import { flex } from 'utils/css/styles';
 import { jade, lightGray, silverChalice, fuscousGray } from 'utils/css/colors';
 import Icon from 'components/Icon';
@@ -54,9 +54,9 @@ const OrderElement = ({
   quantity,
   price,
   additions,
-  name,
   onEditClick,
   onRemoveFromCart,
+  ...props
 }) => (
   <Fragment>
     <Wrapper>
@@ -64,16 +64,14 @@ const OrderElement = ({
         <Quantity>{quantity}x</Quantity>
         <Column>
           <TitleWrapper>
-            <Title>{name}</Title>
+            <Title>{getLocaleName(props)}</Title>
             <Icon
               name="edit"
               style={{ margin: '0 10px 0 5px' }}
               onClick={onEditClick}
             />
           </TitleWrapper>
-          <Description>
-            {additions.map(({ name }) => name).join(', ')}
-          </Description>
+          <Description>{additions.map(getLocaleName).join(', ')}</Description>
         </Column>
       </Row>
       <Row>
