@@ -28,15 +28,16 @@ export function* fetchRestaurantSaga({ payload: id }) {
               .sort((itemA, itemB) => itemA.weight - itemB.weight)
               .map(item => ({
                 ...item,
-                // price: item.price && parseFloat(item.price),
-                price: item.price !== undefined ? parseFloat(item.price) : 0,
+                price: parseFloat(item.price || 0),
+                list_price: parseFloat(item.list_price || 0),
                 menuitems:
                   item.menuitems &&
                   item.menuitems
                     .sort((itemA, itemB) => itemA.weight - itemB.weight)
-                    .map(({ price, ...menuitem }) => ({
+                    .map(({ price, list_price, ...menuitem }) => ({
                       ...menuitem,
                       price: parseFloat(price),
+                      list_price: parseFloat(list_price),
                     })),
               })),
           })),
