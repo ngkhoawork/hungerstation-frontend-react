@@ -19,6 +19,7 @@ const TypeSelect = ({
   style,
   typeStyle,
   disabledTypeStyle,
+  withActiveIcon,
 }) => {
   const key = types.length && getKey(types[0]);
   const isDisabled = type =>
@@ -38,7 +39,9 @@ const TypeSelect = ({
             <Icon name={type.icon} size={18} style={{ marginRight: 10 }} />
           ) : null}
           <Name active={active === type}>{type.label || type.name}</Name>
-          {active === type ? <Icon name="check-mark-green" size={18} /> : null}
+          {withActiveIcon && active === type ? (
+            <Icon name="check-mark-green" size={18} />
+          ) : null}
           {isDisabled(type) ? <DisabledOverlay /> : null}
         </Type>
       ))}
@@ -53,6 +56,7 @@ TypeSelect.propTypes = {
   style: PropTypes.object,
   typeStyle: PropTypes.object,
   disabledTypeStyle: PropTypes.object,
+  withActiveIcon: PropTypes.bool,
   onSelect: PropTypes.func.isRequired,
 };
 

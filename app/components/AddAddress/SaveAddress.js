@@ -79,6 +79,7 @@ class SaveAddress extends React.Component {
             typeStyle={typeStyle}
             disabledTypeStyle={disabledTypeStyle}
             disabledTypes={this.disabledTypes}
+            withActiveIcon
           />
         </Content>
       </Container>
