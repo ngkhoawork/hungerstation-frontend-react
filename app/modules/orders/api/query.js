@@ -30,16 +30,29 @@ export const getOrdersQuery = `query {
     due_at
     delivery_provider
     fee
+    discount
     total
     orderitems {
       order_id
       amount
       note
-      # count
+      count
       menuitem {
         id
         name
         price
+        list_price
+        modifier_groups {
+          id
+          max_option
+          min_option
+          name
+          modifiers {
+            id
+            name
+            price
+          }
+        }
       }
     }
   }

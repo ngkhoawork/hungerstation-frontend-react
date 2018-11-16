@@ -5,7 +5,7 @@ import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
-import CartContainer from 'containers/CartContainer';
+import CartContainer from './Cart';
 import OrderCard from './OrderCard';
 import {
   NavHeader,
@@ -25,6 +25,19 @@ class OrderDetailPage extends React.Component {
 
   render() {
     const { order, params, path } = this.props;
+    let purchases = [];
+    const orderAmount = order ? order.amount : undefined;
+    const discount = order ? order.discount : undefined;
+    if (order) {
+      purchases = order.orderItems.map(item => ({
+        // id: purchase.id,
+        product: item.menuItem,
+        // parentProduct: purchase.parentProduct,
+        quantity: item.count,
+        price: item.amount,
+        additions: [],
+      }));
+    }
     return (
       <PageContent>
         <NavHeader>
@@ -50,7 +63,12 @@ class OrderDetailPage extends React.Component {
                   </StyledOrderList>
                 </LeftSide>
                 <RightSide>
-                  <CartContainer params={params} />
+                  <CartContainer
+                    params={params}
+                    purchases={purchases}
+                    orderAmount={orderAmount}
+                    discount={discount}
+                  />
                 </RightSide>
               </Fragment>
             ) : (

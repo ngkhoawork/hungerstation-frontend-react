@@ -23,6 +23,7 @@ import {
 const Cart = ({
   isModal,
   isCheckout,
+  isOrderDetail,
   purchases,
   orderAmount,
   discount,
@@ -121,6 +122,7 @@ const Cart = ({
             key={purchase.id}
             onRemoveFromCart={() => removeFromCart(purchase.id)}
             onEditClick={() => onItemEditClick(purchase)}
+            readOnly={isOrderDetail}
           />
         ))}
       </Items>

@@ -23,11 +23,7 @@ const ViewCartButtonHOC = ({
   ...props
 }) => {
   const isCheckout = location.pathname.split('/').pop() === 'checkout';
-  const isOrderDetail =
-    location.pathname
-      .split('/')
-      .pop()
-      .pop() === 'my-orders';
+  const isOrderDetail = location.pathname.split('/')[1] === 'my-orders';
   const minAmount = getDeepProp(restaurant, [
     'delivery_conditions',
     0,

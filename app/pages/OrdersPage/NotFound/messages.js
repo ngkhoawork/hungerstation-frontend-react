@@ -7,16 +7,17 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  details: {
-    id: 'app.components.MyOrdersPage.OrderCard.details',
-    defaultMessage: 'Details ...',
+  text: {
+    id: 'app.components.MyOrdersPage.NotFound.text',
+    defaultMessage: "You don't have any orders yet!",
   },
-  restaurantDelivery: {
-    id: 'app.components.MyOrdersPage.OrderCard.restaurantDelivery',
-    defaultMessage: 'Restaurant delivery',
+  description: {
+    id: 'app.components.MyOrdersPage.NotFound.description',
+    defaultMessage:
+      "You don't havev any orders yet. You can make an order by selecting your location and here should be text",
   },
-  fastDelivery: {
-    id: 'app.components.MyOrdersPage.OrderCard.fastDelivery',
-    defaultMessage: 'Fast delivery',
+  buttonLabel: {
+    id: 'app.components.MyOrdersPage.NotFound.buttonLabel',
+    defaultMessage: 'Check restaurants',
   },
 });

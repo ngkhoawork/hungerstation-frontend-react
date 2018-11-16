@@ -5,6 +5,10 @@ export default defineMessages({
     id: 'app.components.Cart.placeOrder',
     defaultMessage: 'Place order',
   },
+  reorder: {
+    id: 'app.components.Cart.reorder',
+    defaultMessage: 'Reorder',
+  },
   goToCheckout: {
     id: 'app.components.Cart.goToCheckout',
     defaultMessage: 'Go to Checkout',

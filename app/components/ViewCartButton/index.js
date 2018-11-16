@@ -36,9 +36,9 @@ const ViewCartButton = ({
   if (isCheckout) {
     label = 'placeOrder';
   } else if (isOrderDetail) {
-    label = 'replaceOrder';
+    label = 'reorder';
   } else {
-    label = 'viewCart';
+    label = 'goToCheckout';
   }
 
   return (

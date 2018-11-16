@@ -57,6 +57,7 @@ const OrderElement = ({
   name,
   onEditClick,
   onRemoveFromCart,
+  readOnly,
 }) => (
   <Fragment>
     <Wrapper>
@@ -65,11 +66,13 @@ const OrderElement = ({
         <Column>
           <TitleWrapper>
             <Title>{name}</Title>
-            <Icon
-              name="edit"
-              style={{ margin: '0 10px 0 5px' }}
-              onClick={onEditClick}
-            />
+            {!readOnly && (
+              <Icon
+                name="edit"
+                style={{ margin: '0 10px 0 5px' }}
+                onClick={onEditClick}
+              />
+            )}
           </TitleWrapper>
           <Description>
             {additions.map(({ name }) => name).join(', ')}
@@ -83,12 +86,14 @@ const OrderElement = ({
             { style: 'currency', currency: 'SAR' },
           )}
         </Price>
-        <Icon
-          name="trash-red"
-          size={20}
-          style={{ margin: '0 5px' }}
-          onClick={onRemoveFromCart}
-        />
+        {!readOnly && (
+          <Icon
+            name="trash-red"
+            size={20}
+            style={{ margin: '0 5px' }}
+            onClick={onRemoveFromCart}
+          />
+        )}
       </Row>
     </Wrapper>
   </Fragment>
@@ -101,6 +106,7 @@ OrderElement.propTypes = {
   name: PropTypes.string.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onRemoveFromCart: PropTypes.func.isRequired,
+  readOnly: PropTypes.bool,
 };
 
 export default OrderElement;
