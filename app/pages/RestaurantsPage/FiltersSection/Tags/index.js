@@ -15,7 +15,7 @@ import Paragraph from 'components/Paragraph';
 
 const StyledTag = styled.span`
   ${flex({ align: 'flex-start' })};
-  margin-right: 8px;
+  margin: 0 0 8px 8px;
   border-radius: 8px;
   padding: 3px 8px 4px;
   background-color: ${({ isSelected }) => (isSelected ? gold : wildSand)};

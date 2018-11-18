@@ -17,6 +17,7 @@ const StyledTool = styled.div`
 
 const StyledToolUndisplayedInMobile = styled(StyledTool)`
   width: auto;
+  margin-top: 5px;
 
   ${mediaLess(600)`
     display: none;
@@ -33,7 +34,7 @@ const IconPositioning = styled.div`
 `;
 
 const Wrapper = styled.div`
-  ${flex({ align: 'center', justify: 'space-between' })};
+  ${flex({ align: 'flex-start', justify: 'space-between' })};
   width: 100%;
   padding-top: 20px;
   margin-bottom: 50px;
