@@ -70,6 +70,7 @@
   "app.components.RestaurantsList.RestaurantCard.minValue": "min. {min}",
   "app.components.RestaurantsList.RestaurantCard.time": "{max} min",
   "app.pages.RestaurantPage.checkBasket": "Check basket",
+  "app.pages.RestaurantPage.noMenu": "{name} doesn't have any menu",
   "app.components.RestaurantHeader.status.busy": "Busy",
   "app.components.RestaurantHeader.status.closed": "Closed",
   "app.components.RestaurantHeader.status.tomorrow": "Opens at {time}",

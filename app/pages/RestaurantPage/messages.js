@@ -5,4 +5,8 @@ export default defineMessages({
     id: 'app.pages.RestaurantPage.checkBasket',
     defaultMessage: 'Check basket',
   },
+  noMenu: {
+    id: 'app.pages.RestaurantPage.noMenu',
+    defaultMessage: `{name} doesn't have any menu`,
+  },
 });
