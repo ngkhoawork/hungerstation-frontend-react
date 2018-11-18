@@ -76,6 +76,7 @@ const Header = styled.div`
   text-align: center;
   width: calc(100% - 40px);
   margin-right: 40px;
+  flex-shrink: 0;
 
   ${({ style }) => style && css(style)};
   ${({ css }) => css};
