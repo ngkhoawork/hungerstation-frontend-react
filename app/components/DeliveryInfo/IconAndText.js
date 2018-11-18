@@ -5,18 +5,22 @@ import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
 import { silverChalice } from 'utils/css/colors';
 
-const CardTitle = ({ iconName, text, textSize = 14 }) => (
+const IconAndText = ({ iconName, text, textSize = 14 }) => (
   <Row align="center">
-    <Icon name={iconName} />
-    <Paragraph size={textSize} color={silverChalice}>
+    <Icon name={iconName} style={{ marginRight: 9 }} />
+    <Paragraph
+      size={textSize}
+      color={silverChalice}
+      style={{ marginRight: 18 }}
+    >
       {text}
     </Paragraph>
   </Row>
 );
 
-CardTitle.propTypes = {
+IconAndText.propTypes = {
   iconName: string,
   text: string,
   textSize: number,
 };
-export default CardTitle;
+export default IconAndText;

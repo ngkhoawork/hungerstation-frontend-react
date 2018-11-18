@@ -1,12 +1,11 @@
 import React from 'react';
 import { restaurantPropTypes } from 'prop-types';
-import intl from 'utils/intlService';
 import { getPathname } from 'utils/location';
 import BrandLogo from 'components/BrandLogo';
 import Row from 'components/Row';
+import DeliveryInfo from 'components/DeliveryInfo';
 import CardTitle from './CardTitle';
 import Rating from './Rating';
-import IconAndText from './IconAndText';
 import KitchensNames from './KitchensNames';
 import Promoted from './Promoted';
 import {
@@ -14,7 +13,6 @@ import {
   StyledUpperPart,
   StyledBottomPart,
 } from './Styled';
-import messages from './messages';
 
 const RestaurantCard = ({
   branchId,
@@ -46,28 +44,7 @@ const RestaurantCard = ({
 
       <KitchensNames names={kitchensNames} />
 
-      <Row>
-        {/* <IconAndText
-        iconName="time"
-        text={intl.formatMessage(messages.time, {
-          max: deliveryTime,
-        })}
-      /> */}
-        <IconAndText
-          iconName="delivery"
-          text={intl.formatMessage(messages.currency, {
-            value: deliveryFee,
-          })}
-        />
-        <IconAndText
-          iconName="bag"
-          text={intl.formatMessage(messages.minValue, {
-            min: intl.formatMessage(messages.currency, {
-              value: minOrder,
-            }),
-          })}
-        />
-      </Row>
+      <DeliveryInfo minimum_order={minOrder} delivery_fee={deliveryFee} />
     </StyledBottomPart>
   </StyledRestaurantCard>
 );
