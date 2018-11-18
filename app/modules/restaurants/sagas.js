@@ -2,6 +2,7 @@ import { call, put, select, takeEvery, all } from 'redux-saga/effects';
 import { slugify } from 'utils/helpers';
 import { fetchLocationSaga } from 'modules/location/sagas';
 import { submitSearchQuery } from 'modules/location/actions';
+import { selectDistrictId } from 'modules/location/selectors';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 import { intersection, lowerCase, camelCase } from 'lodash/fp';
 import {
@@ -47,10 +48,13 @@ function* fetchRestaurantsFromSearchBarSaga({
 export function* fetchRestaurantsSaga({ payload }) {
   yield put(fetchRestaurantsRequest());
 
-  const callParams = {};
-  callParams.localId = payload.localId
-    ? payload.localId
-    : yield call(fetchLocationSaga, { payload });
+  const callParams = { localId: payload.localId };
+
+  if (!callParams.localId) {
+    yield call(fetchLocationSaga, { payload });
+    const districtId = yield select(selectDistrictId);
+    callParams.localId = parseInt(districtId, 10);
+  }
 
   if (payload.deliveryType) {
     callParams.deliveryType = payload.deliveryType;
