@@ -52,7 +52,6 @@ const RestaurantInfo = ({ restaurant, ...props }) => (
 
 RestaurantInfo.propTypes = {
   status: PropTypes.string,
-  working_time: PropTypes.object,
   restaurant: PropTypes.shape({
     logo: PropTypes.string,
     name: PropTypes.string.isRequired,
