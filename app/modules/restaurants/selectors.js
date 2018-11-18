@@ -13,6 +13,11 @@ export const selectRestaurants = createSelector(
   restaurantsState => restaurantsState.get('restaurants'),
 );
 
+export const selectRestaurantsIsLoading = createSelector(
+  selectRestaurantDomain,
+  restaurantsState => restaurantsState.get('isLoading'),
+);
+
 export const selectRestaurantsArray = createSelector(
   selectRestaurantDomain,
   restaurantsState => restaurantsState.get('restaurants').toJS(),

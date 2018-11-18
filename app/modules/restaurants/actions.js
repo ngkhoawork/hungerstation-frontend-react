@@ -1,6 +1,10 @@
 import createAction from 'utils/actions/createAction';
 
 // RESTAURANTS LIST
+export const fetchRestaurantsRequest = createAction(
+  'restaurants/FETCH_RESTAURANTS_REQUEST',
+);
+
 export const fetchRestaurantsAction = createAction(
   'restaurants/FETCH_RESTAURANTS',
   payload => payload,
@@ -9,6 +13,10 @@ export const fetchRestaurantsAction = createAction(
 export const updateRestaurantsListing = createAction(
   'restaurants/UPDATE_RESTAURANTS_LISTING',
   restaurants => ({ restaurants }),
+);
+
+export const fetchRestaurantsError = createAction(
+  'restaurants/FETCH_RESTAURANTS_ERROR',
 );
 
 // SEARCH

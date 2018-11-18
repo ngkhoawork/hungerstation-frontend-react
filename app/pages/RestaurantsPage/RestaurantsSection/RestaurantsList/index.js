@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { restaurantsPropTypes } from 'propTypes/restaurants';
+import intl from 'utils/intlService';
 import { mediaLess, flex } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
-
+import { PageNotice } from 'utils/css/styledComponents';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
+import globalMessages from 'translations/messages';
 import StyledRestaurantList from './StyledRestaurantList';
 import RestaurantCard from './RestaurantCard';
 import ToolsPanel from './ToolsPanel';
@@ -43,6 +45,7 @@ const SCROLL_STEP = 400;
 
 export default class RestaurantsList extends Component {
   static propTypes = {
+    isLoading: PropTypes.bool,
     restaurants: restaurantsPropTypes,
     handleScrollToTop: PropTypes.func.isRequired,
   };
@@ -67,24 +70,40 @@ export default class RestaurantsList extends Component {
     return paginationStage * PAGINATION_STEP <= restaurants.length;
   }
 
+  renderContent = () => {
+    const { restaurants, isLoading } = this.props;
+    const { paginationStage } = this.state;
+
+    if (isLoading) {
+      return (
+        <PageNotice>{intl.formatMessage(globalMessages.loading)}</PageNotice>
+      );
+    }
+
+    if (isLoading === false && !restaurants.length) return <NotFound />;
+
+    if (restaurants.length) {
+      return (
+        <StyledList>
+          {restaurants
+            .slice(0, paginationStage * PAGINATION_STEP)
+            .map(restaurant => (
+              <RestaurantCard key={restaurant.id} {...restaurant} />
+            ))}
+        </StyledList>
+      );
+    }
+
+    return null;
+  };
+
   render() {
     const { restaurants, handleScrollToTop } = this.props;
-    const { paginationStage } = this.state;
 
     return (
       <StyledRestaurantList>
         <ToolsPanel hasData={restaurants.length > 0} />
-        {restaurants.length > 0 ? (
-          <StyledList>
-            {restaurants
-              .slice(0, paginationStage * PAGINATION_STEP)
-              .map(restaurant => (
-                <RestaurantCard key={restaurant.id} {...restaurant} />
-              ))}
-          </StyledList>
-        ) : (
-          <NotFound />
-        )}
+        {this.renderContent()}
 
         <ActionButtonsWrapper>
           {restaurants.length !== 0 && (

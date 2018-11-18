@@ -6,7 +6,9 @@ import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 import { intersection, lowerCase, camelCase } from 'lodash/fp';
 import {
   updateRestaurantsListing,
+  fetchRestaurantsRequest,
   fetchRestaurantsAction,
+  fetchRestaurantsError,
   fetchDeliveryFiltersAction,
   fetchDeliveryFiltersSuccessAction,
   toggleFilterAction,
@@ -43,6 +45,8 @@ function* fetchRestaurantsFromSearchBarSaga({
 }
 
 export function* fetchRestaurantsSaga({ payload }) {
+  yield put(fetchRestaurantsRequest());
+
   const callParams = {};
   callParams.localId = payload.localId
     ? payload.localId
@@ -77,14 +81,14 @@ export function* fetchRestaurantsSaga({ payload }) {
       acceptCreditCard: item.branch.accept_credit_card,
       acceptVoucher: item.branch.accept_voucher,
       acceptCashOnDelivery: item.branch.accept_cash_on_delivery,
-      //
       kitchensIds: item.branch.restaurant.kitchens.map(({ id }) => id),
       kitchensNames: item.branch.restaurant.kitchens.map(({ name }) => name),
     }));
 
     yield put(updateRestaurantsListing(restaurants));
   } catch (e) {
-    throw e;
+    // throw e;
+    yield put(fetchRestaurantsError(e));
   }
 }
 

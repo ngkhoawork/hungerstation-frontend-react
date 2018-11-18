@@ -1,6 +1,8 @@
 import { fromJS, List } from 'immutable';
 import { maxBy } from 'lodash';
 import {
+  fetchRestaurantsRequest,
+  fetchRestaurantsError,
   updateRestaurantsListing,
   updateVisibleRestaurantsAction,
   fetchDeliveryFiltersSuccessAction,
@@ -49,9 +51,16 @@ export const initialState = fromJS({
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case fetchRestaurantsRequest.type:
+      return state.set('isLoading', true);
+
+    case fetchRestaurantsError.type:
+      return state.set('isLoading', false);
+
     case updateRestaurantsListing.type: {
       const max = maxBy(action.payload.restaurants, 'minOrder');
       return state
+        .set('isLoading', false)
         .set('restaurants', List(action.payload.restaurants))
         .updateIn(['minOrderRange', 'max'], () => (max ? max.minOrder : 0))
         .updateIn(
