@@ -3,17 +3,21 @@ import { string } from 'prop-types';
 import Row from 'components/Row';
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
-import { jade, gold, persimmon, fuscousGray } from 'utils/css/colors';
+import { silverChalice, jade, gold, persimmon } from 'utils/css/colors';
 
 const mappedStatusToColor = {
-  closed: persimmon,
-  busy: gold,
+  closed: silverChalice,
+  busy: persimmon,
   ready: jade,
+  soon: gold,
 };
 
 const CardTitle = ({ name, status }) => (
   <Row align="center">
-    <CircledItem color={mappedStatusToColor[status] || fuscousGray} width={7} />
+    <CircledItem
+      color={mappedStatusToColor[status] || silverChalice}
+      width={7}
+    />
     <Paragraph size={17} margin="0 0 0 6px">
       {name}
     </Paragraph>
