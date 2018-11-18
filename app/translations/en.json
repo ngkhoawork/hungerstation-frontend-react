@@ -1,4 +1,5 @@
 {
+  "app.components.Page.loading": "Loading...",
   "app.components.AddRestaurantBanner.actionText": "Would you like to Join Us?",
   "app.components.AddRestaurantBanner.buttonLabel": "Add restaurant",
   "app.components.BriefFiltersSection.moreFilters": "More Filters",

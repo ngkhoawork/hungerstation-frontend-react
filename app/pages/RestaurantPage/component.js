@@ -9,13 +9,13 @@ import RestaurantInfo from 'components/RestaurantInfo';
 import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
 import MealOptions from 'components/MealOptions';
-import { NavHeader } from 'utils/css/styledComponents';
+import { NavHeader, PageNotice } from 'utils/css/styledComponents';
 // import { isDayTimeMatch } from 'utils/helpers';
+import globalMessages from 'translations/messages';
 import messages from './messages';
 import {
   StyledPage,
   ContentContainer,
-  Loading,
   LeftSide,
   RightSide,
   Header,
@@ -83,6 +83,14 @@ class RestaurantPage extends React.Component {
     const { menu, ...info } = restaurant;
     const { selectedMenuGroup } = this.state;
 
+    if (!menu.menugroups.length) {
+      return (
+        <PageNotice>
+          {intl.formatMessage(messages.noMenu, { name: info.restaurant.name })}
+        </PageNotice>
+      );
+    }
+
     if (!selectedMenuGroup) return null;
 
     // const shownProducts = selectedMenuGroup.products.find(isDayTimeMatch);
@@ -104,6 +112,7 @@ class RestaurantPage extends React.Component {
             />
           </StyledProductTypes>
           <RestaurantProducts
+            status={restaurant.status}
             products={shownProducts}
             cartItems={cartItems}
             onProductClick={this.handleAddClick}
@@ -129,7 +138,13 @@ class RestaurantPage extends React.Component {
         </NavHeader>
         <ContentContainer>
           <LeftSide>
-            {isLoading ? <Loading>Loading...</Loading> : this.renderContent()}
+            {isLoading ? (
+              <PageNotice>
+                {intl.formatMessage(globalMessages.loading)}
+              </PageNotice>
+            ) : (
+              this.renderContent()
+            )}
           </LeftSide>
           <RightSide>
             <CartContainer params={params} />

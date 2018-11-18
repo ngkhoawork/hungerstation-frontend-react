@@ -82,3 +82,10 @@ export const NavHeader = styled.div`
     padding: ${smallMobPageOffsetX};
   `};
 `;
+
+export const PageNotice = styled.div`
+  ${flex({ justify: 'center', align: 'center' })};
+  width: 100%;
+  height: 100px;
+  font-size: 30px;
+`;
