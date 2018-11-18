@@ -22,12 +22,12 @@ const AllCuisinesItem = ({ isSelected, resetCuisinesAction }) => (
       </CircledItem> */}
       <Paragraph
         color={isSelected ? 'black' : silverChalice}
-        margin="0 0 -3px 10px"
+        margin="0 0 0 10px"
       >
         {intl.formatMessage(messages.allCuisines)}
       </Paragraph>
     </Group>
-    {isSelected && <Icon name="check" />}
+    {isSelected && <Icon name="check-mark-green" />}
   </StyledItem>
 );
 

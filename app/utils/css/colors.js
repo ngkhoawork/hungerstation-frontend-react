@@ -14,4 +14,6 @@ export const boulder = '#7C7C7C';
 export const dustyGray = '#979797';
 export const silverChalice = '#9F9F9F';
 export const lightGray = '#f0f0f0';
+export const lighterGray = '#f2f2f2';
+export const lightestGray = '#fafafa';
 export const alabaster = '#f7f7f7';

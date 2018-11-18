@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { wildSand, silverChalice } from 'utils/css/colors';
-
+import { lighterGray, silverChalice } from 'utils/css/colors';
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
@@ -56,17 +55,17 @@ class Cuisines extends React.Component {
                   }
                 >
                   <Group>
-                    <CircledItem color={wildSand} width={28}>
+                    <CircledItem color={lighterGray} width={28}>
                       <StyledIconImage src={image_thumb} alt="x" />
                     </CircledItem>
                     <Paragraph
                       color={isSelected ? 'black' : silverChalice}
-                      margin="0 0 -3px 10px"
+                      margin="0 0 0 10px"
                     >
                       {name}
                     </Paragraph>
                   </Group>
-                  {isSelected && <Icon name="check" />}
+                  {isSelected && <Icon name="check-mark-green" />}
                 </StyledItem>
               );
             },

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { flex, mediaLess } from 'utils/css/styles';
-import { wildSand } from 'utils/css/colors';
+import { wildSand, lightestGray } from 'utils/css/colors';
 
 const ContentWrapper = styled.div`
   width: 100%;
@@ -33,7 +33,7 @@ const StyledItem = styled.div`
   width: 100%;
   padding: 8px;
 
-  ${({ selected }) => selected && `background-color: rgba(66,66,66,0.05);`}
+  ${({ selected }) => selected && `background-color: ${lightestGray};`}
   ${({ isPreviousSelected }) =>
     isPreviousSelected &&
     `border-top-left-radius: 0px;border-top-right-radius: 0px;`}

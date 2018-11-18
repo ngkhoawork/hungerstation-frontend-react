@@ -16,7 +16,7 @@ const StyledExpandActionWrapper = styled.div`
 `;
 
 const StyledIconImage = styled.img`
-  width: 20px;
+  width: 16px;
   opacity: 0.8;
   z-index: 20;
 `;
