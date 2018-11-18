@@ -5,9 +5,11 @@ import {
   flex,
   borderBottom,
 } from 'utils/css/styles';
+import { maxModalWidth } from 'utils/css/variables';
 
 export const containerStyle = css`
-  ${mediaMediumGreater`width: 600px`};
+  width: 600px;
+  ${mediaMedium`width: ${maxModalWidth}`};
 `;
 
 export const headerStyle = css`

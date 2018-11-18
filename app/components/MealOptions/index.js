@@ -170,7 +170,6 @@ class MealOptions extends Component {
       <ModalFrame
         title={name}
         subtitle={description}
-        isMobileFullscreen
         css={containerStyle}
         headerCss={headerStyle}
       >
