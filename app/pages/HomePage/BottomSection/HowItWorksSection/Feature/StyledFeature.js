@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { flex, mediaMedium, sideMargin, mediaSmall } from 'utils/css/styles';
 
-const StyledFeature = styled.span`
+const StyledFeature = styled.div`
   ${flex({}, true)};
   width: 224px;
   max-width: 224px;
