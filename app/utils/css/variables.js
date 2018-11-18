@@ -10,7 +10,7 @@ export const borderRadius = '8px';
 export const border = `solid 1px ${lightGray}`;
 
 export const headerHeight = '100px';
-export const navHeaderHeight = '46px';
+export const navHeaderHeight = '55px';
 export const maxModalHeight = '98vh';
 export const maxModalContentHeight = 'calc(98vh - 94px)';
 export const maxModalWidth = '98vw';

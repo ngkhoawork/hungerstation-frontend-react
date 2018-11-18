@@ -69,17 +69,17 @@ export const DisabledOverlay = styled.div`
 `;
 
 export const NavHeader = styled.div`
-  height: ${navHeaderHeight};
+  min-height: ${navHeaderHeight};
   width: 100%;
-  padding: 0 ${pageOffsetX};
-  ${flex({ align: 'center' })};
+  padding: 20px ${pageOffsetX};
+  ${flex({ align: 'flex-start' })};
 
   ${mediaMedium`
-    padding: ${mobPageOffsetX};
+    padding: 20px ${mobPageOffsetX};
   `};
 
   ${mediaSmall`
-    padding: ${smallMobPageOffsetX};
+    padding: 20px ${smallMobPageOffsetX};
   `};
 `;
 
