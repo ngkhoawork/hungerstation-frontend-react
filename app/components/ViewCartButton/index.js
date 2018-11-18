@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import intl from 'utils/intlService';
 import { getPathname } from 'utils/location';
-import { alabaster, jade } from 'utils/css/colors';
+import { jade } from 'utils/css/colors';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
@@ -50,7 +50,7 @@ const ViewCartButton = ({
           size="xl"
           style={{ whiteSpace: 'nowrap' }}
           disabled={isDisabled}
-          disabledColor={alabaster}
+          disabledColor="white"
           onClick={onClick}
         >
           <Content>

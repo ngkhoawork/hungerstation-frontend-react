@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { gold, paleSlate } from 'utils/css/colors';
+import { gold, paleSlate, alabaster } from 'utils/css/colors';
 import getImage from 'utils/css/images';
 import { flex } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
@@ -28,6 +28,12 @@ const StyledButton = styled.button`
   :disabled {
     background-color: ${({ disabledColor }) => disabledColor || paleSlate};
     cursor: default;
+    box-shadow: none;
+    border: solid 1px ${alabaster};
+
+    > * {
+      opacity: 0.5;
+    }
 
     & ${Spinner} {
       &:after {
