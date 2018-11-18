@@ -5,7 +5,8 @@ import {
   flex,
   borderBottom,
 } from 'utils/css/styles';
-import { maxModalWidth } from 'utils/css/variables';
+import { maxModalWidth, borderRadius } from 'utils/css/variables';
+import { alabaster } from 'utils/css/colors';
 
 export const containerStyle = css`
   width: 600px;
@@ -28,6 +29,10 @@ export const Content = styled.div`
 
 export const Footer = styled.div`
   ${flex({ justify: 'space-between', shrink: 0 })};
+  background-color: ${alabaster};
+  margin: 0 -20px -31px -20px;
+  padding: 30px 20px;
+  border-radius: 0 0 ${borderRadius} ${borderRadius};
 
   ${mediaMedium`${flex({ align: 'center', direction: 'column' })}`};
 `;
