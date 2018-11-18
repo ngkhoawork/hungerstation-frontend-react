@@ -22,22 +22,24 @@ import {
   AddBtn,
 } from './StyledComponents';
 
-const renderFooter = price => (
+const renderFooter = (price, status) => (
   <Fragment>
     <PriceContainer>
       <Price price={price} isPrimary hasTag />
     </PriceContainer>
-    <AddBtn>
-      {intl.formatMessage(messages.addToCart)} &nbsp;
-      <Icon name="arrow-circled-right" size={15} />
-    </AddBtn>
+    {status !== 'closed' ? (
+      <AddBtn>
+        {intl.formatMessage(messages.addToCart)} &nbsp;
+        <Icon name="arrow-circled-right" size={15} />
+      </AddBtn>
+    ) : null}
   </Fragment>
 );
 
-const RestaurantProducts = ({ products, cartItems, onProductClick }) => (
+const RestaurantProducts = ({ status, products, cartItems, ...props }) => (
   <List>
     {products.map(product => (
-      <Item key={product.id} onClick={() => onProductClick(product)}>
+      <Item key={product.id} onClick={() => props.onProductClick(product)}>
         <ContentContainer>
           <Img image={product.images && product.images[0]} />
           <Content>
@@ -48,16 +50,17 @@ const RestaurantProducts = ({ products, cartItems, onProductClick }) => (
               </TitleContainer>
               <Description>{product.description}</Description>
             </div>
-            <Footer>{renderFooter(product.list_price)}</Footer>
+            <Footer>{renderFooter(product.list_price, status)}</Footer>
           </Content>
         </ContentContainer>
-        <MobileFooter>{renderFooter(product.list_price)}</MobileFooter>
+        <MobileFooter>{renderFooter(product.list_price, status)}</MobileFooter>
       </Item>
     ))}
   </List>
 );
 
 RestaurantProducts.propTypes = {
+  status: PropTypes.string,
   products: PropTypes.arrayOf(RestaurantProductPropType).isRequired,
   cartItems: PropTypes.array.isRequired,
   onProductClick: PropTypes.func.isRequired,
