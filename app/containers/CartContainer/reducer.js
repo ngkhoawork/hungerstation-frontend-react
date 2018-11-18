@@ -72,8 +72,11 @@ function cartContainerReducer(state = initialState, { type, payload }) {
       return Object.assign({}, state, { purchases: [] });
     }
 
-    case createOrderSuccess.type:
+    case createOrderSuccess.type: {
+      clearStorageItem('cartItems');
+
       return Object.assign({}, initialState);
+    }
 
     default:
       return state;
