@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { flex, mediaMedium } from 'utils/css/styles';
-import { gold } from 'utils/css/colors';
 import {
   maxModalWidth,
   maxModalHeight,
   borderRadius,
 } from 'utils/css/variables';
-import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import { Title, Description } from 'components/Typography';
 
@@ -25,14 +23,7 @@ const ModalFrame = ({
     <Header style={headerStyle} css={headerCss}>
       <Title>{title}</Title>
       <Description style={{ margin: '3px 0' }}>{subtitle}</Description>
-      <CircledItem
-        color={gold}
-        width={30}
-        onClick={onCancel}
-        style={CloseBtnStyle}
-      >
-        <Icon name="close" size={8} />
-      </CircledItem>
+      <Icon name="close-modal" onClick={onCancel} style={CloseBtnStyle} />
     </Header>
     {children}
   </Container>
