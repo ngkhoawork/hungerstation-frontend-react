@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { prop, switchProp } from 'styled-tools';
 
-import { flex, mediaMedium, sideMargin, mediaSmall } from 'utils/css/styles';
+import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
 
 const StyledFeature = styled.div`
   ${flex({}, true)};
