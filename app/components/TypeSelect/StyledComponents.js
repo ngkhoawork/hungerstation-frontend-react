@@ -1,14 +1,19 @@
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 import { fuscousGray, silverChalice, alabaster } from 'utils/css/colors';
 import { borderRadius } from 'utils/css/variables';
 
 export const Container = styled.div`
   width: 100%;
-  ${flex({ direction: 'column', wrap: 'wrap' })};
+  ${flex({ direction: 'column' })};
 
   ${mediaMedium`
     ${flex({ direction: 'row' }, false)};
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
   `};
 
   ${({ style }) => style && css(style)};
@@ -20,14 +25,18 @@ export const Type = styled.span`
   margin-bottom: 10px;
   text-decoration: none;
   color: ${silverChalice};
-  overflow: hidden;
   position: relative;
   font-size: 14px;
   cursor: pointer;
   line-height: 1;
 
+  ${mediaMediumGreater`
+    overflow: hidden;
+  `};
+
   ${mediaMedium`
     margin-right: 10px;
+    white-space: nowrap;
   `};
 
   ${({ active }) =>
