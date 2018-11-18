@@ -3,12 +3,12 @@ import { string } from 'prop-types';
 import Row from 'components/Row';
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
-import { silverChalice, jade, gold, persimmon } from 'utils/css/colors';
+import { silverChalice, gold, persimmon } from 'utils/css/colors';
 
 const mappedStatusToColor = {
   closed: silverChalice,
   busy: persimmon,
-  ready: jade,
+  ready: '#32D48A',
   soon: gold,
 };
 
