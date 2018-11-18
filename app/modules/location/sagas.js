@@ -63,7 +63,8 @@ function* getCurrentLocationSaga() {
         }),
       );
     } else {
-      throw Error(`Unsupported area.`);
+      console.log('Unsupported area');
+      // throw Error(`Unsupported area.`);
     }
 
     yield put(toggleSettlementLoadedAction(true));
@@ -76,8 +77,7 @@ function* getCurrentCitySaga() {
   const {
     coords: { latitude: lat, longitude: lng },
   } = yield call(getUserPosition);
-  // Riyadh:
-  // const coords = { lat: 24.7965494, lng: 46.6199898 };
+  // Riyadh coords = { lat: 24.7965494, lng: 46.6199898 };
   const coords = {
     lat,
     lng,
@@ -113,9 +113,8 @@ export function* fetchLocationSaga({ payload }) {
         selectedDistrict: local,
       }),
     );
-    return parseInt(local.id, 10);
   } catch (e) {
-    return null;
+    // console.log(e);
   }
 }
 
