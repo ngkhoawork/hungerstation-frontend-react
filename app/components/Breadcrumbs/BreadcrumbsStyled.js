@@ -17,15 +17,17 @@ export const BreadcrumbsStyled = styled.div`
   `};
 
   ul {
-    ${flex({}, true)};
+    ${flex({ wrap: 'wrap' }, true)};
     list-style: none;
     font-family: ${fontFamilyLight};
-    margin-top: 20px;
+    margin: 0;
   }
 
   li {
     padding: 0 16px 0 0;
     font-size: 13px;
+    white-space: nowrap;
+    margin-bottom: 8px;
   }
 
   a {
