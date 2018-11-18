@@ -20,11 +20,6 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
         sunday
       }
     }
-    delivery_conditions {
-      delivery_fee
-      delivery_estimation_time
-      minimum_order
-    }
     restaurant {
       id
       name
