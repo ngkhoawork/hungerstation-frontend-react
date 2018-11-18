@@ -21,10 +21,11 @@ export const StyledRestaurantInfo = styled.div`
   background-color: white;
 
   ${mediaMedium`
-    ${flex({ direction: 'column' }, false)};
+    ${flex({ direction: 'column', align: 'flex-start' }, false)};
     border-radius: ${borderRadius};
     padding-bottom: 30px;
     box-shadow: ${boxShadowBottomRight};
+    padding: 20px 30px 25px 20px;
   `};
 `;
 
@@ -49,9 +50,9 @@ export const StyledDetailsContainer = styled.div`
   ${flex({ align: 'center', justify: 'flex-start' })};
   max-height: 160px;
   width: 100%;
-  padding: 20px 30px 25px 20px;
 
   ${mediaMediumGreater`
+    padding: 20px 30px 25px 40px;
     box-shadow: ${boxShadowBottomRightLight};
   `};
 
