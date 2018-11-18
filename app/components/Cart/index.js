@@ -40,7 +40,10 @@ const Cart = ({
     0,
     'minimum_order',
   ]);
-  const from = getDeepProp(branch, ['restaurant', 'name']);
+  const name = getDeepProp(branch, ['restaurant', 'name']);
+  let from = `${getDeepProp(branch, ['restaurant', 'name'])}, ${branch.name}`;
+
+  if (from.length > 45) from = getDeepProp(branch, ['restaurant', 'name']);
 
   const title = intl.formatMessage(
     messages[isCheckout ? 'yourOrderFrom' : 'yourOrder'],
@@ -55,7 +58,6 @@ const Cart = ({
   };
 
   const renderNotice = () => {
-    const name = getDeepProp(branch, ['restaurant', 'name']);
     let message;
 
     if (branch.status === 'busy') {
