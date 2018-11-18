@@ -69,7 +69,7 @@ const Cart = ({
         branch.working_time || branch.restaurant.working_time,
         ['weektimes', 0],
       );
-      const { start_minute } = weektimes;
+      const { start_minute } = weektimes || {};
 
       if (typeof start_minute === 'number') {
         const daysDiff = daysUntilOpen(weektimes);
