@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { gold, lightGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
-import CircledItem from 'components/CircledItem';
+import Icon from 'components/Icon';
 
 const Container = styled.div`
   display: inline-flex;
@@ -19,17 +18,9 @@ const Quantity = styled.span`
 
 const QuantitySelect = ({ quantity, onChange }) => (
   <Container>
-    <CircledItem
-      color={lightGray}
-      width={24}
-      onClick={() => onChange(quantity - 1)}
-    >
-      <span style={{ zIndex: 1 }}>-</span>
-    </CircledItem>
+    <Icon name="minus" onClick={() => onChange(quantity - 1)} />
     <Quantity>{quantity}</Quantity>
-    <CircledItem color={gold} width={24} onClick={() => onChange(quantity + 1)}>
-      <span style={{ zIndex: 1 }}>+</span>
-    </CircledItem>
+    <Icon name="plus" onClick={() => onChange(quantity + 1)} />
   </Container>
 );
 
