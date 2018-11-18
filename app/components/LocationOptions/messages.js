@@ -1,12 +1,13 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  total: {
+  title: {
     id: 'app.components.LocationOptions.title',
-    defaultMessage: 'Select Location',
+  },
+  subtitle: {
+    id: 'app.components.LocationOptions.subtitle',
   },
   submit: {
     id: 'app.components.LocationOptions.submit',
-    defaultMessage: 'Submit',
   },
 });

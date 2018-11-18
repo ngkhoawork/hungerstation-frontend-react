@@ -9,6 +9,5 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   pageOf: {
     id: 'app.components.OffersList.Pagination.pageOf',
-    defaultMessage: ' - of {pages}',
   },
 });

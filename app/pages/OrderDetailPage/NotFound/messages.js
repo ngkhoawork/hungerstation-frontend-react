@@ -8,11 +8,9 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   text: {
-    id: 'app.components.MyOrdersPage.NotFound.text',
-    defaultMessage: 'Order not Found!',
+    id: 'app.components.OrderDetailPage.NotFound.text',
   },
   buttonLabel: {
-    id: 'app.components.MyOrdersPage.NotFound.buttonLabel',
-    defaultMessage: 'Back',
+    id: 'app.components.OrderDetailPage.NotFound.buttonLabel',
   },
 });

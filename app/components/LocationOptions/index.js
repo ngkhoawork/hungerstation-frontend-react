@@ -14,8 +14,8 @@ import {
 
 const LocationOptions = ({ onSubmit, city, district }) => (
   <ModalFrame
-    title="Select Location"
-    subtitle="select address"
+    title={intl.formatMessage(messages.title)}
+    subtitle={intl.formatMessage(messages.subtitle)}
     isMobileFullscreen
     css={containerStyle}
     headerCss={headerStyle}

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { flex, mediaMedium, mediaLess } from 'utils/css/styles';
 
 const StyledContainer = styled.div`
-  ${flex({ grow: 0.9, justify: 'space-between' })};
+  ${flex({ grow: 0.2, justify: 'space-between' })};
 
   ${mediaLess(1080)`
     ${flex({ wrap: 'wrap' }, false)};

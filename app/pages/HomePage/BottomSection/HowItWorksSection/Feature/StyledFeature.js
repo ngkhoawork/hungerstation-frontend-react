@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { prop, switchProp } from 'styled-tools';
+
 import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
 
-const StyledFeature = styled.span`
+const StyledFeature = styled.div`
   ${flex({}, true)};
   width: 224px;
   max-width: 224px;
   position: relative;
-  margin-right: 192px;
 
   &:last-child {
     margin-right: 0;
@@ -26,7 +27,7 @@ const StyledFeature = styled.span`
 export const StyledFeatureIcon = styled.div`
   position: absolute;
   top: -6px;
-  left: -68px;
+  ${switchProp(prop('theme.direction'), { ltr: 'left', rtl: 'right' })}: -68px;
   z-index: 100;
 `;
 

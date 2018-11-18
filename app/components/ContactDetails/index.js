@@ -47,7 +47,7 @@ const ContactDetails = () => (
         <Icon name="email" size={12} />
       </CircledItem>
       <Paragraph size={15} color={ironsideGray} margin="0 0 -3px 10px">
-        HungerStation@HungerStation.com
+        WeCare@hungerstation.com
       </Paragraph>
     </Group>
     <Group paddin="100px 0 10px 10px">

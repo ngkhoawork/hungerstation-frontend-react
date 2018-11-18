@@ -54,7 +54,7 @@ const PrivacyPolicy = () => (
         {/* DropDown Menu Mobile */}
         <Section>
           <TextItem size={28} weight={300} fontFamily="regular">
-            Section
+            <FormattedMessage {...messages.sections} />
           </TextItem>
         </Section>
 

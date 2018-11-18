@@ -9,10 +9,8 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   delivery: {
     id: 'app.components.Types.delivery',
-    defaultMessage: 'Delivery',
   },
   pickup: {
     id: 'app.components.Types.pickup',
-    defaultMessage: 'Pick up',
   },
 });

@@ -13,7 +13,6 @@ import { appLocales } from 'i18n';
 import { changeLocaleAction } from 'containers/LanguageProvider/actions';
 import OptionsChoice from './OptionsChoice';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
-import intlService from '../../utils/intlService';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   locale,
@@ -21,7 +20,6 @@ const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
 
 const mapDispatchToProps = dispatch => ({
   changeLocale: locale => {
-    intlService.setLocale(locale);
     dispatch(changeLocaleAction(locale));
   },
 });

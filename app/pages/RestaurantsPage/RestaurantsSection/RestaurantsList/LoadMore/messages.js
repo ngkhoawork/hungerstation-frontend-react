@@ -9,6 +9,5 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   label: {
     id: 'app.components.RestaurantsList.LoadMore.label',
-    defaultMessage: 'Load More',
   },
 });

@@ -5,6 +5,7 @@ import { flex } from 'utils/css/styles';
 import { alabaster } from 'utils/css/colors';
 
 const StyledApp = styled.div`
+  direction: ${props => (props.theme.direction === 'rtl' ? 'rtl' : 'ltr')};
   ${flex({
     align: 'center',
     direction: 'column',

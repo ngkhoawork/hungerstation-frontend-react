@@ -1,9 +1,12 @@
 import React from 'react';
+import intl from 'utils/intlService';
 import styled from 'styled-components';
 import TextItem from 'components/TextItem';
 import Button from 'components/Button';
 import { mediaMedium } from 'utils/css/styles';
 import { fontFamilyRegular } from 'utils/css/variables';
+
+import messages from './messages';
 
 const ButtonWrapper = styled.div`
   width: 144px;
@@ -34,13 +37,11 @@ const openMap = () => {
 const LocationInformation = () => (
   <div>
     <TextItem size={24} fontFamily="regular">
-      Anas Ibn Malik Road
+      {intl.formatMessage(messages.addressRoad)}
     </TextItem>
-    <Text>
-      Alsahafah <br />
-      Riyadh <br />
-      Saudi Arabia
-    </Text>
+    <Text>{intl.formatMessage(messages.addressDetails)}</Text>
+    <Text>{intl.formatMessage(messages.addressRiyadh)}</Text>
+    <Text>{intl.formatMessage(messages.addressSaudiArabia)}</Text>
     <ButtonWrapper>
       <Button primary type="button" label="Google Map" onClick={openMap} />
     </ButtonWrapper>

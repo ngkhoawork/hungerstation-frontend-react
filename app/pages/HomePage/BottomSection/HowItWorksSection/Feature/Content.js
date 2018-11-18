@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import { flex } from 'utils/css/styles';
 
-const RightSide = styled.span`
+const Content = styled.span`
   ${flex({ justify: 'flex-start', direction: 'column' })};
 `;
 
-export default RightSide;
+export default Content;

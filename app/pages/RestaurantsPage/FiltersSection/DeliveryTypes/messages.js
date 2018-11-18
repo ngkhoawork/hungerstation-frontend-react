@@ -4,6 +4,5 @@ export default defineMessages({
   allDeliveryTypes: {
     id:
       'app.pages.RestaurantPage.FiltersSection.DeliveryTypes.allDeliveryTypes',
-    defaultMessage: 'All Delivery Types',
   },
 });

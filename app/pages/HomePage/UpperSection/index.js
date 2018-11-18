@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import intl from 'utils/intlService';
 
 // import SearchTypeContainer from 'containers/SearchTypeContainer';
 import SearchBarContainer from 'containers/SearchBarContainer';
@@ -13,11 +14,12 @@ import Header from './Header';
 import StyledSection from '../StyledSection';
 // import QuickFilters from './SearchTypes/QuickFilters';
 
+import messages from '../messages';
 const UpperSection = () => (
   <StyledUpperSection>
     <AppHeader />
-    <Subheader>Food Delivery From</Subheader>
-    <Header>The Top Restaurants in Saudi Arabia</Header>
+    <Subheader>{intl.formatMessage(messages.subheader)}</Subheader>
+    <Header>{intl.formatMessage(messages.header)}</Header>
     <StyledSection>
       {/* <SearchTypeContainer /> */}
       <SearchBarContainer />

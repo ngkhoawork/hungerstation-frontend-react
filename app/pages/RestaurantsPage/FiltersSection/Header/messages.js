@@ -9,10 +9,8 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   filters: {
     id: 'app.components.FiltersSection.Header.filters',
-    defaultMessage: 'Filters',
   },
   clearAll: {
     id: 'app.components.FiltersSection.Header.clearAll',
-    defaultMessage: 'Clear All',
   },
 });

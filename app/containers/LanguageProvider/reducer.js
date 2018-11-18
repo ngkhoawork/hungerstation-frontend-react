@@ -5,9 +5,10 @@
  */
 
 import { fromJS } from 'immutable';
-
-import { CHANGE_LOCALE } from './constants';
 import { DEFAULT_LOCALE } from 'i18n'; // eslint-disable-line
+
+import intlService from 'utils/intlService';
+import { CHANGE_LOCALE } from './constants';
 
 export const initialState = fromJS({
   locale: DEFAULT_LOCALE,
@@ -24,6 +25,8 @@ function languageProviderReducer(state = initialState, action) {
 
 const onChangeLocale = (state, action) => {
   const { locale } = action;
+  intlService.setLocale(locale);
+
   return state.merge({
     locale,
   });

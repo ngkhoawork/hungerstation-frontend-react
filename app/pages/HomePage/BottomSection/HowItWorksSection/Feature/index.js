@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 import Icon from 'components/Icon';
 import StyledFeature, { StyledFeatureIcon } from './StyledFeature';
-import RightSide from './RightSide';
+import Content from './Content';
 import Header from './Header';
 import Text from './Text';
 
 const Feature = ({ id, label, message }) => (
   <StyledFeature>
     <StyledFeatureIcon>
-      <Icon name={`${id}-big`} size={45} />
+      <Icon name={`${id}-big`} size={55} />
     </StyledFeatureIcon>
-    <RightSide>
+    <Content>
       <Header>{label}</Header>
       <Text>{message}</Text>
-    </RightSide>
+    </Content>
   </StyledFeature>
 );
 

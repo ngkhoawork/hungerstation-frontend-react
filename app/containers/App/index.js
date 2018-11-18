@@ -19,6 +19,8 @@ import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { setHistory } from 'utils/route';
 import { compose, withProps } from 'recompose';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from 'styled-components';
 
 import HomePage from 'pages/HomePage/Loadable';
 import RestaurantsPage from 'pages/RestaurantsPage/Loadable';
@@ -41,6 +43,8 @@ import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
 import { authenticateUser } from 'modules/auth/actions';
 import StyledApp from './StyledApp';
 import Modals from './Modals';
+
+import theme from '../../theme';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   dir: locale === 'ar' ? 'rtl' : 'ltr',
@@ -78,72 +82,81 @@ export default class App extends Component {
 
   render() {
     const { dir, location } = this.props;
+    theme.direction = dir;
+
     const isDark = /login|register|forgot-password/.test(location.pathname);
     return (
-      <StyledApp dir={dir} dark={isDark}>
-        <CssBaseline />
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <StyledApp dark={isDark}>
+            <CssBaseline />
 
-        <Modals />
-        <ModalContainer />
+            <Modals />
+            <ModalContainer />
 
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <PrivateRouteContainer
-            path="/restaurants/:city/:district/restaurant/:branchId/checkout"
-            component={CheckoutPage}
-          />
-          <Route
-            path="/restaurants/:city/:district/restaurant/:branchId"
-            component={RestaurantPage}
-          />
-          <Route
-            showPopup
-            exact
-            path="/restaurant/:branchId"
-            component={RestaurantPageWithPopup}
-          />
-          <Route
-            showPopup
-            exact
-            path="/restaurant/:branchId/:city"
-            component={RestaurantPageWithPopup}
-          />
-          <Route
-            showPopup
-            exact
-            path="/restaurant/:branchId/:city/:district"
-            component={RestaurantPageWithPopup}
-          />
-          <Route
-            path="/restaurants/:city/:district/:deliveryType?"
-            component={RestaurantsPage}
-          />
-          <PrivateRouteContainer path="/userprofile" component={UserProfile} />
-          <PrivateRouteContainer
-            exact
-            path="/my-orders"
-            component={OrdersPage}
-          />
-          <PrivateRouteContainer
-            exact
-            path="/my-orders/:orderId"
-            component={OrderDetailPage}
-          />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegistrationPage} />
-          <Route path="/reset-password" component={ResetPasswordPage} />
-          <Route path="/forgot-password" component={ForgotPasswordPage} />
-          <Route path="/faqs" component={FAQsPage} />
-          <Route path="/contactus" component={ContactUsPage} />
-          <Route
-            exact
-            path="/privacy-policy/who-we-are"
-            component={PrivacyPolicyPage}
-          />
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <PrivateRouteContainer
+                path="/restaurants/:city/:district/restaurant/:branchId/checkout"
+                component={CheckoutPage}
+              />
+              <Route
+                path="/restaurants/:city/:district/restaurant/:branchId"
+                component={RestaurantPage}
+              />
+              <Route
+                showPopup
+                exact
+                path="/restaurant/:branchId"
+                component={RestaurantPageWithPopup}
+              />
+              <Route
+                showPopup
+                exact
+                path="/restaurant/:branchId/:city"
+                component={RestaurantPageWithPopup}
+              />
+              <Route
+                showPopup
+                exact
+                path="/restaurant/:branchId/:city/:district"
+                component={RestaurantPageWithPopup}
+              />
+              <Route
+                path="/restaurants/:city/:district/:deliveryType?"
+                component={RestaurantsPage}
+              />
+              <PrivateRouteContainer
+                path="/userprofile"
+                component={UserProfile}
+              />
+              <PrivateRouteContainer
+                exact
+                path="/my-orders"
+                component={OrdersPage}
+              />
+              <PrivateRouteContainer
+                exact
+                path="/my-orders/:orderId"
+                component={OrderDetailPage}
+              />
+              <Route path="/login" component={LoginPage} />
+              <Route path="/register" component={RegistrationPage} />
+              <Route path="/reset-password" component={ResetPasswordPage} />
+              <Route path="/forgot-password" component={ForgotPasswordPage} />
+              <Route path="/faqs" component={FAQsPage} />
+              <Route path="/contactus" component={ContactUsPage} />
+              <Route
+                exact
+                path="/privacy-policy/who-we-are"
+                component={PrivacyPolicyPage}
+              />
 
-          <Redirect from="*" to="/" />
-        </Switch>
-      </StyledApp>
+              <Redirect from="*" to="/" />
+            </Switch>
+          </StyledApp>
+        </ThemeProvider>
+      </MuiThemeProvider>
     );
   }
 }
