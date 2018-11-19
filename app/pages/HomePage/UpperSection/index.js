@@ -8,10 +8,10 @@ import AppHeader from 'containers/AppHeader';
 import StyledUpperSection from './StyledUpperSection';
 import Subheader from './Subheader';
 import Header from './Header';
-import FiltersWrapper from './FiltersWrapper';
+// import FiltersWrapper from './FiltersWrapper';
 
 import StyledSection from '../StyledSection';
-import QuickFilters from './SearchTypes/QuickFilters';
+// import QuickFilters from './SearchTypes/QuickFilters';
 
 const UpperSection = () => (
   <StyledUpperSection>
@@ -22,9 +22,9 @@ const UpperSection = () => (
       {/* <SearchTypeContainer /> */}
       <SearchBarContainer />
     </StyledSection>
-    <FiltersWrapper>
+    {/* <FiltersWrapper>
       <QuickFilters />
-    </FiltersWrapper>
+    </FiltersWrapper> */}
   </StyledUpperSection>
 );
 
