@@ -13,6 +13,14 @@ export default defineMessages({
     id: 'app.components.MealOptions.required',
     defaultMessage: 'Required',
   },
+  selectMinOne: {
+    id: 'app.components.MealOptions.selectMinOne',
+    defaultMessage: '1 to {max} Required',
+  },
+  selectMax: {
+    id: 'app.components.MealOptions.selectMax',
+    defaultMessage: 'Select up to {max}',
+  },
   select: {
     id: 'app.components.MealOptions.select',
     defaultMessage: 'Tap on item to include',

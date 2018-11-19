@@ -54,18 +54,19 @@ class MealOptions extends Component {
       product.modifier_groups.forEach(group => {
         if (!group.modifiers.length) return;
 
-        if (group.min_option === 1 && group.max_option === 1) {
+        const { min_option: min, max_option: max } = group;
+
+        if (min === 1 && max === 1) {
           radios[group.id] = {
             ...group,
             value: group.modifiers[0] && group.modifiers[0].id,
           };
         } else {
-          checkboxes[group.id] = {
-            ...group,
-            checked: {},
-            max: group.max_option,
-            hint: group.min_option === 1 ? 'required' : 'select',
-          };
+          let hint = 'select';
+          if (min === 1 && max > 1) hint = 'selectMinOne';
+          if (min === 0 && max > 0) hint = 'selectMax';
+
+          checkboxes[group.id] = { ...group, checked: {}, max, hint };
         }
       });
     }
@@ -191,7 +192,7 @@ class MealOptions extends Component {
               <Section
                 key={id}
                 title={name}
-                hint={intl.formatMessage(messages[hint])}
+                hint={intl.formatMessage(messages[hint], { max })}
                 isCollapsible
               >
                 <CheckboxSelect
