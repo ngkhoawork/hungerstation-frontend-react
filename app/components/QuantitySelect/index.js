@@ -9,7 +9,7 @@ const Container = styled.div`
   align-items: center;
   font-family: ${fontFamilyRegular};
   line-height: 1;
-  font-size: 18px;
+  font-size: 20px;
 `;
 
 const Quantity = styled.span`

@@ -173,7 +173,7 @@ class MealOptions extends Component {
         css={containerStyle}
         headerCss={headerStyle}
       >
-        <Content>
+        <Content isWithDropdown={!!dropdown}>
           {dropdown ? (
             <Section title={intl.formatMessage(messages.selectOne)}>
               <DropdownSelect
@@ -229,13 +229,23 @@ class MealOptions extends Component {
             <LeftSidePrice>
               &nbsp; &nbsp; &nbsp;
               {intl.formatMessage(messages.total)} &nbsp;
-              <Price price={price} isPrimary />
+              <Price
+                price={price}
+                size={20}
+                currencyStyle={{ fontSize: 16 }}
+                isPrimary
+              />
             </LeftSidePrice>
           </FooterLeftSide>
           <FooterRightSide>
             <RightSidePrice>
               {intl.formatMessage(messages.total)} &nbsp;
-              <Price price={price} isPrimary />
+              <Price
+                price={price}
+                size={20}
+                currencyStyle={{ fontSize: 16 }}
+                isPrimary
+              />
               &nbsp; &nbsp; &nbsp;
             </RightSidePrice>
             <Button

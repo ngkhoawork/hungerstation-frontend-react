@@ -16,7 +16,6 @@ export const containerStyle = css`
 export const headerStyle = css`
   ${borderBottom};
   text-align: left;
-  padding-bottom: 10px;
 `;
 
 export const Content = styled.div`
@@ -24,13 +23,13 @@ export const Content = styled.div`
   overflow-y: auto;
   margin-bottom: 20px;
   padding-right: 10px;
-  min-height: 220px;
+  min-height: ${({ isWithDropdown }) => (isWithDropdown ? '220px' : 'initial')};
 `;
 
 export const Footer = styled.div`
   ${flex({ justify: 'space-between', shrink: 0 })};
   background-color: ${alabaster};
-  margin: 0 -20px -31px -20px;
+  margin: 0 -40px -31px -25px;
   padding: 30px 20px;
   border-radius: 0 0 ${borderRadius} ${borderRadius};
 
@@ -50,10 +49,14 @@ export const FooterRightSide = styled.div`
 `;
 
 export const LeftSidePrice = styled.span`
+  font-size: 20px;
+
   ${mediaMediumGreater`display: none;`};
 `;
 
 export const RightSidePrice = styled.span`
+  font-size: 20px;
+
   ${mediaMedium`display: none;`};
 `;
 
