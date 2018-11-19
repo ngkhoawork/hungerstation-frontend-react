@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { flex } from 'utils/css/styles';
+import { flex, mediaSmall } from 'utils/css/styles';
 import { gold, wildSand } from 'utils/css/colors';
 import { zIndexDropdown, borderRadius } from 'utils/css/variables';
 
@@ -16,7 +16,15 @@ export const StyledDropdown = styled.div`
 
   & > span {
     margin: 0 15px 0 10px;
+
+    ${mediaSmall`margin: 0 7px 0 5px;`};
   }
+`;
+
+export const Label = styled.span`
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const StyledMenu = styled.div`

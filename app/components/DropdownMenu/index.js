@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import { persimmon } from 'utils/css/colors';
-import { StyledDropdown } from './StyledComponents';
+import { StyledDropdown, Label } from './StyledComponents';
 import SubMenu from './SubMenu';
 
 class DropdownMenu extends Component {
@@ -40,7 +40,7 @@ class DropdownMenu extends Component {
     const { isDropdownVisible } = this.state;
 
     return (
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', minWidth: 0 }}>
         <StyledDropdown
           onClick={this.toggleDropdown}
           innerRef={this.dropdownWrapperRef}
@@ -48,12 +48,12 @@ class DropdownMenu extends Component {
           <CircledItem
             color="white"
             width={22}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', flexShrink: 0 }}
             withShadow
           >
             <span style={{ color: persimmon, zIndex: 1 }}>{leftIcon}</span>
           </CircledItem>
-          <span>{label}</span>
+          <Label>{label}</Label>
           <Icon name="arrow-dropdown" />
         </StyledDropdown>
         {isDropdownVisible ? (
