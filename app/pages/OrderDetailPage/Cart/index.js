@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { getDeepProp, clearUndefs } from 'utils/helpers';
+import { clearUndefs } from 'utils/helpers';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
 import { selectCheckoutState } from 'modules/checkout/selectors';
 import { createOrder } from 'modules/checkout/actions';
@@ -62,12 +62,7 @@ class CartContainer extends React.Component {
     return (
       <Cart
         {...props}
-        from={restaurant.name}
-        minAmount={getDeepProp(restaurant, [
-          'delivery_conditions',
-          0,
-          'minimum_order',
-        ])}
+        branch={restaurant}
         discount={discount}
         deliveryFee={delivery && delivery.price}
         city={city && city.get('name')}
