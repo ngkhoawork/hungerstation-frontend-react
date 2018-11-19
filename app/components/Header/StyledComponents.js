@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { gold } from 'utils/css/colors';
-import { flex, mediaMedium } from 'utils/css/styles';
+import {
+  flex,
+  mediaSmall,
+  mediaMedium,
+  mediaMediumGreater,
+} from 'utils/css/styles';
 import {
   fontFamilyRegular,
   headerHeight,
@@ -10,11 +15,24 @@ import {
 
 export const RightSection = styled.div`
   ${flex({ align: 'center', justify: 'space-between' })};
+
+  ${mediaMedium`max-width: 70%;`};
 `;
 
 export const LeftSection = styled.div`
   ${flex({ align: 'center' })};
   margin-left: -7px;
+`;
+
+export const DesktopLocaleToggle = styled.div`
+  ${mediaMediumGreater`margin-left: 111px;`};
+  ${mediaMedium`display: none;`};
+`;
+
+export const MobileLocaleToggle = styled.div`
+  ${mediaMediumGreater`display: none;`};
+  ${mediaMedium`margin-right: 20px;`};
+  ${mediaSmall`margin-right: 10px;`};
 `;
 
 export const StyledBrandLogo = styled.img`

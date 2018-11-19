@@ -10,6 +10,8 @@ import logo from 'images/hungerstation-logo-shadow.svg';
 import {
   RightSection,
   LeftSection,
+  DesktopLocaleToggle,
+  MobileLocaleToggle,
   StyledHeader,
   StyledBrandLogo,
   StyledContent,
@@ -64,9 +66,14 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
         <Link to="/">
           <StyledBrandLogo alt="logo" src={logo} height={53} />
         </Link>
-        <LocaleToggle variant={variant} />
+        <DesktopLocaleToggle>
+          <LocaleToggle variant={variant} />
+        </DesktopLocaleToggle>
       </LeftSection>
       <RightSection>
+        <MobileLocaleToggle>
+          <LocaleToggle variant={variant} />
+        </MobileLocaleToggle>
         {isLoggedIn ? (
           <DropdownMenu
             label={userInfo && userInfo.name}
