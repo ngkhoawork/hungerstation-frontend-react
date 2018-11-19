@@ -28,7 +28,7 @@ const StyledHeader = styled.div`
 `;
 
 const DynamicFiltersSection = styled.div`
-  ${flex({ warp: 'wrap' })};
+  ${flex({ wrap: 'wrap' })};
 
   padding-bottom: 16px;
 `;
@@ -41,6 +41,13 @@ const FilterName = styled.span`
   letter-spacing: 0.44px;
   line-height: 16px;
   padding-right: 8px;
+  white-space: nowrap;
+
+  &:not(:last-child) {
+    &:after {
+      content: ',';
+    }
+  }
 `;
 
 const decorate = connect(
@@ -64,7 +71,9 @@ const Header = ({
     </StyledHeader>
 
     <DynamicFiltersSection>
-      {dynamicFilters.map(name => <FilterName key={name}>{name}</FilterName>)}
+      {dynamicFilters.map(name => (
+        <FilterName key={name}>{name.trim()}</FilterName>
+      ))}
     </DynamicFiltersSection>
   </Wrapper>
 );
