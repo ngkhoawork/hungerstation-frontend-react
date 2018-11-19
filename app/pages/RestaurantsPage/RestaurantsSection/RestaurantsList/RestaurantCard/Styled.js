@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { flex, mediaLess } from 'utils/css/styles';
-import BgPattern from 'images/bg-pattern.png';
+
+import { flex, mediaLess, sideMargin } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
+import BgPattern from 'images/bg-pattern.png';
 
 const StyledRestaurantCard = styled(Link)`
   ${flex({
@@ -15,7 +16,7 @@ const StyledRestaurantCard = styled(Link)`
   height: 176px;
   border-radius: 8px;
   margin-bottom: 24px;
-  margin-right: 24px;
+  ${sideMargin('end', '24px')};
   background-image: ${({ cover }) => cover || `url(${BgPattern})`};
   background-color: ${gold};
   background-size: 140%;
@@ -25,14 +26,14 @@ const StyledRestaurantCard = styled(Link)`
   text-decoration: none;
 
   &:nth-child(3n) {
-    margin-right: 0;
+    ${sideMargin('end', '0px')};
   }
 
   ${mediaLess(500)`
     min-width: 324px;
     background-image: ${({ cover }) => cover || `url(${BgPattern})`};
     background-color: ${gold};
-    margin-right: 0px;
+    ${sideMargin('end', '0px')};
     background-size: 100%;
   `};
 `;
@@ -50,6 +51,14 @@ const StyledBottomPart = styled.div`
   width: 100%;
   padding: 5px 15px 15px 15px;
   flex: 0.4;
+
+  div > p {
+    ${sideMargin('end', '18px')};
+  }
+
+  div > img {
+    ${sideMargin('end', '9px')};
+  }
 `;
 
 export { StyledRestaurantCard, StyledUpperPart, StyledBottomPart };

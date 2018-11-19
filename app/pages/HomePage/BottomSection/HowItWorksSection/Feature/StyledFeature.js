@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { prop, switchProp } from 'styled-tools';
 
-import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin, mediaSmall } from 'utils/css/styles';
 
-const StyledFeature = styled.div`
+const StyledFeature = styled.span`
   ${flex({}, true)};
   width: 224px;
   max-width: 224px;
@@ -27,7 +26,7 @@ const StyledFeature = styled.div`
 export const StyledFeatureIcon = styled.div`
   position: absolute;
   top: -6px;
-  ${switchProp(prop('theme.direction'), { ltr: 'left', rtl: 'right' })}: -68px;
+  ${sideMargin('start', ' -68px')};
   z-index: 100;
 `;
 

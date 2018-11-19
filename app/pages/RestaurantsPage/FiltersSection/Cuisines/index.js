@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { lighterGray, silverChalice } from 'utils/css/colors';
+import styled from 'styled-components';
+
+import { fuscousGray, silverChalice, lighterGray } from 'utils/css/colors';
+import { fontFamilyRegular } from 'utils/css/variables';
+import { sideMargin } from 'utils/css/styles';
+
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
@@ -13,6 +18,14 @@ import {
   StyledKitchenItemsWrapper,
 } from './Styled';
 import AllCuisinesItem from './AllCuisines';
+
+const Cuisine = styled.p`
+  font-family: ${fontFamilyRegular};
+  font-size: 14px;
+  color: ${({ color }) => color || fuscousGray};
+  ${sideMargin('start', '10px')};
+  ${sideMargin('start', '10px')};
+`;
 
 class Cuisines extends React.Component {
   state = { expanded: false };
@@ -58,12 +71,9 @@ class Cuisines extends React.Component {
                     <CircledItem color={lighterGray} width={28}>
                       <StyledIconImage src={image_thumb} alt="x" />
                     </CircledItem>
-                    <Paragraph
-                      color={isSelected ? 'black' : silverChalice}
-                      margin="0 0 0 10px"
-                    >
+                    <Cuisine color={isSelected ? 'black' : silverChalice}>
                       {name}
-                    </Paragraph>
+                    </Cuisine>
                   </Group>
                   {isSelected && <Icon name="check-mark-green" />}
                 </StyledItem>

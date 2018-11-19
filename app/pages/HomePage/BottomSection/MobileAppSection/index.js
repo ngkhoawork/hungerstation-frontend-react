@@ -2,9 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
-import { mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import { mediaMedium, sideMargin } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 import PhoneVisualSmall from 'images/phone-visual-small.png';
+import PhoneVisual from 'images/phone-visual.png';
 import Section from '../Section';
 import SectionDetails from '../SectionDetails';
 import ButtonWrapper from './ButtonWrapper';
@@ -12,8 +13,10 @@ import ButtonGroup from './ButtonGroup';
 import DetailsWrapper from './DetailsWrapper';
 
 const MobileBackgroundContainer = styled.div`
-  ${mediaMediumGreater`display: none;`};
-
+  background-image: url(${PhoneVisual});
+  background-size: 100%;
+  background-position: right bottom;
+  ${sideMargin('end', '-90px')};
   overflow: visible;
   position: relative;
   padding-top: 100%;

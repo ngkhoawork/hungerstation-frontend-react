@@ -3,7 +3,7 @@ import { string } from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { flex, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess, sideMargin } from 'utils/css/styles';
 import { fontFamilyLight } from 'utils/css/variables';
 import { forwardTo } from 'utils/route';
 import { selectCity, selectDistrict } from 'modules/location/selectors';
@@ -12,7 +12,7 @@ import Icon from 'components/Icon';
 const StyledLocation = styled.a`
   font-size: 16px;
   font-family: ${fontFamilyLight};
-  margin-left: 10px;
+  ${sideMargin('start', '10px')};
   cursor: pointer;
 `;
 

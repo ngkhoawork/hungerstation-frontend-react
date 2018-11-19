@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
-import PhoneVisual from 'images/phone-visual.png';
 import { wildSand } from 'utils/css/colors';
 
 export const StyledSection = styled.div`
@@ -9,7 +8,7 @@ export const StyledSection = styled.div`
   width: 100%;
   border-radius: 8px;
   margin-bottom: 50px;
-  padding: 0 0 40px;
+  padding: 0 0 0;
   position: relative;
   margin-top: 50px;
 
@@ -38,9 +37,7 @@ export const StyledSection = styled.div`
   ${mediaMediumGreater`
   ${({ hasBackground }) =>
     hasBackground && // eslint-disable-line indent
-    `background-image: url(${PhoneVisual});
-      background-size: 90%;
-      background-position: right bottom;
+    `
     `};
   `};
 
@@ -74,7 +71,7 @@ export const LeftSection = styled.div`
 export const RightSection = styled.div`
   width: 700px;
   z-index: 100;
-
+  padding-left: 7%;
   ${mediaMedium`width: 100%;`};
 
   ${({ css }) => css};

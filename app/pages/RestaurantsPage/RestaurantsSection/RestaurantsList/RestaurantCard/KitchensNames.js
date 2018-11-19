@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Row from 'components/Row';
 import Paragraph from 'components/Paragraph';
 import { silverChalice } from 'utils/css/colors';
+import { sideMargin } from 'utils/css/styles';
 
 const KitchensNames = ({ names }) => (
   <Row>
@@ -25,9 +26,11 @@ export default KitchensNames;
 const ParagraphWithPoint = styled(Paragraph)`
   &:before {
     content: '•';
-    margin-right: 2px;
+    ${sideMargin('end', '2px')};
   }
   height: 18px;
   padding: 0;
-  margin: 0px 8px 5px 0 !important;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  ${sideMargin('end', '8px')};
 `;

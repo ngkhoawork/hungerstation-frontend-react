@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { flex } from 'utils/css/styles';
+import { flex, sidePadding } from 'utils/css/styles';
 import { fontFamilyLight } from 'utils/css/variables';
 
 const StyledInput = styled.input`
@@ -13,7 +13,7 @@ const StyledInput = styled.input`
   font-family: ${fontFamilyLight};
   outline: none;
   border-bottom: 1px solid #f4f4f4;
-  padding-left: 24px;
+  ${sidePadding('start', '24px')};
 `;
 
 const SearchInput = ({ searchRestaurantAction }) => (

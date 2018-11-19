@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 import intl from 'utils/intlService';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
 import messages from './messages';
@@ -18,7 +18,7 @@ const StyledBack = styled.div`
 `;
 
 const Label = styled.div`
-  margin-left: 5px;
+  ${sideMargin('start', '5px')};
 `;
 
 const Back = ({ onClick }) => (

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+
 import { wildSand } from 'utils/css/colors';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 
 const StyledExpandActionWrapper = styled.div`
   ${flex({ align: 'center' })};
@@ -10,7 +11,7 @@ const StyledExpandActionWrapper = styled.div`
   cursor: pointer;
 
   img {
-    margin: 0 0 0 10px;
+    ${sideMargin('start', '10px')};
     transform: rotate(${({ isExpanded }) => (isExpanded ? 180 : 0)}deg);
   }
 `;

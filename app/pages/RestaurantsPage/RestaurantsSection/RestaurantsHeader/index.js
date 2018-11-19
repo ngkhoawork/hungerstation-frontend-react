@@ -2,14 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import intl from 'utils/intlService';
 
-import { jade } from 'utils/css/colors';
-import { flex, mediaLess } from 'utils/css/styles';
+import { jade, fuscousGray } from 'utils/css/colors';
+import { flex, mediaLess, sideMargin } from 'utils/css/styles';
+import { fontFamilyRegular } from 'utils/css/variables';
 
 import { selectVisibleRestaurants } from 'modules/restaurants/selectors';
 import Paragraph from 'components/Paragraph';
 import SquaredItem from 'components/SquaredItem';
 import LocationInput from './LocationInput';
+
+import messages from './messages';
 
 const Wrapper = styled.div`
   ${flex({ align: 'center', justify: 'space-between' })};
@@ -24,7 +28,12 @@ const Wrapper = styled.div`
 const StyledTitle = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
 `;
-
+const Header = styled.p`
+  font-family: ${fontFamilyRegular};
+  font-size: 30px;
+  color: ${fuscousGray};
+  ${sideMargin('start', '11px')};
+`;
 const decorate = connect(state => ({
   itemsFound: selectVisibleRestaurants(state).length,
 }));
@@ -37,9 +46,7 @@ const RestaurantsHeader = ({ itemsFound }) => (
           {itemsFound}
         </Paragraph>
       </SquaredItem>
-      <Paragraph size={30} margin="0 0 0 11px">
-        Restaurants found at
-      </Paragraph>
+      <Header>{intl.formatMessage(messages.header)}</Header>
     </StyledTitle>
 
     <LocationInput />

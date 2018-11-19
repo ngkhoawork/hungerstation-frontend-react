@@ -26,6 +26,21 @@ const styles = () => ({
   },
 });
 
+export const sideProperty = property => {
+  const map = {
+    ltr: { start: `${property}left`, end: `${property}right` },
+    rtl: { start: `${property}right`, end: `${property}left` },
+  };
+
+  return (side, value) => props => css`
+    ${map[props.theme.direction][side]}: ${value};
+  `;
+};
+
+export const sidePosition = sideProperty('');
+export const sideMargin = sideProperty('margin-');
+export const sidePadding = sideProperty('padding-');
+
 export const flex = (
   { align, justify, direction, wrap, grow, shrink, basis } = {},
   display = true,
