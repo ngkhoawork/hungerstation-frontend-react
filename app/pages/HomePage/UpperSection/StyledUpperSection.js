@@ -26,7 +26,7 @@ const StyledUpperSection = styled.div`
 
   ${mediaSmall`
     background-image: url(${BackgroundMobile});
-    background-size: 100%;
+    background-size: cover;
   `};
 `;
 
