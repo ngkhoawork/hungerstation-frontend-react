@@ -22,7 +22,7 @@ const ModalFrame = ({
   <Container {...props}>
     <Header style={headerStyle} css={headerCss}>
       <Title>{title}</Title>
-      <Description style={{ margin: '3px 0' }}>{subtitle}</Description>
+      <Description style={{ marginTop: 16 }}>{subtitle}</Description>
       <Icon name="close-modal" onClick={onCancel} style={CloseBtnStyle} />
     </Header>
     {children}
@@ -55,7 +55,7 @@ const fullscreen = css`
 
 const Container = styled.div`
   position: relative;
-  padding: 20px 20px 30px;
+  padding: 28px 40px 30px 25px;
   background: white;
   width: max-content;
   ${flex({ direction: 'column' })};
@@ -72,7 +72,8 @@ const Container = styled.div`
 
 const Header = styled.div`
   align-self: center;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
   text-align: center;
   width: calc(100% - 40px);
   margin-right: 40px;
@@ -84,6 +85,6 @@ const Header = styled.div`
 
 const CloseBtnStyle = {
   position: 'absolute',
-  top: '20px',
-  right: '20px',
+  top: '16px',
+  right: '16px',
 };
