@@ -10,13 +10,30 @@ import StyledLabel from './StyledLabel';
 import StyledInput from './StyledInput';
 
 class OrderItem extends React.Component {
+  constructor(props) {
+    super();
+    this.state = { value: props.value };
+    this.toggleFilterAction = debounce(props.toggleFilterAction, 200);
+  }
+
+  static getDerivedStateFromProps({ value }, state) {
+    if (value !== state.prevPropsValue) {
+      return { value, prevPropsValue: value };
+    }
+
+    return null;
+  }
+
   handleOnChange = ({ target: { value } }) => {
-    const { toggleFilterAction, filterKey } = this.props;
-    debounce(toggleFilterAction({ filterKey, value: +value }), 100);
+    this.setState({ value });
+    const { filterKey } = this.props;
+    this.toggleFilterAction({ filterKey, value: +value });
   };
 
   render() {
-    const { label, range, value } = this.props;
+    const { label, range } = this.props;
+    const { value } = this.state;
+
     return (
       <StyledOrderItem>
         <StyledSliderContainer>
