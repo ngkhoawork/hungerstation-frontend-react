@@ -47,7 +47,7 @@ class OrderDetailPageHOC extends React.Component {
       };
 
       props.setBranchId(params.branchId);
-      props.fetchRestaurant(params.branchId);
+      props.fetchRestaurant(params);
       props.fetchAddresses(params.branchId);
       props.selectCity(order.city);
       props.selectDistrict({

@@ -1,3 +1,15 @@
+export const getBranchDeliveryConditionsQuery = `query GetBranchDeliveryConditions(
+  $branchId: Int!,
+  $districtId: Int,
+) {
+  branch_delivery(branch_id: $branchId, local_id: $districtId) {
+    id
+    delivery_estimation_time
+    minimum_order
+    delivery_fee
+ }
+}`;
+
 export const getBranchQuery = `query GetBranch($id: Int!) {
   branch(id: $id) {
     id

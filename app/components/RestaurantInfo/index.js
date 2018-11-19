@@ -47,7 +47,7 @@ const RestaurantInfo = ({ restaurant, ...props }) => (
           ))}
         </Group>
         <DeliveryInfo
-          {...getDeepProp(restaurant, ['delivery_conditions', 0])}
+          {...getDeepProp(props, ['delivery_conditions', 0])}
           style={{ margin: '10px 0' }}
         />
       </StyledDetails>

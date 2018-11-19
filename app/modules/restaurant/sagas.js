@@ -1,23 +1,36 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select, all } from 'redux-saga/effects';
+import { fetchLocationSaga } from 'modules/location/sagas';
+import { selectDistrictId } from 'modules/location/selectors';
 import {
   fetchRestaurant,
   fetchRestaurantRequest,
   fetchRestaurantSuccess,
   fetchRestaurantError,
 } from './actions';
-import { getBranch } from './api';
+import { getBranch, getDeliveryConditions } from './api';
 
-export function* fetchRestaurantSaga({ payload: id }) {
+export function* fetchRestaurantSaga({ payload }) {
   try {
     yield put(fetchRestaurantRequest());
 
-    const { branch } = yield call(getBranch, id);
+    let districtId = yield select(selectDistrictId);
+
+    if (!districtId) {
+      yield call(fetchLocationSaga, { payload });
+      districtId = yield select(selectDistrictId);
+    }
+
+    const [{ branch }, { branch_delivery }] = yield all([
+      call(getBranch, payload.branchId),
+      call(getDeliveryConditions, { ...payload, districtId }),
+    ]);
 
     // console.log(JSON.parse(JSON.stringify(branch)));
 
     // concat products and menuitems, sort by weight, convert prices to float
     const restaurant = {
       ...branch,
+      delivery_conditions: branch_delivery,
       menu: {
         menugroups: (branch.menu.menugroups || [])
           .sort((mgA, mgB) => mgA.weight - mgB.weight)
@@ -48,8 +61,8 @@ export function* fetchRestaurantSaga({ payload: id }) {
 
     yield put(fetchRestaurantSuccess({ restaurant }));
   } catch (e) {
+    // console.log(e);
     yield put(fetchRestaurantError());
-    throw e;
   }
 }
 

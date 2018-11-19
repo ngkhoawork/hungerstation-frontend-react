@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
+import { getDeepProp } from 'utils/helpers';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
 import CartContainer from 'containers/CartContainer';
@@ -83,15 +84,15 @@ class RestaurantPage extends React.Component {
     const { menu, ...info } = restaurant;
     const { selectedMenuGroup } = this.state;
 
-    if (!menu.menugroups.length) {
+    if (!selectedMenuGroup) return null;
+
+    if (!getDeepProp(menu, ['menugroups', 'length'])) {
       return (
         <PageNotice>
           {intl.formatMessage(messages.noMenu, { name: info.restaurant.name })}
         </PageNotice>
       );
     }
-
-    if (!selectedMenuGroup) return null;
 
     // const shownProducts = selectedMenuGroup.products.find(isDayTimeMatch);
     const shownProducts = selectedMenuGroup.products;

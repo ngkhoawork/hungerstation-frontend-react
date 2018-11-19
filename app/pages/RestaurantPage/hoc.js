@@ -28,13 +28,13 @@ class RestaurantPageHOC extends React.Component {
           district={district}
           onSubmit={() => {
             hideModal();
-            this.props.fetchRestaurant(branchId);
+            this.props.fetchRestaurant({ branchId, city, district });
           }}
         />
       );
       this.props.showModal(LocationOptionsHOC);
     } else {
-      this.props.fetchRestaurant(branchId);
+      this.props.fetchRestaurant({ branchId, city, district });
     }
 
     if (restaurant.id && branchId !== restaurant.id) this.props.emptyCart();
