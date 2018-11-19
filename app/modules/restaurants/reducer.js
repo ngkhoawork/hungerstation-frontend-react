@@ -106,10 +106,13 @@ function reducer(state = initialState, action) {
         map.updateIn(['kitchens'], map => map.clear()),
       );
 
-    case resetChosenFiltersAction.type:
-      return state.update('chosenFilters', () =>
-        fromJS(INITIAL_CHOSEN_FILTERS_STATE),
-      );
+    case resetChosenFiltersAction.type: {
+      const minOrder = state.getIn(['minOrderRange', 'max']);
+
+      return state
+        .update('chosenFilters', () => fromJS(INITIAL_CHOSEN_FILTERS_STATE))
+        .updateIn(['chosenFilters', 'min_order'], () => minOrder);
+    }
 
     case saveFiltersStageAction.type:
       return state.update('filtersStage', () => state.get('chosenFilters'));
