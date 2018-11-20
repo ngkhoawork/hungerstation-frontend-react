@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getDeepProp } from 'utils/helpers';
+import { getDeepProp, clearUndefs } from 'utils/helpers';
 import { saveCurrentLocationAction } from 'modules/location/actions';
+import { selectDistrict } from 'modules/location/selectors';
 import { fetchAddresses } from 'modules/address/actions';
 import { setBranchId } from 'modules/restaurant/actions';
 import {
+  selectPrimaryAddress,
   selectAddresses,
   selectAddressesLoading,
 } from 'modules/address/selectors';
@@ -17,10 +19,10 @@ import {
   selectOrderAmount,
 } from 'containers/CartContainer/selectors';
 import { selectCheckoutState } from 'modules/checkout/selectors';
-import { setNote } from 'modules/checkout/actions';
+import { setNote, createOrder, validateOrder } from 'modules/checkout/actions';
 import InsufficientOrderAmount from 'containers/InsufficientOrderAmount';
 import AddAddressContainer from 'containers/AddAddressContainer';
-import IneligibleAddress from 'components/IneligibleAddress';
+// import IneligibleAddress from 'components/IneligibleAddress';
 import CheckoutPage from './component';
 
 class CheckoutPageHOC extends React.Component {
@@ -39,7 +41,7 @@ class CheckoutPageHOC extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { addresses, isLoadingAddresses } = this.props;
+    const { addresses, isLoadingAddresses, checkoutState } = this.props;
 
     if (
       (!prevProps.addresses && addresses && !addresses.length) ||
@@ -62,6 +64,12 @@ class CheckoutPageHOC extends React.Component {
     } else if (orderAmount && orderAmount < minOrderAmount) {
       this.props.showModal(InsufficientOrderAmount);
     }
+
+    // waiting for delivery options to refetch on address select and checking for change
+    const { deliveryOptions } = checkoutState;
+    if (prevProps.checkoutState.deliveryOptions !== deliveryOptions) {
+      this.handleOrderChange();
+    }
   }
 
   componentWillUnmount() {
@@ -70,28 +78,66 @@ class CheckoutPageHOC extends React.Component {
 
   // TODO: need to get ineligible addresses as well from the backend to be able
   // to take one of them for editing.
-  handleIneligibleAddrEdit = () => {
-    // this.props.hideModal();
-    this.props.showModal(AddAddressContainer);
-  };
+  // handleIneligibleAddrEdit = () => {
+  //   // this.props.hideModal();
+  //   this.props.showModal(AddAddressContainer);
+  // };
 
   // TODO: not quite clear where should this go to...??
-  handleIneligibleAddrSearch = () => {
-    const { history, match } = this.props;
-    const { district, city } = match.params;
-    this.props.hideModal();
+  // handleIneligibleAddrSearch = () => {
+  //   const { history, match } = this.props;
+  //   const { district, city } = match.params;
+  //   this.props.hideModal();
 
-    history.push(`/restaurants/${city}/${district}`);
+  //   history.push(`/restaurants/${city}/${district}`);
+  // };
+
+  // handleIneligibleAddress = () => {
+  //   const IneligibleAddressHOC = () => (
+  //     <IneligibleAddress
+  //       onEditClick={this.handleIneligibleAddrEdit}
+  //       onSearchClick={this.handleIneligibleAddrSearch}
+  //     />
+  //   );
+  //   this.props.showModal(IneligibleAddressHOC);
+  // };
+
+  generateOrderPayload = () => {
+    const {
+      match,
+      district,
+      primaryAddress,
+      purchases,
+      checkoutState,
+    } = this.props;
+    const { coupon, note, selectedDeliveryOption } = checkoutState;
+
+    return clearUndefs({
+      branchId: parseInt(match.params.branchId, 10),
+      districtId: parseInt(district.get('id'), 10),
+      addressId: parseInt(primaryAddress.id, 10),
+      deliveryOptionId: parseInt(selectedDeliveryOption.key, 10),
+      coupon: coupon && coupon.isValid ? coupon.value : undefined,
+      note: note || undefined,
+      orderItems: purchases.map(item => ({
+        menuitem_id: parseInt(item.product.id, 10),
+        count: item.quantity,
+        orderitem_link_modifiers: item.additions.map(({ id }) =>
+          parseInt(id, 10),
+        ),
+      })),
+    });
   };
 
-  handleIneligibleAddress = () => {
-    const IneligibleAddressHOC = () => (
-      <IneligibleAddress
-        onEditClick={this.handleIneligibleAddrEdit}
-        onSearchClick={this.handleIneligibleAddrSearch}
-      />
-    );
-    this.props.showModal(IneligibleAddressHOC);
+  handleOrderChange = () =>
+    this.props.validateOrder(this.generateOrderPayload());
+
+  handleOrderCreate = () => {
+    const { isLoadingOrderValidate, orderErrors } = this.props.checkoutState;
+
+    if (!isLoadingOrderValidate && !orderErrors) {
+      this.props.createOrder(this.generateOrderPayload());
+    }
   };
 
   render() {
@@ -104,6 +150,8 @@ class CheckoutPageHOC extends React.Component {
         deliveryOptions={checkoutState.deliveryOptions}
         note={checkoutState.note}
         onNoteChange={this.props.setNote}
+        onOrderCreate={this.handleOrderCreate}
+        onOrderChange={this.handleOrderChange}
       />
     );
   }
@@ -116,6 +164,8 @@ CheckoutPageHOC.propTypes = {
   purchases: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
   checkoutState: PropTypes.object.isRequired,
+  district: PropTypes.object,
+  primaryAddress: PropTypes.object,
   addresses: PropTypes.array,
   isLoadingAddresses: PropTypes.bool,
   fetchAddresses: PropTypes.func.isRequired,
@@ -124,6 +174,8 @@ CheckoutPageHOC.propTypes = {
   saveCurrentLocationAction: PropTypes.func.isRequired,
   setBranchId: PropTypes.func.isRequired,
   setNote: PropTypes.func.isRequired,
+  createOrder: PropTypes.func.isRequired,
+  validateOrder: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -134,6 +186,8 @@ export default connect(
     addresses: selectAddresses,
     isLoadingAddresses: selectAddressesLoading,
     checkoutState: selectCheckoutState,
+    district: selectDistrict,
+    primaryAddress: selectPrimaryAddress,
   }),
   {
     showModal,
@@ -142,5 +196,7 @@ export default connect(
     saveCurrentLocationAction,
     setBranchId,
     setNote,
+    createOrder,
+    validateOrder,
   },
 )(CheckoutPageHOC);

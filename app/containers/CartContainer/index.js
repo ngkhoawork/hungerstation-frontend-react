@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { getStorageItem } from 'utils/localStorage';
-import { clearUndefs } from 'utils/helpers';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
 import { selectCheckoutState } from 'modules/checkout/selectors';
-import { createOrder } from 'modules/checkout/actions';
-import { selectPrimaryAddress } from 'modules/address/selectors';
 import { selectRestaurantState } from 'modules/restaurant/selectors';
 import { getLocation } from 'modules/location/actions';
 import { selectDistrict, selectCity } from 'modules/location/selectors';
@@ -39,34 +36,6 @@ class CartContainer extends React.Component {
     this.props.hideModal();
   };
 
-  handleOrderCreate = () => {
-    const {
-      params,
-      district,
-      primaryAddress,
-      purchases,
-      checkoutState,
-    } = this.props;
-    const { coupon, note, selectedDeliveryOption } = checkoutState;
-    const payload = clearUndefs({
-      branchId: parseInt(params.branchId, 10),
-      districtId: parseInt(district.get('id'), 10),
-      addressId: parseInt(primaryAddress.id, 10),
-      deliveryOptionId: parseInt(selectedDeliveryOption.key, 10),
-      coupon: coupon && coupon.isValid ? coupon.id : undefined,
-      note: note || undefined,
-      orderItems: purchases.map(item => ({
-        menuitem_id: parseInt(item.product.id, 10),
-        count: item.quantity,
-        orderitem_link_modifiers: item.additions.map(({ id }) =>
-          parseInt(id, 10),
-        ),
-      })),
-    });
-
-    this.props.createOrder(payload);
-  };
-
   render() {
     const {
       city,
@@ -74,6 +43,7 @@ class CartContainer extends React.Component {
       checkoutState: { selectedDeliveryOption: delivery, coupon },
       restaurant,
       params,
+      onOrderCreate,
       ...props
     } = this.props;
     let discount = 0;
@@ -100,7 +70,7 @@ class CartContainer extends React.Component {
         branch={restaurant}
         isCheckout={this.isCheckout}
         onItemEditClick={this.handleEditClick}
-        onCartSubmit={this.isCheckout ? this.handleOrderCreate : undefined}
+        onCartSubmit={this.isCheckout ? onOrderCreate : undefined}
       />
     );
   }
@@ -114,7 +84,6 @@ export default compose(
       purchases: selectCartPurchases(state),
       orderAmount: selectOrderAmount(state),
       checkoutState: selectCheckoutState(state),
-      primaryAddress: selectPrimaryAddress(state),
       city: selectCity(state),
       district: selectDistrict(state),
     }),
@@ -125,7 +94,6 @@ export default compose(
       getLocation,
       showModal,
       hideModal,
-      createOrder,
     },
   ),
 )(CartContainer);
