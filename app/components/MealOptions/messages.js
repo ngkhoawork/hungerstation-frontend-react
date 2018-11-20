@@ -13,9 +13,9 @@ export default defineMessages({
     id: 'app.components.MealOptions.required',
     defaultMessage: 'Required',
   },
-  selectMinOne: {
-    id: 'app.components.MealOptions.selectMinOne',
-    defaultMessage: '1 to {max} Required',
+  selectMin: {
+    id: 'app.components.MealOptions.selectMin',
+    defaultMessage: '{min} to {max} Required',
   },
   selectMax: {
     id: 'app.components.MealOptions.selectMax',

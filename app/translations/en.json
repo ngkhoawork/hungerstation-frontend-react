@@ -80,7 +80,7 @@
   "app.components.MealOptions.addToCart": "Add to cart",
   "app.components.MealOptions.total": "Total",
   "app.components.MealOptions.required": "Required",
-  "app.components.MealOptions.selectMinOne": "1 to {max} Required",
+  "app.components.MealOptions.selectMin": "{min} to {max} Required",
   "app.components.MealOptions.selectMax": "Select up to {max}",
   "app.components.MealOptions.select": "Tap on item to include",
   "app.components.MealOptions.selectOne": "Select one",

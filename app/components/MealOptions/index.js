@@ -63,10 +63,10 @@ class MealOptions extends Component {
           };
         } else {
           let hint = 'select';
-          if (min === 1 && max > 1) hint = 'selectMinOne';
+          if (min > 0 && max > 1) hint = 'selectMin';
           if (min === 0 && max > 0) hint = 'selectMax';
 
-          checkboxes[group.id] = { ...group, checked: {}, max, hint };
+          checkboxes[group.id] = { ...group, checked: {}, min, max, hint };
         }
       });
     }
@@ -188,11 +188,11 @@ class MealOptions extends Component {
             </Section>
           ) : null}
           {values(checkboxes).map(
-            ({ id, name, max, hint, modifiers, checked }) => (
+            ({ id, name, min, max, hint, modifiers, checked }) => (
               <Section
                 key={id}
                 title={name}
-                hint={intl.formatMessage(messages[hint], { max })}
+                hint={intl.formatMessage(messages[hint], { min, max })}
                 isCollapsible
               >
                 <CheckboxSelect
