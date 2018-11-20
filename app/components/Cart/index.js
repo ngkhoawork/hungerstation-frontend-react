@@ -42,7 +42,6 @@ const Cart = ({
   ]);
   const name = getDeepProp(branch, ['restaurant', 'name']);
   let from = `${getDeepProp(branch, ['restaurant', 'name'])}, ${branch.name}`;
-
   if (from.length > 45) from = getDeepProp(branch, ['restaurant', 'name']);
 
   const title = intl.formatMessage(
@@ -155,7 +154,7 @@ const Cart = ({
           isTotal
           label={intl.formatMessage(messages.total)}
           amount={
-            isCheckout
+            isCheckout || isOrderDetail
               ? orderAmount + (deliveryFee || 0) - discount
               : orderAmount
           }
