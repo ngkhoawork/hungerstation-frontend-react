@@ -30,80 +30,46 @@ export const getCreditCardsQuery = `query GetCreditCards {
   }
 }`;
 
-export const validateCouponQuery = `query ValidateCoupon($code: String!) {
-  coupon_validate(coupon: $code) {
-    id
-    title
-    offer_type
-    country_id
-    description
-    start_date
-    end_date
-    restaurants
-    available
-    cutbacks {
-      id
-      cutback_amount
-      minimum
-      percentage
-      delivery_fee_percentage_discount
-      maximum
-      offer_id
+export const validateOrderMutation = `mutation ValidateOrder (
+  $branchId: Int!,
+  $districtId: Int!,
+  $addressId: Int!,
+  $deliveryOptionId: Int!,
+  $coupon: String,
+  $note: String,
+) {
+  validateOrder(
+    note: $note
+    address_id: $addressId
+    branch_id: $branchId
+    local_id: $districtId
+    delivery_option: $deliveryOptionId
+    coupon: $coupon
+    orderitems: $orderItems
+  ) {
+    errors_with_keys {
+      key
+      value
     }
-    discounts {
-      id
-      percentage
-      to_menu_thing_id
-      from_menu_thing_id
-      from_menu_thing_type
-      threshold_from
-      threshold_to
-      limit_count_per_order
-      offer_id
+    fee
+    discount
+    total_without_fee_without_discount
+    preferred_payment_method {
+      method
+      credit_card_id
+    }
+    promotion {
+      message
+      terms_and_conditions
+    }
+    coupon
+    coupon_message
+    coupon_terms_and_conditions {
+      message
+      terms_and_conditions
     }
   }
 }`;
-
-// const paymentInfoType = `type PaymentInfo {
-//   payment_method: String!
-//   payment_type: String
-//   id: Int
-//   gateway_type: String
-//   token: String
-// }`;
-
-// const orderItemLinkCheckOptionType = `type OrderItemLinkCheckOption {
-
-// }`;
-
-// const orderItemOptionsType = `type OrderItemOption {
-//   radiooptionitem_id: [Strings]
-//   checkoption_id: [Strings]
-//   orderitemlinkcheckoptions: [OrderItemLinkCheckOption]
-// }`;
-
-// const orderItemType = `type OrderItem {
-//   menuitem_id: Int!
-//   count: Int!
-//   note: String
-//   orderitemlinkradiooptionitems: [OrderItemOption]
-// }`;
-
-// $paymentInfo: [PaymentInfo!]!,
-//   $orderItems: [OrderItem!]!,
-
-// $orderItems: [{
-//   menuitem_id: Int!
-//   count: Int!
-//   orderitem_link_modifiers: [Int]
-//   total_cost: Float
-// }!]!
-
-// orderitems: [{
-//   menuitem_id: 106299
-//   count: 2
-//   orderitem_link_modifiers: []
-// }]
 
 export const createOrderMutation = `mutation CreateOrder (
   $branchId: Int!,

@@ -20,18 +20,22 @@ export const fetchCreditCardsSuccess = createAction(
   payload => payload,
 );
 
-export const validateCoupon = createAction(
-  'checkout/VALIDATE_COUPON',
+export const validateOrderRequest = createAction(
+  'checkout/VALIDATE_ORDER_REQUEST',
+);
+
+export const validateOrder = createAction(
+  'checkout/VALIDATE_ORDER',
   payload => payload,
 );
 
-export const validateCouponSuccess = createAction(
-  'checkout/VALIDATE_COUPON_SUCCESS',
+export const validateOrderSuccess = createAction(
+  'checkout/VALIDATE_ORDER_SUCCESS',
   payload => payload,
 );
 
-export const validateCouponError = createAction(
-  'checkout/VALIDATE_COUPON_ERROR',
+export const validateOrderError = createAction(
+  'checkout/VALIDATE_ORDER_ERROR',
   payload => payload,
 );
 
@@ -54,6 +58,11 @@ export const createOrder = createAction(
 
 export const createOrderSuccess = createAction(
   'checkout/CREATE_ORDER_SUCCESS',
+  payload => payload,
+);
+
+export const setCoupon = createAction(
+  'checkout/SET_COUPON',
   payload => payload,
 );
 

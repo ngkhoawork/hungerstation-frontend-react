@@ -6,9 +6,10 @@ import {
   fetchDeliveryOptionsSuccess,
   fetchCreditCards,
   // fetchCreditCardsSuccess,
-  validateCoupon,
-  validateCouponSuccess,
-  validateCouponError,
+  validateOrder,
+  validateOrderRequest,
+  validateOrderSuccess,
+  validateOrderError,
   createOrder,
   createOrderSuccess,
 } from './actions';
@@ -39,31 +40,46 @@ export function* fetchCreditCardsSaga() {
   }
 }
 
-export function* validateCouponSaga({ payload }) {
+export function* validateOrderSaga({ payload }) {
   try {
+    yield put(validateOrderRequest());
+
     const { accessToken } = yield select(makeSelectTokens);
-    const { coupon_validate } = yield call(
-      api.validateCoupon,
+    const { validateOrder } = yield call(
+      api.validateOrder,
       accessToken,
       payload,
     );
 
-    yield put(validateCouponSuccess(coupon_validate));
+    yield put(validateOrderSuccess(validateOrder));
   } catch (e) {
-    yield put(validateCouponError());
+    yield put(validateOrderError(validateOrder));
     // console.log(e);
   }
 }
 
 export function* createOrderSaga({ payload }) {
   try {
+    yield put(validateOrderRequest());
+
     const { accessToken } = yield select(makeSelectTokens);
+    const { validateOrder } = yield call(
+      api.validateOrder,
+      accessToken,
+      payload,
+    );
+    if (validateOrder.errors_with_keys.length) {
+      yield put(validateOrderError(validateOrder));
+      return;
+    }
+
     const { createOrder } = yield call(api.createOrder, accessToken, payload);
 
     yield put(createOrderSuccess(createOrder));
 
     yield call(forwardTo, `/my-orders/${createOrder.id}`);
   } catch (e) {
+    yield put(validateOrderError(validateOrder));
     // console.log(e);
   }
 }
@@ -71,6 +87,6 @@ export function* createOrderSaga({ payload }) {
 export default function* watchAddressActionsSaga() {
   yield takeLatest(fetchDeliveryOptions.type, fetchDeliveryOptionsSaga);
   yield takeLatest(fetchCreditCards.type, fetchCreditCardsSaga);
-  yield takeLatest(validateCoupon.type, validateCouponSaga);
+  yield takeLatest(validateOrder.type, validateOrderSaga);
   yield takeLatest(createOrder.type, createOrderSaga);
 }

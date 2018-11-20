@@ -1,17 +1,19 @@
 import {
   selectDeliveryOption,
   selectPaymentOption,
+  setCoupon,
   removeCoupon,
   fetchDeliveryOptionsSuccess,
   fetchCreditCardsSuccess,
-  validateCouponSuccess,
-  validateCouponError,
+  validateOrderRequest,
+  validateOrderSuccess,
+  validateOrderError,
   createOrderSuccess,
   setNote,
 } from './actions';
 
 export const initialState = {
-  selectedPaymentOption: { cash: true },
+  selectedPaymentOption: { id: 'cash' },
   note: '',
 };
 
@@ -40,18 +42,29 @@ function reducer(state = initialState, { type, payload }) {
     case fetchCreditCardsSuccess.type:
       return Object.assign({}, state, { cards: payload });
 
-    case validateCouponSuccess.type:
+    case validateOrderRequest.type:
+      return Object.assign({}, state, { isLoadingOrderValidate: true });
+
+    case validateOrderSuccess.type:
       return Object.assign({}, state, {
-        coupon: { ...payload, isValid: true },
+        isLoadingOrderValidate: false,
+        orderErrors: null,
+        discount: payload.discount,
+        coupon: { value: payload.coupon, isValid: true },
       });
 
-    case validateCouponError.type:
+    case validateOrderError.type:
       return Object.assign({}, state, {
-        coupon: { ...payload, isValid: false },
+        isLoadingOrderValidate: false,
+        orderErrors: payload.errors_with_keys,
+        coupon: { value: payload.coupon, isValid: false },
       });
+
+    case setCoupon.type:
+      return Object.assign({}, state, { coupon: { value: payload } });
 
     case removeCoupon.type:
-      return Object.assign({}, state, { coupon: undefined });
+      return Object.assign({}, state, { coupon: undefined, discount: 0 });
 
     case setNote.type:
       return Object.assign({}, state, { note: payload });
