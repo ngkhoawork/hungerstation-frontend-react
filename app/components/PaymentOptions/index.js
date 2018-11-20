@@ -25,8 +25,8 @@ const PaymentOptions = ({
     ) : null}
     <PaymentSection title={intl.formatMessage(messages.otherOptions)}>
       <OptionContainer
-        onSelect={() => onOptionSelect({ cash: true })}
-        isSelected={selectedOption.cash}
+        onSelect={() => onOptionSelect({ id: 'cash' })}
+        isSelected={selectedOption.id === 'cash'}
         icon="cash"
         title={intl.formatMessage(messages.cashOnDelivery)}
       />

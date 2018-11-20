@@ -138,10 +138,10 @@ class Coupon extends React.Component {
               primary={false}
               lift={false}
               style={{ border, flexShrink: 0, margin: '10px 0 10px 20px' }}
-              onClick={coupon.id ? this.handleDelete : this.handleSubmit}
+              onClick={coupon.value ? this.handleDelete : this.handleSubmit}
             >
               {intl.formatMessage(
-                messages[`${coupon.id ? 'delete' : 'add'}Coupon`],
+                messages[`${coupon.value ? 'delete' : 'add'}Coupon`],
               )}
             </Button>
           </Content>
