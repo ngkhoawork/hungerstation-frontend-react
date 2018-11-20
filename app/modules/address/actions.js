@@ -12,8 +12,27 @@ export const fetchAddressesSuccess = createAction(
   payload => payload,
 );
 
+export const validateAddress = createAction(
+  'address/VALIDATE_ADDRESS',
+  payload => payload,
+);
+
+export const validateAddressRequest = createAction(
+  'address/VALIDATE_ADDRESS_REQUEST',
+);
+
+export const validateAddressSuccess = createAction(
+  'address/VALIDATE_ADDRESS_SUCCESS',
+  payload => payload,
+);
+
 export const saveAddress = createAction(
   'address/SAVE_ADDRESS',
+  payload => payload,
+);
+
+export const saveAddressSuccess = createAction(
+  'address/SAVE_ADDRESS_SUCCESS',
   payload => payload,
 );
 

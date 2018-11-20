@@ -1,6 +1,7 @@
 export const getAddressesQuery = `query GetAddresses($branchId: Int!) {
   addresses(branch_id: $branchId) {
     id
+    branch_eligibility
     address_details {
       id
       name
@@ -28,6 +29,20 @@ export const getAddressesQuery = `query GetAddresses($branchId: Int!) {
   }
 }`;
 
+export const validateAddressQuery = `mutation ValidateAddress(
+  $branchId: Int!,
+  $lat: Float!,
+  $lng: Float!,
+) {
+  validateAddress(
+    branch_id: $branchId
+    latitude: $lat
+    longitude: $lng
+  ) {
+    message
+  }
+}`;
+
 export const createAddressMutation = `mutation CreateAddress(
   $latitude: Float!,
   $longitude: Float!,
@@ -49,6 +64,30 @@ export const createAddressMutation = `mutation CreateAddress(
     line1: $line1
   ) {
     id
+    address_details {
+      id
+      name
+      description
+      latitude
+      longitude
+      specific_type
+      local {
+        id
+        name
+        city {
+          id
+          name
+        }
+      }
+      dynamic_field {
+        building_number
+        street
+        apartment_number
+        line1
+        floor_number
+        block
+      }
+    }
   }
 }`;
 
@@ -75,5 +114,29 @@ export const updateAddressMutation = `mutation UpdateAddress(
     line1: $line1
   ) {
     id
+    address_details {
+      id
+      name
+      description
+      latitude
+      longitude
+      specific_type
+      local {
+        id
+        name
+        city {
+          id
+          name
+        }
+      }
+      dynamic_field {
+        building_number
+        street
+        apartment_number
+        line1
+        floor_number
+        block
+      }
+    }
   }
 }`;

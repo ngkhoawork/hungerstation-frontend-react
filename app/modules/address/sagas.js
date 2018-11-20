@@ -1,14 +1,25 @@
-import { delay } from 'redux-saga';
 import { call, put, takeLatest, takeEvery, select } from 'redux-saga/effects';
 import { makeSelectTokens } from 'modules/auth/selectors';
+import { selectRestaurantState } from 'modules/restaurant/selectors';
+import { fetchDeliveryOptions } from 'modules/checkout/actions';
 import {
   addressRequest,
   fetchAddresses,
   fetchAddressesSuccess,
   saveAddress,
+  saveAddressSuccess,
   addressError,
+  validateAddress,
+  validateAddressRequest,
+  validateAddressSuccess,
 } from './actions';
 import * as api from './api';
+
+const parseAddress = ({ address_details, ...rest }) => ({
+  ...address_details[0],
+  ...address_details[0].dynamic_field,
+  ...rest,
+});
 
 export function* fetchAddressesSaga({ payload }) {
   try {
@@ -16,11 +27,7 @@ export function* fetchAddressesSaga({ payload }) {
 
     const { accessToken } = yield select(makeSelectTokens);
     const { addresses } = yield call(api.getAddresses, accessToken, payload);
-    const parsedAddresses = addresses.map(({ id, address_details }) => ({
-      ...address_details[0],
-      ...address_details[0].dynamic_field,
-      id,
-    }));
+    const parsedAddresses = addresses.map(parseAddress);
 
     yield put(fetchAddressesSuccess(parsedAddresses));
   } catch (e) {
@@ -29,15 +36,40 @@ export function* fetchAddressesSaga({ payload }) {
   }
 }
 
+export function* validateAddressSaga({ payload }) {
+  try {
+    yield put(validateAddressRequest());
+
+    const { accessToken } = yield select(makeSelectTokens);
+    const { validateAddress } = yield call(
+      api.validateAddress,
+      accessToken,
+      payload,
+    );
+
+    yield put(validateAddressSuccess(validateAddress.message));
+  } catch (e) {
+    // console.log(e);
+  }
+}
+
 export function* saveAddressSaga({ payload }) {
   try {
-    const { address, branchId } = payload;
     const { accessToken } = yield select(makeSelectTokens);
 
     yield put(addressRequest());
-    yield call(api.saveAddress, accessToken, address);
-    yield call(delay, 200);
-    yield put(fetchAddresses(branchId));
+    const res = yield call(api.saveAddress, accessToken, payload);
+    const parsedAddress = parseAddress(res.createAddress || res.updateAddress);
+
+    const { restaurant, branchId } = yield select(selectRestaurantState);
+    yield put(
+      fetchDeliveryOptions({
+        branchId: restaurant.id || branchId,
+        lat: parsedAddress.latitude,
+        lng: parsedAddress.longitude,
+      }),
+    );
+    yield put(saveAddressSuccess(parsedAddress));
   } catch (e) {
     yield put(addressError());
     // console.log(e);
@@ -47,4 +79,5 @@ export function* saveAddressSaga({ payload }) {
 export default function* watchAddressActionsSaga() {
   yield takeLatest(fetchAddresses.type, fetchAddressesSaga);
   yield takeEvery(saveAddress.type, saveAddressSaga);
+  yield takeLatest(validateAddress.type, validateAddressSaga);
 }
