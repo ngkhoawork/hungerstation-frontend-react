@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+} from 'utils/css/styles';
 import { fuscousGray, silverChalice, alabaster } from 'utils/css/colors';
 import { borderRadius } from 'utils/css/variables';
 
@@ -35,7 +40,7 @@ export const Type = styled.span`
   `};
 
   ${mediaMedium`
-    margin-right: 10px;
+    ${sideMargin('end', '10px')}
     white-space: nowrap;
   `};
 
@@ -60,6 +65,6 @@ export const Name = styled.span`
     active &&
     mediaMedium &&
     `
-    margin-right: 10px;
+    ${sideMargin('end', '10px')}
   `};
 `;

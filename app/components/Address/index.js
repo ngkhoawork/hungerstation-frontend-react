@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import intl from 'utils/intlService';
 import { addressTypesObj, otherAddressType } from 'modules/address/constants';
 import addressMessages from 'modules/address/messages';
-import { flex, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin } from 'utils/css/styles';
 import { fuscousGray, alabaster } from 'utils/css/colors';
 import {
   addressIndent,
@@ -134,7 +134,7 @@ const Content = styled.div`
   font-size: 16px;
   line-height: 1;
   color: ${fuscousGray};
-  margin-right: 10px;
+  ${sideMargin('end', '10px')};
 
   ${({ isEligible }) => !isEligible && `opacity: 0.5;`};
 `;

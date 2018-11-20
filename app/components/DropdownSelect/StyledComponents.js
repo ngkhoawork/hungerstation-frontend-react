@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin } from 'utils/css/styles';
 import {
   borderRadius,
   fontFamilyLight,
@@ -77,5 +77,5 @@ export const SelectedItem = styled.div`
 `;
 
 export const SelectedItemValue = styled.span`
-  margin-right: 10px;
+  ${sideMargin('end', '10px')};
 `;

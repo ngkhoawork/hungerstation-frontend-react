@@ -1,4 +1,5 @@
 import React from 'react';
+import intl from 'utils/intlService';
 
 import Button from 'components/Button';
 import getImage from 'utils/css/images';
@@ -11,16 +12,20 @@ import Section from '../Section';
 import ButtonWrapper from '../ButtonWrapper';
 import SectionDetails from '../SectionDetails';
 
+import messages from '../../messages';
+
 const BusinessSection = () => (
   <Section
     rightSection={
       <DetailsWrapper>
         <SectionDetails
-          header="HungerStation for business?"
-          description="Order office lunch here should be some text about HungerStation for busness, or late- night deliveries to the office. Your favourite restaurant coming to a desk near you or maybe you just want to try sometnig new!"
+          header={intl.formatMessage(messages.hungerStationBusiness)}
+          description={intl.formatMessage(
+            messages.hungerStationBusinessDescription,
+          )}
         />
         <ButtonWrapper>
-          <Button primary label="See more" />
+          <Button primary label={intl.formatMessage(messages.buttonSeeMore)} />
         </ButtonWrapper>
       </DetailsWrapper>
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import { number } from 'prop-types';
 import styled from 'styled-components';
 
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon';
 
@@ -22,10 +22,11 @@ const Wrapper = styled.div`
   ${flex({ align: 'flex-start', justify: 'flex-end' })};
 
   div > img {
-    margin: 4px 3px 0 0 !important;
+    margin-top: 4px !important;
+    ${sideMargin('end', '3px !important')};
   }
 
   & > p {
-    margin-right: 0px !important;
+    ${sideMargin('end', '0px !important')};
   }
 `;

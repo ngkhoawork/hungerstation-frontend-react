@@ -13,6 +13,7 @@ import {
   mediaMedium,
   mediaMediumGreater,
   device,
+  sideMargin,
 } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
 import restaurantImg from 'images/bg-pattern-detail.png';
@@ -115,7 +116,7 @@ export const StyledProductTypes = styled.div`
   z-index: ${zIndexStickyMenu};
 
   ${mediaMediumGreater`
-    margin-right: 20px;
+    ${sideMargin('end', '20px')}
     top: 10px;
     align-self: flex-start;
   `};

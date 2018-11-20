@@ -1,4 +1,5 @@
 import React from 'react';
+import intl from 'utils/intlService';
 
 import Button from 'components/Button';
 import getImage from 'utils/css/images';
@@ -9,6 +10,8 @@ import ButtonWrapper from '../ButtonWrapper';
 import SectionDetails from '../SectionDetails';
 
 import Section from '../Section';
+
+import messages from '../../messages';
 
 const WhyHSSection = () => (
   <Section
@@ -24,11 +27,11 @@ const WhyHSSection = () => (
     rightSection={
       <DetailsWrapper>
         <SectionDetails
-          header="Why use HungerStation?"
-          description="No need for looking for restaurants numbers anymore! With HungerStation.com you can select orders from your favorite restaurant and pay cash on delivery!"
+          header={intl.formatMessage(messages.whyHungerStation)}
+          description={intl.formatMessage(messages.whyHungerStationDescription)}
         />
         <ButtonWrapper>
-          <Button primary label="Check" />
+          <Button primary label={intl.formatMessage(messages.buttonCheck)} />
         </ButtonWrapper>
       </DetailsWrapper>
     }

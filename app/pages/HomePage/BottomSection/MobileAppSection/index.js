@@ -1,4 +1,5 @@
 import React from 'react';
+import intl from 'utils/intlService';
 import styled, { css } from 'styled-components';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
@@ -11,6 +12,8 @@ import SectionDetails from '../SectionDetails';
 import ButtonWrapper from './ButtonWrapper';
 import ButtonGroup from './ButtonGroup';
 import DetailsWrapper from './DetailsWrapper';
+
+import messages from './messages';
 
 const MobileBackgroundContainer = styled.div`
   background-image: url(${PhoneVisual});
@@ -51,10 +54,11 @@ const MobileAppSection = () => (
         <SectionDetails
           header={
             <div>
-              <div>Mobile App</div> for iOS & Android
+              <div>{intl.formatMessage(messages.mobileApp)}</div>{' '}
+              {intl.formatMessage(messages.iOSAndroid)}
             </div>
           }
-          description="Download Hunger Station for your mobile device for the easier order here should be some text"
+          description={intl.formatMessage(messages.description)}
         />
         <ButtonGroup>
           <ButtonWrapper>

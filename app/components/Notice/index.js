@@ -10,7 +10,7 @@ import {
   fuscousGray,
   alabaster,
 } from 'utils/css/colors';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 import Icon from 'components/Icon';
 
 const bgColor = {
@@ -37,7 +37,7 @@ const Message = styled.div`
   color: ${({ type }) => color[type] || color.default};
   font-size: 14px;
   line-height: 1;
-  margin-left: 10px;
+  ${sideMargin('start', '10px')};
 `;
 
 const Notice = ({ message, type, size, ...props }) => (

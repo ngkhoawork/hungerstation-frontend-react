@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin } from 'utils/css/styles';
 import {
   maxModalWidth,
   maxModalHeight,
@@ -76,7 +76,7 @@ const Header = styled.div`
   padding-bottom: 10px;
   text-align: center;
   width: calc(100% - 40px);
-  margin-right: 40px;
+  ${sideMargin('end', '40px')};
   flex-shrink: 0;
 
   ${({ style }) => style && css(style)};

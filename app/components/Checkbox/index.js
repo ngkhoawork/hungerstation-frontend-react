@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import TextItem from 'components/TextItem';
 import Icon from 'components/Icon';
+import { sideMargin } from 'utils/css/styles';
 
 const TextInner = styled.span`
-  margin-left: 3px;
+  ${sideMargin('start', '3px')};
   [dir='rtl'] & {
     margin-right: 3px;
   }

@@ -1,11 +1,24 @@
 import styled from 'styled-components';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+  sidePosition,
+} from 'utils/css/styles';
 import {
   borderRadius,
   boxShadowBottomRight,
   boxShadowBottomRightLight,
 } from 'utils/css/variables';
-import { fuscousGray } from 'utils/css/colors';
+import {
+  alabaster,
+  silverChalice,
+  fuscousGray,
+  errorBg,
+  persimmon,
+  jade,
+} from 'utils/css/colors';
 
 export const StyledRestaurantInfo = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
@@ -34,7 +47,7 @@ export const StyledLogo = styled.div`
 `;
 
 export const StyledMobileLogo = styled.div`
-  margin-right: 10px;
+  ${sideMargin('end', '10px')};
 
   ${mediaMediumGreater`display: none;`};
 `;
@@ -73,7 +86,7 @@ export const RatingContainer = styled.div`
   color: ${fuscousGray};
   font-size: 12px;
   position: absolute;
-  right: -30px;
+  ${sidePosition('end', '-30px')};
   top: 5px;
 
   ${mediaMedium`
@@ -84,11 +97,10 @@ export const RatingContainer = styled.div`
 
 export const StyledCuisine = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
-  margin-right: 20px;
-
+  ${sideMargin('end', '20px')};
   & > p {
     margin-top: 5px;
-    margin-left: 7px;
+    ${sideMargin('start', '7px')};
   }
 `;
 
@@ -97,7 +109,24 @@ export const StatusContainer = styled.div`
 
   ${mediaMediumGreater`
     position: absolute;
-    right: 10px;
+    ${sidePosition('end', '10px')};
     top: 10px;
   `};
+`;
+
+export const StatusContent = styled.div`
+  padding: 8px 12px;
+  border-radius: ${borderRadius};
+  background-color: ${({ color }) => {
+    if (color === 'error') return errorBg;
+    return alabaster;
+  }};
+  color: ${({ color }) => {
+    if (color === 'error') return persimmon;
+    if (color === 'success') return jade;
+    return silverChalice;
+  }};
+  font-size: 12px;
+  line-height: 1;
+  ${sideMargin('start', '5px')};
 `;

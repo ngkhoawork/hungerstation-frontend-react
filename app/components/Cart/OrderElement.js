@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import intl from 'utils/intlService';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 import { jade, lightGray, silverChalice, fuscousGray } from 'utils/css/colors';
 import Icon from 'components/Icon';
 
@@ -28,7 +28,7 @@ const Row = styled.div`
 const Quantity = styled.div`
   color: ${jade};
   font-size: 16px;
-  margin-right: 10px;
+  ${sideMargin('end', '10px')};
 `;
 
 const TitleWrapper = styled.div`
@@ -48,6 +48,16 @@ const Description = styled.div`
 const Price = styled.div`
   color: ${silverChalice};
   font-size: 16px;
+  ${sideMargin('end', '12px')};
+`;
+
+const IconEdit = styled.div`
+  ${sideMargin('start', '5px')};
+  ${sideMargin('end', '10px')};
+`;
+
+const IconTrash = styled.div`
+  ${sideMargin('end', '4px')};
 `;
 
 const OrderElement = ({
@@ -67,11 +77,9 @@ const OrderElement = ({
           <TitleWrapper>
             <Title>{name}</Title>
             {!readOnly && (
-              <Icon
-                name="edit"
-                style={{ margin: '0 10px 0 5px' }}
-                onClick={onEditClick}
-              />
+              <IconEdit>
+                <Icon name="edit" onClick={onEditClick} />
+              </IconEdit>
             )}
           </TitleWrapper>
           <Description>
@@ -87,12 +95,9 @@ const OrderElement = ({
           )}
         </Price>
         {!readOnly && (
-          <Icon
-            name="trash-red"
-            size={20}
-            style={{ margin: '0 5px' }}
-            onClick={onRemoveFromCart}
-          />
+          <IconTrash>
+            <Icon name="trash-red" size={20} onClick={onRemoveFromCart} />
+          </IconTrash>
         )}
       </Row>
     </Wrapper>

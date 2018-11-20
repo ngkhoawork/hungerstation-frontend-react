@@ -5,6 +5,8 @@ import {
   mediaSmall,
   mediaMedium,
   mediaMediumGreater,
+  sidePosition,
+  sideMargin,
 } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import { lightGray, silverChalice } from 'utils/css/colors';
@@ -17,7 +19,8 @@ export const Item = styled.div`
   ${flex({ direction: 'column' })};
   position: relative;
   padding-bottom: 20px;
-  margin: 40px 20px;
+  margin-top: 40px;
+  ${sideMargin('end', '20px')};
   border-bottom: 1px solid ${lightGray};
   cursor: pointer;
 
@@ -27,7 +30,8 @@ export const Item = styled.div`
 
   ${mediaMedium`
     border-bottom: none;
-    margin: 40px 0;
+    margin-top: 40px;
+    ${sideMargin('end', '0')};
   `};
 `;
 
@@ -48,7 +52,7 @@ export const Img = styled.div`
 `;
 
 export const Content = styled.div`
-  margin-left: 30px;
+  ${sideMargin('start', '30px')};
   ${flex({ direction: 'column', justify: 'space-between', grow: 1 })};
 
   ${mediaSmall`word-break: break-word;`};
@@ -76,7 +80,7 @@ export const PriceContainer = styled.div`
 
   ${mediaMediumGreater`
     position: absolute;
-    right: 0;
+    ${sidePosition('end', '0')};
     top: -20px;
   `};
 `;

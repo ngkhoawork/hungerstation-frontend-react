@@ -1,23 +1,24 @@
 import React from 'react';
+import intl from 'utils/intlService';
 import StyledFeatures from './StyledFeatures';
 import Feature from './Feature';
-
+import messages from './messages';
 const HowItWorksSection = () => {
   const features = [
     {
       id: 'location',
-      label: 'Select location',
-      message: 'No need for looking for restaurants numbers anymore',
+      label: intl.formatMessage(messages.locationHeader),
+      message: intl.formatMessage(messages.locationDetails),
     },
     {
       id: 'chef',
-      label: 'Choose restaurant',
-      message: 'No need for looking for restaurants numbers anymore',
+      label: intl.formatMessage(messages.chooseHeader),
+      message: intl.formatMessage(messages.chooseDetails),
     },
     {
       id: 'payment',
-      label: 'Pay and wait',
-      message: 'No need for looking for restaurants numbers anymore',
+      label: intl.formatMessage(messages.paymentHeader),
+      message: intl.formatMessage(messages.paymentDetails),
     },
   ];
   return (

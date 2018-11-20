@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { flex } from 'utils/css/styles';
+import { flex, sidePosition } from 'utils/css/styles';
 import { fontFamilyLight, fontFamilyRegular } from 'utils/css/variables';
 import intl from 'utils/intlService';
 import Icon from 'components/Icon';
@@ -37,7 +37,7 @@ const DeliveryLocation = styled.div`
 
 const IconPosition = styled.div`
   position: absolute;
-  left: -20px;
+  ${sidePosition('start', '-20px')};
 `;
 
 const DeliveryTo = ({ city, district }) => (

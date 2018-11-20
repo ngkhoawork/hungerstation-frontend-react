@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { gold, paleSlate, alabaster } from 'utils/css/colors';
 import getImage from 'utils/css/images';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import Spinner from 'components/Spinner/StyledSpinner';
 
@@ -43,7 +43,7 @@ const StyledButton = styled.button`
     }
   }
   img {
-    margin-right: 5px;
+    ${sideMargin('end', '5px')};
   }
 
   ${({ style }) => style && css(style)};

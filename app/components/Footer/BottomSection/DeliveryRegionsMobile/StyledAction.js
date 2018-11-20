@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 
 const StyledAction = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
@@ -7,7 +7,7 @@ const StyledAction = styled.div`
   margin-bottom: 5px;
 
   p {
-    margin-right: 10px;
+    ${sideMargin('end', '10px')};
   }
 `;
 

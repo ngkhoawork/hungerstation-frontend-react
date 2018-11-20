@@ -1,9 +1,11 @@
 import React from 'react';
 import { string } from 'prop-types';
+import styled from 'styled-components';
 import Row from 'components/Row';
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
 import { silverChalice, gold, persimmon } from 'utils/css/colors';
+import { sideMargin } from 'utils/css/styles';
 
 const mappedStatusToColor = {
   closed: silverChalice,
@@ -12,14 +14,20 @@ const mappedStatusToColor = {
   soon: gold,
 };
 
+const Title = styled.p`
+  ${sideMargin('start', '6px')};
+  margin-top: 0;
+  margin-bottom: 0;
+`;
+
 const CardTitle = ({ name, status }) => (
   <Row align="center">
     <CircledItem
       color={mappedStatusToColor[status] || silverChalice}
       width={7}
     />
-    <Paragraph size={17} margin="0 0 0 6px">
-      {name}
+    <Paragraph size={17}>
+      <Title>{name}</Title>
     </Paragraph>
   </Row>
 );

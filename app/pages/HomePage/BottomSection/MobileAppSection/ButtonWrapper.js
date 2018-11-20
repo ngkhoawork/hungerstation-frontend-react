@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { mediaSmall } from 'utils/css/styles';
+import { mediaSmall, sideMargin } from 'utils/css/styles';
 
 const ButtonWrapper = styled.div`
   width: 144px;
   height: 40px;
 
   :first-child {
-    margin-right: 20px;
+    ${sideMargin('end', '20px')};
 
     ${mediaSmall`margin-right: 10px;`};
   }

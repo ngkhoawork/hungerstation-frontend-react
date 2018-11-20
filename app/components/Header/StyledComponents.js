@@ -5,6 +5,7 @@ import {
   mediaSmall,
   mediaMedium,
   mediaMediumGreater,
+  sideMargin,
 } from 'utils/css/styles';
 import {
   fontFamilyRegular,
@@ -21,18 +22,18 @@ export const RightSection = styled.div`
 
 export const LeftSection = styled.div`
   ${flex({ align: 'center' })};
-  margin-left: -7px;
+  ${sideMargin('start', '-7px')};
 `;
 
 export const DesktopLocaleToggle = styled.div`
-  ${mediaMediumGreater`margin-left: 111px;`};
+  ${mediaMediumGreater`${sideMargin('start', '111px')};`};
   ${mediaMedium`display: none;`};
 `;
 
 export const MobileLocaleToggle = styled.div`
   ${mediaMediumGreater`display: none;`};
-  ${mediaMedium`margin-right: 20px;`};
-  ${mediaSmall`margin-right: 10px;`};
+  ${mediaMedium`${sideMargin('end', '20px')}`};
+  ${mediaSmall`${sideMargin('end', '10px')}`};
 `;
 
 export const StyledBrandLogo = styled.img`

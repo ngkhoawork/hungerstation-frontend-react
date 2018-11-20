@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import Input from '@material-ui/core/Input';
-import { flex, mediaSmall, mediaMedium } from 'utils/css/styles';
+import { flex, mediaSmall, mediaMedium, sideMargin } from 'utils/css/styles';
 import {
   maxModalWidth,
   maxModalContentHeight,
@@ -79,7 +79,7 @@ export const InputsContainer = styled.div`
 
 export const Desc = styled.div`
   width: 50%;
-  margin-right: 20px;
+  ${sideMargin('end', '20px')};
 
   ${mediaMedium`
     width: 100%;

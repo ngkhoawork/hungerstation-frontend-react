@@ -51,14 +51,6 @@ const StyledBottomPart = styled.div`
   width: 100%;
   padding: 5px 15px 15px 15px;
   flex: 0.4;
-
-  div > p {
-    ${sideMargin('end', '18px')};
-  }
-
-  div > img {
-    ${sideMargin('end', '9px')};
-  }
 `;
 
 export { StyledRestaurantCard, StyledUpperPart, StyledBottomPart };
