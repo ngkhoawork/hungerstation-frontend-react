@@ -25,7 +25,7 @@ const CheckoutPage = ({ params, deliveryOptions = [], ...props }) => {
   const renderContent = () => (
     <React.Fragment>
       <Step stepNo={1} stepCount={3} title={intl.formatMessage(messages.step1)}>
-        <AddressesContainer />
+        <AddressesContainer onOrderChange={props.onOrderChange} />
       </Step>
       {hasDeliverySection ? (
         <Step
@@ -33,17 +33,17 @@ const CheckoutPage = ({ params, deliveryOptions = [], ...props }) => {
           stepCount={3}
           title={intl.formatMessage(messages.step2)}
         >
-          <DeliveryOptionsContainer />
+          <DeliveryOptionsContainer onOrderChange={props.onOrderChange} />
         </Step>
       ) : (
-        <DeliveryOptionsContainer />
+        <DeliveryOptionsContainer onOrderChange={props.onOrderChange} />
       )}
       <Step
         stepNo={hasDeliverySection ? 3 : 2}
         stepCount={hasDeliverySection ? 3 : 2}
         title={intl.formatMessage(messages.step3)}
       >
-        <PaymentOptionsContainer />
+        <PaymentOptionsContainer onOrderChange={props.onOrderChange} />
       </Step>
       <Note
         style={{ borderTop: border, padding: '20px 0' }}
@@ -61,7 +61,7 @@ const CheckoutPage = ({ params, deliveryOptions = [], ...props }) => {
       <ContentContainer>
         <LeftSide>{props.isLoading ? null : renderContent()}</LeftSide>
         <RightSide>
-          <CartContainer params={params} />
+          <CartContainer params={params} onOrderCreate={props.onOrderCreate} />
         </RightSide>
       </ContentContainer>
     </Container>
@@ -71,6 +71,8 @@ const CheckoutPage = ({ params, deliveryOptions = [], ...props }) => {
 CheckoutPage.propTypes = {
   note: PropTypes.string,
   onNoteChange: PropTypes.func.isRequired,
+  onOrderCreate: PropTypes.func.isRequired,
+  onOrderChange: PropTypes.func.isRequired,
   deliveryOptions: PropTypes.array,
   params: PropTypes.object.isRequired,
   isLoading: PropTypes.bool,

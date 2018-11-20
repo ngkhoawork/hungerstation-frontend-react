@@ -40,6 +40,11 @@ class DeliveryOptionsContainer extends React.Component {
     }
   };
 
+  handleSelectDeliveryOption = selectedDeliveryOption => {
+    this.props.selectDeliveryOption(selectedDeliveryOption);
+    this.props.onOrderChange();
+  };
+
   render() {
     const { checkoutState } = this.props;
     const { deliveryOptions, selectedDeliveryOption } = checkoutState;
@@ -50,7 +55,7 @@ class DeliveryOptionsContainer extends React.Component {
       <DeliveryOptions
         selectedOption={selectedDeliveryOption}
         options={deliveryOptions}
-        onSelect={this.props.selectDeliveryOption}
+        onSelect={this.handleSelectDeliveryOption}
       />
     );
   }
@@ -62,6 +67,7 @@ DeliveryOptionsContainer.propTypes = {
   checkoutState: PropTypes.object.isRequired,
   selectDeliveryOption: PropTypes.func.isRequired,
   fetchDeliveryOptions: PropTypes.func.isRequired,
+  onOrderChange: PropTypes.func.isRequired,
 };
 
 export default connect(

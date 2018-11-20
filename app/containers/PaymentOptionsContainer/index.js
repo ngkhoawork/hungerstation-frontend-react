@@ -3,17 +3,30 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { selectCheckoutState } from 'modules/checkout/selectors';
 import {
-  fetchCreditCards,
-  validateCoupon,
+  // fetchCreditCards,
   selectPaymentOption,
+  setCoupon,
   removeCoupon,
 } from 'modules/checkout/actions';
 import PaymentOptions from 'components/PaymentOptions';
 
 class PaymentOptionsContainer extends React.Component {
   componentDidMount() {
-    this.props.fetchCreditCards();
+    // this.props.fetchCreditCards();
   }
+
+  handlePaymentSelect = selectedPaymentOption => {
+    const { checkoutState } = this.props;
+    if (selectedPaymentOption.id !== checkoutState.selectedPaymentOption.id) {
+      this.props.selectPaymentOption(selectedPaymentOption);
+      this.props.onOrderChange();
+    }
+  };
+
+  handleSetCoupon = coupon => {
+    this.props.setCoupon(coupon);
+    this.props.onOrderChange();
+  };
 
   render() {
     const { checkoutState } = this.props;
@@ -22,10 +35,11 @@ class PaymentOptionsContainer extends React.Component {
       <PaymentOptions
         selectedOption={checkoutState.selectedPaymentOption}
         cards={checkoutState.cards}
-        onOptionSelect={this.props.selectPaymentOption}
-        onCouponSubmit={this.props.validateCoupon}
+        onOptionSelect={this.handlePaymentSelect}
+        onCouponSubmit={this.handleSetCoupon}
         onCouponDelete={this.props.removeCoupon}
         coupon={checkoutState.coupon}
+        discount={checkoutState.discount}
       />
     );
   }
@@ -34,12 +48,14 @@ class PaymentOptionsContainer extends React.Component {
 PaymentOptionsContainer.propTypes = {
   checkoutState: PropTypes.object.isRequired,
   selectPaymentOption: PropTypes.func.isRequired,
+  setCoupon: PropTypes.func.isRequired,
   removeCoupon: PropTypes.func.isRequired,
-  validateCoupon: PropTypes.func.isRequired,
-  fetchCreditCards: PropTypes.func.isRequired,
+  onOrderChange: PropTypes.func.isRequired,
+  // fetchCreditCards: PropTypes.func.isRequired,
 };
 
 export default connect(
   state => ({ checkoutState: selectCheckoutState(state) }),
-  { selectPaymentOption, validateCoupon, removeCoupon, fetchCreditCards },
+  { selectPaymentOption, setCoupon, removeCoupon },
+  // { selectPaymentOption, setCoupon, removeCoupon, fetchCreditCards },
 )(PaymentOptionsContainer);
