@@ -13,6 +13,7 @@ import {
   borderRadius,
   boxShadow,
 } from 'utils/css/variables';
+import { StatusContent } from 'utils/css/styledComponents';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import CheckboxIcon from 'components/CheckboxIcon';
@@ -38,6 +39,7 @@ const Address = ({
   onSelectToggle,
   onEditClick,
 }) => {
+  const isEligible = address.branch_eligibility;
   const handleEditBtnClick = event => {
     event.stopPropagation();
     onEditClick(address);
@@ -45,13 +47,13 @@ const Address = ({
 
   return (
     <Container
-      onClick={() => onSelectToggle && onSelectToggle(address)}
+      onClick={() => isEligible && onSelectToggle && onSelectToggle(address)}
       isWithBorder={isWithBorder}
     >
       <LeftSide>
-        <CheckboxIcon isChecked={isSelected} />
+        <CheckboxIcon isChecked={isSelected} isDisabled={!isEligible} />
       </LeftSide>
-      <Content>
+      <Content isEligible={isEligible}>
         <Name>
           <Title>{getName(address)}</Title>
           <CircledItem
@@ -69,6 +71,11 @@ const Address = ({
               size={16}
             />
           </CircledItem>
+          {isEligible ? null : (
+            <StatusContent color="error">
+              {`• ${intl.formatMessage(messages.outOfRange)}`}
+            </StatusContent>
+          )}
         </Name>
         <Location>{address.description || ''}</Location>
       </Content>
@@ -128,6 +135,8 @@ const Content = styled.div`
   line-height: 1;
   color: ${fuscousGray};
   margin-right: 10px;
+
+  ${({ isEligible }) => !isEligible && `opacity: 0.5;`};
 `;
 
 const Name = styled.div`

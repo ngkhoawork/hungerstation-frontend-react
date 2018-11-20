@@ -5,4 +5,7 @@ export default defineMessages({
     id: 'app.components.Address.edit',
     defaultMessage: 'Edit address',
   },
+  outOfRange: {
+    id: 'app.components.Address.outOfRange',
+  },
 });
