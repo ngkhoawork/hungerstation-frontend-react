@@ -7,6 +7,7 @@ import { addressIndent } from 'utils/css/variables';
 import { alabaster } from 'utils/css/colors';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
+import Notice from 'components/Notice';
 import Address from 'components/Address';
 import Section from './Section';
 import messages from './messages';
@@ -32,6 +33,16 @@ const Addresses = ({
     </Section>
   );
 
+  const renderNotice = () => {
+    if (addresses.find(({ branch_eligibility }) => branch_eligibility)) {
+      return null;
+    }
+
+    return (
+      <Notice message={intl.formatMessage(messages.noEligible)} type="error" />
+    );
+  };
+
   return (
     <React.Fragment>
       <Section title={intl.formatMessage(messages.current)}>
@@ -51,6 +62,7 @@ const Addresses = ({
             onEditClick={onEditClick}
           />
         ))}
+        {renderNotice()}
         <BtnContainer>
           <Button
             primary={false}

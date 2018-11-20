@@ -20,15 +20,26 @@ class AddressesContainer extends React.Component {
     this.props.showModal(AddAddressContainerHOC);
   };
 
-  handleAddressSelect = address => this.props.setPrimaryAddress(address);
+  handleAddressSelect = address => {
+    const { primaryAddress } = this.props;
+
+    if (!address.branch_eligibility || address.id === primaryAddress.id) return;
+
+    this.props.setPrimaryAddress(address);
+    // this.props.onOrderChange();
+  };
 
   render() {
-    const { addresses, primaryAddress } = this.props;
+    const { addresses = [], primaryAddress } = this.props;
 
     return (
       <Addresses
         selectedAddress={primaryAddress}
-        addresses={addresses.filter(addr => addr !== primaryAddress)}
+        addresses={
+          primaryAddress
+            ? addresses.filter(({ id }) => id !== primaryAddress.id)
+            : addresses
+        }
         recentAddresses={[]}
         onAddClick={this.handleAddAddress}
         onEditClick={this.handleAddAddress}
@@ -40,9 +51,10 @@ class AddressesContainer extends React.Component {
 
 AddressesContainer.propTypes = {
   primaryAddress: PropTypes.object,
-  addresses: PropTypes.array.isRequired,
+  addresses: PropTypes.array,
   showModal: PropTypes.func.isRequired,
   setPrimaryAddress: PropTypes.func.isRequired,
+  // onOrderChange: PropTypes.func.isRequired,
 };
 
 export default connect(

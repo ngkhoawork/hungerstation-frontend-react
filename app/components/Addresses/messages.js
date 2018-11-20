@@ -13,4 +13,7 @@ export default defineMessages({
     id: 'app.components.Addresses.addNew',
     defaultMessage: 'Add new address',
   },
+  noEligible: {
+    id: 'app.components.Addresses.noEligible',
+  },
 });
