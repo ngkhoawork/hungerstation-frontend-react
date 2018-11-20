@@ -5,8 +5,12 @@ import Spinner from 'components/Spinner';
 import StyledButton from './StyledButton';
 import Text from './Text';
 
-const Button = ({ children, label, loading, fontSize, ...props }) => (
-  <StyledButton type="button" {...props}>
+const Button = ({ children, label, loading, fontSize, onClick, ...props }) => (
+  <StyledButton
+    type="button"
+    onClick={props.disabled ? undefined : onClick}
+    {...props}
+  >
     {children}
     {loading ? <Spinner isActive /> : <Text fontSize={fontSize}>{label}</Text>}
   </StyledButton>
