@@ -2,8 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
 import { getDeepProp, daysUntilOpen, getTime } from 'utils/helpers';
+import { StatusContent } from 'utils/css/styledComponents';
+import { StatusContainer } from './StyledComponents';
 import messages from './messages';
-import { StatusContainer, StatusContent } from './StyledComponents';
 
 const getMsg = (type, params = {}) =>
   `• ${intl.formatMessage(messages.status[type], params)}`;

@@ -5,14 +5,7 @@ import {
   boxShadowBottomRight,
   boxShadowBottomRightLight,
 } from 'utils/css/variables';
-import {
-  persimmon,
-  errorBg,
-  jade,
-  silverChalice,
-  fuscousGray,
-  alabaster,
-} from 'utils/css/colors';
+import { fuscousGray } from 'utils/css/colors';
 
 export const StyledRestaurantInfo = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
@@ -107,21 +100,4 @@ export const StatusContainer = styled.div`
     right: 10px;
     top: 10px;
   `};
-`;
-
-export const StatusContent = styled.div`
-  padding: 8px 12px;
-  border-radius: ${borderRadius};
-  background-color: ${({ color }) => {
-    if (color === 'error') return errorBg;
-    return alabaster;
-  }};
-  color: ${({ color }) => {
-    if (color === 'error') return persimmon;
-    if (color === 'success') return jade;
-    return silverChalice;
-  }};
-  font-size: 12px;
-  line-height: 1;
-  margin-left: 5px;
 `;

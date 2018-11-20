@@ -2,8 +2,15 @@ import styled from 'styled-components';
 import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
-import { alabaster } from './colors';
 import {
+  persimmon,
+  errorBg,
+  jade,
+  silverChalice,
+  alabaster,
+} from 'utils/css/colors';
+import {
+  borderRadius,
   zIndexDisabledOverlay,
   fontFamilyRegular,
   navHeaderHeight,
@@ -88,4 +95,21 @@ export const PageNotice = styled.div`
   width: 100%;
   height: 100px;
   font-size: 30px;
+`;
+
+export const StatusContent = styled.div`
+  padding: 8px 12px;
+  border-radius: ${borderRadius};
+  background-color: ${({ color }) => {
+    if (color === 'error') return errorBg;
+    return alabaster;
+  }};
+  color: ${({ color }) => {
+    if (color === 'error') return persimmon;
+    if (color === 'success') return jade;
+    return silverChalice;
+  }};
+  font-size: 12px;
+  line-height: 1;
+  margin-left: 5px;
 `;
