@@ -33,13 +33,14 @@ class SaveAddress extends React.Component {
         name: intl.formatMessage(addressMessages[addr.key]),
       }));
     this.state = {
-      isSaveChecked: !!type && type !== otherAddressType,
       selectedType: this.addressTypes.find(({ key }) => key === type) || {},
     };
+    props.setSaveChecked(!!type && type !== otherAddressType);
   }
 
   getState = () => {
-    const { selectedType, isSaveChecked } = this.state;
+    const { selectedType } = this.state;
+    const { isSaveChecked } = this.props;
     const specific_type = selectedType.key;
 
     if (!isSaveChecked) return {};
@@ -53,12 +54,13 @@ class SaveAddress extends React.Component {
 
   handleSaveToggle = () => {
     if (this.isChangeableType) {
-      this.setState(state => ({ isSaveChecked: !state.isSaveChecked }));
+      this.props.setSaveChecked(!this.props.isSaveChecked);
     }
   };
 
   render() {
-    const { isSaveChecked, selectedType } = this.state;
+    const { selectedType } = this.state;
+    const { isSaveChecked } = this.props;
 
     return (
       <Container>
@@ -90,6 +92,8 @@ class SaveAddress extends React.Component {
 SaveAddress.propTypes = {
   address: PropTypes.object,
   disabledTypes: PropTypes.array,
+  isSaveChecked: PropTypes.bool,
+  setSaveChecked: PropTypes.func.isRequired,
 };
 
 export default SaveAddress;

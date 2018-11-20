@@ -11,6 +11,7 @@ import Button from 'components/Button';
 import PhoneNumberInput from 'components/PhoneNumberInput';
 import CheckboxIcon from 'components/CheckboxIcon';
 import Icon from 'components/Icon';
+import Notice from 'components/Notice';
 import messages from './messages';
 import SaveAddress from './SaveAddress';
 import { getStreet, getBuildingNumber } from './helpers';
@@ -90,7 +91,9 @@ class AddAddress extends React.Component {
   componentDidUpdate({ location }) {
     const { latitude, longitude } = this.props.location;
     if (latitude !== location.latitude || longitude !== location.longitude) {
-      this.setLocation({ lat: latitude, lng: longitude });
+      isPlaceSelectAction = true;
+      this.map.setCenter({ lat: latitude, lng: longitude });
+      this.geocodeLatLng({ lat: latitude, lng: longitude });
     }
   }
 
@@ -107,6 +110,8 @@ class AddAddress extends React.Component {
         );
 
         if (selectedPlace) {
+          this.props.onValidate(location);
+
           this.setState({
             selectedPlace,
             locationName: selectedPlace.formatted_address,
@@ -114,12 +119,6 @@ class AddAddress extends React.Component {
         }
       }
     });
-  };
-
-  setLocation = latLng => {
-    isPlaceSelectAction = true;
-    this.map.setCenter(latLng);
-    this.geocodeLatLng(latLng);
   };
 
   handleZoomChange = change => {
@@ -156,15 +155,25 @@ class AddAddress extends React.Component {
       selectedPlace,
       locationName: this.locationRef.current.value,
     });
+
+    const { location } = selectedPlace.geometry;
+    this.props.onValidate({ lat: location.lat(), lng: location.lng() });
   };
 
   handleSubmit = () => {
-    const { address } = this.props;
-    const { selectedPlace, description, locationName } = this.state;
+    const { address, isLoading, isEligible } = this.props;
+    const {
+      selectedPlace,
+      description,
+      locationName,
+      isSaveChecked,
+    } = this.state;
+
+    if (!description || isLoading || (isEligible === false && !isSaveChecked)) {
+      return;
+    }
+
     const saveAddressState = this.saveAddressRef.current.getState();
-
-    if (!saveAddressState || !description) return;
-
     const { specific_type } = saveAddressState;
     const { geometry } = selectedPlace;
 
@@ -184,8 +193,15 @@ class AddAddress extends React.Component {
   };
 
   render() {
-    const { address, phone, disabledTypes, hasNoAddress } = this.props;
-    const { locationName, description } = this.state;
+    const {
+      address,
+      phone,
+      disabledTypes,
+      hasNoAddress,
+      isLoading,
+      isEligible,
+    } = this.props;
+    const { locationName, description, isSaveChecked } = this.state;
     const mobile = address.mobile || (phone || '').substr(4);
     const isCreate = !address.id;
 
@@ -194,9 +210,7 @@ class AddAddress extends React.Component {
         title={intl.formatMessage(
           messages[`${isCreate ? 'create' : 'update'}Title`],
         )}
-        subtitle={
-          isCreate && hasNoAddress ? intl.formatMessage(messages.subtitle) : ''
-        }
+        subtitle={hasNoAddress ? intl.formatMessage(messages.subtitle) : ''}
         isMobileFullscreen
       >
         <Container>
@@ -258,13 +272,29 @@ class AddAddress extends React.Component {
               ref={this.saveAddressRef}
               address={address}
               disabledTypes={disabledTypes}
+              isSaveChecked={isSaveChecked}
+              setSaveChecked={isSaveChecked => this.setState({ isSaveChecked })}
             />
+            {isEligible === false ? (
+              <Notice
+                message={intl.formatMessage(
+                  messages[`ineligible${isSaveChecked ? 'Saved' : ''}`],
+                )}
+                type="error"
+                size="s"
+              />
+            ) : null}
           </Content>
           <Button
             primary
             size="xl"
             style={{ flexShrink: 0, height: 'auto' }}
             onClick={this.handleSubmit}
+            disabled={
+              isLoading ||
+              !description ||
+              (isEligible === false && !isSaveChecked)
+            }
           >
             {intl.formatMessage(messages.set)}
           </Button>
@@ -275,14 +305,16 @@ class AddAddress extends React.Component {
 }
 
 AddAddress.propTypes = {
+  isEligible: PropTypes.bool,
+  isLoading: PropTypes.bool,
   phone: PropTypes.string,
   address: PropTypes.object,
   disabledTypes: PropTypes.array,
-  // hasNoEligible: PropTypes.bool,
   hasNoAddress: PropTypes.bool,
   location: PropTypes.object,
   onLocateMeClick: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  onValidate: PropTypes.func.isRequired,
 };
 
 AddAddress.defaultProps = {
