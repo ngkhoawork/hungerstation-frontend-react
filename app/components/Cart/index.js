@@ -26,7 +26,7 @@ const Cart = ({
   isOrderDetail,
   purchases,
   orderAmount,
-  discount,
+  discount = 0,
   deliveryFee,
   city,
   district,
