@@ -37,6 +37,7 @@ const Message = styled.div`
   color: ${({ type }) => color[type] || color.default};
   font-size: 14px;
   line-height: 1;
+  white-space: pre-line;
   ${sideMargin('start', '10px')};
 `;
 
