@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="12px" viewBox="0 0 13 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/log-out</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Homepage-Account-Log-In-Expanded" transform="translate(-1156.000000, -359.000000)" stroke="#9F9F9F">
+            <g id="drop-down-menudrop-down-menu-drop-down-menu" transform="translate(1136.000000, 136.000000)">
+                <g id="icon/log-out" transform="translate(21.000000, 223.000000)">
+                    <g id="log-out" transform="translate(0.000000, 0.597285)">
+                        <path d="M7.79166667,5.53846154 L0.458333333,5.53846154" id="Path" stroke-width="1.4"></path>
+                        <polyline id="Path" stroke-width="1.4" points="3.20833333 2.76923077 0.458333333 5.53846154 3.20833333 8.30769231"></polyline>
+                        <path d="M5.95833333,2.30769231 L5.95833333,1.38461538 C5.95833333,0.874814077 6.36873898,0.461538462 6.875,0.461538462 L9.625,0.461538462 C10.131261,0.461538462 10.5416667,0.874814077 10.5416667,1.38461538 L10.5416667,9.69230769 C10.5416667,10.202109 10.131261,10.6153846 9.625,10.6153846 L6.875,10.6153846 C6.36873898,10.6153846 5.95833333,10.202109 5.95833333,9.69230769 L5.95833333,8.76923077" id="Path" stroke-width="1.4"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

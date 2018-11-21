@@ -34,7 +34,7 @@ const menu = [
   {
     id: 'logout',
     label: intl.formatMessage(messages.logout),
-    icon: 'bag',
+    icon: 'log-out',
     to: '/logout',
   },
   // {
