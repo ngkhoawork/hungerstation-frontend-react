@@ -29,6 +29,7 @@ import OrdersPage from 'pages/OrdersPage';
 import OrderDetailPage from 'pages/OrderDetailPage';
 import CheckoutPage from 'pages/CheckoutPage';
 import LoginPage from 'pages/LoginPage/Loadable';
+import LogoutPage from 'pages/LogoutPage';
 import RegistrationPage from 'pages/RegistrationPage/Loadable';
 import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
 import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
@@ -151,7 +152,7 @@ export default class App extends Component {
                 path="/privacy-policy/who-we-are"
                 component={PrivacyPolicyPage}
               />
-
+              <Route path="/logout" component={LogoutPage} />
               <Redirect from="*" to="/" />
             </Switch>
           </StyledApp>

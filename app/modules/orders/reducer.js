@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { logout } from 'modules/auth/actions';
 import {
   fetchOrdersRequest,
   fetchOrdersSuccess,
@@ -24,6 +25,9 @@ function reducer(state = initialState, { type, payload }) {
 
     case fetchOrdersError.type:
       return state.set('isLoading', false);
+
+    case logout.type:
+      return initialState;
 
     default:
       return state;

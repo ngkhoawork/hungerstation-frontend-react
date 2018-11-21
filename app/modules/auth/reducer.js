@@ -10,6 +10,7 @@ import {
   UPDATE_TOKENS,
   SET_CURRENT_USER,
 } from './constants';
+import { logout } from './actions';
 
 // The initial application state
 const initialState = fromJS({
@@ -41,6 +42,8 @@ function reducer(state = initialState, action) {
       return onSetCurrentUser(state, action);
     case UPDATE_TOKENS:
       return onUpdateTokens(state, action);
+    case logout.type:
+      return initialState;
     default:
       return state;
   }

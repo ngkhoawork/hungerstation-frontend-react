@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { logout } from 'modules/auth/actions';
 import {
   setBranchId,
   fetchRestaurantRequest,
@@ -20,14 +21,16 @@ function reducer(state = initialState, { type, payload }) {
     case fetchRestaurantRequest.type:
       return state.set('isLoading', true);
 
-    case fetchRestaurantSuccess.type: {
+    case fetchRestaurantSuccess.type:
       return state
         .set('isLoading', false)
         .set('restaurant', payload.restaurant);
-    }
 
     case fetchRestaurantError.type:
       return state.set('isLoading', false);
+
+    case logout.type:
+      return initialState;
 
     default:
       return state;

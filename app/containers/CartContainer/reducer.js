@@ -3,6 +3,7 @@ import {
   getStorageItem,
   setStorageItem,
 } from 'utils/localStorage';
+import { logout } from 'modules/auth/actions';
 import { createOrderSuccess } from 'modules/checkout/actions';
 import {
   initCart,
@@ -74,7 +75,11 @@ function cartContainerReducer(state = initialState, { type, payload }) {
 
     case createOrderSuccess.type: {
       clearStorageItem('cartItems');
+      return Object.assign({}, initialState);
+    }
 
+    case logout.type: {
+      clearStorageItem('cartItems');
       return Object.assign({}, initialState);
     }
 

@@ -31,6 +31,12 @@ const menu = [
     icon: 'bag',
     to: '/my-orders',
   },
+  {
+    id: 'logout',
+    label: intl.formatMessage(messages.logout),
+    icon: 'bag',
+    to: '/logout',
+  },
   // {
   //   id: 'wallet',
   //   label: 'My wallet',

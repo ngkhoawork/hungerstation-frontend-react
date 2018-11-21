@@ -2,11 +2,11 @@
  * Actions describe changes of state in your application
  */
 
+import createAction from 'utils/actions/createAction';
 // We import constants to name our actions' type
 import {
   SET_AUTH,
   SENDING_REQUEST,
-  LOGOUT,
   REQUEST_ERROR,
   CLEAR_ERROR,
   SET_CURRENT_USER,
@@ -32,7 +32,7 @@ export const sendingRequest = sending => ({
   sending,
 });
 
-export const logout = () => ({ type: LOGOUT });
+export const logout = createAction('auth/LOGOUT');
 
 export const requestError = error => ({
   type: REQUEST_ERROR,

@@ -1,3 +1,4 @@
+import { logout } from 'modules/auth/actions';
 import {
   selectDeliveryOption,
   selectPaymentOption,
@@ -70,6 +71,9 @@ function reducer(state = initialState, { type, payload }) {
       return Object.assign({}, state, { note: payload });
 
     case createOrderSuccess.type:
+      return Object.assign({}, initialState);
+
+    case logout.type:
       return Object.assign({}, initialState);
 
     default:

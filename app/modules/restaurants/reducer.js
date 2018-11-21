@@ -1,5 +1,6 @@
 import { fromJS, List } from 'immutable';
 import { maxBy } from 'lodash';
+import { logout } from 'modules/auth/actions';
 import {
   fetchRestaurantsRequest,
   fetchRestaurantsError,
@@ -122,6 +123,9 @@ function reducer(state = initialState, action) {
 
     case searchRestaurantAction.type:
       return state.set('search', action.payload);
+
+    case logout.type:
+      return initialState;
 
     default:
       return state;

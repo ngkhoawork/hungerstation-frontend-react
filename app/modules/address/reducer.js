@@ -1,3 +1,4 @@
+import { logout } from 'modules/auth/actions';
 import {
   addressRequest,
   fetchAddressesSuccess,
@@ -79,6 +80,9 @@ function reducer(state = initialState, { type, payload }) {
         isLoading: false,
         isValidateLoading: false,
       });
+
+    case logout.type:
+      return Object.assign({}, initialState);
 
     default:
       return state;

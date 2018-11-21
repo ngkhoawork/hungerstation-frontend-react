@@ -10,4 +10,7 @@ export default defineMessages({
   orders: {
     id: 'app.components.Header.orders',
   },
+  logout: {
+    id: 'app.components.Header.logout',
+  },
 });
