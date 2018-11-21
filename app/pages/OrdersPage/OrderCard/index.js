@@ -8,7 +8,7 @@ import Row from 'components/Row';
 import { Title } from 'components/Typography';
 import { alabaster } from 'utils/css/colors';
 import DateTimeElement from 'components/DateTime';
-
+import TrackingTimer from 'components/TrackingTimer';
 import messages from './messages';
 import DeliveryType from './DeliveryType';
 
@@ -54,6 +54,12 @@ const OrderCard = ({ order, onOrderClick }) => (
               <DateTimeElement time={order.delivedAt} />
             )}
             {order.state === 'failed' && <Status color="error">Failed</Status>}
+            {order.tracking.activeStatus && (
+              <TrackingTimer
+                startAt={order.actionAt}
+                endAt={order.actionAt + 60 * 60 * 2}
+              />
+            )}
           </OrderState>
         </Row>
         <OrderItems>
@@ -72,7 +78,6 @@ const OrderCard = ({ order, onOrderClick }) => (
           </Description>
           <ButtonWrapper>
             <Button
-              label={intl.formatMessage(messages.details)}
               primary={false}
               lift={false}
               color={alabaster}
@@ -81,7 +86,14 @@ const OrderCard = ({ order, onOrderClick }) => (
               onClick={() => {
                 onOrderClick(order.id);
               }}
-            />
+            >
+              {order.tracking.activeStatus
+                ? intl.formatMessage(messages.tracking)
+                : intl.formatMessage(messages.details)}
+              {order.tracking.activeStatus && (
+                <Icon style={{ marginLeft: '10px' }} name="car" />
+              )}
+            </Button>
           </ButtonWrapper>
         </Row>
       </div>

@@ -22,6 +22,14 @@ class TrackingTimer extends React.Component {
     const { startAt, endAt } = this.props;
     const total = endAt - startAt;
     const now = new Date().getTime() / 1000;
+    if (now >= endAt) {
+      clearInterval(this.intervalHandle);
+      this.setState({
+        percentage: 100,
+        time: '00:00',
+      });
+      return;
+    }
     const current = now - startAt;
     const percentage = (current * 100) / total;
     const remaining = Math.round(total - current);

@@ -10,6 +10,9 @@ export default defineMessages({
   details: {
     id: 'app.components.MyOrdersPage.OrderCard.details',
   },
+  tracking: {
+    id: 'app.components.MyOrdersPage.OrderCard.tracking',
+  },
   restaurantDelivery: {
     id: 'app.components.MyOrdersPage.OrderCard.restaurantDelivery',
   },

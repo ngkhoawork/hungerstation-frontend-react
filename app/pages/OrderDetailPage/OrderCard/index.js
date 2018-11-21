@@ -5,13 +5,13 @@ import Icon from 'components/Icon';
 import Button from 'components/Button';
 import Price from 'components/Price';
 import Row from 'components/Row';
+import TrackingTimer from 'components/TrackingTimer';
 import { Title } from 'components/Typography';
 import { alabaster } from 'utils/css/colors';
 import DateTimeElement from 'components/DateTime';
 import { css } from 'styled-components';
 import messages from './messages';
 import DeliveryType from './DeliveryType';
-import TrackingTimer from '../TrackingTimer';
 
 import {
   Item,
