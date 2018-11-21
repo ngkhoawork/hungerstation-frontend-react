@@ -46,20 +46,20 @@ function reducer(state = initialState, { type, payload }) {
     case validateOrderRequest.type:
       return Object.assign({}, state, { isLoadingOrderValidate: true });
 
-    case validateOrderSuccess.type:
+    case validateOrderSuccess.type: {
+      const { coupon, discount, errors_with_keys } = payload;
+      const isValid = !errors_with_keys.find(({ key }) => key === 'coupon');
+
       return Object.assign({}, state, {
         isLoadingOrderValidate: false,
-        orderErrors: null,
-        discount: payload.discount,
-        coupon: { value: payload.coupon, isValid: true },
+        orderErrors: errors_with_keys,
+        discount,
+        coupon: coupon ? { value: coupon, isValid } : state.coupon,
       });
+    }
 
     case validateOrderError.type:
-      return Object.assign({}, state, {
-        isLoadingOrderValidate: false,
-        orderErrors: payload.errors_with_keys,
-        coupon: { value: payload.coupon, isValid: false },
-      });
+      return Object.assign({}, state, { isLoadingOrderValidate: false });
 
     case setCoupon.type:
       return Object.assign({}, state, { coupon: { value: payload } });

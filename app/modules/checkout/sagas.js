@@ -53,7 +53,7 @@ export function* validateOrderSaga({ payload }) {
 
     yield put(validateOrderSuccess(validateOrder));
   } catch (e) {
-    yield put(validateOrderError(validateOrder));
+    yield put(validateOrderError());
     // console.log(e);
   }
 }
@@ -68,8 +68,9 @@ export function* createOrderSaga({ payload }) {
       accessToken,
       payload,
     );
+
     if (validateOrder.errors_with_keys.length) {
-      yield put(validateOrderError(validateOrder));
+      yield put(validateOrderSuccess(validateOrder));
       return;
     }
 
@@ -79,7 +80,7 @@ export function* createOrderSaga({ payload }) {
 
     yield call(forwardTo, `/my-orders/${createOrder.id}`);
   } catch (e) {
-    yield put(validateOrderError(validateOrder));
+    yield put(validateOrderError());
     // console.log(e);
   }
 }
