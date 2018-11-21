@@ -6,6 +6,7 @@ import Networking from 'images/networking.png';
 import Googleplay from 'icons/googleplay.svg';
 import AppleStore from 'icons/appstore.svg';
 import privacy_policy from 'images/privacy_policy.png';
+import aboutUs from 'images/aboutUs.png';
 
 const getImage = name => {
   switch (name) {
@@ -25,6 +26,8 @@ const getImage = name => {
       return AppleStore;
     case 'privacy_policy':
       return privacy_policy;
+    case 'aboutUs':
+      return aboutUs;
     default:
       return null;
   }

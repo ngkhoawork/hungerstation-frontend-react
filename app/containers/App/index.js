@@ -33,6 +33,7 @@ import LogoutPage from 'pages/LogoutPage';
 import RegistrationPage from 'pages/RegistrationPage/Loadable';
 import ResetPasswordPage from 'pages/ResetPasswordPage/Loadable';
 import ForgotPasswordPage from 'pages/ForgotPasswordPage/Loadable';
+import AboutUsPage from 'pages/FooterPages/AboutUsPage/Loadable';
 import FAQsPage from 'pages/FooterPages/FAQsPage/Loadable';
 import ContactUsPage from 'pages/FooterPages/ContactUsPage/Loadable';
 import PrivacyPolicyPage from 'pages/FooterPages/PrivacyPolicyPage/Loadable';
@@ -145,6 +146,7 @@ export default class App extends Component {
               <Route path="/register" component={RegistrationPage} />
               <Route path="/reset-password" component={ResetPasswordPage} />
               <Route path="/forgot-password" component={ForgotPasswordPage} />
+              <Route path="/about-us" component={AboutUsPage} />
               <Route path="/faqs" component={FAQsPage} />
               <Route path="/contactus" component={ContactUsPage} />
               <Route
