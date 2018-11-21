@@ -9,9 +9,9 @@ import { Title } from 'components/Typography';
 import { alabaster } from 'utils/css/colors';
 import DateTimeElement from 'components/DateTime';
 import { css } from 'styled-components';
-
 import messages from './messages';
 import DeliveryType from './DeliveryType';
+import TrackingTimer from '../TrackingTimer';
 
 import {
   Item,
@@ -66,6 +66,12 @@ const OrderCard = ({ order, onRateClick }) => (
               <DateTimeElement time={order.delivedAt} />
             )}
             {order.state === 'failed' && <Status color="error">Failed</Status>}
+            {order.tracking.activeStatus && (
+              <TrackingTimer
+                startAt={new Date().getTime() / 1000 - 300}
+                endAt={new Date().getTime() / 1000 + 100}
+              />
+            )}
           </OrderState>
         </Row>
         <OrderItems>

@@ -2,6 +2,8 @@ export const getOrdersQuery = `query {
   orders {
     id
     state
+    action_at
+    active_tracking_button
     address {
       address_details {
         description
@@ -54,6 +56,18 @@ export const getOrdersQuery = `query {
           }
         }
       }
+    }
+    tracking {
+      active_status
+      array_of_states {
+        index
+        key
+        title
+        description
+      }
+      current_state_key
+      trackable
+      # delivery_eta
     }
   }
 }`;

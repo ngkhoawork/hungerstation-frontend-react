@@ -49,6 +49,13 @@ export function* fetchOrdersSaga() {
         count: item.count || 1,
         description: getOrderDescription(item),
       })),
+      tracking: {
+        activeStatus: order.tracking.active_status,
+        arrayOfStates: order.tracking.array_of_states,
+        currentStateKey: order.tracking.current_state_key,
+        trackable: order.tracking.trackable,
+        deliveryEta: order.tracking.delivery_eta,
+      },
     }));
     yield put(fetchOrdersSuccess({ orders: myOrders }));
   } catch (e) {
