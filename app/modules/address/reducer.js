@@ -49,7 +49,8 @@ function reducer(state = initialState, { type, payload }) {
         isEligible: undefined,
         addresses,
         primaryAddress:
-          state.primaryAddress.id === address.id || (index === -1 && isEligible)
+          (state.primaryAddress || {}).id === address.id ||
+          (index === -1 && isEligible)
             ? address
             : state.primaryAddress,
       });
