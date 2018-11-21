@@ -1,17 +1,12 @@
 import styled from 'styled-components';
-import { prop, switchProp } from 'styled-tools';
 
-import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin, mediaSmall } from 'utils/css/styles';
 
 const StyledFeature = styled.div`
   ${flex({}, true)};
   width: 224px;
   max-width: 224px;
   position: relative;
-
-  &:last-child {
-    margin-right: 0;
-  }
 
   ${mediaMedium`
     flex: 1;
@@ -20,7 +15,8 @@ const StyledFeature = styled.div`
   `};
 
   ${mediaSmall`
-    margin: 0 0 0 72px;
+    margin: 0;
+    ${sideMargin('start', '72px')};
   `};
 `;
 

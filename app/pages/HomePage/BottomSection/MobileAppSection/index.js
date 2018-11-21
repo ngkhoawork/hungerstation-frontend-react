@@ -3,7 +3,7 @@ import intl from 'utils/intlService';
 import styled, { css } from 'styled-components';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
-import { mediaMedium, sideMargin } from 'utils/css/styles';
+import { mediaMedium, sideMargin, sidePosition } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 import PhoneVisualSmall from 'images/phone-visual-small.png';
 import PhoneVisual from 'images/phone-visual.png';
@@ -24,24 +24,28 @@ const MobileBackgroundContainer = styled.div`
   position: relative;
   padding-top: 100%;
   background-color: ${wildSand};
+
+  ${mediaMedium`
+    background-image: none;
+    ${sideMargin('end', '0')}
+  `};
 `;
 
 const MobileBackground = styled.div`
   ${mediaMedium`
     background-image: url(${PhoneVisualSmall});
     position: absolute;
-    padding-top: 128%;
-    width: 94%;
-    bottom: -16%;
-    left: 3%;
+    padding-top: 126%;
+    width: 100%;
+    bottom: -15%;
+    ${sidePosition('start', '0')};
     background-size: cover;
+    
   `};
 `;
 
 const rightSectionCss = css`
   ${mediaMedium`
-    padding-bottom: 10%;
-    background: white;
   `};
 `;
 
