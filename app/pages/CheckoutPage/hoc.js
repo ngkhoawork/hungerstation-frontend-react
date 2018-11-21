@@ -22,12 +22,16 @@ import { selectCheckoutState } from 'modules/checkout/selectors';
 import { setNote, createOrder, validateOrder } from 'modules/checkout/actions';
 import InsufficientOrderAmount from 'containers/InsufficientOrderAmount';
 import AddAddressContainer from 'containers/AddAddressContainer';
-// import IneligibleAddress from 'components/IneligibleAddress';
 import CheckoutPage from './component';
 
 class CheckoutPageHOC extends React.Component {
   componentDidMount() {
-    const { restaurant, match } = this.props;
+    const { restaurant, location, history, match, purchases } = this.props;
+
+    if (!purchases.length) {
+      history.push(location.pathname.replace('/checkout', ''));
+      return;
+    }
 
     if (restaurant.latitude) {
       this.props.saveCurrentLocationAction({
@@ -67,8 +71,12 @@ class CheckoutPageHOC extends React.Component {
     }
 
     // waiting for delivery options to refetch on address select and checking for change
-    const { deliveryOptions } = checkoutState;
-    if (prevProps.checkoutState.deliveryOptions !== deliveryOptions) {
+    const { deliveryOptions, coupon } = checkoutState;
+    const { deliveryOptions: prevDeliveryOptions } = prevProps.checkoutState;
+    if (
+      (prevDeliveryOptions && prevDeliveryOptions !== deliveryOptions) ||
+      coupon !== prevProps.checkoutState.coupon
+    ) {
       this.handleOrderChange();
     }
   }
@@ -77,37 +85,11 @@ class CheckoutPageHOC extends React.Component {
     this.props.hideModal();
   }
 
-  // TODO: need to get ineligible addresses as well from the backend to be able
-  // to take one of them for editing.
-  // handleIneligibleAddrEdit = () => {
-  //   // this.props.hideModal();
-  //   this.props.showModal(AddAddressContainer);
-  // };
-
-  // TODO: not quite clear where should this go to...??
-  // handleIneligibleAddrSearch = () => {
-  //   const { history, match } = this.props;
-  //   const { district, city } = match.params;
-  //   this.props.hideModal();
-
-  //   history.push(`/restaurants/${city}/${district}`);
-  // };
-
-  // handleIneligibleAddress = () => {
-  //   const IneligibleAddressHOC = () => (
-  //     <IneligibleAddress
-  //       onEditClick={this.handleIneligibleAddrEdit}
-  //       onSearchClick={this.handleIneligibleAddrSearch}
-  //     />
-  //   );
-  //   this.props.showModal(IneligibleAddressHOC);
-  // };
-
   generateOrderPayload = () => {
     const {
       match,
       district,
-      primaryAddress,
+      primaryAddress = {},
       purchases,
       checkoutState,
     } = this.props;
@@ -118,7 +100,7 @@ class CheckoutPageHOC extends React.Component {
       districtId: parseInt(district.get('id'), 10),
       addressId: parseInt(primaryAddress.id, 10),
       deliveryOptionId: parseInt(selectedDeliveryOption.key, 10),
-      coupon: coupon && coupon.isValid ? coupon.value : undefined,
+      coupon: coupon ? coupon.value : undefined,
       note: note || undefined,
       orderItems: purchases.map(item => ({
         menuitem_id: parseInt(item.product.id, 10),
@@ -159,6 +141,7 @@ class CheckoutPageHOC extends React.Component {
 }
 
 CheckoutPageHOC.propTypes = {
+  location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   orderAmount: PropTypes.number.isRequired,

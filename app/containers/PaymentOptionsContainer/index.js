@@ -25,7 +25,7 @@ class PaymentOptionsContainer extends React.Component {
 
   handleSetCoupon = coupon => {
     this.props.setCoupon(coupon);
-    this.props.onOrderChange();
+    // this.props.onOrderChange();
   };
 
   render() {
