@@ -34,6 +34,7 @@ const Cart = ({
   removeFromCart,
   onItemEditClick,
   onCartSubmit,
+  orderErrors,
 }) => {
   const minAmount = getDeepProp(branch, [
     'delivery_conditions',
@@ -59,11 +60,11 @@ const Cart = ({
   const renderNotice = () => {
     let message;
 
-    if (branch.status === 'busy') {
+    if (orderErrors) {
+      message = orderErrors.map(({ value }) => value).join('\n');
+    } else if (branch.status === 'busy') {
       message = intl.formatMessage(messages.busy, { name });
-    }
-
-    if (branch.status === 'soon') {
+    } else if (branch.status === 'soon') {
       const allMessages = [intl.formatMessage(messages.closed, { name })];
 
       const weektimes = getDeepProp(
@@ -93,9 +94,7 @@ const Cart = ({
       }
 
       message = allMessages.join(' ');
-    }
-
-    if (minAmount > orderAmount) {
+    } else if (minAmount > orderAmount) {
       message = intl.formatMessage(messages.minOrderError, {
         restaurantName: from,
         minAmount: intl.formatNumber(minAmount, priceIntlOptions),
@@ -188,6 +187,7 @@ Cart.propTypes = {
   removeFromCart: PropTypes.func.isRequired,
   onItemEditClick: PropTypes.func.isRequired,
   onCartSubmit: PropTypes.func,
+  orderErrors: PropTypes.array,
 };
 
 export default Cart;

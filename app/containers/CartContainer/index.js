@@ -40,7 +40,7 @@ class CartContainer extends React.Component {
     const {
       city,
       district,
-      checkoutState: { selectedDeliveryOption: delivery, discount },
+      checkoutState: { selectedDeliveryOption, discount, orderErrors },
       restaurant,
       params,
       onOrderCreate,
@@ -50,8 +50,9 @@ class CartContainer extends React.Component {
     return (
       <Cart
         {...props}
+        orderErrors={orderErrors}
         discount={discount}
-        deliveryFee={delivery && delivery.price}
+        deliveryFee={selectedDeliveryOption && selectedDeliveryOption.price}
         city={city && city.get('name')}
         district={district && district.get('name')}
         branch={restaurant}
