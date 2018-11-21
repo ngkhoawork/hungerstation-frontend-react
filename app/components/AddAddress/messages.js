@@ -8,7 +8,7 @@ export default defineMessages({
     id: 'app.components.AddAddress.updateTitle',
   },
   subtitle: {
-    id: 'app.components.AddAddress.susbtitle',
+    id: 'app.components.AddAddress.subtitle',
   },
   ineligible: {
     id: 'app.components.AddAddress.ineligible',
