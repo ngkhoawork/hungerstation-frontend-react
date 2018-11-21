@@ -44,8 +44,9 @@ class CheckoutPageHOC extends React.Component {
     const { addresses, isLoadingAddresses, checkoutState } = this.props;
 
     if (
-      (!prevProps.addresses && addresses && !addresses.length) ||
-      (prevProps.isLoadingAddresses && !isLoadingAddresses && !addresses.length)
+      prevProps.isLoadingAddresses &&
+      !isLoadingAddresses &&
+      !addresses.length
     ) {
       this.props.showModal(AddAddressContainer);
     }

@@ -30,7 +30,7 @@ class AddressesContainer extends React.Component {
   };
 
   render() {
-    const { addresses = [], primaryAddress } = this.props;
+    const { addresses, primaryAddress } = this.props;
 
     return (
       <Addresses

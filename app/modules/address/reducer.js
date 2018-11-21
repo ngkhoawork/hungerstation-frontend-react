@@ -9,7 +9,9 @@ import {
   validateAddressSuccess,
 } from './actions';
 
-export const initialState = {};
+export const initialState = {
+  addresses: [],
+};
 
 function reducer(state = initialState, { type, payload }) {
   switch (type) {
