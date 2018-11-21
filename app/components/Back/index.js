@@ -6,6 +6,7 @@ import intl from 'utils/intlService';
 import { flex, sideMargin } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
+import { StyledLink } from 'utils/css/styledComponents';
 import messages from './messages';
 
 const StyledBack = styled.div`
@@ -21,15 +22,23 @@ const Label = styled.div`
   ${sideMargin('start', '5px')};
 `;
 
-const Back = ({ onClick }) => (
-  <StyledBack onClick={onClick}>
-    <Icon name="arrow-back" size={16} />
-    <Label>{intl.formatMessage(messages.text)}</Label>
-  </StyledBack>
-);
+const Back = ({ onClick, to, label }) => {
+  const renderContent = () => (
+    <StyledBack onClick={onClick}>
+      <Icon name="arrow-back" size={16} />
+      <Label>{label || intl.formatMessage(messages.text)}</Label>
+    </StyledBack>
+  );
+
+  if (to) return <StyledLink to={to}>{renderContent()}</StyledLink>;
+
+  return renderContent();
+};
 
 Back.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  to: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Back;
