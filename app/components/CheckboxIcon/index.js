@@ -13,13 +13,16 @@ const CheckboxEmpty = styled.div`
 `;
 
 const CheckboxIcon = ({ isChecked, onClick, isDisabled }) => {
-  const iconStyle = {
-    cursor: isDisabled ? 'default' : 'pointer',
-  };
+  if (isDisabled) return <Icon name="area-not-eligible" size={20} />;
 
   if (isChecked) {
     return (
-      <Icon name="toggle-green" style={iconStyle} size={20} onClick={onClick} />
+      <Icon
+        name="toggle-green"
+        style={{ cursor: 'pointer' }}
+        size={20}
+        onClick={onClick}
+      />
     );
   }
 
