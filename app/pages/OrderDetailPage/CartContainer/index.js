@@ -52,7 +52,8 @@ class CartContainer extends React.Component {
     const {
       city,
       district,
-      checkoutState: { selectedDeliveryOption: delivery },
+      // checkoutState: { selectedDeliveryOption: delivery },
+      deliveryFee,
       restaurant,
       params,
       discount,
@@ -64,11 +65,13 @@ class CartContainer extends React.Component {
         {...props}
         branch={restaurant}
         discount={discount}
-        deliveryFee={delivery && delivery.price}
+        deliveryFee={deliveryFee}
         city={city && city.get('name')}
         district={district && district.get('name')}
         isOrderDetail
         onCartSubmit={this.isCheckout ? this.handleOrderCreate : undefined}
+        removeFromCart={() => {}}
+        onItemEditClick={() => {}}
       />
     );
   }
