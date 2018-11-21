@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
+import { findIndex } from 'lodash';
 import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
@@ -20,35 +21,6 @@ import {
   Loading,
 } from './StyledComponents';
 
-const steps = [
-  {
-    index: 1,
-    title: 'Submitted!',
-    description: 'Great! Your order is being processed',
-  },
-  {
-    index: 2,
-    title: 'Finding a driver',
-    description: 'Awaiting acceptance from driver',
-  },
-  {
-    index: 3,
-    title: 'Sent to restaurant',
-    description: 'Your order has been sent to shwrmer',
-  },
-  {
-    index: 4,
-    title: 'In the kitchen',
-    description: 'Shawrmer is preparing your order',
-  },
-  {
-    index: 5,
-    title: 'On the way',
-    description: 'Your order is in delivery',
-  },
-];
-
-const currentStep = 2;
 class OrderDetailPage extends React.Component {
   handleRateClick = () => {
     // implement rate click function
@@ -60,6 +32,7 @@ class OrderDetailPage extends React.Component {
     const orderAmount = order ? order.amount : undefined;
     const discount = order ? order.discount : undefined;
     const deliveryFee = order ? parseFloat(order.fee) : undefined;
+    let currentStep = 0;
     if (order) {
       purchases = order.orderItems.map((item, index) => ({
         id: index,
@@ -72,6 +45,12 @@ class OrderDetailPage extends React.Component {
         price: item.amount,
         additions: [],
       }));
+      if (order.tracking && order.tracking.activeStatus) {
+        currentStep = findIndex(order.tracking.arrayOfStates, [
+          'key',
+          order.tracking.currentStateKey,
+        ]);
+      }
     }
     return (
       <PageContent>
@@ -97,7 +76,10 @@ class OrderDetailPage extends React.Component {
                     />
                   </StyledOrderList>
                   {order.tracking.activeStatus && (
-                    <TrackingSteps steps={steps} currentStep={currentStep} />
+                    <TrackingSteps
+                      steps={order.tracking.arrayOfStates}
+                      currentStep={currentStep}
+                    />
                   )}
                 </LeftSide>
                 <RightSide>

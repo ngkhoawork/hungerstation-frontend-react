@@ -7,6 +7,25 @@ import 'rc-steps/assets/iconfont.css';
 export const StyledWrapper = styled.div`
   margin-top: 30px;
 `;
+
+export const StyledStep = styled(Step)`
+  .rc-steps-item-content {
+    display: flex !important;
+    min-height: 64px !important;
+    justify-content: space-between;
+
+    .rc-steps-item-title {
+      flex: 1;
+      font-size: 16px;
+    }
+    .rc-steps-item-description {
+      flex: 1;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+`;
+
 export const StyledSteps = styled(Steps)`
   .rc-steps-item-finish {
     .rc-steps-item-tail {
@@ -73,24 +92,6 @@ export const StyledSteps = styled(Steps)`
       .rc-steps-item-description {
         color: ${dustyGray};
       }
-    }
-  }
-`;
-
-export const StyledStep = styled(Step)`
-  .rc-steps-item-content {
-    display: flex !important;
-    min-height: 64px !important;
-    justify-content: space-between;
-
-    .rc-steps-item-title {
-      flex: 1;
-      font-size: 16px;
-    }
-    .rc-steps-item-description {
-      flex: 1;
-      font-size: 14px;
-      margin-top: 5px;
     }
   }
 `;

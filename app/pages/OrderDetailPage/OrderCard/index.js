@@ -68,8 +68,8 @@ const OrderCard = ({ order, onRateClick }) => (
             {order.state === 'failed' && <Status color="error">Failed</Status>}
             {order.tracking.activeStatus && (
               <TrackingTimer
-                startAt={new Date().getTime() / 1000 - 300}
-                endAt={new Date().getTime() / 1000 + 100}
+                startAt={order.actionAt}
+                endAt={order.actionAt + 60 * 60 * 2}
               />
             )}
           </OrderState>

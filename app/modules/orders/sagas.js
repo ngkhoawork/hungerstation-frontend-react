@@ -19,6 +19,7 @@ export function* fetchOrdersSaga() {
     const myOrders = orders.map(order => ({
       id: order.id,
       state: order.state,
+      actionAt: order.action_at,
       address: get(
         order,
         ['address', 'address_details', 0, 'description'],

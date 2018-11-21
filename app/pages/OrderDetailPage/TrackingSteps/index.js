@@ -13,8 +13,8 @@ const TrackingSteps = ({ steps, currentStep }) => (
       {steps.map(step => (
         <StyledStep
           icon={
-            <StyledIcon isProgress={step.index > currentStep + 1}>
-              {step.index}
+            <StyledIcon isProgress={step.index > currentStep}>
+              {step.index + 1}
             </StyledIcon>
           }
           key={step.index}
