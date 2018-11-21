@@ -167,19 +167,23 @@ class AddAddress extends React.Component {
       description,
       locationName,
       isSaveChecked,
+      selectedType,
     } = this.state;
 
-    if (!description || isLoading || (isEligible === false && !isSaveChecked)) {
+    if (
+      !description ||
+      isLoading ||
+      (isEligible === false && !isSaveChecked) ||
+      (isSaveChecked && !selectedType.key)
+    ) {
       return;
     }
 
-    const saveAddressState = this.saveAddressRef.current.getState();
-    const { specific_type } = saveAddressState;
     const { geometry } = selectedPlace;
 
     const payload = {
       id: address.id,
-      specific_type: specific_type || otherAddressType,
+      specific_type: selectedType.key || otherAddressType,
       latitude: geometry.location.lat(),
       longitude: geometry.location.lng(),
       description,
@@ -201,7 +205,12 @@ class AddAddress extends React.Component {
       isLoading,
       isEligible,
     } = this.props;
-    const { locationName, description, isSaveChecked } = this.state;
+    const {
+      locationName,
+      description,
+      isSaveChecked,
+      selectedType,
+    } = this.state;
     const mobile = address.mobile || (phone || '').substr(4);
     const isCreate = !address.id;
 
@@ -272,6 +281,8 @@ class AddAddress extends React.Component {
               ref={this.saveAddressRef}
               address={address}
               disabledTypes={disabledTypes}
+              selectedType={selectedType}
+              setType={selectedType => this.setState({ selectedType })}
               isSaveChecked={isSaveChecked}
               setSaveChecked={isSaveChecked => this.setState({ isSaveChecked })}
             />
@@ -293,7 +304,8 @@ class AddAddress extends React.Component {
             disabled={
               isLoading ||
               !description ||
-              (isEligible === false && !isSaveChecked)
+              (isEligible === false && !isSaveChecked) ||
+              (isSaveChecked && !selectedType.key)
             }
           >
             {intl.formatMessage(messages.set)}

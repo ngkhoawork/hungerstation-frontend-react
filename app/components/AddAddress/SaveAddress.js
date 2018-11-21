@@ -32,24 +32,12 @@ class SaveAddress extends React.Component {
         ...addr,
         name: intl.formatMessage(addressMessages[addr.key]),
       }));
-    this.state = {
-      selectedType: this.addressTypes.find(({ key }) => key === type) || {},
-    };
+    props.setType(this.addressTypes.find(({ key }) => key === type) || {});
     props.setSaveChecked(!!type && type !== otherAddressType);
   }
 
-  getState = () => {
-    const { selectedType } = this.state;
-    const { isSaveChecked } = this.props;
-    const specific_type = selectedType.key;
-
-    if (!isSaveChecked) return {};
-
-    return { specific_type };
-  };
-
   handleTypeSelect = selectedType => {
-    if (this.isChangeableType) this.setState({ selectedType });
+    if (this.isChangeableType) this.props.setType(selectedType);
   };
 
   handleSaveToggle = () => {
@@ -59,8 +47,7 @@ class SaveAddress extends React.Component {
   };
 
   render() {
-    const { selectedType } = this.state;
-    const { isSaveChecked } = this.props;
+    const { isSaveChecked, selectedType } = this.props;
 
     return (
       <Container>
@@ -92,6 +79,8 @@ class SaveAddress extends React.Component {
 SaveAddress.propTypes = {
   address: PropTypes.object,
   disabledTypes: PropTypes.array,
+  selectedType: PropTypes.object,
+  setType: PropTypes.func.isRequired,
   isSaveChecked: PropTypes.bool,
   setSaveChecked: PropTypes.func.isRequired,
 };
