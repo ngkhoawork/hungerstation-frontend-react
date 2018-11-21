@@ -1,14 +1,15 @@
-import styled from 'styled-components';
-import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
+import { flex, mediaMedium, mediaSmall } from './styles';
 import {
   persimmon,
   errorBg,
   jade,
   silverChalice,
   alabaster,
-} from 'utils/css/colors';
+  fuscousGray,
+} from './colors';
 import {
   borderRadius,
   zIndexDisabledOverlay,
@@ -58,9 +59,11 @@ export const StyledPage = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-  color: ${({ color }) => color};
+  color: ${({ color }) => color || fuscousGray};
   text-decoration: none;
   margin: 0;
+
+  ${({ style }) => style && css(style)};
 `;
 
 export const DisabledOverlay = styled.div`
