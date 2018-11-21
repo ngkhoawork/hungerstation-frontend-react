@@ -86,6 +86,8 @@
   "app.components.RestaurantsList.RestaurantCard.promoted": "Promoted",
   "app.components.RestaurantsList.NotFound.text": "No restaurants found!",
   "app.components.RestaurantsList.NotFound.description": "Sorry, we couldn't find any restaurants nearby as we don't deliver to this area yet",
+  "app.components.ResetPasswordPage.backToHome": "Back to Home",
+  "app.components.ResetPasswordPage.noAccountAccess": "I dont have an access to my account",
   "app.components.RestaurantHeader.status.busy": "Busy",
   "app.components.RestaurantHeader.status.closed": "Closed",
   "app.components.RestaurantHeader.status.tomorrow": "Opens at {time}",

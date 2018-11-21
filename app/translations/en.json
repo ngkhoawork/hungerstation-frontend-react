@@ -75,6 +75,8 @@
   "app.components.ResetPasswordForm.repeatPassword": "Confirm password",
   "app.components.ResetPasswordPage.header": "Reset Password",
   "app.components.ResetPasswordPage.subheader": "Enter your details to reset your password",
+  "app.components.ResetPasswordPage.backToHome": "Back to Home",
+  "app.components.ResetPasswordPage.noAccountAccess": "I dont have an access to my account",
   "app.components.RestaurantsHeader.Filter.label": "Check out all cuisines",
   "app.components.RestaurantsHeader.Filter.location": "at Almohammadeah, Baljursahi",
   "app.components.RestaurantsHeader.LocationInput.placeholder": "Almohammadeah, Baljursahi",

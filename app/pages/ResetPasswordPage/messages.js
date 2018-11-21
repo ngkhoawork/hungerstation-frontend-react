@@ -1,9 +1,3 @@
-/*
- * ResetPasswordPage Messages
- *
- * This contains all the text for the ResetPasswordPage component.
- */
-
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
@@ -12,5 +6,11 @@ export default defineMessages({
   },
   subheader: {
     id: 'app.components.ResetPasswordPage.subheader',
+  },
+  backToHome: {
+    id: 'app.components.ResetPasswordPage.backToHome',
+  },
+  noAccountAccess: {
+    id: 'app.components.ResetPasswordPage.noAccountAccess',
   },
 });
