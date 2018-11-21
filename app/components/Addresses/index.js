@@ -13,6 +13,7 @@ import Section from './Section';
 import messages from './messages';
 
 const Addresses = ({
+  isLoading,
   selectedAddress,
   addresses,
   recentAddresses,
@@ -34,7 +35,11 @@ const Addresses = ({
   );
 
   const renderNotice = () => {
-    if (addresses.find(({ branch_eligibility }) => branch_eligibility)) {
+    if (
+      isLoading ||
+      selectedAddress ||
+      addresses.find(({ branch_eligibility }) => branch_eligibility)
+    ) {
       return null;
     }
 
@@ -86,6 +91,7 @@ const Addresses = ({
 };
 
 Addresses.propTypes = {
+  isLoading: PropTypes.bool,
   selectedAddress: PropTypes.object,
   addresses: PropTypes.arrayOf(PropTypes.object),
   recentAddresses: PropTypes.arrayOf(PropTypes.object),

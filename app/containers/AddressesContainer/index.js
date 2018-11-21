@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {
+  selectAddressesLoading,
   selectAddresses,
   selectPrimaryAddress,
 } from 'modules/address/selectors';
@@ -30,10 +31,11 @@ class AddressesContainer extends React.Component {
   };
 
   render() {
-    const { addresses, primaryAddress } = this.props;
+    const { addresses, primaryAddress, isLoading } = this.props;
 
     return (
       <Addresses
+        isLoading={isLoading}
         selectedAddress={primaryAddress}
         addresses={
           primaryAddress
@@ -50,6 +52,7 @@ class AddressesContainer extends React.Component {
 }
 
 AddressesContainer.propTypes = {
+  isLoading: PropTypes.bool,
   primaryAddress: PropTypes.object,
   addresses: PropTypes.array,
   showModal: PropTypes.func.isRequired,
@@ -59,6 +62,7 @@ AddressesContainer.propTypes = {
 
 export default connect(
   createStructuredSelector({
+    isLoading: selectAddressesLoading,
     addresses: selectAddresses,
     primaryAddress: selectPrimaryAddress,
   }),
