@@ -84,8 +84,6 @@ class RestaurantPage extends React.Component {
     const { menu, ...info } = restaurant;
     const { selectedMenuGroup } = this.state;
 
-    if (!selectedMenuGroup) return null;
-
     if (!getDeepProp(menu, ['menugroups', 'length'])) {
       return (
         <PageNotice>
@@ -93,6 +91,8 @@ class RestaurantPage extends React.Component {
         </PageNotice>
       );
     }
+
+    if (!selectedMenuGroup) return null;
 
     // const shownProducts = selectedMenuGroup.products.find(isDayTimeMatch);
     const shownProducts = selectedMenuGroup.products;
