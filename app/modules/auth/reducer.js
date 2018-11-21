@@ -77,7 +77,7 @@ const onSetCurrentUser = (state, action) => {
   const { user } = action;
 
   return state.merge({
-    currentUser: user,
+    currentUser: user || {},
     loggedIn: true,
   });
 };

@@ -17,13 +17,13 @@ import { protectedRequest } from 'utils/api';
 
 import { saveTokens } from 'modules/common/sagas';
 
-import { LOGOUT, REQUEST_ERROR, AUTHENTICATE_USER } from './constants';
+import { REQUEST_ERROR, AUTHENTICATE_USER } from './constants';
 import { setAuthState, updateTokens, setCurrentUser, logout } from './actions';
 import { makeSelectTokens } from './selectors';
 
 export function* logoutFlow() {
   while (true) {
-    yield take(LOGOUT);
+    yield take(logout.type);
     yield put(setAuthState(false));
 
     yield call(logoutWoker);
@@ -128,7 +128,7 @@ export function* getCurrentUser(tokens) {
     yield put(setCurrentUser({ user }));
   } catch (err) {
     yield put(logout());
-    yield put(setCurrentUser({ user: null }));
+    yield put(setCurrentUser({}));
   }
 }
 

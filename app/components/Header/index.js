@@ -82,9 +82,9 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
         </MobileLocaleToggle>
         {isLoggedIn ? (
           <DropdownMenu
-            label={userInfo && userInfo.name}
+            label={userInfo.name}
             items={menu}
-            leftIcon={getLeftIcon(userInfo && userInfo.name)}
+            leftIcon={getLeftIcon(userInfo.name)}
             isRightAligned
           />
         ) : (

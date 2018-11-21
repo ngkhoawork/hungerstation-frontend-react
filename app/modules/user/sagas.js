@@ -2,7 +2,6 @@ import { takeEvery, race, call, put, take } from 'redux-saga/effects';
 
 import { saveTokens } from 'modules/common/sagas';
 import { setCurrentUser, logout, setAuthState } from 'modules/auth/actions';
-import { LOGOUT } from 'modules/auth/constants';
 
 import { setStorageItem } from 'utils/localStorage';
 import { parseJwt } from 'utils/tokens';
@@ -26,7 +25,7 @@ export function* loginFlow({ payload, meta: redirectToRoute }) {
         password,
         isRegistering: false,
       }),
-      logoutResponse: take(LOGOUT),
+      logoutResponse: take(logout.type),
     });
 
     if (authenticatedUser) {

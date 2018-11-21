@@ -11,12 +11,8 @@ export const makeSelectIsLoggedIn = createSelector(
   authState => authState && authState.get('loggedIn'),
 );
 
-export const makeSelectCurrentUser = createSelector(
-  selectAuth,
-  authState =>
-    authState && authState.get('currentUser')
-      ? authState.get('currentUser').toJS()
-      : null,
+export const makeSelectCurrentUser = createSelector(selectAuth, authState =>
+  authState.get('currentUser').toJS(),
 );
 
 export const makeSelectTokens = createSelector(

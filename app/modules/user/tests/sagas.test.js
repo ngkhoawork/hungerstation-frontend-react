@@ -5,8 +5,7 @@ import { parseJwt } from 'utils/tokens';
 import { setStorageItem } from 'utils/localStorage';
 import { forwardTo } from 'utils/route';
 
-import { setCurrentUser } from 'modules/auth/actions';
-import { LOGOUT } from 'modules/auth/constants';
+import { setCurrentUser, logout } from 'modules/auth/actions';
 
 import {
   loginFlow,
@@ -63,7 +62,7 @@ describe('User Sagas', () => {
             password: payload.password,
             isRegistering: false,
           }),
-          logoutResponse: take(LOGOUT),
+          logoutResponse: take(logout.type),
         }),
       );
     });
