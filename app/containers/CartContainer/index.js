@@ -40,25 +40,12 @@ class CartContainer extends React.Component {
     const {
       city,
       district,
-      checkoutState: { selectedDeliveryOption: delivery, coupon },
+      checkoutState: { selectedDeliveryOption: delivery, discount },
       restaurant,
       params,
       onOrderCreate,
       ...props
     } = this.props;
-    let discount = 0;
-
-    if (coupon && coupon.isValid) {
-      const { restaurants, cutbacks, discounts } = coupon;
-
-      if (
-        !restaurants.length ||
-        restaurants.indexOf(restaurant.restaurant.id) > -1
-      ) {
-        if (cutbacks[0]) discount = cutbacks[0].cutback_amount;
-        if (discounts[0]) discount = discounts[0].discount_amount;
-      }
-    }
 
     return (
       <Cart
