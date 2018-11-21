@@ -6,10 +6,10 @@ import { StyledLink } from 'utils/css/styledComponents';
 import { wildSand, boulder } from 'utils/css/colors';
 import { StyledMenu, StyledSubMenu } from './StyledComponents';
 
-const SubMenu = ({ items, isRightAligned }) => (
-  <StyledSubMenu className="fadeIn" isRightAligned={isRightAligned}>
+const SubMenu = ({ items, onItemClick, ...props }) => (
+  <StyledSubMenu className="fadeIn" {...props}>
     {items.map(item => (
-      <StyledLink key={item.id} to={item.to}>
+      <StyledLink key={item.id} to={item.to} onClick={onItemClick}>
         <StyledMenu>
           {item.icon && (
             <CircledItem color={wildSand} width={24} withShadow>
@@ -25,7 +25,7 @@ const SubMenu = ({ items, isRightAligned }) => (
 
 SubMenu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isRightAligned: PropTypes.bool,
+  onItemClick: PropTypes.func.isRequired,
 };
 
 export default SubMenu;

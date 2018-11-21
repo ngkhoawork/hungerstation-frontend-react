@@ -48,7 +48,7 @@ export const StyledSubMenu = styled.div`
   overflow-y: auto;
   position: absolute;
   top: ${dropdownHeight};
-  z-index: ${zIndexDropdown};
+  z-index: ${({ isVisible }) => (isVisible ? zIndexDropdown : -100)};
   border-radius: ${borderRadius};
   ${flex({ direction: 'column' })};
   white-space: nowrap;

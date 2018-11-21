@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { isChildOf } from 'utils/helpers';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import { persimmon } from 'utils/css/colors';
@@ -9,7 +10,7 @@ import SubMenu from './SubMenu';
 class DropdownMenu extends Component {
   state = { isDropdownVisible: false };
 
-  dropdownWrapperRef = React.createRef();
+  containerId = `${Math.random()}`;
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
@@ -19,20 +20,15 @@ class DropdownMenu extends Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
-  handleClickOutside = event => {
-    if (
-      this.dropdownWrapperRef.current &&
-      !this.dropdownWrapperRef.current.contains(event.target)
-    ) {
+  handleClickOutside = ({ target }) => {
+    if (!isChildOf(target, this.containerId)) {
       this.setState({ isDropdownVisible: false });
     }
   };
 
   toggleDropdown = () => {
     const { isDropdownVisible } = this.state;
-    this.setState({
-      isDropdownVisible: !isDropdownVisible,
-    });
+    this.setState({ isDropdownVisible: !isDropdownVisible });
   };
 
   render() {
@@ -40,11 +36,8 @@ class DropdownMenu extends Component {
     const { isDropdownVisible } = this.state;
 
     return (
-      <div style={{ position: 'relative', minWidth: 0 }}>
-        <StyledDropdown
-          onClick={this.toggleDropdown}
-          innerRef={this.dropdownWrapperRef}
-        >
+      <div id={this.containerId} style={{ position: 'relative', minWidth: 0 }}>
+        <StyledDropdown onClick={this.toggleDropdown}>
           <CircledItem
             color="white"
             width={22}
@@ -56,9 +49,12 @@ class DropdownMenu extends Component {
           <Label>{label}</Label>
           <Icon name="arrow-dropdown" />
         </StyledDropdown>
-        {isDropdownVisible ? (
-          <SubMenu items={items} isRightAligned={isRightAligned} />
-        ) : null}
+        <SubMenu
+          items={items}
+          onItemClick={this.toggleDropdown}
+          isRightAligned={isRightAligned}
+          isVisible={isDropdownVisible}
+        />
       </div>
     );
   }
