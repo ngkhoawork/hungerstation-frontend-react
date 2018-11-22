@@ -9,6 +9,9 @@ export const boxShadow = '1px 5px 27px -3px rgba(59, 59, 59, 0.13)';
 export const borderRadius = '8px';
 export const border = `solid 1px ${lightGray}`;
 
+export const pageMaxWidth = '1600px';
+export const pageMinWidth = '1366px';
+export const pageContentWidth = '1244px';
 export const headerHeight = '100px';
 export const navHeaderHeight = '55px';
 export const maxModalHeight = '98vh';

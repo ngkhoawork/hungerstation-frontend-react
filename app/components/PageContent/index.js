@@ -1,14 +1,11 @@
 import styled from 'styled-components';
-import { mediaLess } from 'utils/css/styles';
-import { LARGE_SCREEN_CONTENT_WIDTH } from './constants';
+import { mediaMedium } from 'utils/css/styles';
+import { pageContentWidth } from 'utils/css/variables';
 
 const PageContent = styled.div`
-  width: ${LARGE_SCREEN_CONTENT_WIDTH}px;
-  overflow: visible;
+  width: ${pageContentWidth};
 
-  ${mediaLess(600)`
-    width: 100%;
-    `};
+  ${mediaMedium`width: 100%;`};
 `;
 
 export default PageContent;
