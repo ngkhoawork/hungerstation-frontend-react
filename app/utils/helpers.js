@@ -167,3 +167,8 @@ export const getTime = minutes => {
 
 export const getOrderDescription = order =>
   `${order.count || 1} x ${order.menuitem.name}`;
+
+export const formatMobileNumber = phone => {
+  const regex = /^(05|\+9665|009665)(\d+)$/;
+  return phone.replace(regex, (match, p1, p2) => `+9665${p2}`);
+};

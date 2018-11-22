@@ -5,7 +5,7 @@ import { setCurrentUser, logout, setAuthState } from 'modules/auth/actions';
 
 import { setStorageItem } from 'utils/localStorage';
 import { parseJwt } from 'utils/tokens';
-import { extractError } from 'utils/helpers';
+import { extractError, formatMobileNumber } from 'utils/helpers';
 import { forwardTo, replace } from 'utils/route';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
 
@@ -21,7 +21,7 @@ export function* loginFlow({ payload, meta: redirectToRoute }) {
       logoutResponse,
     } = yield race({
       authResponse: call(authorizeSaga, {
-        mobile,
+        mobile: formatMobileNumber(mobile),
         password,
         isRegistering: false,
       }),
