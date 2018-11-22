@@ -50,7 +50,7 @@ const OrderCard = ({ order, onOrderClick }) => (
             </DeliveryLocation>
           </TitleContainer>
           <OrderState>
-            {order.state === 'delivered' && (
+            {order.state === 'successful' && (
               <DateTimeElement time={order.delivedAt} />
             )}
             {order.state === 'failed' && <Status color="error">Failed</Status>}
