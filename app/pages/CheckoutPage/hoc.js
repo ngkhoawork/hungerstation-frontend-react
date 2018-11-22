@@ -15,6 +15,7 @@ import {
 import { selectRestaurant } from 'modules/restaurant/selectors';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
 import {
+  selectCartContainerState,
   selectCartPurchases,
   selectOrderAmount,
 } from 'containers/CartContainer/selectors';
@@ -26,12 +27,9 @@ import CheckoutPage from './component';
 
 class CheckoutPageHOC extends React.Component {
   componentDidMount() {
-    const { restaurant, location, history, match, purchases } = this.props;
+    const { restaurant, match } = this.props;
 
-    if (!purchases.length) {
-      history.push(location.pathname.replace('/checkout', ''));
-      return;
-    }
+    this.checkPurchases();
 
     if (restaurant.latitude) {
       this.props.saveCurrentLocationAction({
@@ -47,6 +45,8 @@ class CheckoutPageHOC extends React.Component {
   componentDidUpdate(prevProps) {
     const { addresses, isLoadingAddresses, checkoutState } = this.props;
 
+    this.checkPurchases();
+
     if (
       prevProps.isLoadingAddresses &&
       !isLoadingAddresses &&
@@ -55,7 +55,7 @@ class CheckoutPageHOC extends React.Component {
       this.props.showModal(AddAddressContainer);
     }
 
-    const { orderAmount, restaurant, purchases, history, match } = this.props;
+    const { orderAmount, purchases, restaurant, match, history } = this.props;
     const minOrderAmount = getDeepProp(restaurant, [
       'delivery_conditions',
       0,
@@ -85,11 +85,20 @@ class CheckoutPageHOC extends React.Component {
     this.props.hideModal();
   }
 
+  checkPurchases() {
+    const { location, history, cartState } = this.props;
+    const { isInitialized, purchases } = cartState;
+
+    if (isInitialized && !purchases.length) {
+      history.push(location.pathname.replace('/checkout', ''));
+    }
+  }
+
   generateOrderPayload = () => {
     const {
       match,
       district,
-      primaryAddress = {},
+      primaryAddress,
       purchases,
       checkoutState,
     } = this.props;
@@ -98,8 +107,9 @@ class CheckoutPageHOC extends React.Component {
     return clearUndefs({
       branchId: parseInt(match.params.branchId, 10),
       districtId: parseInt(district.get('id'), 10),
-      addressId: parseInt(primaryAddress.id, 10),
-      deliveryOptionId: parseInt(selectedDeliveryOption.key, 10),
+      addressId: primaryAddress && parseInt(primaryAddress.id, 10),
+      deliveryOptionId:
+        selectedDeliveryOption && parseInt(selectedDeliveryOption.key, 10),
       coupon: coupon ? coupon.value : undefined,
       note: note || undefined,
       orderItems: purchases.map(item => ({
@@ -144,6 +154,7 @@ CheckoutPageHOC.propTypes = {
   location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
+  cartState: PropTypes.object.isRequired,
   orderAmount: PropTypes.number.isRequired,
   purchases: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
@@ -166,6 +177,7 @@ export default connect(
   createStructuredSelector({
     restaurant: selectRestaurant,
     orderAmount: selectOrderAmount,
+    cartState: selectCartContainerState,
     purchases: selectCartPurchases,
     addresses: selectAddresses,
     isLoadingAddresses: selectAddressesLoading,

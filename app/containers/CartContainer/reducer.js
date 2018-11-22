@@ -13,10 +13,9 @@ import {
   emptyCart,
 } from './actions';
 
-let isInitialized = false;
-
 export const initialState = {
   purchases: [],
+  isInitialized: false,
 };
 
 const saveCartItems = purchases =>
@@ -25,12 +24,11 @@ const saveCartItems = purchases =>
 function cartContainerReducer(state = initialState, { type, payload }) {
   switch (type) {
     case initCart.type: {
-      if (isInitialized) return state;
+      if (state.isInitialized) return state;
 
-      isInitialized = true;
       const purchases = JSON.parse(getStorageItem('cartItems') || '[]');
 
-      return Object.assign({}, state, { purchases });
+      return Object.assign({}, state, { isInitialized: true, purchases });
     }
 
     case addToCart.type: {
