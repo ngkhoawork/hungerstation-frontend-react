@@ -26,6 +26,7 @@ export const getOrdersQuery = `query {
       longitude
       restaurant {
         id
+        name
         logo
       }
     }

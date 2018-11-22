@@ -53,7 +53,7 @@ const OrderCard = ({ order, onRateClick }) => (
       <div>
         <Row justify="space-between">
           <TitleContainer>
-            <Title css={titleStyle}>{order.branchName}</Title>
+            <Title css={titleStyle}>{order.restaurant.name}</Title>
             <DeliveryLocation>
               <IconPosition>
                 <Icon name="pin" />
