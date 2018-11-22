@@ -19,7 +19,10 @@ export function* fetchOrdersSaga() {
     const myOrders = orders.map(order => ({
       id: order.id,
       state: order.state,
-      actionAt: order.action_at,
+      deliveredAt: order.delivered_at,
+      createdAt: order.created_at,
+      deliveryEta: order.delivery_eta,
+      dueAt: order.due_at,
       address: get(
         order,
         ['address', 'address_details', 0, 'description'],
@@ -41,8 +44,6 @@ export function* fetchOrdersSaga() {
       fee: order.fee,
       discount: parseFloat(order.discount),
       deliveryProvider: order.delivery_provider,
-      deliveredAt: order.delivered_at ? new Date(order.delivered_at) : null,
-      dueAt: order.due_at ? new Date(order.due_at) : null,
       orderItems: order.orderitems.map(item => ({
         orderId: item.order_id,
         menuItem: item.menuitem,
@@ -55,7 +56,6 @@ export function* fetchOrdersSaga() {
         arrayOfStates: order.tracking.array_of_states,
         currentStateKey: order.tracking.current_state_key,
         trackable: order.tracking.trackable,
-        deliveryEta: order.tracking.delivery_eta,
       },
     }));
     yield put(fetchOrdersSuccess({ orders: myOrders }));
