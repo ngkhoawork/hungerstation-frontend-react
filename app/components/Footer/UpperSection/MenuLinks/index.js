@@ -10,16 +10,16 @@ const MenuLinks = () => {
     { id: 'about-us', label: intl.formatMessage(messages.aboutUs) },
     { id: 'contactus', label: intl.formatMessage(messages.contactUs) },
     // { id: 'help', label: intl.formatMessage(messages.help) },
+    {
+      id: 'privacy-policy/who-we-are',
+      label: intl.formatMessage(messages.privacyPolicy),
+    },
     { id: 'faqs', label: intl.formatMessage(messages.faqs) },
     // { id: 'terms-of-use', label: intl.formatMessage(messages.termsOfUse) },
     // {
     //   id: 'add-restaurants',
     //   label: intl.formatMessage(messages.addRestaruants),
     // },
-    {
-      id: 'privacy-policy/who-we-are',
-      label: intl.formatMessage(messages.privacyPolicy),
-    },
     // { id: 'careers', label: intl.formatMessage(messages.careers) },
     // { id: 'blog', label: intl.formatMessage(messages.blog) },
   ];

@@ -11,7 +11,7 @@ const StyledSection = styled.div`
   `};
 
   ${mediaSmall`
-    ${flex({ align: 'flex-start' }, false)};
+    ${flex({ align: 'stretch' }, false)};
     padding: 20px 40px;
   `};
 `;
