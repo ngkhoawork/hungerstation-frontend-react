@@ -134,7 +134,7 @@ class RestaurantPage extends React.Component {
 
     return (
       <StyledPage>
-        <NavHeader>
+        <NavHeader isWithOffset>
           <Back />
         </NavHeader>
         <ContentContainer>

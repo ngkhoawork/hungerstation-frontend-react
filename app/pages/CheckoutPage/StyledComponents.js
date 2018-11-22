@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { flex, mediaMedium } from 'utils/css/styles';
-import {
-  navHeaderHeight,
-  pageOffsetX,
-  mobPageOffsetX,
-  maxPageWidth,
-} from 'utils/css/variables';
+import { pageOffsetX, mobPageOffsetX, maxPageWidth } from 'utils/css/variables';
 
 export const Container = styled.div`
   width: 100%;
@@ -13,16 +8,6 @@ export const Container = styled.div`
   margin-bottom: 60px;
 
   ${mediaMedium`max-width: 100%;`};
-`;
-
-export const NavHeader = styled.div`
-  height: ${navHeaderHeight};
-  padding: 0 ${pageOffsetX};
-  ${flex({ align: 'center' })};
-
-  ${mediaMedium`
-    padding: ${mobPageOffsetX};
-  `};
 `;
 
 export const ContentContainer = styled.div`

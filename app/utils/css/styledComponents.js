@@ -81,7 +81,7 @@ export const DisabledOverlay = styled.div`
 export const NavHeader = styled.div`
   min-height: ${navHeaderHeight};
   width: 100%;
-  padding: 20px ${pageOffsetX};
+  padding: 20px ${({ isWithOffset }) => (isWithOffset ? pageOffsetX : '20px')};
   ${flex({ align: 'flex-start' })};
 
   ${mediaMedium`

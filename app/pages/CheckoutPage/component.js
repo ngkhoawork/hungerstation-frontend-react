@@ -9,11 +9,11 @@ import PaymentOptionsContainer from 'containers/PaymentOptionsContainer';
 import Back from 'containers/Back';
 import Step from 'components/Step';
 import Note from 'components/Note';
+import { NavHeader } from 'utils/css/styledComponents';
 import { border } from 'utils/css/variables';
 import messages from './messages';
 import {
   Container,
-  NavHeader,
   ContentContainer,
   LeftSide,
   RightSide,
@@ -55,7 +55,7 @@ const CheckoutPage = ({ params, deliveryOptions = [], ...props }) => {
 
   return (
     <Container>
-      <NavHeader>
+      <NavHeader isWithOffset>
         <Back />
       </NavHeader>
       <ContentContainer>

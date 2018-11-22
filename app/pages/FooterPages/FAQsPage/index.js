@@ -19,7 +19,7 @@ class FAQsPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <NavHeader>
+        <NavHeader isWithOffset>
           <Back />
         </NavHeader>
         <PageContent>
