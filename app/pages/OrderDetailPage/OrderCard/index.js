@@ -92,18 +92,20 @@ const OrderCard = ({ order, onRateClick }) => (
               <Price price={order.price} isPrimary hasTag />
             </PriceContainer>
           </Description>
-          <ButtonWrapper>
-            <Button
-              label={intl.formatMessage(messages.rateRestaurant)}
-              primary={false}
-              lift={false}
-              color={alabaster}
-              fontSize={16}
-              inline
-              onClick={onRateClick}
-              css={rateButtonCss}
-            />
-          </ButtonWrapper>
+          {order.state !== 'failed' && (
+            <ButtonWrapper>
+              <Button
+                label={intl.formatMessage(messages.rateRestaurant)}
+                primary={false}
+                lift={false}
+                color={alabaster}
+                fontSize={16}
+                inline
+                onClick={onRateClick}
+                css={rateButtonCss}
+              />
+            </ButtonWrapper>
+          )}
         </Row>
       </div>
     </Content>
