@@ -56,8 +56,8 @@ const OrderCard = ({ order, onOrderClick }) => (
             {order.state === 'failed' && <Status color="error">Failed</Status>}
             {order.tracking.activeStatus && (
               <TrackingTimer
-                startAt={order.actionAt}
-                endAt={order.actionAt + 60 * 60 * 2}
+                startAt={order.createdAt}
+                endAt={order.deliveryEta}
               />
             )}
           </OrderState>
