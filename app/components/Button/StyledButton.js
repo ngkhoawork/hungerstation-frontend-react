@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { gold, paleSlate, alabaster } from 'utils/css/colors';
 import getImage from 'utils/css/images';
-import { flex, sideMargin } from 'utils/css/styles';
+import { flex, sideMargin, device } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import Spinner from 'components/Spinner/StyledSpinner';
 
@@ -24,6 +24,22 @@ const StyledButton = styled.button`
   }};
   font-family: ${fontFamilyRegular};
   line-height: 1em;
+
+  ${device.retina`
+    ${({ responsiveBackgroundImg, backgroundImage }) =>
+      responsiveBackgroundImg && // eslint-disable-line indent
+      `
+      background-image: url(${getImage(`${backgroundImage}-2x`)});
+    `};
+  `};
+
+  ${device.retina3x`
+    ${({ responsiveBackgroundImg, backgroundImage }) =>
+      responsiveBackgroundImg && // eslint-disable-line indent
+      `
+      background-image: url(${getImage(`${backgroundImage}-3x`)});
+    `};
+  `};
 
   :disabled {
     background-color: ${({ disabledColor }) => disabledColor || paleSlate};

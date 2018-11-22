@@ -66,10 +66,20 @@ const MobileAppSection = () => (
         />
         <ButtonGroup>
           <ButtonWrapper>
-            <Button backgroundImage="applestore" />
+            <Button
+              backgroundImage="applestore"
+              color="white"
+              primary={false}
+            />
           </ButtonWrapper>
           <ButtonWrapper>
-            <Button backgroundImage="googleplay" />
+            <Button
+              backgroundImage="googleplay"
+              responsiveBackgroundImg
+              color="black"
+              primary={false}
+              style={{ backgroundSize: 'contain' }}
+            />
           </ButtonWrapper>
         </ButtonGroup>
       </DetailsWrapper>
