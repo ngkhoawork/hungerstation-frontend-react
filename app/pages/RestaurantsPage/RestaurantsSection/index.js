@@ -8,7 +8,7 @@ import Section from './Section';
 import BriefFiltersSection from '../BriefFiltersSection';
 
 const Wrapper = styled.div`
-  width: 912px;
+  width: 952px;
   overflow: visible;
   position: relative;
   ${flex({

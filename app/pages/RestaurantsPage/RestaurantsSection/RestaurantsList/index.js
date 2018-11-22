@@ -32,7 +32,7 @@ const ScrollToListTopWrapper = styled.div`
   position: absolute;
   bottom: 5px;
   right: 0px;
-  margin-right: -8%;
+  margin-right: -3%;
   ${mediaLess(1400)`
     margin-right: 0px;
   `};
