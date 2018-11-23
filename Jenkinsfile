@@ -80,6 +80,33 @@ pipeline {
       }
     }
 
+    stage('Publish To Bucket') {
+      when {
+        expression { return params.IMAGE_TAG.asBoolean() || BRANCH_NAME == 'master' }
+      }
+
+      steps {
+        script {
+          if (params.IMAGE_TAG) {
+            TAG = params.IMAGE_TAG
+          } else {
+            TAG = "$BRANCH_NAME-$BUILD_NUMBER"
+          }
+
+          credentialsId = "hungerstation-production"
+          bucketName = "alpha.hungerstation.com"
+
+          utils.dockerRegistry {
+            sh "docker run --name $BRANCH_NAME $imageName:$TAG /bin/true"
+            sh "docker cp $BRANCH_NAME:/home/customer-website-frontend/build build-files"
+            sh "docker rm $BRANCH_NAME"
+          }
+
+          googleStorageUpload bucket: "gs://$bucketName", credentialsId: "$credentialsId", pathPrefix: 'build-files/', pattern: 'build-files/**/*'
+        }
+      }
+    }
+
     stage('Deploy') {
       when {
         expression { return env.IMAGE_TAG.asBoolean() || BRANCH_NAME in deployableBranches}
