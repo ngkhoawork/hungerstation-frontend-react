@@ -94,11 +94,9 @@ const Cart = ({
       }
 
       message = allMessages.join(' ');
-    } else if (minAmount > orderAmount) {
+    } else if (purchases.length && minAmount > orderAmount) {
       message = intl.formatMessage(messages.minOrderError, {
-        restaurantName: from,
         minAmount: intl.formatNumber(minAmount, priceIntlOptions),
-        orderAmount: intl.formatNumber(orderAmount, priceIntlOptions),
       });
     }
 
