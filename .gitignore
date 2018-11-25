@@ -64,3 +64,5 @@ typings/
 jsconfig.json
 
 .DS_Store
+
+/build/

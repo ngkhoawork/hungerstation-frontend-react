@@ -30,7 +30,12 @@ export class Intl {
       },
       {},
     ).getChildContext().intl;
+
     return this.intl;
+  }
+
+  getLocale() {
+    return this.locale;
   }
 
   getIntl() {
