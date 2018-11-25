@@ -6,7 +6,7 @@ import { getDeepProp, clearUndefs } from 'utils/helpers';
 import { saveCurrentLocationAction } from 'modules/location/actions';
 import { selectDistrict } from 'modules/location/selectors';
 import { fetchAddresses } from 'modules/address/actions';
-import { setBranchId } from 'modules/restaurant/actions';
+import { setBranchId, fetchRestaurant } from 'modules/restaurant/actions';
 import {
   selectPrimaryAddress,
   selectAddresses,
@@ -27,7 +27,12 @@ import CheckoutPage from './component';
 
 class CheckoutPageHOC extends React.Component {
   componentDidMount() {
-    const { restaurant, match } = this.props;
+    const {
+      restaurant,
+      match: {
+        params: { branchId, city, district },
+      },
+    } = this.props;
 
     this.checkPurchases();
 
@@ -38,14 +43,18 @@ class CheckoutPageHOC extends React.Component {
       });
     }
 
-    this.props.setBranchId(match.params.branchId);
-    this.props.fetchAddresses(match.params.branchId);
+    this.props.setBranchId(branchId);
+    this.props.fetchAddresses(branchId);
+
+    if (restaurant.id !== branchId) {
+      this.props.fetchRestaurant({ branchId, city, district });
+    }
   }
 
   componentDidUpdate(prevProps) {
     const { addresses, isLoadingAddresses, checkoutState } = this.props;
 
-    this.checkPurchases();
+    this.checkPurchases(prevProps);
 
     if (
       prevProps.isLoadingAddresses &&
@@ -55,18 +64,14 @@ class CheckoutPageHOC extends React.Component {
       this.props.showModal(AddAddressContainer);
     }
 
-    const { orderAmount, purchases, restaurant, match, history } = this.props;
+    const { orderAmount, restaurant } = this.props;
     const minOrderAmount = getDeepProp(restaurant, [
       'delivery_conditions',
       0,
       'minimum_order',
     ]);
 
-    if (prevProps.purchases.length && !purchases.length) {
-      const { district, city } = match.params;
-
-      history.push(`/restaurants/${city}/${district}`);
-    } else if (orderAmount && orderAmount < minOrderAmount) {
+    if (orderAmount && orderAmount < minOrderAmount) {
       this.props.showModal(InsufficientOrderAmount);
     }
 
@@ -85,12 +90,16 @@ class CheckoutPageHOC extends React.Component {
     this.props.hideModal();
   }
 
-  checkPurchases() {
-    const { location, history, cartState } = this.props;
+  checkPurchases(prevProps) {
+    const { match, history, cartState } = this.props;
     const { isInitialized, purchases } = cartState;
 
-    if (isInitialized && !purchases.length) {
-      history.push(location.pathname.replace('/checkout', ''));
+    if (
+      (prevProps && prevProps.purchases.length && !purchases.length) ||
+      (isInitialized && !purchases.length)
+    ) {
+      const { district, city } = match.params;
+      history.push(`/restaurants/${city}/${district}`);
     }
   }
 
@@ -151,7 +160,6 @@ class CheckoutPageHOC extends React.Component {
 }
 
 CheckoutPageHOC.propTypes = {
-  location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   cartState: PropTypes.object.isRequired,
@@ -164,6 +172,7 @@ CheckoutPageHOC.propTypes = {
   addresses: PropTypes.array,
   isLoadingAddresses: PropTypes.bool,
   fetchAddresses: PropTypes.func.isRequired,
+  fetchRestaurant: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   saveCurrentLocationAction: PropTypes.func.isRequired,
@@ -188,6 +197,7 @@ export default connect(
   {
     showModal,
     hideModal,
+    fetchRestaurant,
     fetchAddresses,
     saveCurrentLocationAction,
     setBranchId,
