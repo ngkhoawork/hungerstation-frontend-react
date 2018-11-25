@@ -92,7 +92,6 @@ export const createOrderMutation = `mutation CreateOrder (
     state
     branch_id
     amount
-    deliverydelay
     user_id
     payment_method
     fee
