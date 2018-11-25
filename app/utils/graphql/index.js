@@ -1,22 +1,14 @@
 import { GraphQLClient } from 'graphql-request';
+import intlService from 'utils/intlService';
 
-const API_URL_BASE = 'http://localhost:3000/proxy';
-// const API_URL_DEVELOPMENT = 'https://development.hs-preview.com/api/v3/graphql';
-const API_URL_DEVELOPMENT = 'https://hs-staging.com/api/v3/graphql';
-const API_URL_STAGING = 'https://hs-staging.com/api/v3/graphql';
-const API_URL_PRODUCTION = API_URL_BASE;
-
-let API_URL = API_URL_BASE;
+let API_URL = 'http://localhost:3000/proxy';
 
 switch (process.env.API_ENV) {
-  case 'production':
-    API_URL = API_URL_PRODUCTION;
-    break;
-  case 'development':
-    API_URL = API_URL_DEVELOPMENT;
-    break;
   case 'staging':
-    API_URL = API_URL_STAGING;
+    API_URL = 'https://hs-staging.com/api/v3/graphql';
+    break;
+  case 'production':
+    API_URL = 'https://hungerstation.com/api/v3/graphql';
     break;
   default:
     break;
@@ -25,13 +17,17 @@ switch (process.env.API_ENV) {
 export const protectedClient = token =>
   new GraphQLClient(API_URL, {
     headers: {
+      'Accept-Language': intlService.getLocale(),
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const client = new GraphQLClient(API_URL, {
-  headers: { 'Content-Type': 'application/json' },
+  headers: {
+    'Accept-Language': intlService.getLocale(),
+    'Content-Type': 'application/json',
+  },
   // credentials: 'include',
   // mode: 'cors',
 });
