@@ -72,7 +72,7 @@ const Address = ({
             />
           </CircledItem>
           {isEligible ? null : (
-            <StatusContent color="error">
+            <StatusContent color="error" style={{ marginLeft: 5 }}>
               {`• ${intl.formatMessage(messages.outOfRange)}`}
             </StatusContent>
           )}

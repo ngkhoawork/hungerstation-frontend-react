@@ -54,7 +54,7 @@ const renderStatus = (status, working_time) => {
     return (
       <Fragment>
         <StatusContent color="error">{getMsg('closed')}</StatusContent>
-        <StatusContent>{message}</StatusContent>
+        <StatusContent style={{ marginLeft: 5 }}>{message}</StatusContent>
       </Fragment>
     );
   }
