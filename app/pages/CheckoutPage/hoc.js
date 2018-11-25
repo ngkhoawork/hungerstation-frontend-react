@@ -77,10 +77,13 @@ class CheckoutPageHOC extends React.Component {
 
     // waiting for delivery options to refetch on address select and checking for change
     const { deliveryOptions, coupon } = checkoutState;
-    const { deliveryOptions: prevDeliveryOptions } = prevProps.checkoutState;
+    const {
+      deliveryOptions: prevDeliveryOptions,
+      coupon: prevCoupon,
+    } = prevProps.checkoutState;
     if (
       (prevDeliveryOptions && prevDeliveryOptions !== deliveryOptions) ||
-      coupon !== prevProps.checkoutState.coupon
+      (coupon || {}).value !== (prevCoupon || {}).value
     ) {
       this.handleOrderChange();
     }
@@ -131,8 +134,11 @@ class CheckoutPageHOC extends React.Component {
     });
   };
 
-  handleOrderChange = () =>
+  handleOrderChange = () => {
+    if (!this.props.primaryAddress) return;
+
     this.props.validateOrder(this.generateOrderPayload());
+  };
 
   handleOrderCreate = () => {
     const { isLoadingOrderValidate, orderErrors } = this.props.checkoutState;
