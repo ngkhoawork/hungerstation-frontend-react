@@ -164,6 +164,7 @@
   "app.components.PaymentOptions.deleteCoupon": "Delete",
   "app.components.PaymentOptions.couponError": "The coupon is not valid or expired. Please try again and insert coupon again.",
   "app.components.PaymentOptions.couponSuccess": "Your coupon has been successfully added! Your total order price was adjusted.",
+  "app.components.PaymentOptions.couponAddressRequired": "Please select an address before adding a coupon",
   "app.components.Note.notes": "Notes",
   "app.components.Note.optional": "Optional",
   "app.components.Note.instructions": "Any special instructions?",

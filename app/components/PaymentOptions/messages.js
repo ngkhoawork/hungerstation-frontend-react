@@ -25,4 +25,7 @@ export default defineMessages({
   couponSuccess: {
     id: 'app.components.PaymentOptions.couponSuccess',
   },
+  couponAddressRequired: {
+    id: 'app.components.PaymentOptions.couponAddressRequired',
+  },
 });

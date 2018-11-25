@@ -59,14 +59,12 @@ const MobileNotice = styled.div`
 `;
 
 const renderNotice = coupon => {
-  if (coupon.isValid === false) {
-    return (
-      <Notice
-        message={intl.formatMessage(messages.couponError)}
-        type="error"
-        size="s"
-      />
+  if (coupon.isValid === false || coupon.isDisabled) {
+    const msg = intl.formatMessage(
+      messages[coupon.isDisabled ? 'couponAddressRequired' : 'couponError'],
     );
+
+    return <Notice message={msg} type="error" size="s" />;
   }
 
   if (coupon.isValid) {

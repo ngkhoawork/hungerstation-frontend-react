@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { selectPrimaryAddress } from 'modules/address/selectors';
 import { selectCheckoutState } from 'modules/checkout/selectors';
 import {
   // fetchCreditCards,
@@ -23,7 +24,8 @@ class PaymentOptionsContainer extends React.Component {
     }
   };
 
-  handleSetCoupon = coupon => {
+  handleSetCoupon = value => {
+    const coupon = { value, isDisabled: !this.props.primaryAddress };
     this.props.setCoupon(coupon);
     // this.props.onOrderChange();
   };
@@ -46,6 +48,7 @@ class PaymentOptionsContainer extends React.Component {
 }
 
 PaymentOptionsContainer.propTypes = {
+  primaryAddress: PropTypes.object,
   checkoutState: PropTypes.object.isRequired,
   selectPaymentOption: PropTypes.func.isRequired,
   setCoupon: PropTypes.func.isRequired,
@@ -55,7 +58,10 @@ PaymentOptionsContainer.propTypes = {
 };
 
 export default connect(
-  state => ({ checkoutState: selectCheckoutState(state) }),
+  state => ({
+    checkoutState: selectCheckoutState(state),
+    primaryAddress: selectPrimaryAddress(state),
+  }),
   { selectPaymentOption, setCoupon, removeCoupon },
   // { selectPaymentOption, setCoupon, removeCoupon, fetchCreditCards },
 )(PaymentOptionsContainer);
