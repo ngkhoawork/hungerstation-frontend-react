@@ -8,15 +8,13 @@ const mapDispatchToProps = {
 
 const life = lifecycle({
   componentDidMount() {
-    const { history, match, fetchRestaurantsAction } = this.props;
+    const { match, fetchRestaurantsAction } = this.props;
 
-    if (history.action === 'POP') {
-      fetchRestaurantsAction({
-        city: match.params.city,
-        district: match.params.district,
-        deliveryType: match.params.deliveryType,
-      });
-    }
+    fetchRestaurantsAction({
+      city: match.params.city,
+      district: match.params.district,
+      deliveryType: match.params.deliveryType,
+    });
   },
 });
 
