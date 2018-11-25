@@ -10,6 +10,7 @@ const Container = styled.div`
   ${flex()};
 
   ${({ style }) => style && css(style)};
+  ${({ css }) => css};
 `;
 
 const DeliveryInfo = ({ delivery_fee = 0, minimum_order = 0, ...props }) => (
