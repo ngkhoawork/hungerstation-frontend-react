@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   flex,
   mediaMedium,
@@ -11,28 +11,21 @@ import {
   boxShadowBottomRight,
   boxShadowBottomRightLight,
 } from 'utils/css/variables';
-import {
-  alabaster,
-  silverChalice,
-  fuscousGray,
-  errorBg,
-  persimmon,
-  jade,
-} from 'utils/css/colors';
+import { fuscousGray } from 'utils/css/colors';
 
-export const StyledRestaurantInfo = styled.div`
+export const desktopStyle = css`
   ${flex({ align: 'center', justify: 'center' })};
   border-top-left-radius: ${borderRadius};
   position: relative;
   background-color: white;
+`;
 
-  ${mediaMedium`
-    ${flex({ direction: 'column', align: 'flex-start' }, false)};
-    border-radius: ${borderRadius};
-    padding-bottom: 30px;
-    box-shadow: ${boxShadowBottomRight};
-    padding: 20px 30px 25px 20px;
-  `};
+export const mobileStyle = css`
+  ${flex({ direction: 'column', align: 'flex-start' }, false)};
+  border-radius: ${borderRadius};
+  box-shadow: ${boxShadowBottomRight};
+  background-color: white;
+  padding: 20px 30px 25px 22px;
 `;
 
 export const StyledLogo = styled.div`
@@ -42,23 +35,24 @@ export const StyledLogo = styled.div`
   position: relative;
   background-color: rgba(234, 234, 234, 1);
   border-radius: 8px 0 0 0px;
-
-  ${mediaMedium`display: none;`};
 `;
 
+const mobileLogoWidth = '48px';
 export const StyledMobileLogo = styled.div`
   ${sideMargin('end', '10px')};
 
-  ${mediaMediumGreater`display: none;`};
+  width: ${mobileLogoWidth};
+  height: ${mobileLogoWidth};
+  flex-shrink: 0;
 `;
 
 export const StyledDetailsContainer = styled.div`
   ${flex({ align: 'center', justify: 'flex-start' })};
-  max-height: 160px;
   width: 100%;
 
   ${mediaMediumGreater`
-    padding: 20px 30px 25px 40px;
+    height: 160px;
+    padding: 20px 30px 20px 40px;
     box-shadow: ${boxShadowBottomRightLight};
   `};
 
@@ -69,9 +63,17 @@ export const StyledDetailsContainer = styled.div`
 `;
 
 export const StyledDetails = styled.div`
-  ${flex({ align: 'flex-start', justify: 'center', direction: 'column' })};
+  ${flex({ align: 'flex-start', justify: 'flex-start', direction: 'column' })};
 
-  ${mediaMediumGreater`height: 160px;`};
+  ${mediaMediumGreater`height: 100%;`};
+
+  ${mediaMedium`width: 100%;`};
+`;
+
+export const deliveryInfoStyle = css`
+  margin: 10px 0;
+
+  ${mediaMediumGreater`margin: auto 0 0`};
 `;
 
 export const Name = styled.div`
@@ -112,21 +114,4 @@ export const StatusContainer = styled.div`
     ${sidePosition('end', '10px')};
     top: 10px;
   `};
-`;
-
-export const StatusContent = styled.div`
-  padding: 8px 12px;
-  border-radius: ${borderRadius};
-  background-color: ${({ color }) => {
-    if (color === 'error') return errorBg;
-    return alabaster;
-  }};
-  color: ${({ color }) => {
-    if (color === 'error') return persimmon;
-    if (color === 'success') return jade;
-    return silverChalice;
-  }};
-  font-size: 12px;
-  line-height: 1;
-  ${sideMargin('start', '5px')};
 `;
