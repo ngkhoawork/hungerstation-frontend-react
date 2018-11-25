@@ -1,20 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import intl from 'utils/intlService';
+import intl, { priceIntlOptions } from 'utils/intlService';
 import ModalFrame from 'containers/ModalFrameContainer';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import { Title, Description } from 'components/Typography';
 import { alabaster } from 'utils/css/colors';
 import messages from './messages';
-import { Content, Footer, SearchBtnStyle } from './StyledComponents';
+import {
+  containerStyle,
+  Content,
+  Footer,
+  SearchBtnStyle,
+} from './StyledComponents';
 
-const InsufficientOrderAmount = ({ onCancel, onAddMore }) => (
-  <ModalFrame>
+const InsufficientOrderAmount = ({ onCancel, onAddMore, minAmount }) => (
+  <ModalFrame css={containerStyle}>
     <Content>
       <Icon name="pin-red-large-2" size={56} />
       <Title>{intl.formatMessage(messages.title)}</Title>
-      <Description>{intl.formatMessage(messages.message)}</Description>
+      <Description>
+        {intl.formatMessage(messages.message, {
+          minAmount: intl.formatNumber(minAmount, priceIntlOptions),
+        })}
+      </Description>
     </Content>
     <Footer>
       <Button
@@ -42,6 +51,7 @@ const InsufficientOrderAmount = ({ onCancel, onAddMore }) => (
 );
 
 InsufficientOrderAmount.propTypes = {
+  minAmount: PropTypes.number.isRequired,
   onCancel: PropTypes.func.isRequired,
   onAddMore: PropTypes.func.isRequired,
 };
