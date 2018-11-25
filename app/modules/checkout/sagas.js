@@ -1,5 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { forwardTo } from 'utils/route';
+import { getDeepProp } from 'utils/helpers';
 import { makeSelectTokens } from 'modules/auth/selectors';
 import {
   fetchDeliveryOptions,
@@ -69,7 +70,7 @@ export function* createOrderSaga({ payload }) {
       payload,
     );
 
-    if (validateOrder.errors_with_keys.length) {
+    if (getDeepProp(validateOrder, ['errors_with_keys', 'length'])) {
       yield put(validateOrderSuccess(validateOrder));
       return;
     }
