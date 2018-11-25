@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { mediaMedium } from 'utils/css/styles';
-import { fontFamilyRegular } from 'utils/css/variables';
+import { mediaMedium, sidePadding } from 'utils/css/styles';
+import { fontFamilyLight } from 'utils/css/variables';
 
 export const Answer = styled.div`
   height: 38px;
   width: 624px;
   opacity: 0.6;
   color: #6f6e6b;
-  font-family: ${fontFamilyRegular};
+  font-family: ${fontFamilyLight};
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.44px;
@@ -39,8 +39,5 @@ export const Line = styled.div`
 
 export const HeaderWrapper = styled.div`
   margin-bottom: 20px;
-  padding-right: 40%;
-  ${mediaMedium`
-    width: 330px;
-  `};
+  ${sidePadding('end', '40%;')};
 `;
