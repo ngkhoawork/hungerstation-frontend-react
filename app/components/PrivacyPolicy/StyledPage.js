@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import { flex, mediaMedium, mediaLess } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaLess,
+  sideMargin,
+  sidePadding,
+} from 'utils/css/styles';
 import { fontFamilyRegular } from 'utils/css/variables';
 import { Link } from 'react-router-dom';
 
@@ -61,7 +67,7 @@ export const Title = styled.div`
   margin-bottom: 64px;
   white-space: pre-wrap;
   ${mediaMedium`
-    padding-left: 25px;
+    ${sidePadding('start', '25')};
   `};
 `;
 export const SubTitle = styled.div`
@@ -123,5 +129,7 @@ export const Section = styled.div`
   display: none;
   ${mediaMedium`
     display: block;
+    margin-bottom: 20px;
+    ${sideMargin('end', '100%')};
   `};
 `;

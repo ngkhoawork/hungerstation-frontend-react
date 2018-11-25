@@ -21,11 +21,13 @@ import {
   Section,
 } from './StyledPage';
 
+let flag = true;
+
 class FAQs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shown: true,
+      shown: false,
       titleId: '',
       title: '',
       faq: '',
@@ -33,8 +35,9 @@ class FAQs extends React.Component {
   }
 
   showContent = (id, title, faq) => {
-    this.setState(prevState => ({
-      shown: prevState.shown,
+    flag = false;
+    this.setState(() => ({
+      shown: true,
       titleId: id,
       title,
       faq,
@@ -49,6 +52,10 @@ class FAQs extends React.Component {
             <MenuItem
               key={item.id}
               onClick={() => this.showContent(item.id, item.title, item.faq)}
+              active={
+                item.id === this.state.titleId ||
+                (item.id === this.props.id && flag)
+              }
             >
               {item.title}
             </MenuItem>
@@ -73,7 +80,10 @@ class FAQs extends React.Component {
           </Section>
 
           <MenuBarMobile>
-            <DropDownMobile title={this.state.title} isCollapsible>
+            <DropDownMobile
+              title={this.state.title || this.props.title}
+              isCollapsible
+            >
               {values(this.props.faqsGroups).map(item => (
                 <MenuItem
                   key={item.id}
@@ -90,9 +100,16 @@ class FAQs extends React.Component {
           <Content>
             {this.state.shown && (
               <FaqContent
-                id={this.state.titleId}
-                title={this.state.title}
-                faq={this.state.faq}
+                id={this.state.titleId || this.props.id}
+                title={this.state.title || this.props.title}
+                faq={this.state.faq || this.props.content}
+              />
+            )}
+            {!this.state.shown && (
+              <FaqContent
+                id={this.props.id}
+                title={this.props.title}
+                faq={this.props.content}
               />
             )}
           </Content>

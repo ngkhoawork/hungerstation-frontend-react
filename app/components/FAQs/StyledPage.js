@@ -1,6 +1,13 @@
 import styled from 'styled-components';
-import { flex, mediaMedium, mediaLess } from 'utils/css/styles';
-import { fontFamilyRegular } from 'utils/css/variables';
+import {
+  flex,
+  mediaMedium,
+  mediaLess,
+  sideMargin,
+  sidePadding,
+} from 'utils/css/styles';
+import { fontFamilyRegular, fontFamilyLight } from 'utils/css/variables';
+import { alabaster } from 'utils/css/colors';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -17,7 +24,11 @@ export const MenuBar = styled.div`
   padding-top: 160px;
   margin-right: 30px;
   width: 170px;
-  ${flex({ align: 'flex-start', justify: 'center', direction: 'column' })};
+  ${flex({
+    align: 'flex-start',
+    justify: 'center',
+    direction: 'column-reverse',
+  })};
 
   ${mediaMedium`
     display: none;
@@ -33,9 +44,16 @@ export const MenuItem = styled.div`
 
   &:hover {
     color: #000000;
-    background: #f7f7f7;
+    background: ${alabaster};
     border-radius: 8px;
   }
+  ${({ active }) =>
+    active &&
+    `
+    color: #000000;
+    background-color: ${alabaster};
+    border-radius: 8px;
+  `};
 `;
 
 export const MiddleSection = styled.div`
@@ -60,9 +78,8 @@ export const MiddleSection = styled.div`
 
 export const Title = styled.div`
   margin-bottom: 64px;
-  white-space: pre-wrap;
   ${mediaMedium`
-    padding-left: 25px;
+    ${sidePadding('start', '25px')};
   `};
 `;
 export const SubTitle = styled.div`
@@ -70,7 +87,7 @@ export const SubTitle = styled.div`
   width: 100%;
   opacity: 0.6;
   color: #6f6e6b;
-  font-family: ${fontFamilyRegular};
+  font-family: ${fontFamilyLight};
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.5px;
@@ -110,5 +127,7 @@ export const Section = styled.div`
   display: none;
   ${mediaMedium`
     display: block;
+    ${sideMargin('end', '100%')};
+    margin-bottom: 20px;
   `};
 `;
