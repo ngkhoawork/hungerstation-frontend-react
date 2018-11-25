@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
-import { flex, mediaMedium, mediaSmall } from './styles';
+import { flex, mediaMedium, mediaSmall, mediaMediumGreater } from './styles';
 import {
   persimmon,
   errorBg,
@@ -114,5 +114,18 @@ export const StatusContent = styled.div`
   }};
   font-size: 12px;
   line-height: 1;
-  margin-left: 5px;
+
+  ${({ style }) => style && css(style)};
+`;
+
+export const Desktop = styled.div`
+  ${mediaMedium`display: none;`};
+  ${({ style }) => style && css(style)};
+  ${({ css }) => css};
+`;
+
+export const Mobile = styled.div`
+  ${mediaMediumGreater`display: none;`};
+  ${({ style }) => style && css(style)};
+  ${({ css }) => css};
 `;
