@@ -82,7 +82,7 @@ class CheckoutPageHOC extends React.Component {
       coupon: prevCoupon,
     } = prevProps.checkoutState;
     if (
-      (prevDeliveryOptions && prevDeliveryOptions !== deliveryOptions) ||
+      prevDeliveryOptions !== deliveryOptions ||
       (coupon || {}).value !== (prevCoupon || {}).value
     ) {
       this.handleOrderChange();

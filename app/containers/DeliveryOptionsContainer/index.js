@@ -11,8 +11,6 @@ import {
 } from 'modules/checkout/actions';
 import DeliveryOptions from 'components/DeliveryOptions';
 
-let isDeliveryOptionsFetched = false;
-
 class DeliveryOptionsContainer extends React.Component {
   componentDidMount() {
     this.handleFetchDeliveryOptions();
@@ -25,13 +23,9 @@ class DeliveryOptionsContainer extends React.Component {
   handleFetchDeliveryOptions = prevProps => {
     const { restaurantState, address } = this.props;
     const branchId = restaurantState.restaurant.id || restaurantState.branchId;
-    const prevAddressId = getDeepProp(prevProps, ['address', 'id']);
+    const prevAddress = getDeepProp(prevProps, ['address']);
 
-    if (
-      (branchId && address && !isDeliveryOptionsFetched) ||
-      (prevAddressId && prevAddressId !== address.id)
-    ) {
-      isDeliveryOptionsFetched = true;
+    if (branchId && address && prevAddress !== address) {
       this.props.fetchDeliveryOptions({
         branchId,
         lat: address.latitude,

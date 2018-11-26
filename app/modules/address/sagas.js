@@ -1,7 +1,5 @@
 import { call, put, takeLatest, takeEvery, select } from 'redux-saga/effects';
 import { makeSelectTokens } from 'modules/auth/selectors';
-import { selectRestaurantState } from 'modules/restaurant/selectors';
-import { fetchDeliveryOptions } from 'modules/checkout/actions';
 import {
   addressRequest,
   fetchAddresses,
@@ -61,14 +59,6 @@ export function* saveAddressSaga({ payload }) {
     const res = yield call(api.saveAddress, accessToken, payload);
     const parsedAddress = parseAddress(res.createAddress || res.updateAddress);
 
-    const { restaurant, branchId } = yield select(selectRestaurantState);
-    yield put(
-      fetchDeliveryOptions({
-        branchId: restaurant.id || branchId,
-        lat: parsedAddress.latitude,
-        lng: parsedAddress.longitude,
-      }),
-    );
     yield put(saveAddressSuccess(parsedAddress));
   } catch (e) {
     yield put(addressError());
