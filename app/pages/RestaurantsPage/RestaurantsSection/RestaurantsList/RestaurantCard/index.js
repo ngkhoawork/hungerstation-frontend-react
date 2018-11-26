@@ -33,7 +33,7 @@ const RestaurantCard = ({
   >
     <StyledUpperPart>
       <BrandLogo src={logo} size={60} />
-      {!hasPromotion && <Promoted />}
+      {hasPromotion && <Promoted />}
     </StyledUpperPart>
 
     <StyledBottomPart>
