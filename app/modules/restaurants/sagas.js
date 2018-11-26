@@ -80,9 +80,7 @@ export function* fetchRestaurantsSaga({ payload }) {
       deliveryProvider: item.delivery_provider,
       deliveryFee: item.delivery_fee,
       status: item.branch.status,
-      hasPromotion: false,
-      // TODO: enable promoted tag
-      // hasPromotion: item.branch.has_promotion,
+      hasPromotion: item.branch.has_promotion,
       // filter tags
       acceptCreditCard: item.branch.accept_credit_card,
       acceptVoucher: item.branch.accept_voucher,
