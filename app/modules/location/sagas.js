@@ -14,7 +14,7 @@ import {
   getLocation,
   getCurrentCityAction,
 } from './actions';
-import { selectCities } from './selectors';
+import { selectCities, selectCoords } from './selectors';
 
 function* getCitiesSaga() {
   const cachedCities = yield select(selectCities);
@@ -34,67 +34,45 @@ function* getCitiesSaga() {
   }
 }
 
-function* getCurrentLocationSaga() {
-  yield put(toggleSettlementLoadedAction(false));
+function* getUserLocation() {
   try {
     const {
       coords: { latitude: lat, longitude: lng },
     } = yield call(getUserPosition);
-    // Riyadh:
-    // const coords = { lat: 24.7965494, lng: 46.6199898 };
-    const coords = {
-      lat,
-      lng,
-    };
 
-    yield put(saveCurrentLocationAction(coords));
+    return { lat, lng };
+  } catch (e) {
+    const { latitude: lat, longitude: lng } = yield select(selectCoords);
 
-    const { locals } = yield call(locationApi.getDistrict, coords);
-
-    if (locals.length) {
-      const [{ name: districtName, id: districtID, city }] = locals;
-      yield put(
-        setSettlementDetailsAction({
-          city,
-          district: {
-            id: districtID,
-            name: districtName,
-          },
-        }),
-      );
-    } else {
-      console.log('Unsupported area');
-      // throw Error(`Unsupported area.`);
-    }
-
-    yield put(toggleSettlementLoadedAction(true));
-  } catch (error) {
-    yield put(toggleSettlementLoadedAction(true));
+    return { lat, lng };
   }
 }
 
+function* getCurrentLocationSaga() {
+  yield put(toggleSettlementLoadedAction(false));
+
+  const coords = yield getUserLocation();
+  const { locals } = yield call(locationApi.getDistrict, coords);
+
+  if (locals.length) {
+    const [{ id, name, city }] = locals;
+
+    yield put(saveCurrentLocationAction(coords));
+    yield put(setSettlementDetailsAction({ city, district: { id, name } }));
+  }
+
+  yield put(toggleSettlementLoadedAction(true));
+}
+
 function* getCurrentCitySaga() {
-  const {
-    coords: { latitude: lat, longitude: lng },
-  } = yield call(getUserPosition);
-  // Riyadh coords = { lat: 24.7965494, lng: 46.6199898 };
-  const coords = {
-    lat,
-    lng,
-  };
-
-  yield put(saveCurrentLocationAction(coords));
-
+  const coords = yield getUserLocation();
   const { locals } = yield call(locationApi.getDistrict, coords);
 
   if (locals.length) {
     const [{ city }] = locals;
-    yield put(
-      setSettlementDetailsAction({
-        city,
-        district: null,
-      }),
-    );
+
+    yield put(saveCurrentLocationAction(coords));
+    yield put(setSettlementDetailsAction({ city, district: null }));
   }
 }
 
@@ -107,12 +85,7 @@ export function* fetchLocationSaga({ payload }) {
       slug: payload.district,
     });
 
-    yield put(
-      saveLocation({
-        selectedCity: city,
-        selectedDistrict: local,
-      }),
-    );
+    yield put(saveLocation({ selectedCity: city, selectedDistrict: local }));
   } catch (e) {
     // console.log(e);
   }
