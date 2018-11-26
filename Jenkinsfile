@@ -45,7 +45,7 @@ pipeline {
           if (BRANCH_NAME in deployableBranches) {
             apiEnv = BRANCH_NAME
           } else {
-            apiEnv = "development"
+            apiEnv = "staging"
           }
 
           utils.dockerRegistry {
