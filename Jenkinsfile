@@ -42,11 +42,11 @@ pipeline {
 
           COMMIT = utils.getCommit()
 
-          if (BRANCH_NAME in deployableBranches) {
-            apiEnv = BRANCH_NAME
-          } else {
-            apiEnv = "staging"
-          }
+          // if (BRANCH_NAME in deployableBranches) {
+          //   apiEnv = BRANCH_NAME
+          // } else {
+          //   apiEnv = "staging"
+          // }
 
           utils.dockerRegistry {
             app = docker.build("$imageName:$COMMIT", "--build-arg API_ENV=$apiEnv .")
