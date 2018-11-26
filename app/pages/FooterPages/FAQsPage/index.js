@@ -17,13 +17,19 @@ class FAQsPage extends React.Component {
   }
 
   render() {
+    const defaultView = values(this.props.faqsState.faqs[2]);
     return (
       <React.Fragment>
         <NavHeader isWithOffset>
           <Back />
         </NavHeader>
         <PageContent>
-          <FAQs faqsGroups={values(this.props.faqsState.faqs)} />
+          <FAQs
+            faqsGroups={values(this.props.faqsState.faqs)}
+            id={defaultView[1]}
+            title={defaultView[2]}
+            content={defaultView[0]}
+          />
         </PageContent>
       </React.Fragment>
     );

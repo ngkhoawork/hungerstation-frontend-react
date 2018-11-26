@@ -43,15 +43,49 @@ export function* fetchRestaurantSaga({ payload }) {
                 ...item,
                 price: parseFloat(item.price || 0),
                 list_price: parseFloat(item.list_price || 0),
+                modifier_groups:
+                  item.modifier_groups &&
+                  item.modifier_groups
+                    .sort((mgA, mgB) => mgA.weight - mgB.weight)
+                    .map(({ modifiers, ...modifierGroup }) => ({
+                      ...modifierGroup,
+                      modifiers: modifiers.sort(
+                        (modA, modB) =>
+                          modA.weight === modB.weight
+                            ? parseFloat(modA.price) - parseFloat(modB.price)
+                            : modA.weight - modB.weight,
+                      ),
+                    })),
                 menuitems:
                   item.menuitems &&
                   item.menuitems
                     .sort((itemA, itemB) => itemA.weight - itemB.weight)
-                    .map(({ price, list_price, ...menuitem }) => ({
-                      ...menuitem,
-                      price: parseFloat(price),
-                      list_price: parseFloat(list_price),
-                    })),
+                    .map(
+                      ({
+                        price,
+                        list_price,
+                        modifier_groups,
+                        ...menuitem
+                      }) => ({
+                        ...menuitem,
+                        price: parseFloat(price),
+                        list_price: parseFloat(list_price),
+                        modifier_groups:
+                          modifier_groups &&
+                          modifier_groups
+                            .sort((mgA, mgB) => mgA.weight - mgB.weight)
+                            .map(({ modifiers, ...modifierGroup }) => ({
+                              ...modifierGroup,
+                              modifiers: modifiers.sort(
+                                (modA, modB) =>
+                                  modA.weight === modB.weight
+                                    ? parseFloat(modA.price) -
+                                      parseFloat(modB.price)
+                                    : modA.weight - modB.weight,
+                              ),
+                            })),
+                      }),
+                    ),
               })),
           })),
       },

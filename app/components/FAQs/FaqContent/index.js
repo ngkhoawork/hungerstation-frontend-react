@@ -31,5 +31,5 @@ export default class FaqContent extends React.PureComponent {
 }
 FaqContent.propTypes = {
   title: PropTypes.string,
-  faq: PropTypes.string,
+  faq: PropTypes.array,
 };

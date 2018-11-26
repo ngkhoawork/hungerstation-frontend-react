@@ -1,4 +1,5 @@
 import { logout } from 'modules/auth/actions';
+import { createOrderSuccess } from 'modules/checkout/actions';
 import {
   addressRequest,
   fetchAddressesSuccess,
@@ -83,6 +84,9 @@ function reducer(state = initialState, { type, payload }) {
         isLoading: false,
         isValidateLoading: false,
       });
+
+    case createOrderSuccess.type:
+      return Object.assign({}, initialState);
 
     case logout.type:
       return Object.assign({}, initialState);

@@ -6,7 +6,7 @@ const StyledLink = styled(Link)`
   ${sideMargin('start', '20px')};
 
   :first-child {
-    margin-left: 0;
+    ${sideMargin('start', '0')};
   }
 `;
 

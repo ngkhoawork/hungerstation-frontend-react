@@ -50,7 +50,7 @@ const OrderCard = ({ order, onOrderClick }) => (
             </DeliveryLocation>
           </TitleContainer>
           <OrderState>
-            {order.state === 'delivered' && (
+            {order.state === 'successful' && (
               <DateTimeElement time={order.delivedAt} />
             )}
             {order.state === 'failed' && <Status color="error">Failed</Status>}
@@ -68,7 +68,11 @@ const OrderCard = ({ order, onOrderClick }) => (
         <Row>
           <Description>
             <DeliveryType
-              iconName="car"
+              iconName={
+                order.deliveryProvider === 'hungerstation_delivery'
+                  ? 'hungerstation-delivery'
+                  : 'car'
+              }
               text={getDeliveryType(order.deliveryProvider)}
             />
             <OrderId id={order.id} />

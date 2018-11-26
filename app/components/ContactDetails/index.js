@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 import Icon from 'components/Icon';
-import { fontFamilyRegular } from 'utils/css/variables';
+import { fontFamilyRegular, fontFamilyLight } from 'utils/css/variables';
 import { mediaMedium, flex } from 'utils/css/styles';
 import CircledItem from 'components/CircledItem';
 import Paragraph from 'components/Paragraph';
@@ -28,13 +28,13 @@ const Text = styled.div`
   font-size: 16px;
   letter-spacing: 0.33px;
   line-height: 24px;
-  padding-top: 20px;
+  padding-top: 10px;
   margin: 6px;
 `;
 
 const Group = styled.div`
   ${flex({ align: 'center', justify: 'flex-start' })};
-  padding-top: 20px;
+  padding-top: 15px;
 `;
 
 const ContactDetails = () => (
@@ -46,19 +46,29 @@ const ContactDetails = () => (
       <CircledItem color={wildSand} width={28}>
         <Icon name="email" size={12} />
       </CircledItem>
-      <Paragraph size={15} color={ironsideGray} margin="0 0 -3px 10px">
+      <Paragraph
+        light={fontFamilyLight}
+        size={15}
+        color={ironsideGray}
+        margin="-3px 10px"
+      >
         WeCare@hungerstation.com
       </Paragraph>
     </Group>
-    <Group paddin="100px 0 10px 10px">
+    <Group>
       <CircledItem color={wildSand} width={28}>
         <Icon name="mobile" size={12} />
       </CircledItem>
-      <Paragraph size={16} color={ironsideGray} margin="0 0 -3px 10px">
+      <Paragraph
+        light={fontFamilyLight}
+        size={16}
+        color={ironsideGray}
+        margin="-3px 10px"
+      >
         +123456789
       </Paragraph>
     </Group>
-    <Text>
+    <Text style={{ paddingBottom: '30px' }}>
       <FormattedMessage {...messages.socialMedia} />
     </Text>
     <SocialMedias />

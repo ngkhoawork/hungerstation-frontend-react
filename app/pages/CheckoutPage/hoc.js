@@ -143,7 +143,7 @@ class CheckoutPageHOC extends React.Component {
   handleOrderCreate = () => {
     const { isLoadingOrderValidate, orderErrors } = this.props.checkoutState;
 
-    if (!isLoadingOrderValidate && !orderErrors) {
+    if (!isLoadingOrderValidate && !getDeepProp(orderErrors, ['length'])) {
       this.props.createOrder(this.generateOrderPayload());
     }
   };
