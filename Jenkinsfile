@@ -103,7 +103,7 @@ BRANCH_NAME == 'master') }
             sh "docker rm $BRANCH_NAME"
           }
 
-          googleStorageUpload bucket: "gs://$bucketName", credentialsId: "$credentialsId", pathPrefix: 'build-files/', pattern: 'build-files/**/*'
+          googleStorageUpload bucket: "gs://$bucketName", credentialsId: "$credentialsId", pathPrefix: 'build-files/', pattern: 'build-files/**/*', showInline: true
         }
       }
     }
