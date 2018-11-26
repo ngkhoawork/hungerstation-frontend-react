@@ -87,10 +87,9 @@ pipeline {
 
       steps {
         script {
+          TAG = "$BRANCH_NAME-$BUILD_NUMBER"
           if (env.IMAGE_TAG) {
             TAG = env.IMAGE_TAG
-          } else {
-            TAG = "$BRANCH_NAME-$BUILD_NUMBER"
           }
 
           utils.updateHelmRelease("development-customer", platformChart , TAG, "preview", "development")
