@@ -1,6 +1,6 @@
 FROM node:10.9.0-jessie
 
-ARG API_ENV="production"
+ARG API_ENV="staging"
 ENV API_ENV=$API_ENV
 
 ENV APP_HOME /home/customer-website-frontend
