@@ -70,7 +70,8 @@ pipeline {
 
     stage('Push Image') {
       when {
-        expression { return !env.IMAGE_TAG.asBoolean() && BRANCH_NAME in deployableBranches}
+        expression { return !env.IMAGE_TAG.asBoolean() && (BRANCH_NAME in deployableBranches ||
+BRANCH_NAME == 'master') }
       }
 
       steps {
