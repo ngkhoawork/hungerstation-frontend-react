@@ -42,10 +42,9 @@ pipeline {
 
           COMMIT = utils.getCommit()
 
+          apiEnv = "staging"
           // if (BRANCH_NAME in deployableBranches) {
           //   apiEnv = BRANCH_NAME
-          // } else {
-          //   apiEnv = "staging"
           // }
 
           utils.dockerRegistry {
