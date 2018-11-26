@@ -45,15 +45,22 @@ function reducer(state = initialState, { type, payload }) {
         addresses = [address].concat(addresses);
       }
 
+      const isAlreadyPrimary = (state.primaryAddress || {}).id === address.id;
+      let { primaryAddress } = state;
+
+      if (isEligible) {
+        if (index === -1 || !state.primaryAddress || isAlreadyPrimary) {
+          primaryAddress = address;
+        }
+      } else if (isAlreadyPrimary) {
+        primaryAddress = addresses.find(addr => addr.branch_eligibility);
+      }
+
       return Object.assign({}, state, {
         isLoading: false,
         isEligible: undefined,
         addresses,
-        primaryAddress:
-          (state.primaryAddress || {}).id === address.id ||
-          (index === -1 && isEligible)
-            ? address
-            : state.primaryAddress,
+        primaryAddress,
       });
     }
 
