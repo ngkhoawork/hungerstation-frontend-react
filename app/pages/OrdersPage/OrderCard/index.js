@@ -68,7 +68,11 @@ const OrderCard = ({ order, onOrderClick }) => (
         <Row>
           <Description>
             <DeliveryType
-              iconName="car"
+              iconName={
+                order.deliveryProvider === 'hungerstation_delivery'
+                  ? 'hungerstation-delivery'
+                  : 'car'
+              }
               text={getDeliveryType(order.deliveryProvider)}
             />
             <OrderId id={order.id} />

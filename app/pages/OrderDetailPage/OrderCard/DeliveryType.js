@@ -7,7 +7,7 @@ import { silverChalice } from 'utils/css/colors';
 
 const DeliveryType = ({ iconName, text, textSize = 14 }) => (
   <Row align="center">
-    <Paragraph size={textSize} color={silverChalice} margin="0 5px 0 0">
+    <Paragraph size={textSize} color={silverChalice} margin="0 7px 0 0">
       {text}
     </Paragraph>
     <Icon name={iconName} offsetY="1" />
