@@ -8,7 +8,7 @@ properties(
 
 def app, utils
 def imageName = 'gcr.io/hungerstation-configs/customer-website-frontend'
-def deployableBranches = ["development"]
+def deployableBranches = ["development", "master"]
 def platformChart = "http://charts.hsips.net/charts/customer-website-frontend-0.1.0.tgz"
 
 pipeline {
@@ -43,9 +43,6 @@ pipeline {
           COMMIT = utils.getCommit()
 
           apiEnv = "staging"
-          // if (BRANCH_NAME in deployableBranches) {
-          //   apiEnv = BRANCH_NAME
-          // }
 
           utils.dockerRegistry {
             app = docker.build("$imageName:$COMMIT", "--build-arg API_ENV=$apiEnv .")
@@ -70,40 +67,12 @@ pipeline {
 
     stage('Push Image') {
       when {
-        expression { return !env.IMAGE_TAG.asBoolean() && (BRANCH_NAME in deployableBranches ||
-BRANCH_NAME == 'master') }
+        expression { return !env.IMAGE_TAG.asBoolean() && BRANCH_NAME in deployableBranches }
       }
 
       steps {
         script {
           utils.pushImage(app, ["$COMMIT", "$BRANCH_NAME", "$BRANCH_NAME-$BUILD_NUMBER"])
-        }
-      }
-    }
-
-    stage('Publish To Bucket') {
-      when {
-        expression { return params.IMAGE_TAG.asBoolean() || BRANCH_NAME == 'master' }
-      }
-
-      steps {
-        script {
-          if (params.IMAGE_TAG) {
-            TAG = params.IMAGE_TAG
-          } else {
-            TAG = "$BRANCH_NAME-$BUILD_NUMBER"
-          }
-
-          credentialsId = "hungerstation-production"
-          bucketName = "alpha.hungerstation.com"
-
-          utils.dockerRegistry {
-            sh "docker run --name $BRANCH_NAME $imageName:$TAG /bin/true"
-            sh "docker cp $BRANCH_NAME:/home/customer-website-frontend/build build-files"
-            sh "docker rm $BRANCH_NAME"
-          }
-
-          googleStorageUpload bucket: "gs://$bucketName", credentialsId: "$credentialsId", pathPrefix: 'build-files/', pattern: 'build-files/**/*', showInline: true
         }
       }
     }
@@ -120,7 +89,11 @@ BRANCH_NAME == 'master') }
             TAG = env.IMAGE_TAG
           }
 
-          utils.updateHelmRelease("development-customer", platformChart , TAG, "preview", "development")
+          if (BRANCH_NAME == 'master') {
+            utils.updateHelmRelease("production-customer", platformChart , TAG, "production", "customer")
+          } else {
+            utils.updateHelmRelease("development-customer", platformChart , TAG, "preview", "development")
+          }
         }
       }
     }
