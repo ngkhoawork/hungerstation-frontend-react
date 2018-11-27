@@ -45,7 +45,7 @@ export const mapStateToProps = createSelector(
             [],
           ).join(', ')
           : intl.formatMessage(messages.allCuisines),
-        /* eslint-anable */
+        /* eslint-enable */
       },
       {
         key: deliveryOption,
