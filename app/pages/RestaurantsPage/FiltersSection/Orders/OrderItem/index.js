@@ -1,19 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { silverChalice, boulder } from 'utils/css/colors';
 import { debounce } from 'utils/perf';
+import {
+  StyledOrderItem,
+  Name,
+  StyledSliderContainer,
+  RangeContainer,
+  Number,
+  StyledInput,
+  RangeProgressBar,
+  RangeValue,
+} from './StyledComponents';
 
-import Paragraph from 'components/Paragraph';
-import StyledOrderItem from './StyledOrderItem';
-import StyledSliderContainer from './StyledSliderContainer';
-import StyledLabel from './StyledLabel';
-import StyledInput from './StyledInput';
+const getPercent = ({ min, max }, value) => (value / (max - min)) * 100;
 
 class OrderItem extends React.Component {
   constructor(props) {
     super();
     this.state = { value: props.value };
-    this.toggleFilterAction = debounce(props.toggleFilterAction, 200);
+    this.toggleFilterAction = debounce(props.toggleFilterAction, 300);
   }
 
   static getDerivedStateFromProps({ value }, state) {
@@ -33,22 +38,28 @@ class OrderItem extends React.Component {
   render() {
     const { label, range } = this.props;
     const { value } = this.state;
+    const percent = getPercent(range, value);
 
     return (
       <StyledOrderItem>
+        <Name>{label}</Name>
         <StyledSliderContainer>
-          <StyledLabel>
-            <Paragraph light color={silverChalice}>
-              {label}
-            </Paragraph>
-            <Paragraph color={boulder}>{value}</Paragraph>
-          </StyledLabel>
-          <StyledInput
-            onChange={this.handleOnChange}
-            min={range.min}
-            max={range.max}
-            value={value}
-          />
+          <Number>{range.min}</Number>
+          <RangeContainer>
+            <StyledInput
+              onChange={this.handleOnChange}
+              min={range.min}
+              max={range.max}
+              value={value}
+            />
+            <RangeProgressBar style={{ width: `${percent}%` }} />
+            <RangeValue
+              style={{ left: `calc(${percent}% - ${(percent / 100) * 24}px)` }}
+            >
+              {value}
+            </RangeValue>
+          </RangeContainer>
+          <Number>{range.max}</Number>
         </StyledSliderContainer>
       </StyledOrderItem>
     );
