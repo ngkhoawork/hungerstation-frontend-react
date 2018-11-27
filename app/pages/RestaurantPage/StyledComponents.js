@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   maxPageWidth,
   pageOffsetX,
@@ -129,19 +129,10 @@ export const StyledProductTypes = styled.div`
   `};
 `;
 
-export const CartBtns = styled.div`
+export const cartBtnsStyle = css`
   margin: 30px ${mobPageOffsetX};
-  text-align: center;
 
   ${mediaSmall`margin: 30px ${smallMobPageOffsetX};`};
 
   ${mediaMediumGreater`display: none;`};
-`;
-
-export const BasketBtn = styled.span`
-  cursor: pointer;
-  padding: 6px 12px;
-  margin-bottom: 10px;
-  display: inline-block;
-  user-select: none;
 `;

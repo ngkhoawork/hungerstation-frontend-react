@@ -10,6 +10,8 @@ import Button from 'components/Button';
 import Price from 'components/Price';
 import messages from './messages';
 import {
+  CartBtns,
+  BasketBtn,
   ButtonWrapper,
   Content,
   LeftSide,
@@ -22,71 +24,89 @@ const ViewCartButton = ({
   isCheckout,
   isDisabled,
   isOrderDetail,
+  isWithBasket,
   quantity,
   price,
   onClick,
+  onBasketClick,
+  ...props
 }) => {
   const getHref = () => {
     if (isDisabled || onClick) return '#';
     return isCheckout ? '/payment' : `${getPathname()}/checkout`;
   };
 
-  let label;
+  const renderViewCartBtn = () => {
+    let label;
 
-  if (isCheckout) {
-    label = 'placeOrder';
-  } else if (isOrderDetail) {
-    label = 'reorder';
-  } else {
-    label = 'goToCheckout';
-  }
+    if (isCheckout) {
+      label = 'placeOrder';
+    } else if (isOrderDetail) {
+      label = 'reorder';
+    } else {
+      label = 'goToCheckout';
+    }
+
+    return (
+      <ButtonWrapper>
+        <Link to={getHref()}>
+          <Button
+            primary={!isCheckout}
+            color={isCheckout ? jade : undefined}
+            size="xl"
+            style={{ whiteSpace: 'nowrap' }}
+            disabled={isDisabled}
+            disabledColor="white"
+            onClick={onClick}
+          >
+            <Content>
+              <LeftSide>
+                {!isModal && !isCheckout && quantity !== undefined ? (
+                  <CircledItem color="white" width={30}>
+                    <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
+                  </CircledItem>
+                ) : null}
+              </LeftSide>
+              <Icon
+                name={isCheckout && !isDisabled ? 'basket-white' : 'basket'}
+              />
+              <Label isCheckout={isCheckout} isDisabled={isDisabled}>
+                {intl.formatMessage(messages[label])}
+              </Label>
+              <RightSide>
+                {!isModal && !isCheckout && price !== undefined ? (
+                  <Price price={price} isPrimary />
+                ) : null}
+              </RightSide>
+            </Content>
+          </Button>
+        </Link>
+      </ButtonWrapper>
+    );
+  };
+
+  if (!isWithBasket) return renderViewCartBtn();
 
   return (
-    <ButtonWrapper>
-      <Link to={getHref()}>
-        <Button
-          primary={!isCheckout}
-          color={isCheckout ? jade : undefined}
-          size="xl"
-          style={{ whiteSpace: 'nowrap' }}
-          disabled={isDisabled}
-          disabledColor="white"
-          onClick={onClick}
-        >
-          <Content>
-            <LeftSide>
-              {!isModal && !isCheckout && quantity !== undefined ? (
-                <CircledItem color="white" width={30}>
-                  <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
-                </CircledItem>
-              ) : null}
-            </LeftSide>
-            <Icon
-              name={isCheckout && !isDisabled ? 'basket-white' : 'basket'}
-            />
-            <Label isCheckout={isCheckout} isDisabled={isDisabled}>
-              {intl.formatMessage(messages[label])}
-            </Label>
-            <RightSide>
-              {!isModal && !isCheckout && price !== undefined ? (
-                <Price price={price} isPrimary />
-              ) : null}
-            </RightSide>
-          </Content>
-        </Button>
-      </Link>
-    </ButtonWrapper>
+    <CartBtns {...props}>
+      <BasketBtn onClick={onBasketClick}>
+        {intl.formatMessage(messages.checkBasket)}
+      </BasketBtn>
+      {renderViewCartBtn()}
+    </CartBtns>
   );
 };
 
 ViewCartButton.propTypes = {
   isModal: PropTypes.bool,
+  isWithBasket: PropTypes.bool,
   isCheckout: PropTypes.bool,
   isDisabled: PropTypes.bool,
   isOrderDetail: PropTypes.bool,
   quantity: PropTypes.number,
   price: PropTypes.number,
   onClick: PropTypes.func,
+  onBasketClick: PropTypes.func,
 };
 
 export default ViewCartButton;

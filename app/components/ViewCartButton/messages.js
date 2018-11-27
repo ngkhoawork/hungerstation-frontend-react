@@ -10,4 +10,7 @@ export default defineMessages({
   goToCheckout: {
     id: 'app.components.Cart.goToCheckout',
   },
+  checkBasket: {
+    id: 'app.components.Cart.checkBasket',
+  },
 });
