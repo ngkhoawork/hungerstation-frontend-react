@@ -4,7 +4,7 @@ import { wildSand, lightestGray } from 'utils/css/colors';
 
 const ContentWrapper = styled.div`
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   &::-webkit-scrollbar {
     width: 0px;
     background: transparent;
