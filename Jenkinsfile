@@ -31,7 +31,7 @@ pipeline {
       }
     }
 
-    stage('Build image') {
+    stage('Build node image') {
       when {
         expression { return !env.IMAGE_TAG.asBoolean() }
       }
@@ -45,8 +45,9 @@ pipeline {
           apiEnv = "staging"
 
           utils.dockerRegistry {
-            app = docker.build("$imageName:$COMMIT", "--build-arg API_ENV=$apiEnv .")
+            app = docker.build("$BRANCH_NAME", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")
           }
+
         }
       }
     }
@@ -61,6 +62,25 @@ pipeline {
           app.inside() {
             sh "npm i -D && npm run lint"
           }
+        }
+      }
+    }
+
+    stage('Build nginx image') {
+      when {
+        expression { return !env.IMAGE_TAG.asBoolean() && BRANCH_NAME in deployableBranches }
+      }
+
+      steps {
+        script {
+          utils.dockerRegistry {
+            sh "docker run --name $BRANCH_NAME $BRANCH_NAME /bin/true"
+            sh "docker cp $BRANCH_NAME:/home/customer-website-frontend/build build"
+            sh "docker rm $BRANCH_NAME"
+            app = docker.build("$imageName:$COMMIT", ".")
+          }
+
+          utils.pushImage(app, ["$COMMIT", "$BRANCH_NAME", "$BRANCH_NAME-$BUILD_NUMBER"])
         }
       }
     }
