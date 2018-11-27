@@ -109,16 +109,17 @@ MobileFiltersSection.propTypes = {
 
 const Wrapper = styled.div`
   ${flex({ direction: 'column' })};
-
+  padding: 24px;
   position: relative;
   height: 100vh;
 `;
 
 const ApllyButtonWrapper = styled.div`
-  height: 60px;
-  width: 100%;
+  height: 56px;
+  width: calc(100% - 48px);
   position: absolute;
-  bottom: 0px;
+  bottom: 24px;
+  left: 24px;
 `;
 
 const ClearAllPosition = styled.div`
@@ -132,7 +133,7 @@ const CloseButtonWrapper = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  right: 0px;
-  top: 4px;
+  right: 23px;
+  top: 23px;
   background-color: transparent;
 `;
