@@ -8,6 +8,8 @@ import {
   selectChosenKitchenFiltersArray,
   selectFilters,
 } from 'modules/restaurants/selectors';
+import intl from 'utils/intlService';
+import messages from './messages';
 
 const pickArrayElementsByProp = propType => array =>
   flow(
@@ -41,8 +43,8 @@ export const mapStateToProps = createSelector(
           ? pickArrayElementsByIds(kitchensIds)(kitchens).reduce(
             (acc, { name }) => [...acc, name],
             [],
-          )
-          : 'All Cuisines',
+          ).join(', ')
+          : intl.formatMessage(messages.allCuisines),
         /* eslint-anable */
       },
       {
@@ -50,7 +52,7 @@ export const mapStateToProps = createSelector(
         to: '/',
         label:
           deliveryOption === 'all'
-            ? 'All Delivery Types'
+            ? intl.formatMessage(messages.allDeliveryTypes)
             : find({ type: deliveryOption }, delivery_options).name,
       },
     ],

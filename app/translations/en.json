@@ -233,6 +233,8 @@
   "app.containers.ContactUsForm.passwordLabel": "Password",
   "app.pages.RestaurantPage.header": "My Orders",
   "app.pages.RestaurantPage.noMenu": "{name} doesn't have any menu",
+  "app.hocs.withSelectedLocationAndFilters.allCusines": "All Cuisines",
+  "app.hocs.withSelectedLocationAndFilters.allDeliveryTypes": "All Delivery Types",
   "form.email": "Invalid email address",
   "form.mobile.length": "The mobile number needs to have 9 digits",
   "form.mobile.regex": "Invalid phone number",
