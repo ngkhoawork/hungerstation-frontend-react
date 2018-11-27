@@ -1,4 +1,4 @@
-FROM node:10.9.0-jessie
+FROM node:10.9.0-jessie as build-stage
 
 ARG API_ENV="staging"
 ENV API_ENV=$API_ENV
@@ -16,6 +16,10 @@ COPY . .
 
 RUN yarn run build
 
-EXPOSE 3000
+FROM nginx:1.15.6
 
-CMD ["yarn", "run", "start:prod"]
+ENV APP_HOME /home/customer-website-frontend
+WORKDIR $APP_HOME
+
+COPY --from=build-stage /home/customer-website-frontend/build/ .
+COPY --from=build-stage /home/customer-website-frontend/nginx.conf /etc/nginx/conf.d/default.conf
