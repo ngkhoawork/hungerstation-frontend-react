@@ -24,7 +24,7 @@ const getDeliveriesQuery = `query GetDeliveries($lat:Float, $lng:Float, $localId
         accept_voucher
         delivery_provider
         status
-        has_promotion
+        has_discount
         restaurant{
           id
           name

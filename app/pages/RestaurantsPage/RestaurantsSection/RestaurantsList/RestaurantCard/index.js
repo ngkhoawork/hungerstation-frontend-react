@@ -25,7 +25,7 @@ const RestaurantCard = ({
   logo,
   coverPhoto,
   kitchensNames,
-  hasPromotion,
+  hasDiscount,
 }) => (
   <StyledRestaurantCard
     to={`${getPathname()}/restaurant/${branchId}`}
@@ -33,7 +33,7 @@ const RestaurantCard = ({
   >
     <StyledUpperPart>
       <BrandLogo src={logo} size={60} />
-      {hasPromotion && <Promoted />}
+      {hasDiscount && <Promoted />}
     </StyledUpperPart>
 
     <StyledBottomPart>

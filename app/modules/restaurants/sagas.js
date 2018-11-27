@@ -80,7 +80,7 @@ export function* fetchRestaurantsSaga({ payload }) {
       deliveryProvider: item.delivery_provider,
       deliveryFee: item.delivery_fee,
       status: item.branch.status,
-      hasPromotion: item.branch.has_promotion,
+      hasDiscount: item.branch.has_discount,
       // filter tags
       acceptCreditCard: item.branch.accept_credit_card,
       acceptVoucher: item.branch.accept_voucher,
@@ -130,13 +130,13 @@ export function* filterRestaurantListSaga() {
     soon: [],
     closed: [],
   };
-  function reduceByStatus(state, status, id, hasPromotion) {
+  function reduceByStatus(state, status, id, hasDiscount) {
     switch (status) {
       case RESTAURANT_STATUSES[status]:
         return {
           ...state,
           // we need to view promoted items first for every restaurant status
-          [status]: hasPromotion
+          [status]: hasDiscount
             ? [id, ...state[status]]
             : [...state[status], id],
         };
@@ -153,7 +153,7 @@ export function* filterRestaurantListSaga() {
       minOrder,
       deliveryProvider,
       status,
-      hasPromotion,
+      hasDiscount,
       ...rest
     }) => {
       // checking for time estimation and minimum order quantities
@@ -186,7 +186,7 @@ export function* filterRestaurantListSaga() {
         isRelevantToDeliveryFilter &&
         restaurantIncludesFiltertags &&
         isOrderFiltersPassing
-          ? reduceByStatus(sortByStatusState, status, id, hasPromotion)
+          ? reduceByStatus(sortByStatusState, status, id, hasDiscount)
           : sortByStatusState;
     },
   );
