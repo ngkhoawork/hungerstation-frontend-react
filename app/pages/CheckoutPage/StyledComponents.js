@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { flex, mediaMedium } from 'utils/css/styles';
+import styled, { css } from 'styled-components';
+import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 import { pageOffsetX, mobPageOffsetX, maxPageWidth } from 'utils/css/variables';
 
 export const Container = styled.div`
@@ -29,7 +29,31 @@ export const RightSide = styled.div`
   margin: 0 20px;
 
   ${mediaMedium`
-    margin: 20px 0;
+    margin: 20px 0 -140px 0;
     width: 100%;
   `};
 `;
+
+export const cartBtnsStyle = css`
+  padding: 10px 0 20px;
+  width: 100%;
+  background: white;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  box-shadow: 5px -10px 0.0000001px 10px white;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transition: opacity 0.3s;
+
+  ${mediaMediumGreater`display: none;`};
+`;
+
+// box-shadow: 5px -10px 0.0000000001px 10px white;
+//   -webkit-font-smoothing: antialiased;
+//   width: calc(100% + 20px);
+//   margin-left: -10px;
+//   padding: 10px;
+//   filter: drop-shadow(0px -15px 10px white);
+//   transform: translateZ(0);
+//   will-change: position;
+//   will-change: transform;
