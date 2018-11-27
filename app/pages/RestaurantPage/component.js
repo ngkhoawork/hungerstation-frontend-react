@@ -5,7 +5,7 @@ import { getDeepProp } from 'utils/helpers';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
 import CartContainer from 'containers/CartContainer';
-import ViewCartButton from 'containers/ViewCartButton';
+import BasketCartButton from 'containers/BasketCartButton';
 import RestaurantInfo from 'components/RestaurantInfo';
 import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
@@ -23,8 +23,7 @@ import {
   RestaurantInfoContainer,
   ProductsContainer,
   StyledProductTypes,
-  CartBtns,
-  BasketBtn,
+  cartBtnsStyle,
 } from './StyledComponents';
 
 class RestaurantPage extends React.Component {
@@ -64,13 +63,6 @@ class RestaurantPage extends React.Component {
     this.props.onShowModal(MealOptionsHOC);
   };
 
-  handleBasketClick = () => {
-    const CartContainerHOC = () => (
-      <CartContainer params={this.props.params} isModal />
-    );
-    this.props.onShowModal(CartContainerHOC);
-  };
-
   handleMenuGroupSelect = selectedMenuGroup =>
     this.setState({ selectedMenuGroup });
 
@@ -80,7 +72,7 @@ class RestaurantPage extends React.Component {
   };
 
   renderContent = () => {
-    const { cartItems, restaurant } = this.props;
+    const { cartItems, restaurant, params } = this.props;
     const { menu, ...info } = restaurant;
     const { selectedMenuGroup } = this.state;
 
@@ -119,12 +111,7 @@ class RestaurantPage extends React.Component {
             onProductClick={this.handleAddClick}
           />
         </ProductsContainer>
-        <CartBtns>
-          <BasketBtn onClick={this.handleBasketClick}>
-            {intl.formatMessage(messages.checkBasket)}
-          </BasketBtn>
-          <ViewCartButton />
-        </CartBtns>
+        <BasketCartButton css={cartBtnsStyle} params={params} />
       </Fragment>
     );
   };

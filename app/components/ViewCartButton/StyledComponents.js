@@ -3,6 +3,20 @@ import { fuscousGray } from 'utils/css/colors';
 import { mediaMediumGreater, mediaSmall } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 
+export const CartBtns = styled.div`
+  text-align: center;
+
+  ${({ css }) => css};
+`;
+
+export const BasketBtn = styled.span`
+  cursor: pointer;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  display: inline-block;
+  user-select: none;
+`;
+
 export const ButtonWrapper = styled.div`
   width: 100%;
   border-radius: ${borderRadius};
