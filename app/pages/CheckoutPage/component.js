@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import CartContainer from 'containers/CartContainer';
+import BasketCartButton from 'containers/BasketCartButton';
 import AddressesContainer from 'containers/AddressesContainer';
 import DeliveryOptionsContainer from 'containers/DeliveryOptionsContainer';
 import PaymentOptionsContainer from 'containers/PaymentOptionsContainer';
@@ -17,56 +18,97 @@ import {
   ContentContainer,
   LeftSide,
   RightSide,
+  cartBtnsStyle,
 } from './StyledComponents';
 
-const CheckoutPage = ({ params, deliveryOptions = [], ...props }) => {
-  const hasDeliverySection = deliveryOptions.length > 1;
+class CheckoutPage extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const renderContent = () => (
-    <React.Fragment>
-      <Step stepNo={1} stepCount={3} title={intl.formatMessage(messages.step1)}>
-        <AddressesContainer onOrderChange={props.onOrderChange} />
-      </Step>
-      {hasDeliverySection ? (
+    this.state = {};
+    this.cartEndRef = React.createRef();
+    this.intersectObserver = new IntersectionObserver(this.handleIntersect);
+  }
+
+  componentDidMount() {
+    this.intersectObserver.observe(this.cartEndRef.current);
+  }
+
+  componentWillUnmount() {
+    this.intersectObserver.disconnect();
+  }
+
+  handleIntersect = entries =>
+    this.setState({ isBasketCartBtnVisible: !entries[0].isIntersecting });
+
+  renderContent = () => {
+    const { deliveryOptions = [], note, onOrderChange } = this.props;
+    const hasDeliverySection = deliveryOptions.length > 1;
+
+    return (
+      <React.Fragment>
         <Step
-          stepNo={2}
+          stepNo={1}
           stepCount={3}
-          title={intl.formatMessage(messages.step2)}
+          title={intl.formatMessage(messages.step1)}
         >
-          <DeliveryOptionsContainer onOrderChange={props.onOrderChange} />
+          <AddressesContainer onOrderChange={onOrderChange} />
         </Step>
-      ) : (
-        <DeliveryOptionsContainer onOrderChange={props.onOrderChange} />
-      )}
-      <Step
-        stepNo={hasDeliverySection ? 3 : 2}
-        stepCount={hasDeliverySection ? 3 : 2}
-        title={intl.formatMessage(messages.step3)}
-      >
-        <PaymentOptionsContainer onOrderChange={props.onOrderChange} />
-      </Step>
-      <Note
-        style={{ borderTop: border, padding: '20px 0' }}
-        note={props.note}
-        onChange={props.onNoteChange}
-      />
-    </React.Fragment>
-  );
+        {hasDeliverySection ? (
+          <Step
+            stepNo={2}
+            stepCount={3}
+            title={intl.formatMessage(messages.step2)}
+          >
+            <DeliveryOptionsContainer onOrderChange={onOrderChange} />
+          </Step>
+        ) : (
+          <DeliveryOptionsContainer onOrderChange={onOrderChange} />
+        )}
+        <Step
+          stepNo={hasDeliverySection ? 3 : 2}
+          stepCount={hasDeliverySection ? 3 : 2}
+          title={intl.formatMessage(messages.step3)}
+        >
+          <PaymentOptionsContainer onOrderChange={onOrderChange} />
+        </Step>
+        <Note
+          style={{ borderTop: border, padding: '20px 0' }}
+          note={note}
+          onChange={this.props.onNoteChange}
+        />
+      </React.Fragment>
+    );
+  };
 
-  return (
-    <Container>
-      <NavHeader isWithOffset>
-        <Back />
-      </NavHeader>
-      <ContentContainer>
-        <LeftSide>{props.isLoading ? null : renderContent()}</LeftSide>
-        <RightSide>
-          <CartContainer params={params} onOrderCreate={props.onOrderCreate} />
-        </RightSide>
-      </ContentContainer>
-    </Container>
-  );
-};
+  render() {
+    const { isLoading, params } = this.props;
+    const { isBasketCartBtnVisible } = this.state;
+
+    return (
+      <Container>
+        <NavHeader isWithOffset>
+          <Back />
+        </NavHeader>
+        <ContentContainer>
+          <LeftSide>{isLoading ? null : this.renderContent()}</LeftSide>
+          <RightSide>
+            <CartContainer
+              params={params}
+              onOrderCreate={this.props.onOrderCreate}
+            />
+            <div style={{ height: '0.00001px' }} ref={this.cartEndRef} />
+          </RightSide>
+          <BasketCartButton
+            css={cartBtnsStyle}
+            params={params}
+            innerStyle={{ opacity: isBasketCartBtnVisible ? 1 : 0 }}
+          />
+        </ContentContainer>
+      </Container>
+    );
+  }
+}
 
 CheckoutPage.propTypes = {
   note: PropTypes.string,

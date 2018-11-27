@@ -29,6 +29,7 @@ const ViewCartButton = ({
   price,
   onClick,
   onBasketClick,
+  innerStyle,
   ...props
 }) => {
   const getHref = () => {
@@ -61,7 +62,7 @@ const ViewCartButton = ({
           >
             <Content>
               <LeftSide>
-                {!isModal && !isCheckout && quantity !== undefined ? (
+                {!isModal && isWithBasket && quantity !== undefined ? (
                   <CircledItem color="white" width={30}>
                     <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
                   </CircledItem>
@@ -74,7 +75,7 @@ const ViewCartButton = ({
                 {intl.formatMessage(messages[label])}
               </Label>
               <RightSide>
-                {!isModal && !isCheckout && price !== undefined ? (
+                {!isModal && isWithBasket && price !== undefined ? (
                   <Price price={price} isPrimary />
                 ) : null}
               </RightSide>
@@ -88,7 +89,7 @@ const ViewCartButton = ({
   if (!isWithBasket) return renderViewCartBtn();
 
   return (
-    <CartBtns {...props}>
+    <CartBtns style={innerStyle} {...props}>
       <BasketBtn onClick={onBasketClick}>
         {intl.formatMessage(messages.checkBasket)}
       </BasketBtn>
