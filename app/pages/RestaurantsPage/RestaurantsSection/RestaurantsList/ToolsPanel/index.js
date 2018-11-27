@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { flex, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess, mediaMedium } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 import { searchRestaurantAction } from 'modules/restaurants/actions';
 import { selectSearchString } from 'modules/restaurants/selectors';
@@ -13,6 +13,8 @@ import SearchInput from './SearchInput';
 const StyledTool = styled.div`
   display: flex;
   width: 360px;
+
+  ${mediaMedium`width: 100%;`};
 `;
 
 const StyledToolUndisplayedInMobile = styled(StyledTool)`

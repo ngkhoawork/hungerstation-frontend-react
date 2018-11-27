@@ -2,8 +2,13 @@ import React from 'react';
 import { string } from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-
-import { flex, mediaLess, sideMargin } from 'utils/css/styles';
+import {
+  flex,
+  mediaLess,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+} from 'utils/css/styles';
 import { fontFamilyLight } from 'utils/css/variables';
 import { forwardTo } from 'utils/route';
 import { selectCity, selectDistrict } from 'modules/location/selectors';
@@ -19,13 +24,16 @@ const StyledLocation = styled.a`
 const Wrapper = styled.div`
   height: 35px;
   padding: 0 15px;
-  min-width: 350px;
   margin-right: 22%;
   ${flex({ align: 'center' })};
 
   img {
     margin-top: 5px;
   }
+
+  ${mediaMedium`width: 100%;`};
+
+  ${mediaMediumGreater`min-width: 350px;`};
 
   ${mediaLess(600)`
     margin-left: 0;
