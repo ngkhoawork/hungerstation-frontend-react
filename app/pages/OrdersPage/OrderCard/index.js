@@ -51,13 +51,18 @@ const OrderCard = ({ order, onOrderClick }) => (
           </TitleContainer>
           <OrderState>
             {order.state === 'successful' && (
-              <DateTimeElement time={order.delivedAt} />
+              <DateTimeElement
+                time={order.delivedAt || new Date(order.deliveryEta).getTime()}
+              />
+            )}
+            {order.state === 'processing' && (
+              <DateTimeElement time={new Date(order.deliveryEta).getTime()} />
             )}
             {order.state === 'failed' && <Status color="error">Failed</Status>}
             {order.tracking.activeStatus && (
               <TrackingTimer
                 startAt={order.createdAt}
-                endAt={order.deliveryEta}
+                endAt={new Date(order.deliveryEta).getTime()}
               />
             )}
           </OrderState>

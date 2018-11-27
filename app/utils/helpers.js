@@ -172,3 +172,16 @@ export const formatMobileNumber = phone => {
   const regex = /^(05|\+9665|009665)(\d+)$/;
   return phone.replace(regex, (match, p1, p2) => `+9665${p2}`);
 };
+
+export const compareByState = (a, b) => {
+  if (a.state === b.state) {
+    return 0;
+  }
+  if (
+    a.state === 'processing' ||
+    (a.state === 'successful' && b.state === 'failed')
+  ) {
+    return -1;
+  }
+  return 1;
+};
