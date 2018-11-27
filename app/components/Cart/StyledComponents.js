@@ -17,10 +17,18 @@ export const Wrapper = styled.section`
     box-shadow: none;
     justify-content: space-between;
     flex-grow: 1;
-    padding: 0 10px;
+    padding: 0 10px !important;
   `};
 
-  ${mediaMedium`width: 100%; min-width: 100%; max-width: 100%;`};
+  ${mediaMedium`
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    padding: 20px 0;
+    ${({ isModal }) => !isModal && `margin-bottom: 10px;`};
+  `};
+
   ${mediaLargeGreater`min-width: 353px;`};
 `;
 
@@ -52,6 +60,7 @@ export const Items = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 130px;
+  min-height: 70px;
   flex-shrink: 0;
 
   ${({ isModal }) =>

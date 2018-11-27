@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import intl from 'utils/intlService';
+import { mediaMediumGreater } from 'utils/css/styles';
 import { fontFamilyRegular } from 'utils/css/variables';
 import { fuscousGray } from 'utils/css/colors';
 import { Description } from 'components/Typography';
@@ -11,7 +12,7 @@ const Container = styled.section`
 `;
 
 const VAT = styled(Description)`
-  margin-bottom: 30px;
+  ${mediaMediumGreater`margin-bottom: 30px;`};
 `;
 
 const Link = styled.a`
