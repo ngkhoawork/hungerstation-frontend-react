@@ -30,6 +30,8 @@ export const Wrapper = styled.section`
   `};
 
   ${mediaLargeGreater`min-width: 353px;`};
+
+  ${({ css }) => css};
 `;
 
 export const titleStyle = {

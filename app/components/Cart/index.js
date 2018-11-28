@@ -35,6 +35,7 @@ const Cart = ({
   onItemEditClick,
   onCartSubmit,
   orderErrors,
+  ...props
 }) => {
   const minAmount = getDeepProp(branch, [
     'delivery_conditions',
@@ -50,6 +51,8 @@ const Cart = ({
   );
 
   const renderSubtitle = () => {
+    if (isOrderDetail) return null;
+
     if (isCheckout) return <From>{from}</From>;
 
     if (city && district) return <DeliveryTo city={city} district={district} />;
@@ -106,7 +109,7 @@ const Cart = ({
   };
 
   const renderCart = () => (
-    <Wrapper isModal={isModal}>
+    <Wrapper isModal={isModal} {...props}>
       <Unshrinkable isModal={isModal}>
         {isModal ? null : <Title style={titleStyle}>{title}</Title>}
         {renderSubtitle()}
