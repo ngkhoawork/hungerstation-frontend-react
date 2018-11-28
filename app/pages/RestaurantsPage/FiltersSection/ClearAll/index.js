@@ -15,7 +15,7 @@ const decorate = connect(state => ({
 const ClearAll = ({ resetFilters, isFiltersInitial }) =>
   !isFiltersInitial && (
     <Group onClick={resetFilters}>
-      <Paragraph size={12} margin="0 5px 0 0">
+      <Paragraph size={12} margin="0 5px 0 5px">
         {intl.formatMessage(messages.clearAll)}
       </Paragraph>
       <Icon name="delete" />
