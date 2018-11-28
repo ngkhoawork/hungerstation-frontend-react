@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess, sidePadding } from 'utils/css/styles';
 import Paragraph from 'components/Paragraph';
 import Icon from 'components/Icon/StyledIcon';
 
@@ -32,7 +32,7 @@ const StyledNotFound = styled.div`
   ${mediaLess(600)`
     ${flex({ wrap: 'nowrap' }, false)};
     padding: 20px;
-    padding-left: 0;
+    ${sidePadding('start', '0')};
   `};
 `;
 

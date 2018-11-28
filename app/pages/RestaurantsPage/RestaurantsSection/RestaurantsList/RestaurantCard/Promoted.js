@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import intl from 'utils/intlService';
 import { gold } from 'utils/css/colors';
+import { sideMargin } from 'utils/css/styles';
 import Paragraph from 'components/Paragraph';
 import messages from './messages';
 
@@ -27,7 +28,7 @@ const ParagraphWithStar = styled(Paragraph)`
   &:before {
     content: '★';
     font-size: 8px;
-    margin-right: 4px;
+    ${sideMargin('end', '4px')};
     vertical-align: text-top;
     line-height: 15px;
   }

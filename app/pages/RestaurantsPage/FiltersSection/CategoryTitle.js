@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { jade } from 'utils/css/colors';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 
 import Paragraph from 'components/Paragraph';
 import CircledItem from 'components/CircledItem';
@@ -23,13 +23,17 @@ const Wrapper = styled.div`
   }
 `;
 
+const Title = styled.span`
+  ${sideMargin('end', '5px')};
+`;
+
 const CategoryTitle = ({ title, selectionQuantity, withoutQuantity = false }) =>
   title ? (
     <Wrapper>
       <StyledTitle>
         <Group>
-          <Paragraph size={18} margin="0 5px 0 0">
-            {title}
+          <Paragraph size={18}>
+            <Title>{title}</Title>
           </Paragraph>
           {!withoutQuantity && (
             <CircledItem width={15} color={jade}>

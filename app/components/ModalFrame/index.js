@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium, sideMargin } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin, sidePadding } from 'utils/css/styles';
 import {
   maxModalWidth,
   maxModalHeight,
@@ -23,7 +23,9 @@ const ModalFrame = ({
     <Header style={headerStyle} css={headerCss}>
       <Title>{title}</Title>
       <Description style={{ marginTop: 16 }}>{subtitle}</Description>
-      <Icon name="close-modal" onClick={onCancel} style={CloseBtnStyle} />
+      <CloseBtn>
+        <Icon name="close-modal" onClick={onCancel} style={CloseBtnStyle} />
+      </CloseBtn>
     </Header>
     {children}
   </Container>
@@ -55,7 +57,10 @@ const fullscreen = css`
 
 const Container = styled.div`
   position: relative;
-  padding: 28px 40px 30px 25px;
+  padding-top: 28px;
+  padding-bottom: 30px;
+  ${sidePadding('start', '25px')};
+  ${sidePadding('end', '40px')};
   background: white;
   width: max-content;
   ${flex({ direction: 'column' })};
@@ -82,9 +87,10 @@ const Header = styled.div`
   ${({ style }) => style && css(style)};
   ${({ css }) => css};
 `;
-
+const CloseBtn = styled.div`
+  ${sidePadding('start', 'calc(100% + 30px)')};
+`;
 const CloseBtnStyle = {
   position: 'absolute',
   top: '16px',
-  right: '16px',
 };

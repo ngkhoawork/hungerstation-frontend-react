@@ -8,7 +8,9 @@ const ButtonWrapper = styled.div`
   :first-child {
     ${sideMargin('end', '20px')};
 
-    ${mediaSmall`margin-right: 10px;`};
+    ${mediaSmall`
+      ${sideMargin('end', '10px')};
+    `};
   }
 `;
 

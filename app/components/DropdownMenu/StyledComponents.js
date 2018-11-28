@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { flex, mediaSmall } from 'utils/css/styles';
+import styled from 'styled-components';
+import { flex, mediaSmall, sidePosition, sidePadding } from 'utils/css/styles';
 import { gold, wildSand } from 'utils/css/colors';
 import { zIndexDropdown, borderRadius } from 'utils/css/variables';
 
@@ -11,7 +11,7 @@ export const StyledDropdown = styled.div`
   cursor: pointer;
   font-size: 16px;
   width: 100%;
-  padding-right: 10px;
+  ${sidePadding('end', '10px')};
   ${flex({ align: 'center', justify: 'space-between' })};
 
   & > span {
@@ -52,12 +52,5 @@ export const StyledSubMenu = styled.div`
   border-radius: ${borderRadius};
   ${flex({ direction: 'column' })};
   white-space: nowrap;
-  ${({ isRightAligned }) =>
-    isRightAligned
-      ? css`
-          right: 0;
-        `
-      : css`
-          left: 0;
-        `};
+  ${sidePosition('end', '0')};
 `;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { borderRadius } from 'utils/css/variables';
 import { jade } from 'utils/css/colors';
+import { sideMargin } from 'utils/css/styles';
 import Icon from 'components/Icon';
 import { RestaurantProductPropType } from './constants';
 
@@ -14,7 +15,7 @@ const Container = styled.span`
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  margin-right: 5px;
+  ${sideMargin('end', '5px')};
 `;
 
 const BasketQuantity = ({ product: { id, menuitems }, cartItems }) => {

@@ -1,6 +1,13 @@
 import styled, { css } from 'styled-components';
 import Input from '@material-ui/core/Input';
-import { flex, mediaSmall, mediaMedium, sideMargin } from 'utils/css/styles';
+import {
+  flex,
+  mediaSmall,
+  mediaMedium,
+  sideMargin,
+  sidePadding,
+  sidePosition,
+} from 'utils/css/styles';
 import {
   maxModalWidth,
   maxModalContentHeight,
@@ -59,7 +66,7 @@ export const locateMeStyle = css`
   right: calc(15% + 5px);
 
   ${mediaMedium`
-    right: 5px;
+    ${sidePosition('end', '5px')};
   `};
 `;
 
@@ -67,7 +74,7 @@ export const Content = styled.div`
   overflow-y: auto;
   ${flex({ grow: 1 }, false)};
   margin-bottom: 15px;
-  padding-right: 10px;
+  ${sidePadding('end', '10px;')};
 `;
 
 export const InputsContainer = styled.div`

@@ -4,6 +4,9 @@ import {
   mediaMediumGreater,
   flex,
   borderBottom,
+  sidePadding,
+  sideModal,
+  sideMargin,
 } from 'utils/css/styles';
 import { maxModalWidth, borderRadius } from 'utils/css/variables';
 import { alabaster } from 'utils/css/colors';
@@ -11,25 +14,29 @@ import { alabaster } from 'utils/css/colors';
 export const containerStyle = css`
   width: 600px;
   ${mediaMedium`width: ${maxModalWidth}`};
+  ${sideModal()};
 `;
 
 export const headerStyle = css`
   ${borderBottom};
-  text-align: left;
+  text-align: start;
 `;
 
 export const Content = styled.div`
   ${flex({ direction: 'column', grow: 1 })};
   overflow-y: auto;
   margin-bottom: 20px;
-  padding-right: 10px;
+  ${sidePadding('end', '10px;')};
   min-height: ${({ isWithDropdown }) => (isWithDropdown ? '220px' : 'initial')};
 `;
 
 export const Footer = styled.div`
   ${flex({ justify: 'space-between', shrink: 0 })};
   background-color: ${alabaster};
-  margin: 0 -40px -31px -25px;
+  margin-top: 0;
+  margin-bottom: -31px;
+  ${sideMargin('start', '-25px')};
+  ${sideMargin('end', '-40px')};
   padding: 30px 20px;
   border-radius: 0 0 ${borderRadius} ${borderRadius};
 

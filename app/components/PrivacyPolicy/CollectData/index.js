@@ -10,7 +10,7 @@ import messages from './messages';
 const CollectData = () => (
   <div>
     <HeaderWraper>
-      <TextItem size={24} fontFamily="regular">
+      <TextItem size={24} fontFamily="regular" style={{ textAlign: 'start' }}>
         <FormattedMessage {...messages.Title} />
       </TextItem>
     </HeaderWraper>

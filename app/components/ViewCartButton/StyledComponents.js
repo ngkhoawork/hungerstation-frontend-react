@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { fuscousGray } from 'utils/css/colors';
-import { mediaMediumGreater, mediaSmall } from 'utils/css/styles';
+import { mediaMediumGreater, mediaSmall, sidePosition } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 
 export const CartBtns = styled.div`
@@ -33,17 +33,21 @@ export const LeftSide = styled.span`
   left: 20px;
   top: -4px;
 
-  ${mediaSmall`left: -10px`};
+  ${mediaSmall`
+    ${sidePosition('start', '-10px')};
+  `};
 
   ${mediaMediumGreater`display: none;`};
 `;
 
 export const RightSide = styled.span`
   position: absolute;
-  right: 20px;
+  ${sidePosition('end', '20px')};
   top: 4px;
 
-  ${mediaSmall`right: -10px`};
+  ${mediaSmall`
+    ${sidePosition('end', '-10px')};
+  `};
 
   ${mediaMediumGreater`display: none;`};
 `;

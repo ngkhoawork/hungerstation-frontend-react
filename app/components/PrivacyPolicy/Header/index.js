@@ -1,12 +1,14 @@
 import React from 'react';
 
 import getImage from 'utils/css/images';
+import intl from 'utils/intlService';
 import Image from './Image';
 import ImageWrapper from './ImageWrapper';
 import DetailsWrapper from './DetailsWrapper';
 import SectionDetails from './Section/SectionDetails';
-
 import Section from './Section';
+
+import messages from '../messages';
 
 const Header = () => (
   <Section
@@ -22,8 +24,8 @@ const Header = () => (
     rightSection={
       <DetailsWrapper>
         <SectionDetails
-          header="Privacy Policy"
-          description="Please read with understanding before using our services"
+          header={intl.formatMessage(messages.header)}
+          description={intl.formatMessage(messages.subheader)}
         />
       </DetailsWrapper>
     }

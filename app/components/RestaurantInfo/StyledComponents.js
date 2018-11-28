@@ -93,7 +93,7 @@ export const RatingContainer = styled.div`
 
   ${mediaMedium`
     top: 20px;
-    right: 20px;
+    ${sidePosition('end', '20px')};
   `};
 `;
 

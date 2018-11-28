@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { fuscousGray } from 'utils/css/colors';
-import { mediaMedium } from 'utils/css/styles';
+import { mediaMedium, sidePadding } from 'utils/css/styles';
 
 const Header = styled.p`
   font-size: 40px;
@@ -12,7 +12,7 @@ const Header = styled.p`
   width: 374px;
   ${mediaMedium`
     font-size: 35px;
-    padding-left: 46px;
+    ${sidePadding('start', '46px')};
   `};
 `;
 

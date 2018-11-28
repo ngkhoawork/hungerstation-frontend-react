@@ -38,7 +38,7 @@ class DropdownMenu extends Component {
   };
 
   render() {
-    const { leftIcon, label = '', items, isRightAligned } = this.props;
+    const { leftIcon, label = '', items } = this.props;
     const { isDropdownVisible } = this.state;
 
     return (
@@ -72,7 +72,6 @@ DropdownMenu.propTypes = {
   leftIcon: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   label: PropTypes.string,
-  isRightAligned: PropTypes.bool,
 };
 
 export default DropdownMenu;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { flex, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium, sidePadding } from 'utils/css/styles';
 import { borderRadius, border, boxShadow } from 'utils/css/variables';
 import CheckboxIcon from 'components/CheckboxIcon';
 import Icon from 'components/Icon';
@@ -27,7 +27,9 @@ const LeftSide = styled.div`
   height: 60px;
   ${flex({ shrink: 0 }, false)};
 
-  ${mediaMedium`padding-left: 0`};
+  ${mediaMedium`
+    ${sidePadding('start', '0')};
+  `};
 `;
 
 const Content = styled.div`

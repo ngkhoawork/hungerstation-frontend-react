@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { mediaMedium, mediaLargeGreater, flex } from 'utils/css/styles';
+import {
+  mediaMedium,
+  mediaLargeGreater,
+  flex,
+  sideMargin,
+} from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyLight } from 'utils/css/variables';
 
@@ -55,7 +60,7 @@ export const From = styled.div`
 export const Unshrinkable = styled.div`
   ${flex({ shrink: 0 }, false)};
 
-  ${({ isModal }) => isModal && `margin-right: 40px;`};
+  ${({ isModal }) => isModal && `${sideMargin('end', '40px')};`};
 `;
 
 export const Items = styled.div`

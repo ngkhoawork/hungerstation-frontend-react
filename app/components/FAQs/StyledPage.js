@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
 export const MenuBar = styled.div`
   margin-top: 43px;
   padding-top: 160px;
-  margin-right: 30px;
+  ${sideMargin('end', '30px')};
   width: 170px;
   ${flex({
     align: 'flex-start',
@@ -100,9 +100,12 @@ export const SubTitle = styled.div`
 
 export const Content = styled.div`
   ${flex({ direction: 'column' }, false)};
-  width: 700px;
-
+  width: 600px;
+  margin-bottom: 20%;
   ${mediaMedium`width: 100%;`};
+  ${mediaLess(600)`
+    display: inline;
+  `};
 `;
 
 export const MenuBarMobile = styled.div`

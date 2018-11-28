@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess, sidePadding } from 'utils/css/styles';
 
 const StyledRestaurantList = styled.div`
   width: 100%;
@@ -18,7 +18,7 @@ const StyledRestaurantList = styled.div`
   ${mediaLess(600)`
     ${flex({ wrap: 'nowrap' }, false)};
     padding: 20px;
-    padding-left: 0;
+    ${sidePadding('start', '0')};
   `};
 `;
 

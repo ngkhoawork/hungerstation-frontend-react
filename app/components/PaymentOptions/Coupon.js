@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import intl from 'utils/intlService';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+} from 'utils/css/styles';
 import { borderRadius, border, addressIndent } from 'utils/css/variables';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
@@ -26,7 +31,9 @@ const Container = styled.div`
 const LeftSide = styled.div`
   width: ${addressIndent};
   ${flex({ shrink: 0 }, false)};
-  margin: 0 10px 15px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  ${sideMargin('end', '10px')};
 
   ${mediaMedium`width: 100%; margin: 0 0 10px 0;`};
 `;
@@ -50,7 +57,7 @@ const Block = styled.div`
 
 const DesktopNotice = styled.div`
   display: flex;
-  margin-left: 110px;
+  ${sideMargin('start', '110px')};
   ${mediaMedium`display: none;`};
 `;
 

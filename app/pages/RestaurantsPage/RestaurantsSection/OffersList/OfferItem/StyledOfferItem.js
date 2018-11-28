@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess, sideMargin } from 'utils/css/styles';
 import Desert from 'images/desert.png';
 
 const StyledOfferItem = styled.div`
@@ -10,7 +10,7 @@ const StyledOfferItem = styled.div`
   min-width: 340px;
   height: 180px;
   border-radius: 8px;
-  margin-right: 24px;
+  ${sideMargin('end', '24px')};
   background-image: url(${Desert});
   background-position: center;
   padding: 16px;

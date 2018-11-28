@@ -10,8 +10,10 @@ const StyledFeature = styled.div`
 
   ${mediaMedium`
     flex: 1;
-    margin: 0 35px 0px 20px;
-    margin-right: 0px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    ${sideMargin('start', '20px')};
+    ${sideMargin('end', '0px')};
   `};
 
   ${mediaSmall`

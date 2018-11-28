@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { fontFamilyLight } from 'utils/css/variables';
 import { wildSand } from 'utils/css/colors';
-import { flex } from 'utils/css/styles';
+import { flex, sidePadding } from 'utils/css/styles';
 import intl from 'utils/intlService';
 import Paragraph from 'components/Paragraph';
 import { selectDynamicFilters } from 'modules/restaurants/selectors';
@@ -40,7 +40,7 @@ const FilterName = styled.span`
   font-weight: 300;
   letter-spacing: 0.44px;
   line-height: 16px;
-  padding-right: 8px;
+  ${sidePadding('end', '8px;')};
   white-space: nowrap;
 
   &:not(:last-child) {

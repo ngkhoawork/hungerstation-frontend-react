@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, mediaLess } from 'utils/css/styles';
+import { flex, mediaLess, sidePadding } from 'utils/css/styles';
 
 const StyledSection = styled.div`
   position: relative;
@@ -8,7 +8,7 @@ const StyledSection = styled.div`
   ${flex({ align: 'flex-start', direction: 'column' })};
 
   ${mediaLess(600)`
-    padding-left: 20px;
+    ${sidePadding('start', '20px;')};
     margin-bottom: 30px;
   `};
 `;

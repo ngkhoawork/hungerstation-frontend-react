@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, fontCorrection } from 'utils/css/styles';
+import { flex, fontCorrection, sideMargin } from 'utils/css/styles';
 import { borderRadius } from 'utils/css/variables';
 import { jade, alabaster } from 'utils/css/colors';
 
@@ -22,11 +22,11 @@ export const Hint = styled.span`
   padding: 5px 10px;
   background-color: ${alabaster};
   border-radius: ${borderRadius};
-  margin-left: 10px;
+  ${sideMargin('start', '10px')};
   white-space: nowrap;
 
   + span {
-    margin-left: 10px;
+    ${sideMargin('start', '10px')};
   }
 `;
 

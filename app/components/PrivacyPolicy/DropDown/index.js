@@ -4,12 +4,12 @@ import ShowMoreIcon from './ShowMoreIcon';
 import { Container, Header, Title, Content } from './StyledComponents';
 
 class DropDown extends Component {
-  state = { isOpen: false };
+  state = { isOpen: true };
 
   handleToggle = () => this.setState(state => ({ isOpen: !state.isOpen }));
 
   render() {
-    const { isCollapsible, title, children } = this.props;
+    const { isCollapsible, title, children, closeDropDownMenu } = this.props;
     const { isOpen } = this.state;
 
     return (
@@ -22,7 +22,13 @@ class DropDown extends Component {
             ) : null}
           </div>
         </Header>
-        <Content isOpen={isCollapsible && isOpen} onClick={this.handleToggle}>
+        <Content
+          isOpen={
+            (isCollapsible && !isOpen && closeDropDownMenu) ||
+            (isCollapsible && isOpen && !closeDropDownMenu)
+          }
+          onClick={this.handleToggle}
+        >
           {children}
         </Content>
       </Container>
@@ -32,6 +38,7 @@ class DropDown extends Component {
 
 DropDown.propTypes = {
   isCollapsible: PropTypes.bool,
+  closeDropDownMenu: PropTypes.bool,
   title: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
 };

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { sideMargin } from 'utils/css/styles';
 
 const PragraphWrapper = styled.span`
-  margin-right: 30px;
+  ${sideMargin('end', '30px')};
 `;
 
 export default PragraphWrapper;

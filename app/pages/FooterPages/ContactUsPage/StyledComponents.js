@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+} from 'utils/css/styles';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -22,7 +27,7 @@ export const UpperSide = styled.div`
 
 export const mapStyles = css`
   ${mediaMedium`margin-bottom: 30px;`};
-  ${mediaMediumGreater`width: 50%; margin-right: 40px;`};
+  ${mediaMediumGreater`width: 50%; ${sideMargin('end', '40px')};`};
 `;
 
 export const BottomSide = styled.div`

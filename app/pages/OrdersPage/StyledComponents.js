@@ -6,6 +6,9 @@ import {
   mediaSmall,
   mediaMedium,
   mediaMediumGreater,
+  sidePadding,
+  sideMargin,
+  sidePosition,
 } from 'utils/css/styles';
 
 export const pageCss = css`
@@ -114,7 +117,7 @@ export const Img = styled.div`
 `;
 
 export const Content = styled.div`
-  margin-left: 30px;
+  ${sideMargin('start', '30px')};
   ${flex({ direction: 'column', justify: 'space-between', grow: 1 })};
 
   ${mediaMedium`margin-left: 18px;`};
@@ -180,7 +183,7 @@ export const DeliveryLocation = styled.div`
 
 export const IconPosition = styled.div`
   position: absolute;
-  left: -20px;
+  ${sidePosition('start', '-20px')};
   top: 2px;
 `;
 

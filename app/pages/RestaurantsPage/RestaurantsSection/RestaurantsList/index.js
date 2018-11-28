@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { restaurantsPropTypes } from 'propTypes/restaurants';
 import intl from 'utils/intlService';
-import { mediaLess, flex } from 'utils/css/styles';
+import { mediaLess, flex, sideMargin, sidePosition } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
 import { PageNotice } from 'utils/css/styledComponents';
 import CircledItem from 'components/CircledItem';
@@ -31,10 +31,10 @@ const ScrollToListTopWrapper = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
   position: absolute;
   bottom: 5px;
-  right: 0px;
-  margin-right: -3%;
+  ${sidePosition('end', '0px')};
+  ${sideMargin('end', '-3%')};
   ${mediaLess(1400)`
-    margin-right: 0px;
+    ${sideMargin('end', '0px')};
   `};
 
   transform: rotate(270deg);

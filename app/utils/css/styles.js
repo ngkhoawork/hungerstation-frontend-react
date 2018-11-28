@@ -26,6 +26,10 @@ const styles = () => ({
   },
 });
 
+export const sideModal = () => props => css`
+  direction: ${props.theme.direction};
+`;
+
 export const sideProperty = property => {
   const map = {
     ltr: { start: `${property}left`, end: `${property}right` },
