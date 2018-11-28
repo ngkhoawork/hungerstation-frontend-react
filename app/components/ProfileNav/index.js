@@ -41,8 +41,8 @@ const menus = [
   },
 ];
 
-const ProfileNav = ({ active }) => (
-  <ContentWrapper>
+const ProfileNav = ({ active, ...props }) => (
+  <ContentWrapper {...props}>
     <StyledFiltersCategoryWrapper>
       <Header>
         <Paragraph size={22}>{intl.formatMessage(messages.account)}</Paragraph>
