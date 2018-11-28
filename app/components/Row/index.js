@@ -4,4 +4,6 @@ export default styled.div`
   ${({ maxWidth }) => maxWidth && `width: 100%;`};
   ${({ justify }) => justify && `justify-content: ${justify};`};
   ${({ align }) => align && `align-items: ${align};`};
+
+  ${({ css }) => css};
 `;
