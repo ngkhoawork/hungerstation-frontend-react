@@ -1,25 +1,27 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import { findIndex } from 'lodash';
+import intl from 'utils/intlService';
+import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
-import CartContainer from './CartContainer';
-import OrderCard from './OrderCard';
-import TrackingSteps from './TrackingSteps';
-
+import OrderCard from 'pages/OrdersPage/OrderCard';
+import { NavHeader } from 'utils/css/styledComponents';
 import {
-  NavHeader,
+  desktopProfileNav,
+  mobileProfileNav,
   ContentContainer,
-  ProfileNavWrapper,
-  OrderDetailSection,
   StyledOrderList,
   LeftSide,
   RightSide,
   Loading,
-} from './StyledComponents';
+} from 'pages/OrdersPage/StyledComponents';
+import CartContainer from './CartContainer';
+import TrackingSteps from './TrackingSteps';
+import { cartCss, OrderDetailSection } from './StyledComponents';
+import messages from './messages';
 
 class OrderDetailPage extends React.Component {
   handleRateClick = () => {
@@ -58,15 +60,13 @@ class OrderDetailPage extends React.Component {
           <Back />
         </NavHeader>
         <ContentContainer>
-          <ProfileNavWrapper>
-            <ProfileNav active={path} />
-          </ProfileNavWrapper>
+          <ProfileNav active={path} css={desktopProfileNav} />
           <OrderDetailSection>
             {order ? (
               <Fragment>
                 <LeftSide>
-                  <Paragraph size={30} margin="0 0 0 11px">
-                    Order details
+                  <Paragraph size={30}>
+                    {intl.formatMessage(messages.orderDetails)}
                   </Paragraph>
                   <StyledOrderList>
                     <OrderCard
@@ -89,11 +89,13 @@ class OrderDetailPage extends React.Component {
                     orderAmount={orderAmount}
                     discount={discount}
                     deliveryFee={deliveryFee}
+                    css={cartCss}
                   />
                 </RightSide>
+                <ProfileNav active={path} css={mobileProfileNav} />
               </Fragment>
             ) : (
-              <Loading>Loading...</Loading>
+              <Loading>{intl.formatMessage(messages.loading)}</Loading>
             )}
           </OrderDetailSection>
         </ContentContainer>

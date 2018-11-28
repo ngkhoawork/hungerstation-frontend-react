@@ -1,7 +1,10 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.pages.RestaurantPage.header',
+  loading: {
+    id: 'app.components.Page.loading',
+  },
+  orderDetails: {
+    id: 'app.components.OrderDetailPage.orderDetails',
   },
 });
