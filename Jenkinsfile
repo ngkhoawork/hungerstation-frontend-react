@@ -44,8 +44,10 @@ pipeline {
 
           apiEnv = "staging"
 
+          imageName = BRANCH_NAME.toLowerCase()
+
           utils.dockerRegistry {
-            app = docker.build("$BRANCH_NAME", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")
+            app = docker.build("$imageName", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")
           }
 
         }
