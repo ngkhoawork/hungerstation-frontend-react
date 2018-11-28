@@ -63,7 +63,6 @@ export function* fetchOrdersSaga() {
     yield put(fetchOrdersSuccess({ orders: myOrders }));
   } catch (e) {
     yield put(fetchOrdersError());
-    throw e;
   }
 }
 
