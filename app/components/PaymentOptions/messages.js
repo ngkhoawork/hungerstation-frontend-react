@@ -4,8 +4,8 @@ export default defineMessages({
   cards: {
     id: 'app.components.PaymentOptions.cards',
   },
-  otherOptions: {
-    id: 'app.components.PaymentOptions.otherOptions',
+  cash: {
+    id: 'app.components.PaymentOptions.cash',
   },
   cashOnDelivery: {
     id: 'app.components.PaymentOptions.cashOnDelivery',

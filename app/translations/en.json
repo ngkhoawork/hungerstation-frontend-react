@@ -158,7 +158,7 @@
   "app.components.DeliveryOptions.required": "Select Delivery option",
   "app.components.DeliveryOptions.disabled": "Info: At this moment {name} is unavailable for this restaurant",
   "app.components.PaymentOptions.cards": "Your credit cards",
-  "app.components.PaymentOptions.otherOptions": "Other payment options",
+  "app.components.PaymentOptions.cash": "Cash",
   "app.components.PaymentOptions.cashOnDelivery": "Cash on delivery",
   "app.components.PaymentOptions.haveCoupon": "Have a coupon?",
   "app.components.PaymentOptions.addCoupon": "Add coupon",
