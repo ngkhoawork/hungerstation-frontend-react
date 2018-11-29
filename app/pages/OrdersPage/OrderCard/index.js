@@ -36,21 +36,23 @@ const getDeliveryType = provider =>
 const OrderCard = ({ order, onOrderClick, onRateClick }) => {
   const renderButton = () => {
     if (onRateClick) {
-      if (order.state === 'failed') return null;
+      // we don't show rate button in this relase
+      return null;
+      // if (order.state === 'failed') return null;
 
-      return (
-        <Button
-          label={intl.formatMessage(messages.rateRestaurant)}
-          primary={false}
-          lift={false}
-          color={alabaster}
-          fontSize={16}
-          inline
-          onClick={onRateClick}
-          css={btnCss}
-          isRateBtn
-        />
-      );
+      // return (
+      //   <Button
+      //     label={intl.formatMessage(messages.rateRestaurant)}
+      //     primary={false}
+      //     lift={false}
+      //     color={alabaster}
+      //     fontSize={16}
+      //     inline
+      //     onClick={onRateClick}
+      //     css={btnCss}
+      //     isRateBtn
+      //   />
+      // );
     }
 
     return (
