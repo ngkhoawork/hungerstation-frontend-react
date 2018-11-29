@@ -76,10 +76,25 @@ class OrderDetailPage extends React.Component {
                     />
                   </StyledOrderList>
                   {order.tracking.activeStatus && (
-                    <TrackingSteps
-                      steps={order.tracking.arrayOfStates}
-                      currentStep={currentStep}
-                    />
+                    <Fragment>
+                      <TrackingSteps
+                        steps={order.tracking.arrayOfStates}
+                        currentStep={currentStep}
+                      />
+                      {order.deliveryProvider === 'hungerstation_delivery' &&
+                        order.realTimeTracking && (
+                        /* eslint-disable */
+                        <Iframe
+                          url={order.realTimeTracking.credentials.url}
+                          width="100%"
+                          height="241px"
+                          id="trackingMap"
+                          display="initial"
+                          position="relative"
+                        />)
+                        /* eslint-enable */
+                      }
+                    </Fragment>
                   )}
                 </LeftSide>
                 <RightSide>

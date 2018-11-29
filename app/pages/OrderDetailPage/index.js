@@ -40,26 +40,28 @@ class OrderDetailPageHOC extends React.Component {
 
     if (state.order === null && orders.length > 0) {
       const order = find(orders, ['id', orderId]);
-      const params = {
-        branchId: order.branchId,
-        city: order.city.name,
-        district: order.district.name,
-      };
+      if (order) {
+        const params = {
+          branchId: order.branchId,
+          city: order.city.name,
+          district: order.district.name,
+        };
 
-      props.setBranchId(params.branchId);
-      props.fetchRestaurant(params);
-      props.fetchAddresses(params.branchId);
-      props.selectCity(order.city);
-      props.selectDistrict({
-        id: order.district.id,
-        name: order.district.name,
-      });
+        props.setBranchId(params.branchId);
+        props.fetchRestaurant(params);
+        props.fetchAddresses(params.branchId);
+        props.selectCity(order.city);
+        props.selectDistrict({
+          id: order.district.id,
+          name: order.district.name,
+        });
 
-      return {
-        order,
-        params,
-        path,
-      };
+        return {
+          order,
+          params,
+          path,
+        };
+      }
     }
     return null;
   }

@@ -58,6 +58,7 @@ export function* fetchOrdersSaga() {
           currentStateKey: order.tracking.current_state_key,
           trackable: order.tracking.trackable,
         },
+        realTimeTracking: order.real_time_tracking,
       }))
       .sort(compareByState);
     yield put(fetchOrdersSuccess({ orders: myOrders }));

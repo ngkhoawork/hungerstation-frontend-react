@@ -114,27 +114,24 @@ const OrderCard = ({ order, onOrderClick, onRateClick }) => {
               </DeliveryLocation>
             </TitleContainer>
             <OrderState>
-              {order.state === 'successful' && (
-                <DateTimeElement
-                  time={
-                    order.deliveredAt || new Date(order.deliveryEta).getTime()
-                  }
-                />
-              )}
-              {order.state === 'processing' && (
-                <DateTimeElement time={new Date(order.deliveryEta).getTime()} />
-              )}
               {order.state === 'failed' && (
                 <StatusContent color="error" style={{ marginLeft: 5 }}>
                   {intl.formatMessage(messages.failed)}
                 </StatusContent>
               )}
-              {order.tracking.activeStatus && (
+              {/* eslint-disable */}
+              {order.state === 'successful' &&
+              (order.tracking.currentStateKey === 'delivered_successfully' ? (
+                <DateTimeElement
+                  time={order.delivedAt || new Date(order.deliveryEta).getTime() / 1000}
+                />
+              ) : (
                 <TrackingTimer
                   startAt={order.createdAt}
-                  endAt={new Date(order.deliveryEta).getTime()}
+                  endAt={new Date(order.deliveryEta).getTime() / 1000}
                 />
-              )}
+              ))}
+              {/* eslint-enable */}
             </OrderState>
           </Row>
           <Desktop>{renderInfo()}</Desktop>
