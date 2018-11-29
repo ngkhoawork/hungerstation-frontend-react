@@ -25,7 +25,8 @@ class CheckoutPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { isBasketCartBtnVisible: true };
+    this.cartRef = React.createRef();
     this.cartEndRef = React.createRef();
     this.intersectObserver = new IntersectionObserver(this.handleIntersect);
   }
@@ -40,6 +41,8 @@ class CheckoutPage extends React.Component {
 
   handleIntersect = entries =>
     this.setState({ isBasketCartBtnVisible: !entries[0].isIntersecting });
+
+  handleBasketClick = () => this.cartRef.current.scrollIntoView();
 
   renderContent = () => {
     const { deliveryOptions = [], note, onOrderChange } = this.props;
@@ -92,7 +95,7 @@ class CheckoutPage extends React.Component {
         </NavHeader>
         <ContentContainer>
           <LeftSide>{isLoading ? null : this.renderContent()}</LeftSide>
-          <RightSide>
+          <RightSide innerRef={this.cartRef}>
             <CartContainer
               params={params}
               onOrderCreate={this.props.onOrderCreate}
@@ -102,6 +105,7 @@ class CheckoutPage extends React.Component {
           <BasketCartButton
             css={cartBtnsStyle}
             params={params}
+            onBasketClick={this.handleBasketClick}
             innerStyle={{ opacity: isBasketCartBtnVisible ? 1 : 0 }}
           />
         </ContentContainer>
