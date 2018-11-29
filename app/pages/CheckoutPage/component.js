@@ -19,6 +19,7 @@ import {
   LeftSide,
   RightSide,
   cartBtnsStyle,
+  footerCss,
 } from './StyledComponents';
 
 class CheckoutPage extends React.Component {
@@ -124,4 +125,6 @@ CheckoutPage.propTypes = {
   isLoading: PropTypes.bool,
 };
 
-export default withHeaderAndFooter(CheckoutPage);
+export default withHeaderAndFooter(CheckoutPage, {
+  footerProps: { css: footerCss },
+});

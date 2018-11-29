@@ -24,6 +24,7 @@ import {
   ProductsContainer,
   StyledProductTypes,
   cartBtnsStyle,
+  footerCss,
 } from './StyledComponents';
 
 class RestaurantPage extends React.Component {
@@ -153,4 +154,6 @@ RestaurantPage.propTypes = {
   onHideModal: PropTypes.func.isRequired,
 };
 
-export default withHeaderAndFooter(RestaurantPage);
+export default withHeaderAndFooter(RestaurantPage, {
+  footerProps: { css: footerCss },
+});

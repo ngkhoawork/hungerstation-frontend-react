@@ -2,10 +2,15 @@ import styled, { css } from 'styled-components';
 import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
 import { pageOffsetX, mobPageOffsetX, maxPageWidth } from 'utils/css/variables';
 
+export const footerCss = css`
+  ${mediaMedium`display: none;`};
+`;
+
 export const Container = styled.div`
   width: 100%;
   max-width: ${maxPageWidth};
-  margin-bottom: 60px;
+
+  ${mediaMediumGreater`margin-bottom: 60px;`};
 
   ${mediaMedium`max-width: 100%;`};
 `;
