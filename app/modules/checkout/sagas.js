@@ -1,6 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { forwardTo } from 'utils/route';
 import { makeSelectTokens } from 'modules/auth/selectors';
+import { fetchOrders } from 'modules/orders/actions';
 import {
   fetchDeliveryOptions,
   fetchDeliveryOptionsSuccess,
@@ -13,6 +14,7 @@ import {
   createOrder,
   createOrderSuccess,
 } from './actions';
+
 import * as api from './api';
 
 export function* fetchDeliveryOptionsSaga({ payload }) {
@@ -79,7 +81,7 @@ export function* createOrderSaga({ payload }) {
     }
 
     const { createOrder } = yield call(api.createOrder, accessToken, payload);
-
+    yield call(fetchOrders);
     yield call(forwardTo, `/my-orders/${createOrder.id}`);
 
     yield put(createOrderSuccess(createOrder));
