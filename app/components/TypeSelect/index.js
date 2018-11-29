@@ -40,7 +40,7 @@ const TypeSelect = ({
           ) : null}
           <Name active={active === type}>{type.label || type.name}</Name>
           {withActiveIcon && active === type ? (
-            <Icon name="check-mark-green" size={18} />
+            <Icon name="toggle-green" size={18} style={{ marginLeft: 10 }} />
           ) : null}
           {isDisabled(type) ? <DisabledOverlay /> : null}
         </Type>
