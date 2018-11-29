@@ -48,12 +48,13 @@ class CheckoutPage extends React.Component {
   renderContent = () => {
     const { deliveryOptions = [], note, onOrderChange } = this.props;
     const hasDeliverySection = deliveryOptions.length > 1;
+    const stepCount = hasDeliverySection ? 3 : 2;
 
     return (
       <React.Fragment>
         <Step
           stepNo={1}
-          stepCount={3}
+          stepCount={stepCount}
           title={intl.formatMessage(messages.step1)}
         >
           <AddressesContainer onOrderChange={onOrderChange} />
@@ -61,7 +62,7 @@ class CheckoutPage extends React.Component {
         {hasDeliverySection ? (
           <Step
             stepNo={2}
-            stepCount={3}
+            stepCount={stepCount}
             title={intl.formatMessage(messages.step2)}
           >
             <DeliveryOptionsContainer onOrderChange={onOrderChange} />
@@ -70,8 +71,8 @@ class CheckoutPage extends React.Component {
           <DeliveryOptionsContainer onOrderChange={onOrderChange} />
         )}
         <Step
-          stepNo={hasDeliverySection ? 3 : 2}
-          stepCount={hasDeliverySection ? 3 : 2}
+          stepNo={stepCount}
+          stepCount={stepCount}
           title={intl.formatMessage(messages.step3)}
         >
           <PaymentOptionsContainer onOrderChange={onOrderChange} />
