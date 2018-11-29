@@ -14,12 +14,13 @@ export const Container = styled.div`
   width: 700px;
   position: relative;
   max-height: ${maxModalContentHeight};
+  margin-top: -15px;
 
   ${mediaMedium`width: calc(${maxModalWidth} - 40px)`};
 `;
 
-const mapHeight = '250px';
-const smallMapHeight = '180px';
+const mapHeight = '190px';
+const smallMapHeight = '160px';
 export const Map = styled.div`
   height: ${mapHeight};
   min-height: ${mapHeight};
@@ -32,7 +33,7 @@ export const Map = styled.div`
   `};
 `;
 
-const locationBigIconSize = '56px';
+const locationBigIconSize = '45px';
 export const markerStyle = {
   position: 'absolute',
   top: `calc(${mapHeight}/2 - ${locationBigIconSize})`,
@@ -42,7 +43,7 @@ export const markerStyle = {
 export const StyledInput = styled(Input)`
   position: absolute !important;
   width: 70%;
-  top: 20px;
+  top: 10px;
   left: 15%;
   background: white;
   padding: 0 30px 0 10px;
@@ -54,7 +55,7 @@ export const StyledInput = styled(Input)`
 
 export const locateMeStyle = css`
   position: absolute;
-  top: 25px;
+  top: 15px;
   right: calc(15% + 5px);
 
   ${mediaMedium`
@@ -65,7 +66,7 @@ export const locateMeStyle = css`
 export const Content = styled.div`
   overflow-y: auto;
   ${flex({ grow: 1 }, false)};
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding-right: 10px;
 `;
 
@@ -89,13 +90,13 @@ export const Desc = styled.div`
 export const ZoomCtrl = styled.div`
   position: absolute;
   right: 0;
-  top: calc(${mapHeight} - 60px);
+  top: calc(${mapHeight} - 70px);
   ${flex({ direction: 'column' })};
   border-radius: 2px;
   background: white;
   overflow: hidden;
 
-  ${mediaSmall`top: calc(${smallMapHeight} - 60px)`};
+  ${mediaSmall`top: calc(${smallMapHeight} - 70px)`};
 `;
 
 export const ZoomBorder = styled.div`
