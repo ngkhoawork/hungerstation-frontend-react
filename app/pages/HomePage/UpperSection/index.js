@@ -15,9 +15,9 @@ import StyledSection from '../StyledSection';
 // import QuickFilters from './SearchTypes/QuickFilters';
 
 import messages from '../messages';
-const UpperSection = () => (
-  <StyledUpperSection>
-    <AppHeader />
+const UpperSection = ({ isProfileDropdownClosed, ...props }) => (
+  <StyledUpperSection {...props}>
+    <AppHeader isShown={!isProfileDropdownClosed} />
     <Subheader>{intl.formatMessage(messages.subheader)}</Subheader>
     <Header>{intl.formatMessage(messages.header)}</Header>
     <StyledSection>

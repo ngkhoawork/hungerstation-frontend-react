@@ -12,6 +12,7 @@ import {
   headerHeight,
   pageOffsetX,
   maxPageWidth,
+  zIndexFixedHeader,
 } from 'utils/css/variables';
 
 export const RightSection = styled.div`
@@ -61,6 +62,23 @@ export const StyledHeader = styled.div`
   height: ${headerHeight};
   font-family: ${fontFamilyRegular};
   max-width: ${maxPageWidth};
+
+  ${({ isFixed }) =>
+    isFixed &&
+    `
+    position: fixed;
+    top: 0;
+    z-index: ${zIndexFixedHeader};
+    transform: translateY(-${headerHeight});
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+  `};
+
+  ${({ isFixed, isShown }) =>
+    isFixed &&
+    isShown &&
+    `
+    transform: translateY(0);
+  `};
 
   ${mediaMedium`max-width: 100%;`};
 `;
