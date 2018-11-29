@@ -5,18 +5,12 @@
 // Sagas help us gather all our side effects (network requests in this case) in one place
 
 import { take, call, put, fork, select } from 'redux-saga/effects';
-
 import { delay } from 'redux-saga';
-
 import usersApi from 'modules/user/api';
-
 import { forwardTo } from 'utils/route';
-import { isAccessExpired, parseJwt } from 'utils/tokens';
+import { parseJwt } from 'utils/tokens';
 import { clearStorageItem, getStorageItem } from 'utils/localStorage';
-import { protectedRequest } from 'utils/api';
-
 import { saveTokens } from 'modules/common/sagas';
-
 import { REQUEST_ERROR, AUTHENTICATE_USER } from './constants';
 import { setAuthState, updateTokens, setCurrentUser, logout } from './actions';
 import { makeSelectTokens } from './selectors';
@@ -47,27 +41,6 @@ export function* logoutWoker() {
   }
 }
 
-// export function* fetchListener(action) {
-//   while (true) {
-//     const { payload } = yield take('@@router/LOCATION_CHANGE');
-
-//     if (payload.pathname === '/login') {
-//       console.log(payload);
-//       // should listen on every api call
-//       const shouldRefresh = yield call(needRefresh);
-
-//       if (!shouldRefresh) yield call(makeAuthenticatedRequest, action);
-//       if (shouldRefresh) {
-//         const error = yield call(refreshTokens);
-//         if (!error) {
-//           yield delay(50);
-//           yield call(makeAuthenticatedRequest, action);
-//         }
-//       }
-//     }
-//   }
-// }
-
 function* needRefresh() {
   const { accessTokenExpiresAt } = yield select(makeSelectTokens);
 
@@ -88,37 +61,6 @@ export function* refreshTokens() {
   } catch (err) {
     yield put(logout());
     return err;
-  }
-}
-
-export function* makeAuthenticatedRequest(action = {}) {
-  const tokens = yield select(makeSelectTokens);
-  const { type, onSuccess, onError, ...payload } = action;
-
-  try {
-    const query = `query {
-      id
-      name
-      description
-    }`;
-    const response = yield call(
-      protectedRequest,
-      tokens.get('accessToken'),
-      query,
-      payload,
-    );
-    yield put(onSuccess(response));
-  } catch (err) {
-    if (isAccessExpired(err)) {
-      const refreshError = yield call(refreshTokens);
-      if (!refreshError) {
-        yield makeAuthenticatedRequest(action);
-      }
-    } else {
-      yield err.statusCode >= 500
-        ? put({ type: 'SET_ERROR', err })
-        : put(onError(err));
-    }
   }
 }
 
@@ -162,6 +104,5 @@ export function* authenticationFlow() {
 
 export default function* authSagas() {
   yield fork(logoutFlow);
-  // yield fork(fetchListener);
   yield fork(authenticationFlow);
 }
