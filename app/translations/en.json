@@ -155,7 +155,7 @@
   "app.components.AddAddress.save": "Save address",
   "app.components.AddAddress.set": "Set Address",
   "app.components.AddAddress.name": "Location name",
-  "app.components.DeliveryOptions.required": "Info: Please pick one delivery option. You need to chose a delivery option before placing your order.",
+  "app.components.DeliveryOptions.required": "Select Delivery option",
   "app.components.DeliveryOptions.disabled": "Info: At this moment {name} is unavailable for this restaurant",
   "app.components.PaymentOptions.cards": "Your credit cards",
   "app.components.PaymentOptions.otherOptions": "Other payment options",
