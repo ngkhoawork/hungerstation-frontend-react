@@ -114,6 +114,7 @@ export const StatusContent = styled.div`
   }};
   font-size: 12px;
   line-height: 1;
+  white-space: nowrap;
 
   ${({ style }) => style && css(style)};
 `;
