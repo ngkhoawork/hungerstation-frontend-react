@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+} from 'utils/css/styles';
 
 export const cartCss = css`
   ${mediaMedium`
@@ -23,7 +28,7 @@ export const OrderDetailSection = styled.div`
   flex: 1;
 
   ${mediaMediumGreater`
-    margin-left: 40px;
+    ${sideMargin('start', '40px')};
   `};
 
   ${mediaMedium`

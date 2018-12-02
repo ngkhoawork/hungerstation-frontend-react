@@ -70,6 +70,11 @@ const themeObj = {
         },
       },
     },
+    MuiInputLabel: {
+      formControl: {
+        right: '0',
+      },
+    },
     MuiInput: {
       root: {
         fontFamily: 'HungerStation-Regular, sans-serif',
@@ -92,6 +97,7 @@ const themeObj = {
       root: {
         marginTop: '-1em',
         marginBottom: 0,
+        textAlign: 'start',
       },
     },
   },

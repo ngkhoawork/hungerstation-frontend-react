@@ -53,10 +53,14 @@ export const StyledInput = styled(Input)`
   top: 10px;
   left: 15%;
   background: white;
-  padding: 0 30px 0 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  ${sidePadding('start', '10px;')};
+  ${sidePadding('end', '30px;')};
   ${mediaMedium`
     width: 100%;
     left: 0;
+    ${sidePosition('start', '0')};
   `};
 `;
 

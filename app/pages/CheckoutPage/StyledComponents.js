@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sidePadding,
+} from 'utils/css/styles';
 import { pageOffsetX, mobPageOffsetX, maxPageWidth } from 'utils/css/variables';
 
 export const footerCss = css`
@@ -16,7 +21,7 @@ export const Container = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  padding-left: ${pageOffsetX};
+  ${sidePadding('start', pageOffsetX)};
   ${flex({ align: 'flex-start' })};
 
   ${mediaMedium`
@@ -40,7 +45,7 @@ export const RightSide = styled.div`
 `;
 
 export const cartBtnsStyle = css`
-  padding: 10px 0 20px;
+  padding: 10px 0 20px 0;
   width: 100%;
   background: white;
   position: sticky;

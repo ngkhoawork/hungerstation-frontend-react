@@ -10,7 +10,7 @@ import messages from './messages';
 const WhoWeAre = () => (
   <div>
     <HeaderWraper>
-      <TextItem size={24} fontFamily="regular" style={{ textAlign: 'start' }}>
+      <TextItem size={24} fontFamily="regular" textAlign="start">
         <FormattedMessage {...messages.Title} />
       </TextItem>
     </HeaderWraper>

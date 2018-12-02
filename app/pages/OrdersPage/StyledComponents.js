@@ -6,7 +6,6 @@ import {
   mediaSmall,
   mediaMedium,
   mediaMediumGreater,
-  sidePadding,
   sideMargin,
   sidePosition,
 } from 'utils/css/styles';
@@ -203,6 +202,6 @@ export const OrdersSection = styled.div`
   })};
 
   ${mediaMediumGreater`
-    margin-left: 40px;
+    ${sideMargin('start', '40px')};
   `};
 `;

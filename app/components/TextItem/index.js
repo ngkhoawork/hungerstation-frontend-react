@@ -15,7 +15,7 @@ const TextItem = styled.span`
 
   ${mediaMedium`
     width: 100%;
-    text-align: center;
+    text-align : ${({ textAlign }) => textAlign};
   `};
 `;
 

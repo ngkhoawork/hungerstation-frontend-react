@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import intl from 'utils/intlService';
 import { gold } from 'utils/css/colors';
-import { flex } from 'utils/css/styles';
+import { flex, sideModal, sidePosition } from 'utils/css/styles';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';
@@ -112,6 +112,7 @@ const Wrapper = styled.div`
   padding: 24px;
   position: relative;
   height: 100vh;
+  ${sideModal()};
 `;
 
 const ApllyButtonWrapper = styled.div`
@@ -133,7 +134,7 @@ const CloseButtonWrapper = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  right: 23px;
+  ${sidePosition('end', '23px')};
   top: 23px;
   background-color: transparent;
 `;

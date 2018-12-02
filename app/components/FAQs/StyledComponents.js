@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaMedium, sidePadding } from 'utils/css/styles';
+import { mediaMedium } from 'utils/css/styles';
 import { fontFamilyLight } from 'utils/css/variables';
 
 export const Answer = styled.div`
@@ -29,13 +29,12 @@ export const Line = styled.div`
   width: 611.18px;
   border: 1px solid #bababa;
   opacity: 0.22;
-  margin: 3% 0 ${mediaMedium`
+  margin: 3% 0;
+  ${mediaMedium`
     width: 330px;
-    margin-top: 0px;
   `};
 `;
 
 export const HeaderWrapper = styled.div`
   margin-bottom: 20px;
-  ${sidePadding('end', '0%;')};
 `;

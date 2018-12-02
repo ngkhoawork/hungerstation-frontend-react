@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import intl from 'utils/intlService';
 import { addressTypesObj, otherAddressType } from 'modules/address/constants';
 import addressMessages from 'modules/address/messages';
-import { flex, mediaMedium, sideMargin } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin, sidePadding } from 'utils/css/styles';
 import { fuscousGray, alabaster } from 'utils/css/colors';
 import {
   addressIndent,
@@ -111,7 +111,10 @@ export default Address;
 
 const Container = styled.div`
   ${flex({ align: 'center' })};
-  padding: 20px 20px 20px 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  ${sidePadding('start', '0;')};
+  ${sidePadding('end', '20px;')};
   border-radius: ${borderRadius};
   margin-bottom: ${({ isWithBorder }) => (isWithBorder ? 20 : 0)}px;
   box-shadow: ${({ isWithBorder }) => (isWithBorder ? boxShadow : 'none')};
@@ -119,7 +122,10 @@ const Container = styled.div`
 
 const LeftSide = styled.div`
   width: ${addressIndent};
-  padding: 20px 20px 20px 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  ${sidePadding('start', '40px;')};
+  ${sidePadding('end', '20px;')};
   height: 60px;
   ${flex({ shrink: 0 }, false)};
 
@@ -163,7 +169,12 @@ const typeIconStyle = {
 const editBtnCss = css`
   white-space: nowrap;
 
-  ${mediaMedium`padding: 10px 3px 10px 10px;`};
+  ${mediaMedium`
+    padding-top: 10px;
+    padding-bottom: 10px;
+    ${sidePadding('start', '10px;')};
+    ${sidePadding('end', '3px;')};
+    `};
 `;
 
 const Title = styled.span`

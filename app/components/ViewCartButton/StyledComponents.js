@@ -30,7 +30,7 @@ export const Content = styled.div`
 
 export const LeftSide = styled.span`
   position: absolute;
-  left: 20px;
+  ${sidePosition('start', '20px')};
   top: -4px;
 
   ${mediaSmall`

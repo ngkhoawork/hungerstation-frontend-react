@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import intl from 'utils/intlService';
@@ -63,6 +63,13 @@ const DesktopNotice = styled.div`
 
 const MobileNotice = styled.div`
   ${mediaMediumGreater`display: none;`};
+`;
+
+const ButtonMargin = css`
+  margin-top: 10px;
+  ${sideMargin('end', '0')};
+  margin-bottom: 10px;
+  ${sideMargin('start', '20px')};
 `;
 
 const renderNotice = coupon => {
@@ -142,7 +149,8 @@ class Coupon extends React.Component {
               inline
               primary={false}
               lift={false}
-              style={{ border, flexShrink: 0, margin: '10px 0 10px 20px' }}
+              style={{ border, flexShrink: 0 }}
+              css={ButtonMargin}
               onClick={coupon.value ? this.handleDelete : this.handleSubmit}
             >
               {intl.formatMessage(
