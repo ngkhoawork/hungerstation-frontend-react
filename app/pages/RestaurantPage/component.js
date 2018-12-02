@@ -10,9 +10,9 @@ import RestaurantInfo from 'components/RestaurantInfo';
 import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
 import MealOptions from 'components/MealOptions';
+import Loader from 'components/Loader';
 import { NavHeader, PageNotice } from 'utils/css/styledComponents';
 // import { isDayTimeMatch } from 'utils/helpers';
-import globalMessages from 'translations/messages';
 import messages from './messages';
 import {
   StyledPage,
@@ -128,9 +128,7 @@ class RestaurantPage extends React.Component {
         <ContentContainer>
           <LeftSide>
             {isLoading ? (
-              <PageNotice>
-                {intl.formatMessage(globalMessages.loading)}
-              </PageNotice>
+              <Loader style={{ marginTop: '10vh' }} />
             ) : (
               this.renderContent()
             )}
