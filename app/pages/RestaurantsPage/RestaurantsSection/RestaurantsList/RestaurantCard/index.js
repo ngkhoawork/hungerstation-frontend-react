@@ -32,6 +32,8 @@ const RestaurantCard = ({
   hasDiscount,
 }) => {
   const renderTag = () => {
+    if (hasDiscount) return <Promoted />;
+
     if (is_exclusive) {
       return (
         <StatusContent color="success">
@@ -39,8 +41,6 @@ const RestaurantCard = ({
         </StatusContent>
       );
     }
-
-    if (hasDiscount) return <Promoted />;
 
     return null;
   };
