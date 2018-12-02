@@ -85,6 +85,7 @@
   "app.components.RestaurantsList.RestaurantCard.time": "{max} min",
   "app.components.RestaurantsList.RestaurantCard.currency": "SR {value}",
   "app.components.RestaurantsList.RestaurantCard.promoted": "Promoted",
+  "app.components.RestaurantsList.RestaurantCard.exclusive": "Only in HS",
   "app.components.RestaurantsList.NotFound.text": "No restaurants found!",
   "app.components.RestaurantsList.NotFound.description": "Sorry, we couldn't find any restaurants nearby as we don't deliver to this area yet",
   "app.components.ResetPasswordPage.backToHome": "Back to Home",

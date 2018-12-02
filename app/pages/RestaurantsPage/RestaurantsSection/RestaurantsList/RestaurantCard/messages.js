@@ -13,4 +13,7 @@ export default defineMessages({
   promoted: {
     id: 'app.components.RestaurantsList.RestaurantCard.promoted',
   },
+  exclusive: {
+    id: 'app.components.RestaurantsList.RestaurantCard.exclusive',
+  },
 });
