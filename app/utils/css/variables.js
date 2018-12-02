@@ -28,4 +28,5 @@ export const zIndexFixedHeader = 200;
 export const zIndexStickyMenu = 300;
 export const zIndexDropdown = 700;
 export const zIndexDisabledOverlay = 800;
+export const zIndexLoader = 900;
 export const zIndexModal = 1000;
