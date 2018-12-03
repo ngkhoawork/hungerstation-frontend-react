@@ -1,5 +1,9 @@
 import createAction from 'utils/actions/createAction';
 
+export const checkoutRequest = createAction('checkout/CHECKOUT_REQUEST');
+
+export const checkoutError = createAction('checkout/CHECKOUT_ERROR');
+
 export const fetchDeliveryOptions = createAction(
   'checkout/FETCH_DELIVERY_OPTIONS',
   payload => payload,
@@ -20,10 +24,6 @@ export const fetchCreditCardsSuccess = createAction(
   payload => payload,
 );
 
-export const validateOrderRequest = createAction(
-  'checkout/VALIDATE_ORDER_REQUEST',
-);
-
 export const validateOrder = createAction(
   'checkout/VALIDATE_ORDER',
   payload => payload,
@@ -31,11 +31,6 @@ export const validateOrder = createAction(
 
 export const validateOrderSuccess = createAction(
   'checkout/VALIDATE_ORDER_SUCCESS',
-  payload => payload,
-);
-
-export const validateOrderError = createAction(
-  'checkout/VALIDATE_ORDER_ERROR',
   payload => payload,
 );
 

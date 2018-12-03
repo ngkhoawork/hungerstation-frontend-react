@@ -6,9 +6,9 @@ import {
   removeCoupon,
   fetchDeliveryOptionsSuccess,
   fetchCreditCardsSuccess,
-  validateOrderRequest,
+  checkoutRequest,
   validateOrderSuccess,
-  validateOrderError,
+  checkoutError,
   createOrderSuccess,
   setNote,
 } from './actions';
@@ -20,6 +20,9 @@ export const initialState = {
 
 function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case checkoutRequest.type:
+      return Object.assign({}, state, { isLoading: true });
+
     case selectDeliveryOption.type:
       return Object.assign({}, state, { selectedDeliveryOption: payload });
 
@@ -37,14 +40,12 @@ function reducer(state = initialState, { type, payload }) {
       return Object.assign({}, state, {
         deliveryOptions: options,
         selectedDeliveryOption,
+        isLoading: false,
       });
     }
 
     case fetchCreditCardsSuccess.type:
-      return Object.assign({}, state, { cards: payload });
-
-    case validateOrderRequest.type:
-      return Object.assign({}, state, { isLoadingOrderValidate: true });
+      return Object.assign({}, state, { cards: payload, isLoading: false });
 
     case validateOrderSuccess.type: {
       const { coupon, discount, errors_with_keys } = payload;
@@ -52,7 +53,7 @@ function reducer(state = initialState, { type, payload }) {
       const couponError = errors.find(({ key }) => key === 'coupon');
 
       return Object.assign({}, state, {
-        isLoadingOrderValidate: false,
+        isLoading: false,
         isValid: !errors.length,
         orderErrors: errors.filter(({ key }) => key !== 'coupon'),
         discount,
@@ -61,9 +62,6 @@ function reducer(state = initialState, { type, payload }) {
           : state.coupon,
       });
     }
-
-    case validateOrderError.type:
-      return Object.assign({}, state, { isLoadingOrderValidate: false });
 
     case setCoupon.type:
       return Object.assign({}, state, { coupon: payload });
@@ -76,6 +74,9 @@ function reducer(state = initialState, { type, payload }) {
 
     case createOrderSuccess.type:
       return Object.assign({}, initialState);
+
+    case checkoutError.type:
+      return Object.assign({}, state, { isLoading: false });
 
     case logout.type:
       return Object.assign({}, initialState);
