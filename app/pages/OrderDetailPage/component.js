@@ -7,6 +7,7 @@ import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
+import Loader from 'components/Loader';
 import OrderCard from 'pages/OrdersPage/OrderCard';
 import { NavHeader } from 'utils/css/styledComponents';
 import {
@@ -16,7 +17,6 @@ import {
   StyledOrderList,
   LeftSide,
   RightSide,
-  Loading,
 } from 'pages/OrdersPage/StyledComponents';
 import CartContainer from './CartContainer';
 import TrackingSteps from './TrackingSteps';
@@ -110,7 +110,7 @@ class OrderDetailPage extends React.Component {
                 <ProfileNav active={path} css={mobileProfileNav} />
               </Fragment>
             ) : (
-              <Loading>{intl.formatMessage(messages.loading)}</Loading>
+              <Loader />
             )}
           </OrderDetailSection>
         </ContentContainer>

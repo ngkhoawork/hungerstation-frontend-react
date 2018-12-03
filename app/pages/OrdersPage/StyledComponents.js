@@ -32,13 +32,6 @@ export const ContentContainer = styled.div`
   `};
 `;
 
-export const Loading = styled.div`
-  ${flex({ justify: 'center', align: 'center' })};
-  height: 100px;
-  font-size: 30px;
-  width: 100%;
-`;
-
 export const LeftSide = styled.div`
   ${flex({ grow: 1 }, false)};
   max-width: 100%;

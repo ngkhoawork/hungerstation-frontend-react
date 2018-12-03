@@ -6,13 +6,13 @@ import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
+import Loader from 'components/Loader';
 import { NavHeader } from 'utils/css/styledComponents';
 import NotFound from './NotFound';
 import OrderCard from './OrderCard';
 import {
   pageCss,
   ContentContainer,
-  Loading,
   desktopProfileNav,
   mobileProfileNav,
   OrdersSection,
@@ -61,11 +61,7 @@ class OrdersPage extends React.Component {
         </NavHeader>
         <ContentContainer>
           <ProfileNav active={path} css={desktopProfileNav} />
-          {isLoading ? (
-            <Loading>{intl.formatMessage(messages.loading)}</Loading>
-          ) : (
-            this.renderOrders()
-          )}
+          {isLoading ? <Loader /> : this.renderOrders()}
           <ProfileNav active={path} css={mobileProfileNav} />
         </ContentContainer>
       </PageContent>

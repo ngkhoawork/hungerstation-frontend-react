@@ -4,7 +4,4 @@ export default defineMessages({
   myOrders: {
     id: 'app.pages.MyOrdersPage.myOrders',
   },
-  loading: {
-    id: 'app.components.Page.loading',
-  },
 });
