@@ -42,7 +42,9 @@ pipeline {
 
           COMMIT = utils.getCommit()
 
-          apiEnv = "staging"
+          if (BRANCH_NAME == 'master') {
+            apiEnv = "production"
+          }
 
           tempImageName = BRANCH_NAME.toLowerCase()
 
@@ -62,7 +64,7 @@ pipeline {
       steps {
         script {
           app.inside() {
-            sh "npm i -D && npm run lint"
+            sh "yarn && yarn lint"
           }
         }
       }
