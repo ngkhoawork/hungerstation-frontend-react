@@ -71,7 +71,7 @@ export function* fetchRestaurantsSaga({ payload }) {
     const restaurants = deliveries.map(item => ({
       id: item.branch.restaurant.id,
       branchId: item.branch.id,
-      is_promoted: item.branch.is_promoted,
+      is_promoted: item.is_promoted,
       is_exclusive: item.branch.is_exclusive,
       name: item.branch.restaurant.name,
       logo: item.branch.restaurant.logo,
