@@ -74,12 +74,13 @@ export default class App extends Component {
     }),
   };
 
-  componentDidMount() {
-    setHistory(this.props.history);
+  constructor(props) {
+    super(props);
+    props.authenticateUser();
   }
 
-  componentWillMount() {
-    this.props.authenticateUser();
+  componentDidMount() {
+    setHistory(this.props.history);
   }
 
   render() {
