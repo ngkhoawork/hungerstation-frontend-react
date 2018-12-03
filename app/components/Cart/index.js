@@ -160,7 +160,9 @@ const Cart = ({
           }
         />
         {isCheckout ? <CartNotice /> : null}
-        <ViewCartButton isModal={isModal} onClick={onCartSubmit} />
+        {!isOrderDetail && (
+          <ViewCartButton isModal={isModal} onClick={onCartSubmit} />
+        )}
       </Unshrinkable>
     </Wrapper>
   );
