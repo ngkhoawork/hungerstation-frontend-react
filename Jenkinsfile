@@ -42,9 +42,9 @@ pipeline {
 
           COMMIT = utils.getCommit()
 
-          apiEnv = "production"
-          if (BRANCH_NAME == 'staging') {
-            apiEnv = "staging"
+          apiEnv = "staging"
+          if (BRANCH_NAME == 'master') {
+            apiEnv = "production"
           }
 
           tempImageName = BRANCH_NAME.toLowerCase()
