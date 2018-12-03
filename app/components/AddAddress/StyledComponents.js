@@ -38,7 +38,8 @@ export const Map = styled.div`
   width: calc(100% + 40px);
   margin-top: 0;
   margin-bottom: 20px;
-  ${sideMargin('end', '-20px')} ${mediaSmall`
+  ${sideMargin('end', '-20px')};
+  ${mediaSmall`
     height: ${smallMapHeight};
     min-height: ${smallMapHeight};
   `};
