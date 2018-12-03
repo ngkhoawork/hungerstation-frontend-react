@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium, sideMargin, sidePadding } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  sideMargin,
+  sidePadding,
+  sideModal,
+} from 'utils/css/styles';
 import {
   maxModalWidth,
   maxModalHeight,
@@ -56,6 +62,7 @@ const fullscreen = css`
 `;
 
 const Container = styled.div`
+  ${sideModal()};
   position: relative;
   padding-top: 28px;
   padding-bottom: 30px;

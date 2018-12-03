@@ -30,7 +30,7 @@
   "app.components.FiltersSection.favourites": "Favourites",
   "app.components.FiltersSection.creditCardInfo": "Credit card info",
   "app.components.FiltersSection.myWallet": "My wallet",
-  "app.components.FiltersSection.accountSettings": "'Account Settings",
+  "app.components.FiltersSection.accountSettings": "Account Settings",
   "app.pages.RestaurantPage.FiltersSection.DeliveryTypes.allDeliveryTypes": "All Delivery Types",
   "app.components.ForgotPasswordForm.buttonLabel": "Send request",
   "app.components.ForgotPasswordForm.email": "Email",

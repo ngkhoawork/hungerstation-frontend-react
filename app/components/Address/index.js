@@ -4,7 +4,13 @@ import styled, { css } from 'styled-components';
 import intl from 'utils/intlService';
 import { addressTypesObj, otherAddressType } from 'modules/address/constants';
 import addressMessages from 'modules/address/messages';
-import { flex, mediaMedium, sideMargin, sidePadding } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  sideMargin,
+  sidePadding,
+  sidePosition,
+} from 'utils/css/styles';
 import { fuscousGray, alabaster } from 'utils/css/colors';
 import {
   addressIndent,
@@ -159,12 +165,9 @@ const Name = styled.div`
 //   text-overflow: ellipsis;
 // `;
 
-const typeIconStyle = {
-  marginLeft: 5,
-  // position: 'absolute',
-  // right: 0,
-  // top: 0,
-};
+const typeIconStyle = css`
+  ${sidePosition('start', '5px')};
+`;
 
 const editBtnCss = css`
   white-space: nowrap;

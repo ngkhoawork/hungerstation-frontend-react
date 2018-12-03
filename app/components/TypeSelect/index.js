@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'styled-components';
 import Icon from 'components/Icon';
 import { DisabledOverlay } from 'utils/css/styledComponents';
+import { sideMargin } from 'utils/css/styles';
 import { Container, Type, Name } from './StyledComponents';
+
+const MarginIconType = css`
+  ${sideMargin('end', '10px')};
+`;
+const MarginIconCheck = css`
+  ${sideMargin('start', '10px')};
+`;
 
 const getKey = ({ id, key }) => {
   if (id !== undefined) return 'id';
@@ -36,11 +45,11 @@ const TypeSelect = ({
           style={isDisabled(type) ? disabledTypeStyle : typeStyle}
         >
           {type.icon ? (
-            <Icon name={type.icon} size={18} style={{ marginRight: 10 }} />
+            <Icon name={type.icon} size={18} style={MarginIconType} />
           ) : null}
           <Name active={active === type}>{type.label || type.name}</Name>
           {withActiveIcon && active === type ? (
-            <Icon name="toggle-green" size={18} style={{ marginLeft: 10 }} />
+            <Icon name="toggle-green" size={18} style={MarginIconCheck} />
           ) : null}
           {isDisabled(type) ? <DisabledOverlay /> : null}
         </Type>

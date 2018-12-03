@@ -35,12 +35,10 @@ const smallMapHeight = '160px';
 export const Map = styled.div`
   height: ${mapHeight};
   min-height: ${mapHeight};
-  width: calc(100% + 44px);
-  margin: 0 0 20px -25px;
-
-  ${mediaMedium`width: calc(100% + 55px);`};
-
-  ${mediaSmall`
+  width: calc(100% + 40px);
+  margin-top: 0;
+  margin-bottom: 20px;
+  ${sideMargin('end', '-20px')} ${mediaSmall`
     height: ${smallMapHeight};
     min-height: ${smallMapHeight};
   `};
@@ -57,7 +55,7 @@ export const StyledInput = styled(Input)`
   position: absolute !important;
   width: 70%;
   top: 10px;
-  left: 15%;
+  ${sidePosition('start', '15%')};
   background: white;
   padding-top: 0;
   padding-bottom: 0;
@@ -65,7 +63,6 @@ export const StyledInput = styled(Input)`
   ${sidePadding('end', '30px;')};
   ${mediaMedium`
     width: 100%;
-    left: 0;
     ${sidePosition('start', '0')};
   `};
 `;
@@ -73,7 +70,7 @@ export const StyledInput = styled(Input)`
 export const locateMeStyle = css`
   position: absolute;
   top: 15px;
-  right: calc(15% + 5px);
+  ${sidePosition('end', 'calc(15% + 5px)')};
 
   ${mediaMedium`
     ${sidePosition('end', '5px')};
@@ -106,7 +103,7 @@ export const Desc = styled.div`
 
 export const ZoomCtrl = styled.div`
   position: absolute;
-  right: 0;
+  ${sidePosition('end', '0')};
   top: calc(${mapHeight} - 70px);
   ${flex({ direction: 'column' })};
   border-radius: 2px;
