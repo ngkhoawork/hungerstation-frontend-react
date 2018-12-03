@@ -11,6 +11,7 @@ import {
   checkoutError,
   createOrderSuccess,
   setNote,
+  clearCheckout,
 } from './actions';
 
 export const initialState = {
@@ -72,12 +73,11 @@ function reducer(state = initialState, { type, payload }) {
     case setNote.type:
       return Object.assign({}, state, { note: payload });
 
-    case createOrderSuccess.type:
-      return Object.assign({}, initialState);
-
     case checkoutError.type:
       return Object.assign({}, state, { isLoading: false });
 
+    case createOrderSuccess.type:
+    case clearCheckout.type:
     case logout.type:
       return Object.assign({}, initialState);
 

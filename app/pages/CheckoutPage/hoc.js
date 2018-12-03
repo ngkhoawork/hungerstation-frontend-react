@@ -20,7 +20,12 @@ import {
   selectOrderAmount,
 } from 'containers/CartContainer/selectors';
 import { selectCheckoutState } from 'modules/checkout/selectors';
-import { setNote, createOrder, validateOrder } from 'modules/checkout/actions';
+import {
+  setNote,
+  createOrder,
+  validateOrder,
+  clearCheckout,
+} from 'modules/checkout/actions';
 import InsufficientOrderAmount from 'containers/InsufficientOrderAmount';
 import AddAddressContainer from 'containers/AddAddressContainer';
 import CheckoutPage from './component';
@@ -91,6 +96,7 @@ class CheckoutPageHOC extends React.Component {
 
   componentWillUnmount() {
     this.props.hideModal();
+    this.props.clearCheckout();
   }
 
   checkPurchases(prevProps) {
@@ -186,6 +192,7 @@ CheckoutPageHOC.propTypes = {
   setNote: PropTypes.func.isRequired,
   createOrder: PropTypes.func.isRequired,
   validateOrder: PropTypes.func.isRequired,
+  clearCheckout: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -210,5 +217,6 @@ export default connect(
     setNote,
     createOrder,
     validateOrder,
+    clearCheckout,
   },
 )(CheckoutPageHOC);
