@@ -20,6 +20,7 @@ import messages from './messages';
 const RestaurantCard = ({
   branchId,
   name,
+  is_promoted,
   is_exclusive,
   // deliveryTime,
   minOrder,
@@ -29,10 +30,9 @@ const RestaurantCard = ({
   logo,
   coverPhoto,
   kitchensNames,
-  hasDiscount,
 }) => {
   const renderTag = () => {
-    if (hasDiscount) return <Promoted />;
+    if (is_promoted) return <Promoted />;
 
     if (is_exclusive) {
       return (
