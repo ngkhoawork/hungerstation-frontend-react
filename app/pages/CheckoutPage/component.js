@@ -10,6 +10,7 @@ import PaymentOptionsContainer from 'containers/PaymentOptionsContainer';
 import Back from 'containers/Back';
 import Step from 'components/Step';
 import Note from 'components/Note';
+import Loader from 'components/Loader';
 import { NavHeader } from 'utils/css/styledComponents';
 import { border } from 'utils/css/variables';
 import messages from './messages';
@@ -46,12 +47,13 @@ class CheckoutPage extends React.Component {
   handleBasketClick = () => this.cartRef.current.scrollIntoView();
 
   renderContent = () => {
-    const { deliveryOptions = [], note, onOrderChange } = this.props;
+    const { deliveryOptions = [], note, onOrderChange, isLoading } = this.props;
     const hasDeliverySection = deliveryOptions.length > 1;
     const stepCount = hasDeliverySection ? 3 : 2;
 
     return (
       <React.Fragment>
+        {isLoading ? <Loader /> : null}
         <Step
           stepNo={1}
           stepCount={stepCount}
@@ -87,7 +89,7 @@ class CheckoutPage extends React.Component {
   };
 
   render() {
-    const { isLoading, params } = this.props;
+    const { params } = this.props;
     const { isBasketCartBtnVisible } = this.state;
 
     return (
@@ -96,7 +98,7 @@ class CheckoutPage extends React.Component {
           <Back />
         </NavHeader>
         <ContentContainer>
-          <LeftSide>{isLoading ? null : this.renderContent()}</LeftSide>
+          <LeftSide>{this.renderContent()}</LeftSide>
           <RightSide innerRef={this.cartRef}>
             <CartContainer
               params={params}

@@ -33,6 +33,7 @@ export const ContentContainer = styled.div`
 export const LeftSide = styled.div`
   ${flex({ grow: 1 }, false)};
   width: 100%;
+  position: relative;
 `;
 
 export const RightSide = styled.div`
