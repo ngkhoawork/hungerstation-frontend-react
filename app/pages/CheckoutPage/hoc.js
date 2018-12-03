@@ -141,20 +141,20 @@ class CheckoutPageHOC extends React.Component {
   };
 
   handleOrderCreate = () => {
-    const { isLoadingOrderValidate, orderErrors } = this.props.checkoutState;
+    const { isLoading, orderErrors } = this.props.checkoutState;
 
-    if (!isLoadingOrderValidate && !getDeepProp(orderErrors, ['length'])) {
+    if (!isLoading && !getDeepProp(orderErrors, ['length'])) {
       this.props.createOrder(this.generateOrderPayload());
     }
   };
 
   render() {
-    const { addresses, match, checkoutState } = this.props;
+    const { isLoadingAddresses, match, checkoutState } = this.props;
 
     return (
       <CheckoutPage
         params={match.params}
-        isLoading={addresses === undefined}
+        isLoading={isLoadingAddresses || checkoutState.isLoading}
         deliveryOptions={checkoutState.deliveryOptions}
         note={checkoutState.note}
         onNoteChange={this.props.setNote}
