@@ -4,6 +4,7 @@ import {
   flex,
   mediaSmall,
   mediaMedium,
+  mediaMediumGreater,
   sideMargin,
   sidePadding,
   sidePosition,
@@ -15,13 +16,16 @@ import {
 } from 'utils/css/variables';
 import { lightGray } from 'utils/css/colors';
 
+export const containerCss = css`
+  ${mediaMediumGreater`width: 768px`};
+`;
+
 export const Container = styled.div`
   ${flex({ direction: 'column' })};
-  text-align: center;
-  width: 700px;
   position: relative;
   max-height: ${maxModalContentHeight};
   margin-top: -15px;
+  width: calc(100% + 20px);
 
   ${mediaMedium`width: calc(${maxModalWidth} - 40px)`};
 `;
@@ -31,8 +35,10 @@ const smallMapHeight = '160px';
 export const Map = styled.div`
   height: ${mapHeight};
   min-height: ${mapHeight};
-  width: calc(100% + 40px);
-  margin: 0 -20px 20px;
+  width: calc(100% + 44px);
+  margin: 0 0 20px -25px;
+
+  ${mediaMedium`width: calc(100% + 55px);`};
 
   ${mediaSmall`
     height: ${smallMapHeight};

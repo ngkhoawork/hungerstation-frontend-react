@@ -16,6 +16,7 @@ import messages from './messages';
 import SaveAddress from './SaveAddress';
 import { getStreet, getBuildingNumber } from './helpers';
 import {
+  containerCss,
   Container,
   Map,
   markerStyle,
@@ -221,6 +222,7 @@ class AddAddress extends React.Component {
         )}
         subtitle={hasNoAddress ? intl.formatMessage(messages.subtitle) : ''}
         isMobileFullscreen
+        css={containerCss}
       >
         <Container>
           <Map id={mapId} />
@@ -270,7 +272,7 @@ class AddAddress extends React.Component {
                   errors: {},
                 }}
                 field={{}}
-                style={{ alignItems: 'center' }}
+                style={{ alignItems: 'center', flexGrow: 1 }}
                 inputRef={this.phoneRef}
                 InputProps={{
                   style: { marginBottom: 5 },
