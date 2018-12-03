@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { restaurantsPropTypes } from 'propTypes/restaurants';
-import intl from 'utils/intlService';
 import { mediaLess, flex, sideMargin, sidePosition } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
-import { PageNotice } from 'utils/css/styledComponents';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
-import globalMessages from 'translations/messages';
+import Loader from 'components/Loader';
 import StyledRestaurantList from './StyledRestaurantList';
 import RestaurantCard from './RestaurantCard';
 import ToolsPanel from './ToolsPanel';
@@ -74,11 +72,7 @@ export default class RestaurantsList extends Component {
     const { restaurants, isLoading } = this.props;
     const { paginationStage } = this.state;
 
-    if (isLoading) {
-      return (
-        <PageNotice>{intl.formatMessage(globalMessages.loading)}</PageNotice>
-      );
-    }
+    if (isLoading) return <Loader />;
 
     if (isLoading === false && !restaurants.length) return <NotFound />;
 
