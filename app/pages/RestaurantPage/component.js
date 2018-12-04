@@ -30,10 +30,6 @@ import {
 class RestaurantPage extends React.Component {
   state = {};
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
   static getDerivedStateFromProps(props, state) {
     const { menu, id } = props.restaurant;
 

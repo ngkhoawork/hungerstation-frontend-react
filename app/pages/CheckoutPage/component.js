@@ -34,7 +34,6 @@ class CheckoutPage extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
     this.intersectObserver.observe(this.cartEndRef.current);
   }
 
