@@ -76,8 +76,11 @@ export const LeftSection = styled.div`
 export const RightSection = styled.div`
   width: 700px;
   z-index: 100;
-  ${sidePadding('start', '7%')};
-  ${mediaMedium`width: 100%;`};
+
+  ${mediaMedium`
+    width: 100%;
+    ${sidePadding('start', '7%')};
+  `};
 
   ${({ css }) => css};
 `;
