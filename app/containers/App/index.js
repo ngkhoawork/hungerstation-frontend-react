@@ -41,6 +41,7 @@ import PrivacyPolicyPage from 'pages/FooterPages/PrivacyPolicyPage/Loadable';
 import UserProfile from 'components/UserProfile';
 import PrivateRouteContainer from 'containers/PrivateRouteContainer';
 import ModalContainer from 'containers/ModalContainer';
+import ScrollToTop from 'containers/ScrollToTop';
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
 import { authenticateUser } from 'modules/auth/actions';
 import StyledApp from './StyledApp';
@@ -97,67 +98,69 @@ export default class App extends Component {
             <Modals />
             <ModalContainer />
 
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <PrivateRouteContainer
-                path="/restaurants/:city/:district/restaurant/:branchId/checkout"
-                component={CheckoutPage}
-              />
-              <Route
-                path="/restaurants/:city/:district/restaurant/:branchId"
-                component={RestaurantPage}
-              />
-              <Route
-                showPopup
-                exact
-                path="/restaurant/:branchId"
-                component={RestaurantPageWithPopup}
-              />
-              <Route
-                showPopup
-                exact
-                path="/restaurant/:branchId/:city"
-                component={RestaurantPageWithPopup}
-              />
-              <Route
-                showPopup
-                exact
-                path="/restaurant/:branchId/:city/:district"
-                component={RestaurantPageWithPopup}
-              />
-              <Route
-                path="/restaurants/:city/:district/:deliveryType?"
-                component={RestaurantsPage}
-              />
-              <PrivateRouteContainer
-                path="/userprofile"
-                component={UserProfile}
-              />
-              <PrivateRouteContainer
-                exact
-                path="/my-orders"
-                component={OrdersPage}
-              />
-              <PrivateRouteContainer
-                exact
-                path="/my-orders/:orderId"
-                component={OrderDetailPage}
-              />
-              <Route path="/login" component={LoginPage} />
-              <Route path="/register" component={RegistrationPage} />
-              <Route path="/reset-password" component={ResetPasswordPage} />
-              <Route path="/forgot-password" component={ForgotPasswordPage} />
-              <Route path="/about-us" component={AboutUsPage} />
-              <Route path="/faqs" component={FAQsPage} />
-              <Route path="/contactus" component={ContactUsPage} />
-              <Route
-                exact
-                path="/privacy-policy/who-we-are"
-                component={PrivacyPolicyPage}
-              />
-              <Route path="/logout" component={LogoutPage} />
-              <Redirect from="*" to="/" />
-            </Switch>
+            <ScrollToTop>
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                <PrivateRouteContainer
+                  path="/restaurants/:city/:district/restaurant/:branchId/checkout"
+                  component={CheckoutPage}
+                />
+                <Route
+                  path="/restaurants/:city/:district/restaurant/:branchId"
+                  component={RestaurantPage}
+                />
+                <Route
+                  showPopup
+                  exact
+                  path="/restaurant/:branchId"
+                  component={RestaurantPageWithPopup}
+                />
+                <Route
+                  showPopup
+                  exact
+                  path="/restaurant/:branchId/:city"
+                  component={RestaurantPageWithPopup}
+                />
+                <Route
+                  showPopup
+                  exact
+                  path="/restaurant/:branchId/:city/:district"
+                  component={RestaurantPageWithPopup}
+                />
+                <Route
+                  path="/restaurants/:city/:district/:deliveryType?"
+                  component={RestaurantsPage}
+                />
+                <PrivateRouteContainer
+                  path="/userprofile"
+                  component={UserProfile}
+                />
+                <PrivateRouteContainer
+                  exact
+                  path="/my-orders"
+                  component={OrdersPage}
+                />
+                <PrivateRouteContainer
+                  exact
+                  path="/my-orders/:orderId"
+                  component={OrderDetailPage}
+                />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/register" component={RegistrationPage} />
+                <Route path="/reset-password" component={ResetPasswordPage} />
+                <Route path="/forgot-password" component={ForgotPasswordPage} />
+                <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/faqs" component={FAQsPage} />
+                <Route path="/contactus" component={ContactUsPage} />
+                <Route
+                  exact
+                  path="/privacy-policy/who-we-are"
+                  component={PrivacyPolicyPage}
+                />
+                <Route path="/logout" component={LogoutPage} />
+                <Redirect from="*" to="/" />
+              </Switch>
+            </ScrollToTop>
           </StyledApp>
         </ThemeProvider>
       </MuiThemeProvider>
