@@ -55,6 +55,13 @@ export default class RestaurantsList extends Component {
     };
   }
 
+  componentDidMount() {
+    // a hack since some elements' mounting is affecting scroll on intial mount
+    if (this.props.isLoading === undefined) {
+      setTimeout(() => window.scrollTo(0, 0), 1000);
+    }
+  }
+
   showMoreItems = () => {
     this.setState(prevState => ({
       paginationStage: prevState.paginationStage + 1,
@@ -63,9 +70,14 @@ export default class RestaurantsList extends Component {
   };
 
   get showLoadMoreButton() {
-    const { restaurants } = this.props;
+    const { restaurants, isLoading } = this.props;
     const { paginationStage } = this.state;
-    return paginationStage * PAGINATION_STEP <= restaurants.length;
+
+    return (
+      !isLoading &&
+      restaurants.length &&
+      paginationStage * PAGINATION_STEP <= restaurants.length
+    );
   }
 
   renderContent = () => {
@@ -93,6 +105,7 @@ export default class RestaurantsList extends Component {
 
   render() {
     const { restaurants, handleScrollToTop } = this.props;
+    const { paginationStage } = this.state;
 
     return (
       <StyledRestaurantList>
@@ -100,17 +113,17 @@ export default class RestaurantsList extends Component {
         {this.renderContent()}
 
         <ActionButtonsWrapper>
-          {restaurants.length !== 0 && (
+          {restaurants.length && paginationStage > 1 ? (
             <ScrollToListTopWrapper onClick={handleScrollToTop}>
               <CircledItem width={28} color={gold} withShadow>
                 <Icon name="arrow-right" size={12} />
               </CircledItem>
             </ScrollToListTopWrapper>
-          )}
+          ) : null}
 
-          {this.showLoadMoreButton && (
+          {this.showLoadMoreButton ? (
             <LoadMore showMore={this.showMoreItems} />
-          )}
+          ) : null}
         </ActionButtonsWrapper>
       </StyledRestaurantList>
     );
