@@ -23,12 +23,15 @@ const ModalFrame = ({
   children,
   headerStyle,
   headerCss,
+  subtitleCss,
   ...props
 }) => (
   <Container {...props}>
     <Header style={headerStyle} css={headerCss}>
       <Title>{title}</Title>
-      <Description style={{ marginTop: 16 }}>{subtitle}</Description>
+      <Description style={{ marginTop: 16 }} css={subtitleCss}>
+        {subtitle}
+      </Description>
       <CloseBtn>
         <Icon name="close-modal" onClick={onCancel} style={CloseBtnStyle} />
       </CloseBtn>
