@@ -1,16 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import intl from 'utils/intlService';
-
 // import SearchTypeContainer from 'containers/SearchTypeContainer';
 import SearchBarContainer from 'containers/SearchBarContainer';
 import AppHeader from 'containers/AppHeader';
-
 import StyledUpperSection from './StyledUpperSection';
 import Subheader from './Subheader';
 import Header from './Header';
 // import FiltersWrapper from './FiltersWrapper';
-
 import StyledSection from '../StyledSection';
 // import QuickFilters from './SearchTypes/QuickFilters';
 
