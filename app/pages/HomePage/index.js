@@ -14,6 +14,7 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.intersectObserver.observe(this.upperSectionRef.current);
   }
 
