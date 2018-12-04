@@ -6,18 +6,17 @@ import {
   sideMargin,
   sidePadding,
 } from 'utils/css/styles';
-import { fontFamilyRegular } from 'utils/css/variables';
+import { fontFamilyRegular, pageOffsetX } from 'utils/css/variables';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   ${flex(
-    { align: 'flex-start', justify: 'center' },
+    { align: 'flex-start', justify: 'space-between' },
     `
     width: 100%;
     background-color: #ffffff;
     padding-bottom: 100px;
     padding-top: 15px;
-    flex-wrap: wrap;
   `,
   )};
 
@@ -28,8 +27,8 @@ export const Wrapper = styled.div`
 
 export const MenuBar = styled.div`
   ${flex({ align: 'flex-start', justify: 'center', direction: 'column' })};
-  padding-top: 22%;
-  ${sideMargin('end', '30px')};
+  padding-top: 20%;
+  ${sideMargin('start', pageOffsetX)};
   width: 170px;
 
   ${mediaMedium`
@@ -52,6 +51,7 @@ export const MenuItem = styled.div`
 
 export const MiddleSection = styled.div`
   ${flex({ align: 'flex-start', justify: 'flex-start', direction: 'column' })};
+  ${sidePadding('end', pageOffsetX)};
   ${mediaLess(1000)`
   flex: 1;
   display: block;

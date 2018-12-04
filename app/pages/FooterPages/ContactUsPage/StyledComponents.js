@@ -4,13 +4,16 @@ import {
   mediaMedium,
   mediaMediumGreater,
   sideMargin,
+  sidePadding,
 } from 'utils/css/styles';
+import { pageOffsetX } from 'utils/css/variables';
 
 export const Wrapper = styled.div`
   width: 100%;
   background-color: white;
   padding-top: 60px;
   padding-bottom: 100px;
+  ${sidePadding('start', pageOffsetX)};
   ${flex({ direction: 'column' })};
 
   ${mediaMedium`padding: 20px;`};

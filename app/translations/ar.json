@@ -40,6 +40,7 @@
   "app.components.Header.profile": "My profile",
   "app.components.Header.orders": "My orders",
   "app.components.Header.logout": "Logout",
+  "app.components.Footer.foodDelivery": "Food delivery in",
   "app.components.HomePage.header": "The Top Restaurants in Saudi Arabia",
   "app.components.HomePage.subheader": "Food Delivery From",
   "app.components.HomePage.whyHungerStation":"Why use HungerStation?",

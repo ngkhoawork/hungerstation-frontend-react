@@ -6,13 +6,17 @@ import {
   sideMargin,
   sidePadding,
 } from 'utils/css/styles';
-import { fontFamilyRegular, fontFamilyLight } from 'utils/css/variables';
+import {
+  fontFamilyRegular,
+  fontFamilyLight,
+  pageOffsetX,
+} from 'utils/css/variables';
 import { alabaster } from 'utils/css/colors';
 
 export const Wrapper = styled.div`
   width: 100%;
   background-color: #ffffff;
-  padding-bottom: 100px;
+  padding-top: 3%;
   ${flex({ align: 'flex-start', justify: 'space-between', wrap: 'wrap' })};
   ${mediaLess(600)`
     padding: 10px;
@@ -22,7 +26,7 @@ export const Wrapper = styled.div`
 export const MenuBar = styled.div`
   margin-top: 43px;
   padding-top: 160px;
-  ${sideMargin('end', '30px')};
+  ${sideMargin('start', pageOffsetX)};
   width: 170px;
   ${flex({
     align: 'flex-start',

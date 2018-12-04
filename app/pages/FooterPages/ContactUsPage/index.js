@@ -5,13 +5,13 @@ import ContactDetails from 'components/ContactDetails';
 import MapHS from 'components/MapHS';
 import LocationInformation from 'components/MapHS/LocationInformation';
 import Back from 'containers/Back';
-import PageContent from 'components/PageContent';
 import { NavHeader } from 'utils/css/styledComponents';
+import StyledPage from '../StyledPage';
 import { Wrapper, BottomSide, UpperSide, mapStyles } from './StyledComponents';
 
 const ContactUsPage = () => (
-  <PageContent>
-    <NavHeader>
+  <StyledPage>
+    <NavHeader isWithOffset>
       <Back />
     </NavHeader>
     <Wrapper>
@@ -25,7 +25,7 @@ const ContactUsPage = () => (
         <ContactDetails />
       </BottomSide>
     </Wrapper>
-  </PageContent>
+  </StyledPage>
 );
 
 export default withHeaderAndFooter(ContactUsPage);

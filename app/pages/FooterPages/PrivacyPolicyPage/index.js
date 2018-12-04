@@ -1,15 +1,17 @@
 import React from 'react';
 
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
-
-import PageContent from 'components/PageContent';
+import { NavHeader } from 'utils/css/styledComponents';
 import Back from 'containers/Back';
 import PrivacyPolicy from 'components/PrivacyPolicy';
+import StyledPage from '../StyledPage';
 
 const FAQsPage = () => (
-  <PageContent>
-    <Back />
+  <StyledPage>
+    <NavHeader isWithOffset>
+      <Back />
+    </NavHeader>
     <PrivacyPolicy />
-  </PageContent>
+  </StyledPage>
 );
 export default withHeaderAndFooter(FAQsPage);
