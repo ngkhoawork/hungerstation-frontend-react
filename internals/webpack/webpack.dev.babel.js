@@ -66,6 +66,14 @@ module.exports = require('./webpack.base.babel')({
   performance: {
     hints: false,
   },
+
+  moduleRules: [
+    {
+      test: /\.(jpg|png|gif|svg)$/,
+      exclude: /node_modules/,
+      use: 'file-loader',
+    },
+  ],
 });
 
 /**
