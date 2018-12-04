@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setStorageItem } from 'utils/localStorage';
+import { setStorageItem, getStorageItem } from 'utils/localStorage';
 import { showModal, hideModal } from 'containers/ModalContainer/actions';
 import { addToCart, emptyCart } from 'containers/CartContainer/actions';
 import { selectCartPurchases } from 'containers/CartContainer/selectors';
@@ -16,7 +16,6 @@ class RestaurantPageHOC extends React.Component {
       match: {
         params: { branchId, city, district },
       },
-      restaurantState: { restaurant },
       showPopup,
       hideModal,
     } = this.props;
@@ -37,22 +36,7 @@ class RestaurantPageHOC extends React.Component {
       this.props.fetchRestaurant({ branchId, city, district });
     }
 
-    if (restaurant.id && branchId !== restaurant.id) this.props.emptyCart();
-  }
-
-  componentDidUpdate({ restaurantState: { restaurant } }) {
-    const {
-      restaurantState: {
-        restaurant: { id },
-      },
-      match: {
-        params: { branchId },
-      },
-    } = this.props;
-
-    if (id && restaurant.id !== id && branchId !== id) {
-      this.props.emptyCart();
-    }
+    if (getStorageItem('branchId') !== branchId) this.props.emptyCart();
   }
 
   componentWillUnmount() {
