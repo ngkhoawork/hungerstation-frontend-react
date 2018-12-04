@@ -130,7 +130,7 @@ const OrderCard = ({ order, onOrderClick, onRateClick }) => {
               ) : (
                 <TrackingTimer
                   startAt={order.createdAt}
-                  endAt={new Date(order.deliveryEta).getTime() / 1000}
+                  endAt={order.deliveryEta}
                 />
               ))}
               {/* eslint-enable */}
