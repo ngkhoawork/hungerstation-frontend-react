@@ -10,19 +10,27 @@ import FiltersSection from './FiltersSection';
 import FiltersWrapper from './FiltersWrapper';
 import StyledListPage from './StyledListPage';
 
-const RestaurantsPage = () => (
-  <PageContent>
-    <NavHeader>
-      <Back />
-      <Breadcrumbs />
-    </NavHeader>
-    <StyledListPage>
-      <FiltersWrapper>
-        <FiltersSection />
-      </FiltersWrapper>
-      <RestaurantsSection />
-    </StyledListPage>
-  </PageContent>
-);
+class RestaurantsPage extends React.Component {
+  componentDidMount() {
+    setTimeout(() => window.scrollTo(0, 0), 0);
+  }
+
+  render() {
+    return (
+      <PageContent>
+        <NavHeader>
+          <Back />
+          <Breadcrumbs />
+        </NavHeader>
+        <StyledListPage>
+          <FiltersWrapper>
+            <FiltersSection />
+          </FiltersWrapper>
+          <RestaurantsSection />
+        </StyledListPage>
+      </PageContent>
+    );
+  }
+}
 
 export default withRestaurants(withHeaderAndFooter(RestaurantsPage));
