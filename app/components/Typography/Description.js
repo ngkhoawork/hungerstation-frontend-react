@@ -9,6 +9,8 @@ const Description = styled.div`
   letter-spacing: 0.44px;
   line-height: 16px;
   margin: 10px 0;
+
+  ${({ css }) => css};
 `;
 
 export default Description;
