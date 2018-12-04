@@ -3,7 +3,7 @@ import { dustyGray, jade } from 'utils/css/colors';
 import Steps, { Step } from 'rc-steps';
 import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
-import { mediaMedium } from 'utils/css/styles';
+import { mediaMedium, sidePosition } from 'utils/css/styles';
 import Button from 'components/Button';
 
 export const StyledWrapper = styled.div`
@@ -121,5 +121,5 @@ export const TrackButton = styled(Button)`
   width: 100px;
   height: 40px;
   top: 80px;
-  right: 0;
+  ${sidePosition('end', 0)};
 `;
