@@ -27,8 +27,6 @@ function reducer(state = initialState, { type, payload }) {
         .set('restaurant', payload.restaurant);
 
     case fetchRestaurantError.type:
-      return state.set('isLoading', false);
-
     case logout.type:
       return initialState;
 
