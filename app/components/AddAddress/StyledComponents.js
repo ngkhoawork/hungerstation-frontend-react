@@ -30,27 +30,48 @@ export const Container = styled.div`
   ${mediaMedium`width: calc(${maxModalWidth} - 40px)`};
 `;
 
-const mapHeight = '190px';
-const smallMapHeight = '160px';
+export const subtitleCss = css`
+  margin: 10px 0 0 !important;
+`;
+
+const mapHeight = '30vh';
+const mediumMapHeight = '30vh';
+const smallMapHeight = '23vh';
 export const Map = styled.div`
   height: ${mapHeight};
   min-height: ${mapHeight};
-  width: calc(100% + 40px);
+  width: calc(100% + 45px);
   margin-top: 0;
   margin-bottom: 20px;
+  ${sideMargin('start', '-25px')};
   ${sideMargin('end', '-20px')};
+
+  ${mediaMedium`
+    width: calc(100% + 55px);
+    height: ${mediumMapHeight};
+    min-height: ${mediumMapHeight};
+  `};
+
   ${mediaSmall`
     height: ${smallMapHeight};
     min-height: ${smallMapHeight};
   `};
 `;
 
-const locationBigIconSize = '45px';
-export const markerStyle = {
-  position: 'absolute',
-  top: `calc(${mapHeight}/2 - ${locationBigIconSize})`,
-  left: `calc(50% - ${locationBigIconSize}/2)`,
-};
+const locationBigIconSize = '50px';
+export const markerStyle = css`
+  position: absolute;
+  left: calc(50% - ${locationBigIconSize} / 2);
+  top: calc(${mapHeight} / 2 - ${locationBigIconSize} / 2);
+
+  ${mediaMedium`
+    top: calc(${mediumMapHeight} / 2 - ${locationBigIconSize} / 2);
+  `};
+
+  ${mediaSmall`
+    top: calc(${smallMapHeight} / 2 - ${locationBigIconSize} / 2);
+  `};
+`;
 
 export const StyledInput = styled(Input)`
   position: absolute !important;
@@ -62,10 +83,13 @@ export const StyledInput = styled(Input)`
   padding-bottom: 0;
   ${sidePadding('start', '10px;')};
   ${sidePadding('end', '30px;')};
+
   ${mediaMedium`
     width: 100%;
     ${sidePosition('start', '0')};
   `};
+
+  ${mediaSmall`top: 5px;`};
 `;
 
 export const locateMeStyle = css`
@@ -76,6 +100,8 @@ export const locateMeStyle = css`
   ${mediaMedium`
     ${sidePosition('end', '5px')};
   `};
+
+  ${mediaSmall`top: 10px;`};
 `;
 
 export const Content = styled.div`
