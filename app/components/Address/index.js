@@ -62,12 +62,7 @@ const Address = ({
       <Content isEligible={isEligible}>
         <Name>
           <Title>{getName(address)}</Title>
-          <CircledItem
-            color={alabaster}
-            inline
-            width={28}
-            style={typeIconStyle}
-          >
+          <CircledItem color={alabaster} inline width={28} css={typeIconStyle}>
             <Icon
               name={
                 address.specific_type
@@ -119,8 +114,8 @@ const Container = styled.div`
   ${flex({ align: 'center' })};
   padding-top: 20px;
   padding-bottom: 20px;
-  ${sidePadding('start', '0;')};
-  ${sidePadding('end', '20px;')};
+  ${sidePadding('start', '0')};
+  ${sidePadding('end', '20px')};
   border-radius: ${borderRadius};
   margin-bottom: ${({ isWithBorder }) => (isWithBorder ? 20 : 0)}px;
   box-shadow: ${({ isWithBorder }) => (isWithBorder ? boxShadow : 'none')};
@@ -130,8 +125,8 @@ const LeftSide = styled.div`
   width: ${addressIndent};
   padding-top: 20px;
   padding-bottom: 20px;
-  ${sidePadding('start', '40px;')};
-  ${sidePadding('end', '20px;')};
+  ${sidePadding('start', '40px')};
+  ${sidePadding('end', '20px')};
   height: 60px;
   ${flex({ shrink: 0 }, false)};
 
@@ -175,8 +170,8 @@ const editBtnCss = css`
   ${mediaMedium`
     padding-top: 10px;
     padding-bottom: 10px;
-    ${sidePadding('start', '10px;')};
-    ${sidePadding('end', '3px;')};
+    ${sidePadding('start', '10px')};
+    ${sidePadding('end', '3px')};
     `};
 `;
 
