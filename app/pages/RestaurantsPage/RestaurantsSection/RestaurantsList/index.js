@@ -55,6 +55,10 @@ export default class RestaurantsList extends Component {
     };
   }
 
+  componentDidMount() {
+    setTimeout(() => window.scrollTo(0, 0), 0);
+  }
+
   showMoreItems = () => {
     this.setState(prevState => ({
       paginationStage: prevState.paginationStage + 1,
