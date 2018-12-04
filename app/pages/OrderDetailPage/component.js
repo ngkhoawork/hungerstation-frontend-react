@@ -24,8 +24,24 @@ import { cartCss, OrderDetailSection } from './StyledComponents';
 import messages from './messages';
 
 class OrderDetailPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.mapRef = React.createRef();
+  }
+
   handleRateClick = () => {
     // implement rate click function
+  };
+
+  handleTrackCarClick = () => {
+    // implement rate click function
+    if (this.mapRef && this.mapRef.current) {
+      window.scrollTo({
+        top: this.mapRef.current.offsetTop,
+        behavior: 'smooth',
+      });
+    }
   };
 
   render() {
@@ -35,6 +51,8 @@ class OrderDetailPage extends React.Component {
     const discount = order ? order.discount : undefined;
     const deliveryFee = order ? parseFloat(order.fee) : undefined;
     let currentStep = 0;
+    const isHungerStationDelivery =
+      order.deliveryProvider === 'hungerstation_delivery';
     if (order) {
       purchases = order.orderItems.map((item, index) => ({
         id: index,
@@ -80,8 +98,10 @@ class OrderDetailPage extends React.Component {
                       <TrackingSteps
                         steps={order.tracking.arrayOfStates}
                         currentStep={currentStep}
+                        enableTrackCar={isHungerStationDelivery}
+                        onTrackCar={this.handleTrackCarClick}
                       />
-                      {order.deliveryProvider === 'hungerstation_delivery' &&
+                      {isHungerStationDelivery &&
                         order.realTimeTracking && (
                         /* eslint-disable */
                         <Iframe
@@ -91,6 +111,7 @@ class OrderDetailPage extends React.Component {
                           id="trackingMap"
                           display="initial"
                           position="relative"
+                          ref={this.mapRef}
                         />)
                         /* eslint-enable */
                       }

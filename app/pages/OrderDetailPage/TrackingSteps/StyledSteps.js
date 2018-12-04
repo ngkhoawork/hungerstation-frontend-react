@@ -3,9 +3,12 @@ import { dustyGray, jade } from 'utils/css/colors';
 import Steps, { Step } from 'rc-steps';
 import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
+import { mediaMedium } from 'utils/css/styles';
+import Button from 'components/Button';
 
 export const StyledWrapper = styled.div`
   margin-top: 30px;
+  position: relative;
 `;
 
 export const StyledStep = styled(Step)`
@@ -13,6 +16,8 @@ export const StyledStep = styled(Step)`
     display: flex !important;
     min-height: 64px !important;
     justify-content: space-between;
+
+    ${mediaMedium`flex-direction: column;`};
 
     .rc-steps-item-title {
       flex: 1;
@@ -109,4 +114,12 @@ export const StyledIcon = styled.span`
   border-radius: 26px;
   font-size: 14px;
   transition: background-color 0.3s, border-color 0.3s;
+`;
+
+export const TrackButton = styled(Button)`
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  top: 80px;
+  right: 0;
 `;
