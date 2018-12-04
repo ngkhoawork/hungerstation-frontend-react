@@ -131,7 +131,7 @@ class Coupon extends React.Component {
       <Container>
         <Block>
           <LeftSide>
-            <Title>{intl.formatMessage(messages.addCoupon)}</Title>
+            <Title>{intl.formatMessage(messages.promoCode)}</Title>
           </LeftSide>
           <Content>
             <TextField

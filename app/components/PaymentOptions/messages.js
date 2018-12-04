@@ -16,6 +16,9 @@ export default defineMessages({
   addCoupon: {
     id: 'app.components.PaymentOptions.addCoupon',
   },
+  promoCode: {
+    id: 'app.components.PaymentOptions.promoCode',
+  },
   deleteCoupon: {
     id: 'app.components.PaymentOptions.deleteCoupon',
   },
