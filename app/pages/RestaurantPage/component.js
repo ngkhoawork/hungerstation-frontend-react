@@ -20,7 +20,9 @@ import {
   LeftSide,
   RightSide,
   Header,
+  MobileHeader,
   RestaurantInfoContainer,
+  MobileRestaurantInfoContainer,
   ProductsContainer,
   StyledProductTypes,
   cartBtnsStyle,
@@ -92,6 +94,10 @@ class RestaurantPage extends React.Component {
 
     return (
       <Fragment>
+        <MobileHeader />
+        <MobileRestaurantInfoContainer>
+          <RestaurantInfo {...info} />
+        </MobileRestaurantInfoContainer>
         <Header>
           <RestaurantInfoContainer>
             <RestaurantInfo {...info} />
