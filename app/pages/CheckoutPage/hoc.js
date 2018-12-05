@@ -8,6 +8,7 @@ import { selectDistrict } from 'modules/location/selectors';
 import { fetchAddresses } from 'modules/address/actions';
 import { setBranchId, fetchRestaurant } from 'modules/restaurant/actions';
 import {
+  selectAddressState,
   selectPrimaryAddress,
   selectAddresses,
   selectAddressesLoading,
@@ -155,12 +156,12 @@ class CheckoutPageHOC extends React.Component {
   };
 
   render() {
-    const { isLoadingAddresses, match, checkoutState } = this.props;
+    const { addressState, match, checkoutState } = this.props;
 
     return (
       <CheckoutPage
         params={match.params}
-        isLoading={isLoadingAddresses || checkoutState.isLoading}
+        isLoading={!addressState.isAddressesInitialized}
         deliveryOptions={checkoutState.deliveryOptions}
         note={checkoutState.note}
         onNoteChange={this.props.setNote}
@@ -179,6 +180,7 @@ CheckoutPageHOC.propTypes = {
   purchases: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
   checkoutState: PropTypes.object.isRequired,
+  addressState: PropTypes.object.isRequired,
   district: PropTypes.object,
   primaryAddress: PropTypes.object,
   addresses: PropTypes.array,
@@ -202,6 +204,7 @@ export default connect(
     cartState: selectCartContainerState,
     purchases: selectCartPurchases,
     addresses: selectAddresses,
+    addressState: selectAddressState,
     isLoadingAddresses: selectAddressesLoading,
     checkoutState: selectCheckoutState,
     district: selectDistrict,

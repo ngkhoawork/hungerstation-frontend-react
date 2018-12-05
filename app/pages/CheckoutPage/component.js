@@ -47,13 +47,12 @@ class CheckoutPage extends React.Component {
   handleBasketClick = () => this.cartRef.current.scrollIntoView();
 
   renderContent = () => {
-    const { deliveryOptions = [], note, onOrderChange, isLoading } = this.props;
+    const { deliveryOptions = [], note, onOrderChange } = this.props;
     const hasDeliverySection = deliveryOptions.length > 1;
     const stepCount = hasDeliverySection ? 3 : 2;
 
     return (
       <React.Fragment>
-        {isLoading ? <Loader /> : null}
         <Step
           stepNo={1}
           stepCount={stepCount}
@@ -89,7 +88,7 @@ class CheckoutPage extends React.Component {
   };
 
   render() {
-    const { params } = this.props;
+    const { params, isLoading } = this.props;
     const { isBasketCartBtnVisible } = this.state;
 
     return (
@@ -98,7 +97,7 @@ class CheckoutPage extends React.Component {
           <Back />
         </NavHeader>
         <ContentContainer>
-          <LeftSide>{this.renderContent()}</LeftSide>
+          <LeftSide>{isLoading ? <Loader /> : this.renderContent()}</LeftSide>
           <RightSide innerRef={this.cartRef}>
             <CartContainer
               params={params}
