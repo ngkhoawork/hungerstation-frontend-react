@@ -22,11 +22,24 @@ const Autocomplete = props => {
     disabled,
   } = props;
 
+  const stateReducer = (state, changes) => {
+    switch (changes.type) {
+      case Downshift.stateChangeTypes.changeInput:
+        return {
+          ...changes,
+          highlightedIndex: 0,
+        };
+      default:
+        return changes;
+    }
+  };
+
   return (
     <Downshift
       onChange={onChange}
       itemToString={itemToString}
       selectedItem={item}
+      stateReducer={stateReducer}
     >
       {({
         getInputProps,
