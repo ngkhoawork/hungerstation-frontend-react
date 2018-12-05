@@ -15,9 +15,8 @@ const StyledUpperSection = styled.div`
   margin-top: 8px;
   width: 100%;
   padding-bottom: 80px;
-  background-position-x: center;
-  background-position-y: -2px;
   background-image: url(${bgImg});
+  background-size: cover;
 
   ${device.retina`background-image: url(${bgImg2x});`};
   ${device.retina3x`background-image: url(${bgImg3x});`};
@@ -30,7 +29,6 @@ const StyledUpperSection = styled.div`
 
   ${mediaSmall`
     background-image: url(${bgImgSmall});
-    background-size: cover;
 
     ${device.retina`background-image: url(${bgImgSmall2x});`};
     ${device.retina3x`background-image: url(${bgImgSmall3x});`};

@@ -5,7 +5,7 @@ const Subheader = styled.p`
   font-size: 35px;
   color: white;
   margin: 0;
-  margin-top: 50px;
+  margin-top: 90px;
   ${media.lessThan('850px')`
     font-size: 25px;
     margin: 0;
