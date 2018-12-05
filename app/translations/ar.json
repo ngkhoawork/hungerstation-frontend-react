@@ -205,6 +205,7 @@
   "app.components.MyOrdersPage.NotFound.description": "You don't havev any orders yet. You can make an order by selecting your location and here should be text",
   "app.components.MyOrdersPage.NotFound.buttonLabel": "Check restaurant",
   "app.components.MyOrdersPage.OrderCard.details": "Details...",
+  "app.components.MyOrdersPage.OrderCard.tracking": "Check tracking",
   "app.components.MyOrdersPage.OrderCard.restaurantDelivery": "Restaurant delivery",
   "app.components.MyOrdersPage.OrderCard.fastDelivery": "Fast delivery",
   "app.components.ContactDetails.header": "Didn't find the answer? Contact us!",

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from 'components/Icon';
 import intl from 'utils/intlService';
 import { flex, sideMargin } from 'utils/css/styles';
@@ -21,11 +21,26 @@ const StyledBack = styled.div`
 const Label = styled.div`
   ${sideMargin('start', '5px')};
 `;
+const rotateBackIcon = () => {
+  const map = {
+    ltr: { rotate: `0deg` },
+    rtl: { rotate: `180deg` },
+  };
+  return () => props => css`
+    transform: rotate(${map[props.theme.direction].rotate});
+  `;
+};
+
+const IconContainer = styled.div`
+  ${rotateBackIcon()};
+`;
 
 const Back = ({ onClick, to, label }) => {
   const renderContent = () => (
     <StyledBack onClick={onClick}>
-      <Icon name="arrow-back" size={16} />
+      <IconContainer>
+        <Icon name="arrow-back" size={16} />
+      </IconContainer>
       <Label>{label || intl.formatMessage(messages.text)}</Label>
     </StyledBack>
   );
@@ -39,6 +54,7 @@ Back.propTypes = {
   label: PropTypes.string,
   to: PropTypes.string,
   onClick: PropTypes.func,
+  isOpen: PropTypes.bool,
 };
 
 export default Back;
