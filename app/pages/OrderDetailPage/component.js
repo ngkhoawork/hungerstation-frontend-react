@@ -51,8 +51,9 @@ class OrderDetailPage extends React.Component {
     const discount = order ? order.discount : undefined;
     const deliveryFee = order ? parseFloat(order.fee) : undefined;
     let currentStep = 0;
-    const isHungerStationDelivery =
-      order.deliveryProvider === 'hungerstation_delivery';
+    const isHungerStationDelivery = order
+      ? order.deliveryProvider === 'hungerstation_delivery'
+      : false;
     if (order) {
       purchases = order.orderItems.map((item, index) => ({
         id: index,
