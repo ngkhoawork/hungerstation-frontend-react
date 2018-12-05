@@ -94,12 +94,16 @@ export const rotateArrowIcon = () => {
 };
 export const mediaLess = getMedia('lessThan');
 export const mediaGreater = getMedia('greaterThan');
-
+const desktopWidth = 850;
 export const mediaSmall = mediaLess(560);
-export const mediaMedium = mediaLess(850);
-export const mediaMediumGreater = mediaGreater(849);
+export const mediaMedium = mediaLess(desktopWidth);
+export const mediaMediumGreater = mediaGreater(desktopWidth - 1);
 export const mediaLarge = mediaLess(1130);
 export const mediaLargeGreater = mediaGreater(1129);
+
+export function isMobile() {
+  return window.matchMedia(`(max-width: ${desktopWidth - 1}px)`).matches;
+}
 
 export const getDisplayProp = isModalOpened =>
   !isModalOpened &&
