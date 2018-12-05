@@ -100,6 +100,8 @@ export const RatingContainer = styled.div`
 export const StyledCuisine = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
   ${sideMargin('end', '20px')};
+  margin-bottom: 7px;
+
   & > p {
     margin-top: 5px;
     ${sideMargin('start', '7px')};
@@ -108,10 +110,23 @@ export const StyledCuisine = styled.div`
 
 export const StatusContainer = styled.div`
   display: flex;
+  position: absolute;
 
   ${mediaMediumGreater`
-    position: absolute;
     ${sidePosition('end', '10px')};
-    top: 10px;
+    top: -40px;
   `};
+
+  ${mediaMedium`
+    ${sidePosition('start', '10px')};
+    top: -70px;
+  `};
+`;
+
+export const desktopOfferCss = css`
+  position: absolute;
+  ${sidePosition('end', '10px')};
+  top: 10px;
+
+  ${mediaMedium`display: none;`};
 `;
