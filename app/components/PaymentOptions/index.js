@@ -19,7 +19,10 @@ const PaymentOptions = ({
 }) => (
   <div>
     {isCouponLoading ? (
-      <Loader label={intl.formatMessage(messages.applyingCoupon)} />
+      <Loader
+        isFullscreen
+        label={intl.formatMessage(messages.applyingCoupon)}
+      />
     ) : null}
     {cards && cards.length ? (
       <Cards
