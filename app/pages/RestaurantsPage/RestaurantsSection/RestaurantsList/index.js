@@ -105,7 +105,6 @@ export default class RestaurantsList extends Component {
 
   render() {
     const { restaurants, handleScrollToTop } = this.props;
-    const { paginationStage } = this.state;
 
     return (
       <StyledRestaurantList>
@@ -113,7 +112,7 @@ export default class RestaurantsList extends Component {
         {this.renderContent()}
 
         <ActionButtonsWrapper>
-          {restaurants.length && paginationStage > 1 ? (
+          {this.showLoadMoreButton ? (
             <ScrollToListTopWrapper onClick={handleScrollToTop}>
               <CircledItem width={28} color={gold} withShadow>
                 <Icon name="arrow-right" size={12} />
