@@ -1,4 +1,4 @@
-import { request, protectedRequest } from 'utils/api';
+import { request, protectedRequest, arbitraryRequest } from 'utils/api';
 import {
   userQuery,
   authenticateUserMutation,
@@ -12,7 +12,8 @@ const login = credentials => request(authenticateUserMutation, credentials);
 
 const logout = () => Promise.resolve(true);
 
-const refreshToken = token => request(refreshTokenMutation, { token });
+const refreshToken = token =>
+  arbitraryRequest({ RefreshToken: token }, refreshTokenMutation);
 
 const getUser = token => protectedRequest(token, userQuery);
 

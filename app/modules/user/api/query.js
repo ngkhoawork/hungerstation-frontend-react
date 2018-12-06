@@ -39,8 +39,8 @@ const createUserMutation = `mutation CreateUser($name:String!,$mobile:String!,$e
     }
   }`;
 
-const refreshTokenMutation = `mutation RefreshToken($refreshToken:String!){
-    refreshToken(refreshToken:$refreshToken){
+const refreshTokenMutation = `mutation RefreshToken {
+    refreshToken {
       refresh_token
       token
     }

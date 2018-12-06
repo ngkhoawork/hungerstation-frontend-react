@@ -4,7 +4,7 @@ import { saveTokens } from 'modules/common/sagas';
 import { setCurrentUser, logout, setAuthState } from 'modules/auth/actions';
 
 import { setStorageItem } from 'utils/localStorage';
-import { parseJwt } from 'utils/tokens';
+import { getTokenExpire } from 'utils/tokens';
 import { extractError, formatMobileNumber } from 'utils/helpers';
 import { forwardTo, replace } from 'utils/route';
 import { startSubmit, stopSubmit } from 'hocs/withFormState/actions';
@@ -32,7 +32,7 @@ export function* loginFlow({ payload, meta: redirectToRoute }) {
       yield saveTokens({
         refreshToken: authenticatedUser.refresh_token,
         accessToken: authenticatedUser.token,
-        accessTokenExpiresAt: parseJwt(authenticatedUser.token).iat,
+        accessTokenExpiresAt: getTokenExpire(authenticatedUser.token),
       });
       yield call(setStorageItem, 'userId', authenticatedUser.user.id);
       yield put(stopSubmit());
@@ -69,7 +69,7 @@ export function* registerFlow({ payload }) {
       yield saveTokens({
         refreshToken: response.refresh_token,
         accessToken: response.token,
-        accessTokenExpiresAt: parseJwt(response.token).iat,
+        accessTokenExpiresAt: getTokenExpire(response.token),
       });
       yield call(setStorageItem, 'userId', response.user.id);
       yield put(stopSubmit());

@@ -8,7 +8,7 @@ import { take, call, put, fork, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import usersApi from 'modules/user/api';
 import { forwardTo } from 'utils/route';
-import { parseJwt } from 'utils/tokens';
+import { getTokenExpire } from 'utils/tokens';
 import { clearStorageItem, getStorageItem } from 'utils/localStorage';
 import { saveTokens } from 'modules/common/sagas';
 import { REQUEST_ERROR, AUTHENTICATE_USER } from './constants';
@@ -44,24 +44,31 @@ export function* logoutWoker() {
 function* needRefresh() {
   const { accessTokenExpiresAt } = yield select(makeSelectTokens);
 
-  const accessExpiration = new Date(accessTokenExpiresAt).getTime();
-  return Date.now() >= accessExpiration;
+  return Date.now() >= accessTokenExpiresAt;
 }
 
 export function* refreshTokens() {
   try {
-    const { refreshToken } = yield select(makeSelectTokens);
-    const tokens = yield call(usersApi.refreshToken, refreshToken);
+    // NOTE: this should be sending refreshToken and not accessToken,
+    // but the current backend implementation is incorrect.
+    const { accessToken: token } = yield select(makeSelectTokens);
+    const { refreshToken: tokens } = yield call(usersApi.refreshToken, token);
     yield saveTokens({
       refreshToken: tokens.refresh_token,
       accessToken: tokens.token,
-      accessTokenExpiresAt: parseJwt(tokens.token).iat,
+      accessTokenExpiresAt: getTokenExpire(tokens.token),
     });
     return null;
   } catch (err) {
     yield put(logout());
     return err;
   }
+}
+
+export function* refreshTokensIfExpired() {
+  const shouldRefresh = yield call(needRefresh);
+
+  if (shouldRefresh) yield call(refreshTokens);
 }
 
 export function* getCurrentUser(tokens) {
