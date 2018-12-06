@@ -1,18 +1,45 @@
-properties(
-  [parameters(
-      [string(
-        defaultValue: '', description: 'Please add the image name for the deployment version you need', name: 'IMAGE_TAG', trim: true
-      )]
-  )]
-)
-
 def app, utils
 def imageName = 'gcr.io/hungerstation-configs/customer-website-frontend'
 def deployableBranches = ["development", "master"]
 def platformChart = "http://charts.hsips.net/charts/customer-website-frontend-0.1.0.tgz"
 
 pipeline {
-  agent any
+  agent {
+    kubernetes {
+      label 'jnlp-light'
+      defaultContainer 'jnlp'
+      yaml """
+      spec:
+        containers:
+        - name: jnlp
+          workingDir: '/root/'
+          image: 'gcr.io/hungerstation-configs/jnlp'
+          imagePullPolicy: 'Always'
+          resources:
+            requests:
+              memory: '500M'
+              cpu: '0.5'
+          volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-sock
+          - mountPath: /usr/bin/docker
+            name: docker
+        volumes:
+        - name: docker
+          hostPath:
+            path: /usr/bin/docker
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
+      """
+    }
+  }
+
+  parameters {
+    string(
+      defaultValue: '', description: 'Please add the image name for the deployment version you need', name: 'IMAGE_TAG', trim: true
+    )
+  }
 
   options {
     timeout(time: 30, unit: 'MINUTES')
@@ -48,6 +75,10 @@ pipeline {
           }
 
           tempImageName = BRANCH_NAME.toLowerCase()
+
+          if (BRANCH_NAME == 'master') {
+            apiEnv = "production"
+          }
 
           utils.dockerRegistry {
             app = docker.build("$tempImageName", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")

@@ -1,3 +1,4 @@
 [submodule "devops-works"]
 	path = devops-works
 	url = https://github.com/HungerStation/devops-works.git
+	ignore = all
