@@ -1,6 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { forwardTo } from 'utils/route';
 import { makeSelectTokens } from 'modules/auth/selectors';
+import { refreshTokensIfExpired } from 'modules/auth/sagas';
 import { fetchOrders } from 'modules/orders/actions';
 import {
   fetchDeliveryOptions,
@@ -35,6 +36,7 @@ export function* fetchDeliveryOptionsSaga({ payload }) {
 export function* fetchCreditCardsSaga() {
   try {
     // yield put(checkoutRequest());
+    // yield call(refreshTokensIfExpired);
     // const { accessToken } = yield select(makeSelectTokens);
     // const { credit_cards } = yield call(
     //   api.getCreditCards,
@@ -52,6 +54,7 @@ export function* validateOrderSaga({ payload }) {
   try {
     yield put(checkoutRequest());
 
+    yield call(refreshTokensIfExpired);
     const { accessToken } = yield select(makeSelectTokens);
     const { validateOrder } = yield call(
       api.validateOrder,
@@ -72,6 +75,7 @@ export function* createOrderSaga({ payload }) {
   try {
     yield put(createOrderRequest());
 
+    yield call(refreshTokensIfExpired);
     const { accessToken } = yield select(makeSelectTokens);
     const { validateOrder } = yield call(
       api.validateOrder,
