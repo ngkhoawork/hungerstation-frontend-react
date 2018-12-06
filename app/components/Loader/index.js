@@ -1,34 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { flex } from 'utils/css/styles';
-import {
-  zIndexLoader,
-  headerHeight,
-  navHeaderHeight,
-} from 'utils/css/variables';
+import intl from 'utils/intlService';
 import animationData from './data.json';
-
-const Container = styled.div`
-  ${flex({ justify: 'center', align: 'center' })};
-  transform: translateZ(0);
-  z-index: ${zIndexLoader};
-  position: absolute;
-  width: 100%;
-
-  ${({ isFullHeight }) => isFullHeight && `height: 100%`};
-  ${({ isFullPageHeight }) =>
-    isFullPageHeight &&
-    `height: calc(100vh - ${headerHeight} - ${navHeaderHeight})`};
-
-  > svg {
-    width: 180px !important;
-    height: 180px !important;
-  }
-
-  ${({ style }) => style && css(style)};
-  ${({ css }) => css};
-`;
+import messages from './messages';
+import { Container, Spinner, Label } from './StyledComponents';
 
 class Loader extends React.Component {
   constructor(props) {
@@ -51,12 +25,15 @@ class Loader extends React.Component {
   }
 
   render() {
-    return <Container {...this.props} innerRef={this.loaderRef} />;
+    const { label } = this.props;
+
+    return (
+      <Container {...this.props}>
+        <Spinner innerRef={this.loaderRef} />
+        <Label>{label || intl.formatMessage(messages.loading)}</Label>
+      </Container>
+    );
   }
 }
-
-Loader.propTypes = {
-  isFullHeight: PropTypes.bool,
-};
 
 export default Loader;
