@@ -13,6 +13,7 @@ import Note from 'components/Note';
 import Loader from 'components/Loader';
 import { NavHeader } from 'utils/css/styledComponents';
 import { border } from 'utils/css/variables';
+import globalMessages from 'translations/messages';
 import messages from './messages';
 import {
   Container,
@@ -47,12 +48,20 @@ class CheckoutPage extends React.Component {
   handleBasketClick = () => this.cartRef.current.scrollIntoView();
 
   renderContent = () => {
-    const { deliveryOptions = [], note, onOrderChange } = this.props;
+    const {
+      deliveryOptions = [],
+      note,
+      onOrderChange,
+      isCreateOrderLoading,
+    } = this.props;
     const hasDeliverySection = deliveryOptions.length > 1;
     const stepCount = hasDeliverySection ? 3 : 2;
 
     return (
       <React.Fragment>
+        {isCreateOrderLoading ? (
+          <Loader label={intl.formatMessage(globalMessages.submitting)} />
+        ) : null}
         <Step
           stepNo={1}
           stepCount={stepCount}
@@ -97,7 +106,13 @@ class CheckoutPage extends React.Component {
           <Back />
         </NavHeader>
         <ContentContainer>
-          <LeftSide>{isLoading ? <Loader /> : this.renderContent()}</LeftSide>
+          <LeftSide>
+            {isLoading ? (
+              <Loader style={{ marginTop: 40 }} />
+            ) : (
+              this.renderContent()
+            )}
+          </LeftSide>
           <RightSide innerRef={this.cartRef}>
             <CartContainer
               params={params}
@@ -125,6 +140,7 @@ CheckoutPage.propTypes = {
   deliveryOptions: PropTypes.array,
   params: PropTypes.object.isRequired,
   isLoading: PropTypes.bool,
+  isCreateOrderLoading: PropTypes.bool,
 };
 
 export default withHeaderAndFooter(CheckoutPage, {

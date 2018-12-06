@@ -31,4 +31,7 @@ export default defineMessages({
   couponAddressRequired: {
     id: 'app.components.PaymentOptions.couponAddressRequired',
   },
+  applyingCoupon: {
+    id: 'app.components.PaymentOptions.applyingCoupon',
+  },
 });

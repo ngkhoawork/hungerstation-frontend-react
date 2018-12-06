@@ -1,4 +1,6 @@
 {
+  "app.global.submitting": "Submitting...",
+  "app.components.Loader.loading": "Loading...",
   "app.components.AddRestaurantBanner.actionText": "Would you like to Join Us?",
   "app.components.AddRestaurantBanner.buttonLabel": "Add restaurant",
   "app.components.BriefFiltersSection.moreFilters": "More Filters",
@@ -112,6 +114,7 @@
   "app.components.CheckoutPage.step1": "Delivery address",
   "app.components.CheckoutPage.step2": "Delivery options",
   "app.components.CheckoutPage.step3": "Payment options",
+  "app.components.PaymentOptions.applyingCoupon": "Applying the coupon...",
   "app.components.Cart.yourOrder": "Your Order",
   "app.components.Cart.yourOrderFrom": "Your order from",
   "app.components.Cart.deliveryTo": "Delivery to",

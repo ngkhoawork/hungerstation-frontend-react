@@ -162,6 +162,7 @@ class CheckoutPageHOC extends React.Component {
       <CheckoutPage
         params={match.params}
         isLoading={!addressState.isAddressesInitialized}
+        isCreateOrderLoading={checkoutState.isCreateOrderLoading}
         deliveryOptions={checkoutState.deliveryOptions}
         note={checkoutState.note}
         onNoteChange={this.props.setNote}

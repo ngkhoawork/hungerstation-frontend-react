@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
+import Loader from 'components/Loader';
 import PaymentSection from './PaymentSection';
 import OptionContainer from './OptionContainer';
 import Cards from './Cards';
@@ -12,10 +13,14 @@ const PaymentOptions = ({
   selectedOption = {},
   onOptionSelect,
   coupon,
+  isCouponLoading,
   onCouponSubmit,
   onCouponDelete,
 }) => (
   <div>
+    {isCouponLoading ? (
+      <Loader label={intl.formatMessage(messages.applyingCoupon)} />
+    ) : null}
     {cards && cards.length ? (
       <Cards
         cards={cards}
@@ -42,6 +47,7 @@ const PaymentOptions = ({
 PaymentOptions.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object),
   coupon: PropTypes.object,
+  isCouponLoading: PropTypes.bool,
   selectedOption: PropTypes.object,
   onOptionSelect: PropTypes.func.isRequired,
   onCouponSubmit: PropTypes.func.isRequired,

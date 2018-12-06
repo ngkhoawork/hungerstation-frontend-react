@@ -11,6 +11,7 @@ import {
   checkoutRequest,
   validateOrderSuccess,
   checkoutError,
+  createOrderRequest,
   createOrder,
   createOrderSuccess,
 } from './actions';
@@ -69,7 +70,7 @@ export function* validateOrderSaga({ payload }) {
 
 export function* createOrderSaga({ payload }) {
   try {
-    yield put(checkoutRequest());
+    yield put(createOrderRequest());
 
     const { accessToken } = yield select(makeSelectTokens);
     const { validateOrder } = yield call(
