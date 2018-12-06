@@ -42,7 +42,7 @@ export const StyledBrandLogo = styled.img`
 `;
 
 export const StyledContent = styled.div`
-  width: 100%;
+  width: ${maxPageWidth};
   padding: 0 ${pageOffsetX};
   ${mediaMedium`padding: 0 20px;`};
   ${flex({ align: 'center', justify: 'space-between' })};
@@ -61,7 +61,6 @@ export const StyledHeader = styled.div`
   width: 100%;
   height: ${headerHeight};
   font-family: ${fontFamilyRegular};
-  max-width: ${maxPageWidth};
 
   ${({ isFixed }) =>
     isFixed &&
