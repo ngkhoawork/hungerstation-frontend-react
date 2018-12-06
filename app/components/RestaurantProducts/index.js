@@ -20,6 +20,7 @@ import {
   Footer,
   MobileFooter,
   AddBtn,
+  IconContainer,
 } from './StyledComponents';
 
 const renderFooter = (price, status) => (
@@ -30,7 +31,9 @@ const renderFooter = (price, status) => (
     {status !== 'closed' ? (
       <AddBtn>
         {intl.formatMessage(messages.addToCart)} &nbsp;
-        <Icon name="arrow-circled-right" size={15} />
+        <IconContainer>
+          <Icon name="arrow-circled-right" size={15} />
+        </IconContainer>
       </AddBtn>
     ) : null}
   </Fragment>

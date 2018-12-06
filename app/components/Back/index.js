@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Icon from 'components/Icon';
 import intl from 'utils/intlService';
-import { flex, sideMargin } from 'utils/css/styles';
+import { flex, sideMargin, rotateArrowIcon } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
 import { StyledLink } from 'utils/css/styledComponents';
@@ -21,18 +21,9 @@ const StyledBack = styled.div`
 const Label = styled.div`
   ${sideMargin('start', '5px')};
 `;
-const rotateBackIcon = () => {
-  const map = {
-    ltr: { rotate: `0deg` },
-    rtl: { rotate: `180deg` },
-  };
-  return () => props => css`
-    transform: rotate(${map[props.theme.direction].rotate});
-  `;
-};
 
 const IconContainer = styled.div`
-  ${rotateBackIcon()};
+  ${rotateArrowIcon()};
 `;
 
 const Back = ({ onClick, to, label }) => {

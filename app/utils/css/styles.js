@@ -83,7 +83,15 @@ export const device = {
     }
   `,
 };
-
+export const rotateArrowIcon = () => {
+  const map = {
+    ltr: { rotate: `0deg` },
+    rtl: { rotate: `180deg` },
+  };
+  return () => props => css`
+    transform: rotate(${map[props.theme.direction].rotate});
+  `;
+};
 export const mediaLess = getMedia('lessThan');
 export const mediaGreater = getMedia('greaterThan');
 
