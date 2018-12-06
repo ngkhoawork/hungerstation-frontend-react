@@ -11,6 +11,7 @@ const webpack = require('webpack');
 // in the next major version of loader-utils.'
 process.noDeprecation = true;
 
+module.exports = options => console.log(options);
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -64,8 +65,7 @@ module.exports = options => ({
           },
         },
       },
-      ...options.moduleRules,
-    ],
+    ].concat(options.moduleRules || []),
   },
   plugins: options.plugins.concat([
     new webpack.ProvidePlugin({
