@@ -44,9 +44,13 @@ export const StyledBrandLogo = styled.img`
 export const StyledContent = styled.div`
   width: ${maxPageWidth};
   padding: 0 ${pageOffsetX};
-  ${mediaMedium`padding: 0 20px;`};
   ${flex({ align: 'center', justify: 'space-between' })};
   margin: 0 auto;
+
+  ${mediaMedium`
+    padding: 0 20px;
+    width: 100%;
+  `};
 `;
 
 export const StyledUserInfo = styled.div`
