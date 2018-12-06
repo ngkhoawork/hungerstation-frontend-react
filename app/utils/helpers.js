@@ -1,5 +1,6 @@
 // TODO add intl support
 import deburr from 'lodash/deburr';
+import { List } from 'immutable';
 import intl from 'utils/intlService';
 
 export const extractError = error => {
@@ -37,7 +38,7 @@ export const getSuggestions = (suggestions, value) => {
     });
   }
 
-  return [];
+  return List();
 };
 
 export const itemToString = item => (item ? item.get('name') : '');
@@ -164,4 +165,13 @@ export const compareByState = (a, b) => {
     return -1;
   }
   return 1;
+};
+
+export const calcWidth = (text, font) => {
+  const canvas =
+    calcWidth.canvas || (calcWidth.canvas = document.createElement('canvas'));
+  const context = canvas.getContext('2d');
+  context.font = font;
+  const metrics = context.measureText(text);
+  return metrics.width;
 };
