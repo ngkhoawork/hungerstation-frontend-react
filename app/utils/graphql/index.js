@@ -23,6 +23,15 @@ export const protectedClient = token =>
     },
   });
 
+export const arbitraryClient = headers =>
+  new GraphQLClient(API_URL, {
+    headers: {
+      'Accept-Language': intlService.getLocale(),
+      'Content-Type': 'application/json',
+      ...headers,
+    },
+  });
+
 export const client = new GraphQLClient(API_URL, {
   headers: {
     'Accept-Language': intlService.getLocale(),
