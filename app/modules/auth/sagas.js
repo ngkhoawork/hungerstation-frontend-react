@@ -41,12 +41,6 @@ export function* logoutWoker() {
   }
 }
 
-function* needRefresh() {
-  const { accessTokenExpiresAt } = yield select(makeSelectTokens);
-
-  return Date.now() >= accessTokenExpiresAt;
-}
-
 export function* refreshTokens() {
   try {
     // NOTE: this should be sending refreshToken and not accessToken,
@@ -66,9 +60,9 @@ export function* refreshTokens() {
 }
 
 export function* refreshTokensIfExpired() {
-  const shouldRefresh = yield call(needRefresh);
+  const { accessTokenExpiresAt } = yield select(makeSelectTokens);
 
-  if (shouldRefresh) yield call(refreshTokens);
+  if (Date.now() >= accessTokenExpiresAt) yield call(refreshTokens);
 }
 
 export function* getCurrentUser(tokens) {
@@ -89,23 +83,13 @@ export function* authenticationFlow() {
 
     if (!tokens || !Object.keys(tokens).length) {
       yield put(setAuthState(false));
-
       return;
     }
 
     yield put(updateTokens(tokens));
-
-    const shouldRefresh = yield call(needRefresh);
-
-    if (!shouldRefresh) {
-      yield call(getCurrentUser, tokens);
-    } else {
-      const error = yield call(refreshTokens);
-      if (!error) {
-        yield delay(50);
-        yield call(getCurrentUser, tokens);
-      }
-    }
+    yield call(refreshTokensIfExpired);
+    yield delay(50);
+    yield call(getCurrentUser, tokens);
   }
 }
 
