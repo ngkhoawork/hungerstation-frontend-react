@@ -133,11 +133,7 @@ class RestaurantPage extends React.Component {
         </NavHeader>
         <ContentContainer>
           <LeftSide>
-            {isLoading ? (
-              <Loader style={{ marginTop: '10vh' }} />
-            ) : (
-              this.renderContent()
-            )}
+            {isLoading ? <Loader isFullscreen /> : this.renderContent()}
           </LeftSide>
           <RightSide>
             <CartContainer params={params} />

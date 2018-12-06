@@ -84,7 +84,7 @@ export default class RestaurantsList extends Component {
     const { restaurants, isLoading } = this.props;
     const { paginationStage } = this.state;
 
-    if (isLoading) return <Loader />;
+    if (isLoading) return <Loader isFullscreen />;
 
     if (isLoading === false && !restaurants.length) return <NotFound />;
 
