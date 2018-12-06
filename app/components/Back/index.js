@@ -45,7 +45,6 @@ Back.propTypes = {
   label: PropTypes.string,
   to: PropTypes.string,
   onClick: PropTypes.func,
-  isOpen: PropTypes.bool,
 };
 
 export default Back;
