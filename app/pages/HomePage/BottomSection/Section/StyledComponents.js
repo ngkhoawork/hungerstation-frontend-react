@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sidePadding,
+} from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 
 export const StyledSection = styled.div`
@@ -45,7 +50,7 @@ export const StyledSection = styled.div`
 `;
 
 export const LeftSection = styled.div`
-  width: 520px;
+  width: 42.5%;
   background: white;
   z-index: 50;
   overflow: visible;
@@ -69,10 +74,13 @@ export const LeftSection = styled.div`
 `;
 
 export const RightSection = styled.div`
-  width: 700px;
+  width: 42.5%;
   z-index: 100;
-  padding-left: 7%;
-  ${mediaMedium`width: 100%;`};
+
+  ${mediaMedium`
+    width: 100%;
+    ${sidePadding('start', '7%')};
+  `};
 
   ${({ css }) => css};
 `;

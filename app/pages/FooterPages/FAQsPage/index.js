@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { NavHeader } from 'utils/css/styledComponents';
 import values from 'lodash/values';
 
-import PageContent from 'components/PageContent';
 import Back from 'containers/Back';
 import FAQs from 'components/FAQs';
 import { fetchFaqs } from 'modules/faqs/actions';
 import { selectGroupState } from 'modules/faqs/selectors';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
+import StyledPage from '../StyledPage';
 
 class FAQsPage extends React.Component {
   componentDidMount() {
@@ -19,19 +19,17 @@ class FAQsPage extends React.Component {
   render() {
     const defaultView = values(this.props.faqsState.faqs[2]);
     return (
-      <React.Fragment>
+      <StyledPage>
         <NavHeader isWithOffset>
           <Back />
         </NavHeader>
-        <PageContent>
-          <FAQs
-            faqsGroups={values(this.props.faqsState.faqs)}
-            id={defaultView[1]}
-            title={defaultView[2]}
-            content={defaultView[0]}
-          />
-        </PageContent>
-      </React.Fragment>
+        <FAQs
+          faqsGroups={values(this.props.faqsState.faqs)}
+          id={defaultView[1]}
+          title={defaultView[2]}
+          content={defaultView[0]}
+        />
+      </StyledPage>
     );
   }
 }

@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 
 export default styled.div`
   ${flex({ align: 'flex-start' })};
 
   > div.prefix {
-    margin-right: 16px;
+    ${sideMargin('end', '16px')};
   }
 
   [dir='rtl'] & > div.prefix {

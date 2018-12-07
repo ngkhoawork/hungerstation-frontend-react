@@ -20,6 +20,16 @@ export default () => ({
     display: 'flex',
     alignItems: 'center',
   },
+  backgroundSuggestion: {
+    position: 'absolute',
+    color: '#999',
+    fontFamily: fontFamilyLight,
+    flexWrap: 'wrap',
+    margin: 0,
+    marginTop: '-1px',
+    marginLeft: '51px',
+    zIndex: 199,
+  },
   paper: {
     position: 'absolute',
     zIndex: 101,

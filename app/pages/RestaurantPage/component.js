@@ -10,9 +10,9 @@ import RestaurantInfo from 'components/RestaurantInfo';
 import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
 import MealOptions from 'components/MealOptions';
+import Loader from 'components/Loader';
 import { NavHeader, PageNotice } from 'utils/css/styledComponents';
 // import { isDayTimeMatch } from 'utils/helpers';
-import globalMessages from 'translations/messages';
 import messages from './messages';
 import {
   StyledPage,
@@ -20,10 +20,13 @@ import {
   LeftSide,
   RightSide,
   Header,
+  MobileHeader,
   RestaurantInfoContainer,
+  MobileRestaurantInfoContainer,
   ProductsContainer,
   StyledProductTypes,
   cartBtnsStyle,
+  footerCss,
 } from './StyledComponents';
 
 class RestaurantPage extends React.Component {
@@ -91,6 +94,10 @@ class RestaurantPage extends React.Component {
 
     return (
       <Fragment>
+        <MobileHeader />
+        <MobileRestaurantInfoContainer>
+          <RestaurantInfo {...info} />
+        </MobileRestaurantInfoContainer>
         <Header>
           <RestaurantInfoContainer>
             <RestaurantInfo {...info} />
@@ -126,13 +133,7 @@ class RestaurantPage extends React.Component {
         </NavHeader>
         <ContentContainer>
           <LeftSide>
-            {isLoading ? (
-              <PageNotice>
-                {intl.formatMessage(globalMessages.loading)}
-              </PageNotice>
-            ) : (
-              this.renderContent()
-            )}
+            {isLoading ? <Loader isFullscreen /> : this.renderContent()}
           </LeftSide>
           <RightSide>
             <CartContainer params={params} />
@@ -153,4 +154,6 @@ RestaurantPage.propTypes = {
   onHideModal: PropTypes.func.isRequired,
 };
 
-export default withHeaderAndFooter(RestaurantPage);
+export default withHeaderAndFooter(RestaurantPage, {
+  footerProps: { css: footerCss },
+});

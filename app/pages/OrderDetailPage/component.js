@@ -1,29 +1,47 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import { findIndex } from 'lodash';
+import intl from 'utils/intlService';
+import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
-import CartContainer from './CartContainer';
-import OrderCard from './OrderCard';
-import TrackingSteps from './TrackingSteps';
-
+import Loader from 'components/Loader';
+import OrderCard from 'pages/OrdersPage/OrderCard';
+import { NavHeader } from 'utils/css/styledComponents';
 import {
-  NavHeader,
+  desktopProfileNav,
+  mobileProfileNav,
   ContentContainer,
-  ProfileNavWrapper,
-  OrderDetailSection,
   StyledOrderList,
   LeftSide,
   RightSide,
-  Loading,
-} from './StyledComponents';
+} from 'pages/OrdersPage/StyledComponents';
+import CartContainer from './CartContainer';
+import TrackingSteps from './TrackingSteps';
+import { cartCss, OrderDetailSection } from './StyledComponents';
+import messages from './messages';
 
 class OrderDetailPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.mapRef = React.createRef();
+  }
+
   handleRateClick = () => {
     // implement rate click function
+  };
+
+  handleTrackCarClick = () => {
+    // implement rate click function
+    if (this.mapRef && this.mapRef.current) {
+      window.scrollTo({
+        top: this.mapRef.current.offsetTop,
+        behavior: 'smooth',
+      });
+    }
   };
 
   render() {
@@ -33,6 +51,9 @@ class OrderDetailPage extends React.Component {
     const discount = order ? order.discount : undefined;
     const deliveryFee = order ? parseFloat(order.fee) : undefined;
     let currentStep = 0;
+    const isHungerStationDelivery = order
+      ? order.deliveryProvider === 'hungerstation_delivery'
+      : false;
     if (order) {
       purchases = order.orderItems.map((item, index) => ({
         id: index,
@@ -58,15 +79,13 @@ class OrderDetailPage extends React.Component {
           <Back />
         </NavHeader>
         <ContentContainer>
-          <ProfileNavWrapper>
-            <ProfileNav active={path} />
-          </ProfileNavWrapper>
+          <ProfileNav active={path} css={desktopProfileNav} />
           <OrderDetailSection>
             {order ? (
               <Fragment>
                 <LeftSide>
-                  <Paragraph size={30} margin="0 0 0 11px">
-                    Order details
+                  <Paragraph size={30}>
+                    {intl.formatMessage(messages.orderDetails)}
                   </Paragraph>
                   <StyledOrderList>
                     <OrderCard
@@ -76,10 +95,28 @@ class OrderDetailPage extends React.Component {
                     />
                   </StyledOrderList>
                   {order.tracking.activeStatus && (
-                    <TrackingSteps
-                      steps={order.tracking.arrayOfStates}
-                      currentStep={currentStep}
-                    />
+                    <Fragment>
+                      <TrackingSteps
+                        steps={order.tracking.arrayOfStates}
+                        currentStep={currentStep}
+                        enableTrackCar={isHungerStationDelivery}
+                        onTrackCar={this.handleTrackCarClick}
+                      />
+                      {isHungerStationDelivery &&
+                        order.realTimeTracking && (
+                        /* eslint-disable */
+                        <Iframe
+                          url={order.realTimeTracking.credentials.url}
+                          width="100%"
+                          height="241px"
+                          id="trackingMap"
+                          display="initial"
+                          position="relative"
+                          ref={this.mapRef}
+                        />)
+                        /* eslint-enable */
+                      }
+                    </Fragment>
                   )}
                 </LeftSide>
                 <RightSide>
@@ -89,11 +126,13 @@ class OrderDetailPage extends React.Component {
                     orderAmount={orderAmount}
                     discount={discount}
                     deliveryFee={deliveryFee}
+                    css={cartCss}
                   />
                 </RightSide>
+                <ProfileNav active={path} css={mobileProfileNav} />
               </Fragment>
             ) : (
-              <Loading>Loading...</Loading>
+              <Loader />
             )}
           </OrderDetailSection>
         </ContentContainer>

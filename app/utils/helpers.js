@@ -1,5 +1,6 @@
 // TODO add intl support
 import deburr from 'lodash/deburr';
+import { List } from 'immutable';
 import intl from 'utils/intlService';
 
 export const extractError = error => {
@@ -37,7 +38,7 @@ export const getSuggestions = (suggestions, value) => {
     });
   }
 
-  return [];
+  return List();
 };
 
 export const itemToString = item => (item ? item.get('name') : '');
@@ -80,26 +81,6 @@ export function isChildOf(element, parentId) {
   }
 
   return false;
-}
-
-export function getOS() {
-  const OS_Name = navigator.appVersion;
-  if (OS_Name.indexOf('Win') !== -1) {
-    return 'Win';
-  }
-  if (OS_Name.indexOf('Mac') !== -1) {
-    return 'Mac';
-  }
-  if (OS_Name.indexOf('X11') !== -1) {
-    return 'X11';
-  }
-  if (OS_Name.indexOf('Linux') !== -1) {
-    return 'Linux';
-  }
-  if (OS_Name.indexOf('SunOS') !== -1) {
-    return 'SunOS';
-  }
-  return 'Win';
 }
 
 export function clearUndefs(obj) {
@@ -171,4 +152,26 @@ export const getOrderDescription = order =>
 export const formatMobileNumber = phone => {
   const regex = /^(05|\+9665|009665)(\d+)$/;
   return phone.replace(regex, (match, p1, p2) => `+9665${p2}`);
+};
+
+export const compareByState = (a, b) => {
+  if (a.state === b.state) {
+    return 0;
+  }
+  if (
+    a.state === 'processing' ||
+    (a.state === 'successful' && b.state === 'failed')
+  ) {
+    return -1;
+  }
+  return 1;
+};
+
+export const calcWidth = (text, font) => {
+  const canvas =
+    calcWidth.canvas || (calcWidth.canvas = document.createElement('canvas'));
+  const context = canvas.getContext('2d');
+  context.font = font;
+  const metrics = context.measureText(text);
+  return metrics.width;
 };

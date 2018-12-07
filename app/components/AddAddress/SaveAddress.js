@@ -91,7 +91,7 @@ const Container = styled.div`
   border-radius: ${borderRadius};
   border: solid 1px ${lightGray};
   padding: 20px;
-  margin: 20px 0;
+  margin-bottom: 10px;
 `;
 
 const Header = styled.div`

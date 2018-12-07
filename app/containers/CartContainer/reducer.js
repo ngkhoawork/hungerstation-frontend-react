@@ -5,6 +5,7 @@ import {
 } from 'utils/localStorage';
 import { logout } from 'modules/auth/actions';
 import { createOrderSuccess } from 'modules/checkout/actions';
+import { fetchRestaurantError } from 'modules/restaurant/actions';
 import {
   initCart,
   addToCart,
@@ -65,17 +66,14 @@ function cartContainerReducer(state = initialState, { type, payload }) {
       return Object.assign({}, state, { purchases });
     }
 
+    case fetchRestaurantError.type:
     case emptyCart.type: {
       clearStorageItem('cartItems');
 
       return Object.assign({}, state, { purchases: [] });
     }
 
-    case createOrderSuccess.type: {
-      clearStorageItem('cartItems');
-      return Object.assign({}, initialState);
-    }
-
+    case createOrderSuccess.type:
     case logout.type: {
       clearStorageItem('cartItems');
       return Object.assign({}, initialState);

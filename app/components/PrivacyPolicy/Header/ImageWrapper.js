@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaSmall, mediaMedium } from 'utils/css/styles';
+import { mediaSmall, mediaMedium, sidePadding } from 'utils/css/styles';
 
 const ImageWrapper = styled.div`
   width: 440px;
@@ -10,7 +10,7 @@ const ImageWrapper = styled.div`
 
   ${mediaMedium`
     width: 350px;
-    padding-left: 10px
+    ${sidePadding('start', '10px')};
 `};
 `;
 

@@ -62,6 +62,7 @@ const PrivacyPolicy = () => (
           <DropDown
             title={<FormattedMessage {...messages.whoWeAre} />}
             isCollapsible
+            closeDropDownMenu
           >
             <MenuItem>
               <StyledLink to="/privacy-policy/who-we-are">

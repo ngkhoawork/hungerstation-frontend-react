@@ -1,8 +1,3 @@
-import Burger from 'images/burger.png';
-import BurgerMedium from 'images/burger-medium.png';
-import BurgerSmall from 'images/burger-small.png';
-import Pizza from 'images/pizza.png';
-import Networking from 'images/networking.png';
 import Googleplay from 'images/google-play.png';
 import Googleplay2x from 'images/google-play-2x.png';
 import Googleplay3x from 'images/google-play-3x.png';
@@ -12,16 +7,6 @@ import aboutUs from 'images/aboutUs.png';
 
 const getImage = name => {
   switch (name) {
-    case 'burger':
-      return Burger;
-    case 'burger-medium':
-      return BurgerMedium;
-    case 'burger-small':
-      return BurgerSmall;
-    case 'pizza':
-      return Pizza;
-    case 'networking':
-      return Networking;
     case 'googleplay':
       return Googleplay;
     case 'googleplay-2x':

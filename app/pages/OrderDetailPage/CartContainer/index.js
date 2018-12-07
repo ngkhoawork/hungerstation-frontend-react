@@ -14,7 +14,8 @@ import Cart from 'components/Cart';
 
 class CartContainer extends React.Component {
   componentDidMount() {
-    const { params } = this.props;
+    const { params, location } = this.props;
+    this.isOrderDetailsPage = location.pathname.indexOf('my-orders') === 1;
     this.props.getLocation({ city: params.city, district: params.district });
   }
 
@@ -68,7 +69,7 @@ class CartContainer extends React.Component {
         deliveryFee={deliveryFee}
         city={city && city.get('name')}
         district={district && district.get('name')}
-        isOrderDetail
+        isOrderDetail={this.isOrderDetailsPage}
         onCartSubmit={this.isCheckout ? this.handleOrderCreate : undefined}
         removeFromCart={() => {}}
         onItemEditClick={() => {}}

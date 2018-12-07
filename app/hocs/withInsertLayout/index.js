@@ -5,13 +5,13 @@ import Footer from 'components/Footer';
 const withInsertLayout = ({
   header = { display: true },
   footer = { display: true },
-}) => Component => props => (
+}) => (Component, { footerProps } = {}) => props => (
   <Fragment>
     {header.display && <AppHeader variant={header.variant} />}
 
     <Component {...props} />
 
-    {footer.display && <Footer />}
+    {footer.display && <Footer {...footerProps} />}
   </Fragment>
 );
 

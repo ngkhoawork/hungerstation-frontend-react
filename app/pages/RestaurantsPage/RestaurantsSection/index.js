@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { flex, mediaLess, mediaGreater } from 'utils/css/styles';
+import { flex, mediaLess, mediaGreater, sidePadding } from 'utils/css/styles';
 
 import RestaurantsListContainer from 'containers/RestaurantsListContainer';
 import RestaurantsHeader from './RestaurantsHeader';
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 
 const BriefFiltersWrapper = styled.div`
   width: 100%;
-  padding-right: 20px;
+  ${sidePadding('end', '20px;')};
   ${mediaGreater(1000)`
     display: none;
   `};

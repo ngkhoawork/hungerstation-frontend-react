@@ -71,6 +71,8 @@ export function* fetchRestaurantsSaga({ payload }) {
     const restaurants = deliveries.map(item => ({
       id: item.branch.restaurant.id,
       branchId: item.branch.id,
+      is_promoted: item.is_promoted,
+      is_exclusive: item.branch.is_exclusive,
       name: item.branch.restaurant.name,
       logo: item.branch.restaurant.logo,
       rateAverage: item.branch.restaurant.rate_average,
@@ -80,7 +82,6 @@ export function* fetchRestaurantsSaga({ payload }) {
       deliveryProvider: item.delivery_provider,
       deliveryFee: item.delivery_fee,
       status: item.branch.status,
-      hasDiscount: item.branch.has_discount,
       // filter tags
       acceptCreditCard: item.branch.accept_credit_card,
       acceptVoucher: item.branch.accept_voucher,
@@ -130,13 +131,13 @@ export function* filterRestaurantListSaga() {
     soon: [],
     closed: [],
   };
-  function reduceByStatus(state, status, id, hasDiscount) {
+  function reduceByStatus(state, status, id, is_promoted) {
     switch (status) {
       case RESTAURANT_STATUSES[status]:
         return {
           ...state,
           // we need to view promoted items first for every restaurant status
-          [status]: hasDiscount
+          [status]: is_promoted
             ? [id, ...state[status]]
             : [...state[status], id],
         };
@@ -153,7 +154,7 @@ export function* filterRestaurantListSaga() {
       minOrder,
       deliveryProvider,
       status,
-      hasDiscount,
+      is_promoted,
       ...rest
     }) => {
       // checking for time estimation and minimum order quantities
@@ -186,7 +187,7 @@ export function* filterRestaurantListSaga() {
         isRelevantToDeliveryFilter &&
         restaurantIncludesFiltertags &&
         isOrderFiltersPassing
-          ? reduceByStatus(sortByStatusState, status, id, hasDiscount)
+          ? reduceByStatus(sortByStatusState, status, id, is_promoted)
           : sortByStatusState;
     },
   );

@@ -26,6 +26,10 @@ const styles = () => ({
   },
 });
 
+export const sideModal = () => props => css`
+  direction: ${props.theme.direction};
+`;
+
 export const sideProperty = property => {
   const map = {
     ltr: { start: `${property}left`, end: `${property}right` },
@@ -79,15 +83,27 @@ export const device = {
     }
   `,
 };
-
+export const rotateArrowIcon = () => {
+  const map = {
+    ltr: { rotate: `0deg` },
+    rtl: { rotate: `180deg` },
+  };
+  return () => props => css`
+    transform: rotate(${map[props.theme.direction].rotate});
+  `;
+};
 export const mediaLess = getMedia('lessThan');
 export const mediaGreater = getMedia('greaterThan');
-
+const desktopWidth = 850;
 export const mediaSmall = mediaLess(560);
-export const mediaMedium = mediaLess(850);
-export const mediaMediumGreater = mediaGreater(849);
+export const mediaMedium = mediaLess(desktopWidth);
+export const mediaMediumGreater = mediaGreater(desktopWidth - 1);
 export const mediaLarge = mediaLess(1130);
 export const mediaLargeGreater = mediaGreater(1129);
+
+export function isMobile() {
+  return window.matchMedia(`(max-width: ${desktopWidth - 1}px)`).matches;
+}
 
 export const getDisplayProp = isModalOpened =>
   !isModalOpened &&

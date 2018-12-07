@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { mediaMediumGreater, flex, borderBottom } from 'utils/css/styles';
+import {
+  mediaMediumGreater,
+  flex,
+  borderBottom,
+  sidePadding,
+} from 'utils/css/styles';
 
 export const containerStyle = css`
   ${mediaMediumGreater`width: 600px`};
@@ -15,7 +20,7 @@ export const Content = styled.div`
   ${flex({ direction: 'column', grow: 1 })};
   overflow-y: visible;
   margin: 20px 0;
-  padding-right: 10px;
+  ${sidePadding('end', '10px;')};
 `;
 
 export const Footer = styled.div`

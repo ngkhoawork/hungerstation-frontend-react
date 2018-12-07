@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin, sidePosition } from 'utils/css/styles';
 
 const StyledContainer = styled.span`
   ${flex({ align: 'center' })};
@@ -8,8 +8,8 @@ const StyledContainer = styled.span`
 
   ${mediaMedium`
     position: absolute;
-    right: 5%;
-    margin-right: 16px;
+    ${sidePosition('end', '5%')};
+    ${sideMargin('end', '16px')};
   `};
 `;
 

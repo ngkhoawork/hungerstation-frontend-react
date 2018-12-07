@@ -65,8 +65,8 @@ const getLeftIcon = name => {
   return nameParts[1] ? nameParts[1][0] : nameParts[0][0];
 };
 
-const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
-  <StyledHeader gold={variant === 'gold'}>
+const Header = ({ variant, isLoggedIn = false, userInfo = {}, ...props }) => (
+  <StyledHeader gold={variant === 'gold'} {...props}>
     <StyledContent>
       <LeftSection>
         <Link to="/">
@@ -86,6 +86,7 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {} }) => (
             items={menu}
             leftIcon={getLeftIcon(userInfo.name)}
             isRightAligned
+            isHidden={props.isShown === false}
           />
         ) : (
           <StyledLink to="/login">

@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import intl from 'utils/intlService';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
+import Loader from 'components/Loader';
+import { NavHeader } from 'utils/css/styledComponents';
 import NotFound from './NotFound';
 import OrderCard from './OrderCard';
 import {
-  NavHeader,
+  pageCss,
   ContentContainer,
-  Loading,
-  ProfileNavWrapper,
+  desktopProfileNav,
+  mobileProfileNav,
   OrdersSection,
   StyledOrderList,
   StyledList,
 } from './StyledComponents';
+import messages from './messages';
 
 class OrdersPage extends React.Component {
   handleDetailClick = orderId => {
@@ -24,13 +28,12 @@ class OrdersPage extends React.Component {
 
   renderOrders() {
     const { orders } = this.props;
+
     return (
       <OrdersSection>
-        <Paragraph size={30} margin="0 0 0 11px">
-          My orders
-        </Paragraph>
+        <Paragraph size={30}>{intl.formatMessage(messages.myOrders)}</Paragraph>
         <StyledOrderList>
-          {orders.length > 0 ? (
+          {orders.length ? (
             <StyledList>
               {orders.map(order => (
                 <OrderCard
@@ -49,18 +52,17 @@ class OrdersPage extends React.Component {
   }
 
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, path } = this.props;
 
     return (
-      <PageContent>
+      <PageContent css={pageCss}>
         <NavHeader>
           <Back />
         </NavHeader>
         <ContentContainer>
-          <ProfileNavWrapper>
-            <ProfileNav active={this.props.path} />
-          </ProfileNavWrapper>
-          {isLoading ? <Loading>Loading...</Loading> : this.renderOrders()}
+          <ProfileNav active={path} css={desktopProfileNav} />
+          {isLoading ? <Loader /> : this.renderOrders()}
+          <ProfileNav active={path} css={mobileProfileNav} />
         </ContentContainer>
       </PageContent>
     );

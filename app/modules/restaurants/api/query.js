@@ -17,14 +17,15 @@ const getDeliveryFiltersQuery = `query {
 const getDeliveriesQuery = `query GetDeliveries($lat:Float, $lng:Float, $localId: Int, $deliveryType: String) {
   deliveries(lat: $lat, lng: $lng, local_id: $localId, delivery_type: $deliveryType) {
       id
+      is_promoted
       branch{
         id
+        is_exclusive
         accept_credit_card
         accept_cash_on_delivery
         accept_voucher
         delivery_provider
         status
-        has_discount
         restaurant{
           id
           name

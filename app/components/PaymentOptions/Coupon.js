@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import intl from 'utils/intlService';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+} from 'utils/css/styles';
 import { borderRadius, border, addressIndent } from 'utils/css/variables';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
@@ -26,7 +31,9 @@ const Container = styled.div`
 const LeftSide = styled.div`
   width: ${addressIndent};
   ${flex({ shrink: 0 }, false)};
-  margin: 0 10px 15px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  ${sideMargin('end', '10px')};
 
   ${mediaMedium`width: 100%; margin: 0 0 10px 0;`};
 `;
@@ -50,12 +57,19 @@ const Block = styled.div`
 
 const DesktopNotice = styled.div`
   display: flex;
-  margin-left: 110px;
+  ${sideMargin('start', '110px')};
   ${mediaMedium`display: none;`};
 `;
 
 const MobileNotice = styled.div`
   ${mediaMediumGreater`display: none;`};
+`;
+
+const ButtonMargin = css`
+  margin-top: 10px;
+  ${sideMargin('end', '0')};
+  margin-bottom: 10px;
+  ${sideMargin('start', '20px')};
 `;
 
 const renderNotice = coupon => {
@@ -117,7 +131,7 @@ class Coupon extends React.Component {
       <Container>
         <Block>
           <LeftSide>
-            <Title>{intl.formatMessage(messages.addCoupon)}</Title>
+            <Title>{intl.formatMessage(messages.promoCode)}</Title>
           </LeftSide>
           <Content>
             <TextField
@@ -135,7 +149,8 @@ class Coupon extends React.Component {
               inline
               primary={false}
               lift={false}
-              style={{ border, flexShrink: 0, margin: '10px 0 10px 20px' }}
+              style={{ border, flexShrink: 0 }}
+              css={ButtonMargin}
               onClick={coupon.value ? this.handleDelete : this.handleSubmit}
             >
               {intl.formatMessage(

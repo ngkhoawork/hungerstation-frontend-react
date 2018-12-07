@@ -16,6 +16,12 @@ class DropdownMenu extends Component {
     document.addEventListener('mousedown', this.handleClickOutside);
   }
 
+  static getDerivedStateFromProps({ isHidden }) {
+    if (isHidden) return { isDropdownVisible: false };
+
+    return null;
+  }
+
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
@@ -49,12 +55,14 @@ class DropdownMenu extends Component {
           <Label>{label}</Label>
           <Icon name="arrow-dropdown" />
         </StyledDropdown>
-        <SubMenu
-          items={items}
-          onItemClick={this.toggleDropdown}
-          isRightAligned={isRightAligned}
-          isVisible={isDropdownVisible}
-        />
+        {isDropdownVisible ? (
+          <SubMenu
+            items={items}
+            onItemClick={this.toggleDropdown}
+            isRightAligned={isRightAligned}
+            isVisible={isDropdownVisible}
+          />
+        ) : null}
       </div>
     );
   }

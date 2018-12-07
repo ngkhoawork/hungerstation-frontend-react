@@ -6,6 +6,8 @@ const PageContent = styled.div`
   width: ${pageContentWidth};
 
   ${mediaMedium`width: 100%;`};
+
+  ${({ css }) => css};
 `;
 
 export default PageContent;

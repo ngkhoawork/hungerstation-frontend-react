@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, mediaSmall } from 'utils/css/styles';
+import { flex, mediaSmall, sidePadding, sideMargin } from 'utils/css/styles';
 
 const StyledBox = styled.div`
   ${flex({ align: 'center', direction: 'column' })};
@@ -7,12 +7,12 @@ const StyledBox = styled.div`
   z-index: 100;
   background: white;
   border-radius: 8px;
-  margin-left: -190px;
+  ${sideMargin('start', '-190px')};
   white-space: nowrap;
   ${mediaSmall`
-    margin-left: 12px;
+    ${sideMargin('start', '12px')};
     white-space: unset;
-    padding-left: 40px;
+    ${sidePadding('start', '40px')};
     `};
 `;
 export default StyledBox;

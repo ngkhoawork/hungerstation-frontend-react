@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+} from 'utils/css/styles';
 import { jade } from 'utils/css/colors';
 
 export const containerStyle = css`
@@ -21,7 +26,7 @@ export const Footer = styled.div`
 
   ${mediaMediumGreater`
     button:first-child {
-      margin-right: 20px;
+      ${sideMargin('end', '20px')};
     }
   `};
 

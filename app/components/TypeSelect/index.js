@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'styled-components';
 import Icon from 'components/Icon';
 import { DisabledOverlay } from 'utils/css/styledComponents';
+import { sideMargin } from 'utils/css/styles';
 import { Container, Type, Name } from './StyledComponents';
+
+const MarginIconType = css`
+  ${sideMargin('end', '10px')};
+`;
+const MarginIconCheck = css`
+  ${sideMargin('start', '10px')};
+`;
 
 const getKey = ({ id, key }) => {
   if (id !== undefined) return 'id';
@@ -16,10 +25,10 @@ const TypeSelect = ({
   active,
   disabledTypes,
   onSelect,
-  style,
   typeStyle,
   disabledTypeStyle,
   withActiveIcon,
+  ...props
 }) => {
   const key = types.length && getKey(types[0]);
   const isDisabled = type =>
@@ -27,7 +36,7 @@ const TypeSelect = ({
     (disabledTypes.indexOf(type) > -1 || disabledTypes.indexOf(type[key]) > -1);
 
   return (
-    <Container style={style}>
+    <Container {...props}>
       {types.map(type => (
         <Type
           key={type[key]}
@@ -36,11 +45,11 @@ const TypeSelect = ({
           style={isDisabled(type) ? disabledTypeStyle : typeStyle}
         >
           {type.icon ? (
-            <Icon name={type.icon} size={18} style={{ marginRight: 10 }} />
+            <Icon name={type.icon} size={18} css={MarginIconType} />
           ) : null}
           <Name active={active === type}>{type.label || type.name}</Name>
           {withActiveIcon && active === type ? (
-            <Icon name="check-mark-green" size={18} />
+            <Icon name="toggle-green" size={18} css={MarginIconCheck} />
           ) : null}
           {isDisabled(type) ? <DisabledOverlay /> : null}
         </Type>
@@ -53,7 +62,6 @@ TypeSelect.propTypes = {
   types: PropTypes.arrayOf(PropTypes.object).isRequired,
   active: PropTypes.object,
   disabledTypes: PropTypes.array,
-  style: PropTypes.object,
   typeStyle: PropTypes.object,
   disabledTypeStyle: PropTypes.object,
   withActiveIcon: PropTypes.bool,

@@ -12,6 +12,7 @@ import {
   headerHeight,
   pageOffsetX,
   maxPageWidth,
+  zIndexFixedHeader,
 } from 'utils/css/variables';
 
 export const RightSection = styled.div`
@@ -41,11 +42,15 @@ export const StyledBrandLogo = styled.img`
 `;
 
 export const StyledContent = styled.div`
-  width: 100%;
+  width: ${maxPageWidth};
   padding: 0 ${pageOffsetX};
-  ${mediaMedium`padding: 0 20px;`};
   ${flex({ align: 'center', justify: 'space-between' })};
   margin: 0 auto;
+
+  ${mediaMedium`
+    padding: 0 20px;
+    width: 100%;
+  `};
 `;
 
 export const StyledUserInfo = styled.div`
@@ -60,7 +65,23 @@ export const StyledHeader = styled.div`
   width: 100%;
   height: ${headerHeight};
   font-family: ${fontFamilyRegular};
-  max-width: ${maxPageWidth};
+
+  ${({ isFixed }) =>
+    isFixed &&
+    `
+    position: fixed;
+    top: 0;
+    z-index: ${zIndexFixedHeader};
+    transform: translateY(-${headerHeight});
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+  `};
+
+  ${({ isFixed, isShown }) =>
+    isFixed &&
+    isShown &&
+    `
+    transform: translateY(0);
+  `};
 
   ${mediaMedium`max-width: 100%;`};
 `;

@@ -1,18 +1,21 @@
-properties(
-  [parameters(
-      [string(
-        defaultValue: '', description: 'Please add the image name for the deployment version you need', name: 'IMAGE_TAG', trim: true
-      )]
-  )]
-)
-
 def app, utils
 def imageName = 'gcr.io/hungerstation-configs/customer-website-frontend'
 def deployableBranches = ["development", "master"]
 def platformChart = "http://charts.hsips.net/charts/customer-website-frontend-0.1.0.tgz"
 
 pipeline {
-  agent any
+  agent {
+    kubernetes {
+      label 'jnlp-light'
+      defaultContainer 'jnlp'
+    }
+  }
+
+  parameters {
+    string(
+      defaultValue: '', description: 'Please add the image name for the deployment version you need', name: 'IMAGE_TAG', trim: true
+    )
+  }
 
   options {
     timeout(time: 30, unit: 'MINUTES')
@@ -43,9 +46,18 @@ pipeline {
           COMMIT = utils.getCommit()
 
           apiEnv = "staging"
+          if (BRANCH_NAME == 'master') {
+            apiEnv = "production"
+          }
+
+          tempImageName = BRANCH_NAME.toLowerCase()
+
+          if (BRANCH_NAME == 'master') {
+            apiEnv = "production"
+          }
 
           utils.dockerRegistry {
-            app = docker.build("$BRANCH_NAME", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")
+            app = docker.build("$tempImageName", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")
           }
 
         }
@@ -60,7 +72,7 @@ pipeline {
       steps {
         script {
           app.inside() {
-            sh "npm i -D && npm run lint"
+            sh "yarn && yarn lint"
           }
         }
       }

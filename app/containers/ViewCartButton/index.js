@@ -18,7 +18,7 @@ const ViewCartButtonHOC = ({
   orderAmount,
   purchases,
   restaurant,
-  checkoutState: { selectedDeliveryOption, isValid },
+  checkoutState: { selectedDeliveryOption, isValid, isLoading },
   primaryAddress,
   ...props
 }) => {
@@ -38,7 +38,10 @@ const ViewCartButtonHOC = ({
     !purchases.length ||
     minAmount > orderAmount ||
     (isCheckout &&
-      (!selectedDeliveryOption || !primaryAddress || isValid === false));
+      (!selectedDeliveryOption ||
+        !primaryAddress ||
+        isValid === false ||
+        isLoading));
 
   return (
     <ViewCartButton

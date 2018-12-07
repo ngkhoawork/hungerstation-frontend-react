@@ -5,10 +5,11 @@ import Icon from 'components/Icon';
 import Button from 'components/Button';
 import Paragraph from 'components/Paragraph';
 import { gold } from 'utils/css/colors';
-import StyledNotFound from './StyledNotFound';
+import StyledNotFound from 'pages/OrdersPage/NotFound/StyledNotFound';
 import messages from './messages';
 import ButtonWrapper from './ButtonWrapper';
 
+// TODO: refactor this to use NotFound from OrdersPage
 const NotFound = ({ onClickBack }) => (
   <StyledNotFound>
     <Icon name="bag-red" size={56} />

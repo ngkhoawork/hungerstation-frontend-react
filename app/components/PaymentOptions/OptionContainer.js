@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { flex, mediaMedium } from 'utils/css/styles';
+import styled, { css } from 'styled-components';
+import { flex, mediaMedium, sidePadding, sideMargin } from 'utils/css/styles';
 import { borderRadius, border, boxShadow } from 'utils/css/variables';
 import CheckboxIcon from 'components/CheckboxIcon';
 import Icon from 'components/Icon';
@@ -27,7 +27,9 @@ const LeftSide = styled.div`
   height: 60px;
   ${flex({ shrink: 0 }, false)};
 
-  ${mediaMedium`padding-left: 0`};
+  ${mediaMedium`
+    ${sidePadding('start', '0')};
+  `};
 `;
 
 const Content = styled.div`
@@ -40,11 +42,14 @@ const Block = styled.div`
   ${flex({ align: 'center' })};
 `;
 
-const titleStyle = {
-  fontSize: 18,
-  letterSpacing: 0.25,
-  margin: '0 0 0 20px',
-};
+const titleStyle = css`
+  font-size: 18px;
+  letter-spacing: 0.25px;
+  margin-top: 0;
+  ${sideMargin('end', '0')};
+  margin-bottom: 0;
+  ${sideMargin('start', '20px')};
+`;
 
 const OptionContainer = ({ isSelected, onSelect, icon, title, children }) => (
   <Container onClick={onSelect} isSelected={isSelected}>
@@ -54,7 +59,7 @@ const OptionContainer = ({ isSelected, onSelect, icon, title, children }) => (
       </LeftSide>
       <Block>
         <Icon name={icon} size={26} />
-        <Title style={titleStyle}>{title}</Title>
+        <Title css={titleStyle}>{title}</Title>
       </Block>
     </Main>
     <Content>{children}</Content>

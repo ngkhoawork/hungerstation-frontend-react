@@ -8,6 +8,7 @@ import { selectDistrict } from 'modules/location/selectors';
 import { fetchAddresses } from 'modules/address/actions';
 import { setBranchId, fetchRestaurant } from 'modules/restaurant/actions';
 import {
+  selectAddressState,
   selectPrimaryAddress,
   selectAddresses,
   selectAddressesLoading,
@@ -20,7 +21,12 @@ import {
   selectOrderAmount,
 } from 'containers/CartContainer/selectors';
 import { selectCheckoutState } from 'modules/checkout/selectors';
-import { setNote, createOrder, validateOrder } from 'modules/checkout/actions';
+import {
+  setNote,
+  createOrder,
+  validateOrder,
+  clearCheckout,
+} from 'modules/checkout/actions';
 import InsufficientOrderAmount from 'containers/InsufficientOrderAmount';
 import AddAddressContainer from 'containers/AddAddressContainer';
 import CheckoutPage from './component';
@@ -91,6 +97,7 @@ class CheckoutPageHOC extends React.Component {
 
   componentWillUnmount() {
     this.props.hideModal();
+    this.props.clearCheckout();
   }
 
   checkPurchases(prevProps) {
@@ -141,20 +148,21 @@ class CheckoutPageHOC extends React.Component {
   };
 
   handleOrderCreate = () => {
-    const { isLoadingOrderValidate, orderErrors } = this.props.checkoutState;
+    const { isLoading, orderErrors } = this.props.checkoutState;
 
-    if (!isLoadingOrderValidate && !getDeepProp(orderErrors, ['length'])) {
+    if (!isLoading && !getDeepProp(orderErrors, ['length'])) {
       this.props.createOrder(this.generateOrderPayload());
     }
   };
 
   render() {
-    const { addresses, match, checkoutState } = this.props;
+    const { addressState, match, checkoutState } = this.props;
 
     return (
       <CheckoutPage
         params={match.params}
-        isLoading={addresses === undefined}
+        isLoading={!addressState.isAddressesInitialized}
+        isCreateOrderLoading={checkoutState.isCreateOrderLoading}
         deliveryOptions={checkoutState.deliveryOptions}
         note={checkoutState.note}
         onNoteChange={this.props.setNote}
@@ -173,6 +181,7 @@ CheckoutPageHOC.propTypes = {
   purchases: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
   checkoutState: PropTypes.object.isRequired,
+  addressState: PropTypes.object.isRequired,
   district: PropTypes.object,
   primaryAddress: PropTypes.object,
   addresses: PropTypes.array,
@@ -186,6 +195,7 @@ CheckoutPageHOC.propTypes = {
   setNote: PropTypes.func.isRequired,
   createOrder: PropTypes.func.isRequired,
   validateOrder: PropTypes.func.isRequired,
+  clearCheckout: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -195,6 +205,7 @@ export default connect(
     cartState: selectCartContainerState,
     purchases: selectCartPurchases,
     addresses: selectAddresses,
+    addressState: selectAddressState,
     isLoadingAddresses: selectAddressesLoading,
     checkoutState: selectCheckoutState,
     district: selectDistrict,
@@ -210,5 +221,6 @@ export default connect(
     setNote,
     createOrder,
     validateOrder,
+    clearCheckout,
   },
 )(CheckoutPageHOC);

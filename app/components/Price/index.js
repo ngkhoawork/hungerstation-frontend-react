@@ -10,6 +10,7 @@ const Price = styled.span`
   color: ${({ isPrimary }) => (isPrimary ? jade : silverChalice)};
   font-size: ${({ size }) => size || 16}px;
   font-family: ${fontFamilyRegular};
+  white-space: nowrap;
 
   ${({ css }) => css};
 `;

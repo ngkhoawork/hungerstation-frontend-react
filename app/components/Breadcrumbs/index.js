@@ -8,7 +8,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import withSelectedLocation from 'hocs/withSelectedLocation';
+import withSelectedLocationAndFilters from 'hocs/withSelectedLocationAndFilters';
 
 import Icon from 'components/Icon';
 import ButtonLink from 'components/ButtonLink';
@@ -85,4 +85,4 @@ Breadcrumbs.defaultProps = {
   filters: defaultFilters,
 };
 
-export default withSelectedLocation(Breadcrumbs);
+export default withSelectedLocationAndFilters(Breadcrumbs);

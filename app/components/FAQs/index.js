@@ -83,6 +83,7 @@ class FAQs extends React.Component {
             <DropDownMobile
               title={this.state.title || this.props.title}
               isCollapsible
+              closeDropDownMenu
             >
               {values(this.props.faqsGroups).map(item => (
                 <MenuItem

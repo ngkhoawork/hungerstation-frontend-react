@@ -40,6 +40,7 @@ class PaymentOptionsContainer extends React.Component {
         onOptionSelect={this.handlePaymentSelect}
         onCouponSubmit={this.handleSetCoupon}
         onCouponDelete={this.props.removeCoupon}
+        isCouponLoading={checkoutState.isCouponLoading}
         coupon={checkoutState.coupon}
         discount={checkoutState.discount}
       />

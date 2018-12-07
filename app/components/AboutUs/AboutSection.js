@@ -22,7 +22,6 @@ const Header = styled.p`
 `;
 const Content = styled.div`
   ${flex({ align: 'center', direction: 'column' })};
-  margin-top: 8%;
   ${sideMargin('start', '25%')};
   ${sideMargin('end', '36%')};
 `;

@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import { flex, mediaMedium, mediaMediumGreater } from 'utils/css/styles';
+import {
+  flex,
+  mediaMedium,
+  mediaMediumGreater,
+  sidePadding,
+  sideMargin,
+} from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { borderRadius, border, boxShadow } from 'utils/css/variables';
 
@@ -28,7 +34,7 @@ export const DeliveryOption = styled.div`
 
     :nth-child(2) {
       border-radius: 0 ${borderRadius} ${borderRadius} 0;
-      margin-left: 20px;
+      ${sideMargin('start', '20px')};
     }
   `};
 `;
@@ -38,7 +44,9 @@ export const LeftSide = styled.div`
   height: 60px;
   ${flex({ shrink: 0 }, false)};
 
-  ${mediaMedium`padding-left: 0`};
+  ${mediaMedium`
+    ${sidePadding('start', '0')};
+  `};
 `;
 
 export const Content = styled.div`

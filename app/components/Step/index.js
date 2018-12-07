@@ -6,6 +6,7 @@ import {
   borderBottom,
   mediaMedium,
   mediaLargeGreater,
+  sidePadding,
 } from 'utils/css/styles';
 import { stepIndent } from 'utils/css/variables';
 import { fuscousGray, silverChalice } from 'utils/css/colors';
@@ -75,6 +76,6 @@ const Content = styled.div`
   padding: 30px 0;
 
   ${mediaLargeGreater`
-    padding-left: ${stepIndent};
+    ${sidePadding('start', stepIndent)};
   `};
 `;

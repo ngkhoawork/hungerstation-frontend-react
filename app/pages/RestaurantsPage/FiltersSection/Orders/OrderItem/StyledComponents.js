@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 import { fontFamilyLight, fontFamilyRegular } from 'utils/css/variables';
 import { jade, boulder } from 'utils/css/colors';
 
@@ -27,10 +27,10 @@ export const Number = styled.span`
   bottom: -7px;
 
   &:first-child {
-    margin-right: 5px;
+    ${sideMargin('end', '5px;')};
   }
   &:last-child {
-    margin-left: 5px;
+    ${sideMargin('start', '5px')};
   }
 
   @-moz-document url-prefix() {

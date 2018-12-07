@@ -27,6 +27,7 @@ const SearchBar = ({
       suggestions={cities}
       onChange={selectCity}
       selectedItem={selectedCity}
+      enableAutoComplete
     />
     <DropdownInput
       placeholder={intl.formatMessage(messages.district)}
@@ -35,6 +36,7 @@ const SearchBar = ({
       onChange={selectDistrict}
       selectedItem={selectedDistrict}
       disabled={!selectedCity}
+      enableAutoComplete
     />
     <LocateYourself {...rest} />
     {!hideSearch && (

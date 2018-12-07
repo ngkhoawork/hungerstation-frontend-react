@@ -1,9 +1,3 @@
-/*
- * RestaurantsHeader Messages
- *
- * This contains all the text for the RestaurantsHeader component.
- */
-
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
@@ -18,5 +12,11 @@ export default defineMessages({
   },
   fastDelivery: {
     id: 'app.components.MyOrdersPage.OrderCard.fastDelivery',
+  },
+  failed: {
+    id: 'app.components.MyOrdersPage.OrderCard.failed',
+  },
+  rateRestaurant: {
+    id: 'app.components.OrderDetailPage.OrderCard.rateRestaurant',
   },
 });

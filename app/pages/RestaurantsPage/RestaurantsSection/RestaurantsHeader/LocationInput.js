@@ -24,7 +24,7 @@ const StyledLocation = styled.a`
 const Wrapper = styled.div`
   height: 35px;
   padding: 0 15px;
-  margin-right: 22%;
+  ${sideMargin('end', '22%')};
   ${flex({ align: 'center' })};
 
   img {

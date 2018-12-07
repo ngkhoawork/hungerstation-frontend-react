@@ -71,5 +71,12 @@ export const getOrdersQuery = `query {
       current_state_key
       trackable
     }
+    real_time_tracking {
+      protocol
+      credentials {
+        css
+        url
+      }
+    }
   }
 }`;

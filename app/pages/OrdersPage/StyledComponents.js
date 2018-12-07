@@ -1,140 +1,71 @@
 import styled, { css } from 'styled-components';
 import imgPlaceholder from 'images/burger-icon.png';
-import {
-  navHeaderHeight,
-  maxPageWidth,
-  fontFamilyLight,
-  mobPageOffsetX,
-  smallMobPageOffsetX,
-  borderRadius,
-} from 'utils/css/variables';
+import { fontFamilyLight, border } from 'utils/css/variables';
 import {
   flex,
   mediaSmall,
   mediaMedium,
-  mediaLess,
   mediaMediumGreater,
+  sideMargin,
+  sidePosition,
 } from 'utils/css/styles';
-import {
-  lightGray,
-  alabaster,
-  silverChalice,
-  jade,
-  persimmon,
-  errorBg,
-} from 'utils/css/colors';
 
-export const StyledPage = styled.div`
-  width: 100%;
-  max-width: ${maxPageWidth};
-  margin-bottom: 60px;
-
-  ${mediaMedium`
-    max-width: 100%;
-  `};
+export const pageCss = css`
+  ${mediaMedium`padding: 0 23px;`};
 `;
 
-export const NavHeader = styled.div`
-  height: ${navHeaderHeight};
-  padding: 0;
-  ${flex({ align: 'center' })};
+export const desktopProfileNav = css`
+  ${mediaMedium`display: none;`};
+`;
 
-  ${mediaMedium`
-    padding: ${mobPageOffsetX};
-  `};
-
-  ${mediaSmall`
-    padding: ${smallMobPageOffsetX};
-  `};
+export const mobileProfileNav = css`
+  ${mediaMediumGreater`display: none;`};
 `;
 
 export const ContentContainer = styled.div`
   ${flex({ align: 'flex-start' })};
-  margin-top: 40px;
-`;
 
-export const Loading = styled.div`
-  ${flex({ justify: 'center', align: 'center' })};
-  height: 100px;
-  font-size: 30px;
-  width: 100%;
+  ${mediaMediumGreater`margin-top: 40px;`};
+
+  ${mediaMedium`
+    ${flex({ direction: 'column' })};
+  `};
 `;
 
 export const LeftSide = styled.div`
   ${flex({ grow: 1 }, false)};
   max-width: 100%;
+
+  ${mediaMedium`width: 100%;`};
 `;
 
 export const RightSide = styled.div`
   margin: 0 20px;
-  position: sticky;
-  top: 0;
 
-  ${mediaMedium`
-    display: none;
-  `};
-`;
+  ${mediaMedium`width: 100%;`};
 
-export const ProfileNavWrapper = styled.div`
-  position: relative;
-  width: 232px;
-  box-shadow: 0 0 35px 5px rgba(183, 157, 157, 0.09);
-  padding: 30px 24px 24px;
-  ${flex({ align: 'flex-start', justify: 'center', direction: 'column' })};
-
-  ${mediaLess(1000)`
-    display: none;
-  `};
-`;
-
-export const OrdersSection = styled.div`
-  width: 912px;
-  margin-left: 40px;
-  margin-bottom: 50px;
-  overflow: visible;
-  position: relative;
-  ${flex({
-    align: 'flex-start',
-    justify: 'flex-start',
-    direction: 'column',
-  })};
-
-  ${mediaLess(1000)`
-    flex: 1;
-  `};
-
-  ${mediaLess(600)`
-    padding: 0;
-    width:100%
+  ${mediaMediumGreater`
+    position: sticky;
+    top: 0;
   `};
 `;
 
 export const StyledOrderList = styled.div`
   width: 100%;
   position: relative;
-  ${flex({
-    align: 'flex-start',
-    justify: 'space-between',
-    direction: 'column',
-    wrap: 'wrap',
-  })};
+  ${flex({ align: 'flex-start', direction: 'column' })};
 
-  ${mediaLess(1250)`
-    ${flex({ justify: 'flex-start' }, false)}
-  `};
-
-  ${mediaLess(600)`
-    ${flex({ wrap: 'nowrap' }, false)};
-    padding: 20px;
-    padding-left: 0;
+  ${mediaMedium`
+    ${flex()};
+    padding: 0;
   `};
 `;
 
 export const StyledList = styled.div`
-  width: 912px;
+  width: 100%;
   ${flex({ align: 'flex-start', wrap: 'wrap' })};
 
-  ${mediaLess(600)`
+  ${mediaMedium`
     ${flex({ direction: 'column', align: 'center' }, false)};
     width: 100%;
 `};
@@ -145,25 +76,19 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
-  ${flex({ align: 'flex-start' })};
+  ${flex({ direction: 'column' })};
   position: relative;
-  padding: 35px 0;
-  border-bottom: 1px solid ${lightGray};
+  padding: 22px 0;
+  margin-bottom: 25px;
+  border-bottom: ${border};
   width: 100%;
 
-  :last-child {
+  &:last-child {
     border-bottom: none;
   }
-
-  ${mediaMedium`
-    border-bottom: none;
-    margin: 40px 0;
-  `};
 `;
 
 export const Img = styled.div`
-  height: 110px;
-  width: 110px;
   border-radius: 55px;
   box-shadow: 8px 12px 23px -3px rgba(59, 59, 59, 0.13);
   background-color: white;
@@ -171,12 +96,23 @@ export const Img = styled.div`
   background-size: contain;
   background-position: center;
   ${flex({ shrink: 0 }, false)};
+
+  ${mediaMediumGreater`
+    height: 110px;
+    width: 110px;
+  `};
+
+  ${mediaMedium`
+    width: 25%;
+    padding-top: 25%;
+  `};
 `;
 
 export const Content = styled.div`
-  margin-left: 30px;
+  ${sideMargin('start', '30px')};
   ${flex({ direction: 'column', justify: 'space-between', grow: 1 })};
 
+  ${mediaMedium`margin-left: 18px;`};
   ${mediaSmall`word-break: break-word;`};
 `;
 
@@ -195,6 +131,11 @@ export const OrderItems = styled.div`
   font-family: ${fontFamilyLight};
   font-size: 14px;
   line-height: 14px;
+
+  ${mediaMedium`
+    margin-bottom: 10px;
+    ${flex({ wrap: 'wrap' })};
+  `};
 `;
 
 export const Description = styled.div`
@@ -234,27 +175,26 @@ export const DeliveryLocation = styled.div`
 
 export const IconPosition = styled.div`
   position: absolute;
-  left: -20px;
+  ${sidePosition('start', '-20px')};
   top: 2px;
-`;
-
-export const Status = styled.div`
-  padding: 8px 12px;
-  border-radius: ${borderRadius};
-  background-color: ${({ color }) => {
-    if (color === 'error') return errorBg;
-    return alabaster;
-  }};
-  color: ${({ color }) => {
-    if (color === 'error') return persimmon;
-    if (color === 'success') return jade;
-    return silverChalice;
-  }};
-  font-size: 12px;
-  line-height: 1;
-  margin-left: 5px;
 `;
 
 export const OrderState = styled.div`
   display: block;
+`;
+
+export const OrdersSection = styled.div`
+  width: 100%;
+  margin-bottom: 50px;
+  overflow: visible;
+  position: relative;
+  ${flex({
+    align: 'flex-start',
+    justify: 'flex-start',
+    direction: 'column',
+  })};
+
+  ${mediaMediumGreater`
+    ${sideMargin('start', '40px')};
+  `};
 `;

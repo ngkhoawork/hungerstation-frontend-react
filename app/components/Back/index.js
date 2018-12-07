@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 import intl from 'utils/intlService';
-import { flex, sideMargin } from 'utils/css/styles';
+import { flex, sideMargin, rotateArrowIcon } from 'utils/css/styles';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
 import { StyledLink } from 'utils/css/styledComponents';
@@ -22,10 +22,16 @@ const Label = styled.div`
   ${sideMargin('start', '5px')};
 `;
 
+const IconContainer = styled.div`
+  ${rotateArrowIcon()};
+`;
+
 const Back = ({ onClick, to, label }) => {
   const renderContent = () => (
     <StyledBack onClick={onClick}>
-      <Icon name="arrow-back" size={16} />
+      <IconContainer>
+        <Icon name="arrow-back" size={16} />
+      </IconContainer>
       <Label>{label || intl.formatMessage(messages.text)}</Label>
     </StyledBack>
   );

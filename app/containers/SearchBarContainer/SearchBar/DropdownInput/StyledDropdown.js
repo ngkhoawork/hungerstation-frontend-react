@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { flex } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 import { searchBarHeight } from '../StyledComponents';
 
 const StyledDropdown = styled.span`
@@ -18,7 +18,8 @@ const StyledDropdown = styled.span`
     background-color: white;
 
     &:first-of-type {
-      margin-left: 0;
+      ${sideMargin('start', '0')};
+
     }
   `};
 `;

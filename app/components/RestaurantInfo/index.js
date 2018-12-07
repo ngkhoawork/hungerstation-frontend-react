@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getDeepProp } from 'utils/helpers';
 import { alto } from 'utils/css/colors';
 import { Mobile, Desktop } from 'utils/css/styledComponents';
+import Offer from 'containers/Offer';
 import BrandLogo from 'components/BrandLogo';
 import Paragraph from 'components/Paragraph';
 import Group from 'components/Group';
@@ -20,6 +21,7 @@ import {
   deliveryInfoStyle,
   desktopStyle,
   mobileStyle,
+  desktopOfferCss,
 } from './StyledComponents';
 
 const RestaurantInfo = ({ restaurant, ...props }) => {
@@ -35,7 +37,7 @@ const RestaurantInfo = ({ restaurant, ...props }) => {
 
   const renderDetails = () => (
     <React.Fragment>
-      <Group>
+      <Group style={{ flexWrap: 'wrap' }}>
         {restaurant.kitchens.map(({ id, name, image_thumb }) => (
           <StyledCuisine key={id}>
             <img src={image_thumb} alt={name} height="14" />
@@ -62,6 +64,10 @@ const RestaurantInfo = ({ restaurant, ...props }) => {
       </StyledDetailsContainer>
       <StyledDetails>{renderDetails()}</StyledDetails>
       <Status {...props} restaurant={restaurant} />
+      <Offer
+        style={{ marginTop: 15 }}
+        offer={getDeepProp(restaurant, ['offers', 0])}
+      />
     </Mobile>
   );
 
@@ -77,6 +83,10 @@ const RestaurantInfo = ({ restaurant, ...props }) => {
         </StyledDetails>
       </StyledDetailsContainer>
       <Status {...props} restaurant={restaurant} />
+      <Offer
+        css={desktopOfferCss}
+        offer={getDeepProp(restaurant, ['offers', 0])}
+      />
     </Desktop>
   );
 

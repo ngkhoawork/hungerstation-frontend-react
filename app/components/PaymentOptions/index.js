@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
+import Loader from 'components/Loader';
 import PaymentSection from './PaymentSection';
 import OptionContainer from './OptionContainer';
 import Cards from './Cards';
@@ -12,10 +13,17 @@ const PaymentOptions = ({
   selectedOption = {},
   onOptionSelect,
   coupon,
+  isCouponLoading,
   onCouponSubmit,
   onCouponDelete,
 }) => (
   <div>
+    {isCouponLoading ? (
+      <Loader
+        isFullscreen
+        label={intl.formatMessage(messages.applyingCoupon)}
+      />
+    ) : null}
     {cards && cards.length ? (
       <Cards
         cards={cards}
@@ -23,7 +31,7 @@ const PaymentOptions = ({
         onSelect={onOptionSelect}
       />
     ) : null}
-    <PaymentSection title={intl.formatMessage(messages.otherOptions)}>
+    <PaymentSection title={intl.formatMessage(messages.cash)}>
       <OptionContainer
         onSelect={() => onOptionSelect({ id: 'cash' })}
         isSelected={selectedOption.id === 'cash'}
@@ -42,6 +50,7 @@ const PaymentOptions = ({
 PaymentOptions.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object),
   coupon: PropTypes.object,
+  isCouponLoading: PropTypes.bool,
   selectedOption: PropTypes.object,
   onOptionSelect: PropTypes.func.isRequired,
   onCouponSubmit: PropTypes.func.isRequired,

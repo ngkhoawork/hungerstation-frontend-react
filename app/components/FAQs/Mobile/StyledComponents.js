@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { flex, mediaMedium } from 'utils/css/styles';
 
 export const Container = styled.div`
-  margin-bottom: 10px;
   ${mediaMedium`
     margin-bottom: 0px;
   `};

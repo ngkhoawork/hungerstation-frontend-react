@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, mediaMedium } from 'utils/css/styles';
+import { flex, mediaMedium, sideMargin } from 'utils/css/styles';
 import Title from './Title';
 
 const StyledItem = styled.div`
@@ -12,10 +12,12 @@ const StyledItem = styled.div`
   ${mediaMedium`
     width: auto;
     margin-bottom: 8px;
-    margin-right: 16px;
+    ${sideMargin('end', '16px')};
 
     ${Title} {
-      margin: 8px 0 0;
+      margin-top: 8px;
+      margin-bottom: 0;
+      ${sideMargin('end', '0')};
     }
   `};
 `;

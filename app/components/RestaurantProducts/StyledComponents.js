@@ -7,6 +7,7 @@ import {
   mediaMediumGreater,
   sidePosition,
   sideMargin,
+  rotateArrowIcon,
 } from 'utils/css/styles';
 import { fontFamilyRegular, borderRadius } from 'utils/css/variables';
 import { lightGray, silverChalice } from 'utils/css/colors';
@@ -109,4 +110,7 @@ export const MobileFooter = styled.div`
 export const AddBtn = styled.div`
   ${flex({ align: 'center', shrink: 0 })};
   line-height: 1;
+`;
+export const IconContainer = styled.div`
+  ${rotateArrowIcon()};
 `;

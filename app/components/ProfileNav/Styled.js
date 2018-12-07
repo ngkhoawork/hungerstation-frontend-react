@@ -1,20 +1,24 @@
 import styled from 'styled-components';
-import { flex, mediaLess } from 'utils/css/styles';
+import { flex, mediaMedium } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 import { Link } from 'react-router-dom';
 
 const ContentWrapper = styled.div`
-  width: 100%;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-  }
+  width: 232px;
+  overflow-y: auto;
+  position: relative;
+  padding: 7px 24px 24px;
+  ${flex({ align: 'flex-start', direction: 'column' })};
 
-  ${mediaLess(600)`
+  ${mediaMedium`
+    width: 100%;
+    padding: 30px 24px 24px;
     height: calc(100% - 176px);
+    box-shadow: 0 0 35px 5px rgba(183, 157, 157, 0.09);
     border-bottom: 1px solid ${wildSand};
   `};
+
+  ${({ css }) => css};
 `;
 
 const Header = styled.div`

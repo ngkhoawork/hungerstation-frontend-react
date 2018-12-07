@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { restaurantsPropTypes } from 'propTypes/restaurants';
-import intl from 'utils/intlService';
-import { mediaLess, flex } from 'utils/css/styles';
+import { mediaLess, flex, sideMargin, sidePosition } from 'utils/css/styles';
 import { gold } from 'utils/css/colors';
-import { PageNotice } from 'utils/css/styledComponents';
 import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
-import globalMessages from 'translations/messages';
+import Loader from 'components/Loader';
 import StyledRestaurantList from './StyledRestaurantList';
 import RestaurantCard from './RestaurantCard';
 import ToolsPanel from './ToolsPanel';
@@ -31,10 +29,10 @@ const ScrollToListTopWrapper = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
   position: absolute;
   bottom: 5px;
-  right: 0px;
-  margin-right: -3%;
+  ${sidePosition('end', '0px')};
+  ${sideMargin('end', '-3%')};
   ${mediaLess(1400)`
-    margin-right: 0px;
+    ${sideMargin('end', '0px')};
   `};
 
   transform: rotate(270deg);
@@ -57,6 +55,13 @@ export default class RestaurantsList extends Component {
     };
   }
 
+  componentDidMount() {
+    // a hack since some elements' mounting is affecting scroll on intial mount
+    if (this.props.isLoading === undefined) {
+      setTimeout(() => window.scrollTo(0, 0), 1000);
+    }
+  }
+
   showMoreItems = () => {
     this.setState(prevState => ({
       paginationStage: prevState.paginationStage + 1,
@@ -65,20 +70,21 @@ export default class RestaurantsList extends Component {
   };
 
   get showLoadMoreButton() {
-    const { restaurants } = this.props;
+    const { restaurants, isLoading } = this.props;
     const { paginationStage } = this.state;
-    return paginationStage * PAGINATION_STEP <= restaurants.length;
+
+    return (
+      !isLoading &&
+      restaurants.length &&
+      paginationStage * PAGINATION_STEP <= restaurants.length
+    );
   }
 
   renderContent = () => {
     const { restaurants, isLoading } = this.props;
     const { paginationStage } = this.state;
 
-    if (isLoading) {
-      return (
-        <PageNotice>{intl.formatMessage(globalMessages.loading)}</PageNotice>
-      );
-    }
+    if (isLoading) return <Loader isFullscreen />;
 
     if (isLoading === false && !restaurants.length) return <NotFound />;
 
@@ -106,17 +112,17 @@ export default class RestaurantsList extends Component {
         {this.renderContent()}
 
         <ActionButtonsWrapper>
-          {restaurants.length !== 0 && (
+          {this.showLoadMoreButton ? (
             <ScrollToListTopWrapper onClick={handleScrollToTop}>
               <CircledItem width={28} color={gold} withShadow>
                 <Icon name="arrow-right" size={12} />
               </CircledItem>
             </ScrollToListTopWrapper>
-          )}
+          ) : null}
 
-          {this.showLoadMoreButton && (
+          {this.showLoadMoreButton ? (
             <LoadMore showMore={this.showMoreItems} />
-          )}
+          ) : null}
         </ActionButtonsWrapper>
       </StyledRestaurantList>
     );

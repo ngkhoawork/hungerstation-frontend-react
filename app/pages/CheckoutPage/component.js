@@ -10,8 +10,10 @@ import PaymentOptionsContainer from 'containers/PaymentOptionsContainer';
 import Back from 'containers/Back';
 import Step from 'components/Step';
 import Note from 'components/Note';
+import Loader from 'components/Loader';
 import { NavHeader } from 'utils/css/styledComponents';
 import { border } from 'utils/css/variables';
+import globalMessages from 'translations/messages';
 import messages from './messages';
 import {
   Container,
@@ -19,13 +21,15 @@ import {
   LeftSide,
   RightSide,
   cartBtnsStyle,
+  footerCss,
 } from './StyledComponents';
 
 class CheckoutPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { isBasketCartBtnVisible: true };
+    this.cartRef = React.createRef();
     this.cartEndRef = React.createRef();
     this.intersectObserver = new IntersectionObserver(this.handleIntersect);
   }
@@ -41,15 +45,18 @@ class CheckoutPage extends React.Component {
   handleIntersect = entries =>
     this.setState({ isBasketCartBtnVisible: !entries[0].isIntersecting });
 
+  handleBasketClick = () => this.cartRef.current.scrollIntoView();
+
   renderContent = () => {
     const { deliveryOptions = [], note, onOrderChange } = this.props;
     const hasDeliverySection = deliveryOptions.length > 1;
+    const stepCount = hasDeliverySection ? 3 : 2;
 
     return (
       <React.Fragment>
         <Step
           stepNo={1}
-          stepCount={3}
+          stepCount={stepCount}
           title={intl.formatMessage(messages.step1)}
         >
           <AddressesContainer onOrderChange={onOrderChange} />
@@ -57,7 +64,7 @@ class CheckoutPage extends React.Component {
         {hasDeliverySection ? (
           <Step
             stepNo={2}
-            stepCount={3}
+            stepCount={stepCount}
             title={intl.formatMessage(messages.step2)}
           >
             <DeliveryOptionsContainer onOrderChange={onOrderChange} />
@@ -66,8 +73,8 @@ class CheckoutPage extends React.Component {
           <DeliveryOptionsContainer onOrderChange={onOrderChange} />
         )}
         <Step
-          stepNo={hasDeliverySection ? 3 : 2}
-          stepCount={hasDeliverySection ? 3 : 2}
+          stepNo={stepCount}
+          stepCount={stepCount}
           title={intl.formatMessage(messages.step3)}
         >
           <PaymentOptionsContainer onOrderChange={onOrderChange} />
@@ -82,17 +89,23 @@ class CheckoutPage extends React.Component {
   };
 
   render() {
-    const { isLoading, params } = this.props;
+    const { params, isLoading, isCreateOrderLoading } = this.props;
     const { isBasketCartBtnVisible } = this.state;
 
     return (
       <Container>
+        {isLoading || isCreateOrderLoading ? (
+          <Loader
+            isFullscreen
+            label={intl.formatMessage(globalMessages.submitting)}
+          />
+        ) : null}
         <NavHeader isWithOffset>
           <Back />
         </NavHeader>
         <ContentContainer>
-          <LeftSide>{isLoading ? null : this.renderContent()}</LeftSide>
-          <RightSide>
+          <LeftSide>{this.renderContent()}</LeftSide>
+          <RightSide innerRef={this.cartRef}>
             <CartContainer
               params={params}
               onOrderCreate={this.props.onOrderCreate}
@@ -102,6 +115,7 @@ class CheckoutPage extends React.Component {
           <BasketCartButton
             css={cartBtnsStyle}
             params={params}
+            onBasketClick={this.handleBasketClick}
             innerStyle={{ opacity: isBasketCartBtnVisible ? 1 : 0 }}
           />
         </ContentContainer>
@@ -118,6 +132,9 @@ CheckoutPage.propTypes = {
   deliveryOptions: PropTypes.array,
   params: PropTypes.object.isRequired,
   isLoading: PropTypes.bool,
+  isCreateOrderLoading: PropTypes.bool,
 };
 
-export default withHeaderAndFooter(CheckoutPage);
+export default withHeaderAndFooter(CheckoutPage, {
+  footerProps: { css: footerCss },
+});

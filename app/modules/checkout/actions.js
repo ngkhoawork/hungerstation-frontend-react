@@ -1,5 +1,9 @@
 import createAction from 'utils/actions/createAction';
 
+export const checkoutRequest = createAction('checkout/REQUEST');
+
+export const checkoutError = createAction('checkout/ERROR');
+
 export const fetchDeliveryOptions = createAction(
   'checkout/FETCH_DELIVERY_OPTIONS',
   payload => payload,
@@ -20,10 +24,6 @@ export const fetchCreditCardsSuccess = createAction(
   payload => payload,
 );
 
-export const validateOrderRequest = createAction(
-  'checkout/VALIDATE_ORDER_REQUEST',
-);
-
 export const validateOrder = createAction(
   'checkout/VALIDATE_ORDER',
   payload => payload,
@@ -31,11 +31,6 @@ export const validateOrder = createAction(
 
 export const validateOrderSuccess = createAction(
   'checkout/VALIDATE_ORDER_SUCCESS',
-  payload => payload,
-);
-
-export const validateOrderError = createAction(
-  'checkout/VALIDATE_ORDER_ERROR',
   payload => payload,
 );
 
@@ -56,6 +51,8 @@ export const createOrder = createAction(
   payload => payload,
 );
 
+export const createOrderRequest = createAction('checkout/CREATE_ORDER_REQUEST');
+
 export const createOrderSuccess = createAction(
   'checkout/CREATE_ORDER_SUCCESS',
   payload => payload,
@@ -67,3 +64,5 @@ export const setCoupon = createAction(
 );
 
 export const removeCoupon = createAction('checkout/REMOVE_COUPON');
+
+export const clearCheckout = createAction('checkout/CLEAR_CHECKOUT');

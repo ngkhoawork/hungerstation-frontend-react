@@ -5,8 +5,9 @@ import Paper from '@material-ui/core/Paper';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from 'components/Icon';
 import CircledItem from 'components/CircledItem';
+import { fontFamilyLight } from 'utils/css/variables';
 import { wildSand } from 'utils/css/colors';
-import { itemToString, getSuggestions } from 'utils/helpers';
+import { itemToString, getSuggestions, calcWidth } from 'utils/helpers';
 
 import Input from './Input';
 import Suggestion from './Suggestion';
@@ -14,19 +15,33 @@ import Suggestion from './Suggestion';
 const Autocomplete = props => {
   const {
     classes,
-    placeholder,
     suggestions,
     onChange,
     selectedItem: item,
     icon,
     disabled,
+    enableAutoComplete,
+    autoCompleteTextOffset,
   } = props;
+
+  const stateReducer = (state, changes) => {
+    switch (changes.type) {
+      case Downshift.stateChangeTypes.changeInput:
+        return {
+          ...changes,
+          highlightedIndex: 0,
+        };
+      default:
+        return changes;
+    }
+  };
 
   return (
     <Downshift
       onChange={onChange}
       itemToString={itemToString}
       selectedItem={item}
+      stateReducer={stateReducer}
     >
       {({
         getInputProps,
@@ -40,9 +55,25 @@ const Autocomplete = props => {
         defaultInputValue,
       }) => {
         const renderedSuggestions = getSuggestions(suggestions, inputValue);
-
+        const suggestion = renderedSuggestions.get(highlightedIndex)
+          ? renderedSuggestions.get(highlightedIndex).get('name')
+          : '';
+        const space = ' ';
+        const placeholder =
+          space.repeat(inputValue.length) + suggestion.slice(inputValue.length);
+        const offsetX =
+          autoCompleteTextOffset +
+          calcWidth(inputValue, `16px ${fontFamilyLight}`);
         return (
           <div className={[classes.container]}>
+            {enableAutoComplete && (
+              <span
+                className={classes.backgroundSuggestion}
+                style={{ marginLeft: `${offsetX}px` }}
+              >
+                {placeholder}
+              </span>
+            )}
             <Input
               fullWidth
               classes={{
@@ -103,6 +134,13 @@ const Autocomplete = props => {
 
 Autocomplete.propTypes = {
   classes: PropTypes.object.isRequired,
+  autoCompleteTextOffset: PropTypes.number,
+  enableAutoComplete: PropTypes.bool,
+};
+
+Autocomplete.defaultProps = {
+  autoCompleteTextOffset: 51,
+  enableAutoComplete: false,
 };
 
 export default Autocomplete;

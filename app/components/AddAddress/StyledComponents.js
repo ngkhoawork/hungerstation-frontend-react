@@ -1,6 +1,14 @@
 import styled, { css } from 'styled-components';
 import Input from '@material-ui/core/Input';
-import { flex, mediaSmall, mediaMedium, sideMargin } from 'utils/css/styles';
+import {
+  flex,
+  mediaSmall,
+  mediaMedium,
+  mediaMediumGreater,
+  sideMargin,
+  sidePadding,
+  sidePosition,
+} from 'utils/css/styles';
 import {
   maxModalWidth,
   maxModalContentHeight,
@@ -8,23 +16,41 @@ import {
 } from 'utils/css/variables';
 import { lightGray } from 'utils/css/colors';
 
+export const containerCss = css`
+  ${mediaMediumGreater`width: 768px`};
+`;
+
 export const Container = styled.div`
   ${flex({ direction: 'column' })};
-  text-align: center;
-  width: 700px;
   position: relative;
   max-height: ${maxModalContentHeight};
+  margin-top: -15px;
+  width: calc(100% + 20px);
 
   ${mediaMedium`width: calc(${maxModalWidth} - 40px)`};
 `;
 
-const mapHeight = '250px';
-const smallMapHeight = '180px';
+export const subtitleCss = css`
+  margin: 10px 0 0 !important;
+`;
+
+const mapHeight = '30vh';
+const mediumMapHeight = '30vh';
+const smallMapHeight = '23vh';
 export const Map = styled.div`
   height: ${mapHeight};
   min-height: ${mapHeight};
-  width: calc(100% + 40px);
-  margin: 0 -20px 20px;
+  width: calc(100% + 45px);
+  margin-top: 0;
+  margin-bottom: 20px;
+  ${sideMargin('start', '-25px')};
+  ${sideMargin('end', '-20px')};
+
+  ${mediaMedium`
+    width: calc(100% + 55px);
+    height: ${mediumMapHeight};
+    min-height: ${mediumMapHeight};
+  `};
 
   ${mediaSmall`
     height: ${smallMapHeight};
@@ -32,41 +58,57 @@ export const Map = styled.div`
   `};
 `;
 
-const locationBigIconSize = '56px';
-export const markerStyle = {
-  position: 'absolute',
-  top: `calc(${mapHeight}/2 - ${locationBigIconSize})`,
-  left: `calc(50% - ${locationBigIconSize}/2)`,
-};
+const locationBigIconSize = '50px';
+export const markerStyle = css`
+  position: absolute;
+  left: calc(50% - ${locationBigIconSize} / 2);
+  top: calc(${mapHeight} / 2 - ${locationBigIconSize} / 2);
+
+  ${mediaMedium`
+    top: calc(${mediumMapHeight} / 2 - ${locationBigIconSize} / 2);
+  `};
+
+  ${mediaSmall`
+    top: calc(${smallMapHeight} / 2 - ${locationBigIconSize} / 2);
+  `};
+`;
 
 export const StyledInput = styled(Input)`
   position: absolute !important;
   width: 70%;
-  top: 20px;
-  left: 15%;
+  top: 10px;
+  ${sidePosition('start', '15%')};
   background: white;
-  padding: 0 30px 0 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  ${sidePadding('start', '10px;')};
+  ${sidePadding('end', '30px;')};
+
   ${mediaMedium`
     width: 100%;
-    left: 0;
+    ${sidePosition('start', '0')};
   `};
+
+  ${mediaSmall`top: 5px;`};
 `;
 
 export const locateMeStyle = css`
   position: absolute;
-  top: 25px;
-  right: calc(15% + 5px);
+  top: 15px;
+  ${sidePosition('end', 'calc(15% + 5px)')};
 
   ${mediaMedium`
-    right: 5px;
+    ${sidePosition('end', '5px')};
   `};
+
+  ${mediaSmall`top: 10px;`};
 `;
 
 export const Content = styled.div`
   overflow-y: auto;
   ${flex({ grow: 1 }, false)};
-  margin-bottom: 20px;
-  padding-right: 10px;
+  margin-bottom: 15px;
+  ${sidePadding('end', '10px;')};
 `;
 
 export const InputsContainer = styled.div`
@@ -88,14 +130,14 @@ export const Desc = styled.div`
 
 export const ZoomCtrl = styled.div`
   position: absolute;
-  right: 0;
-  top: calc(${mapHeight} - 60px);
+  ${sidePosition('end', '0')};
+  top: calc(${mapHeight} - 70px);
   ${flex({ direction: 'column' })};
   border-radius: 2px;
   background: white;
   overflow: hidden;
 
-  ${mediaSmall`top: calc(${smallMapHeight} - 60px)`};
+  ${mediaSmall`top: calc(${smallMapHeight} - 70px)`};
 `;
 
 export const ZoomBorder = styled.div`

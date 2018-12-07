@@ -11,9 +11,9 @@ const CircledItem = ({
   withShadow,
   onClick,
   inline,
-  style,
+  ...props
 }) => (
-  <StyledItem width={width} inline={inline} onClick={onClick} style={style}>
+  <StyledItem width={width} inline={inline} onClick={onClick} {...props}>
     <Circle color={color} width={width} withShadow={withShadow} />
     {children}
   </StyledItem>
@@ -26,7 +26,6 @@ CircledItem.propTypes = {
   children: PropTypes.node,
   withShadow: PropTypes.bool,
   onClick: PropTypes.func,
-  style: PropTypes.object,
 };
 
 CircledItem.defaultProps = {

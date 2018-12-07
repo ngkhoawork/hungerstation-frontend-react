@@ -7,11 +7,11 @@ import Price from 'components/Price';
 import Row from 'components/Row';
 import { Title } from 'components/Typography';
 import { alabaster } from 'utils/css/colors';
+import { StatusContent, Desktop, Mobile } from 'utils/css/styledComponents';
 import DateTimeElement from 'components/DateTime';
 import TrackingTimer from 'components/TrackingTimer';
-import messages from './messages';
 import DeliveryType from './DeliveryType';
-
+import OrderId from './OrderId';
 import {
   Item,
   Content,
@@ -24,89 +24,132 @@ import {
   IconPosition,
   Description,
   OrderState,
-  Status,
 } from '../StyledComponents';
-import OrderId from './OrderId';
-import ButtonWrapper from './ButtonWrapper';
+import { btnCss, mobileInfo } from './StyledComponents';
+import messages from './messages';
 
 const getDeliveryType = provider =>
   provider === 'hungerstation_delivery'
     ? intl.formatMessage(messages.fastDelivery)
     : intl.formatMessage(messages.restaurantDelivery);
 
-const OrderCard = ({ order, onOrderClick }) => (
-  <Item key={order.id}>
-    <Img image={order.image} />
-    <Content>
-      <div>
-        <Row justify="space-between">
-          <TitleContainer>
-            <Title css={titleStyle}>{order.restaurant.name}</Title>
-            <DeliveryLocation>
-              <IconPosition>
-                <Icon name="pin" />
-              </IconPosition>
-              {order.address}
-            </DeliveryLocation>
-          </TitleContainer>
-          <OrderState>
-            {order.state === 'successful' && (
-              <DateTimeElement time={order.delivedAt} />
-            )}
-            {order.state === 'failed' && <Status color="error">Failed</Status>}
-            {order.tracking.activeStatus && (
-              <TrackingTimer
-                startAt={order.createdAt}
-                endAt={order.deliveryEta}
-              />
-            )}
-          </OrderState>
-        </Row>
-        <OrderItems>
-          {order.orderItems.map(item => item.description).join(', ')}
-        </OrderItems>
-        <Row>
-          <Description>
-            <DeliveryType
-              iconName={
-                order.deliveryProvider === 'hungerstation_delivery'
-                  ? 'hungerstation-delivery'
-                  : 'car'
-              }
-              text={getDeliveryType(order.deliveryProvider)}
-            />
-            <OrderId id={order.id} />
-            <PriceContainer>
-              <Price price={order.price} isPrimary hasTag />
-            </PriceContainer>
-          </Description>
-          <ButtonWrapper>
-            <Button
-              primary={false}
-              lift={false}
-              color={alabaster}
-              fontSize={16}
-              inline
-              onClick={() => {
-                onOrderClick(order.id);
-              }}
-            >
-              {order.tracking.activeStatus
-                ? intl.formatMessage(messages.tracking)
-                : intl.formatMessage(messages.details)}
-              {order.tracking.activeStatus && (
-                <Icon style={{ marginLeft: '10px' }} name="car" />
+const OrderCard = ({ order, onOrderClick, onRateClick }) => {
+  const renderButton = () => {
+    if (onRateClick) {
+      // we don't show rate button in this relase
+      return null;
+      // if (order.state === 'failed') return null;
+
+      // return (
+      //   <Button
+      //     label={intl.formatMessage(messages.rateRestaurant)}
+      //     primary={false}
+      //     lift={false}
+      //     color={alabaster}
+      //     fontSize={16}
+      //     inline
+      //     onClick={onRateClick}
+      //     css={btnCss}
+      //     isRateBtn
+      //   />
+      // );
+    }
+
+    return (
+      <Button
+        primary={false}
+        lift={false}
+        color={alabaster}
+        fontSize={16}
+        inline
+        css={btnCss}
+        onClick={() => onOrderClick(order.id)}
+      >
+        {order.tracking.activeStatus
+          ? intl.formatMessage(messages.tracking)
+          : intl.formatMessage(messages.details)}
+        {order.tracking.activeStatus && (
+          <Icon style={{ marginLeft: '10px' }} name="car" />
+        )}
+      </Button>
+    );
+  };
+
+  const renderInfo = () => (
+    <React.Fragment>
+      <OrderItems>
+        {order.orderItems.map(item => item.description).join(', ')}
+      </OrderItems>
+      <Row>
+        <Description>
+          <DeliveryType
+            iconName={
+              order.deliveryProvider === 'hungerstation_delivery'
+                ? 'hungerstation-delivery'
+                : 'car'
+            }
+            text={getDeliveryType(order.deliveryProvider)}
+          />
+          <OrderId id={order.id} />
+          <PriceContainer>
+            <Price price={order.price} isPrimary hasTag />
+          </PriceContainer>
+        </Description>
+        <Desktop>{renderButton()}</Desktop>
+      </Row>
+    </React.Fragment>
+  );
+
+  return (
+    <Item key={order.id}>
+      <Row>
+        <Img image={order.image} />
+        <Content>
+          <Row justify="space-between">
+            <TitleContainer>
+              <Title css={titleStyle}>{order.restaurant.name}</Title>
+              <DeliveryLocation>
+                <IconPosition>
+                  <Icon name="pin" />
+                </IconPosition>
+                {order.address}
+              </DeliveryLocation>
+            </TitleContainer>
+            <OrderState>
+              {order.state === 'failed' && (
+                <StatusContent color="error" style={{ marginLeft: 5 }}>
+                  {intl.formatMessage(messages.failed)}
+                </StatusContent>
               )}
-            </Button>
-          </ButtonWrapper>
-        </Row>
-      </div>
-    </Content>
-  </Item>
-);
+              {/* eslint-disable */}
+              {order.state === 'successful' &&
+              (order.tracking.currentStateKey === 'delivered_successfully' ? (
+                <DateTimeElement
+                  time={order.delivedAt || new Date(order.deliveryEta).getTime() / 1000}
+                />
+              ) : (
+                <TrackingTimer
+                  startAt={order.createdAt}
+                  endAt={order.deliveryEta}
+                />
+              ))}
+              {/* eslint-enable */}
+            </OrderState>
+          </Row>
+          <Desktop>{renderInfo()}</Desktop>
+        </Content>
+      </Row>
+      <Mobile>
+        <Row css={mobileInfo}>{renderInfo()}</Row>
+        {renderButton()}
+      </Mobile>
+    </Item>
+  );
+};
 
 OrderCard.propTypes = {
   order: PropTypes.object.isRequired,
-  onOrderClick: PropTypes.func.isRequired,
+  onOrderClick: PropTypes.func,
+  onRateClick: PropTypes.func,
 };
 export default OrderCard;

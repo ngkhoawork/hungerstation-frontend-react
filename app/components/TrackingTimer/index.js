@@ -19,9 +19,8 @@ class TrackingTimer extends React.Component {
   }
 
   tick = () => {
-    const { startAt, endAt } = this.props;
-    const total = endAt - startAt;
-    const now = new Date().getTime() / 1000;
+    const { startAt, endAt = 0 } = this.props;
+    const now = Date.now() / 1000;
     if (now >= endAt) {
       clearInterval(this.intervalHandle);
       this.setState({
@@ -30,6 +29,7 @@ class TrackingTimer extends React.Component {
       });
       return;
     }
+    const total = endAt - startAt;
     const current = now - startAt;
     const percentage = (current * 100) / total;
     const remaining = Math.round(total - current);
@@ -85,7 +85,7 @@ class TrackingTimer extends React.Component {
 
 TrackingTimer.propTypes = {
   startAt: PropTypes.number.isRequired,
-  endAt: PropTypes.number.isRequired,
+  endAt: PropTypes.number,
 };
 
 export default TrackingTimer;

@@ -79,6 +79,7 @@ function reducer(state = initialState, { type, payload }) {
     case fetchAddressesSuccess.type:
       return Object.assign({}, state, {
         isLoading: false,
+        isAddressesInitialized: true,
         addresses: payload,
         primaryAddress: payload.find(addr => addr.branch_eligibility),
       });

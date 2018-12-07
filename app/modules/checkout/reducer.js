@@ -6,11 +6,13 @@ import {
   removeCoupon,
   fetchDeliveryOptionsSuccess,
   fetchCreditCardsSuccess,
-  validateOrderRequest,
+  checkoutRequest,
   validateOrderSuccess,
-  validateOrderError,
+  checkoutError,
+  createOrderRequest,
   createOrderSuccess,
   setNote,
+  clearCheckout,
 } from './actions';
 
 export const initialState = {
@@ -20,6 +22,12 @@ export const initialState = {
 
 function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case checkoutRequest.type:
+      return Object.assign({}, state, { isLoading: true });
+
+    case createOrderRequest.type:
+      return Object.assign({}, state, { isCreateOrderLoading: true });
+
     case selectDeliveryOption.type:
       return Object.assign({}, state, { selectedDeliveryOption: payload });
 
@@ -37,14 +45,12 @@ function reducer(state = initialState, { type, payload }) {
       return Object.assign({}, state, {
         deliveryOptions: options,
         selectedDeliveryOption,
+        isLoading: false,
       });
     }
 
     case fetchCreditCardsSuccess.type:
-      return Object.assign({}, state, { cards: payload });
-
-    case validateOrderRequest.type:
-      return Object.assign({}, state, { isLoadingOrderValidate: true });
+      return Object.assign({}, state, { cards: payload, isLoading: false });
 
     case validateOrderSuccess.type: {
       const { coupon, discount, errors_with_keys } = payload;
@@ -52,7 +58,11 @@ function reducer(state = initialState, { type, payload }) {
       const couponError = errors.find(({ key }) => key === 'coupon');
 
       return Object.assign({}, state, {
-        isLoadingOrderValidate: false,
+        isLoading: false,
+        isCouponLoading: false,
+        isCreateOrderLoading: errors.length
+          ? false
+          : state.isCreateOrderLoading,
         isValid: !errors.length,
         orderErrors: errors.filter(({ key }) => key !== 'coupon'),
         discount,
@@ -62,11 +72,11 @@ function reducer(state = initialState, { type, payload }) {
       });
     }
 
-    case validateOrderError.type:
-      return Object.assign({}, state, { isLoadingOrderValidate: false });
-
     case setCoupon.type:
-      return Object.assign({}, state, { coupon: payload });
+      return Object.assign({}, state, {
+        coupon: payload,
+        isCouponLoading: true,
+      });
 
     case removeCoupon.type:
       return Object.assign({}, state, { coupon: undefined, discount: 0 });
@@ -74,9 +84,15 @@ function reducer(state = initialState, { type, payload }) {
     case setNote.type:
       return Object.assign({}, state, { note: payload });
 
-    case createOrderSuccess.type:
-      return Object.assign({}, initialState);
+    case checkoutError.type:
+      return Object.assign({}, state, {
+        isLoading: false,
+        isCouponLoading: false,
+        isCreateOrderLoading: false,
+      });
 
+    case createOrderSuccess.type:
+    case clearCheckout.type:
     case logout.type:
       return Object.assign({}, initialState);
 

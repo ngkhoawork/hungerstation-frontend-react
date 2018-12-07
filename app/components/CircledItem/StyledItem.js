@@ -18,6 +18,7 @@ const StyledItem = styled.div`
   }
 
   ${({ style }) => style && css(style)};
+  ${({ css }) => css};
 `;
 
 export default StyledItem;

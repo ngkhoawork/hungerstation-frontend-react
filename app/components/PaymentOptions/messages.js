@@ -4,8 +4,8 @@ export default defineMessages({
   cards: {
     id: 'app.components.PaymentOptions.cards',
   },
-  otherOptions: {
-    id: 'app.components.PaymentOptions.otherOptions',
+  cash: {
+    id: 'app.components.PaymentOptions.cash',
   },
   cashOnDelivery: {
     id: 'app.components.PaymentOptions.cashOnDelivery',
@@ -15,6 +15,9 @@ export default defineMessages({
   },
   addCoupon: {
     id: 'app.components.PaymentOptions.addCoupon',
+  },
+  promoCode: {
+    id: 'app.components.PaymentOptions.promoCode',
   },
   deleteCoupon: {
     id: 'app.components.PaymentOptions.deleteCoupon',
@@ -27,5 +30,8 @@ export default defineMessages({
   },
   couponAddressRequired: {
     id: 'app.components.PaymentOptions.couponAddressRequired',
+  },
+  applyingCoupon: {
+    id: 'app.components.PaymentOptions.applyingCoupon',
   },
 });
