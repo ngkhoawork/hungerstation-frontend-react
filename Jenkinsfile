@@ -8,30 +8,6 @@ pipeline {
     kubernetes {
       label 'jnlp-light'
       defaultContainer 'jnlp'
-      yaml """
-      spec:
-        containers:
-        - name: jnlp
-          workingDir: '/root/'
-          image: 'gcr.io/hungerstation-configs/jnlp'
-          imagePullPolicy: 'Always'
-          resources:
-            requests:
-              memory: '500M'
-              cpu: '0.5'
-          volumeMounts:
-          - mountPath: /var/run/docker.sock
-            name: docker-sock
-          - mountPath: /usr/bin/docker
-            name: docker
-        volumes:
-        - name: docker
-          hostPath:
-            path: /usr/bin/docker
-        - name: docker-sock
-          hostPath:
-            path: /var/run/docker.sock
-      """
     }
   }
 
