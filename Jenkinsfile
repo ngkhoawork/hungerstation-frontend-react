@@ -1,5 +1,6 @@
-def app, utils
+def app, utils, buildImage
 def imageName = 'gcr.io/hungerstation-configs/customer-website-frontend'
+def buildImageName = 'gcr.io/hungerstation-configs/customer-website-frontend-build'
 def deployableBranches = ["development", "master"]
 def platformChart = "http://charts.hsips.net/charts/customer-website-frontend-0.1.0.tgz"
 
@@ -50,15 +51,9 @@ pipeline {
             apiEnv = "production"
           }
 
-          tempImageName = BRANCH_NAME.toLowerCase()
-
-          if (BRANCH_NAME == 'master') {
-            apiEnv = "production"
-          }
-
+          buildImageTag = "$buildImageName:$BRANCH_NAME"
           utils.dockerRegistry {
-            sh "docker pull $imageName:development"
-            app = docker.build("$tempImageName", "--cache-from=$imageName:development --build-arg API_ENV=$apiEnv -f Dockerfile.build .")
+            buildImage = docker.build("$buildImageTag", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")
           }
 
         }
@@ -72,7 +67,7 @@ pipeline {
 
       steps {
         script {
-          app.inside() {
+          buildImage.inside() {
             sh "yarn && yarn lint"
           }
         }
@@ -87,13 +82,11 @@ pipeline {
       steps {
         script {
           utils.dockerRegistry {
-            sh "docker run --name $BRANCH_NAME $BRANCH_NAME /bin/true"
+            sh "docker run --name $BRANCH_NAME $buildImageTag /bin/true"
             sh "docker cp $BRANCH_NAME:/home/customer-website-frontend/build build"
             sh "docker rm $BRANCH_NAME"
             app = docker.build("$imageName:$COMMIT", ".")
           }
-
-          utils.pushImage(app, ["$COMMIT", "$BRANCH_NAME", "$BRANCH_NAME-$BUILD_NUMBER"])
         }
       }
     }
