@@ -38,8 +38,18 @@ class RestaurantPage extends React.Component {
     if (id !== state.restaurantId) {
       return {
         // selectedMenuGroup: menu.menugroups.find(isDayTimeMatch),
+        menugroups: menu.menugroups,
         selectedMenuGroup: menu.menugroups[0],
         restaurantId: id,
+      };
+    }
+
+    if (menu && menu.menugroups !== state.menugroups) {
+      return {
+        menugroups: menu.menugroups,
+        selectedMenuGroup:
+          menu.menugroups.find(({ id }) => id === state.selectedMenuGroup.id) ||
+          menu.menugroups[0],
       };
     }
 

@@ -1,8 +1,13 @@
-import { request } from 'utils/api';
+import { request, arbitraryRequest } from 'utils/api';
+import intlService from 'utils/intlService';
 import { getBranchQuery, getBranchDeliveryConditionsQuery } from './query';
 
 export const getBranch = id =>
-  request(getBranchQuery, { id: parseInt(id, 10) });
+  arbitraryRequest(
+    { 'Accept-Language': intlService.getLocale() },
+    getBranchQuery,
+    { id: parseInt(id, 10) },
+  );
 
 export const getDeliveryConditions = ({ branchId, districtId }) => {
   const params = {
