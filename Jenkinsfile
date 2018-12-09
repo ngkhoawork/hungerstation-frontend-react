@@ -57,7 +57,8 @@ pipeline {
           }
 
           utils.dockerRegistry {
-            app = docker.build("$tempImageName", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")
+            sh "docker pull $imageName:development"
+            app = docker.build("$tempImageName", "--cache-from=$imageName:development --build-arg API_ENV=$apiEnv -f Dockerfile.build .")
           }
 
         }
