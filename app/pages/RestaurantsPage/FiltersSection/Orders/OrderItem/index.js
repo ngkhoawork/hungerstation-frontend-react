@@ -50,7 +50,8 @@ class OrderItem extends React.Component {
 
     const PositionRangeValue = styled.div`
       position: relative;
-      ${sidePosition('start', positionDesktop)} ${mediaLess(950)` 
+      ${sidePosition('start', positionDesktop)};
+       ${mediaLess(950)` 
         ${sidePosition('start', positionMobile)};
       `};
     `;
