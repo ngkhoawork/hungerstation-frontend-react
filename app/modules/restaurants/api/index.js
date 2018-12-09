@@ -1,4 +1,5 @@
-import { request } from 'utils/api';
+import { arbitraryRequest } from 'utils/api';
+import intlService from 'utils/intlService';
 import { getDeliveriesQuery, getDeliveryFiltersQuery } from './query';
 
 const getRestaurants = ({ lat, lng, deliveryType, localId }) => {
@@ -12,12 +13,18 @@ const getRestaurants = ({ lat, lng, deliveryType, localId }) => {
     params.lat = lat;
     params.lng = lng;
   }
-  return request(getDeliveriesQuery, {
-    ...params,
-  });
+  return arbitraryRequest(
+    { 'Accept-Language': intlService.getLocale() },
+    getDeliveriesQuery,
+    { ...params },
+  );
 };
 
-const getDeliveryFilters = () => request(getDeliveryFiltersQuery);
+const getDeliveryFilters = () =>
+  arbitraryRequest(
+    { 'Accept-Language': intlService.getLocale() },
+    getDeliveryFiltersQuery,
+  );
 
 export default {
   getRestaurants,
