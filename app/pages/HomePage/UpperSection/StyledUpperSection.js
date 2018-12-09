@@ -8,6 +8,8 @@ import bgImgSmall from 'images/homeMob.png';
 import bgImgSmall2x from 'images/homeMob@2x.png';
 import bgImgSmall3x from 'images/homeMob@3x.png';
 
+const gradient = 'linear-gradient(180deg, #515C54 0%, transparent 50%)';
+
 const StyledUpperSection = styled.div`
   ${flex({ align: 'center', justify: 'center', direction: 'column' })};
 
@@ -15,11 +17,11 @@ const StyledUpperSection = styled.div`
   margin-top: 8px;
   width: 100%;
   padding-bottom: 80px;
-  background-image: url(${bgImg});
   background-size: cover;
+  background-image: ${gradient}, url(${bgImg});
 
-  ${device.retina`background-image: url(${bgImg2x});`};
-  ${device.retina3x`background-image: url(${bgImg3x});`};
+  ${device.retina`background-image: ${gradient}, url(${bgImg2x});`};
+  ${device.retina3x`background-image: ${gradient}, url(${bgImg3x});`};
 
   ${mediaMedium`
     padding-bottom: 20px;
