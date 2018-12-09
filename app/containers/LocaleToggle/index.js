@@ -11,8 +11,8 @@ import { createSelector } from 'reselect';
 
 import { appLocales } from 'i18n';
 import { changeLocaleAction } from 'containers/LanguageProvider/actions';
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
 import OptionsChoice from './OptionsChoice';
-import { makeSelectLocale } from '../LanguageProvider/selectors';
 
 const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
   locale,
