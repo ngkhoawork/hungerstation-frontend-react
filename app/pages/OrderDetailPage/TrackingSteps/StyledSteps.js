@@ -7,6 +7,8 @@ import {
   mediaMedium,
   mediaMediumGreater,
   sidePosition,
+  sideMargin,
+  sidePadding,
 } from 'utils/css/styles';
 import Button from 'components/Button';
 
@@ -16,16 +18,19 @@ export const StyledWrapper = styled.div`
 `;
 
 export const StyledStep = styled(Step)`
+  display: flex !important;
   .rc-steps-item-content {
     display: flex !important;
     min-height: 64px !important;
-    justify-content: space-between;
-
+    flex-grow: 0.8;
+    flex-basis: 0;
     ${mediaMedium`flex-direction: column;`};
 
     .rc-steps-item-title {
       flex: 1;
       font-size: 16px;
+      ${sidePadding('start', '5px;')};
+      ${sidePadding('end', '0px;')};
     }
     .rc-steps-item-description {
       flex: 1;
@@ -36,6 +41,14 @@ export const StyledStep = styled(Step)`
 `;
 
 export const StyledSteps = styled(Steps)`
+  .rc-steps-item-tail {
+    right: 13px;
+  }
+  .rc-steps-item-icon {
+    ${sideMargin('start', '0')};
+    ${sideMargin('end', '8px')};
+  }
+
   .rc-steps-item-finish {
     .rc-steps-item-tail {
       &:after {

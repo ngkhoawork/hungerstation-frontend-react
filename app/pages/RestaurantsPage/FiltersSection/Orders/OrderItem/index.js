@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'utils/perf';
+import { sidePosition, mediaLess } from 'utils/css/styles';
+import styled from 'styled-components';
 import {
   StyledOrderItem,
   Name,
@@ -39,7 +41,19 @@ class OrderItem extends React.Component {
     const { label, range } = this.props;
     const { value } = this.state;
     const percent = getPercent(range, value);
+    const screenWidth = window.screen.width;
+    const percentage = (screenWidth - 100) / 100;
+    const desktop = percent + (percent / 100) * 24;
+    const mobile = percent * percentage - percentage;
+    const positionDesktop = `${desktop}px`;
+    const positionMobile = `${mobile}px`;
 
+    const PositionRangeValue = styled.div`
+      position: relative;
+      ${sidePosition('start', positionDesktop)} ${mediaLess(950)` 
+        ${sidePosition('start', positionMobile)};
+      `};
+    `;
     return (
       <StyledOrderItem>
         <Name>{label}</Name>
@@ -53,10 +67,8 @@ class OrderItem extends React.Component {
               value={value}
             />
             <RangeProgressBar style={{ width: `${percent}%` }} />
-            <RangeValue
-              style={{ left: `calc(${percent}% - ${(percent / 100) * 24}px)` }}
-            >
-              {value}
+            <RangeValue>
+              <PositionRangeValue>{value}</PositionRangeValue>
             </RangeValue>
           </RangeContainer>
           <Number>{range.max}</Number>

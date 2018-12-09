@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
+import { css } from 'styled-components';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
 import Price from 'components/Price';
@@ -10,6 +11,7 @@ import { alabaster } from 'utils/css/colors';
 import { StatusContent, Desktop, Mobile } from 'utils/css/styledComponents';
 import DateTimeElement from 'components/DateTime';
 import TrackingTimer from 'components/TrackingTimer';
+import { sideMargin } from 'utils/css/styles';
 import DeliveryType from './DeliveryType';
 import OrderId from './OrderId';
 import {
@@ -68,9 +70,7 @@ const OrderCard = ({ order, onOrderClick, onRateClick }) => {
         {order.tracking.activeStatus
           ? intl.formatMessage(messages.tracking)
           : intl.formatMessage(messages.details)}
-        {order.tracking.activeStatus && (
-          <Icon style={{ marginLeft: '10px' }} name="car" />
-        )}
+        {order.tracking.activeStatus && <Icon style={iconStyle} name="car" />}
       </Button>
     );
   };
@@ -153,3 +153,6 @@ OrderCard.propTypes = {
   onRateClick: PropTypes.func,
 };
 export default OrderCard;
+const iconStyle = css`
+  ${sideMargin('start', '10px')};
+`;

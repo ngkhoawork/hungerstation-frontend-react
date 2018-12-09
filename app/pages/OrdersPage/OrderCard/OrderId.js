@@ -8,7 +8,7 @@ import { silverChalice } from 'utils/css/colors';
 // TODO: this should not be using Paragraphs
 const OrderId = ({ id, textSize = 14 }) => (
   <Row align="center">
-    <Paragraph size={textSize} color={silverChalice} margin="0 10px 0 0">
+    <Paragraph size={textSize} color={silverChalice} margin="0 10px 0 10px">
       ID
     </Paragraph>
     <CopyToClipboard text={id}>
