@@ -13,12 +13,17 @@ const Container = styled.div`
 `;
 
 const Quantity = styled.span`
-  margin: 0 10px;
+  margin: 0 5px;
+  min-width: 20px;
+  text-align: center;
 `;
 
 const QuantitySelect = ({ quantity, onChange }) => (
   <Container>
-    <Icon name="minus" onClick={() => onChange(quantity - 1)} />
+    <Icon
+      name={`minus${quantity > 1 ? '-gold' : ''}`}
+      onClick={() => onChange(quantity - 1)}
+    />
     <Quantity>{quantity}</Quantity>
     <Icon name="plus" onClick={() => onChange(quantity + 1)} />
   </Container>
