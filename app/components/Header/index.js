@@ -87,6 +87,7 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {}, ...props }) => (
             leftIcon={getLeftIcon(userInfo.name)}
             isRightAligned
             isHidden={props.isShown === false}
+            isLight={!variant}
           />
         ) : (
           <StyledLink to="/login">

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gold } from 'utils/css/colors';
+import { gold, fuscousGray } from 'utils/css/colors';
 import {
   flex,
   mediaSmall,
@@ -60,7 +60,13 @@ export const StyledUserInfo = styled.div`
 `;
 
 export const StyledHeader = styled.div`
-  ${props => props.gold && `background-color: ${gold};`};
+  color: white;
+  ${props =>
+    props.gold &&
+    `
+    background-color: ${gold};
+    color: ${fuscousGray};
+  `};
   display: flex;
   width: 100%;
   height: ${headerHeight};
