@@ -4,12 +4,20 @@ import { paleSlate } from 'utils/css/colors';
 import bgImg from 'images/home.png';
 import bgImg2x from 'images/home@2x.png';
 import bgImg3x from 'images/home@3x.png';
-import bgImgSmall from 'images/homeMob.png';
-import bgImgSmall2x from 'images/homeMob@2x.png';
-import bgImgSmall3x from 'images/homeMob@3x.png';
+import bgImgSmall from 'images/mobile-homepage-header.png';
+import bgImgSmall2x from 'images/mobile-homepage-header@2x.png';
+import bgImgSmall3x from 'images/mobile-homepage-header@3x.png';
 
 const gradient =
-  'linear-gradient(180deg, rgba(81, 92, 84, 0.5) 0%, transparent 50%)';
+  'linear-gradient(180deg, rgba(81,92,84,0.5) 0%, transparent 50%)';
+
+const gradientMob1 = 'linear-gradient(180deg, transparent 58%, #88C3AB 70%)';
+const gradientMob2 =
+  'linear-gradient(180deg, transparent 0%, rgba(147,146,146,0.38) 65%, rgba(0,0,0,0.68) 98%)';
+const gradientMob3 =
+  'linear-gradient(rgba(134,134,134,0.21), rgba(134,134,134,0.21))';
+const gradientMob4 = 'linear-gradient(rgba(81,4,4,0.04), rgba(81,4,4,0.04))';
+const mobileGradient = `${gradientMob4}, ${gradientMob3}, ${gradientMob2}, ${gradientMob1}`;
 
 const StyledUpperSection = styled.div`
   ${flex({ align: 'center', justify: 'center', direction: 'column' })};
@@ -31,10 +39,10 @@ const StyledUpperSection = styled.div`
   `};
 
   ${mediaSmall`
-    background-image: url(${bgImgSmall});
+    background-image: ${mobileGradient}, url(${bgImgSmall});
 
-    ${device.retina`background-image: url(${bgImgSmall2x});`};
-    ${device.retina3x`background-image: url(${bgImgSmall3x});`};
+    ${device.retina`background-image: ${mobileGradient}, url(${bgImgSmall2x});`};
+    ${device.retina3x`background-image: ${mobileGradient}, url(${bgImgSmall3x});`};
   `};
 `;
 
