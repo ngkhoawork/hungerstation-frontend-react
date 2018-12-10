@@ -75,7 +75,7 @@ function reducer(state = initialState, { type, payload }) {
     case setCoupon.type:
       return Object.assign({}, state, {
         coupon: payload,
-        isCouponLoading: true,
+        isCouponLoading: !payload.isDisabled && true,
       });
 
     case removeCoupon.type:
