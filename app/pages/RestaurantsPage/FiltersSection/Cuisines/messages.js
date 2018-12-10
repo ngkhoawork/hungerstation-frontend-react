@@ -4,4 +4,10 @@ export default defineMessages({
   allCuisines: {
     id: 'app.components.FiltersSection.Cuisines.allCuisines',
   },
+  more: {
+    id: 'app.components.FiltersSection.Cuisines.more',
+  },
+  less: {
+    id: 'app.components.FiltersSection.Cuisines.less',
+  },
 });

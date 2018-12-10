@@ -16,4 +16,7 @@ export default defineMessages({
   buttonApply: {
     id: 'app.components.FiltersSection.buttonApply',
   },
+  minimumOrder: {
+    id: 'app.components.FiltersSection.minimumOrder',
+  },
 });

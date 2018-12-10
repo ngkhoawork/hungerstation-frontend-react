@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import intl from 'utils/intlService';
 import PropTypes from 'prop-types';
 
 import { changeOrderFilterAction } from 'modules/restaurants/actions';
@@ -12,6 +13,7 @@ import {
 import CategoryTitle from '../CategoryTitle';
 import { StyledFiltersCategoryWrapper } from '../Styled';
 import OrderItem from './OrderItem';
+import messages from '../messages';
 
 const decorate = connect(
   state => ({
@@ -32,7 +34,7 @@ const Orders = ({
   <StyledFiltersCategoryWrapper>
     {title && <CategoryTitle title={title} withoutQuantity />}
     <OrderItem
-      label="Minimum order"
+      label={intl.formatMessage(messages.minimumOrder)}
       range={minOrderRange}
       filterKey="min_order"
       toggleFilterAction={changeOrderFilterAction}

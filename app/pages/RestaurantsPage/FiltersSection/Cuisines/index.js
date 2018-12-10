@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import intl from 'utils/intlService';
 
 import { fuscousGray, silverChalice, lighterGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
@@ -18,6 +19,7 @@ import {
   StyledKitchenItemsWrapper,
 } from './Styled';
 import AllCuisinesItem from './AllCuisines';
+import messages from './messages';
 
 const Cuisine = styled.p`
   font-family: ${fontFamilyRegular};
@@ -86,7 +88,11 @@ class Cuisines extends React.Component {
           onClick={this.toggleExpand}
           isExpanded={expanded}
         >
-          <Paragraph>{expanded ? 'Less' : 'More'}</Paragraph>
+          <Paragraph>
+            {expanded
+              ? intl.formatMessage(messages.less)
+              : intl.formatMessage(messages.more)}
+          </Paragraph>
           <Icon name="arrow-circled" size={13} />
         </StyledExpandActionWrapper>
       </StyledFiltersCategoryWrapper>
