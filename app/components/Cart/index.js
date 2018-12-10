@@ -34,7 +34,6 @@ const Cart = ({
   removeFromCart,
   onItemEditClick,
   onCartSubmit,
-  orderErrors,
   ...props
 }) => {
   const minAmount = getDeepProp(branch, [
@@ -63,9 +62,7 @@ const Cart = ({
   const renderNotice = () => {
     let message;
 
-    if (orderErrors) {
-      message = orderErrors.map(({ value }) => value).join('\n');
-    } else if (branch.status === 'busy') {
+    if (branch.status === 'busy') {
       message = intl.formatMessage(messages.busy, { name });
     } else if (branch.status === 'soon') {
       const allMessages = [intl.formatMessage(messages.closed, { name })];
@@ -190,7 +187,6 @@ Cart.propTypes = {
   removeFromCart: PropTypes.func.isRequired,
   onItemEditClick: PropTypes.func.isRequired,
   onCartSubmit: PropTypes.func,
-  orderErrors: PropTypes.array,
 };
 
 export default Cart;

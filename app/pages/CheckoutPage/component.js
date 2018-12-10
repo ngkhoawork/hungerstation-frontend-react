@@ -7,6 +7,7 @@ import BasketCartButton from 'containers/BasketCartButton';
 import AddressesContainer from 'containers/AddressesContainer';
 import DeliveryOptionsContainer from 'containers/DeliveryOptionsContainer';
 import PaymentOptionsContainer from 'containers/PaymentOptionsContainer';
+import InvalidOrder from 'containers/InvalidOrder';
 import Back from 'containers/Back';
 import Step from 'components/Step';
 import Note from 'components/Note';
@@ -97,9 +98,14 @@ class CheckoutPage extends React.Component {
         {isLoading || isCreateOrderLoading ? (
           <Loader
             isFullscreen
-            label={intl.formatMessage(globalMessages.submitting)}
+            label={
+              isCreateOrderLoading
+                ? intl.formatMessage(globalMessages.submitting)
+                : undefined
+            }
           />
         ) : null}
+        <InvalidOrder />
         <NavHeader isWithOffset>
           <Back />
         </NavHeader>
