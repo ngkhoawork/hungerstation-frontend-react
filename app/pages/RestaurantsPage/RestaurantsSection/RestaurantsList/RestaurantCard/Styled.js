@@ -51,6 +51,7 @@ const StyledBottomPart = styled.div`
   width: 100%;
   padding: 5px 15px 15px 15px;
   flex: 0.4;
+  border-radius: 0 0 8px 8px;
 `;
 
 export { StyledRestaurantCard, StyledUpperPart, StyledBottomPart };
