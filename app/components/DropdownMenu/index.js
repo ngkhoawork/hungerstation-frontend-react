@@ -38,7 +38,7 @@ class DropdownMenu extends Component {
   };
 
   render() {
-    const { leftIcon, label = '', items, isRightAligned } = this.props;
+    const { leftIcon, label = '', items, isRightAligned, isLight } = this.props;
     const { isDropdownVisible } = this.state;
 
     return (
@@ -53,7 +53,7 @@ class DropdownMenu extends Component {
             <span style={{ color: persimmon, zIndex: 1 }}>{leftIcon}</span>
           </CircledItem>
           <Label>{label}</Label>
-          <Icon name="arrow-dropdown" />
+          <Icon name={`arrow-dropdown${isLight ? '-white' : ''}`} />
         </StyledDropdown>
         {isDropdownVisible ? (
           <SubMenu
@@ -69,6 +69,7 @@ class DropdownMenu extends Component {
 }
 
 DropdownMenu.propTypes = {
+  isLight: PropTypes.bool,
   leftIcon: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   label: PropTypes.string,
