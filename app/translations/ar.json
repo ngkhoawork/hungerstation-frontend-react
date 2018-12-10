@@ -49,6 +49,8 @@
 	"app.components.Cart.vat": "جميع الأسعار تشمل {percent}٪ ضريبة القيمة المضافة",
 	"app.components.Cart.yourOrder": "طلبك",
 	"app.components.Cart.yourOrderFrom": "طلبك من",
+	"app.components.InvalidOrder.title": "Order Validation Error",
+	"app.components.InvalidOrder.btn": "Ok",
 	"app.components.CheckoutPage.IneligibleAddress.description": "المعذرة! المطعم لن يتمكن من توصيل الطلب إلى موقعك. الرجاء تغيير الموقع أو اختيار مطعم آخر",
 	"app.components.CheckoutPage.IneligibleAddress.edit": "تعديل العنوان",
 	"app.components.CheckoutPage.IneligibleAddress.search": "ابحث في منطقتك",

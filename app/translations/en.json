@@ -49,6 +49,8 @@
 	"app.components.Cart.vat": "All prices are {percent}% VAT inclusive",
 	"app.components.Cart.yourOrder": "Your Order",
 	"app.components.Cart.yourOrderFrom": "Your order from",
+	"app.components.InvalidOrder.title": "Order Validation Error",
+	"app.components.InvalidOrder.btn": "Ok",
 	"app.components.CheckoutPage.IneligibleAddress.description": "Sorry, Selected address is not eligible for delivery by the restaurant. Please change your address or choose a different restaurant.",
 	"app.components.CheckoutPage.IneligibleAddress.edit": "Edit address",
 	"app.components.CheckoutPage.IneligibleAddress.search": "Search in your area",
