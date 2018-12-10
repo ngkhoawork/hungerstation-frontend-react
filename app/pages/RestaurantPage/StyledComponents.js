@@ -60,7 +60,7 @@ export const Header = styled.div`
   border-top-right-radius: ${borderRadius};
   width: 100%;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-image: url(${restaurantImg});
 
   ${mediaMediumGreater`padding-top: 31.782945736%;`};
