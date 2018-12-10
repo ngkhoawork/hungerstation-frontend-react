@@ -50,10 +50,8 @@ export function* refreshTokens() {
       accessToken: tokens.token,
       accessTokenExpiresAt: getTokenExpire(tokens.token),
     });
-    return null;
   } catch (err) {
     yield put(logout());
-    return err;
   }
 }
 
