@@ -6,6 +6,7 @@ import {
   mediaMedium,
   sideMargin,
   sidePadding,
+  sidePosition,
   sideModal,
 } from 'utils/css/styles';
 import {
@@ -32,9 +33,7 @@ const ModalFrame = ({
       <Description style={{ marginTop: 16 }} css={subtitleCss}>
         {subtitle}
       </Description>
-      <CloseBtn>
-        <Icon name="close-modal" onClick={onCancel} style={CloseBtnStyle} />
-      </CloseBtn>
+      <Icon name="close-modal" onClick={onCancel} css={CloseBtnCss} />
     </Header>
     {children}
   </Container>
@@ -97,10 +96,9 @@ const Header = styled.div`
   ${({ style }) => style && css(style)};
   ${({ css }) => css};
 `;
-const CloseBtn = styled.div`
-  ${sidePadding('start', 'calc(100% + 30px)')};
+
+const CloseBtnCss = css`
+  position: absolute;
+  top: 16px;
+  ${sidePosition('end', '16px')};
 `;
-const CloseBtnStyle = {
-  position: 'absolute',
-  top: '16px',
-};
