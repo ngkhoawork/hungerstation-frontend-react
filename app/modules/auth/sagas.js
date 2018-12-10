@@ -43,9 +43,7 @@ export function* logoutWoker() {
 
 export function* refreshTokens() {
   try {
-    // NOTE: this should be sending refreshToken and not accessToken,
-    // but the current backend implementation is incorrect.
-    const { accessToken: token } = yield select(makeSelectTokens);
+    const { refreshToken: token } = yield select(makeSelectTokens);
     const { refreshToken: tokens } = yield call(usersApi.refreshToken, token);
     yield saveTokens({
       refreshToken: tokens.refresh_token,
@@ -65,9 +63,13 @@ export function* refreshTokensIfExpired() {
   if (Date.now() >= accessTokenExpiresAt) yield call(refreshTokens);
 }
 
-export function* getCurrentUser(tokens) {
+export function* getCurrentUser() {
   try {
-    const { user } = yield call(usersApi.getUser, tokens.accessToken);
+    yield call(refreshTokensIfExpired);
+    yield delay(50);
+
+    const { accessToken } = yield select(makeSelectTokens);
+    const { user } = yield call(usersApi.getUser, accessToken);
     yield put(setCurrentUser({ user }));
   } catch (err) {
     yield put(logout());
@@ -87,9 +89,7 @@ export function* authenticationFlow() {
     }
 
     yield put(updateTokens(tokens));
-    yield call(refreshTokensIfExpired);
-    yield delay(50);
-    yield call(getCurrentUser, tokens);
+    yield call(getCurrentUser);
   }
 }
 
