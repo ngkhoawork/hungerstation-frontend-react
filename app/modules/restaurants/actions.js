@@ -63,3 +63,5 @@ export const resetChosenFiltersAction = createAction(
 );
 
 export const resetCuisinesAction = createAction('restaurants/RESET_CUISINES');
+
+export const resetState = createAction('restaurants/RESET_STATE');

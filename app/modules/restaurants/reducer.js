@@ -14,6 +14,7 @@ import {
   discardFiltersToSavedStageAction,
   changeOrderFilterAction,
   resetCuisinesAction,
+  resetState,
 } from './actions';
 import { MIN_ORDER_RANGE, TIME_ESTIMATION_RANGE } from './constants';
 
@@ -124,6 +125,7 @@ function reducer(state = initialState, action) {
     case searchRestaurantAction.type:
       return state.set('search', action.payload);
 
+    case resetState.type:
     case logout.type:
       return initialState;
 

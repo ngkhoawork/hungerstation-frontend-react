@@ -1,28 +1,24 @@
 import React from 'react';
-import PageContent from 'components/PageContent';
-import Back from 'containers/Back';
-import { withHeaderAndFooter } from 'hocs/withInsertLayout';
-import withRestaurants from 'hocs/withRestaurants';
-import Breadcrumbs from 'components/Breadcrumbs';
-import { NavHeader } from 'utils/css/styledComponents';
-import RestaurantsSection from './RestaurantsSection';
-import FiltersSection from './FiltersSection';
-import FiltersWrapper from './FiltersWrapper';
-import StyledListPage from './StyledListPage';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { resetState } from 'modules/restaurants/actions';
+import RestaurantsPage from './component';
 
-const RestaurantsPage = () => (
-  <PageContent>
-    <NavHeader>
-      <Back />
-      <Breadcrumbs />
-    </NavHeader>
-    <StyledListPage>
-      <FiltersWrapper>
-        <FiltersSection />
-      </FiltersWrapper>
-      <RestaurantsSection />
-    </StyledListPage>
-  </PageContent>
-);
+class RestaurantsPageHOC extends React.Component {
+  componentWillUnmount() {
+    this.props.resetState();
+  }
 
-export default withRestaurants(withHeaderAndFooter(RestaurantsPage));
+  render() {
+    return <RestaurantsPage {...this.props} />;
+  }
+}
+
+RestaurantsPageHOC.propTypes = {
+  resetState: PropTypes.func.isRequired,
+};
+
+export default connect(
+  null,
+  { resetState },
+)(RestaurantsPageHOC);
