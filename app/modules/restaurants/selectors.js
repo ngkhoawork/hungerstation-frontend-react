@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 import { keyBy, pick, values, flow, find } from 'lodash/fp';
+import intl from 'utils/intlService';
 import { initialState } from './reducer';
-
+import messages from '../../hocs/withSelectedLocationAndFilters/messages';
 /**
  * Direct selector to the restaurantsListContainer state domain
  */
@@ -119,7 +120,7 @@ export const selectDynamicFilters = createSelector(
           (acc, { name }) => [...acc, name],
           [],
         )
-      : ['All Cuisines'];
+      : [intl.formatMessage(messages.allCuisines)];
     /* eslint-anable */
 
     const dynamicTags = pickArrayElementsByType(tagsTypes)(tags).reduce(
@@ -129,7 +130,7 @@ export const selectDynamicFilters = createSelector(
 
     const dynamicDeliveryOption =
       deliveryOption === 'all'
-        ? 'All Delivery Types'
+        ? intl.formatMessage(messages.allDeliveryTypes)
         : find({ type: deliveryOption }, delivery_options).name;
 
     return [...dynamicKitchensNames, ...dynamicTags, dynamicDeliveryOption];

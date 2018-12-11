@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const DeliveryTitle = styled.div`
   height: 16px;
-  width: 63px;
+  width: 69px;
   color: #434340;
   font-family: ${fontFamilyRegular};
   font-size: 14px;

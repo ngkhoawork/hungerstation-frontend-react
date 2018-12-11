@@ -8,7 +8,7 @@ import messages from './messages';
 
 const Promoted = () => (
   <Wrapper>
-    <ParagraphWithStar color="white" size={11} margin="4px 0 0 8px">
+    <ParagraphWithStar color="white" size={12} margin="2px 8px 0 8px">
       {intl.formatMessage(messages.promoted)}
     </ParagraphWithStar>{' '}
   </Wrapper>
@@ -25,6 +25,7 @@ const Wrapper = styled.div`
 `;
 
 const ParagraphWithStar = styled(Paragraph)`
+  font-weight: bold;
   &:before {
     content: '★';
     font-size: 8px;

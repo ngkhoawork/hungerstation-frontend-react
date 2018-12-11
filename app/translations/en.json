@@ -25,6 +25,7 @@
 	"app.components.AddRestaurantBanner.actionText": "Would you like to Join Us?",
 	"app.components.AddRestaurantBanner.buttonLabel": "Add restaurant",
 	"app.components.Back.text": "Back",
+	"app.components.Breadcrumbs.home": "Home",
 	"app.components.BriefFiltersSection.moreFilters": "More filters",
 	"app.components.BriefFiltersSection.tags": "Tags",
 	"app.components.Cart.agreement": "By making this purchase you agree to our ",

@@ -7,18 +7,20 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import intl from 'utils/intlService';
 
 import withSelectedLocationAndFilters from 'hocs/withSelectedLocationAndFilters';
 
 import Icon from 'components/Icon';
 import ButtonLink from 'components/ButtonLink';
 import { BreadcrumbsStyled } from './BreadcrumbsStyled';
+import messages from './messages';
 
 const defaultRoute = [
   {
     key: 'home',
     to: '/',
-    label: 'Home',
+    label: intl.formatMessage(messages.home),
   },
 ];
 
