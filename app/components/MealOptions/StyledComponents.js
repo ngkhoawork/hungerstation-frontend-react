@@ -27,6 +27,7 @@ export const Content = styled.div`
   overflow-y: auto;
   margin-bottom: 20px;
   ${sidePadding('end', '10px;')};
+  ${sideMargin('end', '-15px')};
   min-height: ${({ isWithDropdown }) => (isWithDropdown ? '220px' : 'initial')};
 `;
 
