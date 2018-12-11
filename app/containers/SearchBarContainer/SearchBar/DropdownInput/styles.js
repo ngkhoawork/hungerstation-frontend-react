@@ -33,7 +33,7 @@ export default () => ({
   paper: {
     position: 'absolute',
     zIndex: 101,
-    left: 20,
+    left: 0,
     right: 0,
     top: 0,
     paddingTop: '48px',
