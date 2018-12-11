@@ -6,6 +6,7 @@ import intl from 'utils/intlService';
 import { StyledLink } from 'utils/css/styledComponents';
 import { fuscousGray } from 'utils/css/colors';
 import DropdownMenu from 'components/DropdownMenu';
+import BasketIcon from 'containers/BasketIcon';
 import logo from 'images/hungerstation-logo-shadow.svg';
 import {
   RightSection,
@@ -98,6 +99,7 @@ const Header = ({ variant, isLoggedIn = false, userInfo = {}, ...props }) => (
             </div>
           </StyledLink>
         )}
+        <BasketIcon isRaised={variant === 'gold'} />
       </RightSection>
     </StyledContent>
   </StyledHeader>

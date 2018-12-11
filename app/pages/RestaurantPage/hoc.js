@@ -46,6 +46,8 @@ class RestaurantPageHOC extends React.Component {
   handleAddToCart = product => {
     this.props.addToCart(product);
     setStorageItem('branchId', this.props.match.params.branchId);
+    setStorageItem('city', this.props.match.params.city);
+    setStorageItem('district', this.props.match.params.district);
   };
 
   render() {
