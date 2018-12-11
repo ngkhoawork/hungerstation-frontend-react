@@ -21,7 +21,7 @@ const CircledItem = ({
 
 CircledItem.propTypes = {
   width: PropTypes.number.isRequired,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   inline: PropTypes.bool,
   children: PropTypes.node,
   withShadow: PropTypes.bool,
