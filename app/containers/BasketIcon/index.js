@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { forwardTo } from 'utils/route';
 import { getStorageItem } from 'utils/localStorage';
 import { selectDistrict, selectCity } from 'modules/location/selectors';
-import { makeSelectIsLoggedIn } from 'modules/auth/selectors';
 import { initCart } from 'containers/CartContainer/actions';
 import { selectCartPurchases } from 'containers/CartContainer/selectors';
 import BasketIcon from 'components/BasketIcon';
@@ -29,9 +28,7 @@ class BasketIconHOC extends React.Component {
   };
 
   render() {
-    const { isLoggedIn, purchases, ...props } = this.props;
-
-    if (!isLoggedIn) return null;
+    const { purchases, ...props } = this.props;
 
     return (
       <BasketIcon
@@ -44,14 +41,12 @@ class BasketIconHOC extends React.Component {
 }
 
 BasketIconHOC.propTypes = {
-  isLoggedIn: PropTypes.bool,
   purchases: PropTypes.array.isRequired,
   initCart: PropTypes.func.isRequired,
 };
 
 export default connect(
   state => ({
-    isLoggedIn: makeSelectIsLoggedIn(state),
     purchases: selectCartPurchases(state),
     city: selectCity(state),
     district: selectDistrict(state),
