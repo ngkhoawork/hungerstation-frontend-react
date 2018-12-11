@@ -53,8 +53,7 @@ export const RightSide = styled.span`
 `;
 
 export const Label = styled.span`
-  color: ${({ isCheckout, isDisabled }) =>
-    isCheckout && !isDisabled ? 'white' : fuscousGray};
+  color: ${({ isDisabled }) => (isDisabled ? fuscousGray : 'white')};
   font-size: 20px;
   display: inline-block;
   margin-top: 2px;

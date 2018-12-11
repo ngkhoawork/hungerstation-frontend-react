@@ -52,8 +52,8 @@ const ViewCartButton = ({
       <ButtonWrapper>
         <Link to={getHref()}>
           <Button
-            primary={!isCheckout}
-            color={isCheckout ? jade : undefined}
+            primary={false}
+            color={jade}
             size="xl"
             style={{ whiteSpace: 'nowrap' }}
             disabled={isDisabled}
@@ -64,19 +64,20 @@ const ViewCartButton = ({
               <LeftSide>
                 {!isModal && isWithBasket && quantity !== undefined ? (
                   <CircledItem color="white" width={30}>
-                    <span style={{ zIndex: 1, paddingTop: 3 }}>{quantity}</span>
+                    <span style={{ zIndex: 1 }}>{quantity}</span>
                   </CircledItem>
                 ) : null}
               </LeftSide>
-              <Icon
-                name={isCheckout && !isDisabled ? 'basket-white' : 'basket'}
-              />
-              <Label isCheckout={isCheckout} isDisabled={isDisabled}>
+              <Icon name={isDisabled ? 'basket' : 'basket-white'} />
+              <Label isDisabled={isDisabled}>
                 {intl.formatMessage(messages[label])}
               </Label>
               <RightSide>
                 {!isModal && isWithBasket && price !== undefined ? (
-                  <Price price={price} isPrimary />
+                  <Price
+                    price={price}
+                    style={{ color: isDisabled ? jade : 'white' }}
+                  />
                 ) : null}
               </RightSide>
             </Content>
