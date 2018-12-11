@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import intl, { priceIntlOptions } from 'utils/intlService';
 import Icon from 'components/Icon';
 import { fontFamilyRegular } from 'utils/css/variables';
@@ -12,6 +12,7 @@ const Price = styled.span`
   font-family: ${fontFamilyRegular};
   white-space: nowrap;
 
+  ${({ style }) => style && css(style)};
   ${({ css }) => css};
 `;
 
