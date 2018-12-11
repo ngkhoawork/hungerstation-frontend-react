@@ -50,11 +50,11 @@ export const rightSectionCss = css`
 export const MobileBackgroundContainer = styled.div`
   ${mediaMediumGreater`
     position: absolute;
-    width: 80%;
+    width: 100%;
     background-image: url(${secondaryImgBg});
-    bottom: -130px;
+    bottom: -162px;
     background-size: cover;
-    margin-left: 10%;
+    margin-left: 5%;
 
     ${device.retina`background-image: url(${secondaryImgBg2x});`};
     ${device.retina3x`background-image: url(${secondaryImgBg3x});`};
@@ -101,7 +101,7 @@ export const MobileBackground = styled.div`
 
 export const DetailsWrapper = styled.div`
   display: block;
-  padding: 160px 60px 80px;
+  padding: 130px 60px 80px;
   border-radius: 8px;
 
   ${/* sc-selector */ IconWrapper} {
