@@ -24,24 +24,11 @@ const Autocomplete = props => {
     autoCompleteTextOffset,
   } = props;
 
-  const stateReducer = (state, changes) => {
-    switch (changes.type) {
-      case Downshift.stateChangeTypes.changeInput:
-        return {
-          ...changes,
-          highlightedIndex: 0,
-        };
-      default:
-        return changes;
-    }
-  };
-
   return (
     <Downshift
       onChange={onChange}
       itemToString={itemToString}
       selectedItem={item}
-      stateReducer={stateReducer}
     >
       {({
         getInputProps,
@@ -55,8 +42,8 @@ const Autocomplete = props => {
         defaultInputValue,
       }) => {
         const renderedSuggestions = getSuggestions(suggestions, inputValue);
-        const suggestion = renderedSuggestions.get(highlightedIndex)
-          ? renderedSuggestions.get(highlightedIndex).get('name')
+        const suggestion = renderedSuggestions.get(0)
+          ? renderedSuggestions.get(0).get('name')
           : '';
         const space = ' ';
         const placeholder =
