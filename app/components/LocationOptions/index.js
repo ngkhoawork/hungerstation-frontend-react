@@ -12,12 +12,13 @@ import {
   Footer,
 } from './StyledComponents';
 
-const LocationOptions = ({ onSubmit, city, district }) => (
+const LocationOptions = ({ onSubmit, city, district, isValid }) => (
   <ModalFrame
     title={intl.formatMessage(messages.title)}
     isMobileFullscreen
     css={containerStyle}
     headerCss={headerStyle}
+    hideCancel
   >
     <Content>
       <SearchBarContainer
@@ -29,7 +30,7 @@ const LocationOptions = ({ onSubmit, city, district }) => (
       />
     </Content>
     <Footer>
-      <Button primary inline size="l" onClick={onSubmit}>
+      <Button primary inline size="l" onClick={onSubmit} disabled={!isValid}>
         {intl.formatMessage(messages.submit)}
       </Button>
     </Footer>
@@ -40,6 +41,7 @@ LocationOptions.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   city: PropTypes.string,
   district: PropTypes.string,
+  isValid: PropTypes.bool,
 };
 
 export default LocationOptions;

@@ -25,6 +25,7 @@ const ModalFrame = ({
   headerStyle,
   headerCss,
   subtitleCss,
+  hideCancel,
   ...props
 }) => (
   <Container {...props}>
@@ -33,7 +34,9 @@ const ModalFrame = ({
       <Description style={{ marginTop: 16 }} css={subtitleCss}>
         {subtitle}
       </Description>
-      <Icon name="close-modal" onClick={onCancel} css={CloseBtnCss} />
+      {!hideCancel && (
+        <Icon name="close-modal" onClick={onCancel} css={CloseBtnCss} />
+      )}
     </Header>
     {children}
   </Container>
@@ -49,6 +52,7 @@ ModalFrame.propTypes = {
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  hideCancel: PropTypes.bool,
   isFullscreen: PropTypes.bool,
   isMobileFullscreen: PropTypes.bool,
 };

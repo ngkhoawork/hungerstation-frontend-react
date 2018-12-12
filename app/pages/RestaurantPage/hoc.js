@@ -7,7 +7,7 @@ import { addToCart, emptyCart } from 'containers/CartContainer/actions';
 import { selectCartPurchases } from 'containers/CartContainer/selectors';
 import { fetchRestaurant } from 'modules/restaurant/actions';
 import { selectRestaurantState } from 'modules/restaurant/selectors';
-import LocationOptions from 'components/LocationOptions';
+import LocationOptions from 'containers/LocationOptionsContainer';
 import RestaurantPage from './component';
 
 class RestaurantPageHOC extends React.Component {
