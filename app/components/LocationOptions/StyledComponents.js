@@ -1,27 +1,23 @@
 import styled, { css } from 'styled-components';
-import {
-  mediaMediumGreater,
-  flex,
-  borderBottom,
-  sidePadding,
-} from 'utils/css/styles';
+import { mediaMediumGreater, flex, borderBottom } from 'utils/css/styles';
 
 export const containerStyle = css`
   ${mediaMediumGreater`width: 600px`};
+  padding: 30px 25px;
 `;
 
 export const headerStyle = css`
   ${borderBottom};
   text-align: left;
-  padding-bottom: 10px;
-  margin-bottom: 0;
+  padding: 0px;
+  margin: 0;
+  width: calc(100% - 25px);
 `;
 
 export const Content = styled.div`
   ${flex({ direction: 'column', grow: 1 })};
   overflow-y: visible;
   margin: 0;
-  ${sidePadding('end', '10px;')};
 `;
 
 export const Footer = styled.div`

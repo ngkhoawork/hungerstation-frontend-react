@@ -39,8 +39,8 @@ const SearchBar = ({
       enableAutoComplete
     />
     <LocateYourself {...rest} />
-    {!hideSearch && (
-      <Styled.BarActions>
+    <Styled.BarActions>
+      {!hideSearch && (
         <Styled.ButtonWrapper onClick={isSubmitting ? null : handleSubmit}>
           <Button
             label={intl.formatMessage(messages.search)}
@@ -49,8 +49,8 @@ const SearchBar = ({
             loading={isSubmitting}
           />
         </Styled.ButtonWrapper>
-      </Styled.BarActions>
-    )}
+      )}
+    </Styled.BarActions>
   </Styled.Bar>
 );
 
