@@ -80,7 +80,10 @@ export const Name = styled.div`
   font-size: 35px;
   line-height: 1;
 
-  ${mediaMediumGreater`position: relative;`};
+  ${mediaMediumGreater`
+    position: relative;
+    margin-bottom: 6px;
+  `};
 `;
 
 export const RatingContainer = styled.div`
@@ -88,7 +91,7 @@ export const RatingContainer = styled.div`
   color: ${fuscousGray};
   font-size: 12px;
   position: absolute;
-  ${sidePosition('end', '-30px')};
+  ${sidePosition('end', '-35px')};
   top: 5px;
 
   ${mediaMedium`
