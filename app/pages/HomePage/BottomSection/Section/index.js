@@ -7,10 +7,13 @@ const Section = ({
   rightSection,
   rightSectionCss,
   hasBackground,
+  leftSectionCss,
   css,
 }) => (
   <StyledSection hasBackground={hasBackground} css={css}>
-    <LeftSection hasBackground={hasBackground}>{leftSection}</LeftSection>
+    <LeftSection css={leftSectionCss} hasBackground={hasBackground}>
+      {leftSection}
+    </LeftSection>
     <RightSection css={rightSectionCss}>{rightSection}</RightSection>
   </StyledSection>
 );
@@ -21,6 +24,7 @@ Section.propTypes = {
   hasBackground: PropTypes.bool,
   css: PropTypes.array,
   rightSectionCss: PropTypes.array,
+  leftSectionCss: PropTypes.array,
 };
 
 Section.defaultProps = {

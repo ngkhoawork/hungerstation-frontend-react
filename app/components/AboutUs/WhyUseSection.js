@@ -6,11 +6,13 @@ import messages from '../../pages/HomePage/messages';
 import {
   DetailsWrapper,
   ImageBackground,
+  leftSectionCss,
 } from '../../pages/HomePage/BottomSection/WhyHSSection/StyledComponents';
 
 const BottomSection = () => (
   <Section
     leftSection={<ImageBackground />}
+    leftSectionCss={leftSectionCss}
     rightSection={
       <DetailsWrapper>
         <SectionDetails

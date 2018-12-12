@@ -1,5 +1,12 @@
-import styled from 'styled-components';
-import { mediaSmall, mediaMedium, device, sidePadding } from 'utils/css/styles';
+import styled, { css } from 'styled-components';
+import {
+  mediaSmall,
+  mediaMedium,
+  device,
+  sidePadding,
+  sideMargin,
+  mediaMediumGreater,
+} from 'utils/css/styles';
 import { borderRadius } from 'utils/css/variables';
 import imgBg from 'images/whyHS.png';
 import imgBg2x from 'images/whyHS@2x.png';
@@ -48,5 +55,12 @@ export const DetailsWrapper = styled.div`
     padding-top: 20px;
     padding-bottom: 60px;
     ${sidePadding('end', '43px;')};
+  `};
+`;
+
+export const leftSectionCss = css`
+  ${mediaMediumGreater`
+    width: 55.5%;
+    ${sideMargin('end', '-222px')};
   `};
 `;

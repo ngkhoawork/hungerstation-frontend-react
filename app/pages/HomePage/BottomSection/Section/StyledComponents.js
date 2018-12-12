@@ -50,11 +50,11 @@ export const StyledSection = styled.div`
 `;
 
 export const LeftSection = styled.div`
-  width: 55.5%;
+  width: 42.5%;
   background: white;
   z-index: 50;
   overflow: visible;
-  ${sideMargin('end', '-210px')};
+  ${sideMargin('end', '70px')};
 
   ${mediaMedium`
     width: 100%;
@@ -72,6 +72,7 @@ export const LeftSection = styled.div`
 
     ${mediaMedium`width: calc(100% - 40px);`};
   }
+  ${({ css }) => css};
 `;
 
 export const RightSection = styled.div`
@@ -80,7 +81,7 @@ export const RightSection = styled.div`
 
   ${mediaMedium`
     width: 100%;
-    ${sidePadding('start', '4%')};
+    ${sidePadding('start', '7%')};
   `};
 
   ${({ css }) => css};

@@ -6,11 +6,16 @@ import ButtonWrapper from '../ButtonWrapper';
 import SectionDetails from '../SectionDetails';
 import Section from '../Section';
 import messages from '../../messages';
-import { DetailsWrapper, ImageBackground } from './StyledComponents';
+import {
+  DetailsWrapper,
+  ImageBackground,
+  leftSectionCss,
+} from './StyledComponents';
 
 const WhyHSSection = () => (
   <Section
     leftSection={<ImageBackground />}
+    leftSectionCss={leftSectionCss}
     rightSection={
       <DetailsWrapper>
         <SectionDetails
