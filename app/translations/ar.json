@@ -134,7 +134,6 @@
 	"app.components.InvalidOrder.title": "خطأ في التحقق من الطلب",
 	"app.components.Loader.loading": "جار التحميل...",
 	"app.components.LocationOptions.submit": "تقديم",
-	"app.components.LocationOptions.subtitle": "حدد عنوان",
 	"app.components.LocationOptions.title": "حدد موقع",
 	"app.components.LoginForm.buttonLabel": "تسجيل الدخول",
 	"app.components.LoginForm.numberLabel": "رقم الجوال",

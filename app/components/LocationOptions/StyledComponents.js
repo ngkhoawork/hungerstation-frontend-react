@@ -14,12 +14,13 @@ export const headerStyle = css`
   ${borderBottom};
   text-align: left;
   padding-bottom: 10px;
+  margin-bottom: 0;
 `;
 
 export const Content = styled.div`
   ${flex({ direction: 'column', grow: 1 })};
   overflow-y: visible;
-  margin: 20px 0;
+  margin: 0;
   ${sidePadding('end', '10px;')};
 `;
 

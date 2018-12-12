@@ -134,7 +134,6 @@
 	"app.components.InvalidOrder.title": "Order Validation Error",
 	"app.components.Loader.loading": "Loading...",
 	"app.components.LocationOptions.submit": "Submit",
-	"app.components.LocationOptions.subtitle": "Select address",
 	"app.components.LocationOptions.title": "Select Location",
 	"app.components.LoginForm.buttonLabel": "Log in",
 	"app.components.LoginForm.numberLabel": "Mobile number",
