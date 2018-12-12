@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaSmall, mediaMedium, device } from 'utils/css/styles';
+import { mediaSmall, mediaMedium, device, sidePadding } from 'utils/css/styles';
 import { borderRadius } from 'utils/css/variables';
 import imgBg from 'images/whyHS.png';
 import imgBg2x from 'images/whyHS@2x.png';
@@ -34,7 +34,7 @@ export const DetailsWrapper = styled.div`
   padding: 60px 100px;
   border-top-left-radius: ${borderRadius};
   background: white;
-  margin-top: 40px;
+  margin-top: 55px;
   margin-right: -1px;
   line-height: 24px;
   letter-spacing: 0.5px;
@@ -45,6 +45,8 @@ export const DetailsWrapper = styled.div`
   `};
 
   ${mediaSmall`
-    padding: 20px 20px 60px;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    ${sidePadding('end', '43px;')};
   `};
 `;

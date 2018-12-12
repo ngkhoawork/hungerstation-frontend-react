@@ -17,25 +17,32 @@ const Header = styled.p`
   overflow: visible;
   ${sideMargin('end', '100%')};
   ${mediaMedium`
-        font-size: 35px;
-    `};
+    font-size: 35px;
+    ${sideMargin('end', '70%')};
+  `};
 `;
 const Content = styled.div`
   ${flex({ align: 'center', direction: 'column' })};
-  ${sideMargin('start', '25%')};
-  ${sideMargin('end', '36%')};
+  margin: 0 25%;
+  ${mediaSmall`
+    margin: 0 10px;
+  `};
 `;
 
 const Description = styled.p`
+  column-count: 2;
+  column-gap: 15%;
+  text-align: justify;
   color: ${ironsideGray};
   font-family: ${fontFamilyLight};
   font-size: 16px;
   letter-spacing: 0.5px;
   margin: 24px 0 32px;
   opacity: 0.6;
-  line-height: 1.8em;
   ${mediaSmall`
-  font-size: 14px;
+    font-size: 14px;
+    column-count: 1;
+    margin: 0;
 `};
 `;
 const AboutSection = () => (

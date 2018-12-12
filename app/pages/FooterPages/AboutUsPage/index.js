@@ -8,7 +8,7 @@ import StyledPage from '../StyledPage';
 import AboutUs from '../../../components/AboutUs';
 
 const AboutUsPage = () => (
-  <StyledPage>
+  <StyledPage style={{ padding: '0 10px' }}>
     <NavHeader isWithOffset>
       <Back />
     </NavHeader>

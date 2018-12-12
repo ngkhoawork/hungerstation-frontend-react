@@ -4,8 +4,8 @@ import {
   mediaMedium,
   mediaMediumGreater,
   sidePadding,
+  sideMargin,
 } from 'utils/css/styles';
-import { wildSand } from 'utils/css/colors';
 
 export const StyledSection = styled.div`
   ${flex({ align: 'flex-start', justify: 'center' })};
@@ -26,7 +26,7 @@ export const StyledSection = styled.div`
   ${({ hasBackground }) =>
     hasBackground &&
     `
-    background-color: ${wildSand};
+    background-color: #f8f8f8;
   `};
 
   ${mediaMedium`
@@ -50,10 +50,11 @@ export const StyledSection = styled.div`
 `;
 
 export const LeftSection = styled.div`
-  width: 42.5%;
+  width: 55.5%;
   background: white;
   z-index: 50;
   overflow: visible;
+  ${sideMargin('end', '-210px')};
 
   ${mediaMedium`
     width: 100%;
@@ -79,7 +80,7 @@ export const RightSection = styled.div`
 
   ${mediaMedium`
     width: 100%;
-    ${sidePadding('start', '7%')};
+    ${sidePadding('start', '4%')};
   `};
 
   ${({ css }) => css};

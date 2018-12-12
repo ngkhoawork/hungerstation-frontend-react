@@ -8,7 +8,7 @@ const AboutUsPage = () => (
   <div>
     <AboutSection />
     <WhyUseSection />
-    <div style={{ marginTop: '5%', marginBottom: '7%' }}>
+    <div style={{ marginBottom: '7%' }}>
       <HowItWorksSection />
     </div>
   </div>
