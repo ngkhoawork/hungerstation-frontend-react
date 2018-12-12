@@ -118,7 +118,7 @@ export const DetailsWrapper = styled.div`
   `};
 `;
 
-export const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.a`
   width: 144px;
   height: 40px;
 

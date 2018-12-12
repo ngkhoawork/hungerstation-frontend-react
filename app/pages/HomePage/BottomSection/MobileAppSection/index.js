@@ -32,14 +32,20 @@ const MobileAppSection = () => (
           description={intl.formatMessage(messages.description)}
         />
         <ButtonGroup>
-          <ButtonWrapper>
+          <ButtonWrapper
+            href="https://itunes.apple.com/sa/app/hungerstation/id596011949?mt=8"
+            target="_blank"
+          >
             <Button
               backgroundImage="applestore"
               color="white"
               primary={false}
             />
           </ButtonWrapper>
-          <ButtonWrapper>
+          <ButtonWrapper
+            href="https://play.google.com/store/apps/details?id=com.hungerstation.android.web&hl=en"
+            target="_blank"
+          >
             <Button
               backgroundImage="googleplay"
               responsiveBackgroundImg
