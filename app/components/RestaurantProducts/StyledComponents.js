@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
-import imgPlaceholder from 'images/burger-icon.png';
+import img from 'images/burger-icon.png';
 import {
   flex,
   mediaSmall,
   mediaMedium,
   mediaMediumGreater,
+  device,
   sidePosition,
   sideMargin,
   rotateArrowIcon,
@@ -46,10 +47,17 @@ export const Img = styled.div`
   border-radius: 10px;
   box-shadow: 8px 12px 23px -3px rgba(59, 59, 59, 0.13);
   background-color: white;
-  background-image: url(${({ image }) => image || imgPlaceholder});
+  background-image: url(${({ images }) => (images[0] ? images[0].url : img)});
   background-size: contain;
   background-position: center;
   ${flex({ shrink: 0 }, false)};
+
+  ${device.retina`
+    background-image: url(${({ images }) => (images[1] ? images[1].url : img)});
+  `};
+  ${device.retina3x`
+    background-image: url(${({ images }) => (images[2] ? images[2].url : img)});
+  `};
 `;
 
 export const Content = styled.div`

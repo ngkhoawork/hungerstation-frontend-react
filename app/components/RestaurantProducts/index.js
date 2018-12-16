@@ -44,7 +44,7 @@ const RestaurantProducts = ({ status, products, cartItems, ...props }) => (
     {products.map(product => (
       <Item key={product.id} onClick={() => props.onProductClick(product)}>
         <ContentContainer>
-          <Img image={product.images && product.images[0]} />
+          <Img images={product.images} />
           <Content>
             <div>
               <TitleContainer>

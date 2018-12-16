@@ -82,7 +82,10 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
           id
           name
           description
-          images
+          images {
+            width
+            url
+          }
           list_price
           weight
           menuitems {
@@ -92,7 +95,10 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
             description
             price
             list_price
-            images
+            images {
+              width
+              url
+            }
             weight
             working_times {
               start_minute
@@ -127,7 +133,10 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
           description
           price
           list_price
-          images
+          images {
+            width
+            url
+          }
           weight
           working_times {
             start_minute

@@ -41,6 +41,9 @@ export function* fetchRestaurantSaga({ payload }) {
               .sort((itemA, itemB) => itemA.weight - itemB.weight)
               .map(item => ({
                 ...item,
+                images: (item.images || []).sort(
+                  (imgA, imgB) => imgA.width - imgB.width,
+                ),
                 price: parseFloat(item.price || 0),
                 list_price: parseFloat(item.list_price || 0),
                 modifier_groups:
@@ -62,12 +65,16 @@ export function* fetchRestaurantSaga({ payload }) {
                     .sort((itemA, itemB) => itemA.weight - itemB.weight)
                     .map(
                       ({
+                        images,
                         price,
                         list_price,
                         modifier_groups,
                         ...menuitem
                       }) => ({
                         ...menuitem,
+                        images: (images || []).sort(
+                          (imgA, imgB) => imgA.width - imgB.width,
+                        ),
                         price: parseFloat(price),
                         list_price: parseFloat(list_price),
                         modifier_groups:

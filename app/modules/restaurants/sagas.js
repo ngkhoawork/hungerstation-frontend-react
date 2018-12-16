@@ -76,7 +76,9 @@ export function* fetchRestaurantsSaga({ payload }) {
       name: item.branch.restaurant.name,
       logo: item.branch.restaurant.logo,
       rateAverage: item.branch.restaurant.rate_average,
-      coverPhoto: item.branch.restaurant.cover_photo,
+      coverPhoto: (item.branch.restaurant.cover_photo || []).sort(
+        (imgA, imgB) => imgA.width - imgB.width,
+      ),
       minOrder: item.minimum_order,
       deliveryTime: item.delivery_estimation_time,
       deliveryProvider: item.delivery_provider,

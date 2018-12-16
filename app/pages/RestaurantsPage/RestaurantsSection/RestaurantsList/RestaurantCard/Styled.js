@@ -17,7 +17,8 @@ const StyledRestaurantCard = styled(Link)`
   border-radius: 8px;
   margin-bottom: 24px;
   ${sideMargin('end', '24px')};
-  background-image: ${({ cover }) => cover || `url(${BgPattern})`};
+  background-image: url(${({ cover }) =>
+    cover[0] ? cover[0].url : BgPattern});
   background-color: ${gold};
   background-size: 140%;
   background-position: top;
@@ -31,7 +32,6 @@ const StyledRestaurantCard = styled(Link)`
 
   ${mediaLess(500)`
     min-width: 324px;
-    background-image: ${({ cover }) => cover || `url(${BgPattern})`};
     background-color: ${gold};
     ${sideMargin('end', '0px')};
     background-size: 100%;
