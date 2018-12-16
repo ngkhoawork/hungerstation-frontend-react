@@ -36,7 +36,10 @@ export const getBranchQuery = `query GetBranch($id: Int!) {
       id
       name
       logo
-      cover_photo
+      cover_photo {
+        width
+        url
+      }
       rate_average
       offers {
         id
