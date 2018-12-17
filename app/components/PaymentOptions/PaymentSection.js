@@ -5,7 +5,7 @@ import { Title } from 'components/Typography';
 const titleStyle = {
   fontSize: 20,
   letterSpacing: 0.28,
-  margin: '20px 0',
+  margin: '0',
 };
 
 const PaymentSection = ({ title, children }) => (
