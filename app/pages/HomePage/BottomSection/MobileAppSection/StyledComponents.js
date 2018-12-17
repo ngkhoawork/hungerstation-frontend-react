@@ -26,7 +26,7 @@ export const sectionCss = css`
     background-image: url(${imgBg});
     background-size: contain;
     background-position: bottom left;
-    padding-bottom: 70px;
+    padding-bottom: 60px;
     overflow: hidden;
 
     ${device.retina`background-image: url(${imgBg2x});`};
@@ -41,7 +41,7 @@ export const rightSectionCss = css`
   ${mediaMediumGreater`
     position: relative;
     margin-top: auto;
-    bottom: -70px;
+    bottom: -62px;
   `};
 
   ${mediaMedium`padding: 0;`};
