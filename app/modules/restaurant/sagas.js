@@ -30,6 +30,12 @@ export function* fetchRestaurantSaga({ payload }) {
     // concat products and menuitems, sort by weight, convert prices to float
     const restaurant = {
       ...branch,
+      restaurant: {
+        ...branch.restaurant,
+        cover_photo: (branch.restaurant.cover_photo || []).sort(
+          (imgA, imgB) => imgA.width - imgB.width,
+        ),
+      },
       delivery_conditions: branch_delivery,
       menu: {
         menugroups: (branch.menu.menugroups || [])
