@@ -30,6 +30,8 @@ const Offer = ({ showModal, offer = {}, ...props }) => {
     }
   };
 
+  if (!offer.title && !offer.description) return null;
+
   return (
     <Container {...props}>
       <Content onClick={handleOfferClick}>
