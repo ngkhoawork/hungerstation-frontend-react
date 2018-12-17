@@ -32,7 +32,6 @@ const Content = styled.div`
 const Description = styled.p`
   column-count: 2;
   column-gap: 15%;
-  text-align: justify;
   color: ${ironsideGray};
   font-family: ${fontFamilyLight};
   font-size: 16px;
