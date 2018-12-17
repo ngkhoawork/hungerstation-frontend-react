@@ -55,6 +55,8 @@ export const DetailsWrapper = styled.div`
     padding-bottom: 60px;
     ${sidePadding('end', '43px;')};
   `};
+
+  ${({ css }) => css};
 `;
 
 export const leftSectionCss = css`

@@ -4,8 +4,8 @@ import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import { NavHeader } from 'utils/css/styledComponents';
 
 import Back from 'containers/Back';
+import AboutUs from 'components/AboutUs';
 import StyledPage from '../StyledPage';
-import AboutUs from '../../../components/AboutUs';
 
 const AboutUsPage = () => (
   <StyledPage style={{ padding: '0 10px' }}>

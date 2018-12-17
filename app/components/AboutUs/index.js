@@ -1,8 +1,7 @@
 import React from 'react';
-
+import HowItWorksSection from 'pages/HomePage/BottomSection/HowItWorksSection';
 import AboutSection from './AboutSection';
 import WhyUseSection from './WhyUseSection';
-import HowItWorksSection from '../../pages/HomePage/BottomSection/HowItWorksSection';
 
 const AboutUsPage = () => (
   <div>
