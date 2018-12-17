@@ -22,6 +22,7 @@ const Autocomplete = props => {
     disabled,
     enableAutoComplete,
     autoCompleteTextOffset,
+    placeholder,
   } = props;
 
   return (
@@ -46,7 +47,7 @@ const Autocomplete = props => {
           ? renderedSuggestions.get(0).get('name')
           : '';
         const space = ' ';
-        const placeholder =
+        const autoCompleteString =
           space.repeat(inputValue.length) + suggestion.slice(inputValue.length);
         const offsetX =
           autoCompleteTextOffset +
@@ -58,7 +59,7 @@ const Autocomplete = props => {
                 className={classes.backgroundSuggestion}
                 style={{ marginLeft: `${offsetX}px` }}
               >
-                {placeholder}
+                {autoCompleteString}
               </span>
             )}
             <Input
