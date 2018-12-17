@@ -133,4 +133,5 @@ export const ButtonWrapper = styled.a`
 
 export const ButtonGroup = styled.div`
   ${flex({ align: 'center' })};
+  margin-top: 40px;
 `;
