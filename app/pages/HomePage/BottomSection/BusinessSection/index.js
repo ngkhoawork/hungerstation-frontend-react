@@ -22,7 +22,7 @@ const BusinessSection = () => (
             messages.hungerStationBusinessDescription,
           )}
         />
-        <ButtonWrapper>
+        <ButtonWrapper style={{ marginTop: 32 }}>
           <Button primary label={intl.formatMessage(messages.buttonSeeMore)} />
         </ButtonWrapper>
       </DetailsWrapper>

@@ -64,7 +64,7 @@ export const SecondaryImg = styled.div`
 export const DetailsWrapper = styled.div`
   box-sizing: border-box;
   display: block;
-  padding: 60px 100px;
+  padding: 55px 100px 0;
   border-radius: 8px;
 
   & ${DetailsText} {

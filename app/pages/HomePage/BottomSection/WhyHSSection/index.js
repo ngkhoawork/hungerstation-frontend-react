@@ -22,7 +22,7 @@ const WhyHSSection = () => (
           header={intl.formatMessage(messages.whyHungerStation)}
           description={intl.formatMessage(messages.whyHungerStationDescription)}
         />
-        <ButtonWrapper style={{ marginTop: '32px' }}>
+        <ButtonWrapper style={{ marginTop: 32 }}>
           <StyledLink to="/about-us">
             <Button primary label={intl.formatMessage(messages.buttonCheck)} />
           </StyledLink>

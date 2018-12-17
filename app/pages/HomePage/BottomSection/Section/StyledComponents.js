@@ -4,7 +4,6 @@ import {
   mediaMedium,
   mediaMediumGreater,
   sidePadding,
-  sideMargin,
 } from 'utils/css/styles';
 
 export const StyledSection = styled.div`
@@ -50,11 +49,10 @@ export const StyledSection = styled.div`
 `;
 
 export const LeftSection = styled.div`
-  width: 42.5%;
+  width: 41%;
   background: white;
   z-index: 50;
   overflow: visible;
-  ${sideMargin('end', '70px')};
 
   ${mediaMedium`
     width: 100%;
@@ -76,8 +74,9 @@ export const LeftSection = styled.div`
 `;
 
 export const RightSection = styled.div`
-  width: 42.5%;
+  width: 44%;
   z-index: 100;
+  align-self: flex-end;
 
   ${mediaMedium`
     width: 100%;

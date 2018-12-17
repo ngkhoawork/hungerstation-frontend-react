@@ -16,7 +16,6 @@ import imgBgMob2x from 'images/whyHSMob@2x.png';
 import imgBgMob3x from 'images/whyHSMob@3x.png';
 
 export const ImageBackground = styled.div`
-  width: 740px;
   padding-top: 43.617021276%;
   background-image: url(${imgBg});
   background-repeat: no-repeat;
@@ -38,7 +37,7 @@ export const ImageBackground = styled.div`
 
 export const DetailsWrapper = styled.div`
   display: block;
-  padding: 60px 100px;
+  padding: 55px 100px 0;
   border-top-left-radius: ${borderRadius};
   background: white;
   margin-top: 55px;
@@ -60,7 +59,7 @@ export const DetailsWrapper = styled.div`
 
 export const leftSectionCss = css`
   ${mediaMediumGreater`
-    width: 55.5%;
-    ${sideMargin('end', '-222px')};
+    width: calc(41% + 240px);
+    ${sideMargin('end', '-240px')};
   `};
 `;
