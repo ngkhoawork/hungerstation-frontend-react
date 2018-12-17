@@ -154,7 +154,7 @@ export default class App extends Component {
                 <Route path="/contactus" component={ContactUsPage} />
                 <Route
                   exact
-                  path="/privacy-policy/who-we-are"
+                  path="/privacy-policy"
                   component={PrivacyPolicyPage}
                 />
                 <Route path="/logout" component={LogoutPage} />

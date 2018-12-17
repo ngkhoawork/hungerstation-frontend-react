@@ -7,7 +7,7 @@ import {
   sidePadding,
 } from 'utils/css/styles';
 import { fontFamilyRegular, pageOffsetX } from 'utils/css/variables';
-import { Link } from 'react-router-dom';
+import { alabaster } from 'utils/css/colors';
 
 export const Wrapper = styled.div`
   ${flex(
@@ -43,10 +43,17 @@ export const MenuItem = styled.div`
   padding: 15px;
 
   &:hover {
-    color: red;
-    background: #f7f7f7;
+    color: #000000;
+    background: ${alabaster};
     border-radius: 8px;
   }
+  ${({ active }) =>
+    active &&
+    `
+    color: #000000;
+    background-color: ${alabaster};
+    border-radius: 8px;
+  `};
 `;
 
 export const MiddleSection = styled.div`
@@ -89,18 +96,6 @@ export const Content = styled.div`
 
   ${mediaLess(600)`
     display: inline;
-  `};
-`;
-
-export const StyledLink = styled(Link)`
-  font-size: 14px;
-  color: #9f9f9f;
-  text-decoration: none;
-  ${mediaLess(1080)`
-    flex: 0 1 30%;
-  `};
-  ${mediaMedium`
-    margin-bottom: 5px;
   `};
 `;
 

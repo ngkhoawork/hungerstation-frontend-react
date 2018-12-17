@@ -11,7 +11,7 @@ const MenuLinks = () => {
     { id: 'contactus', label: intl.formatMessage(messages.contactUs) },
     // { id: 'help', label: intl.formatMessage(messages.help) },
     {
-      id: 'privacy-policy/who-we-are',
+      id: 'privacy-policy',
       label: intl.formatMessage(messages.privacyPolicy),
     },
     { id: 'faqs', label: intl.formatMessage(messages.faqs) },

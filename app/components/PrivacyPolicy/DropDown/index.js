@@ -39,7 +39,7 @@ class DropDown extends Component {
 DropDown.propTypes = {
   isCollapsible: PropTypes.bool,
   closeDropDownMenu: PropTypes.bool,
-  title: PropTypes.object,
+  title: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
 };
 
