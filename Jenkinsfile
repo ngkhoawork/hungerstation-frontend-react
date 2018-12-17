@@ -1,13 +1,13 @@
-def app, utils, buildImage
+def image, utils, buildImage, commit
 def imageName = 'gcr.io/hungerstation-configs/customer-website-frontend'
 def buildImageName = 'gcr.io/hungerstation-configs/customer-website-frontend-build'
 def deployableBranches = ["development", "master"]
-def platformChart = "http://charts.hsips.net/charts/customer-website-frontend-0.1.0.tgz"
+def platformChart = "hungerstation/customer-website-frontend"
 
 pipeline {
   agent {
     kubernetes {
-      label 'jnlp-light'
+      label 'jnlp-dind-light'
       defaultContainer 'jnlp'
     }
   }
@@ -31,6 +31,8 @@ pipeline {
         script {
           utils = load("./devops-works/jenkins-ci/utils.groovy")
           utils.setup() // Stop previous builds
+
+          commit = utils.getCommit()
         }
       }
     }
@@ -44,34 +46,48 @@ pipeline {
         script {
           utils.addRevisionToImage()
 
-          COMMIT = utils.getCommit()
-
           apiEnv = "staging"
           if (BRANCH_NAME == 'master') {
             apiEnv = "production"
           }
 
-          buildImageTag = "$buildImageName:$BRANCH_NAME"
+          buildImage = "$buildImageName:$BRANCH_NAME"
           utils.dockerRegistry {
-            buildImage = docker.build("$buildImageTag", "--build-arg API_ENV=$apiEnv -f Dockerfile.build .")
+            sh "docker build -t $buildImage --build-arg API_ENV=$apiEnv --target builder ."
           }
-
         }
       }
     }
 
-    stage('Test') {
+    stage('Tests') {
       when {
         changeRequest()
       }
 
-      steps {
-        script {
-          buildImage.inside() {
-            sh "yarn && yarn lint"
+      parallel {
+
+        stage('Lint') {
+          steps {
+            sh "docker run --rm $buildImage sh -c 'yarn && yarn lint'"
+          }
+        }
+
+        stage('Translation') {
+          steps {
+            script {
+              try {
+                sh "./script/update-i18n-messages.sh"
+
+                sh "git status"
+                sh "git diff-files --quiet"
+              } catch(exc) {
+                def comment = pullRequest.comment('Translations are not up-to-date with Lokalise.')
+              }
+            }
           }
         }
       }
+
     }
 
     stage('Build nginx image') {
@@ -81,11 +97,10 @@ pipeline {
 
       steps {
         script {
+          image = "$imageName:$commit"
+
           utils.dockerRegistry {
-            sh "docker run --name $BRANCH_NAME $buildImageTag /bin/true"
-            sh "docker cp $BRANCH_NAME:/home/customer-website-frontend/build build"
-            sh "docker rm $BRANCH_NAME"
-            app = docker.build("$imageName:$COMMIT", ".")
+            sh "docker build -t $image --cache-from $buildImage ."
           }
         }
       }
@@ -98,7 +113,7 @@ pipeline {
 
       steps {
         script {
-          utils.pushImage(app, ["$COMMIT", "$BRANCH_NAME", "$BRANCH_NAME-$BUILD_NUMBER"])
+          utils.tagImageThenPush(image, ["$imageName:$commit", "$imageName:$BRANCH_NAME", "$imageName:$BRANCH_NAME-$BUILD_NUMBER"])
         }
       }
     }

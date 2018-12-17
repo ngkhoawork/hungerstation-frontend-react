@@ -4,11 +4,11 @@ cd "$(dirname "$0")/.."
 
 API_TOKEN="0cd2a060d8bc1bdcba17ed761c0811478e085363"
 PROJECT_ID="710106455bf14e5be99235.99780927"
-LOCAL_DIR=$(mktemp -d /tmp/lokalise.XXXXXX)
 FILE_FORMAT=json
 
-docker run --rm \
-    -v ${LOCAL_DIR}:/opt/dest \
+name=$(git rev-parse --short HEAD~1)
+
+docker run --name ${name} \
     lokalise/lokalise-cli lokalise \
     --token ${API_TOKEN} \
     export ${PROJECT_ID} \
@@ -16,9 +16,9 @@ docker run --rm \
     --indentation tab \
     --export_sort a_z \
     --export_empty base \
-    --dest /opt/dest \
-    --unzip_to /opt/dest
+    --dest /tmp \
+    --unzip_to /src/opt/dest
 
-cp ${LOCAL_DIR}/locale/* ./app/translations/
+docker cp ${name}:/src/opt/dest/locale/. ./app/translations/
 
-rm -rf "$LOCAL_DIR"
+docker rm ${name}
