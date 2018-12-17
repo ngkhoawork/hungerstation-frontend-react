@@ -104,11 +104,11 @@ class RestaurantPage extends React.Component {
 
     return (
       <Fragment>
-        <MobileHeader />
+        <MobileHeader bg={info.restaurant.cover_photo} />
         <MobileRestaurantInfoContainer>
           <RestaurantInfo {...info} />
         </MobileRestaurantInfoContainer>
-        <Header>
+        <Header bg={info.restaurant.cover_photo}>
           <RestaurantInfoContainer>
             <RestaurantInfo {...info} />
           </RestaurantInfoContainer>

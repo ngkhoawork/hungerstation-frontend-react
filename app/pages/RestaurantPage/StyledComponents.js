@@ -61,16 +61,19 @@ export const Header = styled.div`
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(${restaurantImg});
 
   ${mediaMediumGreater`padding-top: 31.782945736%;`};
 
-  ${device.retina`
-    background-image: url(${restaurantImg2x});
-  `};
+  ${({ bg }) => `
+    background-image: url(${bg[0] ? bg[0].url : restaurantImg});
 
-  ${device.retina3x`
-    background-image: url(${restaurantImg3x});
+    ${device.retina`
+      background-image: url(${bg[1] ? bg[1].url : restaurantImg2x});
+    `};
+
+    ${device.retina3x`
+      background-image: url(${bg[2] ? bg[2].url : restaurantImg3x});
+    `};
   `};
 
   ${mediaMedium`display: none;`};
@@ -84,14 +87,17 @@ export const MobileHeader = styled(Header)`
     height: 220px;
     border-radius: 0;
     background-size: cover;
-    background-image: url(${restaurantImgMob});
 
-    ${device.retina`
-      background-image: url(${restaurantImgMob2x});
-    `};
+    ${({ bg }) => `
+      background-image: url(${bg[0] ? bg[0].url : restaurantImgMob});
 
-    ${device.retina3x`
-      background-image: url(${restaurantImgMob3x});
+      ${device.retina`
+        background-image: url(${bg[1] ? bg[1].url : restaurantImgMob2x});
+      `};
+
+      ${device.retina3x`
+        background-image: url(${bg[2] ? bg[2].url : restaurantImgMob3x});
+      `};
     `};
   `};
 `;
