@@ -20,6 +20,8 @@ export const Container = styled.div`
   background: ${alabaster};
   border-radius: ${borderRadius};
 
+  ${mediaMediumGreater`max-width: 30%;`};
+
   ${({ style }) => style && css(style)};
   ${({ css }) => css};
 `;
@@ -27,8 +29,6 @@ export const Container = styled.div`
 export const Content = styled.div`
   ${flex({ align: 'center' })};
   padding: 10px;
-
-  ${mediaMediumGreater`white-space: nowrap;`};
 
   ${mediaMedium`padding: 10px 20px;`};
 `;
@@ -44,7 +44,8 @@ export const StyledTooltip = styled(Tooltip)`
   top: calc(100% + 7px);
   right: 0;
   display: none;
-  max-width: 200px;
+  max-width: 300px;
+  width: max-content;
   text-align: right;
 
   ${Content}:hover ~ & {

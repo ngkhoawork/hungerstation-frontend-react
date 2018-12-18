@@ -65,7 +65,11 @@ export const StyledDetailsContainer = styled.div`
 export const StyledDetails = styled.div`
   ${flex({ align: 'flex-start', justify: 'flex-start', direction: 'column' })};
 
-  ${mediaMediumGreater`height: 100%;`};
+  ${mediaMediumGreater`
+    height: 100%;
+    max-width: calc(70% - 100px);
+    flex-grow: 1;
+  `};
 
   ${mediaMedium`width: 100%;`};
 `;
