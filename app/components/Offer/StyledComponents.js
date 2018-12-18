@@ -45,6 +45,7 @@ export const StyledTooltip = styled(Tooltip)`
   right: 0;
   display: none;
   max-width: 300px;
+  width: 300px;
   width: max-content;
   text-align: right;
 
