@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import intl from 'utils/intlService';
 import { isMobile } from 'utils/css/styles';
 import { lightGray, ironsideGray } from 'utils/css/colors';
 import ModalFrame from 'containers/ModalFrameContainer';
@@ -14,10 +15,14 @@ import {
   titleCss,
   StyledTooltip,
 } from './StyledComponents';
+import messages from './messages';
 
 const Offer = ({ showModal, offer = {}, ...props }) => {
   const renderOfferModal = () => (
-    <ModalFrame title={offer.title}>
+    <ModalFrame
+      title={intl.formatMessage(messages.details)}
+      headerStyle={{ textAlign: 'left' }}
+    >
       <Description style={{ fontSize: 16, margin: '-10px 0 0' }}>
         {offer.description}
       </Description>
@@ -43,7 +48,7 @@ const Offer = ({ showModal, offer = {}, ...props }) => {
       </Content>
       <StyledTooltip>
         <Title style={{ fontSize: 14, color: ironsideGray }}>
-          {offer.title}
+          {intl.formatMessage(messages.details)}
         </Title>
         <Description css={descCss}>{offer.description}</Description>
       </StyledTooltip>

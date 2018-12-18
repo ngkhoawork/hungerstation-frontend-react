@@ -161,6 +161,7 @@
 	"app.components.Note.instructions": "Any special instructions?",
 	"app.components.Note.notes": "Notes",
 	"app.components.Note.optional": "Optional",
+	"app.components.Offer.details": "Offer details",
 	"app.components.OffersList.Pagination.pageOf": "- of {pages}",
 	"app.components.OrderDetailPage.NotFound.buttonLabel": "Back",
 	"app.components.OrderDetailPage.NotFound.text": "Order not Found!",
