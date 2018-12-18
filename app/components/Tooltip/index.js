@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { borderRadius, boxShadowLight } from 'utils/css/variables';
+import {
+  borderRadius,
+  boxShadowLight,
+  zIndexTooltip,
+} from 'utils/css/variables';
 
 const Container = styled.div`
   position: absolute;
@@ -9,6 +13,7 @@ const Container = styled.div`
   border-radius: ${borderRadius};
   padding: 20px;
   box-shadow: ${boxShadowLight};
+  z-index: ${zIndexTooltip};
 
   ${({ style }) => style && css(style)};
   ${({ css }) => css};

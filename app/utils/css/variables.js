@@ -25,6 +25,7 @@ export const smallMobPageOffsetX = '20px';
 export const stepIndent = '210px';
 export const addressIndent = '90px';
 
+export const zIndexTooltip = 50;
 export const zIndexFixedHeader = 200;
 export const zIndexStickyMenu = 300;
 export const zIndexDropdown = 700;
