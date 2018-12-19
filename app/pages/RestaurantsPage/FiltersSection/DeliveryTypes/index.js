@@ -27,7 +27,7 @@ const DeliveryTypes = ({
       <Paragraph color={chosenOption === 'all' ? 'black' : silverChalice}>
         {intl.formatMessage(messages.allDeliveryTypes)}
       </Paragraph>
-      {chosenOption === 'all' && <Icon name="check" />}
+      {chosenOption === 'all' && <Icon name="check-mark-green" />}
     </StyledItem>
     {deliveryOptions.map(({ id, name, type }) => (
       <StyledItem
@@ -41,7 +41,7 @@ const DeliveryTypes = ({
         <Paragraph color={chosenOption === type ? 'black' : silverChalice}>
           {name}
         </Paragraph>
-        {chosenOption === type && <Icon name="check" />}
+        {chosenOption === type && <Icon name="check-mark-green" />}
       </StyledItem>
     ))}
   </StyledFiltersCategoryWrapper>
