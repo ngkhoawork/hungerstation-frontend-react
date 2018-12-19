@@ -40,8 +40,14 @@ export const printErrors = errors => {
   }
 
   if (errors.get('message')) {
-    return <StyledError>{errors.get('message')}</StyledError>;
+    let errorMessage;
+    try {
+      errorMessage = JSON.parse(errors.get('message')).map(e => <p>{e}</p>);
+    } catch (e) {
+      errorMessage = errors.get('message');
+    }
+    return <StyledError>{errorMessage}</StyledError>;
   }
 
-  return <StyledError>Error ocurred</StyledError>;
+  return <StyledError>Error occurred</StyledError>;
 };
