@@ -69,7 +69,7 @@ const Breadcrumbs = ({ crumbs, location, filters }) => (
       {filters &&
         filters.map(item => (
           <li key={item.key}>
-            <ButtonLink to={item.to}>{item.label}</ButtonLink>
+            <ButtonLink to="#">{item.label}</ButtonLink>
           </li>
         ))}
     </ul>
