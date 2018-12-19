@@ -50,11 +50,11 @@ export const rightSectionCss = css`
 export const MobileBackgroundContainer = styled.div`
   ${mediaMediumGreater`
     position: absolute;
-    width: calc(100% - 110px);
-    ${sideMargin('start', '100px')};
-    bottom: -135px;
+    width: calc(100% - 18px);
+    ${sideMargin('start', '17px')};
+    bottom: -175px;
     background-image: url(${secondaryImgBg});
-    background-size: cover;
+    background-size: 100%;
 
     ${device.retina`background-image: url(${secondaryImgBg2x});`};
     ${device.retina3x`background-image: url(${secondaryImgBg3x});`};

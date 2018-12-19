@@ -23,7 +23,7 @@ const Header = styled.p`
 `;
 const Content = styled.div`
   ${flex({ align: 'center', direction: 'column' })};
-  margin: 0 25%;
+  margin: 0 27%;
   ${mediaSmall`
     margin: 0 10px;
   `};
@@ -31,7 +31,7 @@ const Content = styled.div`
 
 const Description = styled.p`
   column-count: 2;
-  column-gap: 15%;
+  column-gap: 10%;
   color: ${ironsideGray};
   font-family: ${fontFamilyLight};
   font-size: 16px;
