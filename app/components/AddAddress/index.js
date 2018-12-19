@@ -252,16 +252,17 @@ class AddAddress extends React.Component {
               <Desc>
                 <TextField
                   type="text"
-                  required
                   value={description}
                   onChange={this.handleDescriptionInputChange}
                   InputProps={{
+                    required: true,
                     endAdornment: (
                       <InputAdornment position="end">
                         <CheckboxIcon isChecked={!!description} />
                       </InputAdornment>
                     ),
                   }}
+                  inputProps={{ maxLength: 250 }} // eslint-disable-line react/jsx-no-duplicate-props
                   label={intl.formatMessage(messages.description)}
                   fullWidth
                 />
