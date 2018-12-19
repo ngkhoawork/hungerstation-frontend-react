@@ -142,6 +142,7 @@ const Content = styled.div`
   line-height: 1;
   color: ${fuscousGray};
   ${sideMargin('end', '10px')};
+  overflow: hidden;
 
   ${({ isEligible }) => !isEligible && `opacity: 0.5;`};
 `;

@@ -34,6 +34,7 @@ export const LeftSide = styled.div`
   ${flex({ grow: 1 }, false)};
   width: 100%;
   position: relative;
+  min-width: 0;
 `;
 
 export const RightSide = styled.div`
