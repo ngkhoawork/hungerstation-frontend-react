@@ -40,7 +40,12 @@ const Offer = ({ showModal, offer = {}, ...props }) => {
   return (
     <Container {...props}>
       <Content onClick={handleOfferClick}>
-        <CircledItem color={lightGray} inline width={28}>
+        <CircledItem
+          color={lightGray}
+          inline
+          width={28}
+          style={{ flexShrink: 0 }}
+        >
           <Icon name="discountOnPayment" size={16} />
         </CircledItem>
         <Title css={titleCss}>{offer.title}</Title>
