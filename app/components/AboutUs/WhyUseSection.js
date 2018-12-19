@@ -18,7 +18,7 @@ const leftSectionCss = css`
 `;
 
 const detailsWrapperCss = css`
-  ${mediaMediumGreater`padding: 65px 100px`};
+  ${mediaMediumGreater`padding: 65px 100px;`};
 `;
 
 const BottomSection = () => (
