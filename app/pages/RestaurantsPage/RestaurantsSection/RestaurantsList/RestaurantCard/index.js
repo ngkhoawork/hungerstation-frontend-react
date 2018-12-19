@@ -63,7 +63,11 @@ const RestaurantCard = ({
 
         <KitchensNames names={kitchensNames} />
 
-        <DeliveryInfo minimum_order={minOrder} delivery_fee={deliveryFee} />
+        <DeliveryInfo
+          minimum_order={minOrder}
+          delivery_fee={deliveryFee}
+          style={{ marginTop: 10 }}
+        />
       </StyledBottomPart>
     </StyledRestaurantCard>
   );
