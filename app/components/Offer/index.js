@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import intl from 'utils/intlService';
 import { isMobile } from 'utils/css/styles';
-import { lightGray, ironsideGray } from 'utils/css/colors';
+import { ironsideGray } from 'utils/css/colors';
 import ModalFrame from 'containers/ModalFrameContainer';
-import CircledItem from 'components/CircledItem';
 import Icon from 'components/Icon';
 import { Title, Description } from 'components/Typography';
 import {
@@ -40,14 +39,7 @@ const Offer = ({ showModal, offer = {}, ...props }) => {
   return (
     <Container {...props}>
       <Content onClick={handleOfferClick}>
-        <CircledItem
-          color={lightGray}
-          inline
-          width={28}
-          style={{ flexShrink: 0 }}
-        >
-          <Icon name="discountOnPayment" size={16} />
-        </CircledItem>
+        <Icon name="offer" size={28} style={{ flexShrink: 0 }} />
         <Title css={titleCss}>{offer.title}</Title>
         <Icon name="more" size={15} css={moreIconCss} />
       </Content>
