@@ -9,6 +9,7 @@ import DeliveryOptionsContainer from 'containers/DeliveryOptionsContainer';
 import PaymentOptionsContainer from 'containers/PaymentOptionsContainer';
 import InvalidOrder from 'containers/InvalidOrder';
 import Back from 'containers/Back';
+import Breadcrumbs from 'components/Breadcrumbs';
 import Step from 'components/Step';
 import Note from 'components/Note';
 import Loader from 'components/Loader';
@@ -108,6 +109,7 @@ class CheckoutPage extends React.Component {
         <InvalidOrder />
         <NavHeader isWithOffset>
           <Back />
+          <Breadcrumbs />
         </NavHeader>
         <ContentContainer>
           <LeftSide>{this.renderContent()}</LeftSide>

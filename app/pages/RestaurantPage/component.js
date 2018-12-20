@@ -6,6 +6,7 @@ import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
 import CartContainer from 'containers/CartContainer';
 import BasketCartButton from 'containers/BasketCartButton';
+import Breadcrumbs from 'components/Breadcrumbs';
 import RestaurantInfo from 'components/RestaurantInfo';
 import TypeSelect from 'components/TypeSelect';
 import RestaurantProducts from 'components/RestaurantProducts';
@@ -140,6 +141,7 @@ class RestaurantPage extends React.Component {
       <StyledPage>
         <NavHeader isWithOffset>
           <Back />
+          <Breadcrumbs />
         </NavHeader>
         <ContentContainer>
           <LeftSide>
