@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { fuscousGray } from 'utils/css/colors';
 import { fontFamilyRegular } from 'utils/css/variables';
 
-export default styled(Link)`
+export const ButtonLinkCss = `
   text-decoration: none;
   background: rgba(216, 216, 216, 0.37);
   border-radius: 10px;
@@ -19,4 +19,8 @@ export default styled(Link)`
   :hover {
     background: rgba(216, 216, 216, 0.67);
   }
+`;
+
+export default styled(Link)`
+  ${ButtonLinkCss};
 `;
