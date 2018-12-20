@@ -31,6 +31,7 @@
 	"app.components.AddRestaurantForm.restaurantCuisine": "Cuisine",
 	"app.components.AddRestaurantForm.restaurantName": "اسم المطعم",
 	"app.components.Back.text": "رجوع",
+	"app.components.Breadcrumbs.checkout": "Checkout",
 	"app.components.Breadcrumbs.home": "الرئيسية",
 	"app.components.BriefFiltersSection.moreFilters": "تصفية إضافية",
 	"app.components.BriefFiltersSection.tags": "العلامات",

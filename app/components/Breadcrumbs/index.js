@@ -1,18 +1,8 @@
-/**
- *
- * Breadcrumbs
- *
- */
-
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import intl from 'utils/intlService';
-
 import withSelectedLocationAndFilters from 'hocs/withSelectedLocationAndFilters';
-
-import Icon from 'components/Icon';
-import ButtonLink from 'components/ButtonLink';
 import { BreadcrumbsStyled } from './BreadcrumbsStyled';
 import messages from './messages';
 
@@ -37,54 +27,74 @@ const defaultFilters = [
   },
 ];
 
-const Breadcrumbs = ({ crumbs, location, filters }) => (
-  <BreadcrumbsStyled>
-    <ul>
-      {crumbs.map(item => (
-        <Fragment key={item.key}>
-          {crumbs.length && (
-            <Fragment>
-              <li key={item.key}>
-                <Link to={item.to}>{item.label}</Link>
-              </li>
-              <li>
-                <Icon name="dot-crumbs" size={4} />
-              </li>
-            </Fragment>
-          )}
-        </Fragment>
-      ))}
-      {location &&
-        location.map(item => (
-          <Fragment key={item.get('id')}>
-            <li>
-              <Link to={item.get('name')}>{item.get('name')}</Link>
-            </li>
-            <li>
-              <Icon name="dot-crumbs" size={4} />
-            </li>
-          </Fragment>
-        ))}
-      {/* Filters */}
-      {filters &&
-        filters.map(item => (
+// TODO: logic for link creation has to be revised!!
+const Breadcrumbs = ({ crumbs, city, district, filters, branch, ...props }) => {
+  const {
+    params: { city: citySlug, district: districtSlug, branchId },
+  } = props.match;
+
+  return (
+    <BreadcrumbsStyled>
+      <ul>
+        {crumbs.map(item => (
           <li key={item.key}>
-            <ButtonLink to="#">{item.label}</ButtonLink>
+            <Link to={item.to}>{item.label}</Link>
           </li>
         ))}
-    </ul>
-  </BreadcrumbsStyled>
-);
+        {city && (
+          <li>
+            <Link to={`/restaurants/${citySlug}/${districtSlug}`}>
+              {city.get('name')}
+            </Link>
+          </li>
+        )}
+        {district && (
+          <li>
+            <Link to={`/restaurants/${citySlug}/${districtSlug}`}>
+              {district.get('name')}
+            </Link>
+          </li>
+        )}
+        {filters.map(item => (
+          <li key={item.key}>
+            <span>{item.label}</span>
+          </li>
+        ))}
+        {branchId && branchId === branch.id ? (
+          <li>
+            <Link
+              to={`/restaurants/${citySlug}/${districtSlug}/restaurant/${branchId}`}
+            >
+              {branch.restaurant.name}
+            </Link>
+          </li>
+        ) : null}
+        {props.location.pathname.includes('/checkout') ? (
+          <li>
+            <Link
+              to={`/restaurants/${citySlug}/${districtSlug}/restaurant/${branchId}/checkout`}
+            >
+              {intl.formatMessage(messages.checkout)}
+            </Link>
+          </li>
+        ) : null}
+      </ul>
+    </BreadcrumbsStyled>
+  );
+};
 
 Breadcrumbs.propTypes = {
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   crumbs: PropTypes.array,
-  location: PropTypes.array,
+  city: PropTypes.object,
+  district: PropTypes.object,
   filters: PropTypes.array,
+  branch: PropTypes.object,
 };
 Breadcrumbs.defaultProps = {
   crumbs: defaultRoute,
-  location: [],
   filters: defaultFilters,
 };
 
-export default withSelectedLocationAndFilters(Breadcrumbs);
+export default withRouter(withSelectedLocationAndFilters(Breadcrumbs));

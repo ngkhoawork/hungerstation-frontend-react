@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-
-import ButtonLink from 'components/ButtonLink';
+import { ButtonLinkCss } from 'components/ButtonLink';
 import { flex, mediaSmall } from 'utils/css/styles';
 import { boulder } from 'utils/css/colors';
 import { fontFamilyLight } from 'utils/css/variables';
+import dotIcon from 'icons/dot-crumbs.svg';
 
 export const BreadcrumbsStyled = styled.div`
   ${flex({}, true)};
@@ -24,26 +24,47 @@ export const BreadcrumbsStyled = styled.div`
   }
 
   li {
-    padding: 0 16px 0 0;
     font-size: 13px;
     white-space: nowrap;
     margin-bottom: 8px;
   }
 
-  a {
+  a,
+  span {
     display: inline-block;
-  }
-
-  ${/* sc-selector */ ButtonLink} {
-    margin-top: -3px;
-  }
-
-  a:not(${ButtonLink}) {
     text-decoration: none;
     color: ${boulder};
 
-    &:hover {
-      text-decoration: underline;
+    &:after {
+      content: url(${dotIcon});
+      margin: 0 16px;
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  li:last-child {
+    a,
+    span {
+      ${ButtonLinkCss};
+      margin-top: -3px;
+
+      &:after {
+        content: '';
+        margin: 0;
+      }
+    }
+  }
+
+  li:nth-last-child(2) {
+    a,
+    span {
+      &:after {
+        content: '';
+        margin: 0 7px;
+      }
     }
   }
 `;

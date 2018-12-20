@@ -31,6 +31,7 @@
 	"app.components.AddRestaurantForm.restaurantCuisine": "Cuisine",
 	"app.components.AddRestaurantForm.restaurantName": "Restaurant Name",
 	"app.components.Back.text": "Back",
+	"app.components.Breadcrumbs.checkout": "Checkout",
 	"app.components.Breadcrumbs.home": "Home",
 	"app.components.BriefFiltersSection.moreFilters": "More filters",
 	"app.components.BriefFiltersSection.tags": "Tags",

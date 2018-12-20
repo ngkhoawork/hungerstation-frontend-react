@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { keyBy, pick, values, flow, find } from 'lodash/fp';
-
 import { selectDistrict, selectCity } from 'modules/location/selectors';
+import { selectRestaurant } from 'modules/restaurant/selectors';
 import {
   selectChosenDeliveryOption,
   selectChosenKitchenFiltersArray,
@@ -23,17 +23,20 @@ const pickArrayElementsByIds = pickArrayElementsByProp('id');
 export const mapStateToProps = createSelector(
   selectCity,
   selectDistrict,
+  selectRestaurant,
   selectFilters,
   selectChosenKitchenFiltersArray,
   selectChosenDeliveryOption,
   (
     city,
     district,
+    branch,
     { delivery_options, kitchens },
     kitchensIds,
     deliveryOption,
   ) => ({
-    location: city && district ? [city, district] : [],
+    city,
+    district,
     filters: [
       {
         key: 'all-cuisines',
@@ -56,6 +59,7 @@ export const mapStateToProps = createSelector(
             : find({ type: deliveryOption }, delivery_options).name,
       },
     ],
+    branch,
   }),
 );
 
