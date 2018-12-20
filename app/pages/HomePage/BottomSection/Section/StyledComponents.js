@@ -5,6 +5,7 @@ import {
   mediaMediumGreater,
   sidePadding,
 } from 'utils/css/styles';
+import { alabaster } from 'utils/css/colors';
 
 export const StyledSection = styled.div`
   ${flex({ align: 'flex-start', justify: 'center' })};
@@ -25,7 +26,7 @@ export const StyledSection = styled.div`
   ${({ hasBackground }) =>
     hasBackground &&
     `
-    background-color: #f8f8f8;
+    background-color: ${alabaster};
   `};
 
   ${mediaMedium`
