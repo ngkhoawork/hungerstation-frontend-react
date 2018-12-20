@@ -75,6 +75,7 @@ class PrivacyPolicy extends React.Component {
               title={this.state.title || questions[0].title}
               isCollapsible
               closeDropDownMenu
+              closeArrow
             >
               {questions.map(item => (
                 <MenuItem

@@ -7,10 +7,9 @@ import { mediaMedium } from 'utils/css/styles';
 export const IconContainer = styled.span`
   transform: rotate(${({ isOpen }) => (isOpen ? 180 : 0)}deg);
   top: ${({ isOpen }) => (isOpen ? -1 : 0)}px;
-
-  ${mediaMedium`
   display: block;
-  padding: 0
+  ${mediaMedium`
+    padding: 5px 0 0;
   `};
 `;
 

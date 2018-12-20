@@ -8,10 +8,10 @@ export const IconContainer = styled.span`
   position: relative;
   transform: rotate(${({ isOpen }) => (isOpen ? 180 : 0)}deg);
   top: ${({ isOpen }) => (isOpen ? -1 : 0)}px;
+  display: block;
 
   ${mediaMedium`
-    display: block;
-    padding: 0
+    padding: 5px 0 0;
   `};
 `;
 

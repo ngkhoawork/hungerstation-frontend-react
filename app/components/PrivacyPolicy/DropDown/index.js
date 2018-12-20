@@ -9,7 +9,13 @@ class DropDown extends Component {
   handleToggle = () => this.setState(state => ({ isOpen: !state.isOpen }));
 
   render() {
-    const { isCollapsible, title, children, closeDropDownMenu } = this.props;
+    const {
+      isCollapsible,
+      title,
+      children,
+      closeDropDownMenu,
+      closeArrow,
+    } = this.props;
     const { isOpen } = this.state;
 
     return (
@@ -18,7 +24,10 @@ class DropDown extends Component {
           <Title>{title}</Title>
           <div>
             {isCollapsible ? (
-              <ShowMoreIcon isOpen={isOpen} onClick={this.handleToggle} />
+              <ShowMoreIcon
+                isOpen={closeArrow ? !isOpen : isOpen}
+                onClick={this.handleToggle}
+              />
             ) : null}
           </div>
         </Header>
@@ -39,6 +48,7 @@ class DropDown extends Component {
 DropDown.propTypes = {
   isCollapsible: PropTypes.bool,
   closeDropDownMenu: PropTypes.bool,
+  closeArrow: PropTypes.bool,
   title: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
 };
