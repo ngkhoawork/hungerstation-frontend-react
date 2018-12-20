@@ -22,6 +22,9 @@ export default defineMessages({
   description: {
     id: 'app.components.AddAddress.description',
   },
+  descriptionMaxChars: {
+    id: 'app.components.AddAddress.descriptionMaxChars',
+  },
   phone: {
     id: 'app.components.AddAddress.phone',
   },

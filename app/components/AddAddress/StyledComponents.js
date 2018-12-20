@@ -13,8 +13,9 @@ import {
   maxModalWidth,
   maxModalContentHeight,
   fontFamilyBold,
+  fontFamilyLight,
 } from 'utils/css/variables';
-import { lightGray } from 'utils/css/colors';
+import { lightGray, persimmon } from 'utils/css/colors';
 
 export const containerCss = css`
   ${mediaMediumGreater`width: 768px`};
@@ -120,12 +121,22 @@ export const InputsContainer = styled.div`
 `;
 
 export const Desc = styled.div`
+  position: relative;
   width: 50%;
   ${sideMargin('end', '20px')};
 
   ${mediaMedium`
     width: 100%;
   `};
+`;
+
+export const DescError = styled.div`
+  position: absolute;
+  bottom: 4px;
+  ${sidePosition('start', 0)};
+  font-size: 10px;
+  font-family: ${fontFamilyLight};
+  color: ${persimmon};
 `;
 
 export const ZoomCtrl = styled.div`

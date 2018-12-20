@@ -26,6 +26,7 @@ import {
   Content,
   InputsContainer,
   Desc,
+  DescError,
   ZoomCtrl,
   ZoomBorder,
   ZoomBtn,
@@ -266,6 +267,11 @@ class AddAddress extends React.Component {
                   label={intl.formatMessage(messages.description)}
                   fullWidth
                 />
+                {description.length > 249 && (
+                  <DescError>
+                    {intl.formatMessage(messages.descriptionMaxChars)}
+                  </DescError>
+                )}
               </Desc>
               <PhoneNumberInput
                 phone={mobile}
