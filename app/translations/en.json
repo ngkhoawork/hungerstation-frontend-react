@@ -287,7 +287,7 @@
 	"app.pages.RestaurantPage.header": "My Orders",
 	"app.pages.RestaurantPage.noMenu": "{name} doesn't have any menu",
 	"form.email": "Invalid email address",
-	"form.mobile.length": "The mobile number needs to have 9 digits",
+	"form.mobile.length": "The mobile number needs to have 9 or 10 digits",
 	"form.mobile.regex": "Invalid phone number",
 	"form.name.length": "The name needs to be at least 2 characters and the maximum 20 characters",
 	"form.password": "The password needs to be at least 8 characters and the maximum 20 characters",
