@@ -26,6 +26,7 @@ import {
   Content,
   InputsContainer,
   Desc,
+  DescCount,
   DescError,
   ZoomCtrl,
   ZoomBorder,
@@ -267,6 +268,7 @@ class AddAddress extends React.Component {
                   label={intl.formatMessage(messages.description)}
                   fullWidth
                 />
+                <DescCount>{`${description.length}/250`}</DescCount>
                 {description.length > 249 && (
                   <DescError>
                     {intl.formatMessage(messages.descriptionMaxChars)}

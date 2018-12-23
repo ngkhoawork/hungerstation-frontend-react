@@ -15,7 +15,7 @@ import {
   fontFamilyBold,
   fontFamilyLight,
 } from 'utils/css/variables';
-import { lightGray, persimmon } from 'utils/css/colors';
+import { lightGray, ironsideGray, persimmon } from 'utils/css/colors';
 
 export const containerCss = css`
   ${mediaMediumGreater`width: 768px`};
@@ -114,6 +114,7 @@ export const Content = styled.div`
 
 export const InputsContainer = styled.div`
   ${flex({}, true)};
+  margin-bottom: 10px;
 
   ${mediaMedium`
     ${flex({ direction: 'column' }, false)};
@@ -130,11 +131,20 @@ export const Desc = styled.div`
   `};
 `;
 
+export const DescCount = styled.div`
+  position: absolute;
+  bottom: 0;
+  ${sidePosition('end', 0)};
+  font-size: 12px;
+  font-family: ${fontFamilyLight};
+  color: ${ironsideGray};
+`;
+
 export const DescError = styled.div`
   position: absolute;
-  bottom: 4px;
+  bottom: 0;
   ${sidePosition('start', 0)};
-  font-size: 10px;
+  font-size: 12px;
   font-family: ${fontFamilyLight};
   color: ${persimmon};
 `;
