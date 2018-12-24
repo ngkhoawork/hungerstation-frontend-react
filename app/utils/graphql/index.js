@@ -1,30 +1,31 @@
 import { GraphQLClient } from 'graphql-request';
 import intlService from 'utils/intlService';
 
-let API_URL = 'https://hungerstation.com/api/v3/graphql';
+const defaultEndpoint = 'https://hungerstation.com/api/v3/graphql';
+const defaultEnvEndpoints = {
+  staging: 'https://hs-staging.com/api/v3/graphql',
+  development: 'http://localhost:3000/proxy',
+};
 
-switch (process.env.API_ENV) {
-  case 'staging':
-    API_URL = 'https://hs-staging.com/api/v3/graphql';
-    break;
-  case 'development':
-    API_URL = 'http://localhost:3000/proxy';
-    break;
-  default:
-    break;
-}
+const setGraphqlEndpoint = apiEnv => {
+  let graphqlEndpoint = defaultEnvEndpoints[apiEnv];
+  if (defaultEndpoint === undefined) {
+    return defaultEndpoint;
+  }
 
-export const protectedClient = token =>
-  new GraphQLClient(API_URL, {
-    headers: {
-      'Accept-Language': intlService.getLocale(),
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const storageEndpoint = localStorage.getItem('graphql.endpoint');
+  if (storageEndpoint) {
+    graphqlEndpoint = storageEndpoint;
+  }
 
-export const arbitraryClient = headers =>
-  new GraphQLClient(API_URL, {
+  console.log(`Connecting to: ${graphqlEndpoint}`); // eslint-disable-line no-console
+  return graphqlEndpoint;
+};
+
+const graphqlEndpoint = setGraphqlEndpoint(process.env.API_ENV);
+
+export const clientWithHeaders = headers =>
+  new GraphQLClient(graphqlEndpoint, {
     headers: {
       'Accept-Language': intlService.getLocale(),
       'Content-Type': 'application/json',
@@ -32,11 +33,9 @@ export const arbitraryClient = headers =>
     },
   });
 
-export const client = new GraphQLClient(API_URL, {
-  headers: {
-    'Accept-Language': intlService.getLocale(),
-    'Content-Type': 'application/json',
-  },
-  // credentials: 'include',
-  // mode: 'cors',
-});
+export const client = clientWithHeaders({});
+
+export const protectedClient = token =>
+  clientWithHeaders({
+    Authorization: `Bearer ${token}`,
+  });

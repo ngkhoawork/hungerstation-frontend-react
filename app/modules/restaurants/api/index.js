@@ -1,4 +1,4 @@
-import { arbitraryRequest } from 'utils/api';
+import { requestWithHeaders } from 'utils/api';
 import intlService from 'utils/intlService';
 import { getDeliveriesQuery, getDeliveryFiltersQuery } from './query';
 
@@ -13,7 +13,7 @@ const getRestaurants = ({ lat, lng, deliveryType, localId }) => {
     params.lat = lat;
     params.lng = lng;
   }
-  return arbitraryRequest(
+  return requestWithHeaders(
     { 'Accept-Language': intlService.getLocale() },
     getDeliveriesQuery,
     { ...params },
@@ -21,7 +21,7 @@ const getRestaurants = ({ lat, lng, deliveryType, localId }) => {
 };
 
 const getDeliveryFilters = () =>
-  arbitraryRequest(
+  requestWithHeaders(
     { 'Accept-Language': intlService.getLocale() },
     getDeliveryFiltersQuery,
   );

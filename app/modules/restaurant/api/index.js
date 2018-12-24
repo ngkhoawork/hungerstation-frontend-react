@@ -1,9 +1,9 @@
-import { request, arbitraryRequest } from 'utils/api';
+import { request, requestWithHeaders } from 'utils/api';
 import intlService from 'utils/intlService';
 import { getBranchQuery, getBranchDeliveryConditionsQuery } from './query';
 
 export const getBranch = id =>
-  arbitraryRequest(
+  requestWithHeaders(
     { 'Accept-Language': intlService.getLocale() },
     getBranchQuery,
     { id: parseInt(id, 10) },
