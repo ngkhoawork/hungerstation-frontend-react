@@ -123,9 +123,9 @@ const OrderCard = ({ order, onOrderClick, onRateClick }) => {
               )}
               {/* eslint-disable */}
               {order.state === 'successful' &&
-              (order.delivedAt ? (
+              (order.deliveredAt ? (
                 <DateTimeElement
-                  time={order.delivedAt}
+                  time={order.deliveredAt}
                 />
               ) : (
                 <TrackingTimer
