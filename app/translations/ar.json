@@ -287,7 +287,7 @@
 	"app.pages.RestaurantPage.header": "طلباتي",
 	"app.pages.RestaurantPage.noMenu": "{name} لا يملك أي القائمة",
 	"form.email": "عنوان البريد الإلكتروني غير صحيح",
-	"form.mobile.length": "يجب أن يتكون رقم الجوال من ٩ أرقام",
+	"form.mobile.length": "يجب أن يتكون رقم الجوال من 9 أو 10 أرقام",
 	"form.mobile.regex": "رقم الهاتف غير صحيح",
 	"form.name.length": "يجب أن يتكون الاسم من حرفين على الأقل إلى 20 حرف",
 	"form.password": "يجب أن تكون كلمة المرور من 8 أحرف إلى 20 حرف",
