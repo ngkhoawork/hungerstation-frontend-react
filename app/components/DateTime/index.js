@@ -17,10 +17,19 @@ const Time = styled.span`
   ${({ css }) => css};
 `;
 
+const dateFormatOptions = {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+};
+
 const DateTimeElement = ({ time, ...props }) => (
   <Time {...props}>
     <Icon name="price-tag" offsetY="1" /> &nbsp;
-    {intl.formatTime(time)}
+    {intl.formatTime(time, dateFormatOptions)}
   </Time>
 );
 
