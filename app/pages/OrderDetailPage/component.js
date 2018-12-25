@@ -19,6 +19,7 @@ import {
   LeftSide,
   RightSide,
 } from 'pages/OrdersPage/StyledComponents';
+import { dustyGray } from 'utils/css/colors';
 import CartContainer from './CartContainer';
 import TrackingSteps from './TrackingSteps';
 import { cartCss, OrderDetailSection } from './StyledComponents';
@@ -46,7 +47,7 @@ class OrderDetailPage extends React.Component {
   };
 
   render() {
-    const { order, params, path } = this.props;
+    const { order, params, path, showThankyouMsg } = this.props;
     let purchases = [];
     const orderAmount = order ? order.amount : undefined;
     const discount = order ? order.discount : undefined;
@@ -85,6 +86,14 @@ class OrderDetailPage extends React.Component {
             {order ? (
               <Fragment>
                 <LeftSide>
+                  {showThankyouMsg && (
+                    <Paragraph size={42} margin="0 0 40px 0">
+                      {intl.formatMessage(messages.thankyouMessage)}
+                      <Paragraph size={16} color={dustyGray} light>
+                        {intl.formatMessage(messages.checkProgressMessage)}
+                      </Paragraph>
+                    </Paragraph>
+                  )}
                   <Paragraph size={30}>
                     {intl.formatMessage(messages.orderDetails)}
                   </Paragraph>
@@ -146,6 +155,7 @@ OrderDetailPage.propTypes = {
   order: PropTypes.object,
   params: PropTypes.object,
   path: PropTypes.string,
+  showThankyouMsg: PropTypes.bool,
 };
 
 export default withHeaderAndFooter(OrderDetailPage);

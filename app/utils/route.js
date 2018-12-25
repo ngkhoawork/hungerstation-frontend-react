@@ -6,8 +6,8 @@ export function setHistory(appHistoryObj) {
   history = appHistoryObj;
 }
 
-export function forwardTo(location) {
-  history.push(location);
+export function forwardTo(location, state) {
+  history.push(location, state);
 }
 
 export function replace(location) {

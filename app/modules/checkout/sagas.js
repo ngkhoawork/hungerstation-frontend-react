@@ -92,7 +92,9 @@ export function* createOrderSaga({ payload }) {
 
     const { createOrder } = yield call(api.createOrder, accessToken, payload);
     yield call(fetchOrders);
-    yield call(forwardTo, `/my-orders/${createOrder.id}`);
+    yield call(forwardTo, `/my-orders/${createOrder.id}`, {
+      showThankyouMsg: true,
+    });
 
     yield put(createOrderSuccess(createOrder));
   } catch (e) {
