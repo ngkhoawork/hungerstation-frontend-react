@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { findIndex } from 'lodash';
+import Iframe from 'react-iframe';
 import intl from 'utils/intlService';
 import { withHeaderAndFooter } from 'hocs/withInsertLayout';
 import Back from 'containers/Back';
