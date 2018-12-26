@@ -8,6 +8,7 @@ import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
+import { Title, Description } from 'components/Typography';
 import Loader from 'components/Loader';
 import OrderCard from 'pages/OrdersPage/OrderCard';
 import { NavHeader } from 'utils/css/styledComponents';
@@ -22,7 +23,7 @@ import {
 import { dustyGray } from 'utils/css/colors';
 import CartContainer from './CartContainer';
 import TrackingSteps from './TrackingSteps';
-import { cartCss, OrderDetailSection } from './StyledComponents';
+import { cartCss, titleCss, OrderDetailSection } from './StyledComponents';
 import messages from './messages';
 
 class OrderDetailPage extends React.Component {
@@ -87,12 +88,12 @@ class OrderDetailPage extends React.Component {
               <Fragment>
                 <LeftSide>
                   {showThankyouMsg && (
-                    <Paragraph size={42} margin="0 0 40px 0">
+                    <Title css={titleCss}>
                       {intl.formatMessage(messages.thankyouMessage)}
-                      <Paragraph size={16} color={dustyGray} light>
+                      <Description size={16} color={dustyGray} light>
                         {intl.formatMessage(messages.checkProgressMessage)}
-                      </Paragraph>
-                    </Paragraph>
+                      </Description>
+                    </Title>
                   )}
                   <Paragraph size={30}>
                     {intl.formatMessage(messages.orderDetails)}

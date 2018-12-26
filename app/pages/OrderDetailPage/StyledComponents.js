@@ -16,6 +16,11 @@ export const cartCss = css`
   `};
 `;
 
+export const titleCss = css`
+  margin: 0 0 40px 0;
+  font-size: 42px;
+`;
+
 export const OrderDetailSection = styled.div`
   width: 100%;
   margin-bottom: 50px;
