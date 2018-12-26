@@ -1,6 +1,8 @@
 import { fromJS, List } from 'immutable';
 import { maxBy } from 'lodash';
 import { logout } from 'modules/auth/actions';
+import intl from 'utils/intlService';
+import messages from 'pages/RestaurantsPage/RestaurantsSection/RestaurantsList/ToolsPanel/messages';
 import {
   fetchRestaurantsRequest,
   fetchRestaurantsError,
@@ -20,10 +22,26 @@ import { MIN_ORDER_RANGE, TIME_ESTIMATION_RANGE } from './constants';
 
 // TODO [API] delete this when API will be ready
 const TAGS_MOCK = [
-  { id: '11111', name: 'Online Payment', type: 'accept_credit_card' },
-  { id: '22222', name: 'Voucher', type: 'accept_voucher' },
-  { id: '33333', name: 'Cash on delivery', type: 'accept_cash_on_delivery' },
-  { id: '44444', name: 'Fast Delivery', type: 'hungerstation_delivery' },
+  {
+    id: '11111',
+    name: intl.formatMessage(messages.onlinePayment),
+    type: 'accept_credit_card',
+  },
+  {
+    id: '22222',
+    name: intl.formatMessage(messages.voucher),
+    type: 'accept_voucher',
+  },
+  {
+    id: '33333',
+    name: intl.formatMessage(messages.cashOnDelivery),
+    type: 'accept_cash_on_delivery',
+  },
+  {
+    id: '44444',
+    name: intl.formatMessage(messages.fastDelivery),
+    type: 'hungerstation_delivery',
+  },
 ];
 
 const INITIAL_CHOSEN_FILTERS_STATE = {
