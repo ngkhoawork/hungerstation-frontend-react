@@ -6,6 +6,7 @@ import {
   mediaMedium,
   mediaMediumGreater,
   sideMargin,
+  rotateImage,
 } from 'utils/css/styles';
 import IconWrapper from 'components/Icon/IconWrapper';
 import imgBg from 'images/homeMobAppsBg.png';
@@ -21,38 +22,55 @@ import secondaryImgBgMob from 'images/homeMobAppsScreensMob.png';
 import secondaryImgBgMob2x from 'images/homeMobAppsScreensMob@2x.png';
 import secondaryImgBgMob3x from 'images/homeMobAppsScreensMob@3x.png';
 
-export const sectionCss = css`
+export const Wrapper = styled.div`
   ${mediaMediumGreater`
+    ${rotateImage()};
+    margin-bottom: 5%;
     background-image: url(${imgBg});
     background-size: contain;
     background-position: bottom left;
-    padding-bottom: 60px;
+    padding-bottom: 11%;
     overflow: hidden;
+    margin-top: -85px;
 
     ${device.retina`background-image: url(${imgBg2x});`};
     ${device.retina3x`background-image: url(${imgBg3x});`};
-  `};
+`};
 
   ${mediaMedium`margin-bottom: 100px;`};
   ${mediaSmall`margin-bottom: 50px;`};
+`;
+
+export const sectionCss = css`
+  ${mediaMediumGreater`
+    ${rotateImage()};
+  `};
 `;
 
 export const rightSectionCss = css`
   ${mediaMediumGreater`
     position: relative;
     margin-top: auto;
-    bottom: -62px;
+    bottom: -63px;
   `};
 
   ${mediaMedium`padding: 0;`};
 `;
 
+export const leftSectionCss = css`
+  ${mediaMediumGreater`
+  width: 36%;
+  ${sideMargin('end', '5%')};
+  margin-bottom: -7%;
+`};
+`;
+
 export const MobileBackgroundContainer = styled.div`
   ${mediaMediumGreater`
     position: absolute;
-    width: calc(100% - 18px);
-    ${sideMargin('start', '17px')};
-    bottom: -175px;
+    width: calc(100% - 90px);
+    ${sideMargin('start', '20px')};
+    margin-top: -63%;
     background-image: url(${secondaryImgBg});
     background-size: 100%;
 
@@ -62,7 +80,7 @@ export const MobileBackgroundContainer = styled.div`
     :before {
       content: '';
       display: block;
-      padding-top: 112.975778547%;
+      padding-top: 125.975779%;
     }
   `};
 
@@ -101,7 +119,7 @@ export const MobileBackground = styled.div`
 
 export const DetailsWrapper = styled.div`
   display: block;
-  padding: 130px 60px 80px;
+  padding: 28% 60px 40px;
   border-radius: 8px;
 
   ${/* sc-selector */ IconWrapper} {

@@ -92,6 +92,17 @@ export const rotateArrowIcon = () => {
     transform: rotate(${map[props.theme.direction].rotate});
   `;
 };
+
+export const rotateImage = () => {
+  const map = {
+    ltr: { rotate: `0deg` },
+    rtl: { rotate: `180deg` },
+  };
+  return () => props => css`
+    transform: rotateY(${map[props.theme.direction].rotate});
+  `;
+};
+
 export const mediaLess = getMedia('lessThan');
 export const mediaGreater = getMedia('greaterThan');
 const desktopWidth = 850;
