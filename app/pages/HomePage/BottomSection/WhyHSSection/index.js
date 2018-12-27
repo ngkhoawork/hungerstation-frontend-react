@@ -10,10 +10,13 @@ import {
   DetailsWrapper,
   ImageBackground,
   leftSectionCss,
+  styeldSection,
+  fontSize,
 } from './StyledComponents';
 
 const WhyHSSection = () => (
   <Section
+    css={styeldSection}
     leftSection={<ImageBackground />}
     leftSectionCss={leftSectionCss}
     rightSection={
@@ -21,6 +24,7 @@ const WhyHSSection = () => (
         <SectionDetails
           header={intl.formatMessage(messages.whyHungerStation)}
           description={intl.formatMessage(messages.whyHungerStationDescription)}
+          fontSize={fontSize}
         />
         <ButtonWrapper style={{ marginTop: 32 }}>
           <StyledLink to="/about-us">

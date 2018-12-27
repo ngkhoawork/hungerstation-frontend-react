@@ -11,6 +11,7 @@ const Header = styled.div`
   ${mediaMedium`
     font-size: 35px;
   `};
+  ${({ css }) => css};
 `;
 
 export default Header;

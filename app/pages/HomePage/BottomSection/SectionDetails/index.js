@@ -5,9 +5,9 @@ import StyledBox from './StyledBox';
 import Header from './Header';
 import DetailsText from './DetailsText';
 
-const SectionDetails = ({ header, description, children, left }) => (
+const SectionDetails = ({ header, description, children, left, fontSize }) => (
   <StyledBox left={left}>
-    <Header>{header}</Header>
+    <Header css={fontSize}>{header}</Header>
     <DetailsText>{description}</DetailsText>
     {children}
   </StyledBox>
@@ -18,6 +18,7 @@ SectionDetails.propTypes = {
   description: PropTypes.string.isRequired,
   children: PropTypes.element,
   left: PropTypes.bool,
+  fontSize: PropTypes.array,
 };
 
 SectionDetails.defaultProps = {
