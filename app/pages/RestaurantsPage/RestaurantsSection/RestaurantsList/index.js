@@ -112,7 +112,7 @@ export default class RestaurantsList extends Component {
         {this.renderContent()}
 
         <ActionButtonsWrapper>
-          {this.showLoadMoreButton ? (
+          {PAGINATION_STEP < restaurants.length ? (
             <ScrollToListTopWrapper onClick={handleScrollToTop}>
               <CircledItem width={28} color={gold} withShadow>
                 <Icon name="arrow-right" size={12} />
