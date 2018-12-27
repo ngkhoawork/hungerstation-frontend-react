@@ -33,6 +33,7 @@ import {
   ZoomBtn,
 } from './StyledComponents';
 
+const descLimit = 125;
 const mapId = `addNewAddressMap${Math.random()}`;
 const autocompleteId = `addNewAddressLocation${Math.random()}`;
 let googleMaps = null;
@@ -264,19 +265,19 @@ class AddAddress extends React.Component {
                       </InputAdornment>
                     ),
                   }}
-                  inputProps={{ maxLength: 125 }} // eslint-disable-line react/jsx-no-duplicate-props
+                  inputProps={{ maxLength: descLimit }} // eslint-disable-line react/jsx-no-duplicate-props
                   label={intl.formatMessage(messages.description)}
                   fullWidth
                   multiline
                   rowsMax="2"
                 />
-                <DescCount isError={description.length > 124}>
-                  {`${description.length}/125`}
+                <DescCount isError={description.length > descLimit - 1}>
+                  {`${description.length}/${descLimit}`}
                 </DescCount>
-                {description.length > 124 && (
+                {description.length > descLimit - 1 && (
                   <DescError>
                     {intl.formatMessage(messages.descriptionMaxChars, {
-                      limit: 125,
+                      limit: descLimit,
                     })}
                   </DescError>
                 )}
