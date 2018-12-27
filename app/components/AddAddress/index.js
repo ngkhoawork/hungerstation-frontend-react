@@ -271,10 +271,10 @@ class AddAddress extends React.Component {
                   multiline
                   rowsMax="2"
                 />
-                <DescCount isError={description.length > descLimit - 1}>
+                <DescCount isError={description.length >= descLimit}>
                   {`${description.length}/${descLimit}`}
                 </DescCount>
-                {description.length > descLimit - 1 && (
+                {description.length >= descLimit && (
                   <DescError>
                     {intl.formatMessage(messages.descriptionMaxChars, {
                       limit: descLimit,
