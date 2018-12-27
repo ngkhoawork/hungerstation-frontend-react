@@ -36,7 +36,10 @@ const RestaurantCard = ({
 
     if (is_exclusive) {
       return (
-        <StatusContent color="success">
+        <StatusContent
+          color="success"
+          style={{ height: 24, padding: '6px 7px 6px 10px' }}
+        >
           {intl.formatMessage(messages.exclusive)}
         </StatusContent>
       );
@@ -51,12 +54,17 @@ const RestaurantCard = ({
       cover={coverPhoto}
     >
       <StyledUpperPart>
-        <BrandLogo src={logo} size={60} />
+        <BrandLogo src={logo} size={40} />
         {renderTag()}
       </StyledUpperPart>
 
       <StyledBottomPart>
-        <Row justify="space-between" align="center" maxWidth>
+        <Row
+          justify="space-between"
+          align="center"
+          maxWidth
+          style={{ marginBottom: 4, maxHeight: 16 }}
+        >
           <CardTitle name={name} status={status} />
           <Rating rating={rateAverage} />
         </Row>
@@ -66,7 +74,7 @@ const RestaurantCard = ({
         <DeliveryInfo
           minimum_order={minOrder}
           delivery_fee={deliveryFee}
-          style={{ marginTop: 10 }}
+          style={{ marginTop: 9 }}
         />
       </StyledBottomPart>
     </StyledRestaurantCard>

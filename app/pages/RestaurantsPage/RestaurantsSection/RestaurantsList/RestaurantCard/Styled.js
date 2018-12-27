@@ -13,7 +13,7 @@ const StyledRestaurantCard = styled(Link)`
   })};
   flex: 1 0 30%;
   max-width: 288px;
-  height: 176px;
+  height: 208px;
   border-radius: 8px;
   margin-bottom: 24px;
   ${sideMargin('end', '24px')};
@@ -41,17 +41,18 @@ const StyledRestaurantCard = styled(Link)`
 const StyledUpperPart = styled.div`
   ${flex({ align: 'flex-start', justify: 'space-between' })};
   width: 100%;
-  flex: 0.4;
-  padding: 15px 15px 5px 15px;
+  height: 128px;
+  padding: 16px;
 `;
 
 const StyledBottomPart = styled.div`
   ${flex({ align: 'flex-start', direction: 'column' })};
-  background-color: #fff;
+  background-color: white;
   width: 100%;
-  padding: 5px 15px 15px 15px;
-  flex: 0.4;
+  min-height: 80px;
+  padding: 13px 16px;
   border-radius: 0 0 8px 8px;
+  line-height: 1;
 `;
 
 export { StyledRestaurantCard, StyledUpperPart, StyledBottomPart };

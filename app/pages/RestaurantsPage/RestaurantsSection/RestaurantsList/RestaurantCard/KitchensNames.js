@@ -7,7 +7,7 @@ import { silverChalice } from 'utils/css/colors';
 import { sideMargin } from 'utils/css/styles';
 
 const KitchensNames = ({ names }) => (
-  <Row>
+  <Row style={{ flexWrap: 'wrap' }}>
     {names.map(n => (
       <Fragment key={n}>
         <ParagraphWithPoint size={14} color={silverChalice} margin="none">
@@ -28,9 +28,8 @@ const ParagraphWithPoint = styled(Paragraph)`
     content: '•';
     ${sideMargin('end', '2px')};
   }
-  height: 18px;
+  line-height: 1;
   padding: 0;
-  margin-top: 0px;
-  margin-bottom: 5px;
+  margin: 0;
   ${sideMargin('end', '8px')};
 `;
