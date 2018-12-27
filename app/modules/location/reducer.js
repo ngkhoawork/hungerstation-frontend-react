@@ -1,6 +1,5 @@
 import { fromJS } from 'immutable';
 import { sortAlphabetically } from 'utils/helpers';
-import { logout } from 'modules/auth/actions';
 import {
   setCitiesAction,
   setDistrictsAction,
@@ -41,8 +40,6 @@ function searchBarContainerReducer(state = initialState, action) {
       return onSaveCurrentLocationAction(state, action);
     case saveLocation.type:
       return onSaveLocation(state, action);
-    case logout.type:
-      return initialState;
     default:
       return state;
   }
