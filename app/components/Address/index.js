@@ -163,6 +163,7 @@ const Name = styled.div`
 
 const typeIconStyle = css`
   ${sidePosition('start', '5px')};
+  flex-shrink: 0;
 `;
 
 const editBtnCss = css`
@@ -178,10 +179,12 @@ const editBtnCss = css`
 
 const Title = styled.span`
   font-family: ${fontFamilyRegular};
+  word-break: break-word;
 `;
 
 const Location = styled.div`
   font-family: ${fontFamilyLight};
+  word-break: break-word;
 `;
 
 const EditBtnLabel = styled.span`
