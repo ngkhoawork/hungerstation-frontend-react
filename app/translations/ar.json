@@ -3,7 +3,7 @@
 	"app.components.AboutUs.header": "عن هنقرستيشن",
 	"app.components.AddAddress.createTitle": "إضافة عنوان جديد",
 	"app.components.AddAddress.description": "الوصف",
-	"app.components.AddAddress.descriptionMaxChars": "Max character Limit: 250",
+	"app.components.AddAddress.descriptionMaxChars": "Max character Limit: {limit}",
 	"app.components.AddAddress.ineligible": "العنوان غير مؤهل للتوصيل من هذا الفرع، لن تتمكن من تنفيذ طلبك لهذا العنوان",
 	"app.components.AddAddress.ineligibleSaved": "العنوان المختار غير مؤهل للتوصيل، فضلا قم بتغيير العنوان",
 	"app.components.AddAddress.name": "اسم العنوان",

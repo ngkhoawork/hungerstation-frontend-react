@@ -3,7 +3,7 @@
 	"app.components.AboutUs.header": "About Hungerstation",
 	"app.components.AddAddress.createTitle": "Add New Address",
 	"app.components.AddAddress.description": "Description",
-	"app.components.AddAddress.descriptionMaxChars": "Max character Limit: 250",
+	"app.components.AddAddress.descriptionMaxChars": "Max character Limit: {limit}",
 	"app.components.AddAddress.ineligible": "The Address is not Eligible for delivery by this branch, you will not be able to place your order for this address.",
 	"app.components.AddAddress.ineligibleSaved": "The address is not eligible for delivery, please select a different address",
 	"app.components.AddAddress.name": "Address Name",

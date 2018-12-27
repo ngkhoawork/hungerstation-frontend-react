@@ -264,14 +264,20 @@ class AddAddress extends React.Component {
                       </InputAdornment>
                     ),
                   }}
-                  inputProps={{ maxLength: 250 }} // eslint-disable-line react/jsx-no-duplicate-props
+                  inputProps={{ maxLength: 125 }} // eslint-disable-line react/jsx-no-duplicate-props
                   label={intl.formatMessage(messages.description)}
                   fullWidth
+                  multiline
+                  rowsMax="2"
                 />
-                <DescCount>{`${description.length}/250`}</DescCount>
-                {description.length > 249 && (
+                <DescCount isError={description.length > 124}>
+                  {`${description.length}/125`}
+                </DescCount>
+                {description.length > 124 && (
                   <DescError>
-                    {intl.formatMessage(messages.descriptionMaxChars)}
+                    {intl.formatMessage(messages.descriptionMaxChars, {
+                      limit: 125,
+                    })}
                   </DescError>
                 )}
               </Desc>
