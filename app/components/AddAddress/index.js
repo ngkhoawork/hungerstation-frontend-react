@@ -33,7 +33,7 @@ import {
   ZoomBtn,
 } from './StyledComponents';
 
-const descLimit = 125;
+const descLimit = 250;
 const mapId = `addNewAddressMap${Math.random()}`;
 const autocompleteId = `addNewAddressLocation${Math.random()}`;
 let googleMaps = null;
