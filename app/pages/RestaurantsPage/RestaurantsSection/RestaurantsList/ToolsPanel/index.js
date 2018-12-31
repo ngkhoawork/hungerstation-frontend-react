@@ -16,8 +16,11 @@ const StyledTool = styled.div`
   display: flex;
   width: ${({ hasFocus }) => (hasFocus ? 360 : 40)}px;
   transition: width ${transitionDuration};
+  position: relative;
 
-  ${mediaMedium`width: 100%;`};
+  ${mediaMedium`
+    width: ${({ hasFocus }) => (hasFocus ? '100%' : '40px')};
+  `};
 `;
 
 const StyledToolUndisplayedInMobile = styled(StyledTool)`
@@ -31,27 +34,26 @@ const StyledToolUndisplayedInMobile = styled(StyledTool)`
 
 const IconPositioning = styled.div`
   position: absolute;
-  top: 30px;
-
-  ${mediaLess(600)`
-    top: 44px;
-  `};
+  top: 8px;
 `;
 
 const Wrapper = styled.div`
   ${flex({ align: 'flex-start', justify: 'space-between' })};
   width: 100%;
+  border-top: 1px solid ${wildSand};
+  height: 60px;
   padding-top: 20px;
   margin-bottom: 50px;
-  border-top: 1px solid ${wildSand};
 
-  ${mediaLess(600)`
-    margin-bottom: 10px;
+  ${mediaMedium`
+    margin-bottom: 20px;
+    justify-content: flex-end;
   `};
 `;
 
 const searchIconWrapperCss = css`
   position: absolute;
+  top: -4px;
 `;
 
 class ToolsPanel extends React.Component {
