@@ -26,14 +26,14 @@ import CheckboxIcon from 'components/CheckboxIcon';
 import CircledItem from 'components/CircledItem';
 import messages from './messages';
 
-const getName = ({ name, specific_type, street, building_number }) => {
+const getName = ({ name, specific_type, local }) => {
   if (specific_type && specific_type !== otherAddressType) {
     return intl.formatMessage(addressMessages[specific_type]);
   }
 
   return (
     name ||
-    `${street || ''} ${building_number || ''}`.trim() ||
+    `${(local && local.name) || ''}`.trim() ||
     intl.formatMessage(addressMessages.old_style)
   );
 };
