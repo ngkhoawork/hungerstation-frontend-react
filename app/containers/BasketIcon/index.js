@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { forwardTo } from 'utils/route';
 import { getStorageItem } from 'utils/localStorage';
+import { isMobile } from 'utils/css/styles';
 import { selectDistrict, selectCity } from 'modules/location/selectors';
 import { initCart } from 'containers/CartContainer/actions';
 import { selectCartPurchases } from 'containers/CartContainer/selectors';
@@ -19,7 +20,7 @@ class BasketIconHOC extends React.Component {
     const district = getStorageItem('district');
 
     if (this.props.purchases.length && branchId) {
-      let url = `/restaurant/${branchId}`;
+      let url = `/restaurant/${branchId}${isMobile() ? '?basket=true' : ''}`;
 
       if (city && district) url = `/restaurants/${city}/${district}${url}`;
 
