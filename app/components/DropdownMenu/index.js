@@ -32,6 +32,12 @@ class DropdownMenu extends Component {
     }
   };
 
+  handleItemClick = item => {
+    this.toggleDropdown();
+
+    if (item.onClick) item.onClick();
+  };
+
   toggleDropdown = () => {
     const { isDropdownVisible } = this.state;
     this.setState({ isDropdownVisible: !isDropdownVisible });
@@ -58,7 +64,7 @@ class DropdownMenu extends Component {
         {isDropdownVisible ? (
           <SubMenu
             items={items}
-            onItemClick={this.toggleDropdown}
+            onItemClick={this.handleItemClick}
             isRightAligned={isRightAligned}
             isVisible={isDropdownVisible}
           />
