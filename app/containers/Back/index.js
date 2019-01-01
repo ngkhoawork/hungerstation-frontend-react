@@ -1,12 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { goBack } from 'utils/route';
 import Back from 'components/Back';
 
-const BackHOC = ({ history }) => <Back onClick={history.goBack} />;
+const BackHOC = () => <Back onClick={goBack} />;
 
-BackHOC.propTypes = {
-  history: PropTypes.object.isRequired,
-};
-
-export default withRouter(BackHOC);
+export default BackHOC;
