@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, sideMargin, mediaLess } from 'utils/css/styles';
+import { flex, sideMargin } from 'utils/css/styles';
 import { fontFamilyLight, fontFamilyRegular } from 'utils/css/variables';
 import { jade, boulder } from 'utils/css/colors';
 
@@ -64,8 +64,8 @@ export const RangeProgressBar = styled.div`
   }
 `;
 
-export const RangeValue = styled.div`
-  width: 28px;
+export const rangeValueCss = `
+  width: 24px;
   height: 0px;
   font-family: ${fontFamilyRegular};
   font-size: 12px;
@@ -74,9 +74,7 @@ export const RangeValue = styled.div`
   position: absolute;
   bottom: 11px;
   pointer-events: none;
-  ${mediaLess(950)`
-    width: 6%;
-`};
+
   @-moz-document url-prefix() {
     bottom: 16.1px;
   }
