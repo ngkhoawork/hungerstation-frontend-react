@@ -30,129 +30,121 @@ import {
 import { btnCss, mobileInfo } from './StyledComponents';
 import messages from './messages';
 
+const iconStyle = css`
+  ${sideMargin('start', '10px')};
+`;
+
 const getDeliveryType = provider =>
   provider === 'hungerstation_delivery'
     ? intl.formatMessage(messages.fastDelivery)
     : intl.formatMessage(messages.restaurantDelivery);
 
-const OrderCard = ({ order, onOrderClick, onRateClick }) => {
-  const renderButton = () => {
-    if (onRateClick) {
-      // we don't show rate button in this relase
-      return null;
-      // if (order.state === 'failed') return null;
-
-      // return (
-      //   <Button
-      //     label={intl.formatMessage(messages.rateRestaurant)}
-      //     primary={false}
-      //     lift={false}
-      //     color={alabaster}
-      //     fontSize={16}
-      //     inline
-      //     onClick={onRateClick}
-      //     css={btnCss}
-      //     isRateBtn
-      //   />
-      // );
-    }
-
-    return (
-      <Button
-        primary={false}
-        lift={false}
-        color={alabaster}
-        fontSize={16}
-        inline
-        css={btnCss}
-        onClick={() => onOrderClick(order.id)}
-      >
-        {order.tracking.activeStatus
-          ? intl.formatMessage(messages.tracking)
-          : intl.formatMessage(messages.details)}
-        {order.tracking.activeStatus && <Icon style={iconStyle} name="car" />}
-      </Button>
-    );
-  };
-
-  const renderInfo = () => (
-    <React.Fragment>
-      <OrderItems>
-        {order.orderItems.map(item => item.description).join(', ')}
-      </OrderItems>
-      <Row>
-        <Description>
-          <DeliveryType
-            iconName={
-              order.deliveryProvider === 'hungerstation_delivery'
-                ? 'hungerstation-delivery'
-                : 'car'
-            }
-            text={getDeliveryType(order.deliveryProvider)}
-          />
-          <OrderId id={order.id} />
-          <PriceContainer>
-            <Price price={order.price} isPrimary hasTag />
-          </PriceContainer>
-        </Description>
-        <Desktop>{renderButton()}</Desktop>
-      </Row>
-    </React.Fragment>
-  );
+const renderButton = (order, onOrderClick, onRateClick) => {
+  if (onRateClick) {
+    // we don't show rate button in this release
+    return null;
+  }
 
   return (
-    <Item key={order.id}>
-      <Row>
-        <Img image={order.image} />
-        <Content>
-          <Row justify="space-between">
-            <TitleContainer>
-              <Title css={titleStyle}>{order.restaurant.name}</Title>
-              <DeliveryLocation>
-                <IconPosition>
-                  <Icon name="pin" />
-                </IconPosition>
-                {order.address}
-              </DeliveryLocation>
-            </TitleContainer>
-            <OrderState>
-              {order.state === 'failed' && (
-                <StatusContent color="error" style={{ marginLeft: 5 }}>
-                  {intl.formatMessage(messages.failed)}
-                </StatusContent>
-              )}
-              {/* eslint-disable */}
-              {order.state === 'successful' &&
-              (order.deliveredAt ? (
-                <DateTimeElement
-                  time={order.deliveredAt}
-                />
-              ) : (
-                <TrackingTimer
-                  startAt={order.createdAt}
-                  endAt={order.deliveryEta}
-                />
-              ))}
-              {/* eslint-enable */}
-            </OrderState>
-          </Row>
-          <Desktop>{renderInfo()}</Desktop>
-        </Content>
-      </Row>
-      <Mobile>
-        <Row css={mobileInfo}>{renderInfo()}</Row>
-        {renderButton()}
-      </Mobile>
-    </Item>
+    <Button
+      primary={false}
+      lift={false}
+      color={alabaster}
+      fontSize={16}
+      inline
+      css={btnCss}
+      onClick={() => onOrderClick(order.id)}
+    >
+      {order.tracking.activeStatus
+        ? intl.formatMessage(messages.tracking)
+        : intl.formatMessage(messages.details)}
+      {order.tracking.activeStatus && <Icon style={iconStyle} name="car" />}
+    </Button>
   );
 };
+
+const renderInfo = (order, onOrderClick, onRateClick) => (
+  <React.Fragment>
+    <OrderItems>
+      {order.orderItems.map(item => item.description).join(', ')}
+    </OrderItems>
+    <Row>
+      <Description>
+        <DeliveryType
+          iconName={
+            order.deliveryProvider === 'hungerstation_delivery'
+              ? 'hungerstation-delivery'
+              : 'car'
+          }
+          text={getDeliveryType(order.deliveryProvider)}
+        />
+        <OrderId id={order.id} />
+        <PriceContainer>
+          <Price price={order.price} isPrimary hasTag />
+        </PriceContainer>
+      </Description>
+      <Desktop>{renderButton(order, onOrderClick, onRateClick)}</Desktop>
+    </Row>
+  </React.Fragment>
+);
+
+const renderState = order => {
+  switch (order.state) {
+    case 'processing':
+      return (
+        <StatusContent color="success" style={{ marginLeft: 5 }}>
+          {intl.formatMessage(messages.processing)}
+        </StatusContent>
+      );
+    case 'failed':
+      return (
+        <StatusContent color="error" style={{ marginLeft: 5 }}>
+          {intl.formatMessage(messages.failed)}
+        </StatusContent>
+      );
+    case 'successful':
+      if (order.deliveredAt) {
+        return <DateTimeElement time={order.deliveredAt} />;
+      }
+      return (
+        <TrackingTimer startAt={order.createdAt} endAt={order.deliveryEta} />
+      );
+    default:
+      return null;
+  }
+};
+
+const OrderCard = ({ order, onOrderClick, onRateClick }) => (
+  <Item key={order.id}>
+    <Row>
+      <Img image={order.image} />
+      <Content>
+        <Row justify="space-between">
+          <TitleContainer>
+            <Title css={titleStyle}>{order.restaurant.name}</Title>
+            <DeliveryLocation>
+              <IconPosition>
+                <Icon name="pin" />
+              </IconPosition>
+              {order.address}
+            </DeliveryLocation>
+          </TitleContainer>
+          <OrderState>{renderState(order)}</OrderState>;
+        </Row>
+        <Desktop>{renderInfo(order, onOrderClick, onRateClick)}</Desktop>
+      </Content>
+    </Row>
+    <Mobile>
+      <Row css={mobileInfo}>{renderInfo(order, onOrderClick, onRateClick)}</Row>
+      {renderButton(order, onOrderClick, onRateClick)}
+    </Mobile>
+  </Item>
+);
 
 OrderCard.propTypes = {
   order: PropTypes.object.isRequired,
   onOrderClick: PropTypes.func,
   onRateClick: PropTypes.func,
 };
+
 export default OrderCard;
-const iconStyle = css`
-  ${sideMargin('start', '10px')};
-`;
