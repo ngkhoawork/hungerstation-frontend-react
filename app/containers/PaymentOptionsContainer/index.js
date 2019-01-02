@@ -8,6 +8,7 @@ import {
   selectPaymentOption,
   setCoupon,
   removeCoupon,
+  clearCouponError,
 } from 'modules/checkout/actions';
 import PaymentOptions from 'components/PaymentOptions';
 
@@ -40,6 +41,7 @@ class PaymentOptionsContainer extends React.Component {
         onOptionSelect={this.handlePaymentSelect}
         onCouponSubmit={this.handleSetCoupon}
         onCouponDelete={this.props.removeCoupon}
+        onClearCouponError={this.props.clearCouponError}
         isCouponLoading={checkoutState.isCouponLoading}
         coupon={checkoutState.coupon}
         discount={checkoutState.discount}
@@ -54,6 +56,7 @@ PaymentOptionsContainer.propTypes = {
   selectPaymentOption: PropTypes.func.isRequired,
   setCoupon: PropTypes.func.isRequired,
   removeCoupon: PropTypes.func.isRequired,
+  clearCouponError: PropTypes.func.isRequired,
   onOrderChange: PropTypes.func.isRequired,
   // fetchCreditCards: PropTypes.func.isRequired,
 };
@@ -63,6 +66,5 @@ export default connect(
     checkoutState: selectCheckoutState(state),
     primaryAddress: selectPrimaryAddress(state),
   }),
-  { selectPaymentOption, setCoupon, removeCoupon },
-  // { selectPaymentOption, setCoupon, removeCoupon, fetchCreditCards },
+  { selectPaymentOption, setCoupon, removeCoupon, clearCouponError }, // fetchCreditCards
 )(PaymentOptionsContainer);
