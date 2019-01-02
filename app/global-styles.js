@@ -117,7 +117,7 @@ export const global = injectGlobal`
     width: 100%;
     height: 100%;
     z-index: ${zIndexModal};
-    background: rgba(0.4, 0.4, 0.4, 0.35);
+    background: rgba(102, 102, 102, 0.35);
     position: fixed;
   }
 

@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 const StyledTitle = styled.div`
   ${flex({ align: 'center', justify: 'center' })};
 `;
-const Header = styled.p`
+const Header = styled.span`
   font-family: ${fontFamilyRegular};
   font-size: 30px;
   color: ${fuscousGray};

@@ -10,15 +10,13 @@ import {
   sideMargin,
 } from 'utils/css/styles';
 import { fontFamilyLight } from 'utils/css/variables';
-import { forwardTo } from 'utils/route';
 import { selectCity, selectDistrict } from 'modules/location/selectors';
 import Icon from 'components/Icon';
 
-const StyledLocation = styled.a`
+const StyledLocation = styled.span`
   font-size: 16px;
   font-family: ${fontFamilyLight};
   ${sideMargin('start', '10px')};
-  cursor: pointer;
 `;
 
 const Wrapper = styled.div`
@@ -49,7 +47,7 @@ const decorate = connect(state => ({
 const LocationInput = ({ city, district }) => (
   <Wrapper>
     <Icon name="pin" />
-    <StyledLocation onClick={() => forwardTo('/')}>
+    <StyledLocation>
       {city}, {district}
     </StyledLocation>
   </Wrapper>

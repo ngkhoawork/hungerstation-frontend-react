@@ -18,7 +18,7 @@ const ViewCartButtonHOC = ({
   orderAmount,
   purchases,
   restaurant,
-  checkoutState: { selectedDeliveryOption, isValid, isLoading },
+  checkoutState: { selectedDeliveryOption, discount = 0, isValid, isLoading },
   primaryAddress,
   ...props
 }) => {
@@ -43,6 +43,14 @@ const ViewCartButtonHOC = ({
         isValid === false ||
         isLoading));
 
+  let totalOrderAmount = orderAmount;
+
+  if (isCheckout) {
+    const deliveryFee = (selectedDeliveryOption || {}).price || 0;
+
+    totalOrderAmount = orderAmount + deliveryFee - discount;
+  }
+
   return (
     <ViewCartButton
       {...props}
@@ -50,7 +58,7 @@ const ViewCartButtonHOC = ({
       isDisabled={isDisabled}
       isOrderDetail={isOrderDetail}
       quantity={totalQuantity}
-      price={orderAmount}
+      price={totalOrderAmount}
     />
   );
 };

@@ -23,7 +23,6 @@ export function* logoutFlow() {
     yield call(logoutWoker);
     yield call(clearStorageItem, 'tokens');
     yield call(clearStorageItem, 'userId');
-    yield call(forwardTo, '/');
   }
 }
 
@@ -69,6 +68,8 @@ export function* getCurrentUser() {
     const { accessToken } = yield select(makeSelectTokens);
     const { user } = yield call(usersApi.getUser, accessToken);
     yield put(setCurrentUser({ user }));
+
+    if (window.location.pathname === '/login') forwardTo('/');
   } catch (err) {
     yield put(logout());
     yield put(setCurrentUser({}));

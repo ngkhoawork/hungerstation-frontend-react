@@ -33,10 +33,10 @@ class CheckoutPage extends React.Component {
     this.state = { isBasketCartBtnVisible: true };
     this.cartRef = React.createRef();
     this.cartEndRef = React.createRef();
-    this.intersectObserver = new IntersectionObserver(this.handleIntersect);
   }
 
   componentDidMount() {
+    this.intersectObserver = new IntersectionObserver(this.handleIntersect);
     this.intersectObserver.observe(this.cartEndRef.current);
   }
 
@@ -118,7 +118,7 @@ class CheckoutPage extends React.Component {
               params={params}
               onOrderCreate={this.props.onOrderCreate}
             />
-            <div style={{ height: '0.00001px' }} ref={this.cartEndRef} />
+            <div style={{ height: '0.3px' }} ref={this.cartEndRef} />
           </RightSide>
           <BasketCartButton
             css={cartBtnsStyle}
