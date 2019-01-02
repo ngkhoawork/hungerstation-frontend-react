@@ -129,4 +129,18 @@ export const borderBottom = css`
   border-bottom: solid 1px ${lightGray};
 `;
 
+export const backgroundSuggestionMargin = value => {
+  const map = {
+    ltr: 'margin-left',
+    rtl: 'margin-right',
+  };
+  const value1 = {
+    ltr: value - 50,
+    rtl: value,
+  };
+  return () => props => css`
+    ${map[props.theme.direction]}: ${value1[props.theme.direction]}px;
+  `;
+};
+
 export default styles;

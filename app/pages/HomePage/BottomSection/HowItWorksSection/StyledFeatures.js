@@ -1,9 +1,12 @@
 import styled from 'styled-components';
-import { flex, mediaMedium, mediaSmall } from 'utils/css/styles';
+import { flex, mediaMedium, mediaSmall, sideMargin } from 'utils/css/styles';
 
 const StyledFeatures = styled.div`
   ${flex({ justify: 'space-between' })};
-  margin: 55px 7% 20px 20%;
+  margin-top: 55px;
+  margin-bottom: 20px;
+  ${sideMargin('start', '20%')};
+  ${sideMargin('end', '7%')};
 
   ${mediaMedium`
     ${flex({ align: 'center', direction: 'column' }, false)};
