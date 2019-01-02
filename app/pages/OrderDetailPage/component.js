@@ -8,6 +8,7 @@ import Back from 'containers/Back';
 import PageContent from 'components/PageContent';
 import ProfileNav from 'components/ProfileNav';
 import Paragraph from 'components/Paragraph';
+import { Title, Description } from 'components/Typography';
 import Loader from 'components/Loader';
 import OrderCard from 'pages/OrdersPage/OrderCard';
 import { NavHeader } from 'utils/css/styledComponents';
@@ -19,9 +20,10 @@ import {
   LeftSide,
   RightSide,
 } from 'pages/OrdersPage/StyledComponents';
+import { dustyGray } from 'utils/css/colors';
 import CartContainer from './CartContainer';
 import TrackingSteps from './TrackingSteps';
-import { cartCss, OrderDetailSection } from './StyledComponents';
+import { cartCss, titleCss, OrderDetailSection } from './StyledComponents';
 import messages from './messages';
 
 class OrderDetailPage extends React.Component {
@@ -46,7 +48,7 @@ class OrderDetailPage extends React.Component {
   };
 
   render() {
-    const { order, params, path } = this.props;
+    const { order, params, path, showThankyouMsg } = this.props;
     let purchases = [];
     const orderAmount = order ? order.amount : undefined;
     const discount = order ? order.discount : undefined;
@@ -85,6 +87,14 @@ class OrderDetailPage extends React.Component {
             {order ? (
               <Fragment>
                 <LeftSide>
+                  {showThankyouMsg && (
+                    <Title css={titleCss}>
+                      {intl.formatMessage(messages.thankyouMessage)}
+                      <Description size={16} color={dustyGray} light>
+                        {intl.formatMessage(messages.checkProgressMessage)}
+                      </Description>
+                    </Title>
+                  )}
                   <Paragraph size={30}>
                     {intl.formatMessage(messages.orderDetails)}
                   </Paragraph>
@@ -146,6 +156,7 @@ OrderDetailPage.propTypes = {
   order: PropTypes.object,
   params: PropTypes.object,
   path: PropTypes.string,
+  showThankyouMsg: PropTypes.bool,
 };
 
 export default withHeaderAndFooter(OrderDetailPage);

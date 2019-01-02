@@ -7,6 +7,7 @@ export function setHistory(appHistoryObj) {
   history = appHistoryObj;
 }
 
+
 export function goBack() {
   history.goBack();
 }

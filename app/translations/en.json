@@ -172,6 +172,7 @@
 	"app.components.OrderDetailPage.OrderCard.restaurantDelivery": "Restaurant delivery",
 	"app.components.OrderDetailPage.orderDetails": "Order details",
 	"app.components.OrderDetailPage.thankyouMessage": "Thank you for ordering!",
+	"app.components.OrderDetailPage.checkProgressMessage": "Check the progress of your delivery blow",
 	"app.components.PaymentOptions.addCoupon": "Add coupon",
 	"app.components.PaymentOptions.applyingCoupon": "Apply",
 	"app.components.PaymentOptions.cards": "Credit Cards",

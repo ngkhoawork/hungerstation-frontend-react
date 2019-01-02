@@ -22,6 +22,7 @@ class OrderDetailPageHOC extends React.Component {
       order: null,
       params: null,
       path: null,
+      showThankyouMsg: false,
     };
 
     if (props.ordersState.orders.length === 0) {
@@ -36,6 +37,7 @@ class OrderDetailPageHOC extends React.Component {
         params: { orderId },
         path,
       },
+      location: { state: historyState },
     } = props;
 
     if (state.order === null && orders.length > 0) {
@@ -46,7 +48,9 @@ class OrderDetailPageHOC extends React.Component {
           city: order.city.name,
           district: order.district.name,
         };
-
+        const showThankyouMsg = historyState
+          ? historyState.showThankyouMsg
+          : false;
         props.setBranchId(params.branchId);
         props.fetchRestaurant(params);
         props.fetchAddresses(params.branchId);
@@ -60,6 +64,7 @@ class OrderDetailPageHOC extends React.Component {
           order,
           params,
           path,
+          showThankyouMsg,
         };
       }
     }
@@ -71,8 +76,7 @@ class OrderDetailPageHOC extends React.Component {
   };
 
   render() {
-    const { order, params, path } = this.state;
-    return <OrderDetailPage order={order} params={params} path={path} />;
+    return <OrderDetailPage {...this.state} />;
   }
 }
 
