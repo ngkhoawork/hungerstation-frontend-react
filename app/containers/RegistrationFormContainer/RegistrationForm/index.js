@@ -32,7 +32,7 @@ const RegistrationForm = ({ handleSubmit, submitting, classes, error }) => (
       autoComplete="nope"
       name="phone"
       component={MobileNumber}
-      label="Mobile number"
+      label={intl.formatMessage(messages.numberLabel)}
     />
     <StyledFieldWrapper
       InputProps={{
