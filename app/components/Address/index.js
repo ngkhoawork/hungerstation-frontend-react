@@ -26,14 +26,14 @@ import CheckboxIcon from 'components/CheckboxIcon';
 import CircledItem from 'components/CircledItem';
 import messages from './messages';
 
-const getName = ({ name, specific_type, street, building_number }) => {
+const getName = ({ name, specific_type, local }) => {
   if (specific_type && specific_type !== otherAddressType) {
     return intl.formatMessage(addressMessages[specific_type]);
   }
 
   return (
     name ||
-    `${street || ''} ${building_number || ''}`.trim() ||
+    `${(local && local.name) || ''}`.trim() ||
     intl.formatMessage(addressMessages.old_style)
   );
 };
@@ -163,6 +163,7 @@ const Name = styled.div`
 
 const typeIconStyle = css`
   ${sidePosition('start', '5px')};
+  flex-shrink: 0;
 `;
 
 const editBtnCss = css`
@@ -178,10 +179,12 @@ const editBtnCss = css`
 
 const Title = styled.span`
   font-family: ${fontFamilyRegular};
+  word-break: break-word;
 `;
 
 const Location = styled.div`
   font-family: ${fontFamilyLight};
+  word-break: break-word;
 `;
 
 const EditBtnLabel = styled.span`

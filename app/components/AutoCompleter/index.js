@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
+import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from 'components/Icon';
@@ -8,6 +9,7 @@ import CircledItem from 'components/CircledItem';
 import { fontFamilyLight } from 'utils/css/variables';
 import { wildSand } from 'utils/css/colors';
 import { itemToString, getSuggestions, calcWidth } from 'utils/helpers';
+import { backgroundSuggestionMargin } from 'utils/css/styles';
 
 import Input from './Input';
 import Suggestion from './Suggestion';
@@ -52,14 +54,15 @@ const Autocomplete = props => {
         const offsetX =
           autoCompleteTextOffset +
           calcWidth(inputValue, `16px ${fontFamilyLight}`);
+
+        const SuggestionStyle = styled.div`
+          ${backgroundSuggestionMargin(offsetX)};
+        `;
         return (
           <div className={[classes.container]}>
             {enableAutoComplete && (
-              <span
-                className={classes.backgroundSuggestion}
-                style={{ marginLeft: `${offsetX}px` }}
-              >
-                {autoCompleteString}
+              <span className={classes.backgroundSuggestion}>
+                <SuggestionStyle>{autoCompleteString}</SuggestionStyle>
               </span>
             )}
             <Input

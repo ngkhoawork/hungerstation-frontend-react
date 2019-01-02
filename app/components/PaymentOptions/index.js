@@ -16,6 +16,7 @@ const PaymentOptions = ({
   isCouponLoading,
   onCouponSubmit,
   onCouponDelete,
+  onClearCouponError,
 }) => (
   <div>
     {isCouponLoading ? (
@@ -45,6 +46,7 @@ const PaymentOptions = ({
       coupon={coupon}
       onSubmit={onCouponSubmit}
       onDelete={onCouponDelete}
+      onClearCouponError={onClearCouponError}
     />
   </div>
 );
@@ -57,6 +59,7 @@ PaymentOptions.propTypes = {
   onOptionSelect: PropTypes.func.isRequired,
   onCouponSubmit: PropTypes.func.isRequired,
   onCouponDelete: PropTypes.func.isRequired,
+  onClearCouponError: PropTypes.func.isRequired,
 };
 
 export default PaymentOptions;

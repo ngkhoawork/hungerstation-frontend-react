@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { flex, sidePadding } from 'utils/css/styles';
+import intl from 'utils/intlService';
+import { flex, sideMargin, sidePadding } from 'utils/css/styles';
 import { wildSand } from 'utils/css/colors';
 import { fontFamilyLight } from 'utils/css/variables';
+import messages from './messages';
 
 const StyledInput = styled.input`
   ${flex({ align: 'flex-end', justify: 'center' })};
@@ -13,12 +15,13 @@ const StyledInput = styled.input`
   font-family: ${fontFamilyLight};
   outline: none;
   border-bottom: 1px solid ${wildSand};
-  ${({ hasFocus }) => sidePadding('start', `${hasFocus ? 24 : 40}px`)};
+  ${({ hasFocus }) =>
+    hasFocus ? sidePadding('start', '24px') : sideMargin('start', '40px')};
 `;
 
 const SearchInput = ({ searchRestaurantAction, ...props }) => (
   <StyledInput
-    placeholder="Search"
+    placeholder={intl.formatMessage(messages.search)}
     onChange={e => searchRestaurantAction(e.target.value)}
     {...props}
   />

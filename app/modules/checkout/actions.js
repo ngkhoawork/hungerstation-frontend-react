@@ -65,4 +65,6 @@ export const setCoupon = createAction(
 
 export const removeCoupon = createAction('checkout/REMOVE_COUPON');
 
+export const clearCouponError = createAction('checkout/CLEAR_COUPON_ERROR');
+
 export const clearCheckout = createAction('checkout/CLEAR_CHECKOUT');

@@ -6,6 +6,8 @@ import {
   sidePadding,
   sideMargin,
   mediaMediumGreater,
+  rotateImage,
+  flex,
 } from 'utils/css/styles';
 import { borderRadius } from 'utils/css/variables';
 import imgBg from 'images/whyHS.png';
@@ -21,7 +23,7 @@ export const ImageBackground = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: ${borderRadius};
-
+  ${rotateImage()};
   ${device.retina`background-image: url(${imgBg2x});`};
   ${device.retina3x`background-image: url(${imgBg3x});`};
 
@@ -64,4 +66,12 @@ export const leftSectionCss = css`
     width: calc(41% + 240px);
     ${sideMargin('end', '-240px')};
   `};
+`;
+
+export const styeldSection = css`
+  ${flex({ align: 'flex-end' })};
+`;
+
+export const fontSize = css`
+  font-size: 33px;
 `;

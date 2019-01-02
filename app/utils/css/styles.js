@@ -92,6 +92,17 @@ export const rotateArrowIcon = () => {
     transform: rotate(${map[props.theme.direction].rotate});
   `;
 };
+
+export const rotateImage = () => {
+  const map = {
+    ltr: { rotate: `0deg` },
+    rtl: { rotate: `180deg` },
+  };
+  return () => props => css`
+    transform: rotateY(${map[props.theme.direction].rotate});
+  `;
+};
+
 export const mediaLess = getMedia('lessThan');
 export const mediaGreater = getMedia('greaterThan');
 const desktopWidth = 850;
@@ -117,5 +128,19 @@ export const fontCorrection = css`
 export const borderBottom = css`
   border-bottom: solid 1px ${lightGray};
 `;
+
+export const backgroundSuggestionMargin = value => {
+  const map = {
+    ltr: 'margin-left',
+    rtl: 'margin-right',
+  };
+  const value1 = {
+    ltr: value - 50,
+    rtl: value,
+  };
+  return () => props => css`
+    ${map[props.theme.direction]}: ${value1[props.theme.direction]}px;
+  `;
+};
 
 export default styles;
