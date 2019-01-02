@@ -10,6 +10,10 @@ import { sideMargin } from 'utils/css/styles';
 const Wrapper = styled.div`
   ${sideMargin('end', '18px')};
   ${sideMargin('start', '9px')};
+
+  p {
+    line-height: 1;
+  }
 `;
 
 const IconAndText = ({ iconName, text, textSize = 14 }) => (

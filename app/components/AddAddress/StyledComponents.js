@@ -135,16 +135,16 @@ export const DescCount = styled.div`
   position: absolute;
   bottom: 0;
   ${sidePosition('end', 0)};
-  font-size: 12px;
+  font-size: 14px;
   font-family: ${fontFamilyLight};
-  color: ${ironsideGray};
+  color: ${({ isError }) => (isError ? persimmon : ironsideGray)};
 `;
 
 export const DescError = styled.div`
   position: absolute;
   bottom: 0;
   ${sidePosition('start', 0)};
-  font-size: 12px;
+  font-size: 14px;
   font-family: ${fontFamilyLight};
   color: ${persimmon};
 `;

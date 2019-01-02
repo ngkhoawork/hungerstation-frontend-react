@@ -58,12 +58,21 @@ export const StyledPage = styled.div`
   `};
 `;
 
-export const StyledLink = styled(Link)`
+const styledLinkCss = `
   color: ${({ color }) => color || fuscousGray};
   text-decoration: none;
   margin: 0;
+  cursor: pointer;
 
   ${({ style }) => style && css(style)};
+`;
+
+export const StyledLink = styled(Link)`
+  ${styledLinkCss};
+`;
+
+export const StyledLinkBtn = styled.span`
+  ${styledLinkCss};
 `;
 
 export const DisabledOverlay = styled.div`

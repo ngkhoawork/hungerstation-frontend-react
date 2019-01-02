@@ -3,6 +3,7 @@ import { maxBy } from 'lodash';
 import { logout } from 'modules/auth/actions';
 import intl from 'utils/intlService';
 import messages from 'pages/RestaurantsPage/RestaurantsSection/RestaurantsList/ToolsPanel/messages';
+
 import {
   fetchRestaurantsRequest,
   fetchRestaurantsError,
@@ -144,7 +145,6 @@ function reducer(state = initialState, action) {
       return state.set('search', action.payload);
 
     case resetState.type:
-    case logout.type:
       return initialState;
 
     default:

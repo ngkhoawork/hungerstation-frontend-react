@@ -47,13 +47,13 @@ export const RightSide = styled.div`
 `;
 
 export const cartBtnsStyle = css`
-  padding: 10px 0 20px 0;
+  padding: 10px 0 21px 0;
   width: 100%;
   background: white;
   position: sticky;
   bottom: 0;
   z-index: 100;
-  box-shadow: 5px -10px 0.0000001px 10px white;
+  box-shadow: 5px -8px 0.0000001px 10px white;
   -webkit-font-smoothing: subpixel-antialiased;
   transition: opacity 0.3s;
 

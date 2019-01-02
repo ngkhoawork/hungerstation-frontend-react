@@ -43,7 +43,7 @@ function reducer(state = initialState, action) {
     case UPDATE_TOKENS:
       return onUpdateTokens(state, action);
     case logout.type:
-      return initialState;
+      return initialState.merge({ loggedIn: false });
     default:
       return state;
   }

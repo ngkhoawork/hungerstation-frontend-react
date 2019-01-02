@@ -4,6 +4,7 @@ import {
   selectPaymentOption,
   setCoupon,
   removeCoupon,
+  clearCouponError,
   fetchDeliveryOptionsSuccess,
   fetchCreditCardsSuccess,
   checkoutRequest,
@@ -56,6 +57,8 @@ function reducer(state = initialState, { type, payload }) {
       const { coupon, discount, errors_with_keys } = payload;
       const errors = errors_with_keys || [];
       const couponError = errors.find(({ key }) => key === 'coupon');
+      const orderErrors = errors.filter(({ key }) => key !== 'coupon');
+      const couponValue = couponError ? '' : coupon || state.coupon;
 
       return Object.assign({}, state, {
         isLoading: false,
@@ -63,11 +66,11 @@ function reducer(state = initialState, { type, payload }) {
         isCreateOrderLoading: errors.length
           ? false
           : state.isCreateOrderLoading,
-        isValid: !errors.length,
-        orderErrors: errors.filter(({ key }) => key !== 'coupon'),
+        isValid: !orderErrors.length,
+        orderErrors,
         discount,
         coupon: coupon
-          ? { value: coupon || state.coupon, isValid: !couponError }
+          ? { id: Date.now(), value: couponValue, isValid: !couponError }
           : state.coupon,
       });
     }
@@ -75,11 +78,16 @@ function reducer(state = initialState, { type, payload }) {
     case setCoupon.type:
       return Object.assign({}, state, {
         coupon: payload,
-        isCouponLoading: !payload.isDisabled && true,
+        isCouponLoading: !payload.isDisabled,
       });
 
     case removeCoupon.type:
       return Object.assign({}, state, { coupon: undefined, discount: 0 });
+
+    case clearCouponError.type:
+      return Object.assign({}, state, {
+        coupon: { ...state.coupon, isValid: undefined },
+      });
 
     case setNote.type:
       return Object.assign({}, state, { note: payload });

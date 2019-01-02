@@ -112,20 +112,28 @@ const getAdornment = coupon => {
 class Coupon extends React.Component {
   constructor() {
     super();
-    this.state = { name: '' };
+    this.state = { value: '' };
   }
 
-  handleNameChange = ({ target }) => this.setState({ name: target.value });
+  static getDerivedStateFromProps({ coupon = {} }, state) {
+    if (typeof coupon.value === 'string' && coupon.id !== state.id) {
+      return { value: coupon.value, id: coupon.id };
+    }
 
-  handleSubmit = () => this.props.onSubmit(this.state.name);
+    return null;
+  }
+
+  handleNameChange = ({ target }) => this.setState({ value: target.value });
+
+  handleSubmit = () => this.props.onSubmit(this.state.value);
 
   handleDelete = () => {
-    this.setState({ name: '' });
+    this.setState({ value: '' });
     this.props.onDelete();
   };
 
   render() {
-    const { coupon = {} } = this.props;
+    const { coupon = {}, onClearCouponError } = this.props;
 
     return (
       <Container>
@@ -136,13 +144,12 @@ class Coupon extends React.Component {
           <Content>
             <TextField
               type="text"
-              value={this.state.name}
+              value={this.state.value}
               onChange={this.handleNameChange}
+              onFocus={onClearCouponError}
               label={intl.formatMessage(messages.haveCoupon)}
               fullWidth
-              InputProps={{
-                endAdornment: getAdornment(coupon),
-              }}
+              InputProps={{ endAdornment: getAdornment(coupon) }}
             />
             <MobileNotice>{renderNotice(coupon)}</MobileNotice>
             <Button
@@ -151,10 +158,10 @@ class Coupon extends React.Component {
               lift={false}
               style={{ border, flexShrink: 0 }}
               css={ButtonMargin}
-              onClick={coupon.value ? this.handleDelete : this.handleSubmit}
+              onClick={coupon.isValid ? this.handleDelete : this.handleSubmit}
             >
               {intl.formatMessage(
-                messages[`${coupon.value ? 'delete' : 'add'}Coupon`],
+                messages[`${coupon.isValid ? 'delete' : 'add'}Coupon`],
               )}
             </Button>
           </Content>
@@ -169,6 +176,7 @@ Coupon.propTypes = {
   coupon: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onClearCouponError: PropTypes.func.isRequired,
 };
 
 export default Coupon;

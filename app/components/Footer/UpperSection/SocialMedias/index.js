@@ -10,11 +10,18 @@ const SocialMedias = () => {
     { id: 'twitter', to: 'https://twitter.com/hungerstation' },
     { id: 'instagram', to: 'https://www.instagram.com/hungerstation/' },
   ];
+  const openWindow = link => {
+    window.open(link);
+  };
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
       {medias.map(media => (
-        <StyledLink key={media.id} to={media.to}>
-          <Icon name={media.id} size={32} />
+        <StyledLink key={media.id}>
+          <Icon
+            name={media.id}
+            size={32}
+            onClick={() => openWindow(media.to)}
+          />
         </StyledLink>
       ))}
     </div>
