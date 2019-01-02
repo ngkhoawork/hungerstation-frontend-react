@@ -17,7 +17,6 @@ import messages from './messages';
 
 const MoreFiltersWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   margin-top: 24px;
 `;
 
@@ -48,10 +47,10 @@ const BriefFiltersSection = ({
         toggleModal(true);
       }}
     >
-      <Paragraph size={18} margin="0 5px 0 0">
+      <Paragraph size={14} margin="0 5px 0 0">
         {intl.formatMessage(messages.moreFilters)}
       </Paragraph>
-      <Icon name="arrow-circled" size={18} />
+      <Icon name="arrow-circled" size={14} />
     </MoreFiltersWrapper>
   </React.Fragment>
 );

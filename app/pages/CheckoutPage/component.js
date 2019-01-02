@@ -123,6 +123,7 @@ class CheckoutPage extends React.Component {
           <BasketCartButton
             css={cartBtnsStyle}
             params={params}
+            onClick={this.props.onOrderCreate}
             onBasketClick={this.handleBasketClick}
             innerStyle={{ opacity: isBasketCartBtnVisible ? 1 : 0 }}
           />

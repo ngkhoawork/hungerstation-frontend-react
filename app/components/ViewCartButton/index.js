@@ -34,7 +34,7 @@ const ViewCartButton = ({
 }) => {
   const getHref = () => {
     if (isDisabled || onClick) return '#';
-    return isCheckout ? '/payment' : `${getPathname()}/checkout`;
+    return isCheckout ? '#' : `${getPathname()}/checkout`;
   };
 
   const renderViewCartBtn = () => {
