@@ -161,6 +161,7 @@
 	"app.components.MyOrdersPage.NotFound.text": "You don't have any orders yet!",
 	"app.components.MyOrdersPage.OrderCard.details": "Details...",
 	"app.components.MyOrdersPage.OrderCard.failed": "failed",
+	"app.components.MyOrdersPage.OrderCard.processing": "processing",
 	"app.components.MyOrdersPage.OrderCard.fastDelivery": "Fast delivery",
 	"app.components.MyOrdersPage.OrderCard.restaurantDelivery": "Restaurant delivery",
 	"app.components.MyOrdersPage.OrderCard.tracking": "Check tracking",

@@ -129,7 +129,7 @@ const OrderCard = ({ order, onOrderClick, onRateClick }) => (
               {order.address}
             </DeliveryLocation>
           </TitleContainer>
-          <OrderState>{renderState(order)}</OrderState>;
+          <OrderState>{renderState(order)}</OrderState>
         </Row>
         <Desktop>{renderInfo(order, onOrderClick, onRateClick)}</Desktop>
       </Content>

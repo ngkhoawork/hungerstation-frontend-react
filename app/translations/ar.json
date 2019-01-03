@@ -161,6 +161,7 @@
 	"app.components.MyOrdersPage.NotFound.text": "لا يوجد لديك طلبات سابقة",
 	"app.components.MyOrdersPage.OrderCard.details": "تفاصيل",
 	"app.components.MyOrdersPage.OrderCard.failed": "فشل",
+	"app.components.MyOrdersPage.OrderCard.processing": "تحت التنفيذ",
 	"app.components.MyOrdersPage.OrderCard.fastDelivery": "أسرررع شي",
 	"app.components.MyOrdersPage.OrderCard.restaurantDelivery": "توصيل المطعم",
 	"app.components.MyOrdersPage.OrderCard.tracking": "متابعة الطلب",

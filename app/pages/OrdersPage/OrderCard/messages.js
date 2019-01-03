@@ -13,6 +13,9 @@ export default defineMessages({
   fastDelivery: {
     id: 'app.components.MyOrdersPage.OrderCard.fastDelivery',
   },
+  processing: {
+    id: 'app.components.MyOrdersPage.OrderCard.processing',
+  },
   failed: {
     id: 'app.components.MyOrdersPage.OrderCard.failed',
   },
