@@ -139,5 +139,7 @@ export const TrackButton = styled(Button)`
   height: 40px;
   top: 80px;
   ${sidePosition('end', 0)};
-  ${mediaMediumGreater`display: none;`};
+  ${mediaMediumGreater`
+    top: 70px;
+  `};
 `;

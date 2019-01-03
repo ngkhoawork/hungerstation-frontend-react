@@ -40,7 +40,7 @@ const TrackingSteps = ({ steps, currentStep, enableTrackCar, onTrackCar }) => (
     </StyledSteps>
     {enableTrackCar && (
       <TrackButtonWrapper
-        disabled={steps[2].index >= currentStep}
+        disabled={steps[2].index < currentStep}
         onClick={onTrackCar}
       />
     )}
