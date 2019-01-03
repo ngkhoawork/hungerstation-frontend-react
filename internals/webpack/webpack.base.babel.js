@@ -11,7 +11,6 @@ const webpack = require('webpack');
 // in the next major version of loader-utils.'
 process.noDeprecation = true;
 
-module.exports = options => console.log(options);
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,

@@ -1,6 +1,5 @@
 import { fromJS, List } from 'immutable';
 import { maxBy } from 'lodash';
-import { logout } from 'modules/auth/actions';
 import intl from 'utils/intlService';
 import messages from 'pages/RestaurantsPage/RestaurantsSection/RestaurantsList/ToolsPanel/messages';
 
