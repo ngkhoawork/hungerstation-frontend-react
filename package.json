@@ -175,7 +175,7 @@
     "ip": "1.1.5",
     "json-graphql-server": "^2.1.1",
     "localStorage": "^1.0.3",
-    "lodash": "4.17.10",
+    "lodash": "4.17.19",
     "minimist": "1.2.0",
     "prop-types": "15.6.1",
     "rc-steps": "^3.3.0",
