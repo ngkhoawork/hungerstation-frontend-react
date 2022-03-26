@@ -176,7 +176,7 @@
     "json-graphql-server": "^2.1.1",
     "localStorage": "^1.0.3",
     "lodash": "4.17.10",
-    "minimist": "1.2.0",
+    "minimist": "1.2.6",
     "prop-types": "15.6.1",
     "rc-steps": "^3.3.0",
     "react": "^16.4.1",
